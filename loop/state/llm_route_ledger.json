@@ -582,66 +582,6 @@
     "nvidia/nemotron-3-ultra-550b-a55b:free": [
       {
         "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "error",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "rate_limited",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "empty",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": null,
-        "outcome": "failed_validation",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": null,
-        "outcome": "failed_validation",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": null,
-        "outcome": "failed_validation",
-        "ts": "2026-10-30T22:40:45Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:40:46Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
         "latency_s": null,
         "outcome": "failed_validation",
         "ts": "2026-10-30T22:40:46Z"
@@ -699,6 +639,66 @@
         "latency_s": 0.0,
         "outcome": "answered",
         "ts": "2026-10-30T22:43:47Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:15Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:15Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:15Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:15Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:15Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:28Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:28Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:28Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:28Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-01T04:08:28Z"
       }
     ],
     "nvidia/nemotron-3.5-lightning:free": [

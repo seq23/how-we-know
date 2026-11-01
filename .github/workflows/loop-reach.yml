@@ -35,7 +35,7 @@ name: loop · daily 10:00 CT · reach (captions + localizations + tags)
 # the localization lane still has work — one blocker must not take the other
 # lane down with it.
 #
-# 15:00 UTC is 10:00 America/Chicago during CDT — an hour after the upload
+# 10:00 America/Chicago all year (timezone-pinned) — an hour after the upload
 # lane, so the day's new video already exists to be captioned. The exact minute
 # does not matter: nothing here ever makes a video public.
 
@@ -48,7 +48,8 @@ on:
   # gated could never run. A workflow_dispatch run always passes through
   # and is what arms it.
   schedule:
-    - cron: '0 15 * * *'
+    - cron: '0 10 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       lane:

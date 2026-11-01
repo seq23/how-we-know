@@ -16,7 +16,7 @@ name: loop · daily 09:00 CT · upload from R2
 # A GITHUB_TOKEN push raises no `push` event, so no other workflow triggers off
 # it. That is fine here — nothing needs to.
 #
-# 14:00 UTC is 09:00 America/Chicago during CDT. The exact minute does not
+# 09:00 America/Chicago all year (timezone-pinned). The exact minute does not
 # matter: this lane only SCHEDULES videos, it never makes one public. The
 # publish times themselves are computed in local time by loop/backfill.py's
 # slots(), so they do not drift when the clocks change even though this cron
@@ -30,7 +30,8 @@ on:
   # gated could never run. A workflow_dispatch run always passes through
   # and is what arms it.
   schedule:
-    - cron: '0 14 * * *'
+    - cron: '0 9 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       limit:

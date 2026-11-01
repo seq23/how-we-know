@@ -377,21 +377,26 @@ check(any("rotation day" in f for f in res["failures"]),
 import re as _re                                              # noqa: E402
 _wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()
 _crons = _re.findall(r"^\s*- cron: '([^']+)'", _wf, _re.M)
-check(_crons == ["30 23 * * *", "30 8 * * 0,2-6"],
-      f"loop-repackage crons are {_crons}, not the evening run + the 08:30 UTC apply")
-_EARLY = "github.event.schedule != '30 8 * * 0,2-6'"
+check(_crons == ["30 18 * * *", "30 3 * * 0,2-6"],
+      f"loop-repackage crons are {_crons}, not the evening run + the 03:30 CT apply")
+# Both crons are Central wall-clock time (1 Nov 2026); 03:30 CT is 01:30 PT all
+# year, just after the YouTube quota reset at midnight PT.
+_tz = _re.findall(r"^\s*- cron: '[^']+'.*\n\s*timezone: (\S+)", _wf, _re.M)
+check(_tz == ["America/Chicago", "America/Chicago"],
+      f"loop-repackage schedule zones are {_tz}, not America/Chicago on both crons")
+_EARLY = "github.event.schedule != '30 3 * * 0,2-6'"
 _steps = {m.group(1).strip(): m.group(2) for m in _re.finditer(
     r"- name: ([^\n]+)\n((?:        [^\n]*\n)+)", _wf)}
 _apply = next(v for k, v in _steps.items() if k.startswith("Apply new titles"))
 check(_EARLY not in _apply and "repackage.py apply" in _apply,
-      "the 08:30 UTC cron does not run the apply step")
+      "the 03:30 CT cron does not run the apply step")
 for _name in ("Propose long-form titles", "Re-open / extend queued scripts",
               "Build contract thumbnails", "Prepare search blocks"):
     _body = next(v for k, v in _steps.items() if k.startswith(_name))
     check(_EARLY in _body.split("\n", 1)[0] or _EARLY in _body.split("run:", 1)[0],
-          f"{_name!r} also runs on the 08:30 UTC apply-only cron")
-# 08:30 UTC sits after the PT reset in BOTH clock seasons (07:00 UTC PDT,
-# 08:00 UTC PST); 07:30 UTC would land at the END of the old day all winter.
+          f"{_name!r} also runs on the 03:30 CT apply-only cron")
+# 03:30 CT sits after the PT reset in BOTH clock seasons (it is 01:30 PT all
+# year); a bare UTC hour would drift across the reset with the clock change.
 
 if examined == 0:
     fails.append("examined nothing")
