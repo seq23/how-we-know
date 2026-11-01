@@ -239,9 +239,20 @@ try:
                         "  exit 1\n"
                         "fi\nexit 0\n")
         fake.chmod(0o755)
+        # The Central-time mover (boss-os plist-central.mjs) is faked too: it records each plist.
+        moved_f = td / "moved.calls"
+        mover = td / "plist-central.mjs"
+        mover.write_text(f"import fs from 'node:fs'; fs.appendFileSync({str(moved_f)!r}, process.argv[2] + '\\n');\n")
         out = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
                              capture_output=True, text=True, timeout=60,
-                             env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake)})
+                             env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "HWK_PLIST_CENTRAL": str(mover)})
+        moved = moved_f.read_text() if moved_f.exists() else ""
+        check("h. every agent is moved to Central before it is loaded",
+              all(f"com.howweknow.{n}.plist" in moved for n in ("batch", "nightquit", "food", "backfill", "batch-resume", "food-resume")), moved)
+        no_mover = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
+                                  capture_output=True, text=True, timeout=60,
+                                  env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "HWK_PLIST_CENTRAL": str(td / "missing.mjs")})
+        check("h. NEGATIVE: no mover, nothing loaded (named stop)", no_mover.returncode == 4 and "NO_PLIST_CENTRAL" in no_mover.stderr, no_mover.stderr[-200:])
         calls_txt = calls_f.read_text() if calls_f.exists() else ""
         check("h. installer ran", out.returncode == 0, out.stdout[-200:] + out.stderr[-200:])
         check("h. a running job is never unloaded",

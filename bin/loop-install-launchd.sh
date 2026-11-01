@@ -16,6 +16,17 @@
 # only one thing here may narrate at once. tuesday and
 # thursday are deliberately NOT installed - see the --install block.
 #
+# EVERY TIME HERE IS CENTRAL (2026-11-01, the owner's approved weekly schedule).
+# Her Mac runs on Eastern and launchd reads Hour in the Mac's own zone, so these
+# agents fired an hour early in Central (the batch at 22:00, the quit at 21:55).
+# --install now moves each Hour to the Mac's zone with boss-os
+# scripts/ops/plist-central.mjs, the one mover Boss OS and ~/bin use, and each
+# agent runs with TZ=America/Chicago so the scripts' own clock windows
+# (NARRATION_UNTIL=07:00) are Central too: the night is still 23:00-07:00.
+# The quit stays at 22:55, three minutes BEFORE the Tue/Thu food session (22:58):
+# freeing memory for the voice model is its whole job, and a food night runs
+# until ~05:00, so "after the session" would quit her apps in the morning.
+#
 # 23:00 is the owner's choice (2026-09-04): start the night's narration when
 # she has stopped using the Mac, so the ~4 cores the voice model takes are not
 # competing with her. The job holds the machine awake for its own duration with
@@ -73,6 +84,7 @@ cat <<XML
   <dict>$WD
         <key>Hour</key><integer>$4</integer>
         <key>Minute</key><integer>$MIN</integer></dict>
+  <key>EnvironmentVariables</key><dict><key>TZ</key><string>America/Chicago</string></dict>
   <key>StandardOutPath</key><string>$LOGDIR/$1.log</string>
   <key>StandardErrorPath</key><string>$LOGDIR/$1.err</string>
   <key>RunAtLoad</key><false/>
@@ -98,6 +110,7 @@ cat <<XML
   <array><string>/bin/bash</string><string>-lc</string>
     <string>cd $ROOT &amp;&amp; $ROOT/bin/$*</string></array>
   <key>StartInterval</key><integer>$secs</integer>
+  <key>EnvironmentVariables</key><dict><key>TZ</key><string>America/Chicago</string></dict>
   <key>StandardOutPath</key><string>$LOGDIR/$name.log</string>
   <key>StandardErrorPath</key><string>$LOGDIR/$name.err</string>
   <key>RunAtLoad</key><true/>
@@ -128,6 +141,7 @@ cat <<XML
   <key>StartCalendarInterval</key>
   <array>$cal
   </array>
+  <key>EnvironmentVariables</key><dict><key>TZ</key><string>America/Chicago</string></dict>
   <key>StandardOutPath</key><string>$LOGDIR/$name.log</string>
   <key>StandardErrorPath</key><string>$LOGDIR/$name.err</string>
   <key>RunAtLoad</key><false/>
@@ -193,6 +207,13 @@ case "${1:-}" in
     # EVERY 300 s + AT LOGIN: resume a food night that died (food-session.sh).
     print_one food-resume > "$AGENTS/com.howweknow.food-resume.plist"
     print_one backfill > "$AGENTS/com.howweknow.backfill.plist"
+    # CENTRAL, MOVED TO THE MAC'S ZONE before anything is loaded (2026-11-01).
+    CENTRAL="${HWK_PLIST_CENTRAL:-${BOSS_OS_REPO:-$HOME/GitHub/boss-os}/scripts/ops/plist-central.mjs}"
+    [ -f "$CENTRAL" ] || { echo "NAMED STOP [NO_PLIST_CENTRAL] $CENTRAL not found: the Central-time mover lives in boss-os. Nothing loaded." >&2; exit 4; }
+    for n in $AGENT_NAMES; do
+      node "$CENTRAL" "$AGENTS/com.howweknow.$n.plist" \
+        || { echo "NAMED STOP [PLIST_TZ] could not move com.howweknow.$n.plist to this Mac's zone; not loading it." >&2; exit 4; }
+    done
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
     # is still reported "loaded" and simply never fires; that is how two agents
     # sat installed and dead. plutil is the only thing that actually knows.
