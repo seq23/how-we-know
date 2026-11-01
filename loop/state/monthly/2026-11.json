@@ -1,0 +1,217 @@
+{
+  "sufficient": true,
+  "videos_measured": 32,
+  "views": 1080,
+  "avg_view_duration_s": 131.4,
+  "avg_view_percentage": 22.2,
+  "floor_avd_seconds": 146.0,
+  "domains": {
+    "deep-sea-ocean-science": {
+      "measured": 17,
+      "views": 432,
+      "avd_s": 129.6,
+      "avp": 25.5,
+      "judgeable": true,
+      "why": null
+    },
+    "materials-and-manufacturing": {
+      "measured": 14,
+      "views": 628,
+      "avd_s": 125.9,
+      "avp": 18.6,
+      "judgeable": true,
+      "why": null
+    },
+    "food-science": {
+      "measured": 1,
+      "views": 20,
+      "avd_s": 237.0,
+      "avp": 13.9,
+      "judgeable": false,
+      "why": "1 measured episode(s), below the 8-episode floor this domain must clear before its allocation may be changed"
+    }
+  },
+  "allocation": {
+    "applied": true,
+    "allocation": {
+      "materials-and-manufacturing": 2,
+      "food-science": 2,
+      "space-astronomy": 2
+    },
+    "from": {
+      "deep-sea-ocean-science": 2,
+      "materials-and-manufacturing": 2,
+      "food-science": 2
+    },
+    "retired": "deep-sea-ocean-science",
+    "promoted": "space-astronomy",
+    "moved": {
+      "from": "deep-sea-ocean-science",
+      "to": "space-astronomy",
+      "slots": 2
+    },
+    "why": "deep-sea-ocean-science's scored queue has decayed to 1 topic(s), below the 4 floor, after 17 measured episode(s). Its 2 weekly slot(s) pass to space-astronomy, the next-ranked domain in research/proposed-taxonomy.json (demand 0.7379). Retirement is decided by queue decay, never by one month of retention."
+  },
+  "lifecycle": {
+    "applied": true,
+    "allocation": {
+      "materials-and-manufacturing": 2,
+      "food-science": 2,
+      "space-astronomy": 2
+    },
+    "from": {
+      "deep-sea-ocean-science": 2,
+      "materials-and-manufacturing": 2,
+      "food-science": 2
+    },
+    "retired": "deep-sea-ocean-science",
+    "promoted": "space-astronomy",
+    "moved": {
+      "from": "deep-sea-ocean-science",
+      "to": "space-astronomy",
+      "slots": 2
+    },
+    "why": "deep-sea-ocean-science's scored queue has decayed to 1 topic(s), below the 4 floor, after 17 measured episode(s). Its 2 weekly slot(s) pass to space-astronomy, the next-ranked domain in research/proposed-taxonomy.json (demand 0.7379). Retirement is decided by queue decay, never by one month of retention."
+  },
+  "live_slots": {
+    "deep-sea-ocean-science": 2,
+    "materials-and-manufacturing": 2,
+    "food-science": 2
+  },
+  "exhausted_domains": [
+    "deep-sea-ocean-science"
+  ],
+  "next_domain": "space-astronomy",
+  "ypp": {
+    "as_of": "2026-11-01",
+    "long_form_watch_hours": 19.98,
+    "subscribers": 31,
+    "shorts_views_90d": null,
+    "deadline": {
+      "date": "2027-02-01",
+      "days_remaining": 92,
+      "passed": false,
+      "before_bar": 4000,
+      "after_bar": 8000,
+      "meaning": "The standard tier's long-form requirement doubles from 4000 to 8000 hours on 2027-02-01. Channels admitted before that date stay on the old bar."
+    },
+    "gates": [
+      {
+        "tier": "expanded",
+        "name": "Expanded YPP",
+        "unlocks": "fan funding - memberships, Super Thanks, Shopping. No ad revenue.",
+        "subscribers": {
+          "have": 31,
+          "need": 500,
+          "pct": 6.2,
+          "remaining": 469
+        },
+        "routes": [
+          {
+            "route": "long-form watch hours",
+            "have": 19.98,
+            "need": 3000,
+            "unit": "hours",
+            "pct": 0.7,
+            "remaining": 2980.02
+          },
+          {
+            "route": "Shorts views in 90 days (SEPARATE PATH \u2014 these views do not count toward the long-form hours above)",
+            "have": null,
+            "need": 3000000,
+            "unit": "views",
+            "pct": null,
+            "remaining": null
+          }
+        ],
+        "closest_pct": 0.7,
+        "long_form_hours_required_now": 3000,
+        "bar_moves_on": null
+      },
+      {
+        "tier": "standard",
+        "name": "Standard YPP",
+        "unlocks": "ad revenue, plus everything Expanded unlocks.",
+        "subscribers": {
+          "have": 31,
+          "need": 1000,
+          "pct": 3.1,
+          "remaining": 969
+        },
+        "routes": [
+          {
+            "route": "long-form watch hours",
+            "have": 19.98,
+            "need": 4000,
+            "unit": "hours",
+            "pct": 0.5,
+            "remaining": 3980.02
+          },
+          {
+            "route": "Shorts views in 90 days (SEPARATE PATH \u2014 these views do not count toward the long-form hours above)",
+            "have": null,
+            "need": 3000000,
+            "unit": "views",
+            "pct": null,
+            "remaining": null
+          }
+        ],
+        "closest_pct": 0.5,
+        "long_form_hours_required_now": 4000,
+        "bar_moves_on": "2027-02-01"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "FORMAT_TOO_LONG",
+      "severity": "high",
+      "evidence": "17 of 32 videos hold viewers under 2 min; month average 2.2 min (22% as YouTube reports it)."
+    },
+    {
+      "id": "TOPIC_SPREAD",
+      "severity": "info",
+      "evidence": "best vrb83gWWaYw 226 views, worst sfveDF88ZHo 5.",
+      "no_change": "Not fed back into scoring: on a young channel view counts mostly measure publish date, not topic quality."
+    }
+  ],
+  "changes": [
+    {
+      "key": "retention.runtime_minutes",
+      "applied": true,
+      "from": 12.0,
+      "to": 11.5,
+      "why": "17 of 32 videos hold viewers under 2 min; month average 2.2 min (22% as YouTube reports it)."
+    },
+    {
+      "key": "domains.allocation",
+      "applied": true,
+      "from": {
+        "deep-sea-ocean-science": 2,
+        "materials-and-manufacturing": 2,
+        "food-science": 2
+      },
+      "to": {
+        "materials-and-manufacturing": 2,
+        "food-science": 2,
+        "space-astronomy": 2
+      },
+      "why": "deep-sea-ocean-science's scored queue has decayed to 1 topic(s), below the 4 floor, after 17 measured episode(s). Its 2 weekly slot(s) pass to space-astronomy, the next-ranked domain in research/proposed-taxonomy.json (demand 0.7379). Retirement is decided by queue decay, never by one month of retention."
+    }
+  ],
+  "month": "2026-11",
+  "advice": {
+    "ok": true,
+    "text": "```json\n{\n  \"conclusion\": \"The data is too thin to change runtime. Views are 5\u2013226 per video (most under 20), there is one snapshot, and every video uses the pre-rule opening. The 0.5-minute cut is noise. The bigger problem is that this run retired deep sea automatically, which only a human may decide. Total watch time is about 20 hours against 4,000. Reach is the constraint, not runtime.\",\n  \"automatic_decision_right\": false,\n  \"change\": null,\n  \"reasoning\": \"Actual runtimes run 452\u2013781 s, not the 12-minute setting, so the knob barely governs output. Retention does not fall with length. 98ejztJsQNY (742 s) held 42%, zs-gueHeX8k (709 s) held 42%, and 9FcDJniofMM (472 s) held 5.7%. Longer videos earn more absolute seconds, which is what hours need. Reverting would be refused because runtime changed this month, and it would still be acting on noise.\",\n  \"for_the_owner\": \"1) The domains.allocation change removed deep-sea-ocean-science entirely. That is abandoning deep sea, which is human-only. Revert it or explicitly confirm it. Also check whether 'queue decayed to 1' means real exhaustion or a scorer fault. 2) videos_per_week is 6, but the brief says twice a week, and aired dates show about 4 a week. Confirm the cadence. 3) Data integrity: 33 rows against 32 measured. Minutes watched don't match views \u00d7 duration on several videos (7tdvXATeeng: 62 vs ~245; aKyOg7xbxC0: 12 vs ~59). 8bVPoTWAfFQ has a null runtime, which implies about 28 min. Fix measurement before trusting any rule.\"\n}\n```",
+    "proposal": {
+      "conclusion": "The data is too thin to change runtime. Views are 5\u2013226 per video (most under 20), there is one snapshot, and every video uses the pre-rule opening. The 0.5-minute cut is noise. The bigger problem is that this run retired deep sea automatically, which only a human may decide. Total watch time is about 20 hours against 4,000. Reach is the constraint, not runtime.",
+      "automatic_decision_right": false,
+      "change": null,
+      "reasoning": "Actual runtimes run 452\u2013781 s, not the 12-minute setting, so the knob barely governs output. Retention does not fall with length. 98ejztJsQNY (742 s) held 42%, zs-gueHeX8k (709 s) held 42%, and 9FcDJniofMM (472 s) held 5.7%. Longer videos earn more absolute seconds, which is what hours need. Reverting would be refused because runtime changed this month, and it would still be acting on noise.",
+      "for_the_owner": "1) The domains.allocation change removed deep-sea-ocean-science entirely. That is abandoning deep sea, which is human-only. Revert it or explicitly confirm it. Also check whether 'queue decayed to 1' means real exhaustion or a scorer fault. 2) videos_per_week is 6, but the brief says twice a week, and aired dates show about 4 a week. Confirm the cadence. 3) Data integrity: 33 rows against 32 measured. Minutes watched don't match views \u00d7 duration on several videos (7tdvXATeeng: 62 vs ~245; aKyOg7xbxC0: 12 vs ~59). 8bVPoTWAfFQ has a null runtime, which implies about 28 min. Fix measurement before trusting any rule."
+    },
+    "parse_note": "",
+    "cost": 0,
+    "why": ""
+  }
+}

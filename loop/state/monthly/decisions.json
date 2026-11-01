@@ -15,6 +15,32 @@
       "blocked_by": "INSUFFICIENT_DOMAIN_EVIDENCE",
       "month": "2026-10",
       "at": "2026-10-01T07:35:37.852524+00:00"
+    },
+    {
+      "key": "retention.runtime_minutes",
+      "applied": true,
+      "from": 12.0,
+      "to": 11.5,
+      "why": "17 of 32 videos hold viewers under 2 min; month average 2.2 min (22% as YouTube reports it).",
+      "month": "2026-11",
+      "at": "2026-11-01T08:19:37.403699+00:00"
+    },
+    {
+      "key": "domains.allocation",
+      "applied": true,
+      "from": {
+        "deep-sea-ocean-science": 2,
+        "materials-and-manufacturing": 2,
+        "food-science": 2
+      },
+      "to": {
+        "materials-and-manufacturing": 2,
+        "food-science": 2,
+        "space-astronomy": 2
+      },
+      "why": "deep-sea-ocean-science's scored queue has decayed to 1 topic(s), below the 4 floor, after 17 measured episode(s). Its 2 weekly slot(s) pass to space-astronomy, the next-ranked domain in research/proposed-taxonomy.json (demand 0.7379). Retirement is decided by queue decay, never by one month of retention.",
+      "month": "2026-11",
+      "at": "2026-11-01T08:19:37.403719+00:00"
     }
   ]
 }
