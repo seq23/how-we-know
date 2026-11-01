@@ -187,8 +187,8 @@ import draft                                               # noqa: E402
 tmp = Path(tempfile.mkdtemp(prefix="rebuild-"))
 (tmp / "scripts").mkdir()
 (tmp / "loop" / "drafts").mkdir(parents=True)
-queue = [{"slug": f"topic-{i}", "query": f"topic {i}", "domain": "materials"}
-         for i in range(8)]
+queue = [{"slug": f"topic-{i}", "query": f"topic {i}",
+          "domain": "materials" if i < 3 else "deep-sea"} for i in range(8)]
 BAD = {"topic-0", "topic-1"}
 validated: list[str] = []
 
@@ -211,13 +211,14 @@ saved = (draft.ROOT, draft.cadence.runway, draft.batch_queue.unwritten_entries,
          draft.pov_match.select, draft.pov_match.record_assignment)
 try:
     draft.ROOT = tmp
-    # ok, but 3 weeks at 6/week against a 6-week target.
+    # ok, but 3 weeks at 6/week against a 6-week target; only materials is
+    # short by its own count - deep sea's topics must still be authored.
     draft.cadence.runway = lambda per_week: {
-        "level": "ok", "short_domains": [], "weeks_remaining": 3.0,
+        "level": "ok", "short_domains": ["materials"], "weeks_remaining": 3.0,
         "videos_per_week": 6, "by_domain": {}, "message": "stub 3.0 weeks"}
     draft.batch_queue.unwritten_entries = lambda: list(queue)
     draft.domains.by_slug = lambda: {}
-    draft.domains.allocation = lambda cfg: {"materials": 2}
+    draft.domains.allocation = lambda cfg: {"materials": 2, "deep-sea": 2}
     draft.author.draft = fake_draft
     draft.validate.run_all = run_all
     draft.cadence.record_authoring_evidence = lambda *a, **k: {"scripts": []}
