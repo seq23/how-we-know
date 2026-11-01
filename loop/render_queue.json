@@ -1,12 +1,12 @@
 {
   "week": "2026-W44",
-  "generated": "2026-11-01T19:21:23+00:00",
+  "generated": "2026-11-01T20:04:12+00:00",
   "videos_per_week": 6,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 629,
+      "examined": 671,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -150,13 +150,13 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "12 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'materials-and-manufacturing': (1, 4), 'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3)} at 6/week"
+        "12 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (0, 3), 'materials-and-manufacturing': (1, 4), 'food-science': (2, 5)} at 6/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 52,
+      "examined": 56,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -166,7 +166,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 59,
+      "examined": 63,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -245,21 +245,25 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 58,
+      "examined": 62,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "58 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "62 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
     {
       "validator": "V71 queued-pov-traced",
-      "examined": 6,
+      "examined": 10,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "examined 6 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
+        "how-to-tell-if-steel-is-hardened: no plan yet - the batch freezes one before it narrates",
+        "does-damascus-steel-rust: no plan yet - the batch freezes one before it narrates",
+        "is-aluminum-stronger-than-steel: no plan yet - the batch freezes one before it narrates",
+        "how-to-tell-if-steel-is-high-carbon: no plan yet - the batch freezes one before it narrates",
+        "examined 10 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
       ],
       "stops": []
     },
@@ -510,12 +514,12 @@
     "why": "configured default (6/week)"
   },
   "runway": {
-    "unpublished_scripts": 13,
-    "publishable": 1,
+    "unpublished_scripts": 17,
+    "publishable": 5,
     "scheduled_not_yet_aired": 12,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 2.2,
+    "weeks_remaining": 2.8,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "warn",
@@ -549,7 +553,7 @@
       "materials-and-manufacturing"
     ],
     "never_go_dark": true,
-    "message": "RUNWAY WARNING: only 2.2 weeks of queue left at 6/week - 1 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 11.5 week(s) at 2/week (15 queued, 8 already dated); materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 5.0 week(s) at 2/week (10 queued, 0 already dated)."
+    "message": "RUNWAY WARNING: only 2.8 weeks of queue left at 6/week - 5 publishable episode(s) of 17 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 11.5 week(s) at 2/week (15 queued, 8 already dated); materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 5.0 week(s) at 2/week (10 queued, 0 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
