@@ -1,0 +1,29 @@
+{
+  "_why": "Off-domain topics pulled out of the make queue by hand, 2026-11-01, after grown seeds (#272) let them through. Moved, never deleted: the queue row went to `killed` in its publish-order file and the script to scripts/pulled/ (nothing globs it). The relevance gate in research/publish_order_domain.py (relevance_gate) now refuses this class at generation.",
+  "pulled": [
+    {
+      "slug": "how-deep-are-pools",
+      "domain": "deep-sea-ocean-science",
+      "at": "2026-11-01T23:08:16+00:00",
+      "why": "swimming pools, not the deep sea: shared the words 'deep'/'pool' with the grown seed 'brine pool'",
+      "from": "research/publish_order_deep_sea_ocean_science.json",
+      "script_moved_to": "scripts/pulled/how-deep-are-pools.md"
+    },
+    {
+      "slug": "how-to-get-brine-pool-exotic",
+      "domain": "deep-sea-ocean-science",
+      "at": "2026-11-01T23:08:16+00:00",
+      "why": "a video-game item query (get an 'exotic'): the demand is for the game, not ocean science",
+      "from": "research/publish_order_deep_sea_ocean_science.json",
+      "script_moved_to": "scripts/pulled/how-to-get-brine-pool-exotic.md"
+    },
+    {
+      "slug": "how-do-scientists-know-the-layers-of-the-earth",
+      "domain": "deep-sea-ocean-science",
+      "at": "2026-11-01T23:08:16+00:00",
+      "why": "solid-earth geology, outside 'Deep sea and ocean science'",
+      "from": "research/publish_order_deep_sea_ocean_science.json",
+      "script_moved_to": "scripts/pulled/how-do-scientists-know-the-layers-of-the-earth.md"
+    }
+  ]
+}

@@ -4251,76 +4251,6 @@
       "reason": "Middle of the field: title gap 0.75, demand 0.43, opportunity 0.56."
     },
     {
-      "slug": "how-deep-are-pools",
-      "domain": "deep-sea-ocean-science",
-      "title": "How deep are pools?",
-      "query": "how deep are pools",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.644 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.6445,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "pool",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how deep are pools",
-          "how deep are olympic pools"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:51:56.461599+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.579,
-        "title_gap": 0.8,
-        "title_coverage_mean": 0.575,
-        "strong_match_count": 4,
-        "results_examined": 20,
-        "median_views": 5557059.0,
-        "p90_views": 31535325,
-        "median_subscribers": 460000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 1155,
-        "published_last_365d": 2,
-        "interpretation": "4 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.8,
-          "incumbent_subs": 0.191,
-          "view_ceiling": 0.036,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:34.483241+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6109,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 80% lexical title gap, but median 5,557,059 views and 460,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
       "slug": "what-does-a-greenland-shark-look-like",
       "domain": "deep-sea-ocean-science",
       "title": "What does a greenland shark look like?",
@@ -5027,144 +4957,6 @@
       "reason": "Middle of the field: title gap 0.85, demand 0.23, opportunity 0.69."
     },
     {
-      "slug": "how-to-get-brine-pool-exotic",
-      "domain": "deep-sea-ocean-science",
-      "title": "How to get brine pool exotic?",
-      "query": "how to get brine pool exotic",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.249 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.2493,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "exotic",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "how to get brine pool exotic"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:05.618713+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.533,
-        "title_gap": 0.8,
-        "title_coverage_mean": 0.463,
-        "strong_match_count": 4,
-        "results_examined": 20,
-        "median_views": 60596.5,
-        "p90_views": 444582,
-        "median_subscribers": 117500.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 279,
-        "published_last_365d": 16,
-        "interpretation": "4 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.8,
-          "incumbent_subs": 0.276,
-          "view_ceiling": 0.317,
-          "staleness": 0.2
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:46.745897+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3645,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.80, demand 0.25, opportunity 0.53."
-    },
-    {
-      "slug": "how-do-scientists-know-the-layers-of-the-earth",
-      "domain": "deep-sea-ocean-science",
-      "title": "How do scientists know the layers of the earth?",
-      "query": "how do scientists know the layers of the earth",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.389 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3892,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "layer",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "how do scientists know the layers of the earth"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:21:03.131312+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.698,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.375,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 424697.0,
-        "p90_views": 2343360,
-        "median_subscribers": 1235000.0,
-        "channels_under_100k_subs": 5,
-        "median_age_days": 1469,
-        "published_last_365d": 1,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.13,
-          "view_ceiling": 0.196,
-          "staleness": 0.95
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T21:20:58.807468+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5212,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
-    },
-    {
       "slug": "are-sea-pigs-real",
       "domain": "deep-sea-ocean-science",
       "title": "Are sea pigs real?",
@@ -5308,7 +5100,234 @@
       "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.21) -- uncontested because few ask it."
     }
   ],
-  "killed": [],
+  "killed": [
+    {
+      "slug": "how-deep-are-pools",
+      "domain": "deep-sea-ocean-science",
+      "title": "How deep are pools?",
+      "query": "how deep are pools",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.644 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.6445,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "pool",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how deep are pools",
+          "how deep are olympic pools"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:51:56.461599+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.579,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.575,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 5557059.0,
+        "p90_views": 31535325,
+        "median_subscribers": 460000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 1155,
+        "published_last_365d": 2,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.191,
+          "view_ceiling": 0.036,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:51:34.483241+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6109,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 80% lexical title gap, but median 5,557,059 views and 460,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "pulled": {
+        "at": "2026-11-01T23:08:16+00:00",
+        "why": "swimming pools, not the deep sea: shared the words 'deep'/'pool' with the grown seed 'brine pool'",
+        "script_moved_to": "scripts/pulled/how-deep-are-pools.md"
+      },
+      "killed_by": "OFF_DOMAIN_RELEVANCE"
+    },
+    {
+      "slug": "how-to-get-brine-pool-exotic",
+      "domain": "deep-sea-ocean-science",
+      "title": "How to get brine pool exotic?",
+      "query": "how to get brine pool exotic",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.249 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2493,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "exotic",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how to get brine pool exotic"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:05.618713+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.533,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.463,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 60596.5,
+        "p90_views": 444582,
+        "median_subscribers": 117500.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 279,
+        "published_last_365d": 16,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.276,
+          "view_ceiling": 0.317,
+          "staleness": 0.2
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:51:46.745897+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3645,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.80, demand 0.25, opportunity 0.53.",
+      "pulled": {
+        "at": "2026-11-01T23:08:16+00:00",
+        "why": "a video-game item query (get an 'exotic'): the demand is for the game, not ocean science",
+        "script_moved_to": "scripts/pulled/how-to-get-brine-pool-exotic.md"
+      },
+      "killed_by": "OFF_DOMAIN_RELEVANCE"
+    },
+    {
+      "slug": "how-do-scientists-know-the-layers-of-the-earth",
+      "domain": "deep-sea-ocean-science",
+      "title": "How do scientists know the layers of the earth?",
+      "query": "how do scientists know the layers of the earth",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.389 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3892,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "layer",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how do scientists know the layers of the earth"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:21:03.131312+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.698,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.375,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 424697.0,
+        "p90_views": 2343360,
+        "median_subscribers": 1235000.0,
+        "channels_under_100k_subs": 5,
+        "median_age_days": 1469,
+        "published_last_365d": 1,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.13,
+          "view_ceiling": 0.196,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:20:58.807468+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5212,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it.",
+      "pulled": {
+        "at": "2026-11-01T23:08:16+00:00",
+        "why": "solid-earth geology, outside 'Deep sea and ocean science'",
+        "script_moved_to": "scripts/pulled/how-do-scientists-know-the-layers-of-the-earth.md"
+      },
+      "killed_by": "OFF_DOMAIN_RELEVANCE"
+    }
+  ],
   "unmeasured": [
     {
       "query": "what is mid ocean ridge",
@@ -5385,5 +5404,5 @@
     "why greenland shark live so long",
     "where to find gulper eel dredge"
   ],
-  "queue_length": 26
+  "queue_length": 23
 }

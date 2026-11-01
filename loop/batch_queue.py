@@ -183,8 +183,8 @@ def _screened() -> tuple[list[dict], list[dict]]:
             if ch:
                 refused[r["slug"]] = {
                     **r, "killed_by": "OTHER_CHANNEL", "matched": ch,
-                    "why": f"names another channel ({ch}); the searcher wants "
-                           f"that channel's video, not ours"}
+                    "why": f"names another channel, show or game ({ch}); "
+                           f"the searcher wants that, not our episode"}
                 continue
             keys = [(q, T.question_key(q)) for q in qs]
             if all(T.is_vague(k) for _, k in keys):
