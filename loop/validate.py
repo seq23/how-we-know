@@ -3562,11 +3562,10 @@ def v35_digest_reaches_her() -> Result:
 
       * the digest renders EMPTY, or fails to render at all, and the workflow's
         `if: always()` delivery step posts a file that says nothing;
-      * the issue body has no `@` mention. GitHub's default notification
-        setting for your own repositories is "Participating and @mentions", and
-        an issue opened by Actions is neither, so an un-mentioned issue appears
-        in the repo and no email is ever sent. bin/loop-stage.sh carries a long
-        comment about this because it has already happened once.
+      * the week never reaches her. Since 1 Nov 2026 that is through Boss OS's
+        "Spry Labs weekly" (the spry-weekly-summary artifact), not an @-mention
+        on the issue: an un-mentioned issue emails nobody, so the hand-off is
+        what must be present.
 
     Renders the digest for real rather than checking that the file exists,
     because a digest that raises is exactly the case the delivery step's
@@ -3590,12 +3589,22 @@ def v35_digest_reaches_her() -> Result:
     if "loop/digest.py" not in src:
         r.fail("the Sunday digest workflow does not run loop/digest.py.")
 
+    # 1 Nov 2026 (owner): the digest reaches her inside Boss OS's ONE "Spry Labs
+    # weekly" email, not as its own. So the issue must NOT @-mention her (that is
+    # what made GitHub email it), and the week must still reach her: the verdict
+    # is proven and uploaded as the `spry-weekly-summary` artifact Boss OS reads.
+    # A digest with neither a mention nor the hand-off reaches nobody - that
+    # silent week is still the failure this check exists for.
     r.examined += 1
-    if "@seq23" not in src:
-        r.fail("the digest issue body contains no @-mention. GitHub's default "
-               "notification setting is 'Participating and @mentions'; an "
-               "issue opened by Actions is neither, so the digest would appear "
-               "in the repo and email nobody.")
+    if "@seq23" in src:
+        r.fail("the digest issue @-mentions the owner, which emails her a second "
+               "time; the week goes to her in the Spry Labs weekly instead.")
+    if ("loop/spry_weekly_summary.py --self-check" not in src
+            or "name: spry-weekly-summary" not in src
+            or "if-no-files-found: error" not in src):
+        r.fail("the digest is not handed to Boss OS (spry_weekly_summary.py and the "
+               "spry-weekly-summary artifact), so with no @-mention the week "
+               "reaches nobody.")
 
     r.examined += 1
     if "schedule:" not in src or "* * 0" not in src:
