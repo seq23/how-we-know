@@ -1,0 +1,156 @@
+{
+ "_why": "visuals/food_kits.py; written by loop/food_author.py",
+ "food": "cheese",
+ "label": "CHEESE",
+ "words": [
+  "cheese"
+ ],
+ "queries": [
+  {
+   "query": "cheese",
+   "uses": [
+    "subject",
+    "scale"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "cheese close up",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "cheese slow motion",
+   "uses": [
+    "subject",
+    "pour"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "cheese macro",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "cheese kitchen",
+   "uses": [
+    "subject",
+    "process"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "cheese food",
+   "uses": [
+    "subject"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "melted cheese",
+   "uses": [
+    "melt",
+    "liquid"
+   ],
+   "take": 3,
+   "sound": null
+  }
+ ],
+ "off": [
+  "cartoon",
+  "drawing",
+  "logo",
+  "advert"
+ ],
+ "word_uses": [
+  [
+   "cheese",
+   [
+    "subject"
+   ]
+  ],
+  [
+   "pour",
+   [
+    "pour",
+    "liquid"
+   ]
+  ],
+  [
+   "drip",
+   [
+    "drip",
+    "liquid"
+   ]
+  ],
+  [
+   "melt",
+   [
+    "melt",
+    "liquid"
+   ]
+  ],
+  [
+   "crystal",
+   [
+    "crystal",
+    "macro"
+   ]
+  ],
+  [
+   "molecule",
+   [
+    "macro"
+   ]
+  ],
+  [
+   "heat",
+   [
+    "heat",
+    "subject"
+   ]
+  ],
+  [
+   "roast",
+   [
+    "roast"
+   ]
+  ],
+  [
+   "field",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "farm",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "inside",
+   [
+    "macro"
+   ]
+  ]
+ ],
+ "diagram": {
+  "key": "cheese-cross-macro",
+  "subject": "cheese",
+  "prompt": "a cheese cut open in cross-section, its inner structure glowing softly, extreme macro, realistic"
+ }
+}
