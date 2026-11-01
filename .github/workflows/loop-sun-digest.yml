@@ -100,13 +100,11 @@ jobs:
             exit 1
           fi
           BODY="$(mktemp)"
-          # @-mention: GitHub's default notification setting for your own repos
-          # is "Participating and @mentions", and an issue opened by Actions is
-          # neither. Without this line the digest appears silently in the repo
-          # and no email is ever sent.
+          # NO @-MENTION, ON PURPOSE (owner, 1 Nov 2026). The mention is what made
+          # GitHub email her this digest; the week now goes to Boss OS's one
+          # "Spry Labs weekly" email instead (the next step). The issue is still
+          # opened and closed as before: it is the record.
           {
-            echo "@seq23"
-            echo
             cat "$FILE"
             echo
             echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
@@ -128,7 +126,7 @@ jobs:
             --body-file "$BODY" \
             --label weekly-digest >/dev/null 2>&1 \
             || gh issue create --title "$TITLE" --body-file "$BODY" >/dev/null
-          echo "delivered the ${WEEK} digest"
+          echo "recorded the ${WEEK} digest (no email: it goes to the Spry Labs weekly)"
 
           # Close last week's, so the issue list stays a signal and not a pile.
           PREV="$(date -u -d 'last week' +%G-W%V 2>/dev/null || date -u -v-1w +%G-W%V)"
@@ -142,3 +140,20 @@ jobs:
             gh issue close "$OLD" --comment "Superseded by the ${WEEK} digest." >/dev/null 2>&1 \
               && echo "closed #$OLD"
           fi
+
+      - name: Hand the week to Boss OS (the Spry Labs weekly email)
+        if: always()
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 loop/spry_weekly_summary.py --self-check
+          python3 loop/spry_weekly_summary.py "$(date -u +%G-W%V)" spry-weekly-summary.json
+
+      - name: Upload the summary for Boss OS
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spry-weekly-summary
+          path: spry-weekly-summary.json
+          if-no-files-found: error
+          retention-days: 30
