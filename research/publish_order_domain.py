@@ -453,13 +453,147 @@ DEDICATED_SEEDS = {
 METHOD_STEM_WORDS = {"scientist", "know", "knew", "learn", "think", "find"}
 
 
-def dedicated_seeds(domain: str) -> list:
+def hand_seeds(domain: str) -> list:
+    """The domain's hand-written dedicated seed list."""
     name = DEDICATED_SEEDS.get(domain, f"seeds_{slug_of_domain(domain)}.json")
     path = os.path.join(HERE, name)
     if not os.path.exists(path):
         return []
     with open(path, encoding="utf-8") as fh:
         return list(json.load(fh).get("seeds") or [])
+
+
+def dedicated_seeds(domain: str) -> list:
+    """The hand-written seeds PLUS every seed the loop grew for the domain
+    (grown_seeds()), so a grown subject stays domain VOCABULARY on every
+    later run, not only the run that mined it."""
+    return list(dict.fromkeys(hand_seeds(domain) + grown_seeds(domain)))
+
+
+# ─── THE SEED LIST GROWS ITSELF (2026-11-01) ─────────────────────────────
+# A fixed seed list is a finite corpus. Deep sea's 20 seeds had been mined to
+# the bottom: 2,653 autocomplete strings, every surviving one a repeat of an
+# aired episode or junk ("why deepu was killed by sea creatures"), so every
+# Saturday raised DOMAIN_QUEUE_THIN whose only unblock was "a person adds
+# seeds". Nobody did; the publish queue ran dry, the Monday lane had nothing
+# to write, and the runway fell to 3 weeks (RUNWAY_CRITICAL, run 41300341725).
+# Nothing waits on the owner: when every rung above is exhausted, the free
+# model route proposes NEW subjects for the domain, they are persisted here
+# and mined by free autocomplete like any seed. A grown seed is a search
+# term, never a pass: every question it surfaces still goes through the same
+# screen, the same made-question refusal and the same demand/competition
+# gate. $0 only - loop/llm_router.py's free route; no route = no growth, and
+# the DOMAIN_QUEUE_THIN stop stands as before.
+GROW_SEEDS_PER_RUN = 20
+GROW_SEED_MAX_WORDS = 4
+
+
+def grown_seeds_path(domain: str) -> str:
+    return os.path.join(HERE, f"seeds_grown_{slug_of_domain(domain)}.json")
+
+
+def grown_seeds(domain: str) -> list:
+    path = grown_seeds_path(domain)
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        return list(json.load(fh).get("seeds") or [])
+
+
+def _clean_seed(line: str) -> str | None:
+    """One model line -> a seed, or None. Strips list markers ("1.", "2)",
+    "-", "*") but never a leading digit that is part of the subject
+    ("3d printing")."""
+    s = re.sub(r"^\s*(?:[-*\u2022]+|\d+[.)])\s*", "", line)
+    s = s.strip().strip('"\'`').lower()
+    s = re.sub(r"[^a-z0-9' \-]", "", s).strip()
+    words = s.split()
+    if not words or len(words) > GROW_SEED_MAX_WORDS:
+        return None
+    if not any(c.isalpha() for c in s):
+        return None
+    return " ".join(words)
+
+
+def grow_prompt(domain: str, known: list, made: list) -> str:
+    """The question put to the free route. `made` is [(question, key)]."""
+    known_set = sorted({k.strip().lower() for k in known})
+    made_lines = "\n".join(f"- {q}" for q, _ in made[:120])
+    return (
+        f"You are expanding the search-term list for a faceless, "
+        f"evidence-first YouTube science channel's '{domain}' series.\n"
+        f"Existing search terms (do NOT repeat these):\n"
+        + "\n".join(f"- {k}" for k in known_set) +
+        f"\n\nQuestions the channel has already answered (avoid these "
+        f"subjects):\n{made_lines}\n\n"
+        f"List {GROW_SEEDS_PER_RUN * 2} NEW, specific subjects inside "
+        f"{domain.replace('-', ' ')} that curious viewers search YouTube "
+        f"questions about: named organisms, materials, processes, places, "
+        f"phenomena or instruments. Each 1-{GROW_SEED_MAX_WORDS} words, a "
+        f"noun phrase, not a question. One per line, nothing else.")
+
+
+def parse_seeds(text: str, known: list) -> list:
+    """New, clean seeds from the model's answer, at most GROW_SEEDS_PER_RUN."""
+    known_set = {k.strip().lower() for k in known}
+    new: list = []
+    for line in text.splitlines():
+        s = _clean_seed(line)
+        if s and s not in known_set and s not in new:
+            new.append(s)
+        if len(new) >= GROW_SEEDS_PER_RUN:
+            break
+    return new
+
+
+def add_grown_seeds(domain: str, new: list, model: str) -> str:
+    """Persist a batch of grown seeds as PENDING (not yet mined). Returns the
+    file. The next candidates() run mines the pending batch once."""
+    path = grown_seeds_path(domain)
+    blob = {"domain": domain, "seeds": [], "history": []}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            blob = json.load(fh)
+    have = set(blob.get("seeds") or [])
+    new = [s for s in new if s not in have]
+    blob["seeds"] = list(blob.get("seeds") or []) + new
+    blob.setdefault("history", []).append({
+        "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "model": model, "added": new, "mined": False})
+    blob["_why"] = ("Seeds the loop grew itself when a domain's queue was "
+                    "thin (loop/score.py grow_thin_domain_seeds -> "
+                    "research/publish_order_domain.py). Search terms only; "
+                    "every question they surface still goes through the gate.")
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(blob, fh, indent=2)
+        fh.write("\n")
+    return path
+
+
+def pending_grown_seeds(domain: str) -> list:
+    path = grown_seeds_path(domain)
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        blob = json.load(fh)
+    out: list = []
+    for h in blob.get("history") or []:
+        if not h.get("mined"):
+            out += [s for s in h.get("added") or [] if s not in out]
+    return out
+
+
+def mark_grown_mined(domain: str) -> None:
+    path = grown_seeds_path(domain)
+    if not os.path.exists(path):
+        return
+    with open(path, encoding="utf-8") as fh:
+        blob = json.load(fh)
+    for h in blob.get("history") or []:
+        h["mined"] = True
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(blob, fh, indent=2)
+        fh.write("\n")
 
 
 def seed_questions(domain: str) -> list:
@@ -574,7 +708,9 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
         domain, f"mined_queries_{slug_of_domain(domain)}.json"))
     cached = []
     own = os.path.join(HERE, f"mined_queries_{slug_of_domain(domain)}.json")
-    for path in dict.fromkeys((deep_path, own)):
+    grown_cache = os.path.join(
+        HERE, f"mined_queries_{slug_of_domain(domain)}_grown.json")
+    for path in dict.fromkeys((deep_path, own, grown_cache)):
         if deep and os.path.exists(path):
             with open(path, encoding="utf-8") as fh:
                 cached += _rows_of(json.load(fh))
@@ -597,9 +733,38 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
                 HERE, f"mined_queries_{slug_of_domain(domain)}.json")
             if mine_dir:                     # a read-only look: not research/
                 refill = os.path.join(mine_dir, os.path.basename(refill))
+            # Hand-written seeds only: grown seeds are mined once, in rung 5,
+            # and kept in their own cache, so this pass does not grow with
+            # them week on week.
             fresh = deep_mine(domain, list(dict.fromkeys(
-                seeds + extra_seeds + picked)), refill)
+                seeds + hand_seeds(domain) + picked)), refill)
             rung("fresh autocomplete mine", fresh, wide_tokens)
+            # 5. Seeds grown since the last run (loop/score.py grows them for a
+            # thin domain from the free route). Mined ONCE, merged into the
+            # grown cache, which rungs 2/3 read on every later run.
+            pending = pending_grown_seeds(domain)
+            if pending:
+                grown_cache_out = os.path.join(
+                    mine_dir or HERE,
+                    f"mined_queries_{slug_of_domain(domain)}_grown.json")
+                tmp_out = grown_cache_out + ".new"
+                grown_rows = deep_mine(domain, pending, tmp_out)
+                old_rows = []
+                if os.path.exists(grown_cache_out):
+                    with open(grown_cache_out, encoding="utf-8") as fh:
+                        old_rows = _rows_of(json.load(fh))
+                seen_q = {r.get("query") for r in old_rows}
+                merged = old_rows + [r for r in grown_rows
+                                     if r.get("query") not in seen_q]
+                with open(grown_cache_out, "w", encoding="utf-8") as fh:
+                    json.dump({"queries": merged}, fh, indent=1)
+                    fh.write("\n")
+                if os.path.exists(tmp_out):
+                    os.unlink(tmp_out)
+                if not mine_dir:
+                    mark_grown_mined(domain)
+                rung("grown seeds, fresh autocomplete mine", grown_rows,
+                     wide_tokens)
         else:
             log.append("fresh autocomplete mine: skipped (read-only run)")
             print(log[-1])

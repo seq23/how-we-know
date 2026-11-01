@@ -87,6 +87,10 @@ OTHER_CHANNELS = (
     "the b1m", "b1m", "engineerguy", "bill hammack", "ali abdaal",
     "steve mould", "numberphile", "periodic videos", "nilered", "nile red",
     "cody's lab", "codys lab", "thought emporium", "defunctland",
+    # Shows and games autocomplete bolted onto deep-sea seeds (2026-11-01):
+    # "why deepu was killed by sea creatures" had passed the gate into the
+    # deep-sea queue, one rebuild away from being authored.
+    "deepu", "warframe",
 )
 
 # Company and product names. Not refused -- "how are apple microchips made"

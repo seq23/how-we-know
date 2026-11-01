@@ -536,6 +536,59 @@ def refresh_primary_ranking(st: Stage) -> None:
     st.work(f"ranking is fresh as of {meta.get('generated_at')}")
 
 
+def grow_thin_domain_seeds(st: Stage, dom: str) -> list[str]:
+    """Grow a thin domain's seed list from the $0 model route, BEFORE its
+    miner runs, so this Saturday's mine already reaches new subjects.
+
+    2026-11-01, RUNWAY_CRITICAL (run 41300341725): the miner had re-mined the
+    same fixed seeds every week; deep sea's corpus was exhausted and the only
+    unblock DOMAIN_QUEUE_THIN offered was "a person adds seeds". Nothing waits
+    on the owner, so the loop adds them. A grown seed is a SEARCH TERM, never
+    a pass: research/publish_order_domain.py mines it once (rung 5) and every
+    question it surfaces still goes through the same screen and gate.
+
+    Returns the seeds added; [] when a batch is already pending or the free
+    route cannot answer (noted - the thin stop then stands, as before).
+    """
+    import os                                               # noqa: PLC0415
+
+    import batch_queue                                      # noqa: PLC0415
+    import llm_router                                       # noqa: PLC0415
+    import publish_order_domain as pod                      # noqa: PLC0415
+    if pod.pending_grown_seeds(dom):
+        st.note(f"{dom}: grown seeds already pending; the miner mines them "
+                f"this run")
+        return []
+    known = pod.dedicated_seeds(dom)
+    try:
+        blob = read_json(Path(pod.BROAD), default={})
+        known += list(blob["domains"][dom]["provenance"]["seeds"])
+    except (KeyError, TypeError):
+        pass
+    prompt = pod.grow_prompt(dom, known, batch_queue.made_questions())
+    try:
+        resp = llm_router.complete(
+            [{"role": "user", "content": prompt}],
+            os.environ.get("OPENROUTER_API_KEY", ""), timeout=180,
+            temperature=0.7)
+    except Exception as e:                                  # noqa: BLE001
+        st.note(f"{dom}: seed growth - the free route could not answer "
+                f"({str(e)[:200]})")
+        return []
+    text = (((resp.get("choices") or [{}])[0].get("message") or {})
+            .get("content") or "")
+    new = pod.parse_seeds(text, known)
+    if not new:
+        st.note(f"{dom}: seed growth - the free route answered with no "
+                f"usable new subject")
+        return []
+    path = pod.add_grown_seeds(dom, new, str(resp.get("model_used") or "?"))
+    st.work(f"{dom}: grew {len(new)} new seed(s) from "
+            f"{resp.get('model_used') or 'the free route'} -> "
+            f"research/{Path(path).name}")
+    return new
+
+
 def score_new_domains(st: Stage) -> None:
     """Give every domain with an empty queue a scored one.
 
@@ -579,6 +632,7 @@ def score_new_domains(st: Stage) -> None:
         st.note(f"{dom} holds weekly slots and has fewer than "
                 f"{batch_queue.MIN_UNWRITTEN_TOPICS} unwritten, non-duplicate "
                 f"topics queued; mining and running the gate for it")
+        grow_thin_domain_seeds(st, dom)
         def stamp():
             try:
                 return path.stat().st_mtime_ns
@@ -609,10 +663,11 @@ def score_new_domains(st: Stage) -> None:
                 "domain": dom, "code": "DOMAIN_QUEUE_THIN",
                 "message": line.split(":", 1)[1].strip(),
                 "tail": gout.strip().splitlines()[-4:],
-                "unblock": "Add seeds for this domain to "
-                    "research/seeds_broad.json or its dedicated seed file "
-                    "(research/publish_order_domain.py DEDICATED_SEEDS); the "
-                    "next Saturday run mines them. The domain keeps "
+                "unblock": "Nothing to do: the miner grows this domain's "
+                    "seed list itself from the free model route when every "
+                    "rung is exhausted (research/publish_order_domain.py "
+                    "grow_seeds -> research/seeds_grown_<domain>.json) and "
+                    "mines the new subjects each Saturday. The domain keeps "
                     "publishing whatever it already has queued."})
         elif TRACEBACK_MARKER.search(gout):
             stops.append({
