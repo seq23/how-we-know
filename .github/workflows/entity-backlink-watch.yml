@@ -12,7 +12,7 @@ name: site · entity backlink watch
 
 on:
   schedule:
-    - cron: '20 7 * * 4'  # Thursdays 07:20 CT
+    - cron: '0 7 * * 4'  # Thursdays 07:00 CT
       timezone: America/Chicago
   workflow_dispatch:
 

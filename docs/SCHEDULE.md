@@ -7,7 +7,7 @@ schedule); see the notes below for what moved.
 
 | Job | Workflow | When | Cron |
 |---|---|---|---|
-| site · entity backlink watch | `entity-backlink-watch.yml` | Thu 07:20 CT | `20 7 * * 4` |
+| site · entity backlink watch | `entity-backlink-watch.yml` | Thu 07:00 CT | `0 7 * * 4` |
 | loop · daily demand + Mon 08:30 CT email | `loop-demand.yml` | every day 08:30 CT | `30 8 * * *` |
 | loop · Mon 14:00 CT · food author (next food episode, $0) | `loop-food-author.yml` | Mon 14:00 CT | `0 14 * * 1` |
 | loop · Fri 17:00 · measure | `loop-fri-measure.yml` | Fri 16:00 CT | `0 16 * * 5` |
@@ -35,6 +35,6 @@ schedule); see the notes below for what moved.
   self-healing are not upkeep and keep their own days.
 
 ## Moved on 1 Nov 2026
-- Site entity backlink watch: Monday → Thursday 07:20 CT.
+- Site entity backlink watch: Monday → Thursday 07:00 CT.
 - The video loop keeps its own order (Fri publish / measure, Sat score, Sun rank and digest, Mon draft);
   RUNBOOK.md has each lane. Its crons are now Central all year.
