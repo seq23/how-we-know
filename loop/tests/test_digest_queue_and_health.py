@@ -174,6 +174,12 @@ wf = open(os.path.join(ROOT, ".github", "workflows", "loop-sun-digest.yml")).rea
 examined += 1
 if ".subject" not in wf or '--title "$TITLE"' not in wf:
     fails.append("workflow: loop-sun-digest.yml does not put the digest's .subject line in the issue title")
+# 1 Nov 2026 (owner): the digest no longer emails her; it goes into Boss OS's Spry Labs weekly.
+examined += 1
+if "@seq23" in wf or "OWNER_HANDLE" in wf:
+    fails.append("workflow: loop-sun-digest.yml @-mentions the owner again, which emails her; the week goes to the Spry Labs weekly")
+if "loop/spry_weekly_summary.py --self-check" not in wf or "name: spry-weekly-summary" not in wf or "if-no-files-found: error" not in wf:
+    fails.append("workflow: loop-sun-digest.yml does not prove and upload the spry-weekly-summary hand-off to Boss OS")
 src = open(os.path.join(LOOP, "digest.py")).read()
 if '.subject").write_text' not in src:
     fails.append("digest.py does not write the .subject file the workflow reads")
