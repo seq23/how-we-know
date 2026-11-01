@@ -61,7 +61,7 @@
     "baseline_runtime_note": "Mean measured duration of renders/*-final.mp4 across the 17 finished episodes, from loop/state/runtime_model.json. The number floor_avd_seconds is derived against. It is history, not a target.",
     "breach_streak_to_trip": 3,
     "early_exit_minutes": 2.0,
-    "runtime_minutes": 11.5,
+    "runtime_minutes": 12.0,
     "runtime_floor_minutes": 10.0,
     "runtime_floor_note": "Owner decision 2026-09-03: every video from here exceeds 10 minutes. Shorts are exempt. The 20 episodes rendered on 2026-08-30 predate the rule, run 7.5-8.9 minutes, and are deliberately NOT re-rendered - they are already made and remaking them buys nothing. They are listed in runtime_floor_grandfathered so the guard names them rather than being loosened for them. 2026-09-05: an episode under this floor now SELF-HEALS -- loop/extend.py authors additional sourced narration to bring it into the band, and only the beats after the insertion point are re-narrated. It is no longer a stop that waits for a person.",
     "runtime_floor_grandfathered": [

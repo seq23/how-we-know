@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -124,10 +125,32 @@ def changed_recently(key: str, mid: str) -> bool:
                for d in _log()["decisions"] if d.get("applied"))
 
 
+def bounds(key: str, cfg: dict | None = None) -> dict:
+    """CHANGE_BOUNDS[key], tightened by the rules config already states.
+
+    1 Nov 2026: the review shortened runtime_minutes 12.0 -> 11.5, inside the
+    fixed 10.0 floor, but 15% under 11.5 is 9.78 - a tolerance band reaching
+    below the owner's 10-minute floor, so V37 failed and main went red. The
+    lowest target the review may set is the one whose band's lower edge is
+    still on the floor: runtime_floor_minutes / (1 - runtime_tolerance_pct),
+    read from loop/config.json so there is no second number to drift.
+    """
+    b = dict(CHANGE_BOUNDS[key])
+    if key == "retention.runtime_minutes":
+        if cfg is None:
+            cfg = json.loads(CONFIG.read_text())
+        ret = cfg.get("retention") or {}
+        floor = float(ret.get("runtime_floor_minutes", b["min"]))
+        tol = float(ret.get("runtime_tolerance_pct", 0.0))
+        lowest = math.ceil(floor / (1 - tol / 100) * 100) / 100
+        b["min"] = max(b["min"], lowest)
+    return b
+
+
 def apply_change(key: str, current: float, mid: str, why: str,
                  direction: str = "shorten") -> dict:
     """Move one bounded value, or explain why it stayed put."""
-    b = CHANGE_BOUNDS[key]
+    b = bounds(key)
     proposed = round(current + b[direction], 2)
     clamped = max(b["min"], min(b["max"], proposed))
     if changed_recently(key, mid):
@@ -153,7 +176,7 @@ def apply_absolute(key: str, current: float, target: float, mid: str,
     CHANGE_BOUNDS and both respect the cooldown, so "the model wins" never means
     "the model is unbounded".
     """
-    b = CHANGE_BOUNDS[key]
+    b = bounds(key)
     clamped = max(b["min"], min(b["max"], round(float(target), 2)))
     if changed_recently(key, mid):
         return {"key": key, "applied": False, "from": current, "to": current,
