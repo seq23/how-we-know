@@ -162,8 +162,14 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
     # the week consumes. Below runway.target_weeks the lane authors toward
     # the target too, so the queue climbs back to it on its own.
     target = float(cfg.get("runway", {}).get("target_weeks", 0) or 0)
-    if not short and rw["weeks_remaining"] < target:
-        short = ["any"]
+    # The AGGREGATE is the number that says whether the channel airs: a
+    # domain's own figure counts queued-but-unwritten topics as weeks (deep
+    # sea read 11.5 weeks on 15 unwritten topics while the channel held 2.9),
+    # so under the target every allocated domain's queue is eligible, not
+    # only the ones short by their own count (run 41341136790 authored 4
+    # materials scripts and left deep sea's 15 topics untouched).
+    if rw["weeks_remaining"] < target and "any" not in short:
+        short = list(short) + ["any"]
     if not short:
         st.note(f"runway rebuild: not needed - {rw['message']}")
         return
