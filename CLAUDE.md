@@ -5,7 +5,7 @@
 > The owner's rule, 2026-09-25: "Nothing is supposed to wait on the owner.
 > This should be a rule in the repo so you never forget." Enforced by
 > `loop/stop_classes.py` (validator V45) and
-> `loop/tests/test_nothing_waits_on_the_owner.py`, which reads this line.
+> `loop/tests/test_nothing_waits_on_the_owner.py`.
 
 Faceless, evidence-first YouTube channel (`@howweknowdeep`, howweknowdeep.com),
 designed to run without its owner. She is Sequoia Taylor; she decides, she does
@@ -63,8 +63,7 @@ and say what you chose and why.
   $0 fails loudly. A free route that cannot answer is a named stop, never a paid
   retry. The rule, what it replaced and its stops are
   [`docs/cost/zero-paid-llm.md`](docs/cost/zero-paid-llm.md); V74 and
-  `loop/tests/test_nothing_paid_rule.py` read this bullet and that document, so
-  neither can quietly go away.
+  `loop/tests/test_nothing_paid_rule.py` hold `config/llm_routing.json` to it.
 - **No invented figures.** Every on-screen number is stated in the narration and
   traced to a named public source.
 - **Rule 0: no stage may exit 0 having done nothing.** Work done, or a NAMED stop

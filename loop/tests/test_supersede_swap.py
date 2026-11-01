@@ -396,6 +396,21 @@ finally:
     CL.STATE_FILE, CL.CAPTIONS_DIR = saved["cs"], saved["cd"]
     common._dry_run_refuses = saved["dry"]
 
+# NO DELETE PATH, repo-wide (CLAUDE.md: "Never delete a YouTube video"; moved
+# here 2026-11-01 from test_manual_conformance.py). The swap above retires the
+# old upload by privacy, never by delete; no loop module may gain an HTTP
+# DELETE or a videos().delete() call. Proven negatively on a planted source.
+import re as _re                                           # noqa: E402
+_DELETE = _re.compile(r'method\s*=\s*"DELETE"|videos\(\)\s*\.\s*delete\(')
+_srcs = sorted(LOOP.glob("*.py"))
+check(len(_srcs) > 20, f"no-delete scan found only {len(_srcs)} loop module(s)")
+for _p in _srcs:
+    check(not _DELETE.search(_p.read_text()),
+          f"{_p.name} contains a YouTube delete path; retire via loop/retire.py")
+check(bool(_DELETE.search('yt.videos().delete(id=vid).execute()'))
+      and bool(_DELETE.search('req(url, method="DELETE")')),
+      "the no-delete scan cannot see a planted delete call")
+
 if examined == 0:
     print("FAIL test_supersede_swap: examined nothing")
     sys.exit(1)

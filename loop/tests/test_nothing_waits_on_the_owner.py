@@ -4,8 +4,6 @@ Owner's rule, 2026-09-25, verbatim: "Nothing is supposed to wait on the owner.
 This should be a rule in the repo so you never forget."
 
 WHAT THIS PROVES:
-  1. CLAUDE.md and RUNBOOK.md carry the rule sentence, verbatim, at the top
-     (a specification no code reads is a wish);
   2. V45 (loop/stop_classes.py) passes on the real repo: every stop kind is
      automated, a secret only she holds, or an error, and none asks her for a
      decision - and it lists a non-trivial number of kinds;
@@ -37,22 +35,9 @@ os.environ.setdefault("LOOP_DRY_RUN", "1")
 
 import stop_classes as SC                                  # noqa: E402
 
-RULE = ("Nothing waits on the owner. A finding becomes an action with a "
-        "measurement, never a question. Only a secret or an account she alone "
-        "holds may stop, and that stop is green and self-explaining.")
 
 fails: list[str] = []
 examined = 0
-
-# ------------------------------------------------------------ 1. the rule
-for doc in ("CLAUDE.md", "RUNBOOK.md"):
-    examined += 1
-    text = (ROOT / doc).read_text()
-    flat = " ".join(text.split())
-    if RULE not in flat:
-        fails.append(f"{doc} does not carry the rule sentence verbatim")
-    elif flat.index(RULE) > 400:
-        fails.append(f"{doc} carries the rule, but not at the top")
 
 # ------------------------------------------------------------ 2. real repo
 a = SC.audit()

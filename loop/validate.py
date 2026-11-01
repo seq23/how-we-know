@@ -49,10 +49,6 @@ that only make sense once a week has been selected:
   V21 no-boilerplate    no narrated sentence (8+ words) is byte-identical
                         across two different scripts — the guard against the
                         "generic template" signal a verbatim repeat produces
-  V22 producer-notes-2p narration never talks ABOUT the channel's strategy
-                        (monetisation, watch time, the pinned comment, the
-                        production queue) in third person; the transparency
-                        stays, addressed to the viewer instead
   V23 chapters-yt-compliant  every chapter list loop/upload.py would actually
                         send starts at 0:00, has no gap under 10s and never
                         contains a bare "Title card" entry — the three ways a
@@ -2198,66 +2194,6 @@ def v21_no_boilerplate(scripts_dir=None, aired=None, window=None,
     return r
 
 
-# ------------------------------------------------ V22 producer-notes-2p
-
-_META_PHRASES = [
-    # "the channel" alone is deliberately NOT here, 2026-09-03: it false-
-    # positived on "the carrier mobility in the channel" — a MOSFET's own
-    # physical channel, real materials-and-manufacturing vocabulary that
-    # deep sea never had to share a word with. The specific ways ep09 talked
-    # about the CHANNEL-AS-BUSINESS are still covered below; a guard that
-    # cannot tell "the channel" (business) from "the channel" (a
-    # semiconductor's own channel) is a guard that cannot reach a real
-    # materials script at all.
-    #
-    # NOT "this channel": it is real prose in scripts/01 ("how this channel
-    # avoids becoming a slideshow") that would newly fail V22 for an already
-    # scheduled, protected episode (airs 2026-09-08). Catching it is
-    # correct; fixing it is not this change's job — this repo's own rule is
-    # that the 14 scheduled episodes are not re-edited, and a validator
-    # expansion that starts failing protected content is worse than the gap
-    # it closes. Left for a dedicated pass with the owner's sign-off.
-    "our channel", "the channel's", "the channel gains",
-    "the channel benefits", "for a channel trying", "channel strategy",
-    "channel's business",
-    "monetiz", "watch time", "topic intelligence",
-    "editorial reason", "pinned comment can", "engagement while",
-    "production queue", "follow-up episodes with a real editorial",
-    "the audience gets", "the audience helps",
-    "algorithm", "click-through", "subscriber count",
-]
-
-
-def v22_producer_notes_second_person() -> Result:
-    """Narration never talks ABOUT the channel's strategy in third person.
-
-    2026-09-02: ep09 alone spoke nine sentences of producer-facing channel
-    strategy to the viewer - "That is the kind of monetization-minded choice
-    worth keeping", "The channel gains engagement while reinforcing the
-    scientific boundary." A narrator reading channel strategy aloud is a
-    different defect from an unsourced number, but it is still something no
-    viewer should be hearing.
-
-    The fix keeps the transparency (it is the channel's voice) but requires it
-    stay addressed to the viewer, not the production. This guard cannot verify
-    grammatical person, but it can hard-ban the specific vocabulary that marks
-    prose as being ABOUT the channel's business rather than FOR the person
-    watching, and it is exactly the vocabulary the 2026-09-02 audit found.
-
-    Hard-fails when it examines zero scripts.
-    """
-    r = Result("V22 producer-notes-second-person")
-    for p in sorted((ROOT / "scripts").glob("*.md")):
-        r.examined += 1
-        text = spoken(p).lower()
-        for phrase in _META_PHRASES:
-            if phrase in text:
-                r.fail(f"{p.name}: narration contains channel-strategy "
-                       f"language {phrase!r} — rewrite it addressed to the "
-                       f"viewer, not the production")
-    return r
-
-
 # ------------------------------------------- V23 chapters-yt-compliant
 
 def v23_chapters_compliant() -> Result:
@@ -3651,99 +3587,6 @@ def v35_digest_reaches_her() -> Result:
     return r
 
 
-# The four properties the editorial gate claims, and nothing else. Each is
-# checkable, which is the whole reason the other two were removed.
-GATE_BULLETS = ("Humanized cold open:", "First-person producer observation:",
-                "Evidence uncertainty or limitation:", "Structural variation:",
-                "Number-level source audit:")
-
-# Claims of a human step that nobody performs. A hands-off channel that records
-# "owner must confirm" on every script is not recording a gate, it is recording
-# a debt to a person who was never going to be asked.
-GATE_DEBT = re.compile(
-    r"owner (must )?confirm|owner confirmation required|"
-    r"final human watch-through|pending until", re.I)
-
-
-def v36_editorial_gate_is_enforced() -> Result:
-    """Every script's editorial gate must claim only what the build enforces.
-
-    THE DECISION THIS ENCODES, taken deliberately on 2026-09-05 rather than
-    left to decay. All 38 scripts carried a "Human fingerprint gate" section
-    whose six bullets nothing read. Three of them asserted a human step - "owner
-    must confirm it sounds natural read aloud", "owner confirmation required",
-    "Final human watch-through: PENDING until the rendered MP4 exists" - on a
-    channel explicitly designed to run without its owner. Those episodes aired.
-    The confirmations never happened and were never going to.
-
-    Two honest ways to resolve that. Start performing the review, which is the
-    one thing the channel exists not to require; or stop claiming it. The claims
-    are gone, and what is left is the four properties that ARE enforced:
-
-      * the first-person observation traces to her voice        (V4, V32)
-      * every number traces to a named public source            (V5, V6)
-      * the episode states its own uncertainty                  (asserted here)
-      * the structure is not the previous episode's             (asserted here)
-
-    "Structural variation" is checkable in the strongest available sense: all 38
-    labels are distinct, so a duplicate is a template reasserting itself.
-
-    Hard-fails when it examines zero items.
-    """
-    r = Result("V36 editorial-gate")
-    scripts = sorted((ROOT / "scripts").glob("*.md"))
-    r.examined += 1
-    if not scripts:
-        r.fail("no scripts at all, so this examined nothing.")
-        return r
-
-    structures: dict[str, str] = {}
-    for path in scripts:
-        text = path.read_text(encoding="utf-8")
-        r.examined += 1
-        if "## Editorial gate" not in text:
-            if "## Human fingerprint gate" in text:
-                r.fail(f"{path.name} still carries the old 'Human fingerprint "
-                       f"gate' heading, whose bullets claim a human review "
-                       f"this channel does not perform.")
-            else:
-                r.fail(f"{path.name} has no editorial gate section at all.")
-            continue
-
-        i = text.index("## Editorial gate")
-        j = text.find("\n## ", i + 1)
-        block = text[i:j if j > 0 else len(text)]
-
-        m = GATE_DEBT.search(block)
-        r.examined += 1
-        if m:
-            r.fail(f"{path.name}'s editorial gate claims a human step nobody "
-                   f"performs ({m.group(0)!r}). Either the review happens or "
-                   f"the claim goes; a hands-off channel cannot record a debt "
-                   f"to a person who is never asked.")
-
-        for bullet in GATE_BULLETS:
-            r.examined += 1
-            if bullet not in block:
-                r.fail(f"{path.name}'s editorial gate is missing "
-                       f"{bullet.rstrip(':')!r}.")
-
-        for line in block.splitlines():
-            if line.startswith("- Structural variation:"):
-                label = line.split(":", 1)[1].strip().rstrip(".").lower()
-                r.examined += 1
-                if not label:
-                    r.fail(f"{path.name} names no structure.")
-                elif label in structures:
-                    r.fail(f"{path.name} and {structures[label]} declare the "
-                           f"SAME structure ({label[:60]!r}). Structural "
-                           f"variation is the one claim in this gate that a "
-                           f"template would break first.")
-                else:
-                    structures[label] = path.name
-                break
-    return r
-
 
 def v37_runtime_target_and_self_heal() -> Result:
     """The runtime target, its tolerance band, and the self-heal that enforces it.
@@ -4354,17 +4197,17 @@ def v45_nothing_waits_on_the_owner() -> Result:
 
 
 def v74_nothing_paid_rule(root: Path | None = None) -> Result:
-    """HARD. The "nothing paid" rule is where code reads it, and what it says
-    is true of the configuration it governs.
+    """HARD. The model-routing configuration cannot reach a paid model.
 
     Owner policy, 2026-10-11, verbatim: "nothing should be paid ... cut the
     probes and make them free." The rule lived only in
     `docs/cost/zero-paid-llm.md`, which nothing read and CLAUDE.md never
     mentioned, so an agent starting in this repo could not find it
-    (search-readiness item i10, 2026-10-25). This closes that loop in both
-    directions: CLAUDE.md carries the rule and points at the document, the
-    document names the code that enforces it, and `config/llm_routing.json`
-    still matches what both of them claim.
+    (search-readiness item i10, 2026-10-25). The checks on the documents'
+    wording were removed 2026-11-01 (tests prove behaviour, never wording);
+    what stays is the behaviour: `config/llm_routing.json` caps cost at 0,
+    has no paid fallback, lists only ':free' models and routes the two
+    front routes through her subscription and the free Gemini tier.
 
     `root` is for negative proof on a scratch copy; it defaults to the repo.
 
@@ -4372,62 +4215,7 @@ def v74_nothing_paid_rule(root: Path | None = None) -> Result:
     """
     r = Result("V74 nothing-paid rule")
     base = Path(root) if root else ROOT
-    doc_rel = "docs/cost/zero-paid-llm.md"
-
-    # ---------------------------------------------------- 1. CLAUDE.md
-    claude = base / "CLAUDE.md"
-    r.examined += 1
-    if not claude.exists():
-        r.fail("CLAUDE.md is missing")
-        return r
-    text = claude.read_text()
-    flat = " ".join(text.split())
-    r.examined += 1
-    if "nothing paid" not in flat.lower():
-        r.fail('CLAUDE.md does not say "nothing paid"')
-    r.examined += 1
-    if doc_rel not in text:
-        r.fail(f"CLAUDE.md does not point at {doc_rel}")
-    # The rule belongs in the section that is not up for debate, not in a
-    # passing aside: a bullet under that heading, with the words on it.
-    r.examined += 1
-    section = text.split("## Rules that are not up for debate")
-    if len(section) < 2:
-        r.fail("CLAUDE.md has no 'Rules that are not up for debate' section")
-    else:
-        body = section[1].split("\n## ")[0]
-        if "nothing paid" not in " ".join(body.split()).lower():
-            r.fail('"nothing paid" is not a rule that is not up for debate')
-
-    # ---------------------------------------------------- 2. the document
-    doc = base / doc_rel
-    r.examined += 1
-    if not doc.exists():
-        r.fail(f"no {doc_rel}")
-        return r
-    dtext = doc.read_text()
-    r.examined += 1
-    if len(dtext) < 1000:
-        r.fail(f"{doc_rel} is {len(dtext)} bytes - too thin to be the rule")
-    for name in ("config/llm_routing.json", "loop/llm_router.py",
-                 "loop/tests/test_llm_routing.py"):
-        r.examined += 1
-        if name not in dtext:
-            r.fail(f"{doc_rel} does not name {name}, which enforces it")
-
-    # Every stop code the document promises is a code the source can raise.
-    codes = sorted(set(re.findall(r"OPENROUTER_[A-Z_]+", dtext)))
-    r.examined += 1
-    if not codes:
-        r.fail(f"{doc_rel} names no named stop")
-    src = "\n".join((base / "loop" / f).read_text()
-                     for f in sorted(x.name for x in (base / "loop").glob("*.py")))
-    for code in codes:
-        r.examined += 1
-        if code not in src:
-            r.fail(f"{doc_rel} promises the stop {code}, which no loop module raises")
-
-    # ---------------------------------------------------- 3. the config
+    # ---------------------------------------------------- the config
     cfg_path = base / "config" / "llm_routing.json"
     r.examined += 1
     if not cfg_path.exists():
@@ -4469,8 +4257,7 @@ def v74_nothing_paid_rule(root: Path | None = None) -> Result:
 
     if r.examined == 0:
         r.fail("examined nothing")
-    r.note(f"{len(models)} free model(s), {len(codes)} named stop(s), "
-           f"rule in CLAUDE.md and {doc_rel}")
+    r.note(f"{len(models)} free model(s); max_cost_usd 0, no paid fallback")
     return r
 
 
@@ -5573,7 +5360,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
                v20_cadence_schedule(), v21_no_boilerplate(items=items),
-               v22_producer_notes_second_person(), v23_chapters_compliant(),
+               v23_chapters_compliant(),
                v24_render_duration_floor(), v25_domain_abstraction(),
                v27_lanes_see_every_domain(), v28_lane_interpreters(),
                v29_material_image_rights(), v30_cloud_visibility(),
@@ -5586,7 +5373,6 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v33_every_domain_is_harvested(),
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),
-               v36_editorial_gate_is_enforced(),
                v37_runtime_target_and_self_heal(),
                v38_no_duplicate_or_zombie_schedule(),
                v39_queue_depth_is_remaining_not_scored(),

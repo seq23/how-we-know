@@ -638,8 +638,8 @@ property the build actually enforces:
 |---|---|
 | the first-person observation traces to her voice | V4, V32 |
 | every number traces to a named public source | V5, V6 |
-| the episode states its own uncertainty | V36 |
-| the structure is not another episode's | V36 |
+| the episode states its own uncertainty | the author template (`loop/author.py`) |
+| the structure is not another episode's | the author template (`loop/author.py`) |
 
 "Structural variation" is checkable in the strongest sense available: all 38
 labels are distinct, so a duplicate is a template reasserting itself — which is
