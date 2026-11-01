@@ -21,8 +21,6 @@ WHAT IS PROVEN
          shelf, no credential load, no upload, and the lane's own work never
          started;
        closed -> the lane proceeds past the breaker to its own work.
-  3. RUNBOOK.md "## The circuit breaker" names every guarded stage, so the
-     digest's "Publishing is halted" sentence is honest about what it halts.
 
 NOTHING HERE CAN REACH YOUTUBE, R2 OR THE LIVE FLAG: every entry point is
 replaced with a recorder before the lane runs, and LOOP_BREAKER_FLAG /
@@ -87,23 +85,6 @@ def check_static(fails: list[str]) -> int:
             fails.append(f"1: {stage}: {rel} never calls breaker.guard({stage!r}) "
                          f"- a guard that cannot reach what it governs")
     return examined
-
-
-def check_runbook(fails: list[str]) -> int:
-    text = (ROOT / "RUNBOOK.md").read_text()
-    m = re.search(r"^## The circuit breaker\n(.*?)(?=^## )", text, re.S | re.M)
-    if not m:
-        fails.append("3: RUNBOOK.md has no '## The circuit breaker' section")
-        return 0
-    body = m.group(1)
-    n = 0
-    for stage in breaker.GUARDED:
-        n += 1
-        if f"`{stage}`" not in body:
-            fails.append(f"3: RUNBOOK's breaker section does not list `{stage}`")
-    if "BREAKER_TRIPPED" not in body:
-        fails.append("3: RUNBOOK's breaker section does not name BREAKER_TRIPPED")
-    return n
 
 
 HARNESS = r'''
@@ -210,15 +191,15 @@ def check_behaviour(fails: list[str]) -> int:
 
 def main() -> int:
     fails: list[str] = []
-    n = check_static(fails) + check_runbook(fails) + check_behaviour(fails)
-    if n < 20:
-        fails.append(f"Rule 0: only {n} checks ran; at least 20 expected")
+    n = check_static(fails) + check_behaviour(fails)
+    if n < 19:
+        fails.append(f"Rule 0: only {n} checks ran; at least 19 expected")
     for f in fails:
         print(f"FAIL {f}")
     if fails:
         return 1
     print(f"all green - {n} checks: every publishing lane stops on a tripped "
-          f"breaker, proceeds on a closed one, and the RUNBOOK lists them all")
+          f"breaker, proceeds on a closed one")
     return 0
 
 

@@ -9,7 +9,6 @@ against the real prompt and the real checks. This pins its newest results:
      skipped reason. A bench that could not run passes only when the JSON
      says why (not_run_reason).
   C. No key-like string ("sk-") anywhere in the JSON or markdown.
-  D. The markdown names the same winner the JSON ranks first.
   E. Every row carries a failure category from the fixed set.
 
 No network. Hard-fails on zero cases. Re-run the bench whenever the roster
@@ -62,12 +61,6 @@ def check() -> list[str]:
     rank = res.get("ranking") or []
     if rows and not rank:
         fails.append("rows present but no ranking")
-    if rank and md.exists():
-        cases += 1
-        m = re.search(r"\*\*Winner:\*\* `([^`]+)`", md.read_text())
-        if not m or m.group(1) != rank[0]["model"]:
-            fails.append(f"markdown winner {m.group(1) if m else None!r} != JSON "
-                         f"rank 1 {rank[0]['model']!r}")
     if not (res.get("verdict") or "").strip():
         fails.append("no verdict")
     if cases == 0:

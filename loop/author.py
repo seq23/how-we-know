@@ -272,7 +272,9 @@ material framed as real; true crime or identifiable victims; political
 controversy; religion framed as true or false; anything morally grey.
 
 TONE: calm, precise, second person occasionally, no hype, no "mind-blowing",
-no rhetorical questions stacked up. Explain how a thing is known, not just what
+no rhetorical questions stacked up. Speak TO the viewer, never ABOUT the
+channel's business: no monetization, watch time, algorithm, click-through,
+subscriber counts, engagement or production queue in the narration. Explain how a thing is known, not just what
 is known. The narration under ## Narration must be roughly {narration_target}
 words - that is the ONLY count that becomes runtime; directives, headings,
 chapter lists and sources are not narration and do not count toward it. At
@@ -358,7 +360,7 @@ this topic's own terms - never a stock opener reused across episodes.>
 
 ## Editorial gate
 
-*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see `loop/validate.py`. It records no step a human still owes.*
 
 - Humanized cold open: PRESENT
 - First-person producer observation: FROM POV BANK ({pov_id})
@@ -525,13 +527,10 @@ def record_spend(slug: str, model: str, usage: dict, cost: float | None,
 # --------------------------------------------------------------- validation
 
 # WHERE NARRATION ENDS. The gate section after it was "## Human fingerprint
-# gate" until 2026-09-05, when V36 (loop/validate.py) retired that heading
-# for "## Editorial gate" in every script on disk - and this template kept
-# writing the old one. Every script the Monday lane authored afterwards was
-# promoted into scripts/ carrying a heading V36 fails, so the NEXT run's full
-# validation tripped the breaker on the previous week's work (found
-# 2026-09-26 on six scripts). The generator and the validator now name one
-# heading; the old one still ends narration so an older draft is read right.
+# gate" until 2026-09-05, when it was retired for "## Editorial gate" in
+# every script on disk. REQUIRED_SECTIONS below is the one place that names
+# the heading; the old one still ends narration so an older draft is read
+# right.
 NARRATION_ENDS = ("## Editorial gate", "## Human fingerprint")
 
 

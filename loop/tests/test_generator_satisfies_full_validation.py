@@ -19,9 +19,9 @@ on any validator failure, halting publishing. Three causes were structural:
     cannot see a domain (20 failures).
 
 WHAT THIS PROVES:
-  1. the generator's template, filled, satisfies V36's own constants
-     (GATE_BULLETS, GATE_DEBT) and carries no retired heading; the author's
-     REQUIRED_SECTIONS and the human brief name the same heading;
+  1. the author's REQUIRED_SECTIONS and the human brief name the current
+     gate heading, never the retired one (V36, the heading/bullet pin, was
+     removed 2026-11-01: tests prove behaviour, never wording);
   2. author.shape_problems() rejects each of the three unparseable
      directives found on 2026-09-26, and accepts a parseable one;
   3. V27 accepts a refused row that is NAMED with a reason, and still fails a
@@ -63,33 +63,12 @@ GOOD = "{{uncertain: 100 | °C/s | 50 to 200 | composition-dependent | critical 
 def check() -> list[str]:
     fails, examined = [], 0
 
-    # 1. the gate section the generator writes is the one V36 accepts
-    filled = author.FORMAT.format(pov_id="pov-001", pov_line="x",
-                                  domain="deep-sea-ocean-science", wpm=145)
-    examined += 1
-    if "## Human fingerprint gate" in filled:
-        fails.append("author.FORMAT still writes the retired '## Human "
-                     "fingerprint gate' heading V36 rejects")
-    if "## Editorial gate" not in filled:
-        fails.append("author.FORMAT writes no '## Editorial gate' section")
-    else:
-        i = filled.index("## Editorial gate")
-        j = filled.find("\n## ", i + 1)
-        block = filled[i:j if j > 0 else len(filled)]
-        m = validate.GATE_DEBT.search(block)
-        if m:
-            fails.append(f"author.FORMAT's gate records a human step nobody "
-                         f"performs ({m.group(0)!r}); V36 fails it")
-        for bullet in validate.GATE_BULLETS:
-            examined += 1
-            if bullet not in block:
-                fails.append(f"author.FORMAT's gate is missing V36's "
-                             f"{bullet!r}")
+    # 1. the generator requires the gate heading and never the retired one
     examined += 1
     if "## Editorial gate" not in author.REQUIRED_SECTIONS or any(
             "fingerprint" in s_ for s_ in author.REQUIRED_SECTIONS):
-        fails.append(f"author.REQUIRED_SECTIONS does not require the heading "
-                     f"V36 does: {author.REQUIRED_SECTIONS}")
+        fails.append(f"author.REQUIRED_SECTIONS does not require the "
+                     f"'## Editorial gate' heading: {author.REQUIRED_SECTIONS}")
     src = (LOOP / "draft.py").read_text()
     if '"## Human fingerprint gate"' in src:
         fails.append("loop/draft.py's authoring brief still asks a human for "

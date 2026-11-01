@@ -564,10 +564,8 @@ narrating and rendering carry on, so nothing has to be rebuilt when it closes.
 
 Every scheduled lane, in the order of a week. Times are Central daylight time
 (one hour earlier in winter, CST); the UTC cron the workflow actually carries is
-in brackets. "Calls a model?" is derived from code, not kept by hand:
-`loop/tests/test_claude_subscription_route.py` walks the call graph of
-`loop/*.py` to `llm_router.complete()` and fails if this column disagrees with it,
-and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no row.
+in brackets. "Calls a model?" follows the call graph of `loop/*.py` to
+`llm_router.complete()` that `loop/tests/test_claude_subscription_route.py` walks.
 
 Every cron below is written in Central time and carries `timezone: America/Chicago`
 (GitHub Actions honours it), so the clock change in March and November no longer
