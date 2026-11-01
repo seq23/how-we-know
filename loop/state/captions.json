@@ -101,7 +101,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:06+00:00",
-      "verified_at": "2026-10-14T15:11:21+00:00",
+      "verified_at": "2026-11-01T16:02:13+00:00",
       "previous_sha256": "5c19503cf6bc5dff45bd5fbb865f9e2b9bb55a09d59e892cd1b27b478c4d6ac0",
       "replaced_at": "2026-10-17T15:08:35+00:00"
     },
@@ -127,7 +127,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:08+00:00",
-      "verified_at": "2026-10-15T15:10:49+00:00",
+      "verified_at": "2026-11-01T16:02:13+00:00",
       "previous_sha256": "8f7889586bd4dd3e39aaab7b68fd5ae0fba09dc3f93e046eea6b51f835fd86c3",
       "replaced_at": "2026-10-18T15:09:43+00:00"
     },
@@ -398,7 +398,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-16T15:09:58+00:00",
-      "verified_at": "2026-10-14T15:11:21+00:00"
+      "verified_at": "2026-11-01T16:02:13+00:00"
     },
     "zs-gueHeX8k": {
       "slug": "how-do-scientists-know-so-much",
@@ -568,11 +568,11 @@
     }
   },
   "blocked": {},
-  "updated": "2026-10-31T15:06:12+00:00",
+  "updated": "2026-11-01T16:02:13+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-31T15:06:12+00:00",
+    "at": "2026-11-01T16:02:13+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
