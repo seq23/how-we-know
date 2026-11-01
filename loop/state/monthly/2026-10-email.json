@@ -1,12 +1,12 @@
 {
   "month": "2026-10",
-  "partial": true,
+  "partial": false,
   "from": "2026-10-01",
-  "to": "2026-10-12",
-  "today": "2026-10-12",
+  "to": "2026-10-31",
+  "today": "2026-11-01",
   "published": {
-    "long_form": 7,
-    "shorts": 4,
+    "long_form": 19,
+    "shorts": 37,
     "by_domain": {
       "long_form": {
         "materials": [
@@ -33,6 +33,36 @@
             "question": "how is 3d printed metal made",
             "video_id": "VDFFur-xYUU",
             "aired": "2026-10-12"
+          },
+          {
+            "slug": "why-is-carbon-fiber-so-strong",
+            "question": "why is carbon fiber so strong",
+            "video_id": "Eueb6oHEbMs",
+            "aired": "2026-10-16"
+          },
+          {
+            "slug": "why-is-steel-so-strong",
+            "question": "why is steel so strong",
+            "video_id": "98ejztJsQNY",
+            "aired": "2026-10-20"
+          },
+          {
+            "slug": "what-is-aerogel-made-of",
+            "question": "what is aerogel made of",
+            "video_id": "vrb83gWWaYw",
+            "aired": "2026-10-23"
+          },
+          {
+            "slug": "what-is-kevlar-made-of",
+            "question": "what is kevlar made of",
+            "video_id": "rY7t_VDz9sk",
+            "aired": "2026-10-27"
+          },
+          {
+            "slug": "how-hot-does-a-welding-arc-get",
+            "question": "how hot does a welding arc get",
+            "video_id": "k4OOYUrar30",
+            "aired": "2026-10-30"
           }
         ],
         "deep sea": [
@@ -53,6 +83,50 @@
             "question": "why does black-smoker water not boil",
             "video_id": "IbrSPKUK1IM",
             "aired": "2026-10-11"
+          },
+          {
+            "slug": "04-why-deep-sea-creatures-are-so-scary",
+            "question": "why deep sea creatures are so scary",
+            "video_id": "xyZ9xs7OF3g",
+            "aired": "2026-10-13"
+          },
+          {
+            "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+            "question": "what happens when a whale dies in the deep ocean",
+            "video_id": "l6HwRYGo-Nw",
+            "aired": "2026-10-15"
+          },
+          {
+            "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
+            "question": "how does bioluminescence work in the deep sea",
+            "video_id": "EFimztjj_j8",
+            "aired": "2026-10-19"
+          },
+          {
+            "slug": "02-how-deep-sea-creatures-survive-pressure",
+            "question": "how deep sea creatures survive the pressure",
+            "video_id": "nv-M6q8h-Lk",
+            "aired": "2026-10-22"
+          },
+          {
+            "slug": "how-do-scientists-know-so-much",
+            "question": "how do scientists know so much about the deep ocean when we've explored so little of it",
+            "video_id": "zs-gueHeX8k",
+            "aired": "2026-10-26"
+          },
+          {
+            "slug": "how-do-scientists-know-how-old-something-is",
+            "question": "how do scientists know how old something is",
+            "video_id": "T6XeND2qM4k",
+            "aired": "2026-10-29"
+          }
+        ],
+        "other": [
+          {
+            "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+            "question": "why does bread rise steak brown and chocolate snap",
+            "video_id": "8bVPoTWAfFQ",
+            "aired": "2026-10-17"
           }
         ]
       },
@@ -81,85 +155,292 @@
             "question": "why deep sea fish die when brought to surface",
             "video_id": "0I4Pi91TWB4",
             "aired": "2026-10-07"
+          },
+          {
+            "slug": "20-what-is-the-midnight-zone",
+            "question": "what is the midnight zone",
+            "video_id": "DscaYfXzxUY",
+            "aired": "2026-10-13"
+          },
+          {
+            "slug": "19-what-is-the-deepest-fish-ever-recorded",
+            "question": "what is the deepest fish ever recorded",
+            "video_id": "g9mvDsG_k6E",
+            "aired": "2026-10-13"
+          },
+          {
+            "slug": "02-how-deep-sea-creatures-survive-pressure",
+            "question": "how deep sea creatures survive the pressure",
+            "video_id": "wiKooxcrAV4",
+            "aired": "2026-10-14"
+          },
+          {
+            "slug": "10-what-is-the-deepest-part-of-the-ocean",
+            "question": "what is the deepest part of the ocean",
+            "video_id": "HLjcjyug4Ac",
+            "aired": "2026-10-14"
+          },
+          {
+            "slug": "05-why-many-deep-sea-creatures-are-red",
+            "question": "why many deep sea creatures are red",
+            "video_id": "hm4tKu0sLj8",
+            "aired": "2026-10-15"
+          },
+          {
+            "slug": "what-lives-in-mariana-trench",
+            "question": "what lives in mariana trench",
+            "video_id": "R60DEOs5urg",
+            "aired": "2026-10-16"
+          },
+          {
+            "slug": "how-deep-can-a-sperm-whale-go",
+            "question": "how deep can a sperm whale go",
+            "video_id": "CA28GilEiRE",
+            "aired": "2026-10-18"
+          },
+          {
+            "slug": "why-deep-sea-creatures-are-creepers",
+            "question": "why deep sea creatures are creepers",
+            "video_id": "l8sjx720GhI",
+            "aired": "2026-10-19"
+          },
+          {
+            "slug": "why-are-deep-sea-creatures-so-big",
+            "question": "why are deep sea creatures so big",
+            "video_id": "tbKynCHfU-c",
+            "aired": "2026-10-20"
+          },
+          {
+            "slug": "what-is-hydrothermal-vents",
+            "question": "what is hydrothermal vents",
+            "video_id": "VGWcX3Yskyg",
+            "aired": "2026-10-20"
+          },
+          {
+            "slug": "how-deep-can-whales-dive",
+            "question": "how deep can whales dive",
+            "video_id": "tlI93J6jwBU",
+            "aired": "2026-10-21"
+          },
+          {
+            "slug": "01-why-deep-sea-creatures-look-so-weird",
+            "question": "why deep sea creatures look so weird",
+            "video_id": "tJz6_OYNoJE",
+            "aired": "2026-10-21"
+          },
+          {
+            "slug": "14-how-big-is-a-colossal-squid",
+            "question": "how big is a colossal squid",
+            "video_id": "0ajaT-tu1ho",
+            "aired": "2026-10-22"
+          },
+          {
+            "slug": "06-why-some-deep-sea-creatures-are-transparent",
+            "question": "why some deep sea creatures are transparent",
+            "video_id": "seSX8I52aag",
+            "aired": "2026-10-22"
+          },
+          {
+            "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
+            "question": "why deep sea creatures get creepier the deeper you go",
+            "video_id": "Kh2k6I4il3g",
+            "aired": "2026-10-23"
+          },
+          {
+            "slug": "15-how-do-people-reach-challenger-deep",
+            "question": "how do people reach challenger deep",
+            "video_id": "sICeM1lLrVE",
+            "aired": "2026-10-23"
+          },
+          {
+            "slug": "08-what-creatures-live-in-the-deep-sea",
+            "question": "what creatures live in the deep sea",
+            "video_id": "LCQ_0ZWCJvU",
+            "aired": "2026-10-24"
+          },
+          {
+            "slug": "09-what-is-the-scariest-deep-sea-creature",
+            "question": "what is the scariest deep sea creature",
+            "video_id": "dpL6cNWnwe0",
+            "aired": "2026-10-24"
+          },
+          {
+            "slug": "04-why-deep-sea-creatures-are-so-scary",
+            "question": "why deep sea creatures are so scary",
+            "video_id": "q_SGlBjkJX8",
+            "aired": "2026-10-25"
+          },
+          {
+            "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+            "question": "why deep sea fish die when brought to surface",
+            "video_id": "wOMTQA4oQOA",
+            "aired": "2026-10-25"
+          },
+          {
+            "slug": "how-do-scientists-know-so-much",
+            "question": "how do scientists know so much about the deep ocean when we've explored so little of it",
+            "video_id": "PzNU6whcXjc",
+            "aired": "2026-10-26"
+          },
+          {
+            "slug": "how-do-scientists-know-how-old-something-is",
+            "question": "how do scientists know how old something is",
+            "video_id": "KJ6fDyFqLQ8",
+            "aired": "2026-10-26"
+          },
+          {
+            "slug": "how-do-scientists-know-about-other-galaxies",
+            "question": "how do scientists know about other galaxies",
+            "video_id": "RPtB8FQhaA4",
+            "aired": "2026-10-27"
+          },
+          {
+            "slug": "18-why-does-black-smoker-water-not-boil",
+            "question": "why does black-smoker water not boil",
+            "video_id": "dZw0_PMoBno",
+            "aired": "2026-10-27"
+          },
+          {
+            "slug": "02-how-deep-sea-creatures-survive-pressure",
+            "question": "how deep sea creatures survive the pressure",
+            "video_id": "Mou_ltfkI1c",
+            "aired": "2026-10-28"
+          },
+          {
+            "slug": "10-what-is-the-deepest-part-of-the-ocean",
+            "question": "what is the deepest part of the ocean",
+            "video_id": "Ky9Omx9nHr4",
+            "aired": "2026-10-29"
+          },
+          {
+            "slug": "05-why-many-deep-sea-creatures-are-red",
+            "question": "why many deep sea creatures are red",
+            "video_id": "rDJ0lUO1Yf0",
+            "aired": "2026-10-29"
+          },
+          {
+            "slug": "what-lives-in-mariana-trench",
+            "question": "what lives in mariana trench",
+            "video_id": "4Pin2aln58w",
+            "aired": "2026-10-30"
+          }
+        ],
+        "materials": [
+          {
+            "slug": "how-are-microchips-designed",
+            "question": "how are microchips designed",
+            "video_id": "J16Aj8L0e98",
+            "aired": "2026-10-17"
+          },
+          {
+            "slug": "is-damascus-steel-better",
+            "question": "is damascus steel better",
+            "video_id": "rHjyomS0aZo",
+            "aired": "2026-10-28"
+          }
+        ],
+        "other": [
+          {
+            "slug": "why-does-chocolate-taste-so-good",
+            "question": "why does chocolate taste so good",
+            "video_id": "_dEimGejxNc",
+            "aired": "2026-10-30"
+          },
+          {
+            "slug": "why-does-steak-taste-better-seared",
+            "question": "why does steak taste better seared",
+            "video_id": "EFGCT_ZLdzY",
+            "aired": "2026-10-31"
+          },
+          {
+            "slug": "why-is-my-bread-not-rising",
+            "question": "why is my bread not rising",
+            "video_id": "prHJLtgqN6g",
+            "aired": "2026-10-31"
           }
         ]
       }
     },
     "ahead": {
       "long_form": {
-        "count": 15,
-        "last": "2026-11-08"
+        "count": 12,
+        "last": "2026-11-26"
       },
       "shorts": {
-        "count": 2,
-        "last": "2026-10-13"
+        "count": 1,
+        "last": "2026-11-02"
       }
     }
   },
   "data": {
-    "views_28d_long_form": 198,
-    "views_28d_shorts": 1027,
-    "views_month_long_form": 24,
-    "views_month_shorts": 371,
-    "median_views_per_episode": 7,
-    "median_views_per_short": 36.5,
+    "views_28d_long_form": 927,
+    "views_28d_shorts": 2129,
+    "views_month_long_form": 831,
+    "views_month_shorts": 2072,
+    "median_views_per_episode": 16,
+    "median_views_per_short": 28,
     "top_episodes": [
       {
-        "video_id": "kTBlLeWdi4g",
-        "views": 9,
-        "title": "what is a semiconductor made of"
-      },
-      {
-        "video_id": "OdYunlbB73g",
-        "views": 7,
-        "title": "what is the deepest fish ever recorded"
-      },
-      {
-        "video_id": "G1TqXmf36Qo",
-        "views": 4,
-        "title": "what is the scariest deep sea creature"
-      },
-      {
-        "video_id": "debozzLtVRA",
-        "views": 3,
-        "title": "how strong is graphene"
+        "video_id": "vrb83gWWaYw",
+        "views": 226,
+        "title": "what is aerogel made of"
       },
       {
         "video_id": "7tdvXATeeng",
-        "views": 1,
+        "views": 158,
         "title": "why does old iron not rust"
+      },
+      {
+        "video_id": "EFimztjj_j8",
+        "views": 85,
+        "title": "how does bioluminescence work in the deep sea"
+      },
+      {
+        "video_id": "l6HwRYGo-Nw",
+        "views": 85,
+        "title": "what happens when a whale dies in the deep ocean"
+      },
+      {
+        "video_id": "nv-M6q8h-Lk",
+        "views": 72,
+        "title": "how deep sea creatures survive the pressure"
       }
     ],
     "top_shorts": [
       {
+        "video_id": "hm4tKu0sLj8",
+        "views": 995,
+        "title": "why many deep sea creatures are red"
+      },
+      {
         "video_id": "7QtJ_B2kggQ",
-        "views": 187,
+        "views": 189,
         "title": "how do scientists know about other galaxies"
       },
       {
         "video_id": "5JErm9uFsFw",
-        "views": 105,
+        "views": 107,
         "title": "how do scientists know how old something is"
       },
       {
-        "video_id": "qPnBKYAR3ps",
-        "views": 70,
-        "title": "how do scientists know so much about the deep ocean when we've explored so little of it"
+        "video_id": "R60DEOs5urg",
+        "views": 86,
+        "title": "what lives in mariana trench"
       },
       {
-        "video_id": "0I4Pi91TWB4",
-        "views": 9,
-        "title": "why deep sea fish die when brought to surface"
+        "video_id": "CA28GilEiRE",
+        "views": 76,
+        "title": "how deep can a sperm whale go"
       }
     ],
-    "avd_s": 70.0,
+    "avd_s": 69.1,
     "avd_floor_s": 146.0,
-    "subscribers_28d_net": 21,
-    "subscribers_total": 26,
-    "watch_hours": 4.0,
+    "subscribers_28d_net": 25,
+    "subscribers_total": 31,
+    "watch_hours": 20.0,
     "watch_hours_floor": 3000.0,
-    "watch_hours_pct": 0.1,
-    "verdict_as_of": "2026-10-12",
+    "watch_hours_pct": 0.7,
+    "verdict_as_of": "2026-10-31",
     "shorts_weeks": [
       {
         "week": "2026-W40",
@@ -180,8 +461,24 @@
       {
         "week": "2026-W42",
         "from": "2026-10-12",
-        "to": "2026-10-12",
-        "shorts": 0,
+        "to": "2026-10-18",
+        "shorts": 8,
+        "target": 9,
+        "full_week": true
+      },
+      {
+        "week": "2026-W43",
+        "from": "2026-10-19",
+        "to": "2026-10-25",
+        "shorts": 13,
+        "target": 9,
+        "full_week": true
+      },
+      {
+        "week": "2026-W44",
+        "from": "2026-10-26",
+        "to": "2026-10-31",
+        "shorts": 12,
         "target": 9,
         "full_week": false
       }
@@ -196,15 +493,15 @@
       "need_measured": 8,
       "queue_floor": 4,
       "domains": {
-        "deep sea": {
-          "measured": 11,
-          "queue": 6,
-          "avd_s": 111.9
-        },
         "materials": {
-          "measured": 8,
-          "queue": 7,
-          "avd_s": 98.6
+          "measured": 14,
+          "queue": 4,
+          "avd_s": 125.9
+        },
+        "other": {
+          "measured": 0,
+          "queue": 0,
+          "avd_s": null
         }
       },
       "why": "no allocated domain has decayed below the 4-topic queue floor."
@@ -212,53 +509,74 @@
     "slot_move": {
       "triggered": false,
       "moved": null,
-      "spread_s": 13.3,
+      "spread_s": 111.1,
       "need_spread_s": 30.0,
       "need_measured": 8,
-      "why": "deep-sea-ocean-science leads materials-and-manufacturing by 13s of average view duration, under the 30s spread that justifies moving a slot."
+      "why": "1 of 3 domain(s) clear the 8-episode floor, so there is nothing to compare. The allocation is held exactly as it is \u2014 it is NOT reset to an even split, which would be a decision disguised as a default."
     },
     "opening": {
       "triggered": false,
-      "active": "cold-open-payoff",
+      "active": "stake-then-payoff",
       "eligible": 0,
       "need": 3,
       "compare_on": null,
       "action": "wait",
-      "why": "not yet decidable: 0 published video(s) carry cold-open-payoff (in force since 2026-09-28); the comparison with pre-rule is set 28 days after the 3rd one airs, and every newly authored script carries it"
+      "why": "not yet decidable: 0 published video(s) carry stake-then-payoff (in force since 2026-10-13); the comparison with pre-rule is set 28 days after the 3rd one airs, and every newly authored script carries it"
     },
     "topic_kills": [
       {
         "slug": "12-what-is-a-frilled-shark",
-        "on": "2026-10-10",
+        "on": "2026-10-31",
         "why": "title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely."
       },
       {
         "slug": "11-what-is-a-dumbo-octopus",
-        "on": "2026-10-10",
+        "on": "2026-10-31",
         "why": "title gap 0.10 is at or below the 0.3 saturation ceiling: 18 of the top 20 titles already answer this question squarely."
       },
       {
         "slug": "17-what-is-a-yeti-crab",
-        "on": "2026-10-10",
+        "on": "2026-10-31",
         "why": "demand_index 0.126 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely."
       },
       {
         "slug": "03-why-deep-sea-creatures-are-surfacing",
-        "on": "2026-10-10",
+        "on": "2026-10-31",
         "why": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely."
+      },
+      {
+        "slug": "how-to-get-abyssal-zone-warframe",
+        "on": "2026-10-31",
+        "why": "Middle of the field: title gap 0.75, demand 0.14, opportunity 0.67."
+      },
+      {
+        "slug": "why-are-deep-sea-creatures-so-big",
+        "on": "2026-10-31",
+        "why": "SATURATED: 85% of the top 20 titles answer this question squarely (median 51,471 views, 119,900 subs). The definitive video exists."
+      },
+      {
+        "slug": "what-is-hydrothermal-vents",
+        "on": "2026-10-31",
+        "why": "SATURATED: 100% of the top 20 titles answer this question squarely (median 20,768 views, 10,410 subs). The definitive video exists."
       }
     ],
     "cadence": {
-      "per_week": 4,
-      "owner_decision": "2 Sep 2026",
-      "research": "reviewed 12 Oct 2026: 4 a week holds (education channels posting 2-20 a month sit in the same flat zone; the cliff is past 20 a month) - docs/research/how-we-know-numbers.md, section 5",
+      "per_week": 6,
+      "owner_decision": "13 Oct 2026 (three-niche rotation, one a day Mon-Sat)",
+      "research": "26 a month sits past the 20-a-month cliff the 12 Oct 2026 review found for ONE niche; spread across three niches it is under 9 a month each - docs/research/how-we-know-numbers.md, section 5; docs/CHANNEL-PLAN.md",
       "triggered": false
     }
   },
-  "needs_you": [],
+  "needs_you": [
+    {
+      "stage": "imagery-harvest-mac",
+      "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_food.py on ci (last run: never; last success: never). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
+      "unblock": "ci: gh workflow run loop-imagery-harvest.yml. The next run there stamps loop/state/harvest_runs.json and this clears on its own."
+    }
+  ],
   "advice": {
     "ok": true,
-    "text": "Median views are 7 per episode and 36.5 per Short, so no pivot rule has triggered; the data is too thin to pivot on, and the 13.3 s domain spread means nothing at these counts. The figure that matters is average view duration: 70 s against the 146 s floor. The single change for next month is getting the opening-line experiment live. 0 of 3 eligible episodes have aired, and that experiment targets exactly this gap. One hint, not a conclusion: the best Shorts are broad \"how do scientists know\" questions (187 and 105 views), and two of them are filed as deep sea when they are not. Also, the watch-hour target reads 3,000, so please check it against the Partner Programme threshold. This is advisory; the rules decide.",
+    "text": "In short: no pivot rule has triggered; the data is too thin to pivot on. Median views are 16 per episode, and only materials clears the 8-episode floor. The binding problem is retention: long-form average view duration is 69.1 s against the 146 s floor, so 19 episodes yielded only 20 watch hours. The one change for next month is to start the opening-line experiment, since 0 of 3 eligible episodes have aired under it and no decision date is set. Materials' 125.9 s is the closest to the floor, but one domain is not a comparison. Two things need checking: the watch-hour target reads 3,000, which is below the programme threshold, and several Shorts repeat within the month. The rules decide.",
     "route": "claude-subscription",
     "model": "claude-subscription/opus",
     "why": ""
