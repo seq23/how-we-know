@@ -11,6 +11,10 @@ Faceless, evidence-first YouTube channel (`@howweknowdeep`, howweknowdeep.com),
 designed to run without its owner. She is Sequoia Taylor; she decides, she does
 not operate it day to day.
 
+## Company brain
+
+Read `~/Brains/spry.md` before any work (business facts, priorities, voice, settled decisions). New business facts go to the brain via Boss OS, not into this repo or memory. Repo how-tos stay in `docs/`.
+
 ## "runbook howweknow" is a trigger phrase
 
 **If she says "runbook howweknow" — or just "runbook" while in this repo — open
