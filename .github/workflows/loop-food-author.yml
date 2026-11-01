@@ -9,14 +9,15 @@ name: loop · Mon 14:00 CT · food author (next food episode, $0)
 #
 # CADENCE: weekly, one episode in flight at a time (FOOD_EPISODE_IN_FLIGHT,
 # self-resolving), because the Mac renders one food episode a week - the
-# reason is at the top of bin/food-session.sh. Monday 19:00 UTC: AFTER
-# mon-draft's whole authoring window (05:00 UTC + its budget, which no other
+# reason is at the top of bin/food-session.sh. Monday 14:00 CT: AFTER
+# mon-draft's whole authoring window (00:00 CT + its budget, which no other
 # loop-state cron may enter - loop/tests/test_mon_draft_authoring_budget.py)
-# and after the 14:00 upload, in the same concurrency group, so no two lanes
+# and after the 09:00 CT upload, in the same concurrency group, so no two lanes
 # push over each other; Tuesday night's render has the script a day early. loop/lanes.py lists this lane; V73 holds it to this file.
 on:
   schedule:
-    - cron: '0 19 * * 1'
+    - cron: '0 14 * * 1'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

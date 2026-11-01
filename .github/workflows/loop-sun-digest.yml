@@ -14,13 +14,14 @@ name: loop · Sun 12:00 · weekly digest
 # nothing about the channel would change - which is exactly the property that
 # lets it be read in thirty seconds and skipped in a busy week.
 #
-# 16:00 UTC is 12:00 America/New_York during EDT - after Sunday's ranking lane
-# (10:00 UTC) and after the 15:00 UTC long-form flip, so the digest reports the
+# 11:00 America/Chicago (12:00 America/New_York) all year - after Sunday's ranking lane
+# (05:00 CT) and after the 10:00 CT long-form flip, so the digest reports the
 # week that just closed and the episode that just went out, not a week still in
 # progress.
 on:
   schedule:
-    - cron: '0 16 * * 0'
+    - cron: '0 11 * * 0'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

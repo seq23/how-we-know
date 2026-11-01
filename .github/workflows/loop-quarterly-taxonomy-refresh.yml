@@ -16,12 +16,13 @@ name: loop · Quarterly · refresh the candidate-niche taxonomy
 # to matter and far enough from the other quota-spending lanes to never
 # compete with them.
 #
-# 08:00 UTC on the 1st of Jan/Apr/Jul/Oct, chosen to avoid every other
+# 03:00 CT on the 1st of Jan/Apr/Jul/Oct, chosen to avoid every other
 # schedule this repo already runs: Saturday (weekly-score), Sunday
-# (sun-rank), Monday (mon-draft), and the daily 14:00 UTC upload window.
+# (sun-rank), Monday (mon-draft), and the daily 09:00 CT upload window.
 on:
   schedule:
-    - cron: '0 8 1 1,4,7,10 *'
+    - cron: '0 3 1 1,4,7,10 *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       budget:

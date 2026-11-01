@@ -9,10 +9,11 @@ name: loop · Sat 06:00 · score demand ÷ competition
 # healthy doing it - so the stage hard-fails when it ranks nothing, and
 # loop/cadence.py raises on a ranking older than the staleness threshold.
 #
-# 10:00 UTC is 06:00 America/New_York during EDT.
+# 05:00 America/Chicago (06:00 America/New_York) all year, timezone-pinned.
 on:
   schedule:
-    - cron: '0 10 * * 6'
+    - cron: '0 5 * * 6'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

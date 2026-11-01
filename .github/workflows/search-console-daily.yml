@@ -25,9 +25,10 @@ name: search console · daily truth, coverage and sitemap status
 
 on:
   schedule:
-    # 09:40 UTC daily, after Google has finalised the previous day. Off the hour:
+    # 04:40 CT daily, after Google has finalised the previous day. Off the hour:
     # scheduled runs bunch on the hour and are dropped under load.
-    - cron: '40 9 * * *'
+    - cron: '40 4 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

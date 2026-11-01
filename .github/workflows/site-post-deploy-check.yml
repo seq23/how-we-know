@@ -22,9 +22,10 @@ on:
     branches: [main]
     types: [completed]
   schedule:
-    # 11:20 UTC daily. Off the hour: scheduled runs bunch on the hour and are
+    # 06:20 CT daily. Off the hour: scheduled runs bunch on the hour and are
     # dropped under load, and nothing here needs a particular minute.
-    - cron: '20 11 * * *'
+    - cron: '20 6 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

@@ -140,7 +140,7 @@ with tempfile.TemporaryDirectory() as td:
     d = Path(td) / "workflows"
     shutil.copytree(ROOT / ".github" / "workflows", d)
     p = d / "loop-food-author.yml"
-    p.write_text(p.read_text().replace("    - cron: '0 19 * * 1'", "    # - cron: '0 19 * * 1'"))
+    p.write_text(p.read_text().replace("    - cron: '0 14 * * 1'", "    # - cron: '0 14 * * 1'"))
     expect_fail("commented cron", run(workflows_dir=d), "has no uncommented schedule cron")
 
 # 7. an agent nothing loaded

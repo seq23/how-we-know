@@ -8,7 +8,8 @@ name: loop · 1st 07:00 · monthly review
 # a JSON file. A finding nobody sees is the same as no finding.
 on:
   schedule:
-    - cron: '12 7 1 * *'
+    - cron: '12 2 1 * *'  # America/Chicago, all year
+      timezone: America/Chicago
   # On demand (owner, 2026-10-12): the monthly EMAIL for this month to date.
   # `full-review` also re-runs loop/monthly.py, which may change
   # loop/config.json, so it is opt-in; the default only reports.

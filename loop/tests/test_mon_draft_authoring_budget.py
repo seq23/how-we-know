@@ -146,8 +146,15 @@ def check() -> list[str]:
                      f"the slot is the whole night")
     # The slot, read from the workflows themselves.
     m2 = re.search(r"cron:\s*'0 (\d+) \* \* 1'", text)
-    if not m2 or int(m2.group(1)) != 5:
-        fails.append("loop-mon-draft.yml no longer starts at 05:00 UTC Monday "
+    # Every slot below is read as America/Chicago wall-clock time, so each
+    # workflow compared here must pin that zone (1 Nov 2026: a bare UTC hour
+    # drifted an hour every November).
+    for _wf in [WF, WF.parent / "loop-upload-cloud.yml"]:
+        if "timezone: America/Chicago" not in _wf.read_text():
+            fails.append(f"{_wf.name} has no `timezone: America/Chicago` on its "
+                         f"schedule, so its cron hour is not Central time")
+    if not m2 or int(m2.group(1)) != 0:
+        fails.append("loop-mon-draft.yml no longer starts at 00:00 CT Monday "
                      "(owner 2026-10-12: the overnight free-tier window); "
                      "re-derive AUTHORING_BUDGET_MIN against the next lane in "
                      "the loop-state group")
@@ -160,8 +167,8 @@ def check() -> list[str]:
             fails.append("loop-upload-cloud.yml has no daily cron to fit before")
         elif end >= int(up.group(1)) * 60:
             fails.append(f"budget {draft.AUTHORING_BUDGET_MIN} + "
-                         f"{CEILING_HEADROOM_MIN} from {start // 60:02d}:00 UTC "
-                         f"reaches {up.group(1)}:00 UTC, when "
+                         f"{CEILING_HEADROOM_MIN} from {start // 60:02d}:00 CT "
+                         f"reaches {up.group(1)}:00 CT, when "
                          f"loop-upload-cloud.yml joins the loop-state queue")
         seen = 0
         for wf in sorted(WF.parent.glob("*.yml")):
@@ -171,11 +178,14 @@ def check() -> list[str]:
             for mm, hh, dom, mon, dow in re.findall(
                     r"cron:\s*'(\d+) (\d+) (\S+) (\S+) (\S+)'", t):
                 seen += 1
+                if "timezone: America/Chicago" not in t:
+                    fails.append(f"{wf.name} has no `timezone: America/Chicago`, "
+                                 f"so its {hh}:{mm} is not comparable to the slot")
                 if dom != "*" or dow not in ("*", "1"):
                     continue
                 at = int(hh) * 60 + int(mm)
                 if start <= at < end:
-                    fails.append(f"{wf.name} ({hh}:{mm} UTC) fires inside the "
+                    fails.append(f"{wf.name} ({hh}:{mm} CT) fires inside the "
                                  f"Monday authoring window")
         if seen == 0:
             fails.append("found ZERO other loop-state crons to check the slot "

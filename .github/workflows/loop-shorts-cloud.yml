@@ -17,7 +17,7 @@ name: loop · daily 18:00 CT · publish a Short from R2
 # There is deliberately no ffmpeg and no Pillow step: this lane does not cut,
 # it publishes.
 #
-# 23:00 UTC is 18:00 America/Chicago during CDT — an hour before the earliest
+# 18:00 America/Chicago all year (timezone-pinned) — an hour before the earliest
 # slot it hands out, so a Short is never uploaded after the time it was meant to
 # go live. The slots themselves are computed in local time and do not drift when
 # the clocks change, even though this cron does.
@@ -49,7 +49,8 @@ on:
   # lane_evidence.json says, and a fresh loop/arming.py record_success() call
   # from it updates lane_evidence.json to the new proof.
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 18 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       limit:

@@ -1,11 +1,12 @@
 name: loop · Sun 06:00 · rank topics
 
 # The brain half of the loop. Mines demand, ranks it, and proposes the week.
-# Cron is UTC; 10:00 UTC is 06:00 America/New_York during EDT (11:00 UTC in EST
-# — the loop is a weekly cadence, so a one-hour DST drift is immaterial).
+# Cron is America/Chicago: 05:00 CT is 06:00 America/New_York all year
+# (timezone-pinned, so the clock change no longer moves it).
 on:
   schedule:
-    - cron: '0 10 * * 0'
+    - cron: '0 5 * * 0'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

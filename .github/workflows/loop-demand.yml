@@ -3,16 +3,16 @@ name: loop · daily demand + Mon 08:30 CT email
 # PHASE 4, THE DEMAND VERDICT (owner brief, 13 Oct 2026). The loop measured
 # SUPPLY (did it publish) and never DEMAND (do strangers click and stay).
 #
-#   daily 13:30 UTC  loop/demand.py pull  - per-video Analytics for every
+#   daily 08:30 CT   loop/demand.py pull  - per-video Analytics for every
 #                    public long-form video (Shorts excluded by the ledger),
 #                    30-second retention, the verdict against the owner's
 #                    floors, and the automatic second packaging (title + next
 #                    thumbnail variant; title only during a Studio test).
 #   Mon, same run    loop/demand.py email - one page, every number traced to
-#                    loop/state/demand.json or refused. 13:30 UTC is 08:30
-#                    Central in CDT (07:30 in CST), after the Monday search
-#                    report and the Monday authoring window (ends 13:20 UTC),
-#                    before the 14:00 UTC upload lane; the email reads the
+#                    loop/state/demand.json or refused. 08:30 Central all
+#                    year (timezone-pinned), after the Monday search
+#                    report and the Monday authoring window (ends 08:20 CT),
+#                    before the 09:00 CT upload lane; the email reads the
 #                    pull that just ran; delivered exactly like the Sunday digest: a NEW
 #                    issue that @-mentions the owner, titled by the .subject.
 #
@@ -20,7 +20,8 @@ name: loop · daily demand + Mon 08:30 CT email
 # `python loop/demand.py ingest-studio <csv>` (RUNBOOK.md, Monday Studio read).
 on:
   schedule:
-    - cron: '30 13 * * *'
+    - cron: '30 8 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       step:
@@ -93,7 +94,7 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        if: always() && ((github.event_name == 'schedule' && startsWith(github.event.schedule, '30 13')) || inputs.step == 'email' || inputs.step == 'both')
+        if: always() && ((github.event_name == 'schedule' && startsWith(github.event.schedule, '30 8 ')) || inputs.step == 'email' || inputs.step == 'both')
         run: |
           # Scheduled: Mondays only (Central). Dispatched: whenever asked.
           if [ "${{ github.event_name }}" = "schedule" ] && [ "$(TZ=America/Chicago date +%u)" != "1" ]; then

@@ -19,12 +19,13 @@ name: loop · Sat 04:00 UTC · grow the rights-cleared footage pool
 # bin/loop-stage.sh. Without that the harvest would happen on the runner and be
 # thrown away, which is a green tick over nothing.
 #
-# Saturday 04:00 UTC sits clear of every other cron in this repo and a full day
+# Friday 23:00 CT (Saturday 04:00 UTC in summer) sits clear of every other cron in this repo and a full day
 # ahead of the Sunday ranking lane, so a week's new material is already cleared
 # and committed by the time topics are picked.
 on:
   schedule:
-    - cron: '0 4 * * 6'
+    - cron: '0 23 * * 5'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
     inputs:
       dry_run:

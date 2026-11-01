@@ -4,7 +4,8 @@ name: loop · Fri 09:00 · flip to public
 # happened. Refuses while the circuit breaker is tripped.
 on:
   schedule:
-    - cron: '0 13 * * 5'
+    - cron: '0 8 * * 5'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

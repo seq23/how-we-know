@@ -4,7 +4,8 @@ name: loop · Fri 17:00 · measure
 # on the retention floor or on a strike. Sunday's ranking reads what this writes.
 on:
   schedule:
-    - cron: '0 21 * * 5'
+    - cron: '0 16 * * 5'  # America/Chicago, all year
+      timezone: America/Chicago
   workflow_dispatch:
 
 permissions:

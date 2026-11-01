@@ -569,26 +569,30 @@ in brackets. "Calls a model?" is derived from code, not kept by hand:
 `loop/*.py` to `llm_router.complete()` and fails if this column disagrees with it,
 and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no row.
 
+Every cron below is written in Central time and carries `timezone: America/Chicago`
+(GitHub Actions honours it), so the clock change in March and November no longer
+moves a lane. Rebalanced 1 Nov 2026: the entity backlink watch moved Mon → Thu 07:20 CT.
+
 | Lane | When | What it does | Calls a model? |
 |---|---|---|---|
-| `loop-sat-score` | Sat 05:00 (`0 10 * * 6`) | Runs the research agent's demand/competition pass so the publish order is re-derived on current data every week. | no |
-| `loop-sun-rank` | Sun 05:00 (`0 10 * * 0`) | The brain half of the loop: mines demand, ranks it, and proposes the week. | no |
-| `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week, whatever the week was: its subject is one plain sentence, worst problem first (see "Digest" below). | no |
-| `loop-mon-draft` | Sun night 00:00 (`0 5 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet (480-minute authoring budget, 500-minute job ceiling, pinned by `loop/tests/test_mon_draft_authoring_budget.py`; done by 13:20 UTC, before the 14:00 UTC upload lane), promotes validated drafts to `scripts/`, and rebuilds the dashboard. | yes |
+| `loop-sat-score` | Sat 05:00 (`0 5 * * 6`) | Runs the research agent's demand/competition pass so the publish order is re-derived on current data every week. | no |
+| `loop-sun-rank` | Sun 05:00 (`0 5 * * 0`) | The brain half of the loop: mines demand, ranks it, and proposes the week. | no |
+| `loop-sun-digest` | Sun 11:00 (`0 11 * * 0`) | The one email a week, whatever the week was: its subject is one plain sentence, worst problem first (see "Digest" below). | no |
+| `loop-mon-draft` | Sun night 00:00 (`0 0 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet (480-minute authoring budget, 500-minute job ceiling, pinned by `loop/tests/test_mon_draft_authoring_budget.py`; done by 08:20 CT, before the 09:00 CT upload lane), promotes validated drafts to `scripts/`, and rebuilds the dashboard. | yes |
 | Mac render batch | daily 23:00 on her Mac (launchd, `bin/loop-install-launchd.sh` → `bin/batch-session.sh`) | Narrates every script that has no audio, renders every episode that has audio but no video, and pushes the results out for uploading; it reads `loop/render_queue.json`. | yes — `loop/extend.py` heals short episodes; the $0 route only, the Mac holds no subscription token |
-| `loop-food-author` | Mon 14:00 (`0 19 * * 1`) | The food lane's cloud half: writes the next food episode (three queued food topics as one "<Food>, <Food>, <Food>: What's Inside?" script), a footage kit per food and its queue row; one episode in flight at a time (`loop/food_author.py`). | yes — the same $0 route as mon-draft |
+| `loop-food-author` | Mon 14:00 (`0 14 * * 1`) | The food lane's cloud half: writes the next food episode (three queued food topics as one "<Food>, <Food>, <Food>: What's Inside?" script), a footage kit per food and its queue row; one episode in flight at a time (`loop/food_author.py`). | yes — the same $0 route as mon-draft |
 | Mac food nights | Tue + Thu 22:58 on her Mac (launchd `com.howweknow.food` → `bin/food-session.sh`) | Footage, voice, render and stitch of that food episode, held to the food contract, then shelved for the upload lane. Holds the batch's lock, so the batch stands down those two nights. | no |
-| `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
-| `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
-| `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
-| `loop-repackage` | daily 18:30 (`30 23 * * *`) + apply-only 03:30 CDT / 02:30 CST (`30 8 * * 0,2-6`, first in the PT quota day) | Long-form repackage (your decisions of 12-13 Oct 2026), forward only: drafts a passing long-form title for every script not yet uploaded and puts new titles and contract thumbnails on videos already up (public or scheduled). Dispatched with `reschedule=true` it re-dates scheduled videos onto the rotation. Never uploads, deletes or privates anything. | yes (long-form titles) |
-| `loop-demand` | daily 08:30 (`30 13 * * *`); the email Mondays in the same run | Phase 4: per-video demand for every public long-form video, the verdict against your floors, an automatic second title and thumbnail for a video failing every bar after 7 days (two rounds at most), and the Monday demand email (see "Demand" below). | yes (a second-packaging title) |
-| `loop-fri-publish` | Fri 08:00 (`0 13 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
-| `loop-fri-measure` | Fri 16:00 (`0 21 * * 5`) | Pulls retention and RPM, writes measurement, and can trip the circuit breaker. | no |
-| `loop-imagery-harvest` | Fri 23:00 (`0 4 * * 6`) | Grows the rights-cleared footage pool ahead of demand. | no |
-| `loop-quarterly-taxonomy-refresh` | 1st of Jan/Apr/Jul/Oct 03:00 (`0 8 1 1,4,7,10 *`) | Refreshes the ranked candidate-niche taxonomy the next domain is drawn from. | no |
+| `loop-upload-cloud` | daily 09:00 (`0 9 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
+| `loop-reach` | daily 10:00 (`0 10 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
+| `loop-shorts-cloud` | daily 18:00 (`0 18 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
+| `loop-repackage` | daily 18:30 (`30 18 * * *`) + apply-only 03:30 (`30 3 * * 0,2-6`, first in the PT quota day) | Long-form repackage (your decisions of 12-13 Oct 2026), forward only: drafts a passing long-form title for every script not yet uploaded and puts new titles and contract thumbnails on videos already up (public or scheduled). Dispatched with `reschedule=true` it re-dates scheduled videos onto the rotation. Never uploads, deletes or privates anything. | yes (long-form titles) |
+| `loop-demand` | daily 08:30 (`30 8 * * *`); the email Mondays in the same run | Phase 4: per-video demand for every public long-form video, the verdict against your floors, an automatic second title and thumbnail for a video failing every bar after 7 days (two rounds at most), and the Monday demand email (see "Demand" below). | yes (a second-packaging title) |
+| `loop-fri-publish` | Fri 08:00 (`0 8 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
+| `loop-fri-measure` | Fri 16:00 (`0 16 * * 5`) | Pulls retention and RPM, writes measurement, and can trip the circuit breaker. | no |
+| `loop-imagery-harvest` | Fri 23:00 (`0 23 * * 5`) | Grows the rights-cleared footage pool ahead of demand. | no |
+| `loop-quarterly-taxonomy-refresh` | 1st of Jan/Apr/Jul/Oct 03:00 (`0 3 1 1,4,7,10 *`) | Refreshes the ranked candidate-niche taxonomy the next domain is drawn from. | no |
 | `loop-override` | manual (an issue opened or edited) | The veto path: a row dropped from the dashboard opens a prefilled issue and this ingests it. | no |
-| `loop-monthly-review` | 1st 02:12 (`12 7 1 * *`) — its own `main-automation` queue | Reads a month of measurement, says what to change, and sends the monthly email (see "Monthly email" below). | yes (the advisory and the email's paragraph) |
+| `loop-monthly-review` | 1st 02:12 (`12 2 1 * *`) — its own `main-automation` queue | Reads a month of measurement, says what to change, and sends the monthly email (see "Monthly email" below). | yes (the advisory and the email's paragraph) |
 
 Every lane above except the Mac batch and the monthly review shares the one
 `loop-state` concurrency queue, and GitHub keeps only one waiting run per group,
