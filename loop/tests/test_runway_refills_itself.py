@@ -244,6 +244,45 @@ if set(promoted) & BAD:
 if len(validated) > 8:
     fails.append(f"attempts not bounded at twice the cap: {validated}")
 
+# ------- 3. the runway counts what will AIR; food rows count for the miner
+import batch_queue                                          # noqa: E402
+import cadence                                              # noqa: E402
+
+inv = [{"slug": s} for s in ("deep-a", "food-batch-1", "food-batch-2")]
+saved = (cadence.ordered_inventory, cadence.ledger.inventory,
+         cadence.ledger.published_slugs, batch_queue.food_batch_made,
+         batch_queue.food_entries, batch_queue.queued_entries,
+         batch_queue.food_made, batch_queue.is_food)
+try:
+    cadence.ordered_inventory = lambda: (list(inv), {})
+    cadence.ledger.inventory = lambda: list(inv)
+    cadence.ledger.published_slugs = lambda: {"food-aired"}
+    batch_queue.food_batch_made = lambda slug: slug.startswith("food-batch")
+    batch_queue.food_entries = lambda: [{"slug": "food-made"},
+                                        {"slug": "food-aired"}]
+    rw = cadence.runway(6)
+    batch_queue.queued_entries = lambda: [
+        {"slug": "food-todo", "domain": "food-science"},
+        {"slug": "food-made", "domain": "food-science"},
+        {"slug": "food-batch-1", "domain": "food-science"},
+        {"slug": "food-aired", "domain": "food-science"}]
+    batch_queue.food_made = lambda slug: slug in ("food-made", "food-aired")
+    batch_queue.is_food = lambda r: (r.get("domain") if isinstance(r, dict)
+                                     else "") == "food-science"
+    food_count = len(batch_queue.food_unmade())
+finally:
+    (cadence.ordered_inventory, cadence.ledger.inventory,
+     cadence.ledger.published_slugs, batch_queue.food_batch_made,
+     batch_queue.food_entries, batch_queue.queued_entries,
+     batch_queue.food_made, batch_queue.is_food) = saved
+if rw["publishable"] != 2:
+    fails.append(f"runway counted {rw['publishable']} publishable, want 2 "
+                 f"(deep-a + the food pipeline's unaired script; batch-made "
+                 f"food scripts never air)")
+if food_count != 1:
+    fails.append(f"food rows the food pipeline has yet to make: {food_count}, "
+                 f"want 1 (food-todo)")
+
 print(f"examined {len(picked)} candidate(s), {len(validated)} rebuild draft(s)")
 for f in fails:
     print(f"  ✗ {f}")

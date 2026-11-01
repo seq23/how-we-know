@@ -632,7 +632,7 @@ def score_new_domains(st: Stage) -> None:
         st.note(f"{dom} holds weekly slots and has fewer than "
                 f"{batch_queue.MIN_UNWRITTEN_TOPICS} unwritten, non-duplicate "
                 f"topics queued; mining and running the gate for it")
-        grow_thin_domain_seeds(st, dom)
+        grew = grow_thin_domain_seeds(st, dom)
         def stamp():
             try:
                 return path.stat().st_mtime_ns
@@ -659,6 +659,14 @@ def score_new_domains(st: Stage) -> None:
                         f"{path.relative_to(ROOT)} (under the floor)")
             line = next(ln for ln in gout.splitlines()
                         if "NAMED STOP DOMAIN_QUEUE_THIN" in ln)
+            if grew:
+                # Still under the floor, but the loop ACTED: new seeds were
+                # grown and mined this run. That is work in progress, not a
+                # stuck domain, and nothing in it waits on a person. Only a
+                # thin domain the free route could not grow is a stop.
+                st.work(f"{dom}: under the floor after mining {len(grew)} "
+                        f"newly grown seed(s); next Saturday grows more")
+                continue
             stops.append({
                 "domain": dom, "code": "DOMAIN_QUEUE_THIN",
                 "message": line.split(":", 1)[1].strip(),
