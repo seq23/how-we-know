@@ -156,6 +156,14 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
     """
     rw = cadence.runway(per_week)
     short = rw.get("short_domains") or ([] if rw["level"] == "ok" else ["any"])
+    # BUILD TO THE TARGET, NOT ONLY OUT OF THE ALARM (2026-11-01). Rebuilding
+    # only at warn (<= 4 weeks) with at most 3 extra a week let the runway
+    # settle at the alarm line: the week's own selection only replaces what
+    # the week consumes. Below runway.target_weeks the lane authors toward
+    # the target too, so the queue climbs back to it on its own.
+    target = float(cfg.get("runway", {}).get("target_weeks", 0) or 0)
+    if not short and rw["weeks_remaining"] < target:
+        short = ["any"]
     if not short:
         st.note(f"runway rebuild: not needed - {rw['message']}")
         return
@@ -191,9 +199,21 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
                     f"not in domains.allocation — refused, not authored")
     candidates = allocated_candidates
 
+    # THE CAP COUNTS SCRIPTS ADDED, NOT ATTEMPTS. candidates[:cap] let two
+    # V21 failures spend two of three slots (run 40310147557 added 1 of 3
+    # while two more queued topics sat untried). Attempts stay bounded at
+    # twice the cap; the deficit to the target bounds it from below.
     cap = int(cfg.get("runway", {}).get("rebuild_max_extra", 3))
+    if target:
+        import math as _m                                    # noqa: PLC0415
+        have = rw["weeks_remaining"] * rw["videos_per_week"]
+        deficit = _m.ceil(target * rw["videos_per_week"] - have)
+        if rw["level"] == "ok":
+            cap = max(1, min(cap, deficit))
     authored, failed = [], []
-    for row, dom in candidates[:cap]:
+    for row, dom in candidates[:cap * 2]:
+        if len(authored) >= cap:
+            break
         slug, question = row["slug"], row.get("query", row.get("question", ""))
         if deadline is not None and budget_exhausted(st, slug, deadline):
             failed.append(f"{slug}: [AUTHORING_BUDGET_EXHAUSTED] the "
