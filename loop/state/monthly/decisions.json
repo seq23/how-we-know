@@ -18,16 +18,18 @@
     },
     {
       "key": "retention.runtime_minutes",
-      "applied": true,
+      "applied": false,
       "from": 12.0,
       "to": 11.5,
       "why": "17 of 32 videos hold viewers under 2 min; month average 2.2 min (22% as YouTube reports it).",
       "month": "2026-11",
-      "at": "2026-11-01T08:19:37.403699+00:00"
+      "at": "2026-11-01T08:19:37.403699+00:00",
+      "blocked_by": "RUNTIME_BAND_BELOW_FLOOR",
+      "reverted": "2026-11-01: undone by hand. 15% under 11.5 is 9.78 min, below the owner's 10-minute floor, so V37 failed on main. loop/monthly.py bounds() now holds the review's lowest runtime at runtime_floor_minutes / (1 - runtime_tolerance_pct) = 11.77."
     },
     {
       "key": "domains.allocation",
-      "applied": true,
+      "applied": false,
       "from": {
         "deep-sea-ocean-science": 2,
         "materials-and-manufacturing": 2,
@@ -40,7 +42,9 @@
       },
       "why": "deep-sea-ocean-science's scored queue has decayed to 1 topic(s), below the 4 floor, after 17 measured episode(s). Its 2 weekly slot(s) pass to space-astronomy, the next-ranked domain in research/proposed-taxonomy.json (demand 0.7379). Retirement is decided by queue decay, never by one month of retention.",
       "month": "2026-11",
-      "at": "2026-11-01T08:19:37.403719+00:00"
+      "at": "2026-11-01T08:19:37.403719+00:00",
+      "blocked_by": "REPLACEMENT_NOT_ONBOARDED",
+      "reverted": "2026-11-01: undone by hand. space-astronomy was promoted with no tags, branding, playlist, sources, harvester or lanes, and every domain-keyed lane refused it (main red in three workflows). loop/domains.lifecycle() now promotes only a domain onboarding_gaps() finds ready; deep-sea-ocean-science keeps its slots until one is."
     }
   ]
 }

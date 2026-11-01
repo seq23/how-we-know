@@ -14,6 +14,11 @@ each refusal, by constructing the month rather than waiting years for one.
   4. with no unused domain left, retirement is refused, named
      NO_REPLACEMENT_DOMAIN - retirement is a swap, never a subtraction
   5. a healthy month changes nothing
+  8. a domain that is not ONBOARDED is never promoted: every running domain
+     reads ready, the real next-ranked one does not and is refused by name
+     (REPLACEMENT_NOT_ONBOARDED, allocation held), and a not-ready domain is
+     passed over for the next ready one (1 Nov 2026: space-astronomy was
+     promoted with nothing in place and main went red in three workflows)
   6. the SATURDAY HARVEST covers every allocated domain, and stops on one it
      cannot cover
   7. a queued slug with no script still counts toward its domain's depth -
@@ -82,8 +87,14 @@ def main() -> int:
           f"ceiling {ceiling}")
 
     # 1 + 2 -------------------------------------------------- retire, promote
-    with depth_of({d: (0 if d == victim else 20) for d in alloc}, [victim]):
-        d = D.lifecycle(cfg, evidence(alloc, need, victim))
+    # (the next-ranked domain is declared onboarded here; 8 proves the gate)
+    real_gaps = D.onboarding_gaps
+    D.onboarding_gaps = lambda name, c: []                     # noqa: ARG005
+    try:
+        with depth_of({d: (0 if d == victim else 20) for d in alloc}, [victim]):
+            d = D.lifecycle(cfg, evidence(alloc, need, victim))
+    finally:
+        D.onboarding_gaps = real_gaps
     check("a decayed, measured domain is retired", d.get("applied"),
           d.get("stop") or d.get("why", ""))
     check("the decayed domain is the one retired", d["retired"] == victim,
@@ -177,6 +188,51 @@ def main() -> int:
     check("out_path is derived from the domain name",
           POD.out_path(promoted).endswith(
               f"publish_order_{promoted.replace('-', '_')}.json"))
+
+    # 8 --------------------------------------- only an onboarded domain runs
+    for live in alloc:
+        g = D.onboarding_gaps(live, cfg)
+        check(f"running domain {live} reads as onboarded", not g, f"{g}")
+    nxt = D.next_unused(list(alloc))
+    gaps = D.onboarding_gaps(nxt, cfg) if nxt else []
+    if nxt and gaps:
+        with depth_of({d2: (0 if d2 == victim else 20) for d2 in alloc},
+                      [victim]):
+            held = D.lifecycle(cfg, evidence(alloc, need, victim))
+        check("a not-onboarded next domain is refused by name, allocation held",
+              not held.get("applied")
+              and held.get("stop") == "REPLACEMENT_NOT_ONBOARDED"
+              and held.get("allocation") == alloc
+              and nxt in (held.get("not_onboarded") or {}),
+              f"{held.get('stop')}: {held.get('why', '')[:160]}")
+    D.onboarding_gaps = lambda name, c: ["planted gap"]        # noqa: ARG005
+    try:
+        with depth_of({d2: (0 if d2 == victim else 20) for d2 in alloc},
+                      [victim]):
+            none_ready = D.lifecycle(cfg, evidence(alloc, need, victim))
+    finally:
+        D.onboarding_gaps = real_gaps
+    check("with no unused domain onboarded, nothing is promoted",
+          not none_ready.get("applied")
+          and none_ready.get("stop") == "REPLACEMENT_NOT_ONBOARDED"
+          and none_ready.get("allocation") == alloc,
+          f"{none_ready.get('stop') or none_ready.get('promoted')}")
+    unused = [n for n in D.known() if n not in alloc]
+    check("the taxonomy has two unused domains to rank", len(unused) >= 2,
+          f"{unused}")
+    first, second = unused[0], unused[1]
+    D.onboarding_gaps = lambda name, c: ([] if name == second  # noqa: ARG005
+                                         else ["planted gap"])
+    try:
+        with depth_of({d2: (0 if d2 == victim else 20) for d2 in alloc},
+                      [victim]):
+            skip = D.lifecycle(cfg, evidence(alloc, need, victim))
+    finally:
+        D.onboarding_gaps = real_gaps
+    check("a not-ready higher-ranked domain is passed over for a ready one",
+          skip.get("applied") and skip.get("promoted") == second
+          and first in (skip.get("passed_over") or {}),
+          f"{skip.get('stop') or skip.get('promoted')}")
 
     if CHECKS == 0:
         raise AssertionError("ran zero checks - an empty test proves nothing")

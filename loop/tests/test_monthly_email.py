@@ -212,7 +212,19 @@ mat_rows = long_pub + [{"slug": f"mat-m{i}", "question": f"m{i}", "video_id": f"
                         "scheduled_publish_at": "2026-09-0%dT15:00:00Z" % (i + 1)}
                        for i in range(8)]
 setup(long_rows=mat_rows, history=mat_hist, depth={DS: 6, MAT: 2})
-fired = M.build(TODAY, True, cfg, ask_model=False)
+# The real next-ranked domain is not onboarded (1 Nov 2026), so the swap is
+# held and the email says why; with it onboarded, the swap fires.
+held = M.build(TODAY, True, cfg, ask_model=False)
+check("domain swap is held while the next domain is not onboarded",
+      not held["rules"]["domain_swap"]["triggered"]
+      and "not onboarded" in held["rules"]["domain_swap"]["why"],
+      held["rules"]["domain_swap"]["why"][:200])
+_real_gaps = domains.onboarding_gaps
+domains.onboarding_gaps = lambda name, c: []                 # noqa: ARG005
+try:
+    fired = M.build(TODAY, True, cfg, ask_model=False)
+finally:
+    domains.onboarding_gaps = _real_gaps
 check("domain swap triggers on a decayed, measured queue",
       fired["rules"]["domain_swap"]["triggered"], fired["rules"]["domain_swap"]["why"])
 check("subject names the triggered rule in plain words",

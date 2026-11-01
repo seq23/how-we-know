@@ -389,6 +389,12 @@
       "escalation": "Six months with no replacement after two quarterly refreshes means the taxonomy refresh is not producing domains. Go red.",
       "plain": "a fading subject area keeps its slots because no new one is ready"
     },
+    "REPLACEMENT_NOT_ONBOARDED": {
+      "why": "Automated policy: the next-ranked domain lacks what the lanes need to run it (loop/domains.py onboarding_gaps names each gap), so the decayed domain keeps its slots and the Saturday miner keeps refilling it; the monthly review re-checks next month and promotes the first unused domain that is ready.",
+      "max_consecutive": 3,
+      "escalation": "Three months with no onboarded replacement means nobody is onboarding the next domain. Go red.",
+      "plain": "a fading subject area keeps its slots until the next one is set up"
+    },
     "RUNWAY_WARN": {
       "why": "Four weeks of runway left. Automated policy: the Monday lane authors from the queue, the Saturday miner refills thin queues and the Mac's nightly batch narrates and renders; publishing never halts. A green warning with the runway figures, not a page.",
       "max_consecutive": 3,

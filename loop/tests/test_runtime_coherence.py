@@ -28,7 +28,6 @@ wpm" after both had changed).
 from __future__ import annotations
 
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -43,7 +42,6 @@ def check() -> list[str]:
     cfg = json.loads((ROOT / "loop" / "config.json").read_text())
     import durations as D                                 # noqa: PLC0415
     import author as A                                     # noqa: PLC0415
-    monthly = (ROOT / "loop" / "monthly.py").read_text()
 
     target = float(cfg["retention"]["runtime_minutes"])
     floor_min_cfg = float(cfg["retention"]["runtime_floor_minutes"])
@@ -86,23 +84,46 @@ def check() -> list[str]:
                      f"{floor_min:.1f} min against a {target} min target — "
                      f"too slack to catch a short draft")
 
-    # 3 - the monthly review must not be able to undo the owner's floor
+    # 3 - the monthly review must not be able to undo the owner's floor, nor
+    # set a target whose tolerance band reaches below it (1 Nov 2026: it set
+    # 11.5, whose 15% band starts at 9.78, and V37 turned main red). Asserted
+    # on what the review actually WRITES, not on the fence's source text.
     examined += 1
-    b = re.search(r'"retention\.runtime_minutes":\s*\{"min":\s*([\d.]+),\s*"max":\s*([\d.]+)', monthly)
-    if not b:
-        fails.append("loop/monthly.py CHANGE_BOUNDS no longer names "
-                     "retention.runtime_minutes; the fence cannot be checked")
-    else:
-        lo, hi = float(b.group(1)), float(b.group(2))
-        if lo < floor_min_cfg:
-            fails.append(f"the monthly review may shorten runtime to {lo} min, "
-                         f"below the owner's {floor_min_cfg} min floor "
-                         f"(loop/config.json retention.runtime_floor_minutes). "
-                         f"Two thin months would silently reverse a decision "
-                         f"she made.")
-        if not (lo <= target <= hi):
-            fails.append(f"runtime_minutes {target} is outside the review's own "
-                         f"bounds {lo}-{hi}")
+    import tempfile                                        # noqa: PLC0415
+    import monthly as M                                    # noqa: PLC0415
+    tol = float(cfg["retention"].get("runtime_tolerance_pct", 0.0))
+    b = M.bounds("retention.runtime_minutes", cfg)
+    lo, hi = b["min"], b["max"]
+    if lo * (1 - tol / 100) < floor_min_cfg - 1e-9:
+        fails.append(f"the monthly review may set runtime to {lo} min, whose "
+                     f"{tol}% band starts at {lo * (1 - tol / 100):.2f}, below "
+                     f"the owner's {floor_min_cfg} min floor.")
+    real_cfg, real_recent = M.CONFIG, M.changed_recently
+    with tempfile.TemporaryDirectory() as td:
+        M.CONFIG = Path(td) / "config.json"
+        M.changed_recently = lambda key, mid: False        # noqa: ARG005
+        try:
+            for start in (hi, lo, 11.0):
+                c = json.loads(json.dumps(cfg))
+                c["retention"]["runtime_minutes"] = start
+                M.CONFIG.write_text(json.dumps(c))
+                for res in (M.apply_change("retention.runtime_minutes", start,
+                                           "2099-01", "test"),
+                            M.apply_absolute("retention.runtime_minutes", start,
+                                             4.0, "2099-01", "test")):
+                    examined += 1
+                    to = float(res["to"])
+                    if res["applied"] and to * (1 - tol / 100) < floor_min_cfg - 1e-9:
+                        fails.append(f"from {start} the review wrote {to} min; "
+                                     f"its {tol}% band starts at "
+                                     f"{to * (1 - tol / 100):.2f}, below the "
+                                     f"{floor_min_cfg} min floor.")
+                    M.CONFIG.write_text(json.dumps(c))
+        finally:
+            M.CONFIG, M.changed_recently = real_cfg, real_recent
+    if not (lo <= target <= hi):
+        fails.append(f"runtime_minutes {target} is outside the review's own "
+                     f"bounds {lo}-{hi}")
 
     if examined == 0:
         fails.append("examined 0 runtime facts — this test cannot see what it "

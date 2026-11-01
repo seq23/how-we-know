@@ -3479,9 +3479,23 @@ def v34_niche_lifecycle_is_acted_on() -> Result:
     # A queue empty for `victim`, full for everyone else.
     real_depth = _dom.queue_depth
     real_ex = _dom.exhausted
+    real_gaps = _dom.onboarding_gaps
     _dom.exhausted = lambda cfg, published=None: [victim]    # noqa: ARG005
     _dom.queue_depth = lambda: {d: (0 if d == victim else 20) for d in alloc}
     try:
+        # A replacement nothing can run must NOT be promoted (1 Nov 2026:
+        # space-astronomy was, and main went red): with every candidate
+        # missing onboarding, the allocation is held under a named stop.
+        _dom.onboarding_gaps = lambda name, c: ["planted gap"]  # noqa: ARG005
+        held = _dom.lifecycle(cfg, ev)
+        r.examined += 1
+        if held.get("applied") or held.get("stop") != \
+                "REPLACEMENT_NOT_ONBOARDED" or held.get("allocation") != alloc:
+            r.fail(f"with no onboarded replacement the lifecycle did not hold "
+                   f"the allocation under REPLACEMENT_NOT_ONBOARDED: "
+                   f"applied={held.get('applied')} stop={held.get('stop')}")
+        # The retirement itself, with the next-ranked domain onboarded.
+        _dom.onboarding_gaps = lambda name, c: []          # noqa: ARG005
         d = _dom.lifecycle(cfg, ev)
         r.examined += 1
         if not d.get("applied"):
@@ -3547,6 +3561,7 @@ def v34_niche_lifecycle_is_acted_on() -> Result:
     finally:
         _dom.queue_depth = real_depth
         _dom.exhausted = real_ex
+        _dom.onboarding_gaps = real_gaps
     return r
 
 
