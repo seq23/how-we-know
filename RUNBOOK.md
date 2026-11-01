@@ -571,7 +571,7 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 
 Every cron below is written in Central time and carries `timezone: America/Chicago`
 (GitHub Actions honours it), so the clock change in March and November no longer
-moves a lane. Rebalanced 1 Nov 2026: the entity backlink watch moved Mon → Thu 07:20 CT.
+moves a lane. Rebalanced 1 Nov 2026: the entity backlink watch moved Mon → Thu 07:00 CT.
 
 | Lane | When | What it does | Calls a model? |
 |---|---|---|---|
