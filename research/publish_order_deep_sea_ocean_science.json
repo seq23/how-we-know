@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-01T18:52:11.988127+00:00",
+  "generated_utc": "2026-11-01T21:21:06.784316+00:00",
   "generator": "research/publish_order_domain.py --domain deep-sea-ocean-science",
   "domain": "deep-sea-ocean-science",
   "gate_source": "research/publish_order.py, imported unchanged",
@@ -1218,16 +1218,22 @@
       "matched": "why-deep-sea-fish-die-when-brought-to-surface"
     },
     {
-      "query": "what lives in the deep",
+      "query": "how deep are olympic pools",
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "identical question key",
-      "matched": "what creatures live in the deep sea"
+      "rule": "same question with qualifiers added",
+      "matched": "how deep are pools"
     },
     {
       "query": "how do scientists know so much",
       "killed_by": "ALREADY_PUBLISHED",
       "rule": "this episode already exists",
       "matched": "how-do-scientists-know-so-much"
+    },
+    {
+      "query": "what lives in the deep",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
     },
     {
       "query": "why deep sea",
@@ -1326,6 +1332,12 @@
       "matched": "why are deep sea creatures so big"
     },
     {
+      "query": "how deep are pools",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how deep are pools"
+    },
+    {
       "query": "how deep is your love calvin harris",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1368,12 +1380,6 @@
       "matched": "how do scientists know how old something is"
     },
     {
-      "query": "how do scientists know the layers of the earth",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "earth know layer scientist"
-    },
-    {
       "query": "how do scientists know what dinosaurs looked like",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
@@ -1390,6 +1396,12 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "a made question plus an autocomplete tail",
       "matched": "deep diver helium sea use"
+    },
+    {
+      "query": "how do scientists date fossils",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "date fossil scientist"
     },
     {
       "query": "how do scientists determine the age of rocks",
@@ -1428,6 +1440,12 @@
       "matched": "deep"
     },
     {
+      "query": "how deep sea mining works",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep mining sea work"
+    },
+    {
       "query": "how deep the father's love for us",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1440,16 +1458,40 @@
       "matched": "deep"
     },
     {
-      "query": "how do scientists date fossils",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "date fossil scientist"
-    },
-    {
       "query": "how do scientists learn about wild animals",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
       "matched": "about animal learn scientist wild"
+    },
+    {
+      "query": "how does chemosynthesis work",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how does chemosynthesis work"
+    },
+    {
+      "query": "how giant tube worms survive at hydrothermal vents",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "giant hydrothermal surviv tube vent worm"
+    },
+    {
+      "query": "how mid oceanic ridge is formed",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "formed mid oceanic ridg"
+    },
+    {
+      "query": "is brine pool good for money",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "brin good money pool"
+    },
+    {
+      "query": "is giant isopod edible",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "is the giant isopod edible"
     },
     {
       "query": "what exists in the deepest part of the ocean",
@@ -1474,6 +1516,12 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "same content words, different interrogative",
       "matched": "why are deep sea creatures so big"
+    },
+    {
+      "query": "what is deep sea mining",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep mining sea"
     },
     {
       "query": "what is deep sea rust",
@@ -1504,6 +1552,12 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
       "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "where does chemosynthesis occur",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "where does chemosynthesis occur"
     },
     {
       "query": "why dead sea floating",
@@ -1542,6 +1596,12 @@
       "matched": "why deep sea creatures are so scary"
     },
     {
+      "query": "how are mid ocean ridges formed",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how is a mid-ocean ridge formed"
+    },
+    {
       "query": "how big nails",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
@@ -1564,12 +1624,6 @@
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "minecraft"
-    },
-    {
-      "query": "how deep are olympic pools",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
     },
     {
       "query": "how deep are septic tanks buried",
@@ -2064,6 +2118,12 @@
       "matched": "deep"
     },
     {
+      "query": "how deep is olympic pool",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how deep are pools"
+    },
+    {
       "query": "how deep is quicksand",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -2134,6 +2194,12 @@
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "movie"
+    },
+    {
+      "query": "how deep is the ocean short",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "how deep is the ocean song barbra streisand",
@@ -2790,12 +2856,6 @@
       "matched": "deep"
     },
     {
-      "query": "how deep the father's love for us stuart townend",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
-    },
-    {
       "query": "how deep the ocean is",
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
@@ -3012,6 +3072,18 @@
       "matched": "answer find scientist"
     },
     {
+      "query": "how does thermohaline circulation work",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how does thermohaline circulation work"
+    },
+    {
+      "query": "how is a mid ocean ridge formed",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how is a mid-ocean ridge formed"
+    },
+    {
       "query": "how long nails",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
@@ -3052,6 +3124,12 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how to complete brine pool bestiary",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "bestiary brin complet pool"
     },
     {
       "query": "how to deep fry zucchini",
@@ -3096,6 +3174,12 @@
       "matched": "warframe"
     },
     {
+      "query": "how to get brine pool exotic",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how does a deep-sea brine pool form, and why is it so exotic"
+    },
+    {
       "query": "how to get challenger deep rod",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
@@ -3108,6 +3192,66 @@
       "matched": "deep"
     },
     {
+      "query": "how to get gulper eel fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to get gulper eel in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to get vampire squid in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to open brine pool in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "is brine pool good",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "brin good pool"
+    },
+    {
+      "query": "what blobfish actually looks like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what does a blobfish actually look like"
+    },
+    {
+      "query": "what do vampire squid eat",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "what does a vampire squid look like"
+    },
+    {
+      "query": "what does a goblin shark look like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what does a goblin shark look like"
+    },
+    {
+      "query": "what does a greenland shark look like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what does a greenland shark look like"
+    },
+    {
+      "query": "what does a vampire squid look like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what does a vampire squid look like"
+    },
+    {
       "query": "what does the challenger deep look like",
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
@@ -3118,6 +3262,12 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
       "matched": "what is the midnight zone"
+    },
+    {
+      "query": "what is chemosynthesis in biology",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "biology chemosynthesi"
     },
     {
       "query": "what is dead sea in hindi",
@@ -3154,12 +3304,6 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "a made question plus an autocomplete tail",
       "matched": "deep rust sea"
-    },
-    {
-      "query": "what is deep sea mining",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "a made question plus an autocomplete tail",
-      "matched": "deep mining sea"
     },
     {
       "query": "what is deep sea port",
@@ -3214,6 +3358,24 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
       "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "where brine pool",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "brin pool"
+    },
+    {
+      "query": "where's brine pool in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "why blobfish look weird",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why do blobfish look weird"
     },
     {
       "query": "why deep sea creature",
@@ -3282,70 +3444,22 @@
       "matched": "creatur deep kill sea"
     },
     {
-      "query": "how deep is the ocean short",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "identical question key",
-      "matched": "what is the deepest part of the ocean"
+      "query": "what is mid atlantic ridge",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "atlantic mid ridg"
     },
     {
-      "query": "how deep sea mining works",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "a made question plus an autocomplete tail",
-      "matched": "deep mining sea work"
+      "query": "how deep is your love cover",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
     },
     {
-      "query": "how giant tube worms survive at hydrothermal vents",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "a made question plus an autocomplete tail",
-      "matched": "giant hydrothermal surviv tube vent worm"
-    },
-    {
-      "query": "how to get gulper eel fisch",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "fisch"
-    },
-    {
-      "query": "how to get gulper eel in fisch",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "fisch"
-    },
-    {
-      "query": "how to get vampire squid in fisch",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "fisch"
-    },
-    {
-      "query": "how to open brine pool in fisch",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "fisch"
-    },
-    {
-      "query": "is brine pool good for money",
-      "killed_by": "BROADER_ASK",
-      "rule": "same question, narrower phrasing",
-      "matched": "is brine pool good"
-    },
-    {
-      "query": "what do vampire squid eat",
-      "killed_by": "BROADER_ASK",
-      "rule": "same question, narrower phrasing",
-      "matched": "what does a vampire squid look like"
-    },
-    {
-      "query": "is brine pool good",
-      "killed_by": "BROADER_ASK",
-      "rule": "same question, narrower phrasing",
-      "matched": "where brine pool"
-    },
-    {
-      "query": "where's brine pool in fisch",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "fisch"
+      "query": "what is mid oceanic ridge",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "mid oceanic ridg"
     }
   ],
   "queue": [
@@ -4773,76 +4887,6 @@
       "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.31) -- uncontested because few ask it."
     },
     {
-      "slug": "why-greenland-shark-live-so-long",
-      "domain": "deep-sea-ocean-science",
-      "title": "Why greenland shark live so long?",
-      "query": "why greenland shark live so long",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.383 clears the 0.16 floor and title gap 0.60 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3831,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "greenland",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why greenland shark live so long",
-          "why do greenland sharks live so long"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:02.887568+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.483,
-        "title_gap": 0.6,
-        "title_coverage_mean": 0.537,
-        "strong_match_count": 8,
-        "results_examined": 20,
-        "median_views": 351512.5,
-        "p90_views": 1994090,
-        "median_subscribers": 235000.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 614,
-        "published_last_365d": 6,
-        "interpretation": "8 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.6,
-          "incumbent_subs": 0.233,
-          "view_ceiling": 0.208,
-          "staleness": 0.7
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:43.000821+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.4302,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.60, demand 0.38, opportunity 0.48."
-    },
-    {
       "slug": "what-does-a-vampire-squid-look-like",
       "domain": "deep-sea-ocean-science",
       "title": "What does a vampire squid look like?",
@@ -5052,286 +5096,122 @@
       "reason": "Middle of the field: title gap 0.80, demand 0.25, opportunity 0.53."
     },
     {
-      "slug": "what-is-mid-ocean-ridge",
+      "slug": "how-do-scientists-know-the-layers-of-the-earth",
       "domain": "deep-sea-ocean-science",
-      "title": "What is mid ocean ridge?",
-      "query": "what is mid ocean ridge",
+      "title": "How do scientists know the layers of the earth?",
+      "query": "how do scientists know the layers of the earth",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.263 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.389 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.2632,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "mid",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "what is mid ocean ridge",
-          "what is mid atlantic ridge"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:01.057194+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.475,
-        "title_gap": 0.4,
-        "title_coverage_mean": 0.717,
-        "strong_match_count": 12,
-        "results_examined": 20,
-        "median_views": 48560.5,
-        "p90_views": 609378,
-        "median_subscribers": 1103.0,
-        "channels_under_100k_subs": 15,
-        "median_age_days": 949,
-        "published_last_365d": 5,
-        "interpretation": "12 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.4,
-          "incumbent_subs": 0.565,
-          "view_ceiling": 0.331,
-          "staleness": 0.75
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:40.629845+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3536,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.40, demand 0.26, opportunity 0.47."
-    },
-    {
-      "slug": "how-to-complete-brine-pool-bestiary",
-      "domain": "deep-sea-ocean-science",
-      "title": "How to complete brine pool bestiary?",
-      "query": "how to complete brine pool bestiary",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.205 clears the 0.16 floor and title gap 0.70 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.2052,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "bestiary",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "how to complete brine pool bestiary",
-          "how to finish brine pool bestiary"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:04.702771+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.503,
-        "title_gap": 0.7,
-        "title_coverage_mean": 0.475,
-        "strong_match_count": 6,
-        "results_examined": 20,
-        "median_views": 24183.5,
-        "p90_views": 281690,
-        "median_subscribers": 44000.0,
-        "channels_under_100k_subs": 12,
-        "median_age_days": 279,
-        "published_last_365d": 16,
-        "interpretation": "6 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.7,
-          "incumbent_subs": 0.337,
-          "view_ceiling": 0.374,
-          "staleness": 0.2
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:45.604510+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3213,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.70, demand 0.21, opportunity 0.50."
-    }
-  ],
-  "killed": [
-    {
-      "slug": "where-brine-pool",
-      "domain": "deep-sea-ocean-science",
-      "title": "Where brine pool?",
-      "query": "where brine pool",
-      "gate": {
-        "verdict": "killed_provisional",
-        "failed": [
-          "saturation"
-        ],
-        "measurement": {
-          "demand_index": 0.3673,
-          "demand_floor": 0.16,
-          "title_gap": 0.15,
-          "saturation_ceiling": 0.3,
-          "autocomplete_completions": 3,
-          "corpus_breadth": 1
-        },
-        "reason": "title gap 0.15 is at or below the 0.3 saturation ceiling: 17 of the top 20 titles already answer this question squarely.",
-        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
-      },
-      "demand": {
-        "demand_index": 0.3673,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "brine",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "where brine pool",
-          "where is brine pool in fisch roblox",
-          "where is the brine pool rod"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:51:59.210107+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.237,
-        "title_gap": 0.15,
-        "title_coverage_mean": 0.925,
-        "strong_match_count": 17,
-        "results_examined": 20,
-        "median_views": 171103.5,
-        "p90_views": 740886,
-        "median_subscribers": 359000.0,
-        "channels_under_100k_subs": 6,
-        "median_age_days": 538,
-        "published_last_365d": 9,
-        "interpretation": "17 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.15,
-          "incumbent_subs": 0.206,
-          "view_ceiling": 0.252,
-          "staleness": 0.55
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:38.146274+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.295,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "SATURATED: 85% of the top 20 titles answer this question squarely (median 171,104 views, 359,000 subs). The definitive video exists."
-    },
-    {
-      "slug": "what-is-chemosynthesis-in-biology",
-      "domain": "deep-sea-ocean-science",
-      "title": "What is chemosynthesis in biology?",
-      "query": "what is chemosynthesis in biology",
-      "gate": {
-        "verdict": "killed_provisional",
-        "failed": [
-          "demand"
-        ],
-        "measurement": {
-          "demand_index": 0.1468,
-          "demand_floor": 0.16,
-          "title_gap": 0.75,
-          "saturation_ceiling": 0.3,
-          "autocomplete_completions": 1,
-          "corpus_breadth": 0
-        },
-        "reason": "demand_index 0.147 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
-        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
-      },
-      "demand": {
-        "demand_index": 0.1468,
+        "demand_index": 0.3892,
         "autocomplete_completions": 1,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
-        "key_term": "chemosynthesi",
+        "key_term": "layer",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "what is chemosynthesis in biology"
+          "how do scientists know the layers of the earth"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:10.186982+00:00"
+          "fetched_utc": "2026-11-01T21:21:03.131312+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.671,
-        "title_gap": 0.75,
-        "title_coverage_mean": 0.6,
-        "strong_match_count": 5,
+        "opportunity_score": 0.698,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.375,
+        "strong_match_count": 0,
         "results_examined": 20,
-        "median_views": 7264.5,
-        "p90_views": 225363,
-        "median_subscribers": 5215.0,
-        "channels_under_100k_subs": 14,
-        "median_age_days": 1389,
-        "published_last_365d": 2,
-        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "median_views": 424697.0,
+        "p90_views": 2343360,
+        "median_subscribers": 1235000.0,
+        "channels_under_100k_subs": 5,
+        "median_age_days": 1469,
+        "published_last_365d": 1,
+        "interpretation": "nobody has made the definitive video on this query",
         "components": {
-          "title_gap": 0.75,
-          "incumbent_subs": 0.469,
-          "view_ceiling": 0.448,
+          "title_gap": 1.0,
+          "incumbent_subs": 0.13,
+          "view_ceiling": 0.196,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:20:58.807468+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5212,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
+    },
+    {
+      "slug": "are-sea-pigs-real",
+      "domain": "deep-sea-ocean-science",
+      "title": "Are sea pigs real?",
+      "query": "are sea pigs real",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.222 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2222,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "pig",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "are sea pigs real",
+          "what is a sea pig",
+          "sea pig true facts"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:21:05.847149+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.728,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.65,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 48438.5,
+        "p90_views": 204229,
+        "median_subscribers": 314000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 1287,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.215,
+          "view_ceiling": 0.331,
           "staleness": 0.9
         },
         "provenance": {
@@ -5344,76 +5224,67 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:52.947279+00:00"
+          "fetched_utc": "2026-11-01T21:20:59.916702+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.3139,
+        "combined_score": 0.4022,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Middle of the field: title gap 0.75, demand 0.15, opportunity 0.67."
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.22) -- uncontested because few ask it."
     },
     {
-      "slug": "where-to-find-gulper-eel-dredge",
+      "slug": "what-does-a-sea-pig-look-like",
       "domain": "deep-sea-ocean-science",
-      "title": "Where to find gulper eel dredge?",
-      "query": "where to find gulper eel dredge",
+      "title": "What does a sea pig look like?",
+      "query": "what does a sea pig look like",
       "gate": {
-        "verdict": "killed_provisional",
-        "failed": [
-          "demand",
-          "saturation"
-        ],
-        "measurement": {
-          "demand_index": 0.1048,
-          "demand_floor": 0.16,
-          "title_gap": 0.3,
-          "saturation_ceiling": 0.3,
-          "autocomplete_completions": 1,
-          "corpus_breadth": 0
-        },
-        "reason": "demand_index 0.105 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.30 is at or below the 0.3 saturation ceiling: 14 of the top 20 titles already answer this question squarely.",
-        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own. Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.214 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.1048,
-        "autocomplete_completions": 1,
+        "demand_index": 0.2136,
+        "autocomplete_completions": 4,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
-        "key_term": "find",
+        "key_term": "pig",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "where to find gulper eel dredge"
+          "what does a sea pig look like",
+          "what is a sea pig",
+          "what does a pig look like",
+          "sea pig true facts"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:11.090233+00:00"
+          "fetched_utc": "2026-11-01T21:21:06.783827+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.455,
-        "title_gap": 0.3,
-        "title_coverage_mean": 0.675,
-        "strong_match_count": 14,
+        "opportunity_score": 0.678,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.512,
+        "strong_match_count": 2,
         "results_examined": 20,
-        "median_views": 5722.5,
-        "p90_views": 104855,
-        "median_subscribers": 506.0,
-        "channels_under_100k_subs": 19,
-        "median_age_days": 611,
-        "published_last_365d": 5,
-        "interpretation": "14 of 20 ranking titles squarely answer the query",
+        "median_views": 30217.0,
+        "p90_views": 204229,
+        "median_subscribers": 125000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 789,
+        "published_last_365d": 4,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
         "components": {
-          "title_gap": 0.3,
-          "incumbent_subs": 0.614,
-          "view_ceiling": 0.463,
-          "staleness": 0.75
+          "title_gap": 0.9,
+          "incumbent_subs": 0.272,
+          "view_ceiling": 0.36,
+          "staleness": 0.8
         },
         "provenance": {
           "endpoint": "https://www.googleapis.com/youtube/v3",
@@ -5425,20 +5296,94 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:54.264671+00:00"
+          "fetched_utc": "2026-11-01T21:21:01.234535+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.2184,
+        "combined_score": 0.3806,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Middle of the field: title gap 0.30, demand 0.10, opportunity 0.46."
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.21) -- uncontested because few ask it."
     }
   ],
-  "unmeasured": [],
+  "killed": [],
+  "unmeasured": [
+    {
+      "query": "what is mid ocean ridge",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "mid",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "what is mid ocean ridge",
+          "what is mid atlantic ridge"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:21:02.211733+00:00"
+        }
+      }
+    },
+    {
+      "query": "why greenland shark live so long",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "greenland",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why greenland shark live so long",
+          "why do greenland sharks live so long"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:21:04.032497+00:00"
+        }
+      }
+    },
+    {
+      "query": "where to find gulper eel dredge",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.1925,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "find",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "where to find gulper eel dredge"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:21:04.948705+00:00"
+        }
+      }
+    }
+  ],
   "parts_of_episodes": [],
-  "meets_floor_on_free_signals": [],
+  "meets_floor_on_free_signals": [
+    "what is mid ocean ridge",
+    "why greenland shark live so long",
+    "where to find gulper eel dredge"
+  ],
   "queue_length": 26
 }

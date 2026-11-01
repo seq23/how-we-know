@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-25T16:55:42.105580+00:00",
+  "generated_utc": "2026-11-01T21:31:42.922146+00:00",
   "generator": "research/publish_order_domain.py --domain materials-and-manufacturing",
   "domain": "materials-and-manufacturing",
   "gate_source": "research/publish_order.py, imported unchanged",
@@ -24,10 +24,46 @@
       "matched": "what-is-carbon-fiber-made-of"
     },
     {
+      "query": "how are microchips manufactured",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are microchips designed",
+      "killed_by": "ALREADY_PUBLISHED",
+      "rule": "this episode already exists",
+      "matched": "how-are-microchips-designed"
+    },
+    {
       "query": "why is steel so strong",
       "killed_by": "ALREADY_PUBLISHED",
       "rule": "this episode already exists",
       "matched": "why-is-steel-so-strong"
+    },
+    {
+      "query": "how are billions of microchips made from sand",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are microchips made cpu manufacturing process steps",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how strong is steel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same content words, different interrogative",
+      "matched": "why is steel so strong"
+    },
+    {
+      "query": "how to tell if steel is high carbon",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how to tell if steel is high carbon"
     },
     {
       "query": "how are microchips made in hindi",
@@ -37,9 +73,57 @@
     },
     {
       "query": "how computer chips are made in factory",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how microchips are made in factory",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how microchips are made manufacturing of a semiconductor",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are apple microchips made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are computer microchips made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are microchips made branch education",
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel",
+      "matched": "branch education"
+    },
+    {
+      "query": "how are microchips made so small",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are tiny microchips made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how is an ic made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
     },
     {
       "query": "how it's made candy",
@@ -48,13 +132,13 @@
       "matched": "how it's made"
     },
     {
-      "query": "how it's made crayons",
+      "query": "how it's made chocolate",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
     },
     {
-      "query": "how it's made discovery uk",
+      "query": "how it's made crayons",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
@@ -90,25 +174,67 @@
       "matched": "how it's made"
     },
     {
-      "query": "how it's made parody",
+      "query": "how microchips are made animation",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how microchips are made veritasium",
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel",
+      "matched": "veritasium"
+    },
+    {
+      "query": "is aluminum stronger than steel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "is aluminum stronger than steel"
+    },
+    {
+      "query": "what is carbon fiber made out of",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is carbon fiber made of"
+    },
+    {
+      "query": "does damascus steel rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "does damascus steel rust"
+    },
+    {
+      "query": "how are computer chips made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how are microchips made ted",
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel",
+      "matched": "ted"
+    },
+    {
+      "query": "how damascus steel is made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how is damascus steel made"
+    },
+    {
+      "query": "how i'm made xo-iq",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "i'm made"
+    },
+    {
+      "query": "how it's made",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
     },
     {
-      "query": "how i'm made xo-iq",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
-    },
-    {
-      "query": "how is an ic made",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
-    },
-    {
-      "query": "how it's made",
+      "query": "how it's made 2005",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
@@ -246,19 +372,13 @@
       "matched": "how it's made"
     },
     {
-      "query": "how it's made cars",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "how it's made"
-    },
-    {
       "query": "how it's made cheese",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
     },
     {
-      "query": "how it's made chocolate",
+      "query": "how it's made chicken nuggets",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
@@ -289,6 +409,12 @@
     },
     {
       "query": "how it's made discovery channel",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made discovery uk",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
@@ -396,7 +522,7 @@
       "matched": "how it's made"
     },
     {
-      "query": "how it's made fireworks",
+      "query": "how it's made food network",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
@@ -954,6 +1080,18 @@
       "matched": "how it's made"
     },
     {
+      "query": "how it's made paper",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made parody",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
       "query": "how it's made peanut butter",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
@@ -961,12 +1099,6 @@
     },
     {
       "query": "how it's made pencils",
-      "killed_by": "QUALIFIER_NOISE",
-      "rule": "autocomplete tail, not a topic",
-      "matched": "how it's made"
-    },
-    {
-      "query": "how it's made pickles",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how it's made"
@@ -1543,254 +1675,332 @@
     },
     {
       "query": "how quartz made",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "made quartz"
     },
     {
       "query": "how queen made we will rock you",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "made queen rock"
     },
     {
-      "query": "how are billions of microchips made from sand",
-      "killed_by": "BROADER_ASK",
-      "rule": "same question, narrower phrasing",
-      "matched": "how the microchips are made"
+      "query": "how the microchips are made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
     },
     {
       "query": "how tm88 made xo tour life",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "life made tm88 tour"
+    },
+    {
+      "query": "how was damascus steel originally made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how is damascus steel made"
     },
     {
       "query": "how x made sad",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "made"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "made sad"
+    },
+    {
+      "query": "is damascus steel better",
+      "killed_by": "ALREADY_PUBLISHED",
+      "rule": "this episode already exists",
+      "matched": "is-damascus-steel-better"
+    },
+    {
+      "query": "is damascus steel good",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "is damascus steel better"
+    },
+    {
+      "query": "is damascus steel worth it",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "is damascus steel better"
+    },
+    {
+      "query": "what are computer chips made of",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "chip computer made"
+    },
+    {
+      "query": "what is carbon fibre made of",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is carbon fiber made of"
+    },
+    {
+      "query": "what made xqc famous",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "famou made xqc"
+    },
+    {
+      "query": "why damascus steel is good",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same content words, different interrogative",
+      "matched": "is damascus steel better"
+    },
+    {
+      "query": "why spider silk is stronger than steel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "why is steel so strong"
+    },
+    {
+      "query": "why does stainless steel rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "rust stainl steel"
+    },
+    {
+      "query": "why doesn't stainless steel rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "doesn't rust stainl steel"
+    },
+    {
+      "query": "does steel rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "does damascus steel rust"
+    },
+    {
+      "query": "why does stainless steel not rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "not rust stainl steel"
+    },
+    {
+      "query": "why heat treatment of steel is necessary",
+      "killed_by": "exclusions.decide",
+      "admitted": false,
+      "rule": "Medical, health, dietary, supplement or mental-health advice",
+      "reason": "touches hard exclusion: Medical, health, dietary, supplement or mental-health advice",
+      "matched": "treatment"
+    },
+    {
+      "query": "why stainless steel rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "rust stainl steel"
+    },
+    {
+      "query": "how it's made for kids",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how microchips are actually made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how silicon wafer is made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how is a silicon wafer made"
+    },
+    {
+      "query": "how to avoid rust on steel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "avoid rust steel"
+    },
+    {
+      "query": "how to tell if steel is hardened",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how do you tell if steel is hardened"
+    },
+    {
+      "query": "how to make shape memory alloy",
+      "killed_by": "BROADER_ASK",
+      "rule": "same question, narrower phrasing",
+      "matched": "what is shape memory alloy"
+    },
+    {
+      "query": "how aerogel works",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "aerogel work"
+    },
+    {
+      "query": "how computer chips are actually manufactured",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how does heat treating steel work",
+      "killed_by": "exclusions.decide",
+      "admitted": false,
+      "rule": "Medical, health, dietary, supplement or mental-health advice",
+      "reason": "touches hard exclusion: Medical, health, dietary, supplement or mental-health advice",
+      "matched": "treating"
+    },
+    {
+      "query": "how it's made 1hr",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made intro song",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made meme",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made pickles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made theme song",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how microchips are made asml",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how are microchips made"
+    },
+    {
+      "query": "how microchips are made in hindi",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "hindi"
+    },
+    {
+      "query": "how silicon wafer are made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how is a silicon wafer made"
+    },
+    {
+      "query": "how silicon wafers are made in factory",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how is a silicon wafer made"
+    },
+    {
+      "query": "how to heat treat steel at home",
+      "killed_by": "exclusions.decide",
+      "admitted": false,
+      "rule": "Medical, health, dietary, supplement or mental-health advice",
+      "reason": "touches hard exclusion: Medical, health, dietary, supplement or mental-health advice",
+      "matched": "treat"
+    },
+    {
+      "query": "how to made quinoa",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "made quinoa"
+    },
+    {
+      "query": "how to make qr code",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "code make"
+    },
+    {
+      "query": "how to make xp farm",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "farm make"
+    },
+    {
+      "query": "how to stop rust on steel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "rust steel stop"
+    },
+    {
+      "query": "how xaviersobased made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "made xaviersobased"
+    },
+    {
+      "query": "is aerogel real",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "aerogel real"
+    },
+    {
+      "query": "what is aerogel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "what is aerogel made of"
+    },
+    {
+      "query": "why are ionic compounds brittle",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "brittl compound ionic"
+    },
+    {
+      "query": "why does iron rust",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "why does old iron not rust"
+    },
+    {
+      "query": "why glass is transparent in hindi",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "hindi"
+    },
+    {
+      "query": "why does metal feel cold",
+      "killed_by": "BROADER_ASK",
+      "rule": "same question, narrower phrasing",
+      "matched": "why is metal cold"
+    },
+    {
+      "query": "why titanium is so strong",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same content words, different interrogative",
+      "matched": "how strong is titanium"
+    },
+    {
+      "query": "how float glass is made",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "float gla made"
+    },
+    {
+      "query": "how investment casting works",
+      "killed_by": "exclusions.decide",
+      "admitted": false,
+      "rule": "Financial, investment, tax or legal advice",
+      "reason": "touches hard exclusion: Financial, investment, tax or legal advice",
+      "matched": "investment"
     }
   ],
   "queue": [
-    {
-      "slug": "how-microchips-are-made-veritasium",
-      "domain": "materials-and-manufacturing",
-      "title": "How microchips are made veritasium?",
-      "query": "how microchips are made veritasium",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.641 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.6411,
-        "autocomplete_completions": 4,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "veritasium",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how microchips are made veritasium",
-          "how microchips are made",
-          "how microchips were invented",
-          "how microchips are programmed"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:34.056651+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.659,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.233,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 4449603.5,
-        "p90_views": 24674273,
-        "median_subscribers": 2760000.0,
-        "channels_under_100k_subs": 4,
-        "median_age_days": 911,
-        "published_last_365d": 2,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.08,
-          "view_ceiling": 0.05,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:02.138444+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.65,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 4,449,604 views and 2,760,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-are-microchips-made-so-small",
-      "domain": "materials-and-manufacturing",
-      "title": "How are microchips made so small?",
-      "query": "how are microchips made so small",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.579 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5788,
-        "autocomplete_completions": 5,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "small",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how are microchips made so small",
-          "how are microchips made",
-          "how are transistors made so small",
-          "how are microchips designed",
-          "how are microchips manufactured"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:31.067574+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.687,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.333,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 1519687.0,
-        "p90_views": 11678733,
-        "median_subscribers": 185000.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 671,
-        "published_last_365d": 4,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.248,
-          "view_ceiling": 0.117,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:58.365472+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6306,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,519,687 views and 185,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-are-tiny-microchips-made",
-      "domain": "materials-and-manufacturing",
-      "title": "How are tiny microchips made?",
-      "query": "how are tiny microchips made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.569 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5685,
-        "autocomplete_completions": 5,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "tiny",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how are tiny microchips made",
-          "how are microchips manufactured",
-          "how it's made microchips",
-          "how it's made computer chips",
-          "how are microchips designed"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:32.044051+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.695,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.4,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 1123147.5,
-        "p90_views": 11678733,
-        "median_subscribers": 118250.0,
-        "channels_under_100k_subs": 10,
-        "median_age_days": 682,
-        "published_last_365d": 4,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.275,
-          "view_ceiling": 0.136,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:59.454776+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6286,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,123,148 views and 118,250 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
     {
       "slug": "how-are-microchips-designed",
       "domain": "materials-and-manufacturing",
@@ -1865,508 +2075,6 @@
       "reason": "Open field with real demand: 100% of top-20 titles do NOT answer the question, and demand index 0.55. Nobody has made this one."
     },
     {
-      "slug": "how-are-computer-microchips-made",
-      "domain": "materials-and-manufacturing",
-      "title": "How are computer microchips made?",
-      "query": "how are computer microchips made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.564 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5638,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "computer",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 4,
-        "sample_completions": [
-          "how are computer microchips made",
-          "how are computer chips made",
-          "how are computer chips manufactured"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:29.039240+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.693,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.45,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 1519688.5,
-        "p90_views": 11678733,
-        "median_subscribers": 214500.0,
-        "channels_under_100k_subs": 7,
-        "median_age_days": 682,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.238,
-          "view_ceiling": 0.117,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:55.905142+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6251,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,519,688 views and 214,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-are-microchips-manufactured",
-      "domain": "materials-and-manufacturing",
-      "title": "How are microchips manufactured?",
-      "query": "how are microchips manufactured",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.541 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5413,
-        "autocomplete_completions": 7,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "manufactured",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how are microchips manufactured",
-          "how are computer chips manufactured",
-          "how are microchips made",
-          "how are microchips made in hindi",
-          "how microchips are made animation"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:19.003515+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.704,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.325,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 1021487.0,
-        "p90_views": 4843527,
-        "median_subscribers": 119250.0,
-        "channels_under_100k_subs": 10,
-        "median_age_days": 679,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.275,
-          "view_ceiling": 0.142,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:44.106808+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6173,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,021,487 views and 119,250 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-are-apple-microchips-made",
-      "domain": "materials-and-manufacturing",
-      "title": "How are apple microchips made?",
-      "query": "how are apple microchips made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.559 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5595,
-        "autocomplete_completions": 4,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "apple",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 3,
-        "sample_completions": [
-          "how are apple microchips made",
-          "how apple processors are made",
-          "how are silicon chips made",
-          "how are computer chips made"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:28.026956+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.678,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.4,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 2080780.0,
-        "p90_views": 7015881,
-        "median_subscribers": 566500.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 718,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.178,
-          "view_ceiling": 0.097,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:54.694646+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6159,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,080,780 views and 566,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-microchips-are-made-animation",
-      "domain": "materials-and-manufacturing",
-      "title": "How microchips are made animation?",
-      "query": "how microchips are made animation",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.565 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5653,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "animation",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 8,
-        "sample_completions": [
-          "how microchips are made animation",
-          "how microchips are made",
-          "how is computer chip made"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:33.045147+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.668,
-        "title_gap": 0.95,
-        "title_coverage_mean": 0.417,
-        "strong_match_count": 1,
-        "results_examined": 20,
-        "median_views": 1588270.0,
-        "p90_views": 11678733,
-        "median_subscribers": 202000.0,
-        "channels_under_100k_subs": 7,
-        "median_age_days": 803,
-        "published_last_365d": 3,
-        "interpretation": "1 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.95,
-          "incumbent_subs": 0.242,
-          "view_ceiling": 0.114,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:00.532391+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6145,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 95% lexical title gap, but median 1,588,270 views and 202,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-strong-is-steel",
-      "domain": "materials-and-manufacturing",
-      "title": "How strong is steel?",
-      "query": "how strong is steel",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.552 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5523,
-        "autocomplete_completions": 10,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 2,
-        "key_term": "strong",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 3,
-        "sample_completions": [
-          "how strong is steel",
-          "how strong is steel dc",
-          "how strong is steel stick",
-          "how strong is steel epoxy",
-          "how good is steel ball run"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:21.008170+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.682,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.5,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 146767.0,
-        "p90_views": 9189922,
-        "median_subscribers": 170000.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 964,
-        "published_last_365d": 1,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.253,
-          "view_ceiling": 0.262,
-          "staleness": 0.95
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:46.562534+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6137,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.55. Nobody has made this one."
-    },
-    {
-      "slug": "how-are-microchips-made-branch-education",
-      "domain": "materials-and-manufacturing",
-      "title": "How are microchips made branch education?",
-      "query": "how are microchips made branch education",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.569 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5691,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "branch",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how are microchips made branch education",
-          "how are microchips made",
-          "how are microchips manufactured"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:30.052807+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.659,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.15,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 1892286.0,
-        "p90_views": 11118865,
-        "median_subscribers": 2760000.0,
-        "channels_under_100k_subs": 4,
-        "median_age_days": 622,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.08,
-          "view_ceiling": 0.103,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:57.058342+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6124,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,892,286 views and 2,760,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-damascus-steel-is-made",
-      "domain": "materials-and-manufacturing",
-      "title": "How damascus steel is made?",
-      "query": "how damascus steel is made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.545 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5454,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 3,
-        "key_term": "damascu",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 186,
-        "sample_completions": [
-          "how damascus steel is made",
-          "how damascus steel knives are made",
-          "how damascus knives are made"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:40.093918+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.659,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.633,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 718562.5,
-        "p90_views": 4958410,
-        "median_subscribers": 349000.0,
-        "channels_under_100k_subs": 7,
-        "median_age_days": 854,
-        "published_last_365d": 1,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.208,
-          "view_ceiling": 0.163,
-          "staleness": 0.95
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:09.296449+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5995,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.55. Nobody has made this one."
-    },
-    {
       "slug": "is-damascus-steel-better",
       "domain": "materials-and-manufacturing",
       "title": "Is damascus steel better?",
@@ -2436,428 +2144,6 @@
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
       "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.48) -- uncontested because few ask it."
-    },
-    {
-      "slug": "how-are-microchips-made-cpu-manufacturing-process-steps",
-      "domain": "materials-and-manufacturing",
-      "title": "How are microchips made cpu manufacturing process steps?",
-      "query": "how are microchips made cpu manufacturing process steps",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.523 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5232,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "cpu",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how are microchips made cpu manufacturing process steps",
-          "chip manufacturing how are microchips made"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:24.006120+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.631,
-        "title_gap": 0.85,
-        "title_coverage_mean": 0.358,
-        "strong_match_count": 3,
-        "results_examined": 20,
-        "median_views": 1115574.0,
-        "p90_views": 7015881,
-        "median_subscribers": 170000.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 912,
-        "published_last_365d": 2,
-        "interpretation": "3 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.85,
-          "incumbent_subs": 0.253,
-          "view_ceiling": 0.136,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:50.107386+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5746,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 1,115,574 views and 170,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-are-microchips-made-ted",
-      "domain": "materials-and-manufacturing",
-      "title": "How are microchips made ted?",
-      "query": "how are microchips made ted",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.508 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5078,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "ted",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how are microchips made ted",
-          "how are microchips made"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:39.076808+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.643,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.317,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 366123.0,
-        "p90_views": 11678733,
-        "median_subscribers": 345500.0,
-        "channels_under_100k_subs": 6,
-        "median_age_days": 634,
-        "published_last_365d": 4,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.209,
-          "view_ceiling": 0.205,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:08.135626+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5714,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.51. Nobody has made this one."
-    },
-    {
-      "slug": "how-the-microchips-are-made",
-      "domain": "materials-and-manufacturing",
-      "title": "How the microchips are made?",
-      "query": "how the microchips are made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.715 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.7151,
-        "autocomplete_completions": 8,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 17,
-        "key_term": "microchip",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 19,
-        "sample_completions": [
-          "how the microchips are made",
-          "how microchips are made animation",
-          "how microchips are made veritasium",
-          "how are microchips made so small",
-          "how computer chips are made"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:22.998547+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.447,
-        "title_gap": 0.5,
-        "title_coverage_mean": 0.625,
-        "strong_match_count": 10,
-        "results_examined": 20,
-        "median_views": 1256638.0,
-        "p90_views": 7015881,
-        "median_subscribers": 170000.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 777,
-        "published_last_365d": 3,
-        "interpretation": "10 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.5,
-          "incumbent_subs": 0.253,
-          "view_ceiling": 0.129,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:48.847562+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5654,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Strong demand (0.72) against partial coverage (50% title gap); winnable but contested."
-    },
-    {
-      "slug": "how-microchips-are-made-manufacturing-of-a-semiconductor",
-      "domain": "materials-and-manufacturing",
-      "title": "How microchips are made manufacturing of a semiconductor?",
-      "query": "how microchips are made manufacturing of a semiconductor",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.513 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5127,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "microchip",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 19,
-        "sample_completions": [
-          "how microchips are made manufacturing of a semiconductor"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:26.053427+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.621,
-        "title_gap": 0.85,
-        "title_coverage_mean": 0.45,
-        "strong_match_count": 3,
-        "results_examined": 20,
-        "median_views": 1021487.0,
-        "p90_views": 7015881,
-        "median_subscribers": 119250.0,
-        "channels_under_100k_subs": 10,
-        "median_age_days": 622,
-        "published_last_365d": 4,
-        "interpretation": "3 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.85,
-          "incumbent_subs": 0.275,
-          "view_ceiling": 0.142,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:52.479155+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5643,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 1,021,487 views and 119,250 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-microchips-are-made-in-factory",
-      "domain": "materials-and-manufacturing",
-      "title": "How microchips are made in factory?",
-      "query": "how microchips are made in factory",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.410 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4104,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "microchip",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 19,
-        "sample_completions": [
-          "how microchips are made in factory",
-          "how computer chips are made in factory"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:25.027474+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.698,
-        "title_gap": 0.95,
-        "title_coverage_mean": 0.583,
-        "strong_match_count": 1,
-        "results_examined": 20,
-        "median_views": 113856.5,
-        "p90_views": 3180716,
-        "median_subscribers": 3470.0,
-        "channels_under_100k_subs": 14,
-        "median_age_days": 547,
-        "published_last_365d": 9,
-        "interpretation": "1 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.95,
-          "incumbent_subs": 0.494,
-          "view_ceiling": 0.278,
-          "staleness": 0.55
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:24:51.362802+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5352,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.41) -- uncontested because few ask it."
-    },
-    {
-      "slug": "what-is-carbon-fibre-made-of",
-      "domain": "materials-and-manufacturing",
-      "title": "What is carbon fibre made of?",
-      "query": "what is carbon fibre made of",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.393 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3926,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "fibre",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what is carbon fibre made of",
-          "what is carbon fiber made out of"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:37.089777+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.703,
-        "title_gap": 0.95,
-        "title_coverage_mean": 0.483,
-        "strong_match_count": 1,
-        "results_examined": 20,
-        "median_views": 185207.0,
-        "p90_views": 1461706,
-        "median_subscribers": 115000.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 1249,
-        "published_last_365d": 2,
-        "interpretation": "1 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.95,
-          "incumbent_subs": 0.277,
-          "view_ceiling": 0.247,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:05.687868+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5254,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
     },
     {
       "slug": "how-to-tell-if-steel-is-hardened",
@@ -2999,77 +2285,6 @@
       "reason": "Middle of the field: title gap 0.80, demand 0.38, opportunity 0.69."
     },
     {
-      "slug": "what-is-carbon-fiber-made-out-of",
-      "domain": "materials-and-manufacturing",
-      "title": "What is carbon fiber made out of?",
-      "query": "what is carbon fiber made out of",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.417 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4167,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "out",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 2,
-        "sample_completions": [
-          "what is carbon fiber made out of",
-          "what is carbon fiber made of",
-          "what is carbon fibre made of"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:36.074883+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.584,
-        "title_gap": 0.75,
-        "title_coverage_mean": 0.55,
-        "strong_match_count": 5,
-        "results_examined": 20,
-        "median_views": 186243.0,
-        "p90_views": 2119374,
-        "median_subscribers": 151000.0,
-        "channels_under_100k_subs": 7,
-        "median_age_days": 919,
-        "published_last_365d": 4,
-        "interpretation": "5 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.75,
-          "incumbent_subs": 0.26,
-          "view_ceiling": 0.247,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:04.528693+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.4933,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.75, demand 0.42, opportunity 0.58."
-    },
-    {
       "slug": "is-aluminum-stronger-than-steel",
       "domain": "materials-and-manufacturing",
       "title": "Is aluminum stronger than steel?",
@@ -3209,63 +2424,477 @@
       "reason": "Middle of the field: title gap 0.45, demand 0.28, opportunity 0.47."
     },
     {
-      "slug": "how-materials-science-could-revolutionize-technology",
+      "slug": "is-damascus-steel-stronger",
       "domain": "materials-and-manufacturing",
-      "title": "How materials science could revolutionize technology?",
-      "query": "how materials science could revolutionize technology",
+      "title": "Is damascus steel stronger?",
+      "query": "is damascus steel stronger",
       "gate": {
-        "verdict": "killed_provisional",
-        "failed": [
-          "demand"
-        ],
-        "measurement": {
-          "demand_index": 0.1351,
-          "demand_floor": 0.16,
-          "title_gap": 0.9,
-          "saturation_ceiling": 0.3,
-          "autocomplete_completions": 2,
-          "corpus_breadth": 1
-        },
-        "reason": "demand_index 0.135 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
-        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.442 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.1351,
-        "autocomplete_completions": 2,
+        "demand_index": 0.4417,
+        "autocomplete_completions": 3,
         "exact_in_autocomplete": true,
         "corpus_breadth": 1,
-        "key_term": "could",
+        "key_term": "stronger",
         "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
+        "key_term_corpus_breadth": 6,
         "sample_completions": [
-          "how materials science could revolutionize technology",
-          "material science and technology"
+          "is damascus steel stronger",
+          "is damascus steel better",
+          "is damascus steel good"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:41.103627+00:00"
+          "fetched_utc": "2026-11-01T21:31:21.560971+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.801,
+        "opportunity_score": 0.722,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.517,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 111709.0,
+        "p90_views": 5531731,
+        "median_subscribers": 468000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 1116,
+        "published_last_365d": 1,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.19,
+          "view_ceiling": 0.279,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:30:52.387881+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5647,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.44) -- uncontested because few ask it."
+    },
+    {
+      "slug": "is-diamond-stronger-than-metal",
+      "domain": "materials-and-manufacturing",
+      "title": "Is diamond stronger than metal?",
+      "query": "is diamond stronger than metal",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.506 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5058,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "diamond",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "is diamond stronger than metal"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:27.373788+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.602,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.375,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 597706.0,
+        "p90_views": 25130590,
+        "median_subscribers": 116000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 606,
+        "published_last_365d": 4,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.277,
+          "view_ceiling": 0.175,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:00.144641+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5518,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.80, demand 0.51, opportunity 0.60."
+    },
+    {
+      "slug": "how-powder-metallurgy-works",
+      "domain": "materials-and-manufacturing",
+      "title": "How powder metallurgy works?",
+      "query": "how powder metallurgy works",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.386 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3858,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "metallurgy",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how powder metallurgy works",
+          "process of powder metallurgy"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:42.921284+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.774,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 122448.0,
+        "p90_views": 4773470,
+        "median_subscribers": 6800.0,
+        "channels_under_100k_subs": 14,
+        "median_age_days": 782,
+        "published_last_365d": 1,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.452,
+          "view_ceiling": 0.273,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:19.555748+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5465,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
+    },
+    {
+      "slug": "why-is-glass-clear",
+      "domain": "materials-and-manufacturing",
+      "title": "Why is glass clear?",
+      "query": "why is glass clear",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.553 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5531,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "clear",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why is glass clear",
+          "why is glass transparent"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:39.977902+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.531,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.575,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 1737277.5,
+        "p90_views": 27105694,
+        "median_subscribers": 1154000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 741,
+        "published_last_365d": 5,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.134,
+          "view_ceiling": 0.109,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:15.966786+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5419,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 75% lexical title gap, but median 1,737,278 views and 1,154,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "is-titanium-stronger-than-steel",
+      "domain": "materials-and-manufacturing",
+      "title": "Is titanium stronger than steel?",
+      "query": "is titanium stronger than steel",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.472 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4719,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "titanium",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "is titanium stronger than steel"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:23.504141+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.613,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.475,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 162982.5,
+        "p90_views": 11481969,
+        "median_subscribers": 79850.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 474,
+        "published_last_365d": 8,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.3,
+          "view_ceiling": 0.255,
+          "staleness": 0.6
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:30:55.483731+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5378,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.85, demand 0.47, opportunity 0.61."
+    },
+    {
+      "slug": "how-to-keep-steel-from-rusting",
+      "domain": "materials-and-manufacturing",
+      "title": "How to keep steel from rusting?",
+      "query": "how to keep steel from rusting",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.424 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4241,
+        "autocomplete_completions": 10,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "keep",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how to keep steel from rusting",
+          "how to keep steel from rusting without paint",
+          "how to prevent steel from rusting",
+          "how to keep damascus steel from rusting",
+          "how to keep stainless steel from rusting"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:37.051691+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.681,
         "title_gap": 0.9,
-        "title_coverage_mean": 0.44,
+        "title_coverage_mean": 0.2,
         "strong_match_count": 2,
         "results_examined": 20,
-        "median_views": 228.5,
-        "p90_views": 1041,
-        "median_subscribers": 838.0,
-        "channels_under_100k_subs": 19,
-        "median_age_days": 583,
+        "median_views": 86458.5,
+        "p90_views": 3823196,
+        "median_subscribers": 47800.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 822,
+        "published_last_365d": 4,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.332,
+          "view_ceiling": 0.295,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:12.284747+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5374,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.42) -- uncontested because few ask it."
+    },
+    {
+      "slug": "how-does-photolithography-work",
+      "domain": "materials-and-manufacturing",
+      "title": "How does photolithography work?",
+      "query": "how does photolithography work",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.402 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4023,
+        "autocomplete_completions": 5,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "photolithography",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how does photolithography work",
+          "how does lithography work",
+          "how does euv lithography work",
+          "how does offset lithography work",
+          "how photolithography works"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:41.956560+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.686,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.325,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 256644.0,
+        "p90_views": 2355437,
+        "median_subscribers": 47000.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 1347,
         "published_last_365d": 2,
         "interpretation": "2 of 20 ranking titles squarely answer the query",
         "components": {
           "title_gap": 0.9,
-          "incumbent_subs": 0.582,
-          "view_ceiling": 0.663,
+          "incumbent_subs": 0.333,
+          "view_ceiling": 0.227,
           "staleness": 0.9
         },
         "provenance": {
@@ -3278,18 +2907,1241 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-09-25T16:25:10.477392+00:00"
+          "fetched_utc": "2026-11-01T21:31:18.389554+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.329,
+        "combined_score": 0.5253,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.14) -- uncontested because few ask it."
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.40) -- uncontested because few ask it."
+    },
+    {
+      "slug": "how-does-3d-printing-metal-work",
+      "domain": "materials-and-manufacturing",
+      "title": "How does 3d printing metal work?",
+      "query": "how does 3d printing metal work",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.394 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3936,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "printing",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how does 3d printing metal work",
+          "how 3d printing metal works",
+          "how do metal 3d printers work",
+          "how does a metal 3d printer work"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:36.128447+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.695,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.383,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 114952.5,
+        "p90_views": 4261157,
+        "median_subscribers": 91100.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 749,
+        "published_last_365d": 4,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.291,
+          "view_ceiling": 0.277,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:11.125269+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.523,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
+    },
+    {
+      "slug": "how-strong-is-3d-printed-metal",
+      "domain": "materials-and-manufacturing",
+      "title": "How strong is 3d printed metal?",
+      "query": "how strong is 3d printed metal",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.411 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4111,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "printed",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how strong is 3d printed metal"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:32.273911+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.66,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.467,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 399464.0,
+        "p90_views": 4026314,
+        "median_subscribers": 79650.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 907,
+        "published_last_365d": 4,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.3,
+          "view_ceiling": 0.2,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:06.180495+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5209,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.41) -- uncontested because few ask it."
+    },
+    {
+      "slug": "why-is-glass-see-through",
+      "domain": "materials-and-manufacturing",
+      "title": "Why is glass see through?",
+      "query": "why is glass see through",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.449 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4487,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "see",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why is glass see through",
+          "why glass is transparent"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:35.172473+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.575,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.45,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 448342.5,
+        "p90_views": 7285175,
+        "median_subscribers": 846500.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 839,
+        "published_last_365d": 8,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.153,
+          "view_ceiling": 0.193,
+          "staleness": 0.6
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:09.731532+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5079,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.85, demand 0.45, opportunity 0.57."
+    },
+    {
+      "slug": "why-does-metal-shock-you",
+      "domain": "materials-and-manufacturing",
+      "title": "Why does metal shock you?",
+      "query": "why does metal shock you",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.380 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3803,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "shock",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does metal shock you"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:39.000839+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.63,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.4,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 216594.0,
+        "p90_views": 3220679,
+        "median_subscribers": 98700.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 631,
+        "published_last_365d": 5,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.287,
+          "view_ceiling": 0.238,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:14.826844+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4895,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.85, demand 0.38, opportunity 0.63."
+    },
+    {
+      "slug": "how-anodizing-works",
+      "domain": "materials-and-manufacturing",
+      "title": "How anodizing works?",
+      "query": "how anodizing works",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.346 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3463,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "anodizing",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how anodizing works",
+          "how to anodizing aluminum",
+          "how anodizing aluminum works"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:40.965731+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.675,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.475,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 201122.0,
+        "p90_views": 1126495,
+        "median_subscribers": 32400.0,
+        "channels_under_100k_subs": 12,
+        "median_age_days": 1172,
+        "published_last_365d": 1,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.356,
+          "view_ceiling": 0.242,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:17.129243+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4835,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.85, demand 0.35, opportunity 0.68."
+    },
+    {
+      "slug": "why-does-metal-rust-in-water",
+      "domain": "materials-and-manufacturing",
+      "title": "Why does metal rust in water?",
+      "query": "why does metal rust in water",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.320 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3195,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "rust",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "why does metal rust in water",
+          "why does metal rust"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:38.045860+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.72,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.517,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 96132.0,
+        "p90_views": 1286031,
+        "median_subscribers": 344000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 689,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.209,
+          "view_ceiling": 0.288,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:13.523394+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4796,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.32) -- uncontested because few ask it."
+    },
+    {
+      "slug": "is-steel-stronger-than-iron",
+      "domain": "materials-and-manufacturing",
+      "title": "Is steel stronger than iron?",
+      "query": "is steel stronger than iron",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.345 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.345,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "iron",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "is steel stronger than iron",
+          "iron vs steel",
+          "how strong is steel",
+          "is aluminum stronger than steel"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:22.541549+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.64,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 49902.0,
+        "p90_views": 976101,
+        "median_subscribers": 9720.0,
+        "channels_under_100k_subs": 15,
+        "median_age_days": 552,
+        "published_last_365d": 6,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.43,
+          "view_ceiling": 0.329,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:30:53.994344+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4699,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.80, demand 0.34, opportunity 0.64."
+    },
+    {
+      "slug": "why-are-metals-ductile",
+      "domain": "materials-and-manufacturing",
+      "title": "Why are metals ductile?",
+      "query": "why are metals ductile",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.186 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.186,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "ductile",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why are metals ductile",
+          "why are metals malleable and ductile"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:33.247359+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.653,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.475,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 15816.5,
+        "p90_views": 253216,
+        "median_subscribers": 12700.0,
+        "channels_under_100k_subs": 17,
+        "median_age_days": 965,
+        "published_last_365d": 2,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.414,
+          "view_ceiling": 0.4,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:07.274319+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3485,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.75, demand 0.19, opportunity 0.65."
+    },
+    {
+      "slug": "why-is-metal-cold",
+      "domain": "materials-and-manufacturing",
+      "title": "Why is metal cold?",
+      "query": "why is metal cold",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.208 clears the 0.16 floor and title gap 0.55 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2085,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "cold",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "why is metal cold",
+          "why does metal feel cold",
+          "why does metal glow when heated"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:31.275456+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.555,
+        "title_gap": 0.55,
+        "title_coverage_mean": 0.725,
+        "strong_match_count": 9,
+        "results_examined": 20,
+        "median_views": 4522.0,
+        "p90_views": 934059,
+        "median_subscribers": 404.0,
+        "channels_under_100k_subs": 17,
+        "median_age_days": 384,
+        "published_last_365d": 9,
+        "interpretation": "9 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.55,
+          "incumbent_subs": 0.628,
+          "view_ceiling": 0.478,
+          "staleness": 0.55
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:04.918308+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3402,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.55, demand 0.21, opportunity 0.56."
+    },
+    {
+      "slug": "why-does-metal-smell",
+      "domain": "materials-and-manufacturing",
+      "title": "Why does metal smell?",
+      "query": "why does metal smell",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.212 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2118,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "smell",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does metal smell",
+          "why do i smell metal",
+          "why does blood smell like metal"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:28.333000+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.463,
+        "title_gap": 0.4,
+        "title_coverage_mean": 0.775,
+        "strong_match_count": 12,
+        "results_examined": 20,
+        "median_views": 1039.0,
+        "p90_views": 1323930,
+        "median_subscribers": 2635.0,
+        "channels_under_100k_subs": 13,
+        "median_age_days": 239,
+        "published_last_365d": 10,
+        "interpretation": "12 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.4,
+          "incumbent_subs": 0.511,
+          "view_ceiling": 0.569,
+          "staleness": 0.5
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:01.285096+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3132,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.40, demand 0.21, opportunity 0.46."
     }
   ],
-  "killed": [],
-  "unmeasured": []
+  "killed": [
+    {
+      "slug": "why-do-metals-shine",
+      "domain": "materials-and-manufacturing",
+      "title": "Why do metals shine?",
+      "query": "why do metals shine",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1426,
+          "demand_floor": 0.16,
+          "title_gap": 0.55,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 3,
+          "corpus_breadth": 1
+        },
+        "reason": "demand_index 0.143 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
+      "demand": {
+        "demand_index": 0.1426,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "shine",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why do metals shine",
+          "why does metal smell",
+          "why are metals shiny"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:24.448881+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.583,
+        "title_gap": 0.55,
+        "title_coverage_mean": 0.7,
+        "strong_match_count": 9,
+        "results_examined": 20,
+        "median_views": 533.0,
+        "p90_views": 6122,
+        "median_subscribers": 1220.0,
+        "channels_under_100k_subs": 17,
+        "median_age_days": 518,
+        "published_last_365d": 6,
+        "interpretation": "9 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.55,
+          "incumbent_subs": 0.559,
+          "view_ceiling": 0.61,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:30:56.647050+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.2883,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.55, demand 0.14, opportunity 0.58."
+    },
+    {
+      "slug": "why-is-glass-transparent",
+      "domain": "materials-and-manufacturing",
+      "title": "Why is glass transparent?",
+      "query": "why is glass transparent",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.2935,
+          "demand_floor": 0.16,
+          "title_gap": 0.25,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 2,
+          "corpus_breadth": 0
+        },
+        "reason": "title gap 0.25 is at or below the 0.3 saturation ceiling: 15 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
+      "demand": {
+        "demand_index": 0.2935,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "transparent",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why is glass transparent",
+          "why is glass clear"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:25.428288+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.3,
+        "title_gap": 0.25,
+        "title_coverage_mean": 0.85,
+        "strong_match_count": 15,
+        "results_examined": 20,
+        "median_views": 35917.5,
+        "p90_views": 1526282,
+        "median_subscribers": 381950.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 671,
+        "published_last_365d": 9,
+        "interpretation": "15 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.25,
+          "incumbent_subs": 0.203,
+          "view_ceiling": 0.349,
+          "staleness": 0.55
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:30:57.871714+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.2967,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.25, demand 0.29, opportunity 0.30."
+    },
+    {
+      "slug": "why-are-metals-shiny",
+      "domain": "materials-and-manufacturing",
+      "title": "Why are metals shiny?",
+      "query": "why are metals shiny",
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "demand",
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.0825,
+          "demand_floor": 0.16,
+          "title_gap": 0.1,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 1,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.083 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.10 is at or below the 0.3 saturation ceiling: 18 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": null
+      },
+      "demand": {
+        "demand_index": 0.0825,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "shiny",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why are metals shiny"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:26.417498+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.344,
+        "title_gap": 0.1,
+        "title_coverage_mean": 0.95,
+        "strong_match_count": 18,
+        "results_examined": 20,
+        "median_views": 180.0,
+        "p90_views": 1895,
+        "median_subscribers": 764.0,
+        "channels_under_100k_subs": 19,
+        "median_age_days": 402,
+        "published_last_365d": 10,
+        "interpretation": "18 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.1,
+          "incumbent_subs": 0.588,
+          "view_ceiling": 0.678,
+          "staleness": 0.5
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:30:59.038701+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.1685,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 90% of the top 20 titles answer this question squarely (median 180 views, 764 subs). The definitive video exists."
+    },
+    {
+      "slug": "what-is-shape-memory-alloy",
+      "domain": "materials-and-manufacturing",
+      "title": "What is shape memory alloy?",
+      "query": "what is shape memory alloy",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.3762,
+          "demand_floor": 0.16,
+          "title_gap": 0.2,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 4,
+          "corpus_breadth": 0
+        },
+        "reason": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
+      "demand": {
+        "demand_index": 0.3762,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "alloy",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "what is shape memory alloy",
+          "shape memory alloy wire",
+          "shape memory alloy nitinol",
+          "shape memory alloy wheel"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:29.294904+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.351,
+        "title_gap": 0.2,
+        "title_coverage_mean": 0.933,
+        "strong_match_count": 16,
+        "results_examined": 20,
+        "median_views": 55115.5,
+        "p90_views": 5075101,
+        "median_subscribers": 148000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 2175,
+        "published_last_365d": 0,
+        "interpretation": "16 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.2,
+          "incumbent_subs": 0.261,
+          "view_ceiling": 0.323,
+          "staleness": 1.0
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:02.495522+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3634,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 80% of the top 20 titles answer this question squarely (median 55,116 views, 148,000 subs). The definitive video exists."
+    },
+    {
+      "slug": "what-is-creep-in-materials-science",
+      "domain": "materials-and-manufacturing",
+      "title": "What is creep in materials science?",
+      "query": "what is creep in materials science",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1499,
+          "demand_floor": 0.16,
+          "title_gap": 0.8,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 1,
+          "corpus_breadth": 1
+        },
+        "reason": "demand_index 0.150 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
+      "demand": {
+        "demand_index": 0.1499,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "creep",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "what is creep in materials science"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:30.286002+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.69,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 5482.0,
+        "p90_views": 108400,
+        "median_subscribers": 19750.0,
+        "channels_under_100k_subs": 16,
+        "median_age_days": 1933,
+        "published_last_365d": 1,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.386,
+          "view_ceiling": 0.466,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:03.724673+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3216,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.80, demand 0.15, opportunity 0.69."
+    },
+    {
+      "slug": "why-does-metal-glow-when-heated",
+      "domain": "materials-and-manufacturing",
+      "title": "Why does metal glow when heated?",
+      "query": "why does metal glow when heated",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1562,
+          "demand_floor": 0.16,
+          "title_gap": 0.95,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 1,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.156 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
+      "demand": {
+        "demand_index": 0.1562,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "glow",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does metal glow when heated"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:34.214651+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.764,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.533,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 1118.0,
+        "p90_views": 529602,
+        "median_subscribers": 167.5,
+        "channels_under_100k_subs": 16,
+        "median_age_days": 176,
+        "published_last_365d": 11,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.682,
+          "view_ceiling": 0.565,
+          "staleness": 0.45
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:08.489631+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3455,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.16) -- uncontested because few ask it."
+    }
+  ],
+  "unmeasured": [
+    {
+      "query": "how materials science could revolutionize technology",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.3251,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "could",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how materials science could revolutionize technology",
+          "material science and technology",
+          "science of materials engineering"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:31:20.606510+00:00"
+        }
+      }
+    }
+  ],
+  "parts_of_episodes": [],
+  "meets_floor_on_free_signals": [
+    "how materials science could revolutionize technology"
+  ],
+  "queue_length": 23
 }

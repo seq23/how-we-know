@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-11-01T18:42:45.724702+00:00",
+  "generated_at": "2026-11-01T21:11:20.622229+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -162,6 +162,11 @@
   "unmeasured": [],
   "episodes_without_competition_score": [
     {
+      "slug": "does-damascus-steel-rust",
+      "query": "does damascus steel rust",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "how-are-microchips-designed",
       "query": "how are microchips designed",
       "status": "no_competition_score"
@@ -169,6 +174,11 @@
     {
       "slug": "how-are-microchips-made",
       "query": "how are microchips made",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "how-deep-are-pools",
+      "query": "how deep are pools",
       "status": "no_competition_score"
     },
     {
@@ -212,6 +222,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "how-does-chemosynthesis-work",
+      "query": "how does chemosynthesis work",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "how-does-quenching-harden-steel",
       "query": "how does quenching harden steel",
       "status": "no_competition_score"
@@ -219,6 +234,11 @@
     {
       "slug": "how-does-tempered-glass-shatter",
       "query": "how does tempered glass shatter",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "how-does-thermohaline-circulation-work",
+      "query": "how does thermohaline circulation work",
       "status": "no_competition_score"
     },
     {
@@ -242,6 +262,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "how-mid-oceanic-ridge-is-formed",
+      "query": "how is a mid-ocean ridge formed",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "how-strong-is-graphene",
       "query": "how strong is graphene",
       "status": "no_competition_score"
@@ -252,8 +277,53 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "how-to-get-brine-pool-exotic",
+      "query": "how does a deep-sea brine pool form, and why is it so exotic",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "how-to-tell-if-steel-is-hardened",
+      "query": "how do you tell if steel is hardened",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "how-to-tell-if-steel-is-high-carbon",
+      "query": "how to tell if steel is high carbon",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "is-aluminum-stronger-than-steel",
+      "query": "is aluminum stronger than steel",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "is-damascus-steel-better",
       "query": "is damascus steel better",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "is-giant-isopod-edible",
+      "query": "is the giant isopod edible",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "what-blobfish-actually-looks-like",
+      "query": "what does a blobfish actually look like",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "what-does-a-goblin-shark-look-like",
+      "query": "what does a goblin shark look like",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "what-does-a-greenland-shark-look-like",
+      "query": "what does a greenland shark look like",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "what-does-a-vampire-squid-look-like",
+      "query": "what does a vampire squid look like",
       "status": "no_competition_score"
     },
     {
@@ -302,8 +372,18 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "where-does-chemosynthesis-occur",
+      "query": "where does chemosynthesis occur",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "why-are-deep-sea-creatures-so-big",
       "query": "why are deep sea creatures so big",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-blobfish-look-weird",
+      "query": "why do blobfish look weird",
       "status": "no_competition_score"
     },
     {
@@ -387,7 +467,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:36.447117+00:00"
+          "fetched_utc": "2026-11-01T21:11:11.356273+00:00"
         }
       },
       "competition": {
@@ -466,7 +546,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:31.832723+00:00"
+          "fetched_utc": "2026-11-01T21:11:06.767527+00:00"
         }
       },
       "competition": {
@@ -545,7 +625,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:40.143571+00:00"
+          "fetched_utc": "2026-11-01T21:11:15.079381+00:00"
         }
       },
       "competition": {
@@ -623,7 +703,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:28.113435+00:00"
+          "fetched_utc": "2026-11-01T21:11:03.054145+00:00"
         }
       },
       "competition": {
@@ -702,7 +782,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:45.724170+00:00"
+          "fetched_utc": "2026-11-01T21:11:20.621637+00:00"
         }
       },
       "competition": {
@@ -782,7 +862,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:32.742335+00:00"
+          "fetched_utc": "2026-11-01T21:11:07.676302+00:00"
         }
       },
       "competition": {
@@ -862,7 +942,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:33.681619+00:00"
+          "fetched_utc": "2026-11-01T21:11:08.591742+00:00"
         }
       },
       "competition": {
@@ -940,7 +1020,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:41.063274+00:00"
+          "fetched_utc": "2026-11-01T21:11:16.014511+00:00"
         }
       },
       "competition": {
@@ -1021,7 +1101,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:35.538652+00:00"
+          "fetched_utc": "2026-11-01T21:11:10.473574+00:00"
         }
       },
       "competition": {
@@ -1102,7 +1182,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:34.598628+00:00"
+          "fetched_utc": "2026-11-01T21:11:09.548093+00:00"
         }
       },
       "competition": {
@@ -1180,7 +1260,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:44.796375+00:00"
+          "fetched_utc": "2026-11-01T21:11:19.693100+00:00"
         }
       },
       "competition": {
@@ -1255,7 +1335,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:43.865758+00:00"
+          "fetched_utc": "2026-11-01T21:11:18.764525+00:00"
         }
       },
       "competition": {
@@ -1332,7 +1412,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:30.895717+00:00"
+          "fetched_utc": "2026-11-01T21:11:05.853323+00:00"
         }
       },
       "competition": {
@@ -1411,7 +1491,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:41.996278+00:00"
+          "fetched_utc": "2026-11-01T21:11:16.924196+00:00"
         }
       },
       "competition": {
@@ -1488,7 +1568,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:39.201408+00:00"
+          "fetched_utc": "2026-11-01T21:11:14.149548+00:00"
         }
       },
       "competition": {
@@ -1567,7 +1647,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:42:29.047530+00:00"
+          "fetched_utc": "2026-11-01T21:11:03.970939+00:00"
         }
       },
       "competition": {

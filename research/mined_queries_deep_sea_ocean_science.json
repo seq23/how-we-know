@@ -1,11 +1,11 @@
 {
-  "mined_at": "2026-11-01T18:47:45.498951+00:00",
+  "mined_at": "2026-11-01T21:16:59.982667+00:00",
   "endpoint": "https://suggestqueries.google.com/complete/search",
   "surface": "youtube_autocomplete",
   "generator": "research/mine_domain.py",
-  "seeds_file": "/tmp/tmpv316ht0k.json",
-  "seed_count": 26,
-  "unique_queries": 3414,
+  "seeds_file": "/tmp/tmpzfzc61pn.json",
+  "seed_count": 29,
+  "unique_queries": 3430,
   "queries": [
     {
       "query": "what lives in the deep sea",
@@ -32,15 +32,27 @@
       ]
     },
     {
-      "query": "how deep are olympic pools",
+      "query": "how do scientists know the layers of the earth",
       "is_question": true,
-      "words": 5,
+      "words": 9,
+      "seed_hits": 30,
+      "seeds": [
+        "how do scientists know e",
+        "how do scientists know l",
+        "how do scientists know o",
+        "how do scientists know t"
+      ]
+    },
+    {
+      "query": "where to find gulper eel dredge",
+      "is_question": true,
+      "words": 6,
       "seed_hits": 27,
       "seeds": [
-        "how deep a",
-        "how deep are olympic pools",
-        "how deep are olympic pools a",
-        "how deep are olympic pools b"
+        "where to find gulper eel dredge",
+        "where to find gulper eel dredge a",
+        "where to find gulper eel dredge b",
+        "where to find gulper eel dredge c"
       ]
     },
     {
@@ -80,6 +92,18 @@
       ]
     },
     {
+      "query": "what is mid ocean ridge",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 24,
+      "seeds": [
+        "what is mid ocean ridge",
+        "what is mid ocean ridge b",
+        "what is mid ocean ridge c",
+        "what is mid ocean ridge d"
+      ]
+    },
+    {
       "query": "why deep sea",
       "is_question": true,
       "words": 3,
@@ -116,6 +140,18 @@
       ]
     },
     {
+      "query": "what is mid atlantic ridge",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 21,
+      "seeds": [
+        "what is mid ocean ridge",
+        "what is mid ocean ridge a",
+        "what is mid ocean ridge c",
+        "what is mid ocean ridge e"
+      ]
+    },
+    {
       "query": "deep ocean pressure",
       "is_question": false,
       "words": 3,
@@ -131,24 +167,12 @@
       "query": "hydrothermal vents video",
       "is_question": false,
       "words": 3,
-      "seed_hits": 18,
+      "seed_hits": 19,
       "seeds": [
         "hydrothermal vent a",
         "hydrothermal vent b",
         "hydrothermal vent c",
         "hydrothermal vent d"
-      ]
-    },
-    {
-      "query": "deepest part of the ocean",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 18,
-      "seeds": [
-        "deepest part of the ocean",
-        "deepest part of the ocean b",
-        "deepest part of the ocean d",
-        "deepest part of the ocean f"
       ]
     },
     {
@@ -173,6 +197,18 @@
         "midnight zone b",
         "midnight zone c",
         "midnight zone e"
+      ]
+    },
+    {
+      "query": "deepest part of the ocean",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 17,
+      "seeds": [
+        "deepest part of the ocean",
+        "deepest part of the ocean b",
+        "deepest part of the ocean f",
+        "deepest part of the ocean g"
       ]
     },
     {
@@ -260,18 +296,6 @@
       ]
     },
     {
-      "query": "hydrothermal vent footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 10,
-      "seeds": [
-        "hydrothermal vent b",
-        "hydrothermal vent c",
-        "hydrothermal vent d",
-        "hydrothermal vent f"
-      ]
-    },
-    {
       "query": "how deep is your love",
       "is_question": true,
       "words": 5,
@@ -281,6 +305,18 @@
         "how deep e",
         "how deep i",
         "how deep j"
+      ]
+    },
+    {
+      "query": "hydrothermal vent footage",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 9,
+      "seeds": [
+        "hydrothermal vent b",
+        "hydrothermal vent c",
+        "hydrothermal vent d",
+        "hydrothermal vent f"
       ]
     },
     {
@@ -332,30 +368,6 @@
       ]
     },
     {
-      "query": "ocean floor feature",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 8,
-      "seeds": [
-        "ocean floor a",
-        "ocean floor k",
-        "ocean floor o",
-        "ocean floor q"
-      ]
-    },
-    {
-      "query": "ocean floor lake",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 8,
-      "seeds": [
-        "ocean floor f",
-        "ocean floor k",
-        "ocean floor l",
-        "ocean floor o"
-      ]
-    },
-    {
       "query": "why deep sea creatures look so weird",
       "is_question": true,
       "words": 7,
@@ -389,18 +401,6 @@
         "how do scientists know a",
         "how do scientists know b",
         "how do scientists know h"
-      ]
-    },
-    {
-      "query": "hydrothermal vent",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 7,
-      "seeds": [
-        "hydrothermal vent b",
-        "hydrothermal vent d",
-        "hydrothermal vent j",
-        "hydrothermal vent l"
       ]
     },
     {
@@ -452,6 +452,30 @@
       ]
     },
     {
+      "query": "ocean floor feature",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 7,
+      "seeds": [
+        "ocean floor a",
+        "ocean floor k",
+        "ocean floor o",
+        "ocean floor q"
+      ]
+    },
+    {
+      "query": "ocean floor lake",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 7,
+      "seeds": [
+        "ocean floor f",
+        "ocean floor k",
+        "ocean floor l",
+        "ocean floor o"
+      ]
+    },
+    {
       "query": "midnight zone in ocean",
       "is_question": false,
       "words": 4,
@@ -485,6 +509,18 @@
         "why deep sea c",
         "why deep sea creatures",
         "why deep sea creatures a"
+      ]
+    },
+    {
+      "query": "why greenland shark live so long",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 6,
+      "seeds": [
+        "why greenland shark live so long",
+        "why greenland shark live so long b",
+        "why greenland shark live so long d",
+        "why greenland shark live so long i"
       ]
     },
     {
@@ -560,15 +596,15 @@
       ]
     },
     {
-      "query": "hydrothermal vent animals",
+      "query": "hydrothermal vent",
       "is_question": false,
-      "words": 3,
+      "words": 2,
       "seed_hits": 6,
       "seeds": [
-        "hydrothermal vent a",
-        "hydrothermal vent e",
-        "hydrothermal vent g",
-        "hydrothermal vent j"
+        "hydrothermal vent b",
+        "hydrothermal vent d",
+        "hydrothermal vent j",
+        "hydrothermal vent m"
       ]
     },
     {
@@ -740,6 +776,18 @@
       ]
     },
     {
+      "query": "hydrothermal vent animals",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 5,
+      "seeds": [
+        "hydrothermal vent a",
+        "hydrothermal vent e",
+        "hydrothermal vent g",
+        "hydrothermal vent j"
+      ]
+    },
+    {
       "query": "abyssal zone creatures",
       "is_question": false,
       "words": 3,
@@ -785,18 +833,6 @@
         "hydrothermal vent b",
         "hydrothermal vent i",
         "hydrothermal vent m"
-      ]
-    },
-    {
-      "query": "how deep are pools",
-      "is_question": true,
-      "words": 4,
-      "seed_hits": 4,
-      "seeds": [
-        "how deep are olympic pools e",
-        "how deep are olympic pools l",
-        "how deep are olympic pools m",
-        "how deep are olympic pools t"
       ]
     },
     {
@@ -956,18 +992,6 @@
       ]
     },
     {
-      "query": "how do scientists know the layers of the earth",
-      "is_question": true,
-      "words": 9,
-      "seed_hits": 4,
-      "seeds": [
-        "how do scientists know e",
-        "how do scientists know l",
-        "how do scientists know o",
-        "how do scientists know t"
-      ]
-    },
-    {
       "query": "bioluminescence song",
       "is_question": false,
       "words": 2,
@@ -1001,6 +1025,18 @@
         "ocean science d",
         "ocean science i",
         "ocean science v"
+      ]
+    },
+    {
+      "query": "challenger deep footage",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 4,
+      "seeds": [
+        "challenger deep",
+        "challenger deep b",
+        "challenger deep f",
+        "challenger deep o"
       ]
     },
     {
@@ -2328,6 +2364,16 @@
       ]
     },
     {
+      "query": "what is mid oceanic ridge",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 2,
+      "seeds": [
+        "what is mid ocean ridge g",
+        "what is mid ocean ridge u"
+      ]
+    },
+    {
       "query": "why deep sea creatures are scared",
       "is_question": true,
       "words": 6,
@@ -2425,6 +2471,16 @@
       "seeds": [
         "why deep sea i",
         "why deep sea n"
+      ]
+    },
+    {
+      "query": "how deep is your love cover",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep i",
+        "how deep u"
       ]
     },
     {
@@ -2628,16 +2684,6 @@
       ]
     },
     {
-      "query": "how deep is your love dru hill",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 2,
-      "seeds": [
-        "how deep i",
-        "how deep u"
-      ]
-    },
-    {
       "query": "how do scientists learn about wild animals",
       "is_question": true,
       "words": 7,
@@ -2645,6 +2691,16 @@
       "seeds": [
         "how do scientists know a",
         "how do scientists know w"
+      ]
+    },
+    {
+      "query": "why do greenland sharks live so long",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 2,
+      "seeds": [
+        "why greenland shark live so long",
+        "why greenland shark live so long d"
       ]
     },
     {
@@ -2858,16 +2914,6 @@
       ]
     },
     {
-      "query": "bioluminescence explained",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 2,
-      "seeds": [
-        "bioluminescence",
-        "bioluminescence e"
-      ]
-    },
-    {
       "query": "bioluminescence beach",
       "is_question": false,
       "words": 2,
@@ -2875,6 +2921,16 @@
       "seeds": [
         "bioluminescence",
         "bioluminescence b"
+      ]
+    },
+    {
+      "query": "bioluminescence explained",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 2,
+      "seeds": [
+        "bioluminescence",
+        "bioluminescence e"
       ]
     },
     {
@@ -3088,16 +3144,6 @@
       ]
     },
     {
-      "query": "mariana trench creatures",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench c"
-      ]
-    },
-    {
       "query": "mariana trench band",
       "is_question": false,
       "words": 3,
@@ -3118,6 +3164,16 @@
       ]
     },
     {
+      "query": "mariana trench sounds",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench s"
+      ]
+    },
+    {
       "query": "mariana trench song",
       "is_question": false,
       "words": 3,
@@ -3128,13 +3184,13 @@
       ]
     },
     {
-      "query": "mariana trench sounds",
+      "query": "mariana trench productions",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "mariana trench",
-        "mariana trench s"
+        "mariana trench p"
       ]
     },
     {
@@ -3298,26 +3354,6 @@
       ]
     },
     {
-      "query": "challenger deep bestiary",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "challenger deep",
-        "challenger deep b"
-      ]
-    },
-    {
-      "query": "challenger deep footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "challenger deep b",
-        "challenger deep o"
-      ]
-    },
-    {
       "query": "challenger deep human",
       "is_question": false,
       "words": 3,
@@ -3425,16 +3461,6 @@
       "seeds": [
         "colossal squid",
         "colossal squid f"
-      ]
-    },
-    {
-      "query": "colossal squid attack",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "colossal squid",
-        "colossal squid a"
       ]
     },
     {
@@ -3565,16 +3591,6 @@
       "seeds": [
         "whale fall",
         "whale fall b"
-      ]
-    },
-    {
-      "query": "whale fall nautilus",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "whale fall",
-        "whale fall n"
       ]
     },
     {
@@ -4139,6 +4155,16 @@
     },
     {
       "query": "deep sea creatures extinct",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "deep sea creature e",
+        "why deep sea creatures e"
+      ]
+    },
+    {
+      "query": "deep sea creatures eating",
       "is_question": false,
       "words": 4,
       "seed_hits": 2,
@@ -5788,6 +5814,16 @@
       ]
     },
     {
+      "query": "colossal squid vs giant squid",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 2,
+      "seeds": [
+        "colossal squid",
+        "colossal squid v"
+      ]
+    },
+    {
       "query": "colossal squid caught on camera",
       "is_question": false,
       "words": 5,
@@ -5845,6 +5881,16 @@
       "seeds": [
         "hydrothermal vent n",
         "hydrothermal vent w"
+      ]
+    },
+    {
+      "query": "whale fall behind the scenes",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 2,
+      "seeds": [
+        "whale fall",
+        "whale fall b"
       ]
     },
     {
@@ -6059,16 +6105,6 @@
     },
     {
       "query": "deep sea creatures explained in hindi",
-      "is_question": false,
-      "words": 6,
-      "seed_hits": 2,
-      "seeds": [
-        "deep sea creature e",
-        "why deep sea creatures e"
-      ]
-    },
-    {
-      "query": "deep sea creatures escaping to shore",
       "is_question": false,
       "words": 6,
       "seed_hits": 2,
@@ -7648,6 +7684,15 @@
       ]
     },
     {
+      "query": "how deep are olympic pools",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep a"
+      ]
+    },
+    {
       "query": "how deep by tai verdes",
       "is_question": true,
       "words": 5,
@@ -8113,15 +8158,6 @@
       "seed_hits": 1,
       "seeds": [
         "how do scientists know d"
-      ]
-    },
-    {
-      "query": "how deep is olympic pool",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep are olympic pools i"
       ]
     },
     {
@@ -9040,6 +9076,15 @@
       "seed_hits": 1,
       "seeds": [
         "abyssal zone w"
+      ]
+    },
+    {
+      "query": "what is a mid ocean ridge",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge a"
       ]
     },
     {
@@ -11950,15 +11995,6 @@
       ]
     },
     {
-      "query": "bioluminescent water",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 1,
-      "seeds": [
-        "bioluminescence w"
-      ]
-    },
-    {
       "query": "bioluminescence washington",
       "is_question": false,
       "words": 2,
@@ -11969,6 +12005,15 @@
     },
     {
       "query": "bioluminescent waves",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "bioluminescence w"
+      ]
+    },
+    {
+      "query": "bioluminescence wales",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
@@ -14920,15 +14965,6 @@
       ]
     },
     {
-      "query": "mariana trench productions",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "mariana trench p"
-      ]
-    },
-    {
       "query": "mariana trench pressure",
       "is_question": false,
       "words": 3,
@@ -16720,6 +16756,15 @@
       ]
     },
     {
+      "query": "challenger deep bestiary",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep b"
+      ]
+    },
+    {
       "query": "challenger deep creatures",
       "is_question": false,
       "words": 3,
@@ -17284,6 +17329,15 @@
       "seed_hits": 1,
       "seeds": [
         "challenger deep z"
+      ]
+    },
+    {
+      "query": "colossal squid attack",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "colossal squid a"
       ]
     },
     {
@@ -18787,6 +18841,15 @@
       "seed_hits": 1,
       "seeds": [
         "whale fall m"
+      ]
+    },
+    {
+      "query": "whale fall nautilus",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall n"
       ]
     },
     {
@@ -21238,6 +21301,15 @@
       ]
     },
     {
+      "query": "deep sea diver song",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea d"
+      ]
+    },
+    {
       "query": "deep sea exploration footage",
       "is_question": false,
       "words": 4,
@@ -22148,15 +22220,6 @@
     },
     {
       "query": "deep sea creatures encounter",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "why deep sea creatures e"
-      ]
-    },
-    {
-      "query": "deep sea creatures eating",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -24470,15 +24533,6 @@
     },
     {
       "query": "challenger deep full album",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "challenger deep f"
-      ]
-    },
-    {
-      "query": "challenger deep full movie",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -27754,6 +27808,87 @@
       ]
     },
     {
+      "query": "mid ocean ridge explained",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge e"
+      ]
+    },
+    {
+      "query": "mid ocean ridge explanation",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge e"
+      ]
+    },
+    {
+      "query": "mid ocean ridge eruption",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge e"
+      ]
+    },
+    {
+      "query": "mid ocean ridge formation",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge f"
+      ]
+    },
+    {
+      "query": "mid ocean ridge iceland",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge i"
+      ]
+    },
+    {
+      "query": "mid ocean ridge model",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge m"
+      ]
+    },
+    {
+      "query": "mid ocean ridge system",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge s"
+      ]
+    },
+    {
+      "query": "mid ocean ridge volcano",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge v"
+      ]
+    },
+    {
+      "query": "mid ocean ridge video",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge v"
+      ]
+    },
+    {
       "query": "deep sea adventure board game",
       "is_question": false,
       "words": 5,
@@ -27769,15 +27904,6 @@
       "seed_hits": 1,
       "seeds": [
         "deep sea b"
-      ]
-    },
-    {
-      "query": "deep sea diver billboard heart",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea d"
       ]
     },
     {
@@ -28060,6 +28186,15 @@
       ]
     },
     {
+      "query": "deep sea creatures exhibit bioluminescence",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "why deep sea creatures e"
+      ]
+    },
+    {
       "query": "deep sea creatures in hindi",
       "is_question": false,
       "words": 5,
@@ -28097,6 +28232,15 @@
     },
     {
       "query": "mariana trench cross my heart",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "mariana trench c"
+      ]
+    },
+    {
+      "query": "mariana trench challenger deep footage",
       "is_question": false,
       "words": 5,
       "seed_hits": 1,
@@ -28942,15 +29086,6 @@
       ]
     },
     {
-      "query": "colossal squid versus giant squid",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "colossal squid v"
-      ]
-    },
-    {
       "query": "giant squid with crab legs",
       "is_question": false,
       "words": 5,
@@ -28979,15 +29114,6 @@
     },
     {
       "query": "whale fall bike frame bag",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall b"
-      ]
-    },
-    {
-      "query": "whale fall behind the scenes",
       "is_question": false,
       "words": 5,
       "seed_hits": 1,
@@ -30118,6 +30244,33 @@
       "seed_hits": 1,
       "seeds": [
         "deepest part of the ocean s"
+      ]
+    },
+    {
+      "query": "mid ocean ridge and trench",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge a"
+      ]
+    },
+    {
+      "query": "mid ocean ridge formation animation",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge f"
+      ]
+    },
+    {
+      "query": "mid ocean ridge seafloor spreading",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "what is mid ocean ridge s"
       ]
     },
     {
