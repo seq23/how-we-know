@@ -2562,10 +2562,98 @@
       "completion_tokens": 5423,
       "total_tokens": 19273,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:24:05+00:00",
+      "slug": "how-to-tell-if-steel-is-hardened",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3786,
+      "completion_tokens": 17116,
+      "total_tokens": 20902,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:24:45+00:00",
+      "slug": "how-to-tell-if-steel-is-hardened",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8859,
+      "completion_tokens": 5635,
+      "total_tokens": 14494,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:27:55+00:00",
+      "slug": "does-damascus-steel-rust",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3756,
+      "completion_tokens": 9263,
+      "total_tokens": 13019,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:28:44+00:00",
+      "slug": "does-damascus-steel-rust",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 9575,
+      "completion_tokens": 6464,
+      "total_tokens": 16039,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:32:50+00:00",
+      "slug": "is-aluminum-stronger-than-steel",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3731,
+      "completion_tokens": 15971,
+      "total_tokens": 19702,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:33:29+00:00",
+      "slug": "is-aluminum-stronger-than-steel",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8593,
+      "completion_tokens": 5418,
+      "total_tokens": 14011,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:36:45+00:00",
+      "slug": "how-to-tell-if-steel-is-high-carbon",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3762,
+      "completion_tokens": 10137,
+      "total_tokens": 13899,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T19:37:28+00:00",
+      "slug": "how-to-tell-if-steel-is-high-carbon",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8642,
+      "completion_tokens": 5943,
+      "total_tokens": 14585,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 106,
-  "average_usd_per_accepted_draft": 0.095999,
-  "updated": "2026-10-26T11:01:05+00:00"
+  "drafts_written": 110,
+  "average_usd_per_accepted_draft": 0.092508,
+  "updated": "2026-11-01T19:37:28+00:00"
 }

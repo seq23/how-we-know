@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-26T10:53:28Z",
+  "generated": "2026-11-01T19:39:01Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -479,6 +479,34 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
+    },
+    {
+      "video": "how-to-tell-if-steel-is-hardened",
+      "pov_id": "pov-103",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Once I can locate the failure \u2014 bad source, lazy assumption, missing context, evidence I ignored because it was inconvenient \u2014 I can let the belief go."
+    },
+    {
+      "video": "does-damascus-steel-rust",
+      "pov_id": "pov-064",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions."
+    },
+    {
+      "video": "is-aluminum-stronger-than-steel",
+      "pov_id": "pov-055",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Absolute confidence about something complicated makes me trust someone less."
+    },
+    {
+      "video": "how-to-tell-if-steel-is-high-carbon",
+      "pov_id": "pov-107",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Naming a public source doesn't guarantee a number is right. It makes the number inspectable \u2014 and therefore correctable."
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
   "week": "2026-W44",
-  "generated": "2026-10-26T10:48:42+00:00",
+  "generated": "2026-11-01T19:21:23+00:00",
   "videos_per_week": 6,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 616,
+      "examined": 629,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -146,17 +146,17 @@
     },
     {
       "validator": "V20 cadence-schedule",
-      "examined": 68,
+      "examined": 62,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "15 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3), 'materials-and-manufacturing': (1, 4)} at 6/week"
+        "12 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'materials-and-manufacturing': (1, 4), 'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3)} at 6/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 51,
+      "examined": 52,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -165,16 +165,8 @@
       "stops": []
     },
     {
-      "validator": "V22 producer-notes-second-person",
-      "examined": 58,
-      "status": "PASS",
-      "failures": [],
-      "notes": [],
-      "stops": []
-    },
-    {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 58,
+      "examined": 59,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -224,7 +216,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 448,
+      "examined": 452,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -245,7 +237,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 17,
+      "examined": 14,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -253,11 +245,11 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 57,
+      "examined": 58,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "57 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "58 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
@@ -273,7 +265,7 @@
     },
     {
       "validator": "V72 food-one-definition",
-      "examined": 10,
+      "examined": 11,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -281,7 +273,7 @@
     },
     {
       "validator": "V73 every-lane-has-a-runner",
-      "examined": 46,
+      "examined": 48,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -299,7 +291,7 @@
     },
     {
       "validator": "V34 niche-lifecycle",
-      "examined": 8,
+      "examined": 9,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -308,14 +300,6 @@
     {
       "validator": "V35 weekly-digest",
       "examined": 12,
-      "status": "PASS",
-      "failures": [],
-      "notes": [],
-      "stops": []
-    },
-    {
-      "validator": "V36 editorial-gate",
-      "examined": 465,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -331,7 +315,7 @@
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 48,
+      "examined": 49,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -357,7 +341,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 20,
+      "examined": 35,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -375,35 +359,39 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 173,
+      "examined": 175,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 67, automated/error 1, error 89, owner_secret 16"
+        "stop kinds by class: automated 69, automated/error 1, error 89, owner_secret 16"
       ],
       "stops": []
     },
     {
       "validator": "V74 nothing-paid rule",
-      "examined": 26,
+      "examined": 11,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "4 free model(s), 5 named stop(s), rule in CLAUDE.md and docs/cost/zero-paid-llm.md"
+        "4 free model(s); max_cost_usd 0, no paid fallback"
       ],
       "stops": []
     },
     {
       "validator": "V46 shorts-handoff",
-      "examined": 90,
+      "examined": 108,
       "status": "PASS",
       "failures": [],
-      "notes": [],
+      "notes": [
+        "why-does-chocolate-taste-so-good: Short _dEimGejxNc has no episode in the ledger; nothing to hand off to",
+        "why-does-steak-taste-better-seared: Short EFGCT_ZLdzY has no episode in the ledger; nothing to hand off to",
+        "why-is-my-bread-not-rising: Short prHJLtgqN6g has no episode in the ledger; nothing to hand off to"
+      ],
       "stops": []
     },
     {
       "validator": "V47 longform-title",
-      "examined": 67,
+      "examined": 69,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -427,7 +415,7 @@
     },
     {
       "validator": "V50 repackage-state",
-      "examined": 105,
+      "examined": 107,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -445,7 +433,7 @@
     },
     {
       "validator": "V60 description-search-block",
-      "examined": 53,
+      "examined": 54,
       "status": "PASS(STOP:DESCRIPTION_PENDING)",
       "failures": [],
       "notes": [],
@@ -494,17 +482,17 @@
       "failures": [],
       "notes": [
         "why-bread-rises-steak-browns-chocolate-snaps: 28.5 min, real video 96%, hands 13%, spectacle by piece {'open': 0.0918, 'chocolate': 0.5888, 'bread': 0.5055, 'steak': 0.512, 'tail': 1.0}",
-        "what-is-inside-chili-coffee-honey: held by the upload lane until rendered: no episode spec at channel/specs/<slug>.json - a food video ships only with one"
+        "what-is-inside-chili-coffee-honey: 30.8 min, real video 96%, hands 9%, spectacle by piece {'open': 0.1284, 'chili': 0.5097, 'coffee': 0.5091, 'honey': 0.5024, 'tail': 0.0}"
       ],
       "stops": []
     },
     {
       "validator": "V70 demand-verdict",
-      "examined": 31,
+      "examined": 35,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "pull 2026-10-25: {'PASS': 0, 'WATCH': 0, 'FAIL': 1, 'INSUFFICIENT': 30}"
+        "pull 2026-10-31: {'PASS': 0, 'WATCH': 0, 'FAIL': 1, 'INSUFFICIENT': 34}"
       ],
       "stops": []
     }
@@ -523,43 +511,45 @@
   },
   "runway": {
     "unpublished_scripts": 13,
-    "publishable": 6,
-    "scheduled_not_yet_aired": 15,
+    "publishable": 1,
+    "scheduled_not_yet_aired": 12,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 3.5,
+    "weeks_remaining": 2.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "warn",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 0,
-        "scheduled_ahead": 10,
-        "weeks": 5.0,
+        "queued": 15,
+        "scheduled_ahead": 8,
+        "weeks": 11.5,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated)"
+        "message": "deep-sea-ocean-science: 11.5 week(s) at 2/week (15 queued, 8 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 5,
-        "scheduled_ahead": 5,
-        "weeks": 5.0,
-        "level": "ok",
-        "message": "materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated)"
+        "queued": 4,
+        "scheduled_ahead": 4,
+        "weeks": 4.0,
+        "level": "warn",
+        "message": "materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
-        "queued": 9,
+        "queued": 10,
         "scheduled_ahead": 0,
-        "weeks": 4.5,
+        "weeks": 5.0,
         "level": "ok",
-        "message": "food-science: 4.5 week(s) at 2/week (9 queued, 0 already dated)"
+        "message": "food-science: 5.0 week(s) at 2/week (10 queued, 0 already dated)"
       }
     },
-    "short_domains": [],
+    "short_domains": [
+      "materials-and-manufacturing"
+    ],
     "never_go_dark": true,
-    "message": "RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 4.5 week(s) at 2/week (9 queued, 0 already dated)."
+    "message": "RUNWAY WARNING: only 2.2 weeks of queue left at 6/week - 1 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 11.5 week(s) at 2/week (15 queued, 8 already dated); materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 5.0 week(s) at 2/week (10 queued, 0 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
