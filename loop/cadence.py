@@ -529,7 +529,17 @@ def runway(per_week: int | None = None) -> dict:
     inv = ledger.inventory()
     try:
         queued, _ = ordered_inventory()
-        publishable = len(queued)
+        # WHAT WILL ACTUALLY AIR (2026-11-01). A food-science script the
+        # nightly batch wrote into scripts/ is held by name and never
+        # uploaded (batch_queue.food_batch_made); six of them were the whole
+        # "6 publishable" while the true queue was empty. And a script the
+        # food pipeline made (scripts/food/) WILL air but is not in
+        # ledger.inventory(), so it was never counted at all.
+        import batch_queue as _bq                          # noqa: PLC0415
+        queued = [q for q in queued if not _bq.food_batch_made(q["slug"])]
+        done = set(ledger.published_slugs())
+        food_ready = [r for r in _bq.food_entries() if r["slug"] not in done]
+        publishable = len(queued) + len(food_ready)
         basis = "publish queue"
     except (PublishOrderMissing, PublishOrderStale):
         publishable = len(inv)

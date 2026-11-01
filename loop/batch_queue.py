@@ -351,7 +351,28 @@ def unwritten_by_domain() -> dict[str, int]:
             d = docs[f].get("domain")
         if d:
             out[d] = out.get(d, 0) + 1
+    # FOOD ROWS ARE THE FOOD PIPELINE'S TO MAKE (is_food), so
+    # unwritten_entries() never lists one and food-science read 0 here every
+    # week: a permanent DOMAIN_QUEUE_THIN that went red on its fourth
+    # Saturday (run 41337950881) while the food lane had rows to make. For
+    # food, "unwritten" is a queued row the food pipeline has not made yet
+    # and that is not published or stranded as a batch-made script.
+    food = food_unmade()
+    if food:
+        out["food-science"] = out.get("food-science", 0) + len(food)
     return out
+
+
+def food_unmade() -> list[dict]:
+    """Queued food rows the food pipeline has yet to make. Best first."""
+    try:
+        import ledger                                      # noqa: PLC0415
+        pub = set(ledger.published_slugs())
+    except Exception:                                      # never break a count
+        pub = set()
+    return [r for r in queued_entries()
+            if is_food(r) and not food_made(r["slug"])
+            and not food_batch_made(r["slug"]) and r["slug"] not in pub]
 
 
 # FOOD EPISODES (2026-10-13). A food-science episode is written, voiced and
