@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-31T15:41:05.632440+00:00",
+  "generated_utc": "2026-11-01T18:53:01.642361+00:00",
   "generator": "research/publish_order_domain.py --domain food-science",
   "domain": "food-science",
   "gate_source": "research/publish_order.py, imported unchanged",
@@ -775,331 +775,51 @@
       "queued": "2026-10-25"
     },
     {
-      "slug": "what-happens-to-meat-when-you-cook-it",
+      "slug": "why-do-eggs-turn-white-when-cooked",
       "domain": "food-science",
-      "title": "What happens to meat when you cook it?",
-      "query": "what happens to meat when you cook it",
+      "title": "Why do eggs turn white when cooked?",
+      "query": "why do eggs turn white when cooked",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.670 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.277 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.6697,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "cook",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what happens to meat when you cook it"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:41:04.723827+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.631,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.233,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 7953308.5,
-        "p90_views": 66623598,
-        "median_subscribers": 4820000.0,
-        "channels_under_100k_subs": 2,
-        "median_age_days": 780,
-        "published_last_365d": 4,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.045,
-          "view_ceiling": 0.014,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-31T15:40:58.873858+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6501,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 7,953,308 views and 4,820,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "what-to-do-when-chocolate-is-not-melting",
-      "domain": "food-science",
-      "title": "What to do when chocolate is not melting?",
-      "query": "what to do when chocolate is not melting",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.569 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5688,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 3,
-        "key_term": "melting",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 4,
-        "sample_completions": [
-          "what to do when chocolate is not melting"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:41:02.004986+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.689,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.367,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 653011.5,
-        "p90_views": 12706402,
-        "median_subscribers": 552500.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 874,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.18,
-          "view_ceiling": 0.169,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-31T15:40:55.266214+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.626,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field with real demand: 100% of top-20 titles do NOT answer the question, and demand index 0.57. Nobody has made this one."
-    },
-    {
-      "slug": "how-is-cheese-made",
-      "domain": "food-science",
-      "title": "How is cheese made?",
-      "query": "how is cheese made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.876 clears the 0.16 floor and title gap 0.35 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.8761,
-        "autocomplete_completions": 10,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 113,
-        "key_term": "made",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 115,
-        "sample_completions": [
-          "how is cheese made",
-          "how is cheese made for kids",
-          "how is cheese made from milk",
-          "how is cheese made at home",
-          "how is cheese made traditionally"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:41:01.096075+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.358,
-        "title_gap": 0.35,
-        "title_coverage_mean": 0.825,
-        "strong_match_count": 13,
-        "results_examined": 20,
-        "median_views": 1249761.5,
-        "p90_views": 15156402,
-        "median_subscribers": 1755000.0,
-        "channels_under_100k_subs": 5,
-        "median_age_days": 1187,
-        "published_last_365d": 1,
-        "interpretation": "13 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.35,
-          "incumbent_subs": 0.108,
-          "view_ceiling": 0.129,
-          "staleness": 0.95
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-31T15:40:53.911766+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.56,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Strong demand (0.88) against partial coverage (35% title gap); winnable but contested."
-    },
-    {
-      "slug": "what-to-do-if-melted-chocolate-is-too-thick",
-      "domain": "food-science",
-      "title": "What to do if melted chocolate is too thick?",
-      "query": "what to do if melted chocolate is too thick",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.430 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4305,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "melted",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what to do if melted chocolate is too thick"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:41:02.903803+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.691,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.287,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 274995.0,
-        "p90_views": 3007176,
-        "median_subscribers": 94200.0,
-        "channels_under_100k_subs": 10,
-        "median_age_days": 1429,
-        "published_last_365d": 0,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.289,
-          "view_ceiling": 0.223,
-          "staleness": 1.0
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-31T15:40:56.440221+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5454,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.43) -- uncontested because few ask it."
-    },
-    {
-      "slug": "why-is-my-bread-flat",
-      "domain": "food-science",
-      "title": "Why is my bread flat?",
-      "query": "why is my bread flat",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.390 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3898,
+        "demand_index": 0.2768,
         "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "flat",
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "cooked",
         "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
+        "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "why is my bread flat",
-          "why is my sourdough loaf flat"
+          "why boiled eggs turn black",
+          "why do eggs turn solid when cooked"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:41:05.631965+00:00"
+          "fetched_utc": "2026-11-01T18:52:43.369070+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.616,
+        "opportunity_score": 0.618,
         "title_gap": 0.8,
-        "title_coverage_mean": 0.55,
+        "title_coverage_mean": 0.388,
         "strong_match_count": 4,
         "results_examined": 20,
-        "median_views": 130006.5,
-        "p90_views": 1804171,
-        "median_subscribers": 115500.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 939,
+        "median_views": 131572.0,
+        "p90_views": 2093691,
+        "median_subscribers": 96050.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 1076,
         "published_last_365d": 4,
         "interpretation": "4 of 20 ranking titles squarely answer the query",
         "components": {
           "title_gap": 0.8,
-          "incumbent_subs": 0.277,
+          "incumbent_subs": 0.288,
           "view_ceiling": 0.269,
           "staleness": 0.8
         },
@@ -1113,66 +833,65 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-10-31T15:41:00.145703+00:00"
+          "fetched_utc": "2026-11-01T18:52:21.916401+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.49,
+        "combined_score": 0.4136,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Middle of the field: title gap 0.80, demand 0.39, opportunity 0.62."
+      "reason": "Middle of the field: title gap 0.80, demand 0.28, opportunity 0.62."
     },
     {
-      "slug": "why-does-dough-rise",
+      "slug": "why-does-cheese-melt",
       "domain": "food-science",
-      "title": "Why does dough rise?",
-      "query": "why does dough rise",
+      "title": "Why does cheese melt?",
+      "query": "why does cheese melt",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.397 clears the 0.16 floor and title gap 0.55 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.325 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.3972,
-        "autocomplete_completions": 3,
+        "demand_index": 0.3252,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": true,
-        "corpus_breadth": 4,
-        "key_term": "dough",
+        "corpus_breadth": 0,
+        "key_term": "melt",
         "key_term_completions": 10,
-        "key_term_corpus_breadth": 5,
+        "key_term_corpus_breadth": 9,
         "sample_completions": [
-          "why does dough rise",
-          "why does my dough not rise",
-          "why doesn't my dough rise"
+          "why does cheese melt",
+          "does cheddar cheese melt"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:41:03.811811+00:00"
+          "fetched_utc": "2026-11-01T18:52:46.114607+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.529,
-        "title_gap": 0.55,
-        "title_coverage_mean": 0.65,
-        "strong_match_count": 9,
+        "opportunity_score": 0.424,
+        "title_gap": 0.45,
+        "title_coverage_mean": 0.775,
+        "strong_match_count": 11,
         "results_examined": 20,
-        "median_views": 95544.5,
-        "p90_views": 593926,
-        "median_subscribers": 75700.0,
-        "channels_under_100k_subs": 11,
-        "median_age_days": 1659,
-        "published_last_365d": 0,
-        "interpretation": "9 of 20 ranking titles squarely answer the query",
+        "median_views": 157381.0,
+        "p90_views": 1000418,
+        "median_subscribers": 379000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 700,
+        "published_last_365d": 4,
+        "interpretation": "11 of 20 ranking titles squarely answer the query",
         "components": {
-          "title_gap": 0.55,
-          "incumbent_subs": 0.303,
-          "view_ceiling": 0.289,
-          "staleness": 1.0
+          "title_gap": 0.45,
+          "incumbent_subs": 0.203,
+          "view_ceiling": 0.258,
+          "staleness": 0.8
         },
         "provenance": {
           "endpoint": "https://www.googleapis.com/youtube/v3",
@@ -1184,26 +903,111 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-10-31T15:40:57.624032+00:00"
+          "fetched_utc": "2026-11-01T18:52:25.788862+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.4584,
+        "combined_score": 0.3713,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Middle of the field: title gap 0.55, demand 0.40, opportunity 0.53."
+      "reason": "Middle of the field: title gap 0.45, demand 0.33, opportunity 0.42."
+    },
+    {
+      "slug": "why-does-salt-make-food-taste-better",
+      "domain": "food-science",
+      "title": "Why does salt make food taste better?",
+      "query": "why does salt make food taste better",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.258 clears the 0.16 floor and title gap 0.55 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2584,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "better",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does salt make food taste better"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:54.368890+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.496,
+        "title_gap": 0.55,
+        "title_coverage_mean": 0.58,
+        "strong_match_count": 9,
+        "results_examined": 20,
+        "median_views": 14117.5,
+        "p90_views": 1682314,
+        "median_subscribers": 121050.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 622,
+        "published_last_365d": 6,
+        "interpretation": "9 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.55,
+          "incumbent_subs": 0.274,
+          "view_ceiling": 0.407,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:37.281444+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.358,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.55, demand 0.26, opportunity 0.50."
     }
   ],
-  "killed": [],
-  "unmeasured": [
+  "killed": [
     {
+      "slug": "how-does-cheese-get-its-holes",
+      "domain": "food-science",
+      "title": "How does cheese get its holes?",
       "query": "how does cheese get its holes",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.0525,
-      "meets_floor_on_free_signals": false,
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1433,
+          "demand_floor": 0.16,
+          "title_gap": 0.95,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 3,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.143 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
       "demand": {
+        "demand_index": 0.1433,
         "autocomplete_completions": 3,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
@@ -1215,19 +1019,77 @@
           "how does cheese get made",
           "why do cheese have holes"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:00.342475+00:00"
+          "fetched_utc": "2026-11-01T18:52:40.622197+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.707,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.667,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 28221.0,
+        "p90_views": 283865,
+        "median_subscribers": 54900.0,
+        "channels_under_100k_subs": 12,
+        "median_age_days": 827,
+        "published_last_365d": 5,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.323,
+          "view_ceiling": 0.364,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:18.139485+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3183,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.14) -- uncontested because few ask it."
     },
     {
+      "slug": "why-do-apples-turn-brown",
+      "domain": "food-science",
+      "title": "Why do apples turn brown?",
       "query": "why do apples turn brown",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.21,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.1982,
+          "demand_floor": 0.16,
+          "title_gap": 0.25,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 2,
+          "corpus_breadth": 0
+        },
+        "reason": "title gap 0.25 is at or below the 0.3 saturation ceiling: 15 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
       "demand": {
+        "demand_index": 0.1982,
         "autocomplete_completions": 2,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
@@ -1238,66 +1100,77 @@
           "why do apples turn brown",
           "why do apples turn brown after cutting"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:01.398847+00:00"
+          "fetched_utc": "2026-11-01T18:52:41.527032+00:00"
         }
-      }
-    },
-    {
-      "query": "why do chili peppers taste hot",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.0525,
-      "meets_floor_on_free_signals": false,
-      "demand": {
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "chili",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why are chillies hot",
-          "hot peppers health benefits",
-          "why are chili peppers hot"
-        ],
+      },
+      "competition": {
+        "opportunity_score": 0.354,
+        "title_gap": 0.25,
+        "title_coverage_mean": 0.883,
+        "strong_match_count": 15,
+        "results_examined": 20,
+        "median_views": 32368.0,
+        "p90_views": 191823,
+        "median_subscribers": 62700.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 809,
+        "published_last_365d": 5,
+        "interpretation": "15 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.25,
+          "incumbent_subs": 0.315,
+          "view_ceiling": 0.356,
+          "staleness": 0.75
+        },
         "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:02.448043+00:00"
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:19.360750+00:00"
         }
-      }
+      },
+      "combined": {
+        "combined_score": 0.2649,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.25, demand 0.20, opportunity 0.35."
     },
     {
-      "query": "why do eggs turn white when cooked",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.035,
-      "meets_floor_on_free_signals": false,
-      "demand": {
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "cooked",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why boiled eggs turn black",
-          "why do eggs turn solid when cooked"
-        ],
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:03.491383+00:00"
-        }
-      }
-    },
-    {
+      "slug": "why-do-onions-make-you-cry",
+      "domain": "food-science",
+      "title": "Why do onions make you cry?",
       "query": "why do onions make you cry",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.6789,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.5718,
+          "demand_floor": 0.16,
+          "title_gap": 0.0,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 7,
+          "corpus_breadth": 14
+        },
+        "reason": "title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": null
+      },
       "demand": {
+        "demand_index": 0.5718,
         "autocomplete_completions": 7,
         "exact_in_autocomplete": true,
         "corpus_breadth": 14,
@@ -1311,19 +1184,78 @@
           "why do onions make you cry muppets",
           "why do onions make us cry"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:04.519044+00:00"
+          "fetched_utc": "2026-11-01T18:52:44.277628+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.177,
+        "title_gap": 0.0,
+        "title_coverage_mean": 1.0,
+        "strong_match_count": 20,
+        "results_examined": 20,
+        "median_views": 103786.5,
+        "p90_views": 2915048,
+        "median_subscribers": 928000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 926,
+        "published_last_365d": 6,
+        "interpretation": "20 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.0,
+          "incumbent_subs": 0.147,
+          "view_ceiling": 0.283,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:23.202492+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3181,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 100% of the top 20 titles answer this question squarely (median 103,786 views, 928,000 subs). The definitive video exists."
     },
     {
+      "slug": "why-does-bread-go-stale",
+      "domain": "food-science",
+      "title": "Why does bread go stale?",
       "query": "why does bread go stale",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.21,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "demand",
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.09,
+          "demand_floor": 0.16,
+          "title_gap": 0.05,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 2,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.090 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.05 is at or below the 0.3 saturation ceiling: 19 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": null
+      },
       "demand": {
+        "demand_index": 0.09,
         "autocomplete_completions": 2,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
@@ -1334,92 +1266,77 @@
           "why does bread go stale",
           "why does bread get moldy"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:05.560933+00:00"
+          "fetched_utc": "2026-11-01T18:52:45.203135+00:00"
         }
-      }
-    },
-    {
-      "query": "why does cheese melt",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.21,
-      "meets_floor_on_free_signals": true,
-      "demand": {
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "melt",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 9,
-        "sample_completions": [
-          "why does cheese melt",
-          "does cheddar cheese melt"
-        ],
+      },
+      "competition": {
+        "opportunity_score": 0.325,
+        "title_gap": 0.05,
+        "title_coverage_mean": 0.975,
+        "strong_match_count": 19,
+        "results_examined": 20,
+        "median_views": 777.5,
+        "p90_views": 7412,
+        "median_subscribers": 165.5,
+        "channels_under_100k_subs": 17,
+        "median_age_days": 370,
+        "published_last_365d": 10,
+        "interpretation": "19 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.05,
+          "incumbent_subs": 0.683,
+          "view_ceiling": 0.587,
+          "staleness": 0.5
+        },
         "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:06.633467+00:00"
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:24.453233+00:00"
         }
-      }
+      },
+      "combined": {
+        "combined_score": 0.171,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 95% of the top 20 titles answer this question squarely (median 778 views, 166 subs). The definitive video exists."
     },
     {
-      "query": "why does chocolate melt",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.5518,
-      "meets_floor_on_free_signals": true,
-      "demand": {
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 9,
-        "key_term": "melt",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 9,
-        "sample_completions": [
-          "why does chocolate melt",
-          "why are my chocolate melts so thick",
-          "how can chocolate melt"
-        ],
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:07.656204+00:00"
-        }
-      }
-    },
-    {
-      "query": "why does coffee taste bitter",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.2975,
-      "meets_floor_on_free_signals": true,
-      "demand": {
-        "autocomplete_completions": 7,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "bitter",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does coffee taste bitter",
-          "why does coffee taste bad",
-          "why does my coffee taste bad",
-          "why does my coffee taste sour",
-          "why coffee taste bitter"
-        ],
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:08.703536+00:00"
-        }
-      }
-    },
-    {
+      "slug": "why-does-garlic-smell-so-strong",
+      "domain": "food-science",
+      "title": "Why does garlic smell so strong?",
       "query": "why does garlic smell so strong",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.0,
-      "meets_floor_on_free_signals": false,
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.0782,
+          "demand_floor": 0.16,
+          "title_gap": 0.5,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 0,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.078 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": null
+      },
       "demand": {
+        "demand_index": 0.0782,
         "autocomplete_completions": 0,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
@@ -1427,19 +1344,78 @@
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:09.751543+00:00"
+          "fetched_utc": "2026-11-01T18:52:48.861903+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.505,
+        "title_gap": 0.5,
+        "title_coverage_mean": 0.717,
+        "strong_match_count": 10,
+        "results_examined": 20,
+        "median_views": 1351.5,
+        "p90_views": 586369,
+        "median_subscribers": 3955.0,
+        "channels_under_100k_subs": 12,
+        "median_age_days": 426,
+        "published_last_365d": 10,
+        "interpretation": "10 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.5,
+          "incumbent_subs": 0.486,
+          "view_ceiling": 0.553,
+          "staleness": 0.5
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:29.769073+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.1987,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.50, demand 0.08, opportunity 0.51."
     },
     {
+      "slug": "why-does-honey-never-spoil",
+      "domain": "food-science",
+      "title": "Why does honey never spoil?",
       "query": "why does honey never spoil",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.2275,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "demand",
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.0975,
+          "demand_floor": 0.16,
+          "title_gap": 0.3,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 3,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.098 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.30 is at or below the 0.3 saturation ceiling: 14 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
       "demand": {
+        "demand_index": 0.0975,
         "autocomplete_completions": 3,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
@@ -1451,19 +1427,78 @@
           "why honey never spoils",
           "why does honey never go bad"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:10.765975+00:00"
+          "fetched_utc": "2026-11-01T18:52:49.774058+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.394,
+        "title_gap": 0.3,
+        "title_coverage_mean": 0.867,
+        "strong_match_count": 14,
+        "results_examined": 20,
+        "median_views": 1638.5,
+        "p90_views": 33569,
+        "median_subscribers": 1365.5,
+        "channels_under_100k_subs": 17,
+        "median_age_days": 236,
+        "published_last_365d": 13,
+        "interpretation": "14 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.3,
+          "incumbent_subs": 0.552,
+          "view_ceiling": 0.541,
+          "staleness": 0.35
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:31.120345+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.196,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.30, demand 0.10, opportunity 0.39."
     },
     {
+      "slug": "why-does-ice-cream-melt-so-fast",
+      "domain": "food-science",
+      "title": "Why does ice cream melt so fast?",
       "query": "why does ice cream melt so fast",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.0,
-      "meets_floor_on_free_signals": false,
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "demand",
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.0,
+          "demand_floor": 0.16,
+          "title_gap": 0.0,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 0,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.000 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": null
+      },
       "demand": {
+        "demand_index": 0.0,
         "autocomplete_completions": 0,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
@@ -1471,19 +1506,78 @@
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:11.823996+00:00"
+          "fetched_utc": "2026-11-01T18:52:50.684944+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.265,
+        "title_gap": 0.0,
+        "title_coverage_mean": 0.938,
+        "strong_match_count": 20,
+        "results_examined": 20,
+        "median_views": 142.5,
+        "p90_views": 27249,
+        "median_subscribers": 251.0,
+        "channels_under_100k_subs": 20,
+        "median_age_days": 74,
+        "published_last_365d": 16,
+        "interpretation": "20 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.0,
+          "incumbent_subs": 0.657,
+          "view_ceiling": 0.692,
+          "staleness": 0.2
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:32.299302+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.0,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 100% of the top 20 titles answer this question squarely (median 142 views, 251 subs). The definitive video exists."
     },
     {
+      "slug": "why-does-milk-curdle",
+      "domain": "food-science",
+      "title": "Why does milk curdle?",
       "query": "why does milk curdle",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.1925,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "demand",
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.0825,
+          "demand_floor": 0.16,
+          "title_gap": 0.2,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 1,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.083 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
       "demand": {
+        "demand_index": 0.0825,
         "autocomplete_completions": 1,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
@@ -1493,19 +1587,77 @@
         "sample_completions": [
           "why does milk curdle"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:12.854109+00:00"
+          "fetched_utc": "2026-11-01T18:52:51.619413+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.388,
+        "title_gap": 0.2,
+        "title_coverage_mean": 0.9,
+        "strong_match_count": 16,
+        "results_examined": 20,
+        "median_views": 3103.5,
+        "p90_views": 64561,
+        "median_subscribers": 272.5,
+        "channels_under_100k_subs": 15,
+        "median_age_days": 448,
+        "published_last_365d": 9,
+        "interpretation": "16 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.2,
+          "incumbent_subs": 0.652,
+          "view_ceiling": 0.501,
+          "staleness": 0.55
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:33.525858+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.1789,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 80% of the top 20 titles answer this question squarely (median 3,104 views, 272 subs). The definitive video exists."
     },
     {
+      "slug": "why-does-pasta-water-get-starchy",
+      "domain": "food-science",
+      "title": "Why does pasta water get starchy?",
       "query": "why does pasta water get starchy",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.035,
-      "meets_floor_on_free_signals": false,
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1172,
+          "demand_floor": 0.16,
+          "title_gap": 0.8,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 2,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.117 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
       "demand": {
+        "demand_index": 0.1172,
         "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
@@ -1516,19 +1668,77 @@
           "what does pasta water do",
           "how to drain pasta water"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:13.887808+00:00"
+          "fetched_utc": "2026-11-01T18:52:52.534242+00:00"
         }
-      }
+      },
+      "competition": {
+        "opportunity_score": 0.671,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.537,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 907.0,
+        "p90_views": 1007473,
+        "median_subscribers": 460.0,
+        "channels_under_100k_subs": 14,
+        "median_age_days": 245,
+        "published_last_365d": 12,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.62,
+          "view_ceiling": 0.577,
+          "staleness": 0.4
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:34.833634+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.2804,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.80, demand 0.12, opportunity 0.67."
     },
     {
+      "slug": "why-does-popcorn-pop",
+      "domain": "food-science",
+      "title": "Why does popcorn pop?",
       "query": "why does popcorn pop",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.315,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.5201,
+          "demand_floor": 0.16,
+          "title_gap": 0.15,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 8,
+          "corpus_breadth": 0
+        },
+        "reason": "title gap 0.15 is at or below the 0.3 saturation ceiling: 17 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
       "demand": {
+        "demand_index": 0.5201,
         "autocomplete_completions": 8,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
@@ -1542,64 +1752,77 @@
           "why does popcorn pop jenny hoyos",
           "why does popcorn pop aumsum"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:14.916378+00:00"
+          "fetched_utc": "2026-11-01T18:52:53.461702+00:00"
         }
-      }
-    },
-    {
-      "query": "why does salt make food taste better",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.1925,
-      "meets_floor_on_free_signals": true,
-      "demand": {
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "better",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does salt make food taste better"
-        ],
+      },
+      "competition": {
+        "opportunity_score": 0.258,
+        "title_gap": 0.15,
+        "title_coverage_mean": 0.925,
+        "strong_match_count": 17,
+        "results_examined": 20,
+        "median_views": 241659.5,
+        "p90_views": 21268424,
+        "median_subscribers": 1910000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 1240,
+        "published_last_365d": 3,
+        "interpretation": "17 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.15,
+          "incumbent_subs": 0.103,
+          "view_ceiling": 0.231,
+          "staleness": 0.85
+        },
         "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:15.947628+00:00"
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:36.044400+00:00"
         }
-      }
+      },
+      "combined": {
+        "combined_score": 0.3663,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 85% of the top 20 titles answer this question squarely (median 241,660 views, 1,910,000 subs). The definitive video exists."
     },
     {
-      "query": "why does seared meat taste good",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.035,
-      "meets_floor_on_free_signals": false,
-      "demand": {
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "good",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does meat taste so good",
-          "why steak can be eaten rare"
-        ],
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:16.977191+00:00"
-        }
-      }
-    },
-    {
+      "slug": "why-does-sourdough-taste-sour",
+      "domain": "food-science",
+      "title": "Why does sourdough taste sour?",
       "query": "why does sourdough taste sour",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.035,
-      "meets_floor_on_free_signals": false,
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1092,
+          "demand_floor": 0.16,
+          "title_gap": 0.95,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 2,
+          "corpus_breadth": 0
+        },
+        "reason": "demand_index 0.109 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
       "demand": {
+        "demand_index": 0.1092,
         "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
@@ -1610,10 +1833,192 @@
           "why is sourdough sour",
           "what does sourdough taste like"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T19:29:18.009810+00:00"
+          "fetched_utc": "2026-11-01T18:52:56.193426+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.721,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.633,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 18434.0,
+        "p90_views": 215924,
+        "median_subscribers": 42200.0,
+        "channels_under_100k_subs": 13,
+        "median_age_days": 714,
+        "published_last_365d": 4,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.339,
+          "view_ceiling": 0.391,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:39.641442+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.2806,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.11) -- uncontested because few ask it."
+    }
+  ],
+  "unmeasured": [
+    {
+      "query": "how is cheese made",
+      "status": "no_competition_score",
+      "demand_without_competition": 1.0,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 10,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 113,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 115,
+        "sample_completions": [
+          "how is cheese made",
+          "how is cheese made for kids",
+          "how is cheese made from milk",
+          "how is cheese made at home",
+          "how is cheese made traditionally"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:57.067377+00:00"
+        }
+      }
+    },
+    {
+      "query": "what to do when chocolate is not melting",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.3877,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 3,
+        "key_term": "melting",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 4,
+        "sample_completions": [
+          "what to do when chocolate is not melting"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:57.987677+00:00"
+        }
+      }
+    },
+    {
+      "query": "what to do if melted chocolate is too thick",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.2901,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "melted",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "what to do if melted chocolate is too thick"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:58.913600+00:00"
+        }
+      }
+    },
+    {
+      "query": "why does dough rise",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.4542,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 4,
+        "key_term": "dough",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 5,
+        "sample_completions": [
+          "why does dough rise",
+          "why does my dough not rise",
+          "why doesn't my dough rise"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:59.824873+00:00"
+        }
+      }
+    },
+    {
+      "query": "what happens to meat when you cook it",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.2901,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "cook",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "what happens to meat when you cook it"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:53:00.739265+00:00"
+        }
+      }
+    },
+    {
+      "query": "why is my bread flat",
+      "status": "no_competition_score",
+      "demand_without_competition": 0.3076,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "flat",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why is my bread flat",
+          "why is my sourdough loaf flat"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:53:01.641667+00:00"
         }
       }
     }
@@ -1905,6 +2310,78 @@
       },
       "reason": "Middle of the field: title gap 0.50, demand 0.32, opportunity 0.47.",
       "episode": "what-is-inside-chili-coffee-honey"
+    },
+    {
+      "slug": "why-does-chocolate-melt",
+      "domain": "food-science",
+      "title": "Why does chocolate melt?",
+      "query": "why does chocolate melt",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.516 clears the 0.16 floor and title gap 0.35 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.516,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 9,
+        "key_term": "melt",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 9,
+        "sample_completions": [
+          "why does chocolate melt",
+          "why are my chocolate melts so thick",
+          "how can chocolate melt"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T18:52:47.041756+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.392,
+        "title_gap": 0.35,
+        "title_coverage_mean": 0.8,
+        "strong_match_count": 13,
+        "results_examined": 20,
+        "median_views": 200046.5,
+        "p90_views": 1779145,
+        "median_subscribers": 78750.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 839,
+        "published_last_365d": 4,
+        "interpretation": "13 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.35,
+          "incumbent_subs": 0.301,
+          "view_ceiling": 0.243,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T18:52:27.255288+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4497,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.35, demand 0.52, opportunity 0.39.",
+      "episode": "why-bread-rises-steak-browns-chocolate-snaps"
     }
   ],
   "first_video": [
@@ -1913,16 +2390,12 @@
     "why does chocolate melt"
   ],
   "meets_floor_on_free_signals": [
-    "why do apples turn brown",
-    "why do onions make you cry",
-    "why does bread go stale",
-    "why does cheese melt",
-    "why does chocolate melt",
-    "why does coffee taste bitter",
-    "why does honey never spoil",
-    "why does milk curdle",
-    "why does popcorn pop",
-    "why does salt make food taste better"
+    "how is cheese made",
+    "what to do when chocolate is not melting",
+    "what to do if melted chocolate is too thick",
+    "why does dough rise",
+    "what happens to meat when you cook it",
+    "why is my bread flat"
   ],
-  "queue_length": 14
+  "queue_length": 11
 }

@@ -1,58 +1,58 @@
 {
-  "mined_at": "2026-10-31T15:40:47.321325+00:00",
+  "mined_at": "2026-11-01T18:47:45.498951+00:00",
   "endpoint": "https://suggestqueries.google.com/complete/search",
   "surface": "youtube_autocomplete",
   "generator": "research/mine_domain.py",
-  "seeds_file": "/tmp/tmptmyuq242.json",
-  "seed_count": 25,
-  "unique_queries": 3404,
+  "seeds_file": "/tmp/tmpv316ht0k.json",
+  "seed_count": 26,
+  "unique_queries": 3414,
   "queries": [
     {
       "query": "what lives in the deep sea",
       "is_question": true,
       "words": 6,
-      "seed_hits": 41,
+      "seed_hits": 37,
       "seeds": [
         "what lives in the deep",
-        "what lives in the deep a",
         "what lives in the deep b",
-        "what lives in the deep c"
+        "what lives in the deep c",
+        "what lives in the deep d"
       ]
     },
     {
       "query": "what lives in the deep ocean",
       "is_question": true,
       "words": 6,
-      "seed_hits": 34,
+      "seed_hits": 32,
       "seeds": [
         "what lives in the deep",
         "what lives in the deep b",
-        "what lives in the deep i",
-        "what lives in the deep o"
+        "what lives in the deep o",
+        "what lives in the deep q"
+      ]
+    },
+    {
+      "query": "how deep are olympic pools",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 27,
+      "seeds": [
+        "how deep a",
+        "how deep are olympic pools",
+        "how deep are olympic pools a",
+        "how deep are olympic pools b"
       ]
     },
     {
       "query": "what lives in the deep",
       "is_question": true,
       "words": 5,
-      "seed_hits": 27,
+      "seed_hits": 26,
       "seeds": [
         "what lives in the deep",
         "what lives in the deep a",
         "what lives in the deep b",
         "what lives in the deep c"
-      ]
-    },
-    {
-      "query": "why deep sea creatures",
-      "is_question": true,
-      "words": 4,
-      "seed_hits": 25,
-      "seeds": [
-        "why deep sea a",
-        "why deep sea b",
-        "why deep sea creatures",
-        "why deep sea creatures h"
       ]
     },
     {
@@ -68,15 +68,15 @@
       ]
     },
     {
-      "query": "how do scientists know so much",
+      "query": "why deep sea creatures",
       "is_question": true,
-      "words": 6,
+      "words": 4,
       "seed_hits": 24,
       "seeds": [
-        "how do scientists know",
-        "how do scientists know b",
-        "how do scientists know c",
-        "how do scientists know d"
+        "why deep sea a",
+        "why deep sea b",
+        "why deep sea creatures",
+        "why deep sea creatures h"
       ]
     },
     {
@@ -89,6 +89,18 @@
         "why deep sea b",
         "why deep sea c",
         "why deep sea d"
+      ]
+    },
+    {
+      "query": "how do scientists know so much",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 23,
+      "seeds": [
+        "how do scientists know",
+        "how do scientists know b",
+        "how do scientists know c",
+        "how do scientists know d"
       ]
     },
     {
@@ -116,22 +128,10 @@
       ]
     },
     {
-      "query": "deepest part of the ocean",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 21,
-      "seeds": [
-        "deepest part of the ocean",
-        "deepest part of the ocean b",
-        "deepest part of the ocean d",
-        "deepest part of the ocean e"
-      ]
-    },
-    {
       "query": "hydrothermal vents video",
       "is_question": false,
       "words": 3,
-      "seed_hits": 20,
+      "seed_hits": 18,
       "seeds": [
         "hydrothermal vent a",
         "hydrothermal vent b",
@@ -140,10 +140,22 @@
       ]
     },
     {
+      "query": "deepest part of the ocean",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 18,
+      "seeds": [
+        "deepest part of the ocean",
+        "deepest part of the ocean b",
+        "deepest part of the ocean d",
+        "deepest part of the ocean f"
+      ]
+    },
+    {
       "query": "midnight zone",
       "is_question": false,
       "words": 2,
-      "seed_hits": 18,
+      "seed_hits": 17,
       "seeds": [
         "midnight zone",
         "midnight zone b",
@@ -155,7 +167,7 @@
       "query": "midnight zone creatures",
       "is_question": false,
       "words": 3,
-      "seed_hits": 18,
+      "seed_hits": 17,
       "seeds": [
         "midnight zone",
         "midnight zone b",
@@ -167,31 +179,19 @@
       "query": "hydrothermal vents life",
       "is_question": false,
       "words": 3,
-      "seed_hits": 17,
+      "seed_hits": 16,
       "seeds": [
         "hydrothermal vent",
-        "hydrothermal vent a",
         "hydrothermal vent c",
-        "hydrothermal vent f"
-      ]
-    },
-    {
-      "query": "ocean science",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 15,
-      "seeds": [
-        "ocean science",
-        "ocean science b",
-        "ocean science d",
-        "ocean science g"
+        "hydrothermal vent d",
+        "hydrothermal vent g"
       ]
     },
     {
       "query": "hadalpelagic zone",
       "is_question": false,
       "words": 2,
-      "seed_hits": 15,
+      "seed_hits": 14,
       "seeds": [
         "hadal zone c",
         "hadal zone d",
@@ -203,7 +203,7 @@
       "query": "how do scientists know how old something is",
       "is_question": true,
       "words": 8,
-      "seed_hits": 14,
+      "seed_hits": 13,
       "seeds": [
         "how do scientists know",
         "how do scientists know b",
@@ -215,7 +215,7 @@
       "query": "ocean environment",
       "is_question": false,
       "words": 2,
-      "seed_hits": 14,
+      "seed_hits": 13,
       "seeds": [
         "ocean science b",
         "ocean science d",
@@ -227,12 +227,24 @@
       "query": "how do scientists know about other galaxies",
       "is_question": true,
       "words": 7,
-      "seed_hits": 11,
+      "seed_hits": 12,
       "seeds": [
         "how do scientists know",
         "how do scientists know a",
-        "how do scientists know g",
-        "how do scientists know i"
+        "how do scientists know e",
+        "how do scientists know g"
+      ]
+    },
+    {
+      "query": "ocean science",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 12,
+      "seeds": [
+        "ocean science",
+        "ocean science d",
+        "ocean science g",
+        "ocean science h"
       ]
     },
     {
@@ -244,7 +256,7 @@
         "how do scientists know a",
         "how do scientists know b",
         "how do scientists know g",
-        "how do scientists know o"
+        "how do scientists know k"
       ]
     },
     {
@@ -260,18 +272,6 @@
       ]
     },
     {
-      "query": "how deep is the ocean",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 9,
-      "seeds": [
-        "how deep",
-        "how deep i",
-        "how deep is the ocean",
-        "how deep is the ocean d"
-      ]
-    },
-    {
       "query": "how deep is your love",
       "is_question": true,
       "words": 5,
@@ -284,51 +284,27 @@
       ]
     },
     {
-      "query": "hydrothermal vent",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 9,
-      "seeds": [
-        "hydrothermal vent a",
-        "hydrothermal vent b",
-        "hydrothermal vent d",
-        "hydrothermal vent e"
-      ]
-    },
-    {
-      "query": "hydrothermal vent communities",
+      "query": "midnight zone 1997",
       "is_question": false,
       "words": 3,
       "seed_hits": 9,
       "seeds": [
-        "hydrothermal vent",
-        "hydrothermal vent c",
-        "hydrothermal vent d",
-        "hydrothermal vent h"
+        "midnight zone b",
+        "midnight zone e",
+        "midnight zone h",
+        "midnight zone i"
       ]
     },
     {
-      "query": "hadal zone creatures",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 9,
+      "query": "how deep is the ocean",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 8,
       "seeds": [
-        "abyssal zone c",
-        "hadal zone",
-        "hadal zone c",
-        "hadal zone d"
-      ]
-    },
-    {
-      "query": "ocean floor feature",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 9,
-      "seeds": [
-        "ocean floor a",
-        "ocean floor k",
-        "ocean floor o",
-        "ocean floor q"
+        "how deep",
+        "how deep i",
+        "how deep is the ocean",
+        "how deep is the ocean d"
       ]
     },
     {
@@ -344,15 +320,27 @@
       ]
     },
     {
-      "query": "midnight zone 1997",
+      "query": "hydrothermal vent communities",
       "is_question": false,
       "words": 3,
       "seed_hits": 8,
       "seeds": [
-        "midnight zone b",
-        "midnight zone e",
-        "midnight zone h",
-        "midnight zone n"
+        "hydrothermal vent",
+        "hydrothermal vent c",
+        "hydrothermal vent h",
+        "hydrothermal vent i"
+      ]
+    },
+    {
+      "query": "ocean floor feature",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 8,
+      "seeds": [
+        "ocean floor a",
+        "ocean floor k",
+        "ocean floor o",
+        "ocean floor q"
       ]
     },
     {
@@ -404,27 +392,51 @@
       ]
     },
     {
-      "query": "ocean science videos",
+      "query": "hydrothermal vent",
       "is_question": false,
-      "words": 3,
+      "words": 2,
       "seed_hits": 7,
       "seeds": [
-        "ocean science",
-        "ocean science d",
-        "ocean science i",
-        "ocean science l"
+        "hydrothermal vent b",
+        "hydrothermal vent d",
+        "hydrothermal vent j",
+        "hydrothermal vent l"
       ]
     },
     {
-      "query": "whale fall video",
+      "query": "whale fall footage",
       "is_question": false,
       "words": 3,
       "seed_hits": 7,
       "seeds": [
-        "whale fall",
-        "whale fall j",
-        "whale fall l",
+        "whale fall f",
+        "whale fall h",
+        "whale fall n",
         "whale fall p"
+      ]
+    },
+    {
+      "query": "hadal zone animals",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 7,
+      "seeds": [
+        "abyssal zone a",
+        "hadal zone",
+        "hadal zone a",
+        "hadal zone d"
+      ]
+    },
+    {
+      "query": "hadal zone creatures",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 7,
+      "seeds": [
+        "abyssal zone c",
+        "hadal zone",
+        "hadal zone c",
+        "hadal zone e"
       ]
     },
     {
@@ -447,20 +459,8 @@
       "seeds": [
         "midnight zone b",
         "midnight zone j",
-        "midnight zone k",
-        "midnight zone p"
-      ]
-    },
-    {
-      "query": "how do scientists think",
-      "is_question": true,
-      "words": 4,
-      "seed_hits": 6,
-      "seeds": [
-        "how do scientists know e",
-        "how do scientists know f",
-        "how do scientists know j",
-        "how do scientists know n"
+        "midnight zone p",
+        "midnight zone r"
       ]
     },
     {
@@ -560,51 +560,27 @@
       ]
     },
     {
-      "query": "hydrothermal vent creatures",
+      "query": "hydrothermal vent animals",
       "is_question": false,
       "words": 3,
       "seed_hits": 6,
       "seeds": [
-        "hydrothermal vent",
-        "hydrothermal vent c",
+        "hydrothermal vent a",
+        "hydrothermal vent e",
         "hydrothermal vent g",
-        "hydrothermal vent m"
+        "hydrothermal vent j"
       ]
     },
     {
-      "query": "abyssal zone creatures",
+      "query": "whale fall video",
       "is_question": false,
       "words": 3,
       "seed_hits": 6,
       "seeds": [
-        "abyssal zone",
-        "abyssal zone c",
-        "abyssal zone p",
-        "abyssal zone t"
-      ]
-    },
-    {
-      "query": "hadal zone animals",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 6,
-      "seeds": [
-        "abyssal zone a",
-        "hadal zone",
-        "hadal zone a",
-        "hadal zone d"
-      ]
-    },
-    {
-      "query": "hadal zone footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 6,
-      "seeds": [
-        "abyssal zone f",
-        "hadal zone",
-        "hadal zone f",
-        "hadal zone h"
+        "whale fall",
+        "whale fall j",
+        "whale fall l",
+        "whale fall v"
       ]
     },
     {
@@ -620,6 +596,18 @@
       ]
     },
     {
+      "query": "how do scientists think",
+      "is_question": true,
+      "words": 4,
+      "seed_hits": 5,
+      "seeds": [
+        "how do scientists know e",
+        "how do scientists know j",
+        "how do scientists know n",
+        "how do scientists know s"
+      ]
+    },
+    {
       "query": "why deep sea creatures are giant",
       "is_question": true,
       "words": 6,
@@ -629,18 +617,6 @@
         "why deep sea creatures a",
         "why deep sea creatures g",
         "why deep sea g"
-      ]
-    },
-    {
-      "query": "how deep is the ocean evans",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 5,
-      "seeds": [
-        "how deep is the ocean a",
-        "how deep is the ocean e",
-        "how deep is the ocean o",
-        "how deep is the ocean q"
       ]
     },
     {
@@ -692,6 +668,18 @@
       ]
     },
     {
+      "query": "anglerfish male",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 5,
+      "seeds": [
+        "anglerfish",
+        "anglerfish m",
+        "anglerfish q",
+        "anglerfish w"
+      ]
+    },
+    {
       "query": "anglerfish anglerfish",
       "is_question": false,
       "words": 2,
@@ -699,6 +687,18 @@
       "seeds": [
         "anglerfish a",
         "anglerfish q",
+        "anglerfish x",
+        "anglerfish y"
+      ]
+    },
+    {
+      "query": "anglerfish video",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 5,
+      "seeds": [
+        "anglerfish q",
+        "anglerfish v",
         "anglerfish x",
         "anglerfish y"
       ]
@@ -712,19 +712,55 @@
         "bioluminescence",
         "bioluminescence e",
         "bioluminescence f",
-        "bioluminescence q"
+        "bioluminescence y"
       ]
     },
     {
-      "query": "hydrothermal vent animals",
+      "query": "challenger depth ocean",
       "is_question": false,
       "words": 3,
       "seed_hits": 5,
       "seeds": [
-        "hydrothermal vent a",
-        "hydrothermal vent g",
-        "hydrothermal vent j",
-        "hydrothermal vent q"
+        "challenger deep q",
+        "challenger deep u",
+        "challenger deep w",
+        "challenger deep y"
+      ]
+    },
+    {
+      "query": "hydrothermal vent creatures",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 5,
+      "seeds": [
+        "hydrothermal vent",
+        "hydrothermal vent c",
+        "hydrothermal vent m",
+        "hydrothermal vent p"
+      ]
+    },
+    {
+      "query": "abyssal zone creatures",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 5,
+      "seeds": [
+        "abyssal zone",
+        "abyssal zone c",
+        "abyssal zone p",
+        "hadal zone c"
+      ]
+    },
+    {
+      "query": "hadal zone footage",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 5,
+      "seeds": [
+        "abyssal zone f",
+        "hadal zone",
+        "hadal zone f",
+        "hadal zone h"
       ]
     },
     {
@@ -749,6 +785,30 @@
         "hydrothermal vent b",
         "hydrothermal vent i",
         "hydrothermal vent m"
+      ]
+    },
+    {
+      "query": "how deep are pools",
+      "is_question": true,
+      "words": 4,
+      "seed_hits": 4,
+      "seeds": [
+        "how deep are olympic pools e",
+        "how deep are olympic pools l",
+        "how deep are olympic pools m",
+        "how deep are olympic pools t"
+      ]
+    },
+    {
+      "query": "how deep is the ocean evans",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 4,
+      "seeds": [
+        "how deep is the ocean a",
+        "how deep is the ocean e",
+        "how deep is the ocean o",
+        "how deep is the ocean q"
       ]
     },
     {
@@ -908,42 +968,6 @@
       ]
     },
     {
-      "query": "#anglerfish",
-      "is_question": false,
-      "words": 1,
-      "seed_hits": 4,
-      "seeds": [
-        "anglerfish q",
-        "anglerfish x",
-        "anglerfish y",
-        "anglerfish z"
-      ]
-    },
-    {
-      "query": "anglerfish male",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 4,
-      "seeds": [
-        "anglerfish",
-        "anglerfish m",
-        "anglerfish q",
-        "anglerfish w"
-      ]
-    },
-    {
-      "query": "anglerfish video",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 4,
-      "seeds": [
-        "anglerfish v",
-        "anglerfish x",
-        "anglerfish y",
-        "anglerfish z"
-      ]
-    },
-    {
       "query": "bioluminescence song",
       "is_question": false,
       "words": 2,
@@ -968,15 +992,15 @@
       ]
     },
     {
-      "query": "challenger depth ocean",
+      "query": "ocean science videos",
       "is_question": false,
       "words": 3,
       "seed_hits": 4,
       "seeds": [
-        "challenger deep q",
-        "challenger deep u",
-        "challenger deep w",
-        "challenger deep y"
+        "ocean science",
+        "ocean science d",
+        "ocean science i",
+        "ocean science v"
       ]
     },
     {
@@ -985,22 +1009,10 @@
       "words": 3,
       "seed_hits": 4,
       "seeds": [
+        "hydrothermal vent a",
         "hydrothermal vent b",
         "hydrothermal vent e",
-        "hydrothermal vent l",
-        "hydrothermal vent t"
-      ]
-    },
-    {
-      "query": "whale fall footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 4,
-      "seeds": [
-        "whale fall f",
-        "whale fall g",
-        "whale fall h",
-        "whale fall v"
+        "hydrothermal vent l"
       ]
     },
     {
@@ -1073,18 +1085,6 @@
         "challenger deep m",
         "challenger deep o",
         "challenger deep t"
-      ]
-    },
-    {
-      "query": "whale fall the madrean",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 4,
-      "seeds": [
-        "whale fall g",
-        "whale fall n",
-        "whale fall q",
-        "whale fall t"
       ]
     },
     {
@@ -1184,6 +1184,18 @@
       ]
     },
     {
+      "query": "the deepest part of the ocean",
+      "is_question": false,
+      "words": 6,
+      "seed_hits": 4,
+      "seeds": [
+        "deepest part of the ocean j",
+        "deepest part of the ocean m",
+        "deepest part of the ocean s",
+        "deepest part of the ocean t"
+      ]
+    },
+    {
       "query": "abyssal zone in kick a lucky block",
       "is_question": false,
       "words": 7,
@@ -1243,6 +1255,17 @@
       ]
     },
     {
+      "query": "how do scientists date fossils",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 3,
+      "seeds": [
+        "how do scientists know f",
+        "how do scientists know j",
+        "how do scientists know q"
+      ]
+    },
+    {
       "query": "how deep is the ocean nowak",
       "is_question": true,
       "words": 6,
@@ -1251,6 +1274,17 @@
         "how deep is the ocean n",
         "how deep is the ocean u",
         "how deep is the ocean x"
+      ]
+    },
+    {
+      "query": "how deep is the ocean tag",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 3,
+      "seeds": [
+        "how deep is the ocean t",
+        "how deep is the ocean x",
+        "how deep is the ocean z"
       ]
     },
     {
@@ -1320,6 +1354,17 @@
       ]
     },
     {
+      "query": "#anglerfish",
+      "is_question": false,
+      "words": 1,
+      "seed_hits": 3,
+      "seeds": [
+        "anglerfish q",
+        "anglerfish y",
+        "anglerfish z"
+      ]
+    },
+    {
       "query": "bioluminescence florida",
       "is_question": false,
       "words": 2,
@@ -1328,28 +1373,6 @@
         "bioluminescence",
         "bioluminescence f",
         "bioluminescence q"
-      ]
-    },
-    {
-      "query": "ocean floor",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 3,
-      "seeds": [
-        "ocean floor",
-        "ocean floor y",
-        "ocean floor z"
-      ]
-    },
-    {
-      "query": "deep sea fishing",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 3,
-      "seeds": [
-        "deep sea",
-        "deep sea f",
-        "deep sea fish"
       ]
     },
     {
@@ -1364,6 +1387,17 @@
       ]
     },
     {
+      "query": "deep sea fishing",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 3,
+      "seeds": [
+        "deep sea",
+        "deep sea f",
+        "deep sea fish"
+      ]
+    },
+    {
       "query": "deep sea jellyfish",
       "is_question": false,
       "words": 3,
@@ -1375,39 +1409,6 @@
       ]
     },
     {
-      "query": "challenger deep footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 3,
-      "seeds": [
-        "challenger deep",
-        "challenger deep b",
-        "challenger deep f"
-      ]
-    },
-    {
-      "query": "challenger deep band",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 3,
-      "seeds": [
-        "challenger deep",
-        "challenger deep b",
-        "challenger deep j"
-      ]
-    },
-    {
-      "query": "challenger deep video",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 3,
-      "seeds": [
-        "challenger deep e",
-        "challenger deep k",
-        "challenger deep v"
-      ]
-    },
-    {
       "query": "hydrothermal vent ecosystem",
       "is_question": false,
       "words": 3,
@@ -1415,6 +1416,17 @@
       "seeds": [
         "hydrothermal vent",
         "hydrothermal vent e",
+        "hydrothermal vent z"
+      ]
+    },
+    {
+      "query": "hydrothermal vent worms",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 3,
+      "seeds": [
+        "hydrothermal vent g",
+        "hydrothermal vent w",
         "hydrothermal vent z"
       ]
     },
@@ -1716,6 +1728,17 @@
       ]
     },
     {
+      "query": "whale fall the madrean",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 3,
+      "seeds": [
+        "whale fall n",
+        "whale fall t",
+        "whale fall u"
+      ]
+    },
+    {
       "query": "hadal abyssal zone english",
       "is_question": false,
       "words": 4,
@@ -1837,36 +1860,14 @@
       ]
     },
     {
-      "query": "deep sea ocean fish",
+      "query": "deep sea ocean fishing",
       "is_question": false,
       "words": 4,
       "seed_hits": 3,
       "seeds": [
         "deep sea fish c",
-        "deep sea fish q",
-        "deep sea fish z"
-      ]
-    },
-    {
-      "query": "ocean floor audio adrenaline",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 3,
-      "seeds": [
-        "ocean floor",
-        "ocean floor a",
-        "ocean floor x"
-      ]
-    },
-    {
-      "query": "ocean floor headphone activist",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 3,
-      "seeds": [
-        "ocean floor e",
-        "ocean floor h",
-        "ocean floor x"
+        "deep sea fish f",
+        "deep sea fish x"
       ]
     },
     {
@@ -2327,16 +2328,6 @@
       ]
     },
     {
-      "query": "how do scientists date fossils",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 2,
-      "seeds": [
-        "how do scientists know j",
-        "how do scientists know q"
-      ]
-    },
-    {
       "query": "why deep sea creatures are scared",
       "is_question": true,
       "words": 6,
@@ -2394,16 +2385,6 @@
       "seeds": [
         "how deep is the ocean m",
         "how deep is the ocean q"
-      ]
-    },
-    {
-      "query": "how deep is the ocean tag",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 2,
-      "seeds": [
-        "how deep is the ocean t",
-        "how deep is the ocean z"
       ]
     },
     {
@@ -2877,13 +2858,13 @@
       ]
     },
     {
-      "query": "anglerfish live",
+      "query": "bioluminescence explained",
       "is_question": false,
       "words": 2,
       "seed_hits": 2,
       "seeds": [
-        "anglerfish l",
-        "anglerfish z"
+        "bioluminescence",
+        "bioluminescence e"
       ]
     },
     {
@@ -2897,26 +2878,6 @@
       ]
     },
     {
-      "query": "bioluminescence explained",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 2,
-      "seeds": [
-        "bioluminescence",
-        "bioluminescence e"
-      ]
-    },
-    {
-      "query": "bioluminescence light",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 2,
-      "seeds": [
-        "bioluminescence l",
-        "bioluminescence x"
-      ]
-    },
-    {
       "query": "challenger deep",
       "is_question": false,
       "words": 2,
@@ -2924,16 +2885,6 @@
       "seeds": [
         "challenger deep",
         "challenger deep j"
-      ]
-    },
-    {
-      "query": "challengers deep",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 2,
-      "seeds": [
-        "challenger deep q",
-        "challenger deep y"
       ]
     },
     {
@@ -2947,13 +2898,13 @@
       ]
     },
     {
-      "query": "whale fall",
+      "query": "hadal snailfish",
       "is_question": false,
       "words": 2,
       "seed_hits": 2,
       "seeds": [
-        "whale fall",
-        "whale fall x"
+        "hadal zone c",
+        "hadal zone y"
       ]
     },
     {
@@ -3027,16 +2978,6 @@
       ]
     },
     {
-      "query": "deep sea gigantism",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "deep sea",
-        "deep sea g"
-      ]
-    },
-    {
       "query": "deep sea exploration",
       "is_question": false,
       "words": 3,
@@ -3044,6 +2985,16 @@
       "seeds": [
         "deep sea",
         "deep sea e"
+      ]
+    },
+    {
+      "query": "deep sea gigantism",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "deep sea",
+        "deep sea g"
       ]
     },
     {
@@ -3107,16 +3058,6 @@
       ]
     },
     {
-      "query": "mariana trench footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench f"
-      ]
-    },
-    {
       "query": "mariana trench documentary",
       "is_question": false,
       "words": 3,
@@ -3127,6 +3068,16 @@
       ]
     },
     {
+      "query": "mariana trench footage",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench f"
+      ]
+    },
+    {
       "query": "mariana trench exploration",
       "is_question": false,
       "words": 3,
@@ -3134,16 +3085,6 @@
       "seeds": [
         "mariana trench",
         "mariana trench e"
-      ]
-    },
-    {
-      "query": "mariana trench productions",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench p"
       ]
     },
     {
@@ -3167,7 +3108,17 @@
       ]
     },
     {
-      "query": "mariana trench sounds",
+      "query": "mariana trench trailer",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench t"
+      ]
+    },
+    {
+      "query": "mariana trench song",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
@@ -3177,13 +3128,13 @@
       ]
     },
     {
-      "query": "mariana trench trailer",
+      "query": "mariana trench sounds",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "mariana trench",
-        "mariana trench t"
+        "mariana trench s"
       ]
     },
     {
@@ -3327,6 +3278,16 @@
       ]
     },
     {
+      "query": "challenger deep band",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "challenger deep",
+        "challenger deep b"
+      ]
+    },
+    {
       "query": "challenger deep book",
       "is_question": false,
       "words": 3,
@@ -3337,23 +3298,23 @@
       ]
     },
     {
-      "query": "challenger deep sub",
+      "query": "challenger deep bestiary",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "challenger deep",
+        "challenger deep b"
+      ]
+    },
+    {
+      "query": "challenger deep footage",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "challenger deep b",
-        "challenger deep s"
-      ]
-    },
-    {
-      "query": "challenger deep expedition",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "challenger deep e",
-        "challenger deep w"
+        "challenger deep o"
       ]
     },
     {
@@ -3374,6 +3335,16 @@
       "seeds": [
         "challenger deep h",
         "challenger deep m"
+      ]
+    },
+    {
+      "query": "challenger deep video",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "challenger deep k",
+        "challenger deep v"
       ]
     },
     {
@@ -3404,16 +3375,6 @@
       "seeds": [
         "challenger deep q",
         "challenger deep z"
-      ]
-    },
-    {
-      "query": "challenger deep sea",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "challenger deep s",
-        "challenger deep y"
       ]
     },
     {
@@ -3464,6 +3425,16 @@
       "seeds": [
         "colossal squid",
         "colossal squid f"
+      ]
+    },
+    {
+      "query": "colossal squid attack",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "colossal squid",
+        "colossal squid a"
       ]
     },
     {
@@ -3537,16 +3508,6 @@
       ]
     },
     {
-      "query": "hydrothermal vent worms",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "hydrothermal vent w",
-        "hydrothermal vent z"
-      ]
-    },
-    {
       "query": "whale fall ending",
       "is_question": false,
       "words": 3,
@@ -3613,16 +3574,6 @@
       "seed_hits": 2,
       "seeds": [
         "whale fall",
-        "whale fall n"
-      ]
-    },
-    {
-      "query": "whale fall band",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "whale fall b",
         "whale fall n"
       ]
     },
@@ -3824,16 +3775,6 @@
       "seeds": [
         "midnight zone",
         "midnight zone o"
-      ]
-    },
-    {
-      "query": "midnight zone sea",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "midnight zone s",
-        "midnight zone y"
       ]
     },
     {
@@ -4647,6 +4588,16 @@
       ]
     },
     {
+      "query": "mariana trench victor vescovo",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench q",
+        "mariana trench z"
+      ]
+    },
+    {
       "query": "angler fish finding nemo",
       "is_question": false,
       "words": 4,
@@ -4704,26 +4655,6 @@
       "seeds": [
         "deep sea creature j",
         "deep sea creature s"
-      ]
-    },
-    {
-      "query": "deep sea sea monsters",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 2,
-      "seeds": [
-        "deep sea creature j",
-        "deep sea creature z"
-      ]
-    },
-    {
-      "query": "deep sea sea creatures",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 2,
-      "seeds": [
-        "deep sea creature j",
-        "deep sea creature y"
       ]
     },
     {
@@ -5047,16 +4978,6 @@
       ]
     },
     {
-      "query": "whale carcass deep sea",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 2,
-      "seeds": [
-        "whale fall u",
-        "whale fall x"
-      ]
-    },
-    {
       "query": "tundra abyssal zone codm",
       "is_question": false,
       "words": 4,
@@ -5267,23 +5188,13 @@
       ]
     },
     {
-      "query": "deep sea fish facts",
+      "query": "ocean floor audio adrenaline",
       "is_question": false,
       "words": 4,
       "seed_hits": 2,
       "seeds": [
-        "deep sea fish f",
-        "deep sea fish q"
-      ]
-    },
-    {
-      "query": "deep sea ocean fishing",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 2,
-      "seeds": [
-        "deep sea fish f",
-        "deep sea fish x"
+        "ocean floor",
+        "ocean floor a"
       ]
     },
     {
@@ -5324,6 +5235,16 @@
       "seeds": [
         "ocean floor d",
         "ocean floor o"
+      ]
+    },
+    {
+      "query": "ocean floor headphone activist",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "ocean floor e",
+        "ocean floor h"
       ]
     },
     {
@@ -5858,16 +5779,6 @@
     },
     {
       "query": "colossal squid vs sperm whale",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 2,
-      "seeds": [
-        "colossal squid",
-        "colossal squid v"
-      ]
-    },
-    {
-      "query": "colossal squid vs giant squid",
       "is_question": false,
       "words": 5,
       "seed_hits": 2,
@@ -6464,16 +6375,6 @@
       "seeds": [
         "deepest part of the ocean",
         "deepest part of the ocean d"
-      ]
-    },
-    {
-      "query": "the deepest part of the ocean",
-      "is_question": false,
-      "words": 6,
-      "seed_hits": 2,
-      "seeds": [
-        "deepest part of the ocean j",
-        "deepest part of the ocean t"
       ]
     },
     {
@@ -7747,15 +7648,6 @@
       ]
     },
     {
-      "query": "how deep are olympic pools",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep a"
-      ]
-    },
-    {
       "query": "how deep by tai verdes",
       "is_question": true,
       "words": 5,
@@ -8221,6 +8113,15 @@
       "seed_hits": 1,
       "seeds": [
         "how do scientists know d"
+      ]
+    },
+    {
+      "query": "how deep is olympic pool",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep are olympic pools i"
       ]
     },
     {
@@ -8720,6 +8621,15 @@
     },
     {
       "query": "how deep is the sea video",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep is the ocean v"
+      ]
+    },
+    {
+      "query": "how deep is the ocean short",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
@@ -10312,6 +10222,15 @@
       ]
     },
     {
+      "query": "how deep the father's love for us acapella",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep t"
+      ]
+    },
+    {
       "query": "how deep will you go card game review",
       "is_question": true,
       "words": 8,
@@ -10426,15 +10345,6 @@
       "seed_hits": 1,
       "seeds": [
         "how deep h"
-      ]
-    },
-    {
-      "query": "how deep the father's love for us stuart townend",
-      "is_question": true,
-      "words": 9,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep t"
       ]
     },
     {
@@ -10835,6 +10745,15 @@
     },
     {
       "query": "anglerfish life",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "anglerfish l"
+      ]
+    },
+    {
+      "query": "anglerfish live",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
@@ -11491,6 +11410,15 @@
       ]
     },
     {
+      "query": "bioluminescence light",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "bioluminescence l"
+      ]
+    },
+    {
       "query": "bioluminescence lake",
       "is_question": false,
       "words": 2,
@@ -12067,12 +11995,30 @@
       ]
     },
     {
+      "query": "challengers deep",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep q"
+      ]
+    },
+    {
       "query": "colossal squid",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
       "seeds": [
         "colossal squid"
+      ]
+    },
+    {
+      "query": "whale fall",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall"
       ]
     },
     {
@@ -12139,16 +12085,7 @@
       ]
     },
     {
-      "query": "whalefall squid",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall s"
-      ]
-    },
-    {
-      "query": "whalefall soundtrack",
+      "query": "whalefall spoilers",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
@@ -12175,30 +12112,21 @@
       ]
     },
     {
+      "query": "whalefall squid",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
       "query": "whale falls",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
       "seeds": [
         "whale fall w"
-      ]
-    },
-    {
-      "query": "abyssal plain",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 1,
-      "seeds": [
-        "abyssal zone g"
-      ]
-    },
-    {
-      "query": "hadal snailfish",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 1,
-      "seeds": [
-        "hadal zone y"
       ]
     },
     {
@@ -12571,7 +12499,7 @@
       ]
     },
     {
-      "query": "submersible model",
+      "query": "submersible motor",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
@@ -12580,7 +12508,7 @@
       ]
     },
     {
-      "query": "submersible motor",
+      "query": "submersible model",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
@@ -12841,6 +12769,15 @@
       ]
     },
     {
+      "query": "ocean floor",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "ocean floor"
+      ]
+    },
+    {
       "query": "seafloor hunting",
       "is_question": false,
       "words": 2,
@@ -12895,15 +12832,6 @@
       ]
     },
     {
-      "query": "deep sea aquarium",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea a"
-      ]
-    },
-    {
       "query": "deep sea adventure",
       "is_question": false,
       "words": 3,
@@ -12923,6 +12851,15 @@
     },
     {
       "query": "deep sea alien",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea a"
+      ]
+    },
+    {
+      "query": "deep sea aquarium",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13129,7 +13066,7 @@
       ]
     },
     {
-      "query": "deep sea hatchetfish",
+      "query": "deep sea hunting",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13489,6 +13426,15 @@
       ]
     },
     {
+      "query": "deep sea quran",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea q"
+      ]
+    },
+    {
       "query": "deep sea 7420",
       "is_question": false,
       "words": 3,
@@ -13534,15 +13480,6 @@
       ]
     },
     {
-      "query": "deep sea rahasya",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea r"
-      ]
-    },
-    {
       "query": "deep sea reaction",
       "is_question": false,
       "words": 3,
@@ -13552,12 +13489,12 @@
       ]
     },
     {
-      "query": "deep sea sounds",
+      "query": "deep sea remix",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
       "seeds": [
-        "deep sea s"
+        "deep sea r"
       ]
     },
     {
@@ -13571,6 +13508,15 @@
     },
     {
       "query": "deep sea song",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea s"
+      ]
+    },
+    {
+      "query": "deep sea sounds",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -14623,6 +14569,15 @@
       ]
     },
     {
+      "query": "mariana trench garbage",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "mariana trench g"
+      ]
+    },
+    {
       "query": "mariana trench hmh",
       "is_question": false,
       "words": 3,
@@ -14965,6 +14920,15 @@
       ]
     },
     {
+      "query": "mariana trench productions",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "mariana trench p"
+      ]
+    },
+    {
       "query": "mariana trench pressure",
       "is_question": false,
       "words": 3,
@@ -15043,15 +15007,6 @@
       "seed_hits": 1,
       "seeds": [
         "mariana trench r"
-      ]
-    },
-    {
-      "query": "mariana trench song",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "mariana trench s"
       ]
     },
     {
@@ -16765,15 +16720,6 @@
       ]
     },
     {
-      "query": "challenger deep bestiary",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "challenger deep b"
-      ]
-    },
-    {
       "query": "challenger deep creatures",
       "is_question": false,
       "words": 3,
@@ -16891,6 +16837,15 @@
       ]
     },
     {
+      "query": "challenger deep expedition",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep e"
+      ]
+    },
+    {
       "query": "challenger deep engineering",
       "is_question": false,
       "words": 3,
@@ -16969,6 +16924,15 @@
       "seed_hits": 1,
       "seeds": [
         "challenger deep i"
+      ]
+    },
+    {
+      "query": "challenger deep 1960",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep j"
       ]
     },
     {
@@ -17179,7 +17143,25 @@
       ]
     },
     {
+      "query": "challenger deep sea",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep s"
+      ]
+    },
+    {
       "query": "challenger deep submersible",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep s"
+      ]
+    },
+    {
+      "query": "challenger deep sub",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -17302,15 +17284,6 @@
       "seed_hits": 1,
       "seeds": [
         "challenger deep z"
-      ]
-    },
-    {
-      "query": "colossal squid attack",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "colossal squid a"
       ]
     },
     {
@@ -18268,6 +18241,15 @@
       ]
     },
     {
+      "query": "colossal squid 2007",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "colossal squid x"
+      ]
+    },
+    {
       "query": "young colossal squid",
       "is_question": false,
       "words": 3,
@@ -18305,15 +18287,6 @@
     },
     {
       "query": "hydrothermal vents formation",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "hydrothermal vent f"
-      ]
-    },
-    {
-      "query": "hydrothermal vents sound",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -18391,6 +18364,15 @@
       "seed_hits": 1,
       "seeds": [
         "whale fall a"
+      ]
+    },
+    {
+      "query": "whale fall band",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall b"
       ]
     },
     {
@@ -19313,6 +19295,15 @@
     },
     {
       "query": "midnight zone song",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "midnight zone s"
+      ]
+    },
+    {
+      "query": "midnight zone sea",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -21634,15 +21625,6 @@
       ]
     },
     {
-      "query": "deep sea diver secrets",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea q"
-      ]
-    },
-    {
       "query": "deep sea relaxing music",
       "is_question": false,
       "words": 4,
@@ -22516,15 +22498,6 @@
       ]
     },
     {
-      "query": "mariana trench giant shark",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "mariana trench g"
-      ]
-    },
-    {
       "query": "mariana trench how deep",
       "is_question": false,
       "words": 4,
@@ -23021,6 +22994,15 @@
     },
     {
       "query": "mariana trench mr x",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "mariana trench x"
+      ]
+    },
+    {
+      "query": "mariana trench real sound",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -24064,6 +24046,24 @@
       ]
     },
     {
+      "query": "deep sea sea monsters",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea creature j"
+      ]
+    },
+    {
+      "query": "deep sea creatures ningen",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea creature j"
+      ]
+    },
+    {
       "query": "deep sea fish king",
       "is_question": false,
       "words": 4,
@@ -24325,7 +24325,25 @@
       ]
     },
     {
+      "query": "deep sea sea creatures",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea creature y"
+      ]
+    },
+    {
       "query": "deep deep sea creatures",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea creature y"
+      ]
+    },
+    {
+      "query": "deep sea creature sound",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -24340,6 +24358,15 @@
       "seed_hits": 1,
       "seeds": [
         "deep sea creature z"
+      ]
+    },
+    {
+      "query": "bottom of challenger deep",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep a"
       ]
     },
     {
@@ -24443,6 +24470,15 @@
     },
     {
       "query": "challenger deep full album",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep f"
+      ]
+    },
+    {
+      "query": "challenger deep full movie",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -25144,6 +25180,15 @@
       ]
     },
     {
+      "query": "colossal vs giant squid",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "colossal squid y"
+      ]
+    },
+    {
       "query": "deep sea vent ecosystem",
       "is_question": false,
       "words": 4,
@@ -25415,15 +25460,6 @@
     },
     {
       "query": "warframe abyssal zone guide",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "abyssal zone g"
-      ]
-    },
-    {
-      "query": "abyssal ember gravity zone",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -26710,6 +26746,15 @@
       ]
     },
     {
+      "query": "deep sea fish facts",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea fish f"
+      ]
+    },
+    {
       "query": "deep sea fish found",
       "is_question": false,
       "words": 4,
@@ -27341,6 +27386,15 @@
     },
     {
       "query": "deep sea fishing zanzibar",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea fish z"
+      ]
+    },
+    {
+      "query": "deep sea ocean fish",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -28888,6 +28942,15 @@
       ]
     },
     {
+      "query": "colossal squid versus giant squid",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "colossal squid v"
+      ]
+    },
+    {
       "query": "giant squid with crab legs",
       "is_question": false,
       "words": 5,
@@ -30013,12 +30076,30 @@
       ]
     },
     {
+      "query": "deep sea diving pressure death",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "deep ocean pressure d"
+      ]
+    },
+    {
       "query": "rolex deep sea pressure test",
       "is_question": false,
       "words": 5,
       "seed_hits": 1,
       "seeds": [
         "deep ocean pressure t"
+      ]
+    },
+    {
+      "query": "deepest parts of the ocean",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "deepest part of the ocean e"
       ]
     },
     {

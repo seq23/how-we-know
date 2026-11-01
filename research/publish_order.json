@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-10-31T15:36:11.344162+00:00",
+  "generated_at": "2026-11-01T18:42:45.724702+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -387,7 +387,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:02.361219+00:00"
+          "fetched_utc": "2026-11-01T18:42:36.447117+00:00"
         }
       },
       "competition": {
@@ -466,7 +466,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:35:57.859626+00:00"
+          "fetched_utc": "2026-11-01T18:42:31.832723+00:00"
         }
       },
       "competition": {
@@ -545,7 +545,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:05.953577+00:00"
+          "fetched_utc": "2026-11-01T18:42:40.143571+00:00"
         }
       },
       "competition": {
@@ -623,7 +623,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:35:54.214828+00:00"
+          "fetched_utc": "2026-11-01T18:42:28.113435+00:00"
         }
       },
       "competition": {
@@ -702,7 +702,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:11.343501+00:00"
+          "fetched_utc": "2026-11-01T18:42:45.724170+00:00"
         }
       },
       "competition": {
@@ -773,8 +773,8 @@
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "why do deep sea creatures",
           "why deep sea creatures are scary",
+          "why do deep sea creatures",
           "why deep sea creatures",
           "what is the deepest sea creature"
         ],
@@ -782,7 +782,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:35:58.758933+00:00"
+          "fetched_utc": "2026-11-01T18:42:32.742335+00:00"
         }
       },
       "competition": {
@@ -842,11 +842,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.547 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.539 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.5467,
-        "autocomplete_completions": 5,
+        "demand_index": 0.5392,
+        "autocomplete_completions": 4,
         "exact_in_autocomplete": true,
         "corpus_breadth": 1,
         "key_term": "deeper",
@@ -856,14 +856,13 @@
           "why deep sea creatures get creepier the deeper you go",
           "why deep sea creatures are scary",
           "creepiest deep sea creatures",
-          "deep sea creatures myths",
-          "deep sea creatures weird"
+          "deep sea creatures myths"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:35:59.658900+00:00"
+          "fetched_utc": "2026-11-01T18:42:33.681619+00:00"
         }
       },
       "competition": {
@@ -904,11 +903,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.5223,
+      "combined_score": 0.5187,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.75, demand 0.55, opportunity 0.50.",
+      "reason": "Middle of the field: title gap 0.75, demand 0.54, opportunity 0.50.",
       "queue_position": 7,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -941,7 +940,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:06.852233+00:00"
+          "fetched_utc": "2026-11-01T18:42:41.063274+00:00"
         }
       },
       "competition": {
@@ -1022,7 +1021,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:01.479907+00:00"
+          "fetched_utc": "2026-11-01T18:42:35.538652+00:00"
         }
       },
       "competition": {
@@ -1103,7 +1102,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:00.577619+00:00"
+          "fetched_utc": "2026-11-01T18:42:34.598628+00:00"
         }
       },
       "competition": {
@@ -1181,7 +1180,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:10.432455+00:00"
+          "fetched_utc": "2026-11-01T18:42:44.796375+00:00"
         }
       },
       "competition": {
@@ -1256,7 +1255,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:09.545794+00:00"
+          "fetched_utc": "2026-11-01T18:42:43.865758+00:00"
         }
       },
       "competition": {
@@ -1333,7 +1332,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:35:56.959323+00:00"
+          "fetched_utc": "2026-11-01T18:42:30.895717+00:00"
         }
       },
       "competition": {
@@ -1393,11 +1392,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.288 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.295 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.2878,
-        "autocomplete_completions": 2,
+        "demand_index": 0.2953,
+        "autocomplete_completions": 3,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "happen",
@@ -1405,13 +1404,14 @@
         "key_term_corpus_breadth": 0,
         "sample_completions": [
           "what happens to dead whale in the ocean",
-          "what happens when whales die in the ocean"
+          "what happens when whales die in the ocean",
+          "what happens when a whale dies"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:07.763751+00:00"
+          "fetched_utc": "2026-11-01T18:42:41.996278+00:00"
         }
       },
       "competition": {
@@ -1452,11 +1452,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4166,
+      "combined_score": 0.422,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.75, demand 0.29, opportunity 0.60.",
+      "reason": "Middle of the field: title gap 0.75, demand 0.30, opportunity 0.60.",
       "queue_position": 14,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1488,7 +1488,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:36:05.055282+00:00"
+          "fetched_utc": "2026-11-01T18:42:39.201408+00:00"
         }
       },
       "competition": {
@@ -1567,7 +1567,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-31T15:35:55.125503+00:00"
+          "fetched_utc": "2026-11-01T18:42:29.047530+00:00"
         }
       },
       "competition": {
