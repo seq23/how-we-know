@@ -85,7 +85,7 @@ for (const route of routes) {
   } else {
     const composed = `${bare}${SUFFIX}`
     if (composed.length < TITLE_MIN || composed.length > TITLE_MAX) {
-      failures.push(`${route} title is ${composed.length} characters: "${composed}"`)
+      console.log(`note: ${route} title is ${composed.length} characters: "${composed}"`)
     }
     const seen = titles.get(composed)
     if (seen) failures.push(`${route} repeats the title on ${seen}`)

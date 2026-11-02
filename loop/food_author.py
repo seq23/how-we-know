@@ -110,13 +110,16 @@ STOPWORDS = {"why", "how", "does", "do", "is", "are", "my", "the", "a", "an", "w
 
 # ------------------------------------------------------------- choosing
 def in_flight() -> list[str]:
-    """Lane-authored food episodes with no episode spec: the Mac's to render,
+    """Lane-authored food episodes with no active publish date,
     OLDEST AUTHORED FIRST (the episode row's `queued` date, then queue order),
     so the Mac finishes the one it started before the next. Alphabetical order
     (the old sort) would let a newer "what-is-inside-a..." jump the queue."""
+    import ledger
+    dated = {r["slug"] for r in ledger.load()["published"]
+             if r.get("scheduled_publish_at") and not r.get("withdrawn_at")}
     out = []
     for p in sorted(FOOD_DIR.glob("*.md")):
-        if LANE_MARK in p.read_text() and not (SPECS / f"{p.stem}.json").exists():
+        if LANE_MARK in p.read_text() and p.stem not in dated:
             out.append(p.stem)
     try:
         q = json.loads(ORDER.read_text()).get("queue") or []

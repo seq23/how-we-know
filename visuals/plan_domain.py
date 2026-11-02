@@ -91,7 +91,7 @@ def uploaded_longform() -> set[str]:
         led = json.loads((STATE / "ledger.json").read_text())
     except (OSError, ValueError):
         return set()
-    return {r["slug"] for r in led.get("published") or [] if r.get("video_id")}
+    return {r["slug"] for r in led.get("published") or [] if r.get("video_id") and not r.get("withdrawn_at")}
 
 
 def check(plans_dir: Path | None = None, live: set[str] | None = None) -> dict:

@@ -176,8 +176,6 @@ check(any("next episode" in p for p in L.tail_problems(nopointer, SCRIPT)),
       "a tail with no next-episode pointer passed")
 check(any("budget" in p for p in L.tail_problems(TAIL, SCRIPT, want_words=400)),
       "a tail far under its word budget passed")
-check("warmth" in L.TAIL_RULES.lower() and "joke" in L.TAIL_RULES
-      and "Next time" in (L.__doc__ or ""), "the tail house rule or its examples are missing")
 
 calls = []
 replies = iter([
@@ -389,8 +387,10 @@ L._ask = lambda m: (f"OPENING:\n{NEW_OPEN}\nTAIL:\n{TAIL}\nSOURCES:\n",  # noqa:
                     "fixture/free", "stop")
 r = L.stage_script(eslug, cloud=True, check_urls=False)
 check(r["status"] == "scripted" and r.get("kind") == "extend"
-      and "What the evidence does not settle" in (L.SCRIPTS / f"{eslug}.md").read_text(),
-      f"a cloud extension did not write the hook and the tail: {r}")
+      and r.get("model") is None and r["budget"]["tail_words"] == 0
+      and L.words_now((L.SCRIPTS / f"{eslug}.md").read_text()) == L.words_now(SCRIPT)
+      and "**Picture target seconds:** 900" in (L.SCRIPTS / f"{eslug}.md").read_text(),
+      f"a cloud extension changed narration instead of requesting picture time: {r}")
 # V49 holds a cloud re-open to the script it wrote
 import validate as V                                          # noqa: E402
 (L.SCRIPTS / f"{eslug}.md").write_text(SCRIPT)

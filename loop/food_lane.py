@@ -315,7 +315,8 @@ def resume_cancel() -> int:
 
 def episode(slug: str | None) -> str | None:
     import food_author                                       # noqa: PLC0415
-    flight = food_author.in_flight()
+    flight = [s for s in food_author.in_flight()
+              if not (food_author.SPECS / f"{s}.json").exists()]
     if slug:
         return slug
     return flight[0] if flight else None

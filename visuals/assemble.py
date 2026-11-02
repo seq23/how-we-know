@@ -116,6 +116,22 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
             d = float(b["seconds"])                     # estimate only if no audio
         durations.append(max(0.4, d))
 
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "loop"))
+    import picture_time
+    spoken = list(durations)
+    durations, holds = picture_time.apply(plan, spoken)
+    plan = [{**b, "imagery_only_s": h} for b, h in zip(plan, holds)]
+    # Pad EACH wav, so the next sentence starts after its picture interval.
+    if audio_clips and any(holds):
+        padded = []
+        for i, (wav, hold) in enumerate(zip(audio_clips, holds)):
+            dest = os.path.join(workdir, f"voice-{i:04d}.wav")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", wav,
+                            "-af", f"apad=pad_dur={hold}", dest], check=True)
+            padded.append(dest)
+        audio_clips = padded
+
     # CAPTIONS ARE BURNED FROM THE SAME MEASURED DURATIONS the beats are cut
     # to, never from the plan's word-count estimate, so the words cannot drift
     # away from the voice over an eight-minute video.
@@ -186,7 +202,7 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
                     "-safe","0","-i",lst,"-c","copy",silent], check=True)
 
     # --- mux audio ------------------------------------------------------------
-    if master_audio and os.path.exists(master_audio):
+    if master_audio and os.path.exists(master_audio) and not any(holds):
         track = master_audio
     elif audio_clips and len(audio_clips) == len(plan):
         alst = os.path.join(workdir,"audio.txt")

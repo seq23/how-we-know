@@ -1,5 +1,6 @@
 import { absoluteUrl, site } from './site'
 import { seoCopy } from './seo-copy'
+import { pageTitle } from './page-title.mjs'
 import { breadcrumbSchema, jsonLdScript, webPageSchema } from './schema'
 
 /** The shared OG card: a real raster image on this site's own host, with its dimensions declared. */
@@ -54,7 +55,7 @@ export function pageMeta(
   const copy = seoCopy[routeKey(path)]
   const bareTitle = copy?.title ?? title
   const text = copy?.description ?? description
-  const fullTitle = bareTitle === site.name ? bareTitle : `${bareTitle} | ${site.name}`
+  const fullTitle = pageTitle(bareTitle, site.name)
   const url = absoluteUrl(path)
   const image = absoluteUrl(ogImage.path)
   const breadcrumb = crumbs(path, bareTitle)

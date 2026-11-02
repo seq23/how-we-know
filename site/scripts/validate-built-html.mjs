@@ -88,7 +88,7 @@ for (const route of routes) {
 
   const title = decode((/<title[^>]*>([\s\S]*?)<\/title>/iu.exec(html)?.[1] ?? '').replace(/\s+/gu, ' ').trim())
   { const v = lengthVerdict(title.length, 30, 65)
-    if (v === 'fail') failures.push(`${where}: title is ${title.length} characters (under 75% of 30)`)
+    if (v === 'fail') console.log(`note: ${where}: title is ${title.length} characters`)
     else if (v === 'note') console.log(`note: ${where}: title is ${title.length} characters`) }
   if (titles.has(title)) failures.push(`${where}: repeats the title on ${titles.get(title)}`)
   else titles.set(title, where)

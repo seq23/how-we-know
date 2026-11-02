@@ -587,16 +587,7 @@
       },
       "plain": "the AI model key is missing; only you can create one"
     },
-    "EXTEND_KEY_MISSING": {
-      "why": "The extension lane's model key is absent. Episodes under the runtime floor stay unextended; nothing is published short, because the floor gate refuses them separately.",
-      "max_consecutive": 3,
-      "escalation": "Three batches unable to extend means the floor gate is holding renders she is waiting on. Go red.",
-      "holds": {
-        "kind": "credential",
-        "what": "the extension lane's model key"
-      },
-      "plain": "the key for lengthening short scripts is missing"
-    },
+
     "UPLOADS_LOCKED_PRIVATE": {
       "why": "YouTube has locked this channel's uploads to private - an account-side flag, usually a verification step. No code path can clear it and retrying cannot.",
       "max_consecutive": 3,

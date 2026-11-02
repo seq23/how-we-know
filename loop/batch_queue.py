@@ -120,7 +120,7 @@ def _published_questions() -> dict[str, str]:
     """slug -> question for every episode already uploaded (the ledger)."""
     import ledger                                          # noqa: PLC0415
     return {r["slug"]: (r.get("question") or r["slug"].replace("-", " "))
-            for r in ledger.load()["published"] if r.get("slug")}
+            for r in ledger.load()["published"] if r.get("slug") and not r.get("withdrawn_at")}
 
 
 def _withdrawn_rows() -> list[dict]:

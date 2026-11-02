@@ -315,6 +315,8 @@ def occupied(led: dict) -> set[str]:
     """
     out = set()
     for r in led.get("published", []):
+        if r.get("withdrawn_at"):
+            continue
         for k in ("scheduled_publish_at", "published_at"):
             v = r.get(k)
             if v:
@@ -417,7 +419,7 @@ def library_pending(verbose: bool = False,
     import batch_queue                                     # noqa: PLC0415
     import render_gate                                     # noqa: PLC0415
     import lengthen                                        # noqa: PLC0415
-    done = {r["slug"] for r in ledger.load()["published"]}
+    done = ledger.published_slugs()
     # THE HOLD, not a halt. A render V13/V24 refused is skipped HERE, by name,
     # and everything else stays pending - see loop/render_gate.py for the week
     # eight finished episodes waited behind one that was six seconds short.
@@ -640,7 +642,7 @@ def run(limit: int = 4, dry_run: bool = False, stage=None) -> int:
     queue = batch_queue.queued_slugs()
 
     led = ledger.load()
-    done = {r["slug"] for r in led["published"]}
+    done = {r["slug"] for r in led["published"] if not r.get("withdrawn_at")}
 
     pending = library_pending(verbose=True)
 

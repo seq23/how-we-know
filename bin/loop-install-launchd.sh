@@ -63,6 +63,8 @@
 #   bin/loop-install-launchd.sh --uninstall
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SOURCE_ROOT="$ROOT"
+ROOT="${HWK_RUNNER_ROOT:-$HOME/GitHub/.hwk-runner}"
 AGENTS="$HOME/Library/LaunchAgents"
 LOGDIR="$HOME/Library/Logs/how-we-know"
 
@@ -181,11 +183,32 @@ print_one(){
   esac
 }
 
+prepare_runner(){
+    # Isolated runtime checkout: developer worktrees never own scheduled jobs.
+    if [ -d "$ROOT/.git" ]; then
+      git -C "$ROOT" pull --ff-only origin main
+    else
+      git clone --branch main "$(git -C "$SOURCE_ROOT" remote get-url origin)" "$ROOT"
+    fi
+    # Reuse installed local runtimes and credentials without copying secrets
+    # into Git. Code and tracked state stay in the dedicated checkout.
+    local runtime_source="${HWK_RUNTIME_SOURCE:-$HOME/GitHub/how-we-know}"
+    for name in .venv .venv-tts .secrets; do
+      git -C "$ROOT" check-ignore -q "$name" || printf '/%s\n' "$name" >> "$ROOT/.git/info/exclude"
+      if [ ! -e "$ROOT/$name" ] && [ -d "$runtime_source/$name" ]; then
+        ln -s "$runtime_source/$name" "$ROOT/$name"
+      fi
+    done
+
+}
+
 case "${1:-}" in
+  --prepare-runner) prepare_runner ;;
   --plist)   # print ONE agent's plist exactly as --install writes it
     print_one "${2:-}"
     ;;
   --install)
+    prepare_runner
     mkdir -p "$AGENTS" "$LOGDIR"
     # ONLY THE BATCH. tuesday and thursday are NOT installed, and that is the
     # whole point of this comment.
