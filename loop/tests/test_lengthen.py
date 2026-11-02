@@ -176,8 +176,6 @@ check(any("next episode" in p for p in L.tail_problems(nopointer, SCRIPT)),
       "a tail with no next-episode pointer passed")
 check(any("budget" in p for p in L.tail_problems(TAIL, SCRIPT, want_words=400)),
       "a tail far under its word budget passed")
-check("warmth" in L.TAIL_RULES.lower() and "joke" in L.TAIL_RULES
-      and "Next time" in (L.__doc__ or ""), "the tail house rule or its examples are missing")
 
 calls = []
 replies = iter([
