@@ -304,18 +304,33 @@ def build(slug: str, out_dir: str | None = None) -> str:
     ONE QUESTION PER VIDEO (owner, 2 Nov 2026): the question-photo set
     (visuals/thumb_contract.build_question_into - a PD/CC0 photo of the
     subject, the title question over a dark gradient, "HOW WE KNOW" mark),
-    variant A copied to <out>/<slug>.jpg. There is NO fallback: until
-    2 Nov a refusal here silently drew the domain's old text card. Now a
-    refusal raises ContractRefused, main() reports it as the named stop
-    THUMB_NO_SUBJECT_PHOTO, and with no thumbnail the episode cannot be
-    shelved or uploaded (backfill.local_assets, cloud_upload)."""
+    variant A copied to <out>/<slug>.jpg. NEVER HELD FOR A PHOTO (owner,
+    2 Nov 2026): when no subject photo is pinned yet, this pins one itself
+    the same way the nightly finder does - the top licence-checked photo
+    (research/subject_photo.find), else a drawn card (pin_drawn_card) - and
+    builds again. Seven food renders sat skipped every night on "no
+    rights-verified image" because only the finder, not this, could pin
+    (hostile review 2026-11-02, finding 11). Never the old text card."""
     dom = domain_of(slug)
     _set_palette(dom)
     out = out_dir or OUT
     import thumb_contract                                  # noqa: PLC0415
-    r = thumb_contract.build_question_into(
-        slug, os.path.join(out, "variants", slug)
-        if out_dir else os.path.join(thumb_contract.VARIANTS_DIR, slug))
+    dest = (os.path.join(out, "variants", slug) if out_dir
+            else os.path.join(thumb_contract.VARIANTS_DIR, slug))
+    try:
+        r = thumb_contract.build_question_into(slug, dest)
+    except thumb_contract.ContractRefused:
+        # Only a real episode (its script on disk) gets a picture pinned: a
+        # name with no script is a caller's mistake, refused as before.
+        # LOOP_DRY_RUN: no network and no manifest writes (the repo-wide rule).
+        if _loop_domains().script_of(slug) is None or os.environ.get("LOOP_DRY_RUN") == "1":
+            raise
+        sys.path.insert(0, os.path.join(ROOT, "research"))
+        import subject_photo as SP                         # noqa: PLC0415
+        got = SP.find(slug)
+        if not got.get("pinned"):
+            SP.pin_drawn_card(slug)
+        r = thumb_contract.build_question_into(slug, dest)
     os.makedirs(out, exist_ok=True)
     path = os.path.join(out, f"{slug}.jpg")
     shutil.copyfile(r["chosen"], path)

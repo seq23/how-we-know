@@ -1,4 +1,5 @@
 import { assert, assertUnique, isHttpsUrl, isIsoDate, readJson, wordCount } from './validation-helpers.mjs'
+import { hardFloor } from './floors.mjs'
 
 const questions = readJson('content/questions.json')
 const sources = readJson('content/sources.json')
@@ -25,8 +26,8 @@ for (const source of sources) {
 }
 
 for (const question of questions) {
-  assert(wordCount(question.directAnswer) >= 20, `${question.slug} direct answer is too thin`)
-  assert(wordCount(question.directAnswer) <= 40, `${question.slug} direct answer exceeds 40 words`)
+  assert(wordCount(question.directAnswer) >= hardFloor(20), `${question.slug} direct answer is too thin`)
+  if (wordCount(question.directAnswer) > 40) console.log(`note: ${question.slug} direct answer is over 40 words`)
   assert(isIsoDate(question.publishedAt), `${question.slug} has invalid publishedAt date`)
   assert(isIsoDate(question.reviewedAt), `${question.slug} has invalid reviewedAt date`)
   assert(question.reviewedAt >= question.publishedAt, `${question.slug} reviewedAt predates publishedAt`)

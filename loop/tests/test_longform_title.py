@@ -84,23 +84,37 @@ check(any("one question" in x for x in LT.title_problems(
 good = "Is a Welding Arc Hotter Than the Sun?"
 check(not LT.title_problems(good, SCRIPT, Q),
       f"a plain, traceable question failed: {LT.title_problems(good, SCRIPT, Q)}")
+# HARD: these still hold the upload - her one-question format and the truth
+# guard (owner, 2 Nov 2026: no petty validation; the rest are notes).
 cases = {
-    "how we know": ("How we know a welding arc is hot", "how we know"),
     "invented figure": ("Can a Welding Arc Reach 45,000 Degrees?", "never does"),
     "unsupported word": ("Is a Welding Arc Hotter Than Lava?", "unsupported"),
     "a claim, not a question": ("A welding arc is not simple", "one question"),
-    "too long": ("Is a Welding Arc Hotter Than the Sun Is Today?", "characters"),
     "no question mark": ("How hot does a welding arc get", "one question"),
     "second clause": ("How hot is a welding arc — and how we know?", "one question"),
-    "hard number": ("Does a Welding Arc Hit 11,487 Degrees?", "simple and vivid"),
-    "jargon": ("Is welding arc tensile heat simple?", "jargon"),
-    "subject late": ("Do Sun Fires Burn Hotter Than Welding?", "first 4 words"),
-    "two ideas": ("Is a welding arc hot, or is it bright?", "one question"),
+    "two ideas": ("Is a welding arc hot, or is it bright?", "one idea"),
 }
 for label, (t, needle) in cases.items():
     pr = LT.title_problems(t, SCRIPT, Q)
     check(any(needle in p for p in pr),
           f"formula: a title with {label} was not refused for it: {t!r} -> {pr}")
+# NOTES: style rules are reported, never a hold, and never a hard problem.
+notes = {
+    "how we know": ("How we know a welding arc is hot", "how we know"),
+    "too long": ("Is a Welding Arc Hotter Than the Sun Is Today?", "characters"),
+    "hard number": ("Does a Welding Arc Hit 11,487 Degrees?", "simple and vivid"),
+    "jargon": ("Is welding arc tensile heat simple?", "jargon"),
+    "subject late": ("Do Sun Fires Burn Hotter Than Welding?", "first 4 words"),
+}
+for label, (t, needle) in notes.items():
+    nt, pr = LT.title_notes(t, SCRIPT, Q), LT.title_problems(t, SCRIPT, Q)
+    check(any(needle in n for n in nt), f"note: {label} not reported for {t!r}: {nt}")
+    check(not any(needle in p for p in pr),
+          f"style rule {label} still HOLDS the upload for {t!r}: {pr}")
+check(not LT.title_problems("Is a Welding Arc Hotter Than the Sun Today?", SCRIPT, Q)
+      or "characters" not in " ".join(LT.title_problems(
+          "Is a Welding Arc Hotter Than the Sun Today?", SCRIPT, Q)),
+      "a title over 40 characters is still refused for its length")
 
 # ------------------------------------------------------- 2. title_for_upload
 LT.STATE.write_text(json.dumps({"titles": {SLUG: {"new_title": good,
@@ -213,7 +227,7 @@ saved = ledger.LEDGER
 # -- 5a'. a live failing title is HELD only while a passing repair is queued
 # (TITLE_RETITLE_PENDING, 2026-10-13); with no repair, or a repair that itself
 # fails, or one already applied, it is a hard failure.
-BADLIVE = "Welding arc — and how we know"
+BADLIVE = "Can a Welding Arc Reach 45,000 Degrees?"   # an invented figure: hard
 fake = TMP / "ledger_retitle.json"
 fake.write_text(json.dumps({"published": [{
     "slug": SLUG, "question": Q, "video_id": "X", "uploaded_at": "2026-10-14T00:00:00+00:00",
@@ -224,7 +238,7 @@ try:
             ("passing unapplied repair", {"new_title": good, "checks_passed": True,
                                           "applied_at": None}, True),
             ("no repair queued", None, False),
-            ("repair that fails", {"new_title": "Welding — and how we know",
+            ("repair that fails", {"new_title": "Is a Welding Arc Hotter Than Lava?",
                                    "checks_passed": True, "applied_at": None}, False),
             ("repair already applied", {"new_title": good, "checks_passed": True,
                                         "applied_at": "2026-10-14T01:00:00+00:00"}, False),
@@ -245,11 +259,11 @@ finally:
 fake = TMP / "ledger.json"
 fake.write_text(json.dumps({"published": [{
     "slug": SLUG, "question": Q, "video_id": "X", "uploaded_at": "2026-10-14T00:00:00+00:00",
-    "title": "Welding arc — and how we know"}], "queued": []}))
+    "title": "Can a Welding Arc Reach 45,000 Degrees?"}], "queued": []}))
 ledger.LEDGER = fake
 try:
     res = V.v47_longform_title([]).as_dict()
-    check(any("how we know" in f for f in res["failures"]),
+    check(any("never does" in f for f in res["failures"]),
           f"V47 passed a live upload whose title fails the formula: {res}")
 finally:
     ledger.LEDGER = saved
@@ -279,9 +293,9 @@ for good_, q_ in (("Why chocolate melts in your mouth but not in your hand", "wh
 check(any("grade" in x or "jargon" in x for x in LT.plainness_problems(
           "Titanium's anisotropic microstructural deformation characteristics", "how strong is titanium")),
       "a jargon title passed the readability floor")
-check(any("subject" in x for x in LT.title_problems(
+check(any("subject" in x for x in LT.title_notes(
           "Window glass that is ninety-nine percent air", SCRIPT, Q)),
-      "title_problems does not apply the plainness rule")
+      "title_notes does not report the plainness rule")
 
 # ------------------------------------------- 6. --needed: live videos too
 # Job 2 (13 Oct 2026): every live long-form video gets a passing title, and

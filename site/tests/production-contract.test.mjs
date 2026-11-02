@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
+import { hardFloor } from '../scripts/floors.mjs'
 
 const questions = JSON.parse(fs.readFileSync('content/questions.json', 'utf8'))
 const scripts = JSON.parse(fs.readFileSync('production/scripts/index.json', 'utf8'))
@@ -14,7 +15,7 @@ test('every launch question has a production-ready package', () => {
     assert.equal(queue[i].articleSlug, questions[i].slug)
     assert.ok(['production-ready-unrendered', 'production-ready-unrendered-human-pass-required'].includes(queue[i].status))
     assert.equal(queue[i].rightsManifestReady, true)
-    assert.ok(scripts[i].wordCount >= 1150)
+    assert.ok(scripts[i].wordCount >= hardFloor(1150))   // 75% rule (scripts/floors.mjs)
   }
 })
 

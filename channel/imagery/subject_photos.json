@@ -1,7 +1,7 @@
 {
-  "generated": "2026-11-02T13:51:01+00:00",
+  "generated": "2026-11-02T21:44:59.970099+00:00",
   "domain": "any",
-  "policy": "Thumbnail and Short-opening stills: public domain or CC0 (Commons, imagery.pd_licence_ok), or Pixabay / Pexels / Mixkit under their free licences (owner ruling 2 Nov 2026), checked by research/food_footage.record_problems with the licence wording stored under licences/. Anything else, CC-BY included, is refused.",
+  "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
   "rights_fields_required": [
     "depicts",
     "subject_basis",
@@ -38,7 +38,13 @@
   "subjects_unillustratable": {},
   "rejected": [
     {
-      "subject": "auto-why-deep-sea-creatures-are-creepers",
+      "subject": "auto-how-do-scientists-know-about-other-galaxies",
+      "title": "File:Antennae galaxies xl.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Antennae_galaxies_xl.jpg",
+      "reason": "its page never places it in the episode's domain"
+    },
+    {
+      "subject": "auto-how-do-scientists-know-about-other-galaxies",
       "title": null,
       "reason": "no candidate passed both gates"
     }

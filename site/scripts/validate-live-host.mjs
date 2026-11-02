@@ -24,6 +24,7 @@
  */
 import fs from 'node:fs'
 import { assert, readJson } from './validation-helpers.mjs'
+import { lengthVerdict } from './floors.mjs'
 
 const flags = readJson('site-flags.json')
 const origin = process.env.LIVE_ORIGIN || flags.canonicalOrigin
@@ -74,7 +75,9 @@ async function runChecks() {
   else {
     const html = await response.text()
     const title = (/<title[^>]*>([\s\S]*?)<\/title>/iu.exec(html)?.[1] ?? '').trim()
-    if (title.length < 30 || title.length > 65) failures.push(`homepage title is ${title.length} characters: "${title}"`)
+    { const v = lengthVerdict(title.length, 30, 65)
+      if (v === 'fail') failures.push(`homepage title is ${title.length} characters: "${title}"`)
+      else if (v === 'note') console.log(`note: homepage title is ${title.length} characters`) }
     if (!/property=["']og:site_name["']/iu.test(html)) failures.push('homepage has no og:site_name')
   }
 }

@@ -413,25 +413,35 @@ def title_problems(title: str, script: str, question: str | None = None,
     """Everything wrong with `title` as a long-form title. [] = it may ship.
     `one_question=False` only for a video uploaded before titles.QUESTION_START
     (older videos keep their titles; V47 still holds their truth guard)."""
-    p: list[str] = []
     t = (title or "").strip()
     if not t:
         return ["title is empty"]
     q = question if question is not None else question_of(script)
+    p = _hard_problems(t, script, q, one_question)
+    return p
+
+
+def title_notes(title: str, script: str, question: str | None = None) -> list[str]:
+    """The style rules (length, reading grade, capitals, clickbait words, the
+    subject first, one idea, plain numbers). NOTES, never a hold (owner, 2 Nov
+    2026: "No petty validation ... anything that would block for a reason a
+    reader would not notice becomes a generator fix or a note"). The proposer
+    picks the candidate with the fewest."""
+    t = (title or "").strip()
+    if not t:
+        return []
+    q = question if question is not None else question_of(script)
+    return _style_notes(t, script, q)
+
+
+def _style_notes(t: str, script: str, q: str) -> list[str]:
+    p: list[str] = []
     if len(t) > TITLE_MAX:
         p.append(f"title is {len(t)} characters, over the {TITLE_MAX} a phone "
                  f"shows")
-    if not (t[0].isupper() or t[0].isdigit()):
-        # A fragment: "percent of deep-sea pelagic animals produce light" was
-        # proposed and passed on 2026-10-13 after _candidates() stripped its
-        # leading figure as if it were list numbering.
-        p.append(f"title starts with {t[0]!r}: a title begins with a capital "
-                 f"or a figure, never mid-sentence")
     if BRAND_PHRASE.search(t):
         p.append("title contains 'how we know' - the brand lives in the "
                  "channel name and the script's second act, never the title")
-    if "<" in t or ">" in t:
-        p.append("title contains < or >, which YouTube rejects")
     low = t.lower()
     for b in _banned():
         if b in low:
@@ -442,11 +452,34 @@ def title_problems(title: str, script: str, question: str | None = None,
     if len(cw) < MIN_CONTENT_WORDS:
         p.append(f"title has {len(cw)} content word(s); a specific subject "
                  f"needs at least {MIN_CONTENT_WORDS}")
+    p += plainness_problems(t, q, script)
+    return p
+
+
+def _hard_problems(t: str, script: str, q: str, one_question: bool) -> list[str]:
+    """What still HOLDS an upload: YouTube's < > refusal, her one-question
+    format (2 Nov 2026) and the truth guard (no unsupported word, no invented
+    figure). Everything else is a note (title_notes)."""
+    p: list[str] = []
+    if "<" in t or ">" in t:
+        p.append("title contains < or >, which YouTube rejects")
+    if not (t[0].isupper() or t[0].isdigit()):
+        # A fragment ("percent of deep-sea pelagic animals produce light",
+        # 2026-10-13) reads as broken to anyone; the proposer capitalises.
+        p.append(f"title starts with {t[0]!r}: a title begins with a capital "
+                 f"or a figure, never mid-sentence")
+    # ONE IDEA is part of her one-question format (2 Nov 2026), not style:
+    # "Is a welding arc hot, or is it bright?" is two questions.
+    if not SERIES_RE.match(t) and (LIST_RE.search(t) or t.count(",") > 1
+                                   or re.search(r"[:;]", t) or ", or " in t
+                                   # "bread rise, steak brown and chocolate snap"
+                                   or re.search(r",[^,?]+\band\b", t)):
+        p.append("title carries more than one idea - one plain question")
+    cw = content_words(t)
     import titles as _T                                    # noqa: PLC0415
     if one_question:
         p += [f"one question per video: {x}" for x in _T.one_question_problems(t)
               if x != "title is empty"]
-    p += plainness_problems(t, q, script)
     qs = {stem(w) for w in content_words(q)}
     # THE TRUTH GUARD.
     ev = evidence_text(script)
@@ -623,8 +656,8 @@ def propose(slug: str, script: str, question: str | None = None,
         judged = [(c, title_problems(c, script, q)) for c in cands]
         ok = [c for c, pr in judged if not pr]
         if ok:
-            # Shortest passing candidate: the most room left on a phone.
-            best = min(ok, key=len)
+            # Fewest style notes, then the shortest: the most room on a phone.
+            best = min(ok, key=lambda c: (len(title_notes(c, script, q)), len(c)))
             return {"new_title": best, "checks_passed": True, "problems": [],
                     "model": model, "attempts": attempt}
         last = {c: pr for c, pr in judged}

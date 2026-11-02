@@ -4626,11 +4626,13 @@ def v48_thumbnail_contract() -> Result:
         r.fail("self-check: the contract constants were loosened "
                f"(MAX_WORDS={_tc.MAX_WORDS}, SUBJECT_FILL_MIN="
                f"{_tc.SUBJECT_FILL_MIN}, CHOSEN={_tc.CHOSEN})")
-    try:
-        _tc.draw(probe.resize((_tc.TW, _tc.TH)), "ONE TWO THREE FOUR FIVE", "x")
-        r.fail("self-check: draw() accepted five words")
-    except ValueError:
-        pass
+    # Over MAX_WORDS is trimmed by the builder, never refused (owner, 2 Nov
+    # 2026: no petty validation): five words draw exactly the first four.
+    _base = probe.resize((_tc.TW, _tc.TH))
+    _five = _tc.draw(_base, "ONE TWO THREE FOUR FIVE", "x")[0]
+    _four = _tc.draw(_base, "ONE TWO THREE FOUR", "x")[0]
+    if _five.tobytes() != _four.tobytes():
+        r.fail("self-check: draw() did not trim five words to MAX_WORDS")
     for slug in _tc.contract_slugs():
         r.examined += 1
         for p in _tc.verify(slug):

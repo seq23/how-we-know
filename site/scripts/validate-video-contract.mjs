@@ -1,4 +1,5 @@
 import { assert, isHttpsUrl, isIsoDate, readJson } from './validation-helpers.mjs'
+import { hardFloor } from './floors.mjs'
 
 const questions = readJson('content/questions.json')
 const queue = readJson('production/video-queue.json')
@@ -33,7 +34,7 @@ for (const question of questions) {
     assert(isHttpsUrl(video.thumbnailUrl), `${question.slug} thumbnail must be an HTTPS URL`)
     assert(isIsoDate(video.uploadDate), `${question.slug} uploadDate must be YYYY-MM-DD`)
     assert(/^PT(?=\d)(?:\d+H)?(?:\d+M)?(?:\d+S)?$/.test(video.duration), `${question.slug} duration is not ISO 8601`)
-    assert(video.transcript.trim().split(/\s+/).length >= 500, `${question.slug} transcript is too short`)
+    assert(video.transcript.trim().split(/\s+/).length >= hardFloor(500), `${question.slug} transcript is too short`)
     assert(video.chapters.length >= 2, `${question.slug} published video needs chapters`)
   } else {
     assert(video.videoId === null, `${question.slug} unpublished video must not have a videoId`)
