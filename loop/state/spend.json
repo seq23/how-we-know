@@ -3321,10 +3321,65 @@
       "completion_tokens": 5127,
       "total_tokens": 13830,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-11-02T06:29:11+00:00",
+      "slug": "how-to-keep-steel-from-rusting",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3777,
+      "completion_tokens": 13495,
+      "total_tokens": 17272,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-02T06:29:52+00:00",
+      "slug": "how-to-keep-steel-from-rusting",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 9007,
+      "completion_tokens": 5579,
+      "total_tokens": 14586,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-02T06:33:53+00:00",
+      "slug": "how-does-photolithography-work",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3757,
+      "completion_tokens": 15178,
+      "total_tokens": 18935,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-02T06:34:34+00:00",
+      "slug": "how-does-photolithography-work",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 9027,
+      "completion_tokens": 5776,
+      "total_tokens": 14803,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-02T06:35:12+00:00",
+      "slug": "how-does-photolithography-work",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 14142,
+      "completion_tokens": 5423,
+      "total_tokens": 19565,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 133,
-  "average_usd_per_accepted_draft": 0.076511,
-  "updated": "2026-11-01T22:41:42+00:00"
+  "drafts_written": 135,
+  "average_usd_per_accepted_draft": 0.075377,
+  "updated": "2026-11-02T06:35:12+00:00"
 }

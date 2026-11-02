@@ -1,12 +1,12 @@
 {
-  "week": "2026-W44",
-  "generated": "2026-11-01T22:08:05+00:00",
+  "week": "2026-W45",
+  "generated": "2026-11-02T06:26:29+00:00",
   "videos_per_week": 6,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 794,
+      "examined": 844,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -150,23 +150,23 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "12 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'materials-and-manufacturing': (1, 4), 'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3)} at 6/week"
+        "12 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (0, 3), 'food-science': (2, 5), 'materials-and-manufacturing': (1, 4)} at 6/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 67,
+      "examined": 73,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "8 dead-topic script(s) not judged - killed or refused, never in the batch queue or the ledger, so they never render: 03-why-deep-sea-creatures-are-surfacing.md, 11-what-is-a-dumbo-octopus.md, 12-what-is-a-frilled-shark.md, 17-what-is-a-yeti-crab.md, how-deep-mariana-trench.md, how-to-get-brine-pool-exotic.md, what-lives-in-the-depths-of-the-ocean.md, what-lives-in-the-sea.md"
+        "7 dead-topic script(s) not judged - killed or refused, never in the batch queue or the ledger, so they never render: 03-why-deep-sea-creatures-are-surfacing.md, 11-what-is-a-dumbo-octopus.md, 12-what-is-a-frilled-shark.md, 17-what-is-a-yeti-crab.md, how-deep-mariana-trench.md, what-lives-in-the-depths-of-the-ocean.md, what-lives-in-the-sea.md"
       ],
       "stops": []
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 75,
+      "examined": 80,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -192,7 +192,7 @@
     },
     {
       "validator": "V27 lanes-see-domains",
-      "examined": 31,
+      "examined": 30,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -245,21 +245,20 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 74,
+      "examined": 82,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "74 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "82 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
     {
       "validator": "V71 queued-pov-traced",
-      "examined": 21,
+      "examined": 27,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "how-deep-are-pools: no plan yet - the batch freezes one before it narrates",
         "what-does-a-greenland-shark-look-like: no plan yet - the batch freezes one before it narrates",
         "why-blobfish-look-weird: no plan yet - the batch freezes one before it narrates",
         "where-does-chemosynthesis-occur: no plan yet - the batch freezes one before it narrates",
@@ -270,11 +269,18 @@
         "how-does-thermohaline-circulation-work: no plan yet - the batch freezes one before it narrates",
         "what-does-a-vampire-squid-look-like: no plan yet - the batch freezes one before it narrates",
         "how-mid-oceanic-ridge-is-formed: no plan yet - the batch freezes one before it narrates",
+        "are-sea-pigs-real: no plan yet - the batch freezes one before it narrates",
+        "what-does-a-sea-pig-look-like: no plan yet - the batch freezes one before it narrates",
         "how-to-tell-if-steel-is-hardened: no plan yet - the batch freezes one before it narrates",
         "does-damascus-steel-rust: no plan yet - the batch freezes one before it narrates",
         "is-aluminum-stronger-than-steel: no plan yet - the batch freezes one before it narrates",
         "how-to-tell-if-steel-is-high-carbon: no plan yet - the batch freezes one before it narrates",
-        "examined 21 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
+        "is-damascus-steel-stronger: no plan yet - the batch freezes one before it narrates",
+        "is-diamond-stronger-than-metal: no plan yet - the batch freezes one before it narrates",
+        "how-powder-metallurgy-works: no plan yet - the batch freezes one before it narrates",
+        "why-is-glass-clear: no plan yet - the batch freezes one before it narrates",
+        "is-titanium-stronger-than-steel: no plan yet - the batch freezes one before it narrates",
+        "examined 27 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
       ],
       "stops": []
     },
@@ -342,7 +348,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "4 queued row(s) refused as a repeated question or another channel's topic: {'deep-sea-ocean-science': 4}"
+        "3 queued row(s) refused as a repeated question or another channel's topic: {'deep-sea-ocean-science': 3}"
       ],
       "stops": []
     },
@@ -356,11 +362,11 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 52,
+      "examined": 50,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "4 queued row(s) refused on read as a repeated question or another channel's topic"
+        "3 queued row(s) refused on read as a repeated question or another channel's topic"
       ],
       "stops": []
     },
@@ -448,7 +454,7 @@
     },
     {
       "validator": "V60 description-search-block",
-      "examined": 54,
+      "examined": 72,
       "status": "PASS(STOP:DESCRIPTION_PENDING)",
       "failures": [],
       "notes": [],
@@ -526,23 +532,23 @@
     "why": "configured default (6/week)"
   },
   "runway": {
-    "unpublished_scripts": 29,
-    "publishable": 17,
+    "unpublished_scripts": 34,
+    "publishable": 23,
     "scheduled_not_yet_aired": 12,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 4.8,
+    "weeks_remaining": 5.8,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 14,
+        "queued": 12,
         "scheduled_ahead": 8,
-        "weeks": 11.0,
+        "weeks": 10.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 11.0 week(s) at 2/week (14 queued, 8 already dated)"
+        "message": "deep-sea-ocean-science: 10.0 week(s) at 2/week (12 queued, 8 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
@@ -563,7 +569,7 @@
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "4.8 weeks of queue at 6/week (17 publishable of 29 on disk). By domain: deep-sea-ocean-science: 11.0 week(s) at 2/week (14 queued, 8 already dated); materials-and-manufacturing: 12.5 week(s) at 2/week (21 queued, 4 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "5.8 weeks of queue at 6/week (23 publishable of 34 on disk). By domain: deep-sea-ocean-science: 10.0 week(s) at 2/week (12 queued, 8 already dated); materials-and-manufacturing: 12.5 week(s) at 2/week (21 queued, 4 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
