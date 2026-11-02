@@ -1,0 +1,407 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "The strongest steels break at more than twice the stress titanium's workhorse alloy survives."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "Titanium is not stronger than steel in absolute terms: the strongest steels outperform any titanium alloy, and steel is nearly twice as stiff."
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "That conclusion comes from property data compiled by ASM International, where the strongest steels exceed 2,000 megapascals in tensile strength and the most common titanium alloy sits around 900."
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "What that figure does not settle is the question most people actually mean, which is strength for the weight you have to carry."
+  },
+  {
+    "i": 4,
+    "segment": "stat_card",
+    "narration": "On that measure, the answer turns around, and the reasons it turns around are more interesting than the slogan."
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "Is titanium stronger than steel?"
+  },
+  {
+    "i": 6,
+    "segment": "definition_card",
+    "narration": "Engineers do not use the word strength the way a hardware shop label does."
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "Strength, in the strict sense, is the stress a metal withstands before it yields or breaks, not stiffness, hardness or toughness."
+  },
+  {
+    "i": 8,
+    "segment": "definition_card",
+    "narration": "Yield strength is the stress at which a metal stops springing back and begins to deform permanently."
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "Ultimate tensile strength is the highest stress it carries before it starts to neck and fail."
+  },
+  {
+    "i": 10,
+    "segment": "definition_card",
+    "narration": "Stiffness is how much a part flexes under a load it survives."
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "Hardness is resistance to denting and scratching. Toughness is how much energy a material absorbs while a crack runs through it."
+  },
+  {
+    "i": 12,
+    "segment": "definition_card",
+    "narration": "When someone asks whether titanium is stronger, the question usually blends all of these together, plus one more idea that is not a material property at all: how heavy the finished part is."
+  },
+  {
+    "i": 13,
+    "segment": "contrast_pair",
+    "narration": "Each of these can point in a different direction for the same pair of metals."
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "Stronger, strictly, means higher stress before yield or fracture. It does not mean lighter, stiffer or harder."
+  },
+  {
+    "i": 15,
+    "segment": "contrast_pair",
+    "narration": "And there is a second problem hiding in the question. Steel is not one material."
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "It is a family of iron alloys that runs from soft construction grades to tool steels and maraging steels heat treated for extreme loads."
+  },
+  {
+    "i": 17,
+    "segment": "contrast_pair",
+    "narration": "Titanium is a family too, from commercially pure grades chosen where corrosion matters most, to alloys like Ti-6Al-4V, which is titanium with roughly six percent aluminium and four percent vanadium."
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "Any honest comparison has to name both members of each family before it names a winner."
+  },
+  {
+    "i": 19,
+    "segment": "process_steps",
+    "narration": "The numbers in a property table are not opinions. They come from a tension test, and a widely used procedure for metals is written down in ASTM E8, published by ASTM International."
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "Technicians machine a standard specimen, a bar with wide ends and a narrower gauge section in the middle."
+  },
+  {
+    "i": 21,
+    "segment": "process_steps",
+    "narration": "They grip and pull at a controlled rate in a testing machine."
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "They record load and extension the entire time. Then they convert to stress and strain, dividing the force by the original cross-section and the stretch by the original length."
+  },
+  {
+    "i": 23,
+    "segment": "process_steps",
+    "narration": "The resulting curve shows where the metal stops behaving elastically, where it peaks, and where it finally separates."
+  },
+  {
+    "i": 24,
+    "segment": "evidence_chain",
+    "narration": "The load cell and extensometer feed a stress strain curve. From that curve you read yield and tensile strength."
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "What you end up with is a property value for one condition, and that last phrase matters, because every link carries a condition."
+  },
+  {
+    "i": 26,
+    "segment": "evidence_chain",
+    "narration": "A value is true for one alloy, one heat treatment, one product form and one test temperature."
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "The same Ti-6Al-4V bar can be annealed, or solution treated and aged, and its strength shifts."
+  },
+  {
+    "i": 28,
+    "segment": "evidence_chain",
+    "narration": "Steel shifts far more, because quenching and tempering can turn the same chemistry from something you can bend by hand into something that snaps before it bends."
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Reference compilations from ASM International and measurement work at NIST exist precisely so engineers can compare like with like instead of trading anecdotes."
+  },
+  {
+    "i": 30,
+    "segment": "quote_card",
+    "narration": "The confidence usually rises as contact with the thing falls."
+  },
+  {
+    "i": 31,
+    "segment": "magnitude_bar",
+    "narration": "Set the figures side by side. Ordinary mild steel, the kind in a building frame or a car bracket, reaches roughly 400 megapascals in tensile strength."
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "Annealed Ti-6Al-4V reaches around 900 megapascals, more than twice as much. That is the comparison most people have in mind when they say titanium is stronger, and against mild steel they are right."
+  },
+  {
+    "i": 33,
+    "segment": "magnitude_bar",
+    "narration": "But the strongest steels, the maraging and high carbon grades used for tooling, landing gear and springs, exceed 2,000 megapascals."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "Against those, titanium's workhorse alloy carries less than half the stress before it fails."
+  },
+  {
+    "i": 35,
+    "segment": "magnitude_bar",
+    "narration": "Some newer titanium alloys close part of that gap, yet none reach the top of the steel family."
+  },
+  {
+    "i": 36,
+    "segment": "checklist_reveal",
+    "narration": "So the scorecard for absolute strength reads cleanly. Titanium beats mild steel."
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "Titanium loses to the strongest steels. And whichever comparison you pick, the result depends on heat treatment as much as on the base metal, which is why a one-sentence answer to this question always smuggles in a choice of steel."
+  },
+  {
+    "i": 38,
+    "segment": "magnitude_bar",
+    "narration": "Now bring in weight. Titanium has a density of about 4.5 grams per cubic centimetre."
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Steel sits close to 7.8. A titanium part of the same shape weighs a little over half as much as its steel twin."
+  },
+  {
+    "i": 40,
+    "segment": "magnitude_bar",
+    "narration": "Engineers fold this into a quantity called specific strength, which is strength divided by density, rather than strength alone."
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "On that measure, Ti-6Al-4V is roughly four times as strong per kilogram as mild steel."
+  },
+  {
+    "i": 42,
+    "segment": "magnitude_bar",
+    "narration": "That is the real reason aircraft makers, racing bicycle builders and chemical plant designers reach for it."
+  },
+  {
+    "i": 43,
+    "segment": "contrast_pair",
+    "narration": "Here is the part most comparisons leave out. Run the same division for the strongest steels and the arithmetic lands them in the same neighbourhood as titanium, sometimes slightly ahead."
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "The per kilogram advantage is decisive against ordinary steel and narrow against the best."
+  },
+  {
+    "i": 45,
+    "segment": "contrast_pair",
+    "narration": "What often tips the choice is geometry. Because titanium is less dense, a part of equal weight can be thicker, and a thicker wall resists bending and buckling far better than a thin one."
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "A steel tube trimmed down to titanium's weight becomes a thin shell that can crumple before its material strength is ever reached."
+  },
+  {
+    "i": 47,
+    "segment": "magnitude_bar",
+    "narration": "Stiffness tells a different story. The elastic modulus, which measures how much a material stretches under load before any permanent change, is about 200 gigapascals for steel and about 110 for titanium alloys."
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "Steel is nearly twice as stiff. That figure barely moves with heat treatment or alloying, unlike strength, because it reflects the bonding between atoms rather than the arrangement of grains and defects."
+  },
+  {
+    "i": 49,
+    "segment": "magnitude_bar",
+    "narration": "So a titanium beam of the same shape as a steel one bends almost twice as far under the same load, even while it remains well short of breaking."
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "Designers who need rigidity, in machine frames for example, often choose steel for this reason alone."
+  },
+  {
+    "i": 51,
+    "segment": "contrast_pair",
+    "narration": "Hardness follows the same pattern. Hardness is resistance to denting and wear, not strength in tension, and hardened tool steels are considerably harder than any common titanium alloy."
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "That is why drill bits and cutting edges are steel or carbide, never titanium."
+  },
+  {
+    "i": 53,
+    "segment": "contrast_pair",
+    "narration": "A coating called titanium nitride is sometimes applied to steel tools, and its golden colour leads people to assume the tool is made of titanium."
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "It is not. The coating is a ceramic compound, and the bit beneath it is still steel."
+  },
+  {
+    "i": 55,
+    "segment": "contrast_pair",
+    "narration": "Titanium sliding against titanium also tends to gall, meaning the surfaces seize and tear, so titanium threads and bearings need special treatment."
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "Titanium's advantages raise an obvious puzzle about why it stays a specialty metal, and the answer lies in manufacturing rather than geology."
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "Titanium is not rare. The United States Geological Survey tracks titanium minerals worldwide, and its reporting shows that most titanium mineral production becomes white titanium dioxide pigment for paint, paper and plastics, not metal. The bottleneck is chemistry."
+  },
+  {
+    "i": 58,
+    "segment": "process_steps",
+    "narration": "Hot titanium reacts eagerly with oxygen, nitrogen and carbon, and even small amounts of these make the metal brittle."
+  },
+  {
+    "i": 59,
+    "segment": "material_image",
+    "narration": "So it cannot be smelted with carbon in a blast furnace the way iron is."
+  },
+  {
+    "i": 60,
+    "segment": "process_steps",
+    "narration": "The standard route, the Kroll process, named for the metallurgist William Kroll, works in batches."
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "Producers chlorinate the ore to make titanium tetrachloride. They reduce with magnesium, leaving a porous metal sponge."
+  },
+  {
+    "i": 62,
+    "segment": "process_steps",
+    "narration": "Then they melt under vacuum or inert gas to form ingots. Every stage is slow and energy hungry compared with a continuous steel mill."
+  },
+  {
+    "i": 63,
+    "segment": "thermal_ascent",
+    "narration": "Its melting point does not help. Pure titanium melts at 1668 degrees Celsius, well above iron's 1538, and it must be kept away from air the whole time it is hot."
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "Machining is awkward too, because titanium conducts heat poorly, so the cutting zone stays hot and tools wear quickly."
+  },
+  {
+    "i": 65,
+    "segment": "thermal_ascent",
+    "narration": "None of this changes the metal's strength. It changes the price, and price is often what actually settles the choice."
+  },
+  {
+    "i": 66,
+    "segment": "contrast_pair",
+    "narration": "Titanium's surface grows a thin, tightly bonded oxide film the moment it meets air, and that film reforms when it is scratched."
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "In seawater and many industrial chemicals, titanium resists attack that would pit or rust ordinary steel."
+  },
+  {
+    "i": 68,
+    "segment": "contrast_pair",
+    "narration": "Stainless steels use a similar trick with chromium, but titanium's film holds up in more aggressive conditions."
+  },
+  {
+    "i": 69,
+    "segment": "text_beat",
+    "narration": "Titanium's edge, then, is corrosion resistance and strength for weight, not raw strength."
+  },
+  {
+    "i": 70,
+    "segment": "contrast_pair",
+    "narration": "That combination is what keeps it in heat exchangers, desalination plants and aircraft structures."
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "When you see these two metals compared, notice which number is actually on screen."
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "If it is tensile strength, ask which steel and which heat treatment."
+  },
+  {
+    "i": 73,
+    "segment": "ambient_drift",
+    "narration": "If it is weight, the comparison has quietly switched to specific strength."
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "If it is how much something flexes, that is stiffness, and steel leads it."
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "A chart showing a single bar for steel is hiding a range that runs from around 400 to above 2,000 megapascals. The most useful habit is simply to ask what was measured."
+  },
+  {
+    "i": 76,
+    "segment": "ambient_drift",
+    "narration": "Property tables describe carefully prepared specimens at room temperature, pulled in one direction under a steady load."
+  },
+  {
+    "i": 77,
+    "segment": "ambient_drift",
+    "narration": "They do not establish how a specific part behaves after welding, after years of repeated loading, or with a hidden flaw left by casting or additive manufacturing."
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "Fatigue, crack growth and temperature all reshape the comparison, and for many real components the published data is thinner than confident tables suggest."
+  },
+  {
+    "i": 79,
+    "segment": "ambient_drift",
+    "narration": "Typical values also hide scatter between production lots. What the evidence firmly supports is narrower than either slogan: the strongest steels beat titanium bar for bar, and titanium beats ordinary steel per kilogram."
+  },
+  {
+    "i": 80,
+    "segment": "text_beat",
+    "narration": "Titanium is not stronger than steel, only lighter for the strength it gives you, and that is a different and more useful claim."
+  }
+]

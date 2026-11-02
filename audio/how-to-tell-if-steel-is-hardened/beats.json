@@ -1,0 +1,452 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "A quenched knife and a soft nail both cling to the same magnet."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The dependable way to tell if steel is hardened is to measure its resistance to indentation, most often with a Rockwell C test that presses a diamond cone into the surface under 150 kilograms-force, a method standardized by ASTM International."
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "That number settles one thing well: how hard the steel is at one small spot near the surface."
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "It does not settle how deep the hardness runs. It does not show whether the part was tempered afterwards, or whether the steel a few centimetres away behaved the same way in the quench."
+  },
+  {
+    "i": 4,
+    "segment": "stat_card",
+    "narration": "Each of those needs its own kind of evidence. The cheap shop tests you may have heard of answer different questions again."
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "How to tell if steel is hardened"
+  },
+  {
+    "i": 6,
+    "segment": "thermal_ascent",
+    "narration": "Start with what hardening physically does. Carbon steel is iron with a small fraction of carbon dissolved in it."
+  },
+  {
+    "i": 7,
+    "segment": "material_image",
+    "narration": "Heat it past 727 degrees Celsius, the eutectoid temperature on the iron-carbon phase diagram, and the iron reorganizes into a crystal structure called austenite, which can hold much more carbon in solution."
+  },
+  {
+    "i": 8,
+    "segment": "thermal_ascent",
+    "narration": "For many steels the hardening temperature sits somewhat above that line. The exact figure depends on the alloy, so a heat treater reads it from the data for that grade rather than from memory."
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "Cool the steel slowly and the carbon has time to migrate out, forming softer, layered structures."
+  },
+  {
+    "i": 10,
+    "segment": "thermal_ascent",
+    "narration": "Quench it fast, in water, brine or oil, and the carbon is trapped where it sits."
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "The iron lattice tries to shift back to its room-temperature arrangement anyway. What results is a strained, distorted crystal called martensite."
+  },
+  {
+    "i": 12,
+    "segment": "definition_card",
+    "narration": "Martensite is what a hardened part is mostly made of, and it is why this question is harder than it sounds."
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "ASM International's heat-treating references describe martensite as hard and brittle as quenched."
+  },
+  {
+    "i": 14,
+    "segment": "definition_card",
+    "narration": "That is why nearly every hardened tool is tempered afterwards: reheated to a moderate temperature to give up some hardness in exchange for toughness."
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "None of this announces itself on the surface. A quenched blade keeps its shape, looks much the same once cleaned, and carries no visible label."
+  },
+  {
+    "i": 16,
+    "segment": "definition_card",
+    "narration": "Every practical test is therefore an indirect measurement of a structure you cannot see."
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "The useful habit is to ask, for each test, which property of that structure it actually touches."
+  },
+  {
+    "i": 18,
+    "segment": "contrast_pair",
+    "narration": "The magnet is the most common shortcut, and it fails for a simple reason."
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "Ordinary carbon steel is ferromagnetic whether it is soft, annealed or fully hardened, so the knife and the nail both pass."
+  },
+  {
+    "i": 20,
+    "segment": "contrast_pair",
+    "narration": "The magnet cannot tell you about heat treatment at all. What it does respond to is the family of crystal structure."
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "Many austenitic stainless steels, the kind used for kitchen sinks, are essentially non-magnetic in the annealed state, and they also cannot be hardened by quenching."
+  },
+  {
+    "i": 22,
+    "segment": "contrast_pair",
+    "narration": "Martensitic stainless grades, used for many knife blades, are magnetic. So a magnet can sometimes hint at whether a steel is the kind that could be hardened. It says nothing about whether anyone has done it."
+  },
+  {
+    "i": 23,
+    "segment": "checklist_reveal",
+    "narration": "Temper colours are the second shortcut. When bright steel is heated in air, a thin oxide film grows on it."
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "The film's thickness depends on temperature and time, and it produces colours running from pale straw through bronze and purple to blue."
+  },
+  {
+    "i": 25,
+    "segment": "checklist_reveal",
+    "narration": "Smiths have long used those colours to judge tempering. But read carefully what they record: the surface was heated in air to some temperature."
+  },
+  {
+    "i": 26,
+    "segment": "text_beat",
+    "narration": "They do not show that the steel was quenched first, since soft mild steel colours the same way."
+  },
+  {
+    "i": 27,
+    "segment": "checklist_reveal",
+    "narration": "And because time matters as well as temperature, a colour alone cannot tell you how hard the steel is now."
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "Grinding or polishing removes the film entirely. The spark test, where a grinding wheel throws sparks whose bursts reflect carbon content, has the same character."
+  },
+  {
+    "i": 29,
+    "segment": "checklist_reveal",
+    "narration": "It suggests whether a steel could be hardened, not whether it has been."
+  },
+  {
+    "i": 30,
+    "segment": "quote_card",
+    "narration": "Once I can locate the failure \u2014 bad source, lazy assumption, missing context, evidence I ignored because it was inconvenient \u2014 I can let the belief go."
+  },
+  {
+    "i": 31,
+    "segment": "process_steps",
+    "narration": "The file test is the oldest honest shortcut, because it actually tests hardness."
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "A file is itself made of hardened steel. Choose a sharp file, draw it lightly across a clean edge of the part, and feel whether it bites or skids."
+  },
+  {
+    "i": 33,
+    "segment": "process_steps",
+    "narration": "If it bites, cutting bright metal with a slight drag, the part is softer than the file."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "If it skids across with a glassy feel and leaves almost no mark, the part is about as hard as the file, or harder."
+  },
+  {
+    "i": 35,
+    "segment": "process_steps",
+    "narration": "Industry still uses this as a screening check. Sets of files made to graded hardness exist, so that the skid point can be bracketed more closely."
+  },
+  {
+    "i": 36,
+    "segment": "contrast_pair",
+    "narration": "But notice what the file is touching: the outermost skin, and only where you dragged it."
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "Two common situations break the inference. A case-hardened part, such as a carburized gear, has a hard shell over a deliberately softer core."
+  },
+  {
+    "i": 38,
+    "segment": "contrast_pair",
+    "narration": "The file skids, correctly, yet the core may be far softer than the skid suggests."
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "The reverse happens with decarburization, when carbon is lost from the surface during heating in air."
+  },
+  {
+    "i": 40,
+    "segment": "contrast_pair",
+    "narration": "The skin turns soft while the interior stays hard, and the file bites a part that is, underneath, properly hardened."
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "The result also depends on the file's sharpness and the pressure of your hand."
+  },
+  {
+    "i": 42,
+    "segment": "contrast_pair",
+    "narration": "So it ranks the surface only, and it ranks it against the file you happen to hold."
+  },
+  {
+    "i": 43,
+    "segment": "evidence_chain",
+    "narration": "The Rockwell C test replaces the hand with a machine and the feel with a depth."
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "A diamond cone with a 120-degree tip is first pressed against the surface with a 10 kilograms-force preload."
+  },
+  {
+    "i": 45,
+    "segment": "evidence_chain",
+    "narration": "That seats the indenter and sets a zero below any surface roughness."
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "Then the load rises to 150 kilograms-force total, is held briefly, and is reduced back to the preload."
+  },
+  {
+    "i": 47,
+    "segment": "evidence_chain",
+    "narration": "The machine records the depth difference between the two preload readings: how much permanent dent the full load left."
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "A harder steel resists, the dent is shallower, and the Rockwell C number is higher."
+  },
+  {
+    "i": 49,
+    "segment": "evidence_chain",
+    "narration": "On this scale each point corresponds to two thousandths of a millimetre of depth."
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "That is why the reading is so sensitive to dirt, scale and vibration."
+  },
+  {
+    "i": 51,
+    "segment": "stat_card",
+    "narration": "ASTM International sets out the procedure in its standard for Rockwell testing of metallic materials, designated E18."
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "It specifies the indenter, the forces, the dwell times, and rules a non-specialist would not think to ask about."
+  },
+  {
+    "i": 53,
+    "segment": "stat_card",
+    "narration": "The test piece must be thick enough that the dent does not reach the far side, or the anvil underneath is partly being measured."
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Indentations must be spaced away from edges and from each other, because each one disturbs the metal around it."
+  },
+  {
+    "i": 55,
+    "segment": "stat_card",
+    "narration": "Curved surfaces, like round bars, need corrections, because a cone sinks differently into a curve."
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "A Rockwell number taken without those conditions met is a number, but not yet evidence."
+  },
+  {
+    "i": 57,
+    "segment": "contrast_pair",
+    "narration": "Other methods trade convenience for different strengths. The Brinell test presses a hard ball into the metal and measures the width of the round impression, which averages over coarser structures but leaves a large mark."
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "The Vickers test uses a square-based diamond pyramid and measures the diagonals of the dent under a microscope."
+  },
+  {
+    "i": 59,
+    "segment": "contrast_pair",
+    "narration": "With small loads it can place indentations a fraction of a millimetre apart, which matters for a question the file could never answer."
+  },
+  {
+    "i": 60,
+    "segment": "source_compare",
+    "narration": "Here is the part of the chain most people never see. A hardness tester does not measure an absolute physical quantity the way a ruler measures length."
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "The number depends on the exact geometry of the diamond, the accuracy of the forces, and the depth sensor."
+  },
+  {
+    "i": 62,
+    "segment": "source_compare",
+    "narration": "Two machines that differ slightly in any of those will disagree. So machines are checked against reference test blocks: pieces of steel prepared to be uniform and certified at a known hardness."
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "NIST produces Rockwell C reference test blocks, calibrated on its own standardizing equipment, and the ASTM International standard specifies how machines are verified against blocks."
+  },
+  {
+    "i": 64,
+    "segment": "source_compare",
+    "narration": "When a lab reports a hardness, the defensible claim is that the machine read a certified block correctly that day, and then read your part."
+  },
+  {
+    "i": 65,
+    "segment": "ambient_drift",
+    "narration": "That traceability is what turns the file's private judgement into a public measurement."
+  },
+  {
+    "i": 66,
+    "segment": "ambient_drift",
+    "narration": "Your hand cannot be sent to another laboratory. A certified block can."
+  },
+  {
+    "i": 67,
+    "segment": "process_steps",
+    "narration": "Hardness tells you how much the metal resists; the microscope tells you why."
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "A metallographer cuts a cross-section through the part, mounting it and polishing it flat, then gives it a nital etch."
+  },
+  {
+    "i": 69,
+    "segment": "process_steps",
+    "narration": "Nital is a dilute solution of nitric acid in alcohol. The acid attacks different structures at different rates, so the grain pattern appears."
+  },
+  {
+    "i": 70,
+    "segment": "material_image",
+    "narration": "Under a microscope, properly hardened steel shows martensite, which looks needle-like or lath-like, fine and dense."
+  },
+  {
+    "i": 71,
+    "segment": "process_steps",
+    "narration": "Slowly cooled steel shows rounded grains and layered bands instead. Soft spots, where the quench was too slow, show up as patches of the wrong structure."
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "The same section answers the depth question the file could not. Run a line of small Vickers or Knoop indentations from the surface inward, and you get a hardness profile."
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "On a case-hardened gear the numbers start high and fall off with depth."
+  },
+  {
+    "i": 74,
+    "segment": "ambient_drift",
+    "narration": "The depth at which they cross an agreed threshold is reported as the case depth."
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "ASTM International publishes the microindentation method used for this kind of traverse."
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "The cost is obvious: the part has been cut in half. In production, that is why a test coupon, or a sacrificial part from the same batch, carries the destructive evidence for the rest."
+  },
+  {
+    "i": 77,
+    "segment": "checklist_reveal",
+    "narration": "As you watch, notice where each diagram ends. The file test ranks the surface."
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "The Rockwell C test measures a depth at one point, traced back to a certified block."
+  },
+  {
+    "i": 79,
+    "segment": "checklist_reveal",
+    "narration": "Nothing in this episode shows that the magnet test detects hardening, which is why it never earns a place on the hardened side."
+  },
+  {
+    "i": 80,
+    "segment": "text_beat",
+    "narration": "And case depth needs a cross-section, which means some of the most important evidence about a hardened part is gathered on a different, destroyed piece of the same batch."
+  },
+  {
+    "i": 81,
+    "segment": "checklist_reveal",
+    "narration": "The tests are not ranked from crude to good. Each one is matched to a narrower question than it first appears to answer."
+  },
+  {
+    "i": 82,
+    "segment": "contrast_pair",
+    "narration": "A hardness reading does not establish that a part is fit for its job."
+  },
+  {
+    "i": 83,
+    "segment": "text_beat",
+    "narration": "It measures resistance to one indenter under one load at one spot."
+  },
+  {
+    "i": 84,
+    "segment": "contrast_pair",
+    "narration": "It does not measure toughness, so a part can read high and still crack in service if it was left untempered or tempered badly."
+  },
+  {
+    "i": 85,
+    "segment": "text_beat",
+    "narration": "It does not directly measure wear life or fatigue strength, which depend on structure, residual stress and surface finish as well."
+  },
+  {
+    "i": 86,
+    "segment": "contrast_pair",
+    "narration": "Conversions between Rockwell, Vickers and Brinell numbers come from published tables that are empirical and approximate, so a converted value is weaker evidence than a direct one."
+  },
+  {
+    "i": 87,
+    "segment": "text_beat",
+    "narration": "And none of these tests, alone, tells you the heat-treatment history that produced the result."
+  },
+  {
+    "i": 88,
+    "segment": "ambient_drift",
+    "narration": "So the knife and the nail are told apart by a dent, not by a magnet: a dent of a known depth, under a known force, from a machine that read a certified block that morning."
+  },
+  {
+    "i": 89,
+    "segment": "ambient_drift",
+    "narration": "Everything you want to say beyond that spot, you have to go and measure."
+  }
+]

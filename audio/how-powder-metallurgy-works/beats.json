@@ -1,0 +1,437 @@
+[
+  {
+    "i": 0,
+    "segment": "thermal_ascent",
+    "narration": "Tungsten melts at about 3422 degrees Celsius, yet early lamp wire was shaped from it."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "That figure, the highest melting point of any metal, comes from standard property data of the kind ASM International publishes."
+  },
+  {
+    "i": 2,
+    "segment": "thermal_ascent",
+    "narration": "Powder metallurgy makes metal parts by pressing fine metal powder into a shape and then heating it below its melting point, so the particles bond without the whole part ever turning liquid."
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "That answer is correct, and it raises a harder question straight away."
+  },
+  {
+    "i": 4,
+    "segment": "thermal_ascent",
+    "narration": "Solid grains of metal, never melted, become one piece. Nothing flows. So what actually moves, and how could anyone tell?"
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "How does powder metallurgy work?"
+  },
+  {
+    "i": 6,
+    "segment": "process_steps",
+    "narration": "Start with making the powder, because almost everything later depends on it."
+  },
+  {
+    "i": 7,
+    "segment": "material_image",
+    "narration": "The most common industrial route is atomization: a stream of molten metal is broken apart by jets of gas or water, and the droplets freeze in flight."
+  },
+  {
+    "i": 8,
+    "segment": "process_steps",
+    "narration": "The metal is melted here, at the powder stage, but the part itself will never melt."
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "Gas tends to give rounder particles; water tends to give irregular, ragged ones."
+  },
+  {
+    "i": 10,
+    "segment": "process_steps",
+    "narration": "Other routes skip melting entirely. In chemical reduction, a metal oxide is stripped of its oxygen, often by hydrogen, leaving a spongy metal that is then ground."
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "In electrolysis, metal is deposited from a solution and then broken up."
+  },
+  {
+    "i": 12,
+    "segment": "process_steps",
+    "narration": "Each route leaves its own particle shape, size spread and surface chemistry, and none of that is cosmetic."
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "Irregular particles interlock when pressed, which helps a part hold together before heating."
+  },
+  {
+    "i": 14,
+    "segment": "process_steps",
+    "narration": "Round particles flow and pack smoothly, which matters when powder must fill a mold evenly."
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "Fine particles carry more surface per gram, and surface, as you will see, drives the whole process."
+  },
+  {
+    "i": 16,
+    "segment": "process_steps",
+    "narration": "So powder is characterized before use: its size distribution is measured, its flow is timed, its packing is checked."
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "ASTM International publishes the standard test methods, so two labs measuring the same powder can compare results."
+  },
+  {
+    "i": 18,
+    "segment": "definition_card",
+    "narration": "Next comes shaping. The powder, usually blended with a little lubricant, is poured into a hardened steel die and squeezed between punches."
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "Particles slide, rearrange, and then deform where they touch, flattening against one another."
+  },
+  {
+    "i": 20,
+    "segment": "definition_card",
+    "narration": "What comes out is called a green compact: a pressed powder part before heating."
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "It holds its shape but can crumble if you drop it. Its strength comes mostly from particles locked together mechanically, not from metallic bonds across them."
+  },
+  {
+    "i": 22,
+    "segment": "definition_card",
+    "narration": "The vocabulary of the field, which ASTM International also standardizes, keeps that distinction sharp, because a green part and a finished part can look identical."
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "Pressing has a known weakness. Friction against the die walls means pressure does not spread evenly, so a tall part can end up denser near the punches than in its middle, and uneven density shrinks unevenly later."
+  },
+  {
+    "i": 24,
+    "segment": "definition_card",
+    "narration": "Engineers answer with careful part design, with presses that move punches separately, and with isostatic pressing, where pressure arrives from every direction through a fluid."
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The point to hold on to is simple. After pressing, you have the shape. You do not yet have the metal."
+  },
+  {
+    "i": 26,
+    "segment": "quote_card",
+    "narration": "An increase of 300% sounds dramatic until you find out it went from one case to four. A precise number is not automatically a reliable number."
+  },
+  {
+    "i": 27,
+    "segment": "contrast_pair",
+    "narration": "Now the heat. The green compact travels through a furnace under a protective atmosphere, often containing hydrogen or nitrogen, so the metal does not oxidize."
+  },
+  {
+    "i": 28,
+    "segment": "material_image",
+    "narration": "The lubricant burns off first. Then the temperature climbs into the sintering range: hot, but below the melting point of the main metal."
+  },
+  {
+    "i": 29,
+    "segment": "contrast_pair",
+    "narration": "Sintering is bonding by atomic diffusion below melting. It is not melting and solidifying."
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "To see why it happens at all, consider the surface. An atom at a surface has fewer neighbors than one inside the metal, so it sits in a higher energy state."
+  },
+  {
+    "i": 31,
+    "segment": "contrast_pair",
+    "narration": "A heap of fine powder has an enormous amount of surface, and so a lot of stored energy."
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "At high temperature, atoms vibrate hard enough to hop from site to site."
+  },
+  {
+    "i": 33,
+    "segment": "contrast_pair",
+    "narration": "They migrate one at a time: through the crystal, along the boundaries between crystals, and across surfaces."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "Where two particles touch, atoms gather at the contact and build a bridge called a neck."
+  },
+  {
+    "i": 35,
+    "segment": "contrast_pair",
+    "narration": "As necks widen, total surface falls, and the system settles toward lower energy."
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "That is the driving force: not pressure, not melting, but the steady loss of surface."
+  },
+  {
+    "i": 37,
+    "segment": "contrast_pair",
+    "narration": "Here is the subtle part. Not every path shrinks the part. Atoms that travel only across surfaces widen necks and round off pores without pulling particle centers closer."
+  },
+  {
+    "i": 38,
+    "segment": "text_beat",
+    "narration": "Atoms that move from the boundaries between particles into the necks do pull centers together, and the part shrinks."
+  },
+  {
+    "i": 39,
+    "segment": "contrast_pair",
+    "narration": "Which path dominates depends on temperature, particle size and material, and that balance decides whether you get a stronger porous part or a denser one."
+  },
+  {
+    "i": 40,
+    "segment": "evidence_chain",
+    "narration": "No one watches those atoms directly in a production furnace, so the account rests on several independent measurements that have to agree."
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "The first is a dilatometer, an instrument that heats a small sample while tracking its length precisely."
+  },
+  {
+    "i": 42,
+    "segment": "evidence_chain",
+    "narration": "As sintering begins, the sample shrinks, and the shape of that shrinkage curve reveals when densification starts and how fast it runs."
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Researchers compare such curves with models of each diffusion path; a model that predicts the wrong dependence on particle size or temperature can be ruled out."
+  },
+  {
+    "i": 44,
+    "segment": "evidence_chain",
+    "narration": "The second is density measurement. A part is weighed in air and weighed again immersed in water, and the difference gives its volume, by Archimedes' principle."
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "Surface pores are sealed first, often with oil, so water does not seep in and falsify the result."
+  },
+  {
+    "i": 46,
+    "segment": "evidence_chain",
+    "narration": "ASTM International publishes standard methods for this too. The third is a polished cross-section."
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "A part is cut, mounted, ground and polished to a mirror, then examined under an optical or electron microscope."
+  },
+  {
+    "i": 48,
+    "segment": "evidence_chain",
+    "narration": "There, necks and pores tell the story. Early on you see distinct particles joined at narrow bridges."
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "Later the necks have merged, and the old spaces survive as isolated, rounded pores."
+  },
+  {
+    "i": 50,
+    "segment": "evidence_chain",
+    "narration": "When the shrinkage curve, the density and the microscope describe the same progression, sintering stops being a hypothesis and becomes a well-tested model."
+  },
+  {
+    "i": 51,
+    "segment": "checklist_reveal",
+    "narration": "Pressing and sintering usually leave some porosity, and that cuts both ways."
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "In a gear or structural part, porosity lowers strength, especially under repeated loading, because a pore concentrates stress and a crack can start there."
+  },
+  {
+    "i": 53,
+    "segment": "checklist_reveal",
+    "narration": "That is why some parts are pressed twice, sintered twice, or forged after sintering to close remaining voids."
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "In other parts, the pore is the product. A self-lubricating bronze bearing is left porous on purpose and soaked in oil; connected porosity holds oil in bearings, and as the shaft warms, oil seeps to the surface."
+  },
+  {
+    "i": 55,
+    "segment": "checklist_reveal",
+    "narration": "Sintered metal filters work the other way round: a controlled pore network lets fluid pass in filters while stopping particles."
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "This is where a single density figure becomes treacherous. Two parts can report the same overall density and behave differently, because one has small, rounded, isolated pores and the other has large, connected, jagged ones."
+  },
+  {
+    "i": 57,
+    "segment": "checklist_reveal",
+    "narration": "The number is precise. What it leaves open is where the pores sit, how big they are, and whether they connect. You learn that from the cross-section, not from the scale."
+  },
+  {
+    "i": 58,
+    "segment": "source_compare",
+    "narration": "Some materials are sintered with liquid present on purpose. The classic case is the cemented carbide in cutting tools and drill bits."
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "Hard tungsten carbide powder is mixed with a smaller amount of cobalt powder."
+  },
+  {
+    "i": 60,
+    "segment": "source_compare",
+    "narration": "In the furnace the cobalt melts while the carbide stays solid. The liquid wets the carbide grains, pulls them together by capillary force, and lets carbide dissolve and reprecipitate, densifying the part far more completely than solid-state sintering alone."
+  },
+  {
+    "i": 61,
+    "segment": "material_image",
+    "narration": "When it cools, hard carbide grains sit in a tougher metal binder, a structure casting could not practically produce."
+  },
+  {
+    "i": 62,
+    "segment": "source_compare",
+    "narration": "The USGS, which tracks tungsten supply and uses, reports cemented carbides among the largest uses of tungsten."
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "And here the cold open returns. Pure tungsten is the other classic case."
+  },
+  {
+    "i": 64,
+    "segment": "source_compare",
+    "narration": "Its melting point was too high for early lamp makers to cast it into usable wire."
+  },
+  {
+    "i": 65,
+    "segment": "material_image",
+    "narration": "Instead, tungsten powder was pressed into bars, sintered, then hammered and drawn into fine filament wire."
+  },
+  {
+    "i": 66,
+    "segment": "source_compare",
+    "narration": "The property data ASM International publishes explains the obstacle; powder metallurgy explains the way around it."
+  },
+  {
+    "i": 67,
+    "segment": "process_steps",
+    "narration": "The same physics runs through newer routes. In metal injection molding, very fine powder is mixed with a polymer binder and injected into a mold like plastic; the binder is removed, and the part shrinks markedly as it sinters, so the mold is made oversize."
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "In hot isostatic pressing, powder sealed in a container is heated while gas squeezes it from every side, closing pores ordinary sintering leaves behind."
+  },
+  {
+    "i": 69,
+    "segment": "process_steps",
+    "narration": "Powder bed fusion, a form of metal additive manufacturing, is the outlier: a laser or electron beam melts thin layers of powder."
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "Only one of them melts the powder, and it brings its own defects, such as pores from trapped gas."
+  },
+  {
+    "i": 71,
+    "segment": "process_steps",
+    "narration": "That is why NIST and Fraunhofer study printing powders closely: the powder still sets the limits."
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "Notice that each explanation in this episode came paired with a measurement."
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "Shrinkage came with a dilatometer curve. Density came with two weighings. Necks and pores came with a polished cross-section."
+  },
+  {
+    "i": 74,
+    "segment": "ambient_drift",
+    "narration": "When an explainer about materials gives you a mechanism without saying what instrument shows it, the mechanism may well be right, but you have been handed a conclusion rather than the evidence."
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "Notice too where the episode used a figure and where it declined to."
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "Sintering temperatures depend on the metal, the powder and the furnace, so no single number would have been honest."
+  },
+  {
+    "i": 77,
+    "segment": "contrast_pair",
+    "narration": "This evidence establishes that sintering is driven by the loss of surface and carried by diffusion, and it shows how far a given part has densified."
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "It does not let you predict, from first principles alone, exactly how a new powder will behave in a particular furnace."
+  },
+  {
+    "i": 79,
+    "segment": "contrast_pair",
+    "narration": "The models capture the trend; real powders have mixed particle sizes, surface oxides and trace impurities that shift the result, so industrial sintering cycles are still tuned by trial and measurement."
+  },
+  {
+    "i": 80,
+    "segment": "text_beat",
+    "narration": "And a density figure is an average over the whole part, not a map of where the pores sit."
+  },
+  {
+    "i": 81,
+    "segment": "contrast_pair",
+    "narration": "A cross-section shows one plane through one part; it samples the structure, it does not survey it."
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "Fatigue life, the property that most often limits a sintered structural part, has to be tested directly, because no single snapshot of the microstructure settles it."
+  },
+  {
+    "i": 83,
+    "segment": "ambient_drift",
+    "narration": "So the filament that began this episode was never a melted metal."
+  },
+  {
+    "i": 84,
+    "segment": "ambient_drift",
+    "narration": "It was a heap of grains, pressed into a bar and held hot until surfaces gave way to necks and necks gave way to solid."
+  },
+  {
+    "i": 85,
+    "segment": "text_beat",
+    "narration": "Powder metal parts that never melt still become one piece. Nothing poured."
+  },
+  {
+    "i": 86,
+    "segment": "ambient_drift",
+    "narration": "Atoms moved one at a time, and the evidence that they did is a shrinking sample, a pair of weighings, and a polished face under a microscope."
+  }
+]

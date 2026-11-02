@@ -1,11 +1,11 @@
 {
   "stage": "pov-repair",
   "week": "2026-W44",
-  "at": "2026-11-01T03:00:06+00:00",
+  "at": "2026-11-02T05:00:07+00:00",
   "code": "POV_ALL_TRACED",
-  "message": "all 63 queued episode(s) either carry no [HUMAN] beat or already trace to pov/pov-assignments.json",
+  "message": "all 89 queued episode(s) either carry no [HUMAN] beat or already trace to pov/pov-assignments.json",
   "detail": {
-    "examined": 63
+    "examined": 89
   },
   "unblock": "Nothing to do. This lane acts again the moment an episode is authored with an untraced first-person beat.",
   "disposition": "self_resolving",
@@ -15,6 +15,6 @@
   "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
-    "examined 63 queued episode(s)"
+    "examined 89 queued episode(s)"
   ]
 }

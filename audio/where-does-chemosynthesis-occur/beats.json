@@ -1,0 +1,352 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "A giant tubeworm has no mouth and no gut, yet it thrives in total darkness."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The reason is chemistry. Chemosynthesis occurs wherever microbes can harvest energy from chemical reactions instead of sunlight, most famously at deep-sea hydrothermal vents, cold seeps and whale falls."
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "In 1977, scientists diving in the submersible Alvin found animals crowded around warm water on the Gal\u00e1pagos Rift, a discovery recorded by the Woods Hole Oceanographic Institution, which operates Alvin."
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "That dive answered one question and opened a larger one. If whole communities can live this way at vents, the vents were never likely to be the only address."
+  },
+  {
+    "i": 4,
+    "segment": "stat_card",
+    "narration": "The harder part is finding out how many other addresses there are, and how much of that work happens in places nobody has looked."
+  },
+  {
+    "i": 5,
+    "segment": "definition_card",
+    "narration": "Start with what the word actually means, because the definition decides the map."
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "In photosynthesis, light supplies the energy that lets an organism turn carbon dioxide into the carbon compounds of its own body."
+  },
+  {
+    "i": 7,
+    "segment": "definition_card",
+    "narration": "In chemosynthesis, that energy comes from a chemical reaction instead. Microbes take a compound that holds usable energy, such as hydrogen sulfide, methane, hydrogen or ammonia, and react it with something that will accept electrons, often oxygen."
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "The energy released is used to build living tissue from carbon. The Smithsonian describes deep-sea vent and seep communities in exactly these terms: food webs whose base is microbes, not plants or algae."
+  },
+  {
+    "i": 9,
+    "segment": "contrast_pair",
+    "narration": "That framing matters. Chemosynthesis is a source of energy, not a type of place."
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "So the honest answer to where it occurs is not a list of landmarks."
+  },
+  {
+    "i": 11,
+    "segment": "contrast_pair",
+    "narration": "It is a list of conditions. You need a supply of reduced chemicals, you need something for them to react with, and you need microbes positioned at the boundary where the two meet."
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "Anywhere those conditions hold, chemosynthesis is possible. Whether it is actually happening there, and at what rate, is a separate question that has to be measured, not assumed."
+  },
+  {
+    "i": 13,
+    "segment": "quote_card",
+    "narration": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know."
+  },
+  {
+    "i": 14,
+    "segment": "evidence_chain",
+    "narration": "The idea itself was older than the dive. On land, the microbiologist Sergei Winogradsky had shown long before that certain bacteria, including Beggiatoa, could live by oxidizing sulfur compounds."
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "What nobody expected was an entire animal community running on that process at the bottom of the ocean."
+  },
+  {
+    "i": 16,
+    "segment": "evidence_chain",
+    "narration": "The team that took Alvin to the Gal\u00e1pagos Rift was largely there to study geology."
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "They were looking for warm water venting from the seafloor. They found warm water, and around it they found clams, mussels and dense thickets of tubeworms, in a place where food falling from the surface should have been scarce."
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "The explanation came from looking inside the animals. The giant tubeworm, Riftia pachyptila, turned out to carry an organ packed with bacteria, called the trophosome."
+  },
+  {
+    "i": 19,
+    "segment": "ambient_drift",
+    "narration": "Its red plume holds a form of hemoglobin that binds both oxygen and hydrogen sulfide and carries them to those bacteria."
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "The bacteria oxidize the sulfide and fix carbon. The worm lives on what they make."
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "That is how you get a tubeworm with no mouth that lives without sunlight."
+  },
+  {
+    "i": 22,
+    "segment": "ambient_drift",
+    "narration": "The key point for this episode is how that was established. It was not inferred from the location alone."
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "It was shown by anatomy, by the chemistry of the blood, and by the bacteria themselves."
+  },
+  {
+    "i": 24,
+    "segment": "checklist_reveal",
+    "narration": "Hydrothermal vents are where seawater circulates through hot volcanic rock near mid-ocean ridges and returns loaded with dissolved chemicals, including hydrogen sulfide."
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "But chemosynthesis does not require heat. Cold seeps are places where methane and other hydrocarbons leak slowly out of seafloor sediments, often along continental margins such as the Gulf of Mexico."
+  },
+  {
+    "i": 26,
+    "segment": "checklist_reveal",
+    "narration": "NOAA Ocean Exploration has documented seep communities of mussels and tubeworms that host bacteria much as vent animals do."
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "Some of those mussels carry bacteria that oxidize methane rather than sulfide."
+  },
+  {
+    "i": 28,
+    "segment": "checklist_reveal",
+    "narration": "Deep in the sediment below them, partnerships of archaea and bacteria break down methane without oxygen at all."
+  },
+  {
+    "i": 29,
+    "segment": "process_steps",
+    "narration": "Then there are whale falls. When a whale dies and sinks, the carcass passes through recognisable stages."
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "In the mobile scavenger stage, fish and other animals strip the soft tissue."
+  },
+  {
+    "i": 31,
+    "segment": "process_steps",
+    "narration": "In the enrichment opportunist stage, dense populations of small animals colonize the bones and surrounding sediment."
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "In the sulfophilic stage, bacteria break down the fats stored inside the bones, releasing sulfide, and chemosynthetic microbes grow on it."
+  },
+  {
+    "i": 33,
+    "segment": "process_steps",
+    "narration": "Researchers at MBARI, studying whale carcasses in Monterey Canyon, also discovered Osedax, bone-eating worms."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "The worms are a useful warning against overgeneralizing: their own bacterial partners are not chemosynthetic."
+  },
+  {
+    "i": 35,
+    "segment": "process_steps",
+    "narration": "Being at a chemosynthetic site does not make every organism there chemosynthetic."
+  },
+  {
+    "i": 36,
+    "segment": "contrast_pair",
+    "narration": "For a while, the working picture was that vent life needed magma close below the seafloor."
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "The Lost City hydrothermal field, on the Atlantis Massif near the Mid-Atlantic Ridge, broke that picture."
+  },
+  {
+    "i": 38,
+    "segment": "contrast_pair",
+    "narration": "Its pale carbonate chimneys sit away from the volcanic axis. The fluid there is shaped mainly by a reaction called serpentinization, in which seawater reacts with mantle rock and produces hydrogen and methane."
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Those gases are energy for microbes. NOAA Ocean Exploration has supported expeditions to the site, and the microbial communities there run on chemistry that comes from the rock itself."
+  },
+  {
+    "i": 40,
+    "segment": "ambient_drift",
+    "narration": "This matters for the map in a specific way. If chemosynthesis can be fuelled by water reacting with rock, then the question of where it occurs is partly a question about where that rock is exposed and where water can reach it."
+  },
+  {
+    "i": 41,
+    "segment": "ambient_drift",
+    "narration": "That pushes the possible range well beyond the volcanic ridges. It also explains why researchers interested in life elsewhere in the solar system pay close attention to sites like this one."
+  },
+  {
+    "i": 42,
+    "segment": "evidence_chain",
+    "narration": "The vents and seeps are the photogenic part. A large share of chemosynthesis may be happening in places with no chimneys, no tubeworms and nothing to film."
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "In the dark water of the deep ocean, microbes that oxidize ammonia, many of them archaea, fix carbon without light."
+  },
+  {
+    "i": 44,
+    "segment": "evidence_chain",
+    "narration": "In seafloor sediments, microbes work along chemical boundaries a few layers down."
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "In the rock of the ocean crust beneath the sediment, water circulates and microbes live in the cracks."
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "None of this can be seen with a camera, so the evidence is indirect."
+  },
+  {
+    "i": 47,
+    "segment": "ambient_drift",
+    "narration": "Researchers seal water or sediment samples in the dark, add carbon labelled so it can be traced, and measure how much ends up in living cells."
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "They sequence the microbes present and look for the genes that build carbon-fixing enzymes."
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "They compare the chemical fingerprints of carbon, because chemosynthetic carbon and photosynthetic carbon often carry different isotope signatures."
+  },
+  {
+    "i": 50,
+    "segment": "ambient_drift",
+    "narration": "Each method shows that chemosynthesis can happen in a sample. Scaling that up to a whole ocean is where the estimates spread out, and the published range is wide."
+  },
+  {
+    "i": 51,
+    "segment": "contrast_pair",
+    "narration": "Vent communities are often described as life completely independent of the sun."
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "That is close, but not exact. Many of the bacteria in a tubeworm oxidize sulfide using oxygen, and the oxygen dissolved in deep seawater was produced, originally, by photosynthesis near the surface."
+  },
+  {
+    "i": 53,
+    "segment": "contrast_pair",
+    "narration": "The energy comes from chemistry. One of the ingredients comes from the sunlit world."
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Chemosynthesis that uses no oxygen at all, like the methane breakdown in seep sediments, is more fully detached, but it is the less famous half of the story."
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "The same logic carries onto land. Soil bacteria that oxidize ammonia are chemosynthetic, and they are part of the ordinary nitrogen cycle under your feet."
+  },
+  {
+    "i": 56,
+    "segment": "ambient_drift",
+    "narration": "Hot springs host chemosynthetic microbes. Movile Cave in Romania is a sealed cave whose food web is built on chemosynthesis, with microbial mats feeding the animals living there."
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "The deep sea is where the process is most dramatic and best documented as the base of whole animal communities, but it was never confined there."
+  },
+  {
+    "i": 58,
+    "segment": "checklist_reveal",
+    "narration": "As you watch, notice which claims rest on what. The vent and seep communities were established by people going to them, seeing them, and sampling the animals."
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "The tubeworm's dependence on bacteria was established through its anatomy and blood chemistry."
+  },
+  {
+    "i": 60,
+    "segment": "checklist_reveal",
+    "narration": "The hidden chemosynthesis in dark water, sediment and crust rests on laboratory measurements and gene surveys from individual samples."
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "Those are different kinds of evidence, and the edit should not let footage of a vent stand in for a claim about the open ocean."
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "This evidence does not tell you how much chemosynthesis the planet supports overall, or what fraction of deep-ocean carbon it accounts for."
+  },
+  {
+    "i": 63,
+    "segment": "ambient_drift",
+    "narration": "Most of the seafloor has never been sampled for it, and many vents and seeps are known from a single expedition."
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "New vent fields and seeps are still being found, so any list of sites is a list of where people have looked."
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "Rates measured in a sealed sample may not match rates in the open ocean."
+  },
+  {
+    "i": 66,
+    "segment": "ambient_drift",
+    "narration": "And the subseafloor, which may hold a large share of this activity, is reached only by occasional drilling."
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "We know where chemosynthesis can occur. We do not yet know how much of it is out there."
+  },
+  {
+    "i": 68,
+    "segment": "ambient_drift",
+    "narration": "The tubeworm on the Gal\u00e1pagos Rift was the first clear sign. Everything since has widened the boundary rather than closed it."
+  },
+  {
+    "i": 69,
+    "segment": "ambient_drift",
+    "narration": "Chemosynthesis occurs wherever chemistry offers energy and a microbe is in place to take it, and the map of those places is still being drawn."
+  }
+]

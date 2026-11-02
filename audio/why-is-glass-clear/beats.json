@@ -1,0 +1,472 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "Even a spotless window pane reflects about 8 percent of the light striking it."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "That loss is real, and it is almost the only loss. Glass is clear because visible light does not carry enough energy to excite the electrons held in its silicon and oxygen bonds, so the light passes through instead of being absorbed."
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "Glass also has no crystals or grain boundaries, so the light is not scattered."
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "The refractive-index measurements behind that 8 percent are the kind NIST publishes."
+  },
+  {
+    "i": 4,
+    "segment": "stat_card",
+    "narration": "That figure does not tell you why the rest of the light survives."
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "The answer overturns a common assumption. Glass does not do something special to become transparent. It simply fails to stop the light."
+  },
+  {
+    "i": 6,
+    "segment": "definition_card",
+    "narration": "Absorption comes first, because that is where most materials go dark. In a solid, electrons occupy allowed energy bands."
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "To absorb a photon, an electron has to be lifted from a filled band into an empty one."
+  },
+  {
+    "i": 8,
+    "segment": "definition_card",
+    "narration": "The gap between a filled band and an empty one is called the band gap."
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "Photons with less energy than the gap pass through. The electron cannot accept the photon, so the photon has nowhere to deposit its energy, and it travels on."
+  },
+  {
+    "i": 10,
+    "segment": "definition_card",
+    "narration": "This is standard solid-state physics, taught in materials courses at MIT DMSE, the Department of Materials Science and Engineering."
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "Visible light spans wavelengths of roughly 400 to 700 nanometres, the range NIST treats as visible in its work on light measurement."
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "A shorter wavelength means more energy in each photon. Even a violet photon, the most energetic colour you can see, carries only a few electron volts."
+  },
+  {
+    "i": 13,
+    "segment": "ambient_drift",
+    "narration": "The silicon and oxygen bonds that form the backbone of glass hold their electrons far more tightly than that."
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "The band gap of pure silica sits several times higher, out in the deep ultraviolet."
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "Across the entire visible range, no electronic transition is available for light to drive."
+  },
+  {
+    "i": 16,
+    "segment": "ambient_drift",
+    "narration": "That is the first half of the answer, and the more important one."
+  },
+  {
+    "i": 17,
+    "segment": "contrast_pair",
+    "narration": "A metal behaves very differently. In aluminium or copper, the electrons are not locked into bonds."
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "They move freely, and they respond to light of almost any colour."
+  },
+  {
+    "i": 19,
+    "segment": "contrast_pair",
+    "narration": "That is why a thin sheet of metal is opaque and shiny."
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "Silicon, the element on its own, has a band gap small enough that visible light is absorbed."
+  },
+  {
+    "i": 21,
+    "segment": "contrast_pair",
+    "narration": "A silicon wafer therefore looks grey and mirror-like rather than clear. When the same silicon is bonded to oxygen, the gap opens wide."
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "The transparency of glass is not a special property added to glass. Put simply, there is no electronic transition for visible light."
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "Not absorbing light is necessary, but it is not enough. A material can refuse to absorb light and still be opaque, because it scatters the light instead."
+  },
+  {
+    "i": 24,
+    "segment": "ambient_drift",
+    "narration": "Table salt is a good example. A single large crystal of salt is clear."
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "Grind it and you get a white powder, even though nothing chemical has changed."
+  },
+  {
+    "i": 26,
+    "segment": "text_beat",
+    "narration": "Every surface between grains bends and reflects a little light. After thousands of those surfaces, the light has been sent in every direction. White is what scattered, unabsorbed light looks like."
+  },
+  {
+    "i": 27,
+    "segment": "contrast_pair",
+    "narration": "Aluminium oxide shows the same effect in a much harder material. As a single crystal sapphire, it is clear, which is why it is used for watch faces."
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "As an ordinary polycrystalline ceramic, it is white. That form is made of countless tiny grains with pores between them."
+  },
+  {
+    "i": 29,
+    "segment": "contrast_pair",
+    "narration": "The ceramics literature from ASM International treats this as a standard case."
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "Making a ceramic transparent depends on removing pores and controlling grain boundaries. The chemistry stays the same."
+  },
+  {
+    "i": 31,
+    "segment": "definition_card",
+    "narration": "Glass avoids this problem because it has no grains at all. It is amorphous, meaning its atoms have no repeating long-range order."
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "When molten glass cools, it stiffens before its atoms can arrange themselves into crystals."
+  },
+  {
+    "i": 33,
+    "segment": "definition_card",
+    "narration": "There are no grains, so no grain boundaries. Tiny fluctuations in density remain, frozen in from the liquid, but they are far smaller than the wavelength of visible light."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "Features that small scatter light only weakly, through a process called Rayleigh scattering, and that scattering falls off steeply as the wavelength grows longer."
+  },
+  {
+    "i": 35,
+    "segment": "definition_card",
+    "narration": "In a window pane a few millimetres thick, the remaining scattering is too faint to see."
+  },
+  {
+    "i": 36,
+    "segment": "quote_card",
+    "narration": "Numbers acquire authority faster than they acquire meaning. A precise figure can pass through ten articles, a slide deck and an AI answer until nobody knows who measured it or what they actually measured."
+  },
+  {
+    "i": 37,
+    "segment": "stat_card",
+    "narration": "The figure from the opening has a simple origin. Ordinary window glass has a refractive index of about 1.5, the kind of value NIST measures and publishes for optical materials."
+  },
+  {
+    "i": 38,
+    "segment": "text_beat",
+    "narration": "Whenever light crosses from one refractive index to another, some of it reflects."
+  },
+  {
+    "i": 39,
+    "segment": "stat_card",
+    "narration": "For light arriving straight on, that fraction depends only on the two indices."
+  },
+  {
+    "i": 40,
+    "segment": "text_beat",
+    "narration": "For air and glass, it works out to about 4 percent. A pane has two surfaces, front and back, so roughly 8 percent goes back the way it came."
+  },
+  {
+    "i": 41,
+    "segment": "stat_card",
+    "narration": "You can see that reflection every evening, when a lit room turns its own window into a dim mirror."
+  },
+  {
+    "i": 42,
+    "segment": "checklist_reveal",
+    "narration": "The losses in a clear pane fall into three categories. Reflection at both surfaces is usually the largest."
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Faint Rayleigh scattering comes from the frozen density fluctuations. Absorption by trace impurities is where colour comes from."
+  },
+  {
+    "i": 44,
+    "segment": "checklist_reveal",
+    "narration": "How much each contributes in a given pane depends on the glass recipe and its thickness, and it has to be measured."
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "Anti-reflection coatings on camera lenses and eyeglasses reduce the first loss directly."
+  },
+  {
+    "i": 46,
+    "segment": "checklist_reveal",
+    "narration": "They use thin layers that make the reflected waves cancel each other."
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "Look at the edge of a sheet of ordinary window glass, and it is green."
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "Look through the face, and you barely notice any tint. Both views show the same material, but the edge gives the light a much longer path."
+  },
+  {
+    "i": 49,
+    "segment": "ambient_drift",
+    "narration": "The green comes from iron, which is present as a trace impurity in sand and other raw materials."
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "Unlike the silica around them, iron ions do have electronic transitions in the visible range."
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "They absorb a little of the red end of the spectrum and a little of the blue."
+  },
+  {
+    "i": 52,
+    "segment": "ambient_drift",
+    "narration": "Over a few millimetres, the effect is faint. Along the length of the edge, it is obvious."
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "Manufacturers sell low-iron glass for display cases and solar panels specifically to remove that tint."
+  },
+  {
+    "i": 54,
+    "segment": "contrast_pair",
+    "narration": "This is why the history of glass is largely a history of chemistry."
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "Ancient glassmakers could not buy pure sand, and much early glass is tinted or deeply coloured."
+  },
+  {
+    "i": 56,
+    "segment": "contrast_pair",
+    "narration": "Collections such as the British Museum's hold Roman vessels that were made nearly colourless."
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "Their makers added compounds of manganese or antimony to counteract the tint of iron."
+  },
+  {
+    "i": 58,
+    "segment": "contrast_pair",
+    "narration": "Cobalt gave a deep blue, and copper gave turquoise and red. In each case, colour in glass came from trace impurities and added metals, not from the silica network, which stays clear underneath."
+  },
+  {
+    "i": 59,
+    "segment": "process_steps",
+    "narration": "Everything so far can be checked with an instrument called a spectrophotometer."
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "The method is simple. You shine light of one wavelength through the sample."
+  },
+  {
+    "i": 61,
+    "segment": "process_steps",
+    "narration": "You measure what arrives at the detector. You compare that with the beam without the sample."
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "Then you repeat across the spectrum, from ultraviolet through visible to infrared."
+  },
+  {
+    "i": 63,
+    "segment": "process_steps",
+    "narration": "The result is a transmission curve. Clear glass shows up as a high, flat plateau across the visible range, with steep drops at either end."
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "The ultraviolet drop is itself evidence for the band gap argument. It is the point where photons finally carry enough energy to be absorbed."
+  },
+  {
+    "i": 65,
+    "segment": "evidence_chain",
+    "narration": "A curve is only as good as the instrument that drew it."
+  },
+  {
+    "i": 66,
+    "segment": "text_beat",
+    "narration": "That is why NIST issues calibrated glass filters as reference materials. A laboratory measures the filter, compares its reading with the certified value, and corrects its instrument."
+  },
+  {
+    "i": 67,
+    "segment": "evidence_chain",
+    "narration": "That chain runs from calibrated glass filters to checked spectrophotometers to comparable transmission curves."
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "It lets two laboratories on different continents agree about how clear a piece of glass is."
+  },
+  {
+    "i": 69,
+    "segment": "evidence_chain",
+    "narration": "Without that chain, \"clear\" is only a description. With it, clear becomes a measured claim."
+  },
+  {
+    "i": 70,
+    "segment": "contrast_pair",
+    "narration": "The steep drops at either end of the curve matter. At the ultraviolet end, photons carry enough energy to reach electronic transitions."
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "Some of those transitions belong to the silica, and some belong to impurities and additives in ordinary glass, so absorption rises."
+  },
+  {
+    "i": 72,
+    "segment": "contrast_pair",
+    "narration": "At the infrared end, a different mechanism takes over. Long-wavelength light can set the silicon and oxygen bonds vibrating, and glass absorbs strongly there."
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "The same pane you call clear is darkened across parts of the ultraviolet and opaque across much of the infrared."
+  },
+  {
+    "i": 74,
+    "segment": "contrast_pair",
+    "narration": "Clear is a window in the spectrum, not a property at every wavelength."
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "The most demanding glass operates near the edges of that window. Telecommunications fibre is silica purified far beyond window glass."
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "Its lowest losses sit in the near infrared, at wavelengths of around 1550 nanometres."
+  },
+  {
+    "i": 77,
+    "segment": "ambient_drift",
+    "narration": "Research published through IEEE puts typical losses there at roughly 0.2 decibels per kilometre."
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "That is low enough for light to cross many kilometres of glass before it needs amplification."
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "In fibre this pure, the impurities are nearly gone. Most of the remaining loss is Rayleigh scattering from the frozen disorder of the glass itself, the same effect that is invisible in a window."
+  },
+  {
+    "i": 80,
+    "segment": "ambient_drift",
+    "narration": "When the visuals show a window, notice which kind of loss each image illustrates."
+  },
+  {
+    "i": 81,
+    "segment": "ambient_drift",
+    "narration": "A reflection in dark glass shows the surface loss. A green edge shows the impurity loss."
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "A frosted pane shows scattering. It is made deliberately by roughening a surface that is chemically identical to the clear glass beside it."
+  },
+  {
+    "i": 83,
+    "segment": "ambient_drift",
+    "narration": "Frosted and clear glass are the strongest evidence in this episode, because they separate structure from chemistry."
+  },
+  {
+    "i": 84,
+    "segment": "ambient_drift",
+    "narration": "The material and the atoms are the same, the surface is different, and the transparency disappears."
+  },
+  {
+    "i": 85,
+    "segment": "checklist_reveal",
+    "narration": "This evidence explains why silica-based glass transmits visible light. It does not give a complete atomic picture of glass."
+  },
+  {
+    "i": 86,
+    "segment": "text_beat",
+    "narration": "The arrangement of atoms in an amorphous solid cannot be read directly the way a crystal structure can."
+  },
+  {
+    "i": 87,
+    "segment": "checklist_reveal",
+    "narration": "It has to be inferred from scattering experiments and computer simulations, and the models still differ in detail."
+  },
+  {
+    "i": 88,
+    "segment": "text_beat",
+    "narration": "A general explanation also cannot tell you the losses of any given pane."
+  },
+  {
+    "i": 89,
+    "segment": "checklist_reveal",
+    "narration": "Iron content, thickness, coatings and surface condition all vary, and the published figures for one product do not transfer to another."
+  },
+  {
+    "i": 90,
+    "segment": "text_beat",
+    "narration": "The settled parts are why visible light is not absorbed and why glass does not scatter."
+  },
+  {
+    "i": 91,
+    "segment": "checklist_reveal",
+    "narration": "The exact structure of glass remains an open and active research question."
+  },
+  {
+    "i": 92,
+    "segment": "ambient_drift",
+    "narration": "Glass is clear for a modest reason. Across the visible range, glass absorbs almost nothing, scatters almost nothing, and reflects a little at each face."
+  },
+  {
+    "i": 93,
+    "segment": "ambient_drift",
+    "narration": "Everything you see through a window is light the glass failed to stop."
+  }
+]
