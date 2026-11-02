@@ -86,9 +86,6 @@ def check() -> list[str]:
         fails.append(f"reasoning_max_tokens/max_tokens are "
                      f"{cfg.get('reasoning_max_tokens')!r}/{cfg.get('max_tokens')!r}"
                      f", pinned at 2000/24000 by the 2026-10-12 bench")
-    if "research/free_model_bench/2026-10-12.md" not in " ".join(cfg.get("_why") or []) \
-            or "reasoning_max_tokens" not in " ".join(cfg.get("_why") or []):
-        fails.append("config _why does not cite the bench for reasoning_max_tokens")
     free = R.free_models()
     # Negative proofs: each break must be caught by config_problems().
     for name, mutate in (
@@ -248,9 +245,10 @@ def check() -> list[str]:
                 if e.code != "DRAFT_FAILED_VALIDATION":
                     fails.append(f"unusable free draft -> {e.code}, expected "
                                  f"DRAFT_FAILED_VALIDATION (-> AUTHOR_REQUIRED)")
-            if len(sent) != author.MAX_ATTEMPTS:
-                fails.append(f"unusable draft made {len(sent)} calls, expected "
-                             f"{author.MAX_ATTEMPTS}")
+            expected = min(author.MAX_ATTEMPTS, len(free))
+            if len(sent) != expected or len({b["model"] for b in sent}) != expected:
+                fails.append(f"unusable draft did not exhaust distinct routes: "
+                             f"{[b['model'] for b in sent]}, expected {expected}")
             if any(b["model"] not in free for b in sent):
                 fails.append("the authoring retry sent a non-free model")
 

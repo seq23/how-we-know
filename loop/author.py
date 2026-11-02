@@ -481,11 +481,13 @@ TRANSIENT_BACKOFF_S = llm_router.TRANSIENT_BACKOFF_S
 
 
 def call_openrouter(messages: list[dict], model: str, key: str,
-                    timeout: int = 300, temperature: float = 0.4) -> dict:
+                    timeout: int = 300, temperature: float = 0.4,
+                    rejected: set[str] | None = None) -> dict:
     """Every lane's model call. Routes ONLY to $0 models (loop/llm_router.py).
 
     `model` must be one of config/llm_routing.json's free models; it is tried
-    first and the other free models follow it. A model outside that list is
+    first within its tier and the other free models follow it. Rejected
+    drafts are skipped; Claude subscription is last. A model outside that list is
     refused before the network (OPENROUTER_PAID_MODEL_REFUSED). Raises
     llm_router.LLMStop for every route failure; never a paid fallback.
     `temperature` 0.4 = factual work; the localisation lane passes 0.0.
@@ -497,7 +499,8 @@ def call_openrouter(messages: list[dict], model: str, key: str,
                          "author.configured_model(), never straight from "
                          "$OPENROUTER_MODEL")
     return llm_router.complete(messages, key, preferred=model,
-                               timeout=timeout, temperature=temperature)
+                               timeout=timeout, temperature=temperature,
+                               rejected=rejected)
 
 
 def record_spend(slug: str, model: str, usage: dict, cost: float | None,
@@ -923,6 +926,8 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
     DRAFTS.mkdir(parents=True, exist_ok=True)
 
     last: list[str] = []
+    rejected: set[str] = set()
+    validated_attempts = 0
     for attempt in range(1, MAX_ATTEMPTS + 1):
         if deadline is not None and time.monotonic() >= deadline:
             raise AuthorStop(
@@ -935,8 +940,12 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
                 "next Monday. The budget is loop/draft.py AUTHORING_BUDGET_MIN; "
                 "the job ceiling in loop-mon-draft.yml is derived from it.")
         try:
-            resp = call_openrouter(messages, model, key)
+            resp = call_openrouter(messages, model, key, rejected=rejected)
         except llm_router.LLMStop as e:
+            if e.code == llm_router.NO_FREE_MODEL and last:
+                # Every remaining route failed after earlier draft rejections.
+                # Preserve the authoring verdict, not a transport-only stop.
+                break
             # The free route's own named stops (key refused, no free model
             # answered, a paid model or a non-zero cost refused) pass through
             # under their own code. draft.py turns every AuthorStop into the
@@ -947,7 +956,8 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             raise AuthorStop("OPENROUTER_UNREACHABLE",
                              f"{type(e).__name__} calling OpenRouter",
                              "Check network access and re-run.")
-        # The free model that answered is the one recorded and retried.
+        validated_attempts += 1
+        # The answering model is recorded, then excluded if validation fails.
         model = resp.get("model_used") or model
 
         choice = (resp.get("choices") or [{}])[0]
@@ -988,6 +998,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
                     "attempt": attempt, "words": len(text.split()),
                     "usage": usage}
 
+        rejected.add(model)
         last = problems
         dead = repairable_urls(problems, finish, not text.strip())
         if dead:
@@ -1013,7 +1024,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
 
     raise AuthorStop(
         "DRAFT_FAILED_VALIDATION",
-        f"{MAX_ATTEMPTS} attempts all failed structural checks: "
+        f"{validated_attempts} drafts failed structural checks: "
         + "; ".join(last),
         "Falls back to AUTHOR_REQUIRED: the brief stays in loop/briefs/ for a "
         "human. The week still ships whatever inventory covers.")

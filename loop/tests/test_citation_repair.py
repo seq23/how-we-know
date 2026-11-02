@@ -148,8 +148,10 @@ def check() -> list[str]:
             except author.AuthorStop as e:
                 if e.code != "DRAFT_FAILED_VALIDATION":
                     fails.append(f"(c) stopped as {e.code}")
-            if len(sent) != author.MAX_ATTEMPTS:
-                fails.append(f"(c) {len(sent)} requests, expected {author.MAX_ATTEMPTS}")
+            expected = min(author.MAX_ATTEMPTS, len(R.roster()))
+            if len(sent) != expected or len({b["model"] for b in sent}) != expected:
+                fails.append(f"(c) rejected repairs did not exhaust distinct routes: "
+                             f"{[b['model'] for b in sent]}, expected {expected}")
     finally:
         (R._post, R.LEDGER, author.dead_urls, author.shape_problems,
          author.record_spend, author.DRAFTS, author.opening.mark) = real

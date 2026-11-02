@@ -3,51 +3,41 @@
     "Owner policy 2026-10-11, verbatim: \"nothing should be paid ... cut the probes and make them free.\"",
     "The repo's OpenRouter key now has a $0 monthly credit limit. Every model call in this repo goes through loop/llm_router.py, which sends ONLY the models below, in this order, with a per-request max price of 0, and fails loudly if OpenRouter ever reports a non-zero cost.",
     "There is no paid fallback. A refused key is the named stop OPENROUTER_KEY_DISABLED_OR_INVALID; no free model answering is OPENROUTER_NO_FREE_MODEL.",
-    "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), keep only ':free' text models priced 0/0 with >= 32k context, strongest general instruct model first, update snapshot_date. loop/tests/test_llm_routing.py enforces the shape.",
-    "Owner 2026-10-12, verbatim: \"use my claude subscription usage in advance of the $0 openrouter\". subscription_route (her prepaid Claude subscription via the headless Claude Code CLI, no per-call bill) answers first when CLAUDE_CODE_OAUTH_TOKEN is set; any failure there falls through to the $0 list below.",
-    "Owner 2026-10-12: GEMINI_API_KEY (her AI Studio key, free tier only) puts gemini_route's models between the subscription and the list below; they are ranked in the same route ledger.",
-    "Owner 2026-10-12: the order below is a SEED, not a ranking. loop/llm_router.py standing() measures it from loop/state/llm_route_ledger.json (every call outcome and every draft verdict) and walks the measured order. Seeded from run 38235183608 (Mon 12 Oct 2026): nemotron-3-ultra returned an EMPTY answer and cost ~5 minutes before the route moved on, so it started last. Re-seeded from the 2026-10-12 bench (seeded_from_bench): the OpenRouter models now follow the bench ranking, ultra first - it wrote 1,290-1,513-word drafts where super truncated or came back empty - and the route ledger carries the bench's attempts (lane \"bench\"), so standing() reproduces that ranking.",
-    "Bench 2026-10-12 (research/free_model_bench/2026-10-12.md): nemotron-3-super, -ultra, -3.5-lightning and dots-3-note spent the whole 16,000-token max_tokens on hidden reasoning and returned empty text (finish_reason=length). reasoning_max_tokens caps that thinking (OpenRouter `reasoning.max_tokens`, the form every listed model accepts; `effort` is not - ultra takes only high/medium - and `exclude` still spends the budget); max_tokens 24000 fits a ~1,500-word script plus that budget. loop/llm_router.py reasoning_problems() pins the shape."
+    "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), require named :free text models priced 0/0 with >=32k context, then curate about 3-5 from script benchmark quality and route-ledger evidence, not model count. Drop small, consistently empty, or retired models. Date each why and snapshot_date. Run loop/bench_free_models.py with --reasoning default to measure the production 2000-token reasoning budget.",
+    "Owner 2026-11-02, verbatim: \"free models first, claude last -- but let's be picky about which free models, like gemini and good ones.\" Supersedes the 2026-10-12 subscription-first ruling. Gemini free tier first, curated OpenRouter second, Claude subscription last. Ledger standing() ranks within tiers; preferences never cross tiers. Draft validation rejections are excluded from that draft's subsequent calls.",
+    "Bench 2026-10-12 (research/free_model_bench/2026-10-12.md): nemotron-3-super, -ultra, -3.5-lightning and dots-3-note spent the whole 16,000-token max_tokens on hidden reasoning and returned empty text (finish_reason=length). reasoning_max_tokens caps that thinking (OpenRouter `reasoning.max_tokens`, the form every listed model accepts; `effort` is not - ultra takes only high/medium - and `exclude` still spends the budget); max_tokens 24000 fits a ~1,500-word script plus that budget. loop/llm_router.py reasoning_problems() pins the shape.",
+    "2026-11-02 measured refresh: research/free_model_bench/2026-11-02.json/.md. All 9 candidates were tested on two current queued topics with the production request body. No full pass; choose the best serving script candidates plus a dense 31B capacity alternative, drop two-empty-answer Dots and small/retired models. The OpenRouter key reported limit 0; no paid fallback."
   ],
-  "snapshot_date": "2026-10-11",
+  "snapshot_date": "2026-11-02",
   "source": "https://openrouter.ai/api/v1/models",
   "max_cost_usd": 0,
   "paid_fallback": false,
   "seeded_from_bench": {
-    "file": "research/free_model_bench/2026-10-12.json",
+    "file": "research/free_model_bench/2026-11-02.json",
     "ranking": [
-      "gemini/gemini-2.5-flash",
       "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "gemini/gemini-3-flash-preview",
-      "apodex/apodex-1.1-mini:free",
-      "nvidia/nemotron-3-super-120b-a12b:free",
-      "google/gemma-4-31b-it:free",
-      "nvidia/nemotron-3.5-lightning:free",
-      "thinkingmachines/inkling:free",
-      "dots-studio/dots-3-note-preview:free",
-      "google/gemma-4-26b-a4b-it:free",
-      "gemini/gemini-3.5-flash"
+      "nvidia/nemotron-3.5-super-vl:free",
+      "google/gemma-4-31b-it:free"
     ],
-    "why": "Owner 2026-10-12: the ranking of research/free_model_bench/2026-10-12.md, in route-ledger ids. loop/state/llm_route_ledger.json was seeded from the same file (python3 loop/bench_free_models.py --seed-ledger <file>); loop/tests/test_measured_fallback.py case (i) checks standing() reproduces it."
+    "why": "2026-11-02: existing seed_ledger() merged actual benchmark verdicts with genuine history; ranking records standing() for the selected OpenRouter roster at this seed. Per-model why fields explain selection using full benchmark quality, not answer count. Synthetic test events were removed. Gemini remains the first tier regardless of cross-provider standing."
   },
   "subscription_route": {
     "provider": "claude-code",
     "env": "CLAUDE_CODE_OAUTH_TOKEN",
     "model": "opus",
-    "why": "Owner 2026-10-12: her Claude subscription (prepaid, no per-call bill) answers first; the $0 OpenRouter list below is the fallback. Never an API key, never a paid model."
+    "why": "2026-11-02: Claude subscription LAST, only after all available free routes failed or their drafts failed validation. Existing prepaid subscription via CLAUDE_CODE_OAUTH_TOKEN + claude CLI; never a paid API fallback."
   },
   "gemini_route": {
     "provider": "google-ai-studio",
     "env": "GEMINI_API_KEY",
     "models": [
+      "gemini-3.8-flash",
+      "gemini-3.6-flash",
       "gemini-2.5-flash",
-      "gemini-3-flash-preview",
-      "gemini-3.5-flash-lite",
-      "gemini-2.5-flash-lite",
-      "gemini-3.5-flash"
+      "gemini-3.5-flash-lite"
     ],
     "free_tier_only": true,
-    "why": "Owner 2026-10-12: her existing AI Studio key, free tier (10-15 req/min, ~250-1500/day per model); never a billed project. Behind the subscription, ahead of the OpenRouter list because Gemini Flash writes long-form far better than any :free model there. Whether 3.5 is on the free tier is unknown (key probed 2026-10-12: 62 models visible), so 403/404/429 on any model falls through with one [gemini-route] line. Data rule: free-tier prompts may be used by Google to improve its products - channel scripts only, never anything confidential (LP names, deal terms); this repo holds nothing confidential. Order re-seeded from the 2026-10-12 bench: gemini-2.5-flash (the bench's nearest miss) and gemini-3-flash-preview first, the unbenched lite models next, gemini-3.5-flash (503 in the bench and 4 errors on the Monday run) last; standing() reorders them by measured pass rate."
+    "why": "2026-11-02: AI Studio key, FREE TIER ONLY, never enable billing. Current Google pricing https://ai.google.dev/gemini-api/docs/pricing.md lists free input/output for these models: 3.8 is its most intelligent Flash, then 3.6; 2.5 Flash (best 12 Oct script bench) precedes the weaker 3.5 Flash-Lite. Ledger measures quality within this tier. Pro 3.1 excluded: no free API tier. Pro 2.5 removed after two HTTP 404 responses in the 2 Nov bench. 403/404/429 falls through. DATA RULE: free-tier prompts may improve Google products; channel scripts only, never confidential data (LP names, deal terms). Current two-topic bench: 2.5 Flash wrote 2047/1357 words but failed validation; 3.8/3.6 had service errors, and Lite remained structurally invalid. No full pass is claimed; current capability order seeds the tier, with ledger measurements applied within it."
   },
   "min_context_length": 32000,
   "max_tokens": 24000,
@@ -60,16 +50,18 @@
       "pricing": {
         "prompt": "0",
         "completion": "0"
-      }
+      },
+      "why": "2026-11-02: Best OpenRouter script candidate by the real two-topic benchmark ranking: 4/4 answered, 819-1251 words, 0/4 passed. Earlier 12 Oct corrections reached 1290/1513 words. Kept first for strongest measured long-form output, with validation mandatory. Evidence: research/free_model_bench/2026-11-02.json."
     },
     {
-      "id": "nvidia/nemotron-3-super-120b-a12b:free",
-      "context_length": 262144,
-      "max_completion_tokens": 235929,
+      "id": "nvidia/nemotron-3.5-super-vl:free",
+      "context_length": 1000000,
+      "max_completion_tokens": 131072,
       "pricing": {
         "prompt": "0",
         "completion": "0"
-      }
+      },
+      "why": "2026-11-02: Second measured OpenRouter candidate: 4/4 answered; correction drafts 957/940 words failed only length, unlike Dots which returned no script. 0/4 full passes; never treated as validated. Live catalog intelligence index 13.6. Evidence: research/free_model_bench/2026-11-02.json."
     },
     {
       "id": "google/gemma-4-31b-it:free",
@@ -78,22 +70,18 @@
       "pricing": {
         "prompt": "0",
         "completion": "0"
-      }
-    },
-    {
-      "id": "google/gemma-4-26b-a4b-it:free",
-      "context_length": 262144,
-      "max_completion_tokens": 32768,
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      }
+      },
+      "why": "2026-11-02: Dense 31B general-purpose alternative to the Nemotron family, retained as the third capacity fallback. Both current benchmark requests returned 429 (also 429 on 12 Oct): quality is unmeasured, not a claimed win. Preferred to the small 4B-active Gemma and persistently empty Dots/Lightning. Live catalog code index 43.4; validation mandatory. Evidence: research/free_model_bench/2026-11-02.json."
     }
   ],
   "excluded": {
     "thinkingmachines/inkling:free": "listed $0 but answers HTTP 403 'only available on agentic harnesses' to this repo's key (probed 2026-10-11)",
     "openrouter/free": "a meta-router to an unspecified free model; the route here must name its model",
-    "inclusionai/ling-3.1-flash": "$0 today but not a ':free' variant, so its price can change without a new id"
+    "inclusionai/ling-3.1-flash": "$0 today but not a ':free' variant, so its price can change without a new id",
+    "nvidia/nemotron-3-super-120b-a12b:free": "2026-11-02: no longer in live list; short/truncated scripts in 12 Oct bench.",
+    "google/gemma-4-26b-a4b-it:free": "2026-11-02: 4B active, weaker than dense 31B; 12 Oct no usable script.",
+    "nvidia/nemotron-3.5-lightning:free": "2026-11-02: two empty benchmark scripts; live intelligence index only 5.5.",
+    "dots-studio/dots-3-note-preview:free": "2026-11-02: two empty script attempts even with the production reasoning cap; also empty in the 12 Oct bench. Dropped for measured unusability."
   },
   "probe_2026_10_11": {
     "nvidia/nemotron-3-ultra-550b-a55b:free": "answered, reported cost 0",

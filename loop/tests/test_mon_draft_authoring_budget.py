@@ -52,7 +52,7 @@ CEILING_HEADROOM_MIN = 20
 
 def _fake_router(calls: list[int], clock: dict):
     """A model that always answers an unusably short draft and moves the clock."""
-    def call(messages, model, key, timeout=300, temperature=0.4):
+    def call(messages, model, key, timeout=300, temperature=0.4, rejected=None):
         calls.append(1)
         clock["now"] += 60.0
         return {"model_used": model,

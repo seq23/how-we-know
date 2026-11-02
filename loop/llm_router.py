@@ -18,29 +18,26 @@ Rules, each enforced here rather than written down:
   * Every response's reported cost must be 0. Non-zero is
     OPENROUTER_PAID_COST_REFUSED - raised, never logged-and-continued.
   * HTTP 401 is the key itself (OpenRouter: "User not found"):
-    OPENROUTER_KEY_DISABLED_OR_INVALID at once. 402/403 can be per-model
+    skips the other OpenRouter models; if the final subscription cannot
+    answer, OPENROUTER_KEY_DISABLED_OR_INVALID. 402/403 can be per-model
     (2026-10-11: a listed ':free' model answered 403 "only available on
     agentic harnesses") so they move to the next model - but when EVERY model
     was refused with 401/402/403, the key is what is refused, and that is
     OPENROUTER_KEY_DISABLED_OR_INVALID too.
   * Any other failure on one model (404, 429, 5xx after the transient
     retries, a dropped connection, an empty answer) moves to the next free
-    model. When every free model has failed: OPENROUTER_NO_FREE_MODEL.
+    model. If free models and the final subscription all fail:
+    OPENROUTER_NO_FREE_MODEL.
   * There is no paid fallback. `paid_fallback` in the config must be false.
-  * Owner 2026-10-12: "use my claude subscription usage in advance of the $0
-    openrouter". When $CLAUDE_CODE_OAUTH_TOKEN is set and a `claude` binary is
-    on PATH, the headless Claude Code CLI (her prepaid subscription, no
-    per-call bill) is asked FIRST. Any failure there prints one
-    [claude-route] line and falls through to the $0 list unchanged; it never
-    raises and is never a stop. Without the variable no subprocess is run.
-  * Owner 2026-10-12: her Google AI Studio key, FREE TIER ONLY, is the
-    second tier. When $GEMINI_API_KEY is set, config `gemini_route.models`
-    (ids "gemini/<model>") join the front of the $0 roster, called through
-    Google's OpenAI-compatible endpoint. Any 403/404/429/5xx, timeout or
-    empty answer skips to the next model with one [gemini-route] line; the
-    tier never raises and is never a stop. Without the variable no Gemini
-    request is made. The key is sent only in the Authorization header -
-    never argv, a log line or the ledger.
+  * Owner 2026-11-02: "free models first, claude last -- but let's be picky
+    about which free models, like gemini and good ones." This supersedes
+    the 2026-10-12 subscription-first ruling. Gemini free tier comes first,
+    the curated $0 OpenRouter roster second, Claude subscription LAST.
+    Claude uses $CLAUDE_CODE_OAUTH_TOKEN and the CLI, never a paid API.
+    Any subscription failure preserves the free route's existing NAMED STOP.
+  * Her Google AI Studio key is FREE TIER ONLY. Without $GEMINI_API_KEY
+    no Gemini request is made. Failures skip to the next free model.
+    The key is sent only in the Authorization header, never logged.
     DATA RULE: free-tier Gemini prompts may be used by Google to improve its
     products. This tier is for channel scripts only and never for anything
     confidential (LP names, deal terms). This router is the only door to a
@@ -51,8 +48,8 @@ Rules, each enforced here rather than written down:
     answer (passed / failed_validation, via record_validation) lands in
     loop/state/llm_route_ledger.json, last LEDGER_KEEP per model. standing()
     ranks the roster (the Gemini models when the key is set, then the
-    config's OpenRouter models) from their last STANDING_WINDOW events, so
-    a rate-limited Gemini day drops it below a good OpenRouter model:
+    config's OpenRouter models) from their last STANDING_WINDOW events.
+    route_order() preserves Gemini ahead of OpenRouter:
       MEASURED-GOOD  >= 4 judged events and pass_rate >= 0.5 (pass_rate
                      desc, then median latency asc)
       UNMEASURED     <  4 judged events (config order)
@@ -61,8 +58,8 @@ Rules, each enforced here rather than written down:
     timeout + rate_limited); "judged" = that denominator. An answer with no
     verdict yet counts as neither, so it never makes a model measured. No data anywhere = exactly the config order. The config list
     is the roster; the ledger only reorders it, never adds a model.
-    complete() walks standing() order. A caller's `preferred` model still
-    goes first UNLESS it is MEASURED-BAD; a BAD preferred model loses the
+    complete() walks route_order() tier order. A caller's `preferred` model still
+    goes first within its tier UNLESS it is MEASURED-BAD; a BAD preferred model loses the
     preference and keeps its measured place - after every MEASURED-GOOD
     (and UNMEASURED) model. The subscription tier is never ranked or
     recorded. Pinned by loop/tests/test_measured_fallback.py.
@@ -381,16 +378,22 @@ def subscription_timeout(caller_timeout: int) -> int:
     return SUBSCRIPTION_TIMEOUT_S if caller_timeout >= 300 else max(30, caller_timeout)
 
 
+def subscription_available() -> bool:
+    """The Claude tier can be asked: the token is set and the config names
+    the route (the config is the switch too: no subscription_route, no
+    tier). Whether the CLI is installed is checked when it is asked."""
+    return bool((os.environ.get(SUBSCRIPTION_ENV) or "").strip()) \
+        and bool(load_config().get("subscription_route"))
+
+
 def _subscription_complete(messages: list[dict],
-                           caller_timeout: int = 300) -> dict | None:
+                           caller_timeout: int = 300,
+                           fall: str = " — no route left") -> dict | None:
     """Her Claude subscription, or None (and one log line) on any failure.
-    Never raises; never called when the env var is absent."""
-    if not (os.environ.get(SUBSCRIPTION_ENV) or "").strip():
+    Never raises; never called when the env var is absent. `fall` names
+    what happens next, for the log line."""
+    if not subscription_available():
         return None
-    # The config is the switch too: no subscription_route, no tier.
-    if not load_config().get("subscription_route"):
-        return None
-    fall = " — falling back to the $0 route"
     limit = subscription_timeout(caller_timeout)
     try:
         if not shutil.which("claude"):
@@ -616,19 +619,25 @@ def route_order(preferred: str | None = None,
     rows = rows if rows is not None else standing()
     order = [r["model"] for r in rows]
     pref = (preferred or "").strip()
+    def tiers(items):
+        return ([m for m in items if m.startswith(GEMINI_PREFIX)]
+                + [m for m in items if not m.startswith(GEMINI_PREFIX)])
+
     if not pref or pref not in order:
-        return order
+        return tiers(order)
     bucket = next(r["bucket"] for r in rows if r["model"] == pref)
     if bucket == "MEASURED-BAD":
         # Loses its preference: it keeps its measured place, after every
-        # MEASURED-GOOD and UNMEASURED model.
-        return order
+        # MEASURED-GOOD and UNMEASURED model within its tier.
+        return tiers(order)
     order.remove(pref)
-    return [pref] + order
+    return tiers([pref] + order)
 
 
 def standing_lines(rows: list[dict] | None = None) -> list[str]:
     rows = rows if rows is not None else standing()
+    indexed = {r["model"]: r for r in rows}
+    rows = [indexed[m] for m in route_order(rows=rows)]
     out = []
     for i, r in enumerate(rows, 1):
         rate = "-" if r["pass_rate"] is None else f"{r['pass_rate']:.2f}"
@@ -654,7 +663,8 @@ def _call_outcome(e: BaseException) -> str:
 
 def complete(messages: list[dict], key: str, *, preferred: str | None = None,
              timeout: int = 300, temperature: float = 0.4,
-             max_tokens: int | None = None) -> dict:
+             max_tokens: int | None = None,
+             rejected: set[str] | None = None) -> dict:
     """Send `messages` to the first free model that answers.
 
     `preferred` (a lane's configured model) goes first if - and only if - it
@@ -663,6 +673,8 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
     The free models are walked in measured order (standing()); a MEASURED-
     BAD `preferred` model is not moved first - it keeps its measured place,
     after the MEASURED-GOOD (and UNMEASURED) ones.
+    `rejected` contains models whose drafts failed validation in this task;
+    they cannot answer again. Claude is asked only after free exhaustion.
     Every call outcome is written to the route ledger.
     Returns OpenRouter's response dict; `resp["model_used"]` names the model.
     """
@@ -672,9 +684,6 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
     # normal free order behind the subscription tier, never a refusal.
     if preferred and preferred.strip() == SUBSCRIPTION_MODEL_USED:
         preferred = None
-    sub = _subscription_complete(messages, timeout)
-    if sub is not None:
-        return sub
     gem = gemini_models()
     # A retry naming a Gemini model while the key is absent goes back to the
     # normal order; it is not a paid model, so it is not refused.
@@ -698,7 +707,8 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
     # empty answer"). Only an explicit override is a preference; the default
     # means "whatever the measured order ranks first".
     preferred = effective_preference(preferred)
-    order = route_order(preferred, standing(models))
+    order = [m for m in route_order(preferred, standing(models))
+             if m not in (rejected or set())]
 
     failures, codes = [], []
     key_stop_unblock = (
@@ -725,10 +735,9 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
             _record(model, _call_outcome(e), time.monotonic() - t0)
             detail = e.read().decode("utf-8", "ignore")[:200].replace(key, "<key>")
             if e.code in KEY_INVALID_CODES:
-                raise LLMStop(KEY_DISABLED,
-                              f"OpenRouter refused the key (HTTP {e.code}) on "
-                              f"free model {model}",
-                              key_stop_unblock, detail) from None
+                codes.append(e.code)
+                failures.append(f"{model}: HTTP {e.code} {detail[:120]}")
+                break
             codes.append(e.code)
             failures.append(f"{model}: HTTP {e.code} {detail[:120]}")
             continue
@@ -759,7 +768,12 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
                   + " | ".join(failures), flush=True)
         resp["model_used"] = model
         return resp
-    if codes and all(c in KEY_REFUSED_CODES for c in codes):
+    if SUBSCRIPTION_MODEL_USED not in (rejected or set()):
+        sub = _subscription_complete(messages, timeout)
+        if sub is not None:
+            return sub
+    if codes and (any(c in KEY_INVALID_CODES for c in codes)
+                  or all(c in KEY_REFUSED_CODES for c in codes)):
         raise LLMStop(KEY_DISABLED,
                       f"OpenRouter refused the key on all {len(order)} free "
                       f"models", key_stop_unblock, failures)

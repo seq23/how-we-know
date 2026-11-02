@@ -125,7 +125,7 @@ def category(problems: list[str], finish, empty: bool) -> str:
 
 GEMINI_API = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
 GEMINI_KEY_FILE = author.KEY_FILE.parent / "gemini_key.txt"
-GEMINI = ["gemini-3.5-flash", "gemini-2.5-flash", "gemini-3-flash-preview"]
+GEMINI = llm_router.load_config()["gemini_route"]["models"]
 GEMINI_CAP, GEMINI_SLEEP_S = 8, 7                       # Google free tier: < 10/min
 
 
@@ -370,7 +370,6 @@ def seed_events(res: dict) -> dict[str, list[dict]]:
     SEED_KEEP per model. Gemini rows get the router's "gemini/" id. The
     bench records no clock time, so events are stamped <date>T14:MM:SSZ in
     order - before that day's production run, whose events stay newest."""
-    gem = set(llm_router.load_config().get("gemini_route", {}).get("models") or [])
     out: dict[str, list[dict]] = {}
     i = 0
     for row in list(res.get("prior_rows") or []) + list(res.get("rows") or []):
@@ -378,7 +377,7 @@ def seed_events(res: dict) -> dict[str, list[dict]]:
         if not outcome:
             continue
         m = row["model"]
-        mid = llm_router.GEMINI_PREFIX + m if m in gem else m
+        mid = llm_router.GEMINI_PREFIX + m if m.startswith("gemini-") else m
         lat = row.get("latency_s")
         out.setdefault(mid, []).append({
             "ts": f"{res['date']}T14:{i // 60:02d}:{i % 60:02d}Z",

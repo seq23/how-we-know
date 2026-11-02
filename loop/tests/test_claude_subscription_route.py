@@ -1,25 +1,6 @@
-"""Her Claude subscription answers first; the $0 route is the fallback.
-
-Owner, 2026-10-12: "use my claude subscription usage in advance of the $0
-openrouter". loop/llm_router.py asks the headless Claude Code CLI first when
-$CLAUDE_CODE_OAUTH_TOKEN is set, and falls through to the $0 OpenRouter list
-on any failure. These checks pin that, with subprocess and HTTP patched (no
-network, no CLI):
-
-  a. env set + CLI answers -> the subscription dict, ZERO OpenRouter calls.
-  b. env set + CLI fails (non-zero exit / is_error / empty / bad JSON /
-     no binary / timeout) -> a free model answers, never a raise.
-  c. env ABSENT -> no subprocess at all.
-  d. the token never appears in argv or in anything printed.
-  e. config/llm_routing.json subscription_route shape (and its negatives).
-  f. the lanes: every workflow whose stage can reach llm_router.complete()
-     (derived from the CALL graph of loop/*.py, not a hand-kept list)
-     installs the pinned CLI and passes the secret to that stage; no other
-     workflow passes it. A new lane that calls the router without the secret
-     fails here.
-  g. a retry naming "claude-subscription/opus" as preferred is not refused.
-
-Hard-fails if it examines nothing.
+"""Claude is asked only after every available free route fails.
+CLI parsing, credential secrecy, route config and workflow coverage stay guarded.
+No network or real CLI calls.
 """
 from __future__ import annotations
 
@@ -30,6 +11,8 @@ import json
 import os
 import re
 import subprocess
+import tempfile
+import urllib.error
 import sys
 from pathlib import Path
 
@@ -44,8 +27,8 @@ import llm_router as R  # noqa: E402
 TOKEN = "sk-ant-oat01-TEST-TOKEN-must-never-print-0123456789"
 PIN = "@anthropic-ai/claude-code@2.1.296"
 SECRET_LINE = "CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}"
-# Owner 2026-10-12: the Gemini free tier (GEMINI_API_KEY) sits between the
-# subscription and the $0 OpenRouter list, so every router-reaching step
+# Owner 2026-11-02: Gemini free tier precedes OpenRouter and the
+# subscription, so every router-reaching step
 # carries BOTH secrets, and no other lane carries either.
 GEMINI_LINE = "GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}"
 MSGS = [{"role": "system", "content": "Be brief."},
@@ -72,9 +55,8 @@ def _free_ok(body, key, timeout):
             "usage": {"cost": 0}}
 
 
-def _post_forbidden(body, key, timeout):
-    raise AssertionError("OpenRouter was called although the subscription "
-                         "tier answered")
+def _free_failed(body, key, timeout):
+    raise urllib.error.HTTPError(R.API, 429, "limited", {}, io.BytesIO(b"{}"))
 
 
 @contextlib.contextmanager
@@ -207,8 +189,8 @@ def check() -> list[str]:
     fails: list[str] = []
     examined = 0
 
-    # (a) the subscription answers; OpenRouter is never touched.
-    with patched(_cli_ok(), post=_post_forbidden) as (calls, buf):
+    # (a) exhausted OpenRouter routes reach the subscription; CLI shape stays guarded.
+    with patched(_cli_ok(), post=_free_failed) as (calls, buf):
         try:
             resp = R.complete(MSGS, "or-key")
         except AssertionError as e:
@@ -240,6 +222,88 @@ def check() -> list[str]:
         if kw.get("input") != "Say ok.":
             fails.append(f"(a) stdin is {kw.get('input')!r}, expected the user turn")
 
+    # Free success must never ask Claude, even with a working subscription.
+    examined += 1
+    with patched(_cli_ok()) as (calls, buf):
+        resp = R.complete(MSGS, "or-key")
+    if calls or resp.get("model_used") not in R.free_models():
+        fails.append("free success asked Claude or lost its answer")
+
+    # Exact observed order with adversarial ledger ranking and preference.
+    from unittest.mock import patch
+    gem = [R.GEMINI_PREFIX + m for m in R.load_config()["gemini_route"]["models"]]
+    free_ids = R.free_models()
+    for terminal in ("claude", "gemini", "openrouter", "validation"):
+        examined += 1
+        seen = []
+        def gtry(model, *args):
+            seen.append(model)
+            return (_free_ok(json.dumps({"model": model}), "", 1), "") if terminal == "gemini" else (None, "failed")
+        def post(body, *args):
+            model = json.loads(body)["model"]
+            seen.append(model)
+            if terminal == "openrouter":
+                return _free_ok(body, "", 1)
+            return {"choices": [{"message": {"content": ""}}]}
+        def sub(*args):
+            seen.append("claude")
+            return {"model_used": R.SUBSCRIPTION_MODEL_USED}
+        rows = [{"model": m, "bucket": "MEASURED-GOOD"} for m in free_ids + gem]
+        rejected = set(gem + free_ids) if terminal == "validation" else set()
+        with patch.dict(os.environ, {R.GEMINI_ENV: "fake-key"}), \
+                patch.object(R, "standing", return_value=rows), \
+                patch.object(R, "_gemini_try", side_effect=gtry), \
+                patch.object(R, "_post", side_effect=post), \
+                patch.object(R, "_subscription_complete", side_effect=sub):
+            R.complete(MSGS, "or-key", preferred=free_ids[-1], rejected=rejected)
+        or_order = free_ids[-1:] + free_ids[:-1]
+        want = {"claude": gem + or_order + ["claude"],
+                "gemini": gem[:1], "openrouter": gem + or_order[:1],
+                "validation": ["claude"]}[terminal]
+        if seen != want:
+            fails.append(f"route order {terminal}: {seen} != {want}")
+
+    # Credential refusals and exhaustion retain their NAMED STOP if Claude fails.
+    for code in (401, 403, 429):
+        examined += 1
+        def refused(*args):
+            raise urllib.error.HTTPError(R.API, code, "refused", {}, io.BytesIO(b"{}"))
+        with patched(_Proc(1, "", "down"), post=refused):
+            try:
+                R.complete(MSGS, "or-key")
+                fails.append(f"HTTP {code}: missing named stop")
+            except R.LLMStop as e:
+                want = R.KEY_DISABLED if code in (401, 403) else R.NO_FREE_MODEL
+                if e.code != want:
+                    fails.append(f"HTTP {code}: {e.code} != {want}")
+
+    # The author passes each rejected model into the next route call.
+    import author
+    with tempfile.TemporaryDirectory() as d:
+        rejected_seen = []
+        def draft_call(messages, model, key, **kwargs):
+            rejected_seen.append(set(kwargs["rejected"]))
+            return {"model_used": R.free_models()[0],
+                    "choices": [{"message": {"content": "bad draft"}}]}
+        with patch.object(author, "call_openrouter", side_effect=draft_call), \
+                patch.object(author, "DRAFTS", Path(d)), \
+                patch.object(author, "shape_problems", return_value=["invalid"]), \
+                patch.object(author, "boilerplate_problems", return_value=[]), \
+                patch.object(author, "dead_urls", return_value=[]), \
+                patch.object(author, "record_spend"), \
+                patch.object(R, "record_validation"):
+            try:
+                author.draft("public question", "test",
+                             {"line": "I checked the evidence.", "pov_id": "test"},
+                             key="test")
+            except author.AuthorStop as e:
+                if e.code != "DRAFT_FAILED_VALIDATION":
+                    fails.append(f"validation exhaustion: {e.code}")
+        examined += 1
+        if len(rejected_seen) != author.MAX_ATTEMPTS or rejected_seen[0] \
+                or any(R.free_models()[0] not in r for r in rejected_seen[1:]):
+            fails.append(f"author lost task validation rejections: {rejected_seen}")
+
     # A multi-turn exchange is rendered in order with roles.
     examined += 1
     _, user = R._render_turns(MSGS + [
@@ -249,7 +313,7 @@ def check() -> list[str]:
             and "assistant:" in user):
         fails.append("(a) multi-turn messages are not rendered in order with roles")
 
-    # (b) every CLI failure falls through to a free model.
+    # (b) a failed final CLI attempt preserves the free exhaustion stop.
     free = R.free_models()
     cases = {
         "non-zero exit": dict(run=_Proc(1, "", f"auth failed for {TOKEN}")),
@@ -263,18 +327,15 @@ def check() -> list[str]:
     }
     for name, kw in cases.items():
         examined += 1
-        with patched(**kw) as (calls, buf):
+        with patched(**kw, post=_free_failed) as (calls, buf):
             try:
                 resp = R.complete(MSGS, "or-key")
-            except Exception as e:                  # noqa: BLE001
-                fails.append(f"(b) {name}: raised {type(e).__name__}: {e}")
-                continue
-        if resp.get("model_used") not in free:
-            fails.append(f"(b) {name}: model_used {resp.get('model_used')!r} is "
-                         f"not a free model")
-        if "[claude-route]" not in buf.getvalue() \
-                or "falling back to the $0 route" not in buf.getvalue():
-            fails.append(f"(b) {name}: no [claude-route] fallback line")
+            except R.LLMStop as e:
+                resp = {}
+                if e.code != R.NO_FREE_MODEL:
+                    fails.append(f"(b) {name}: wrong named stop {e.code}")
+        if resp:
+            fails.append(f"(b) {name}: exhausted routes returned an answer")
         if name == "no binary" and calls:
             fails.append("(b) no binary: subprocess still called")
         # (d) the token never printed, even when the CLI echoes it.
@@ -302,7 +363,7 @@ def check() -> list[str]:
 
     # (d) argv of the success path, and its printed output.
     examined += 1
-    with patched(_cli_ok()) as (calls, buf):
+    with patched(_cli_ok(), post=_free_failed) as (calls, buf):
         R.complete(MSGS, "or-key")
     if any(TOKEN in a for argv, _ in calls for a in argv) or TOKEN in buf.getvalue():
         fails.append("(d) the token appeared in argv or output on success")
@@ -340,7 +401,6 @@ def check() -> list[str]:
         fails.append("(f) loop-mon-draft.yml is not among the derived lanes")
     # Negative: a lane without the secret is seen.
     examined += 1
-    import tempfile
     global WORKFLOWS
     real = WORKFLOWS
     with tempfile.TemporaryDirectory() as d:
@@ -392,6 +452,6 @@ if __name__ == "__main__":
     f = check()
     for x in f:
         print(f"  ✗ {x}")
-    print("all green - subscription first, $0 behind it" if not f
+    print("all green - free models first, Claude last" if not f
           else f"{len(f)} failure(s)")
     sys.exit(1 if f else 0)
