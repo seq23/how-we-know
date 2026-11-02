@@ -301,15 +301,24 @@ sea ends"; deep sea shows no sign of ending (see below) and keeps its own slots.
   `CHANGE_BOUNDS` fence every other knob respects, and requires **8 published episodes
   with analytics before a domain can be judged at all** — below that, allocation HOLDS,
   it does not average toward an even split.
-- **A domain retires on its own scored queue decaying**, not a fixed episode count, and
-  rotates to the next-ranked domain in the taxonomy automatically.
+- **Results decide** (owner rule A, 2 Nov 2026; replaces "a domain retires on its own
+  queue decaying"). No topic is retired or added until **every** allocated topic has
+  **30 long videos with analytics** (`domains.results_decide.min_long_videos`; until then
+  the named stop TOPICS_HELD_FOR_EVIDENCE shows each count). Then, monthly, each topic is
+  scored per long video as **subscribers gained per 1,000 views + hours watched** (weights
+  in `domains.results_decide.score_weights`, 1 and 1). If the weakest scores **under half**
+  the best (`retire_below_ratio` 0.5) it retires, and its slots go to the next-ranked
+  topic `onboarding_gaps()` calls ready; if none is ready the allocation holds
+  (REPLACEMENT_NOT_ONBOARDED). **A thin queue never retires a topic**: the Saturday
+  miner researches more topics for it and the runway warning stays.
 - **The format-is-wrong breaker is domain-aware.** Three bad months in ONE domain means
   that domain is wrong, not the format — see "The measurement that could invalidate all
   of this" above.
 
 ## When deep sea ends
 
-**Not on a schedule — when the data says it is exhausted.** No sign of that: deep sea is
+**Not on a schedule and not on a thin queue — only on results** (owner rule A, 2 Nov
+2026: 30 long videos per topic, then under half the best topic's score). No sign of that: deep sea is
 the only domain in the measured top four that is *rising*, with the highest depth per
 query and the most breakout terms. It was chosen by reasoning and the data ratified it.
 
@@ -367,9 +376,10 @@ Listed so that changing it is a decision, not a drift:
   at 2 and the runway problem becomes real.
 - **A test upload landing public.** Would mean the private-lock concern is moot and
   publishing is fully automatic today.
-- **Materials-and-manufacturing's scored queue decaying** below
-  `domains.queue_exhausted_below` after it starts. It retires and the next-ranked domain
-  in `research/proposed-taxonomy.json` takes its slots — never a fixed episode count.
+- **A topic scoring under half the best** once every topic has 30 long videos with
+  analytics (owner rule A, 2 Nov 2026). It retires and the next-ranked onboarded domain
+  in `research/proposed-taxonomy.json` takes its slots. A thin queue only triggers more
+  topic research.
 
 ## The long-form program of 2026-10-13 (owner decisions; never re-raise)
 

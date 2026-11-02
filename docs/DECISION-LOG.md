@@ -1492,3 +1492,28 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   the footage lane's path corrected; the log is gitignored. The 17 real records were committed
   with the fix; three resolved PULL_FAILED / MAC_NOT_ON_MAIN stops of W42-W43 were discarded.
 - Guard: `loop/tests/test_mac_push_leaves_checkout_clean.py` (negative proofs in its docstring).
+
+## 2026-11-02 — Results decide which topics stay (owner rule A)
+
+- **Owner, 2 Nov 2026 (spry brain):** "none of our three topics can really be decided right now
+  because we've not had enough time" — then the permanent rule, **"A. Results decide"**.
+- **Rule (code: `loop/domains.py lifecycle()`, config `domains.results_decide`):**
+  1. No topic is retired or promoted until every allocated topic has `min_long_videos` (30)
+     long-form videos with analytics; until then the named stop TOPICS_HELD_FOR_EVIDENCE
+     (self_resolving) gives each count against 30. Today: deep sea 17, materials 15, food 1.
+  2. Then, monthly, each topic scores per long video: mean of `subs_per_1000_views` (1.0) x
+     subscribers gained per 1,000 views + `hours_watched` (1.0) x hours watched.
+  3. The weakest retires only if its score is **under** `retire_below_ratio` (0.5) x the best -
+     exactly half does not - into the next-ranked domain `onboarding_gaps()` calls ready; none
+     ready -> REPLACEMENT_NOT_ONBOARDED, allocation held.
+  4. A thin queue never retires a topic: it is listed `research_more` and the Saturday miner
+     refills it (`loop/score.py missing_queues`, CONFIRMED working: deep sea's queue is back
+     to 12 after #272). The runway warning stays. Monthly one-slot reallocation is unchanged.
+- **Replaced:** "a domain retires when its scored queue decays" and QUEUE_DECAYED_BUT_UNMEASURED.
+  The weekly digest gains a "Topics" table (count of 30, score once judgeable); nothing calls a
+  topic winding down.
+- **Guard:** `loop/tests/test_niche_lifecycle.py` (a decayed queue holds; one topic short of 30
+  holds all; 30+ and under half retires into a ready replacement; exactly half does not) and
+  V34's constructed month. Negative proofs: restoring retirement on a decayed queue fails the
+  hold check; `<` -> `<=` fails the exactly-half check; restored, green.
+

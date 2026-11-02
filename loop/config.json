@@ -131,7 +131,7 @@
     "never_go_dark": true,
     "rebuild_max_extra": 12,
     "why": "At 2/week, 20 scripts is 10 weeks. Warning at 4 weeks leaves ~8 unpublished videos in hand: enough time to notice the stop, run the authoring lane, and fall back to a human if generation fails. Warning at 2 weeks would be a scramble. The runway guard NEVER trips the circuit breaker - halting publishing to protect the backlog is the definition of going dark.",
-    "rebuild_note": "Owner decision 2026-09-03: a runway warning that only ever logged a number meant nothing ran the authoring lane because of it. loop/draft.py:rebuild_runway_if_short() now actually authors up to rebuild_max_extra scripts per short domain when cadence.runway() reports warn/critical, promoting each into scripts/ only if it clears full validation. It never blocks the week already queued and never trips the breaker. If it cannot add even one script, RUNWAY_AUTHORING_FALLBACK names the exact short domain(s) and the calendar date each goes dark. Domain-aware because a single aggregate number cannot say WHICH domain is short \u2014 see domains.domain_runway().",
+    "rebuild_note": "Owner decision 2026-09-03: a runway warning that only ever logged a number meant nothing ran the authoring lane because of it. loop/draft.py:rebuild_runway_if_short() now actually authors up to rebuild_max_extra scripts per short domain when cadence.runway() reports warn/critical, promoting each into scripts/ only if it clears full validation. It never blocks the week already queued and never trips the breaker. If it cannot add even one script, RUNWAY_AUTHORING_FALLBACK names the exact short domain(s) and the calendar date each goes dark. Domain-aware because a single aggregate number cannot say WHICH domain is short — see domains.domain_runway().",
     "domain_awareness_note": "cadence.runway() reports by_domain (each domain's own queue depth / its own live slot count) and short_domains (domains at warn or critical). The overall level escalates to the worse of the aggregate figure and any single active domain's level, so a domain going critical can never hide behind a healthy aggregate the way materials-and-manufacturing (0 queued topics today) would behind deep sea's 16.",
     "target_weeks": 6,
     "target_note": "2026-11-01: the loop authors toward target_weeks, not only out of warn. loop/draft.py rebuild_runway_if_short() runs whenever weeks_remaining < target_weeks, adds up to rebuild_max_extra VALIDATED scripts (the cap counts scripts added, attempts are bounded at twice it), and research/publish_order_domain.py grows a domain's seed list from the free route when its mining is exhausted, so the publish queue has topics to author. Guarded by loop/tests/test_runway_refills_itself.py."
@@ -174,13 +174,13 @@
       "materials-and-manufacturing": 2,
       "food-science": 2
     },
-    "allocation_note": "Weekly long-form slots per domain AT THE CADENCE CEILING (cadence.ceiling). The live weekly split is derived from cadence.videos_per_week by loop/domains.py live_slots(), largest share first, so there is ONE list and the split cannot drift from the cadence. At today's 2/week that is deep sea 2, materials 0; at the owner's 4/week target it is 2 and 2. The monthly review may move at most ONE ceiling slot a month, from measured evidence, and never to zero - a domain is retired on queue decay, not on one bad month.",
+    "allocation_note": "Weekly long-form slots per domain AT THE CADENCE CEILING (cadence.ceiling). The live weekly split is derived from cadence.videos_per_week by loop/domains.py live_slots(), largest share first, so there is ONE list and the split cannot drift from the cadence. At today's 2/week that is deep sea 2, materials 0; at the owner's 4/week target it is 2 and 2. The monthly review may move at most ONE ceiling slot a month, from measured evidence, and never to zero - a domain is retired only by results (domains.results_decide), never on queue decay or one bad month.",
     "min_episodes_to_judge": 8,
     "min_episodes_note": "Published episodes WITH analytics before a domain's allocation may be changed at all. Below this the monthly review takes the named stop INSUFFICIENT_DOMAIN_EVIDENCE and HOLDS the allocation exactly as it is. It does not fall back to an even split, which would be a decision disguised as a default. Eight, because the review moves one slot of four - a 25% swing - and below eight episodes a single unlucky topic moves a domain's mean by more than the difference being acted on.",
     "reallocate_avd_spread_s": 30,
     "reallocate_spread_note": "Seconds of average view duration by which the leading domain must beat the trailing one before a slot moves. Under this, the difference is not larger than the month-to-month noise it would be answering.",
     "queue_exhausted_below": 4,
-    "queue_exhausted_note": "A domain is exhausted when its surviving, gated topic queue in research/publish_order.json falls below this - two weeks of inventory at 2/week. Retirement is decided by queue decay, never by an episode count: a domain with demand left is not finished, and a domain whose scored queue has decayed is, however many episodes it has had.",
+    "queue_exhausted_note": "A domain's queue is THIN when its surviving, gated topic queue falls below this - two weeks of inventory at 2/week. Thin means REFILL (loop/score.py missing_queues, the Saturday miner), never retire: owner rule A of 2 Nov 2026 decides retirement on results only (domains.results_decide).",
     "publish_days": {
       "deep-sea-ocean-science": [
         "Sunday",
@@ -198,7 +198,7 @@
     "sample_gate": {
       "food-science": {
         "state": "cleared",
-        "cleared_note": "approved by owner 13 Oct 2026 \u2014 round 2 (\"MUCH better\"); the first full video, Bread, Steak, Chocolate: What's Inside?, is built from it",
+        "cleared_note": "approved by owner 13 Oct 2026 — round 2 (\"MUCH better\"); the first full video, Bread, Steak, Chocolate: What's Inside?, is built from it",
         "sample": "~/Desktop/how-we-know-food-sample-round-2/",
         "round": 2,
         "round_1_verdict": "2026-10-13: rejected - (a) one voice, normal explainer pace start to finish (calm register removed); (b) real movement, not stills (round 1 was 11/13 AI stills). Round 2 answers both and waits for her review.",
@@ -219,10 +219,19 @@
       "source_allowlist": "Each domain names its own public bodies. Deep sea's list is ORG_NAMES in loop/validate.py; a new domain adds its own and must not inherit NOAA/MBARI, which publish nothing about its subject.",
       "visual_identity": "Each domain has its own palette and directive mix in visuals/. A materials episode drawn in the deep-sea palette reads as the wrong channel.",
       "pov_top_up": "research/proposed-taxonomy.json new_niche_requirement: entering a domain outside deep sea requires a ~20 minute POV top-up interview before first publish, because tier:specific POV lines do not transfer."
-    }
+    },
+    "results_decide": {
+      "min_long_videos": 30,
+      "score_weights": {
+        "subs_per_1000_views": 1.0,
+        "hours_watched": 1.0
+      },
+      "retire_below_ratio": 0.5
+    },
+    "results_decide_note": "Owner rule A, 2 Nov 2026 (spry brain): no domain is retired or promoted until EVERY allocated domain has min_long_videos long-form videos with analytics (named stop TOPICS_HELD_FOR_EVIDENCE with the counts). Then monthly each domain is scored per long video as the mean of subs_per_1000_views x (subscribers gained / views x 1000) + hours_watched x (minutes watched / 60); the weakest retires only if its score is under retire_below_ratio x the best, into the next-ranked onboarded domain (else REPLACEMENT_NOT_ONBOARDED, allocation held). A low queue never retires a domain: it is refilled by the Saturday miner and the runway warning stays. loop/domains.py lifecycle()."
   },
   "discovery": {
-    "_why": "hashtags and tags per episode, both domains, backfilled onto every video \u2014 owner instruction 2026-09-21. One list, keyed by the same domain names domains.py already validates against research/proposed-taxonomy.json; loop/discovery.py derives everything else (subject phrase, mined-query tags) from the script itself, so nothing here is invented.",
+    "_why": "hashtags and tags per episode, both domains, backfilled onto every video — owner instruction 2026-09-21. One list, keyed by the same domain names domains.py already validates against research/proposed-taxonomy.json; loop/discovery.py derives everything else (subject phrase, mined-query tags) from the script itself, so nothing here is invented.",
     "domains": {
       "deep-sea-ocean-science": {
         "tags": [
@@ -274,7 +283,7 @@
       "hashtags": [
         "#HowWeKnow"
       ],
-      "hashtag_note": "Owner decision 2026-09-21 (default A, approved [rc_m32h946mv0eybxhj]): #HowWeKnow over #HowWeKnowDeep \u2014 the channel is named How We Know, and a hashtag that says 'deep' would pull against the banner job widening the public identity past deep sea."
+      "hashtag_note": "Owner decision 2026-09-21 (default A, approved [rc_m32h946mv0eybxhj]): #HowWeKnow over #HowWeKnowDeep — the channel is named How We Know, and a hashtag that says 'deep' would pull against the banner job widening the public identity past deep sea."
     }
   },
   "harvest": {
