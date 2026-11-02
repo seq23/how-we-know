@@ -9,8 +9,13 @@ each refusal, by constructing the month rather than waiting years for one.
   1. a decayed, measured domain is RETIRED and the next-ranked one PROMOTED
   2. the new allocation keeps its total, and the rotation's weekdays move
      with it (the promoted domain takes the retired one's days)
-  3. a decayed domain with too FEW measured episodes is refused, named
-     QUEUE_DECAYED_BUT_UNMEASURED - a thin queue early is a scoring backlog
+  3. RESULTS DECIDE (owner rule A, 2 Nov 2026): a decayed queue HOLDS - under
+     30 long videos it is TOPICS_HELD_FOR_EVIDENCE with the counts, and even
+     past 30 a thin queue never retires a domain that scores level; a domain
+     at exactly half the best does not retire, under half does (check 1).
+     NEGATIVE PROOF (by hand, 2026-11-02): restoring "retire the exhausted
+     domain" in lifecycle() fails the two hold checks; changing `<` to `<=`
+     fails the exactly-half check; restored, green.
   4. with no unused domain left, retirement is refused, named
      NO_REPLACEMENT_DOMAIN - retirement is a swap, never a subtraction
   5. a healthy month changes nothing
@@ -69,18 +74,21 @@ class depth_of:
         D.queue_depth, D.exhausted = self._d, self._e
 
 
-def evidence(alloc: dict, measured: int, weak: str | None = None) -> dict:
-    ev = {d: {"measured": measured, "views": 500, "avd_s": 240.0,
-              "avp": 38.0, "judgeable": True} for d in alloc}
+def evidence(alloc: dict, videos: int, weak: str | None = None,
+             weak_score: float = 4.0) -> dict:
+    """Every domain `videos` long videos scoring 10.0; `weak` scores weak_score
+    (under half the best by default)."""
+    ev = {d: {"measured": videos, "videos": videos, "views": 500, "avd_s": 240.0,
+              "avp": 38.0, "judgeable": True, "score": 10.0} for d in alloc}
     if weak:
-        ev[weak]["avd_s"] = 12.0
+        ev[weak]["score"] = weak_score
     return ev
 
 
 def main() -> int:
     cfg = config()
     alloc = D.allocation(cfg)
-    need = D.min_episodes_to_judge(cfg)
+    need = D.results_rule(cfg)["min_long_videos"]
     ceiling = int(cfg["cadence"]["ceiling"])
     victim = sorted(alloc)[0]
     print(f"allocation {alloc}, floor {need} measured episode(s), "
@@ -95,9 +103,10 @@ def main() -> int:
             d = D.lifecycle(cfg, evidence(alloc, need, victim))
     finally:
         D.onboarding_gaps = real_gaps
-    check("a decayed, measured domain is retired", d.get("applied"),
+    check("a domain at 30+ videos scoring under half the best is retired",
+          d.get("applied"),
           d.get("stop") or d.get("why", ""))
-    check("the decayed domain is the one retired", d["retired"] == victim,
+    check("the weakest-scoring domain is the one retired", d["retired"] == victim,
           f"retired {d['retired']}")
     check("the next-ranked unused domain is promoted",
           d["promoted"] == D.next_unused(list(alloc)),
@@ -123,13 +132,34 @@ def main() -> int:
     D.slots_at(moved_cfg, 2)
     check("slots_at() accepts the post-retirement split", True)
 
-    # 3 ------------------------------------------- decayed but barely measured
+    # 3 ---------------- RESULTS DECIDE (owner rule A, 2 Nov 2026): a decayed
+    # queue HOLDS - below 30 long videos nothing retires, however thin the
+    # queue and however weak the score; the domain is listed for more research.
     with depth_of({d2: (0 if d2 == victim else 20) for d2 in alloc}, [victim]):
-        thin = D.lifecycle(cfg, evidence(alloc, need - 1, victim))
-    check("a thin queue with too few measured episodes is refused",
+        thin = D.lifecycle(cfg, evidence(alloc, need - 1, victim, 0.0))
+    check("a decayed queue below 30 videos HOLDS (does not retire)",
           not thin.get("applied")
-          and thin.get("stop") == "QUEUE_DECAYED_BUT_UNMEASURED",
-          f"{thin.get('stop')}: {thin.get('why', '')[:120]}")
+          and thin.get("stop") == "TOPICS_HELD_FOR_EVIDENCE"
+          and thin.get("allocation") == alloc
+          and thin.get("counts", {}).get(victim) == need - 1
+          and thin.get("research_more") == [victim]
+          and f"{victim} {need - 1}/{need}" in thin.get("why", ""),
+          f"{thin.get('stop')}: {thin.get('why', '')[:160]}")
+    with depth_of({d2: (0 if d2 == victim else 20) for d2 in alloc}, [victim]):
+        decayed = D.lifecycle(cfg, evidence(alloc, need))
+    check("a decayed queue never retires a domain that scores level",
+          not decayed.get("applied") and not decayed.get("stop")
+          and decayed.get("research_more") == [victim], decayed.get("why", ""))
+    ev_one = evidence(alloc, need)
+    ev_one[sorted(alloc)[-1]]["videos"] = need - 1
+    with depth_of({d2: 20 for d2 in alloc}, []):
+        one_short = D.lifecycle(cfg, ev_one)
+    check("one topic short of 30 holds every topic",
+          one_short.get("stop") == "TOPICS_HELD_FOR_EVIDENCE", one_short.get("why", ""))
+    with depth_of({d2: 20 for d2 in alloc}, []):
+        half = D.lifecycle(cfg, evidence(alloc, need, victim, 5.0))
+    check("a domain scoring EXACTLY half the best does not retire",
+          not half.get("applied") and not half.get("stop"), half.get("why", ""))
 
     # 4 ------------------------------------------------ nothing left to promote
     real_next = D.next_unused

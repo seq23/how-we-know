@@ -495,9 +495,13 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
   has no scored topics yet, the ceiling holds at whatever deep sea alone can
   carry — it will not "average" the two domains' inventory together and scale
   early on a queue that is not really there.
-- **A domain retires on its own queue running dry**, never on a fixed episode
-  count, and the next-ranked domain in the taxonomy takes its slots
-  automatically.
+- **Results decide which topics stay** (your rule A, 2 Nov). No topic is
+  dropped or added until all three have 30 long videos with analytics — the
+  weekly digest's "Topics" table shows each count against 30. After that, a
+  topic scoring under half the best (subscribers per 1,000 views + hours
+  watched, per long video) is replaced by the next topic that is fully set up.
+  A thin idea queue never drops a topic: the Saturday lane researches more
+  ideas for it.
 
 ## Food, the third domain — approved, running
 

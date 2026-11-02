@@ -381,11 +381,11 @@
       "escalation": "A year without two judgeable domains means measurement is not accumulating - an error. Go red.",
       "plain": "too few measured episodes to change the subject mix, so it stays as it is"
     },
-    "QUEUE_DECAYED_BUT_UNMEASURED": {
-      "why": "Automated policy: a thin queue on a domain with too few measured episodes is refilled by the Saturday miner (loop/score.py missing_queues, floor batch_queue.MIN_UNWRITTEN_TOPICS), never retired; the monthly review re-checks next month.",
-      "max_consecutive": 6,
-      "escalation": "Six months decayed and still unmeasured means the refill is not working. Go red.",
-      "plain": "a subject area's queue is thin and is being refilled automatically"
+    "TOPICS_HELD_FOR_EVIDENCE": {
+      "why": "Owner rule A (2 Nov 2026, spry brain): no topic is retired or added until every allocated topic has domains.results_decide.min_long_videos (30) long-form videos with analytics. The monthly review shows each topic's count against 30 and holds the allocation; thin queues are refilled by the Saturday miner meanwhile. Nothing is pending on anyone: the counts grow with every published episode.",
+      "max_consecutive": 24,
+      "escalation": "Two years without every topic reaching 30 measured long videos means measurement or publishing is not accumulating - an error. Go red.",
+      "plain": "too few videos per topic to judge yet, so every topic keeps its slots"
     },
     "NO_REPLACEMENT_DOMAIN": {
       "why": "Automated policy: with no unused domain in research/proposed-taxonomy.json, the decayed domain keeps its slots and the Saturday miner keeps refilling it; the quarterly taxonomy refresh adds candidates.",
