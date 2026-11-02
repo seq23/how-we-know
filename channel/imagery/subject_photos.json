@@ -1,0 +1,171 @@
+{
+  "generated": "2026-11-02T06:04:29.332302+00:00",
+  "domain": "any",
+  "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
+  "rights_fields_required": [
+    "depicts",
+    "subject_basis",
+    "credit_line",
+    "item_url",
+    "licence",
+    "sha256"
+  ],
+  "asset_count": 6,
+  "subjects_total": 1,
+  "subjects_covered": [
+    "auto-how-deep-can-a-sperm-whale-go",
+    "auto-how-do-scientists-know-so-much",
+    "auto-how-does-butter-get-made-from-cream",
+    "auto-why-are-deep-sea-creatures-so-big",
+    "auto-why-deep-sea-creatures-are-creepers",
+    "auto-why-does-chocolate-taste-so-good"
+  ],
+  "subjects_unillustratable": {},
+  "rejected": [
+    {
+      "subject": "auto-why-is-my-bread-not-rising",
+      "title": "File:Bread 1972 press photo.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bread_1972_press_photo.jpg",
+      "reason": "item page asserts 'copyright' in its own credit or description"
+    },
+    {
+      "subject": "auto-why-is-my-bread-not-rising",
+      "title": "File:Bread scraps birds red slash.png",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bread_scraps_birds_red_slash.png",
+      "reason": "not a photograph (not a JPEG)"
+    },
+    {
+      "subject": "auto-why-is-my-bread-not-rising",
+      "title": "File:Home made sour dough bread.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Home_made_sour_dough_bread.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "auto-why-is-my-bread-not-rising",
+      "title": "File:Breads of Moskovskaya Oblast. img 008.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Breads_of_Moskovskaya_Oblast._img_008.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "auto-why-is-my-bread-not-rising",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    }
+  ],
+  "index": [
+    {
+      "subject": "auto-how-deep-can-a-sperm-whale-go",
+      "label": "SPERM WHALE",
+      "title": "Zoomed image of a Sperm Whale (Physeter macrocephalus).jpg",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for how-deep-can-a-sperm-whale-go by its subject words ['sperm', 'whale']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "SPERM WHALE \u2014 PHOTOGRAPH, LAURA (LANEY) WHITE (USGS WESTERN ECOLOGICAL RES (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Laura (Laney) White (USGS Western Ecological Research Center)",
+      "licence": "Public domain",
+      "matched_query": "sperm whale",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Zoomed_image_of_a_Sperm_Whale_(Physeter_macrocephalus).jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Zoomed_image_of_a_Sperm_Whale_%28Physeter_macrocephalus%29.jpg",
+      "local_file": "assets/auto__auto-how-deep-can-a-sperm-whale-go__zoomed-image-of-a-sperm-whale-physeter-macrocephalus-jpg.jpg",
+      "sha256": "01931bdee7e575e288d0650664062ae09c879f34e46d80c37854e11cf9e1c18e",
+      "width": 2385,
+      "height": 1590,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "auto-how-do-scientists-know-so-much",
+      "label": "DEEP OCEAN",
+      "title": "Deep Ocean Tsunami Waves off the Sri Lankan Coast.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for how-do-scientists-know-so-much by its subject words ['deep', 'ocean']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "DEEP OCEAN \u2014 PHOTOGRAPH, NASA/GSFC/LARC/JPL, MISR TEAM (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "NASA/GSFC/LaRC/JPL, MISR Team",
+      "licence": "Public domain",
+      "matched_query": "deep ocean",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Deep_Ocean_Tsunami_Waves_off_the_Sri_Lankan_Coast.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Deep_Ocean_Tsunami_Waves_off_the_Sri_Lankan_Coast.jpg",
+      "local_file": "assets/auto__auto-how-do-scientists-know-so-much__deep-ocean-tsunami-waves-off-the-sri-lankan-coast-jpg.jpg",
+      "sha256": "164f7a259ce850d85963103e49faf0ff1fdc3970f263e30db00b967e4717e446",
+      "width": 1516,
+      "height": 1504,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "auto-how-does-butter-get-made-from-cream",
+      "label": "BUTTER CREAM",
+      "title": "A load of cream cans Boonah Butter Factory 1932.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for how-does-butter-get-made-from-cream by its subject words ['butter', 'cream']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "BUTTER CREAM \u2014 PHOTOGRAPH, UNKNOWN AUTHOR UNKNOWN AUTHOR (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Unknown author Unknown author",
+      "licence": "Public domain",
+      "matched_query": "butter cream",
+      "item_url": "https://commons.wikimedia.org/wiki/File:A_load_of_cream_cans_Boonah_Butter_Factory_1932.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/A_load_of_cream_cans_Boonah_Butter_Factory_1932.jpg",
+      "local_file": "assets/auto__auto-how-does-butter-get-made-from-cream__a-load-of-cream-cans-boonah-butter-factory-1932-jpg.jpg",
+      "sha256": "f6f3e153761ad17c4c625ebf0a35fb24a4f30bc567c33164f6060e0d8c52911c",
+      "width": 1000,
+      "height": 565,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "auto-why-are-deep-sea-creatures-so-big",
+      "label": "DEEP SEA CREATURES",
+      "title": "Deep sea corals, Wagner Seamount.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for why-are-deep-sea-creatures-so-big by its subject words ['deep', 'sea', 'creatures']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "DEEP SEA CREATURES \u2014 PHOTOGRAPH, NOAA OFFICE OF OCEAN EXPLORATION AND RESEARCH, D (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "NOAA Office of Ocean Exploration and Research, Deep-Sea Symphony: Exploring the Musicians Seamounts",
+      "licence": "Public domain",
+      "matched_query": "deep sea",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Deep_sea_corals,_Wagner_Seamount.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Deep_sea_corals%2C_Wagner_Seamount.jpg",
+      "local_file": "assets/auto__auto-why-are-deep-sea-creatures-so-big__deep-sea-corals-wagner-seamount-jpg.jpg",
+      "sha256": "b0c49a4dbd836ceb87529907c33375cc9e7b22a63b2202615bf5f33415548166",
+      "width": 1920,
+      "height": 1080,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "auto-why-deep-sea-creatures-are-creepers",
+      "label": "DEEP SEA CREATURES",
+      "title": "Deep sea corals, Wagner Seamount.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for why-deep-sea-creatures-are-creepers by its subject words ['deep', 'sea', 'creatures', 'creepers']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "DEEP SEA CREATURES \u2014 PHOTOGRAPH, NOAA OFFICE OF OCEAN EXPLORATION AND RESEARCH, D (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "NOAA Office of Ocean Exploration and Research, Deep-Sea Symphony: Exploring the Musicians Seamounts",
+      "licence": "Public domain",
+      "matched_query": "deep sea",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Deep_sea_corals,_Wagner_Seamount.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/57/Deep_sea_corals%2C_Wagner_Seamount.jpg",
+      "local_file": "assets/auto__auto-why-deep-sea-creatures-are-creepers__deep-sea-corals-wagner-seamount-jpg.jpg",
+      "sha256": "b0c49a4dbd836ceb87529907c33375cc9e7b22a63b2202615bf5f33415548166",
+      "width": 1920,
+      "height": 1080,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "auto-why-does-chocolate-taste-so-good",
+      "label": "CHOCOLATE",
+      "title": "Piece of chocolate cake on a white plate decorated with chocolate sauce.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for why-does-chocolate-taste-so-good by its subject words ['chocolate']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "CHOCOLATE \u2014 PHOTOGRAPH, DARIA YAKOVLEVA MINOR EDITS MADE BY SUBSIDIARY A (CC0)",
+      "treatment": "photo",
+      "source_org": "Daria Yakovleva Minor edits made by Subsidiary account",
+      "licence": "CC0",
+      "matched_query": "chocolate",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
+      "local_file": "assets/auto__auto-why-does-chocolate-taste-so-good__piece-of-chocolate-cake-on-a-white-plate-decorated-with-choc.jpg",
+      "sha256": "93106fc5e389c5d6cefef098a97d8ad87ab009a1e0890ae2f9f7dcd88f03c08c",
+      "width": 5536,
+      "height": 3766,
+      "licence_basis": "Commons item page asserts CC0 (CC0 dedication)"
+    }
+  ]
+}

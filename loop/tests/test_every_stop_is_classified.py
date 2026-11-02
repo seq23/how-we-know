@@ -186,7 +186,14 @@ def shell_codes() -> dict[str, list[str]]:
 
 def literal_codes() -> dict[str, list[str]]:
     found: dict[str, list[str]] = shell_codes()
-    for path in sorted(glob.glob(os.path.join(LOOP, "*.py"))):
+    # visuals/ and research/ too (2 Nov 2026): THUMB_NO_SUBJECT_PHOTO and
+    # SHORT_NO_SUBJECT_PHOTO are raised from visuals/thumbs_for.py and
+    # visuals/shorts.py, and the subject-photo finder's from research/ - the
+    # same gap the shell scan closed for bin/*.sh.
+    paths = (glob.glob(os.path.join(LOOP, "*.py"))
+             + glob.glob(os.path.join(ROOT, "visuals", "*.py"))
+             + glob.glob(os.path.join(ROOT, "research", "*.py")))
+    for path in sorted(paths):
         src = open(path).read()
         try:
             tree = ast.parse(src)

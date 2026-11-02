@@ -475,6 +475,13 @@ echo "  to render now : ${pending_render:-none}"
 # the mac-batch stop record). A fresh night truncates it.
 PUSH_OUT="$(dirname "$BATCH_PROGRESS")/batch_push.out"
 shelve_shorts() {
+  # ONE QUESTION PER VIDEO: a Short opens on a PD/CC0 photo of its subject.
+  # research/subject_photo.py finds one on Commons for every episode held for
+  # want of it, pins it and builds the thumbnail, so the cut below releases it
+  # the same night (2 Nov 2026). Its writes are pushed at once.
+  echo; echo "--- subject photos: find a free photo for every held episode ---"
+  $PY research/subject_photo.py run 2>&1 | grep -E "\[work\]|\[note\]|NAMED STOP|OK,|Traceback" | tail -30
+  $PY loop/mac_sync.py push --lane subject-photo channel/imagery/subject_photos.json loop/state/subject_photo.json channel/imagery/assets channel/thumbnails 2>&1 | tail -1
   echo; echo "--- shorts: cut what is rendered and uncut, then shelve ---"
   # Grouped by how many cuts the episode may publish (shorts_lane.cut_groups):
   # deep sea 3, everything else 1 (owner build 2026-10-08). --keep-existing

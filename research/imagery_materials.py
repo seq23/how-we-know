@@ -112,6 +112,14 @@ COPYRIGHT_ASSERTION = re.compile(
     r")\b")
 
 
+# A picture that is mostly a brand, a logo or packaging is not a photo of the
+# subject (research/subject_photo.py sets `brand_screen` on its subjects).
+BRAND_WORDS = re.compile(
+    r"\b(logo|logotype|wordmark|trademark|brand(?:ed|ing)?|advert\w*|packag\w*|"
+    r"wrapper|label|poster|billboard|signage|storefront|menu|coat of arms|flag|"
+    r"icon|svg|screenshot|diagram|chart|map|infographic)\b|™|®")
+
+
 # Commons rate-limits bursts, and imagery._get gives up after 3 tries with a
 # 1.5s step. The first full run lost 74 of 118 candidate lookups that way and
 # reported them as "no candidate passed both gates" - a THROTTLE reading as a
@@ -343,6 +351,13 @@ def harvest(dry_run: bool = False, only: list[str] | None = None, *,
                     continue
                 if any(w in title.lower() for w in sub.get("title_none") or ()):
                     continue
+                if title in (sub.get("skip_titles") or ()):
+                    continue          # refused on its pixels by the caller
+                if sub.get("title_words") and sum(
+                        1 for w in sub["title_words"]
+                        if re.search(rf"\b{re.escape(w)}", title.lower())
+                ) < int(sub.get("title_min_words") or 1):
+                    continue          # whole-word identity (research/subject_photo.py)
                 try:
                     iq = (f"{COMMONS_API}?action=query&format=json&prop=imageinfo"
                           f"&iiprop=url|size|mime|extmetadata&titles="
@@ -358,13 +373,44 @@ def harvest(dry_run: bool = False, only: list[str] | None = None, *,
                     continue
                 if (info.get("mime") or "").split("/")[-1] not in ("jpeg", "png", "jpg"):
                     continue
-                if int(info.get("width") or 0) < 900:
+                if int(info.get("width") or 0) < int(sub.get("min_width") or 900):
                     continue                      # too small to fill 1920x1080
                 ok, why = I.pd_licence_ok(info)
                 if not ok:
                     rejected.append({"subject": sub["key"], "title": title,
                                      "item_url": info.get("descriptionurl"), "reason": why})
                     continue
+                if sub.get("context_any"):
+                    blob_c = (title + " " + _text(info, "ImageDescription", "ObjectName",
+                                                  "Categories")).lower()
+                    if not any(re.search(rf"\b{re.escape(w)}", blob_c)
+                               for w in sub["context_any"]):
+                        rejected.append({"subject": sub["key"], "title": title,
+                                         "item_url": info.get("descriptionurl"),
+                                         "reason": "its page never places it in the "
+                                                   "episode's domain"})
+                        continue
+                if sub.get("photo_only"):
+                    art = re.search(r"\b(painting|print|woodblock|woodcut|ukiyo-?e|"
+                                    r"lithograph|engraving|illustration|drawing|sketch|"
+                                    r"cartoon|artwork|poster)\b",
+                                    (title + " " + _text(info, "ImageDescription",
+                                                         "Categories")).lower())
+                    if (info.get("mime") or "") != "image/jpeg" or art:
+                        rejected.append({"subject": sub["key"], "title": title,
+                                         "item_url": info.get("descriptionurl"),
+                                         "reason": "not a photograph" + (
+                                             f" ({art.group(0)!r})" if art else " (not a JPEG)")})
+                        continue
+                if sub.get("brand_screen"):
+                    blob = (title + " " + _text(info, "ImageDescription", "ObjectName",
+                                                "Categories")).lower()
+                    m_b = BRAND_WORDS.search(blob)
+                    if m_b:
+                        rejected.append({"subject": sub["key"], "title": title,
+                                         "item_url": info.get("descriptionurl"),
+                                         "reason": f"brand/logo-heavy ({m_b.group(0)!r})"})
+                        continue
                 claimed, why_c = copyright_asserted(info)
                 if claimed:
                     rejected.append({"subject": sub["key"], "title": title,
