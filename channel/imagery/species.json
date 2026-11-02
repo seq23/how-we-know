@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T20:24:12+00:00",
+  "generated": "2026-11-02T21:55:10+00:00",
   "survey_date": "2026-08-31",
   "policy": "Third gate, own manifest. An image may be shown while the narration names a species only if ALL of: (1) its Wikimedia Commons item page reports Copyrighted=False and a public-domain or CC0 licence tag, checked live at fetch time (CC-BY, CC-BY-SA, CC-BY-NC and 'no known copyright restrictions' all hard-fail); (2) its own artist, credit and description name no non-federal party and carry no copyright notice, which catches Commons files mistagged PD-USGov when the description credits a university or an individual photographer; (3) a human has written down what the picture literally IS (depicts), why it is this animal (subject_basis) and what the on-screen credit says (credit_line). The credit names the medium and its year -- an 1887 lithograph is credited as a plate, never as a photograph. Records reused from rights.json are not re-downloaded; they keep the sha256 their licence was checked against. A subject with no qualifying image is recorded in UNILLUSTRATABLE with the survey behind it, and is never illustrated with a different animal.",
   "rights_fields_required": [
@@ -18,7 +18,7 @@
     "subject_basis",
     "treatment"
   ],
-  "asset_count": 44,
+  "asset_count": 43,
   "subjects_covered": [
     "anglerfish",
     "barreleye",
@@ -380,7 +380,6 @@
       ],
       "assets": [
         "assets/sp-vampire_squid__910105__chun-1910-vampyroteuthis-plate.jpg",
-        "assets/sp-vampire_squid__910106__chun-vampyroteuthis-plate-2.jpg",
         "assets/sp-vampire_squid__910107__chun-1903-vampyroteuthis-illustration.jpg"
       ],
       "status": "covered"
@@ -677,33 +676,6 @@
       "date_checked": "2026-11-02",
       "sha256": "7c6512e3841aa9de80987fcaf87f38a4333d38218ef7c7e16ca5a06a5a40d2f8",
       "bytes": 100315,
-      "origin": "commons-public-domain"
-    },
-    {
-      "subject": "vampire_squid",
-      "title": "Vampyroteuthis infernalis, Chun plate",
-      "depicts": "lithograph",
-      "credit_line": "VALDIVIA EXPEDITION PLATE",
-      "treatment": "plate",
-      "subject_basis": "A second Chun plate of Vampyroteuthis infernalis from the Valdivia report.",
-      "standing_note": "",
-      "source_org": "Wikimedia Commons",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Vampyroteuthis_infernalis.jpg",
-      "origin_url": "https://commons.wikimedia.org/wiki/File:Vampyroteuthis_infernalis.jpg",
-      "direct_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Vampyroteuthis_infernalis.jpg/1280px-Vampyroteuthis_infernalis.jpg",
-      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Vampyroteuthis_infernalis.jpg",
-      "local_file": "assets/sp-vampire_squid__910106__chun-vampyroteuthis-plate-2.jpg",
-      "width": 1280,
-      "height": 865,
-      "source_width": 1701,
-      "source_height": 1149,
-      "rights_basis": "Carl Chun died 1914; out of copyright worldwide; the Commons page marks the file not copyrighted.",
-      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
-      "required_credit": "C. Chun, Valdivia report",
-      "commercial_use_permitted": true,
-      "date_checked": "2026-11-02",
-      "sha256": "e20550d3fb2d2f6ea8c6dc1e76b6694ffc076fcbc67f5597890f46f61de838fb",
-      "bytes": 100235,
       "origin": "commons-public-domain"
     },
     {
