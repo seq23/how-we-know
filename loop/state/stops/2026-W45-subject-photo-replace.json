@@ -1,0 +1,22 @@
+{
+  "stage": "subject-photo-replace",
+  "week": "2026-W45",
+  "at": "2026-11-02T12:26:14+00:00",
+  "code": "ZERO_WORK",
+  "message": "stage 'subject-photo-replace' completed without doing anything",
+  "detail": {
+    "notes": [
+      "why-deep-sea-creatures-are-creepers: kept 'Deep sea hotel LCCN2014694647.jpg': pixabay: no photo whose tags name the subject; no candidate passed both gates; no better photo found; the current pick is kept"
+    ]
+  },
+  "unblock": "No better photo was found for any of these.",
+  "disposition": "needs_human",
+  "disposition_why": "'ZERO_WORK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'ZERO_WORK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "why-deep-sea-creatures-are-creepers: kept 'Deep sea hotel LCCN2014694647.jpg': pixabay: no photo whose tags name the subject; no candidate passed both gates; no better photo found; the current pick is kept"
+  ]
+}

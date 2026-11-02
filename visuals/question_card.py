@@ -22,8 +22,13 @@ THE LAYOUT, every element of it fixed here and nowhere else:
   above the question down, so the captions stay readable); a small "HOW WE KNOW" mark at the top; the photo's required
   credit, small (attribution is never dropped - CLAUDE.md).
 
-THE PHOTO is public domain or CC0 only, from the manifests this repo already
-rights-checks (thumb_contract.candidates: channel/imagery/rights.json,
+THE PHOTO is public domain or CC0, or - owner ruling of 2 Nov 2026, the 13 Oct
+food-footage widening applied to these stills in every domain - a Pixabay,
+Pexels or Mixkit photo under its free licence (commercial reuse, no attribution
+required), its licence wording stored under channel/imagery/licences/ and
+checked by research/food_footage.record_problems, and still credited.
+Anything else, CC-BY included, is refused (licence_problems). It comes from
+the manifests this repo already rights-checks (thumb_contract.candidates: channel/imagery/rights.json,
 materials.json, food.json - re-hashed against the recorded sha256 before a
 pixel is used). AI-generated stills (food_ai.json) are NOT photos and are never
 used here. No photo = NoSubjectPhoto, raised by name; the callers turn it into
@@ -32,6 +37,7 @@ a named stop and nothing falls back to the old text card.
 from __future__ import annotations
 
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -51,7 +57,7 @@ GRADIENT_ALPHA = 0.78         # black at the bottom edge
 TALL_QUESTION_BOTTOM = 1040
 TALL_GRADIENT = (0.22, 0.52)  # (begins, full strength) as shares of the height
 OPENER_SECONDS = 1.0          # owner: "for its first second"
-# Manifests whose images are photographs cleared PD/CC0. food_ai.json is AI.
+# Manifests whose images are photographs cleared for these stills. food_ai.json is AI.
 PHOTO_MANIFESTS = ("rights.json", "materials.json", "food.json",
                    "subject_photos.json")   # research/subject_photo.py, same gate
 
@@ -79,11 +85,55 @@ def _font(paths, size):
 
 
 # ------------------------------------------------------------------ photos
-def photos(slug: str, script_path: str | None = None) -> list[dict]:
-    """PD/CC0 photographs of THIS video's subject, best first (never AI)."""
+FREE_LIBRARIES = ("pixabay", "pexels", "mixkit")
+_PD = re.compile(r"public domain|\bpd\b|cc0|pd-usgov|pdm", re.I)
+
+
+def licence_problems(rec: dict) -> list[str]:
+    """The ONE licence gate for a thumbnail / Short-opening still: PD or CC0,
+    or a free-library photo passing research/food_footage.record_problems
+    (its adapter's licence, the licence wording recorded and committed).
+    Anything else - CC-BY included - is refused."""
+    src = rec.get("source")
+    if src in FREE_LIBRARIES:
+        sys.path.insert(0, os.path.join(ROOT, "research"))
+        import food_footage as F                           # noqa: PLC0415
+        p = F.record_problems(rec)
+        lt = rec.get("licence_text")
+        if not lt or not os.path.exists(os.path.join(ROOT, "channel", "imagery", lt)):
+            p.append(f"{rec.get('subject')}: licence wording {lt!r} not committed")
+        return p
+    lic = rec.get("licence") or ""
+    if not _PD.search(lic) or re.search(r"\bby\b|by-sa|by-nc", lic, re.I):
+        return [f"{rec.get('subject')}: licence {lic!r} is neither PD/CC0 nor a "
+                f"free-library licence"]
+    return []
+
+
+def manifest_record(local_file: str) -> dict | None:
+    """The subject_photos.json record for a file (the finder's own manifest)."""
+    import json                                            # noqa: PLC0415
     import thumb_contract as TC                            # noqa: PLC0415
-    return [c for c in TC.candidates(slug, script_path)
-            if c.get("manifest") in PHOTO_MANIFESTS]
+    try:
+        man = json.load(open(os.path.join(TC.IMAGERY, "subject_photos.json")))
+    except (OSError, ValueError):
+        return None
+    return next((r for r in man.get("index") or [] if r.get("local_file") == local_file), None)
+
+
+def photos(slug: str, script_path: str | None = None) -> list[dict]:
+    """Cleared photographs of THIS video's subject, best first (never AI)."""
+    import thumb_contract as TC                            # noqa: PLC0415
+    out = []
+    for c in TC.candidates(slug, script_path):
+        if c.get("manifest") not in PHOTO_MANIFESTS:
+            continue
+        if c["manifest"] == "subject_photos.json":
+            rec = manifest_record(c["local_file"])
+            if not rec or licence_problems(rec):
+                continue
+        out.append(c)
+    return out
 
 
 def photo_for(slug: str, script_path: str | None = None) -> dict:

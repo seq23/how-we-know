@@ -375,7 +375,8 @@ def opener_of(rec: dict | None) -> tuple[str | None, str | None]:
                       "Mac re-cuts it (bin/make-shorts.sh --keep-existing)")
     if op.get("manifest") not in ("rights.json", "materials.json", "food.json",
                                   "subject_photos.json"):
-        return None, f"its opening photo comes from {op.get('manifest')!r}, not a PD/CC0 photo manifest"
+        return None, (f"its opening photo comes from {op.get('manifest')!r}, not a cleared "
+                      f"photo manifest (PD/CC0 or free-library, 2 Nov 2026)")
     import titles                                          # noqa: PLC0415
     bad = titles.one_question_problems(op.get("question") or "")
     if bad:

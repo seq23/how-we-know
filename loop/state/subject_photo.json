@@ -6,15 +6,19 @@
     ],
     "status": "searching",
     "tries": 1,
-    "why": "its page never places it in the episode's domain; its page never places it in the episode's domain; its page never places it in the episode's domain; its page never places it in the episode's domain; no candidate passed both gates"
+    "why": "in; pixabay 1683389: its tags never place it in the episode's domain; its page never places it in the episode's domain; its page never places it in the episode's domain; its page never places it in the episode's domain; its page never places it in the episode's domain; no candidate passed both gates"
   },
   "16-what-happens-when-a-whale-dies-in-the-deep-ocean": {
+    "file": "assets/auto__auto-16-what-happens-when-a-whale-dies-in-the-deep-ocean__pixabay-10467525.jpg",
+    "found_at": "2026-11-02T12:10:47+00:00",
+    "item_url": "https://pixabay.com/photos/whale-sea-ocean-fin-tail-blue-10467525/",
     "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
     "queries": [
       "whale"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "found",
+    "tries": 2,
     "why": "not a photograph (not a JPEG); item page marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 2.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
   },
   "20-what-is-the-midnight-zone": {
@@ -26,15 +30,45 @@
     ],
     "status": "searching",
     "tries": 1,
-    "why": "no candidate passed both gates"
+    "why": "pixabay 6995113: its tags never place it in the episode's domain; no candidate passed both gates"
   },
-  "how-deep-can-whales-dive": {
+  "are-sea-pigs-real": {
     "last_tried": "2026-11-02",
     "queries": [
-      "whales"
+      "pigs"
     ],
     "status": "searching",
     "tries": 1,
+    "why": "s never place it in the episode's domain; pixabay 4973380: its tags never place it in the episode's domain; its page never places it in the episode's domain; item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
+  },
+  "does-damascus-steel-rust": {
+    "file": "assets/auto__auto-does-damascus-steel-rust__pixabay-7012167.jpg",
+    "found_at": "2026-11-02T12:11:16+00:00",
+    "item_url": "https://pixabay.com/photos/bridge-rust-steel-sky-bolts-old-7012167/",
+    "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "damascus steel rust",
+      "damascus steel",
+      "steel rust",
+      "damascus",
+      "steel",
+      "rust"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "how-deep-can-whales-dive": {
+    "file": "assets/auto__auto-how-deep-can-whales-dive__pixabay-4498372.jpg",
+    "found_at": "2026-11-02T12:11:19+00:00",
+    "item_url": "https://pixabay.com/photos/whale-the-humpback-whale-4498372/",
+    "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "whales"
+    ],
+    "status": "found",
+    "tries": 2,
     "why": "Male & Female Whales - Pomet's Drogues.jpg: mostly paper (0.63 near-white): a printed page or plate, not a photo; not a photograph ('woodblock'); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
   },
   "how-do-scientists-know-about-other-galaxies": {
@@ -44,7 +78,7 @@
     ],
     "status": "searching",
     "tries": 1,
-    "why": "its page never places it in the episode's domain; no candidate passed both gates"
+    "why": "pixabay: no photo whose tags name the subject; its page never places it in the episode's domain; no candidate passed both gates"
   },
   "how-do-scientists-know-how-old-something-is": {
     "last_tried": "2026-11-02",
@@ -53,16 +87,198 @@
     "tries": 1,
     "why": "no subject words in its question or slug"
   },
-  "what-is-inside-chili-coffee-honey": {
+  "how-does-chemosynthesis-work": {
     "last_tried": "2026-11-02",
+    "queries": [
+      "chemosynthesis"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
+  },
+  "how-does-thermohaline-circulation-work": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "thermohaline circulation",
+      "thermohaline",
+      "circulation"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; not a photograph (not a JPEG); no candidate passed both gates"
+  },
+  "how-mid-oceanic-ridge-is-formed": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "mid oceanic ridge formed",
+      "mid oceanic",
+      "oceanic ridge",
+      "ridge formed",
+      "oceanic",
+      "ridge"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "a photograph (not a JPEG); imageinfo failed: HTTP Error 429: Too Many Requests; item page marks the work as copyrighted (cc by 4.0); item page marks the work as copyrighted (cc by-sa 4.0); not a photograph (not a JPEG); its page never places it in the episode's domain; no candidate passed both gates"
+  },
+  "how-powder-metallurgy-works": {
+    "file": "assets/auto__auto-how-powder-metallurgy-works__powder-metallurgy-dpla-6320d460125b4e51b691ed6030102209-jpg.jpg",
+    "found_at": "2026-11-02T12:15:12+00:00",
+    "item_url": "https://commons.wikimedia.org/wiki/File:Powder_metallurgy_-_DPLA_-_6320d460125b4e51b691ed6030102209.jpg",
+    "last_tried": "2026-11-02",
+    "licence": "Public domain",
+    "queries": [
+      "powder metallurgy",
+      "powder",
+      "metallurgy"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "how-to-tell-if-steel-is-hardened": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "tell steel hardened",
+      "tell steel",
+      "steel hardened",
+      "tell",
+      "steel",
+      "hardened"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; imageinfo failed: HTTP Error 429: Too Many Requests; item page marks the work as copyrighted (cc by 2.0); no candidate passed both gates"
+  },
+  "how-to-tell-if-steel-is-high-carbon": {
+    "file": "assets/auto__auto-how-to-tell-if-steel-is-high-carbon__pixabay-2969649.jpg",
+    "found_at": "2026-11-02T12:16:26+00:00",
+    "item_url": "https://pixabay.com/photos/cast-iron-cast-iron-pan-carbon-steel-2969649/",
+    "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "tell steel carbon",
+      "tell steel",
+      "steel carbon",
+      "tell",
+      "steel",
+      "carbon"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "is-aluminum-stronger-than-steel": {
+    "file": "assets/auto__auto-is-aluminum-stronger-than-steel__aluminum-and-stainless-steel-flange-assembly-nara-17444079-j.jpg",
+    "found_at": "2026-11-02T12:17:12+00:00",
+    "item_url": "https://commons.wikimedia.org/wiki/File:ALUMINUM_AND_STAINLESS_STEEL_FLANGE_ASSEMBLY_-_NARA_-_17444079.jpg",
+    "last_tried": "2026-11-02",
+    "licence": "Public domain",
+    "queries": [
+      "aluminum stronger steel",
+      "aluminum stronger",
+      "stronger steel",
+      "aluminum",
+      "stronger",
+      "steel"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "is-damascus-steel-stronger": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "damascus steel stronger",
+      "damascus steel",
+      "steel stronger",
+      "damascus",
+      "steel",
+      "stronger"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "aph (not a JPEG); not a photograph (not a JPEG); imageinfo failed: HTTP Error 429: Too Many Requests; item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
+  },
+  "is-diamond-stronger-than-metal": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "diamond stronger metal",
+      "diamond stronger",
+      "stronger metal",
+      "diamond",
+      "stronger",
+      "metal"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
+  },
+  "is-giant-isopod-edible": {
+    "file": "assets/auto__auto-is-giant-isopod-edible__wildlife-inspector-inspects-live-giant-deep-sea-isopods-1-54.jpg",
+    "found_at": "2026-11-02T12:20:14+00:00",
+    "item_url": "https://commons.wikimedia.org/wiki/File:Wildlife_Inspector_Inspects_Live_Giant_Deep_Sea_Isopods_1_(54988668444).jpg",
+    "last_tried": "2026-11-02",
+    "licence": "Public domain",
+    "queries": [
+      "giant isopod edible",
+      "giant isopod",
+      "isopod edible",
+      "giant",
+      "isopod",
+      "edible"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "is-titanium-stronger-than-steel": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "titanium stronger steel",
+      "titanium stronger",
+      "stronger steel",
+      "titanium",
+      "stronger",
+      "steel"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; imageinfo failed: HTTP Error 429: Too Many Requests; no candidate passed both gates"
+  },
+  "what-blobfish-actually-looks-like": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "blobfish"
+    ],
+    "status": "searching",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
+  },
+  "what-is-inside-chili-coffee-honey": {
+    "file": "assets/auto__auto-what-is-inside-chili-coffee-honey__pixabay-664635.jpg",
+    "found_at": "2026-11-02T12:27:15+00:00",
+    "item_url": "https://pixabay.com/photos/chili-seasoning-chilli-pods-red-664635/",
+    "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
     "queries": [
       "chili peppers",
       "chili",
       "peppers"
     ],
+    "status": "found",
+    "tries": 2,
+    "why": "marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
+  },
+  "why-deep-sea-creatures-are-creepers": {
+    "last_tried": "2026-11-02",
+    "queries": [
+      "deep sea creatures creepers",
+      "deep sea",
+      "sea creatures",
+      "creatures creepers",
+      "deep",
+      "creatures"
+    ],
     "status": "searching",
     "tries": 1,
-    "why": "marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
+    "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
   },
   "why-does-chocolate-taste-so-good": {
     "file": "assets/auto__auto-why-does-chocolate-taste-so-good__piece-of-chocolate-cake-on-a-white-plate-decorated-with-choc.jpg",
@@ -77,7 +293,11 @@
     "tries": 1
   },
   "why-does-meat-need-to-rest-after-cooking": {
+    "file": "assets/auto__auto-why-does-meat-need-to-rest-after-cooking__pixabay-4813261.jpg",
+    "found_at": "2026-11-02T12:28:12+00:00",
+    "item_url": "https://pixabay.com/photos/meat-duck-duck-breast-raw-fry-4813261/",
     "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
     "queries": [
       "meat rest cooking",
       "meat rest",
@@ -86,28 +306,36 @@
       "rest",
       "cooking"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "found",
+    "tries": 2,
     "why": "item page marks the work as copyrighted (cc by-sa 3.0); no candidate passed both gates"
   },
   "why-does-steak-taste-better-seared": {
+    "file": "assets/auto__auto-why-does-steak-taste-better-seared__pixabay-4342500.jpg",
+    "found_at": "2026-11-02T12:28:16+00:00",
+    "item_url": "https://pixabay.com/photos/steak-tomahawk-steak-grilled-food-4342500/",
     "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
     "queries": [
       "steak seared",
       "steak",
       "seared"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "found",
+    "tries": 2,
     "why": "item page marks the work as copyrighted (cc by 2.0); item page marks the work as copyrighted (cc by 2.0); item page marks the work as copyrighted (cc by 2.0); no candidate passed both gates"
   },
   "why-is-my-bread-not-rising": {
+    "file": "assets/auto__auto-why-is-my-bread-not-rising__pixabay-5671124.jpg",
+    "found_at": "2026-11-02T12:28:19+00:00",
+    "item_url": "https://pixabay.com/photos/bread-slices-organic-healthy-5671124/",
     "last_tried": "2026-11-02",
+    "licence": "Pixabay Content License",
     "queries": [
       "bread"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "found",
+    "tries": 2,
     "why": "item page asserts 'copyright' in its own credit or description; not a photograph (not a JPEG); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
   }
 }

@@ -55,7 +55,14 @@ and say what you chose and why.
   FOOTAGE** may also come from libraries whose licence allows commercial reuse
   with no attribution required (Pixabay, Pexels, Mixkit), through
   `research/food_footage.py` only, each clip's licence wording stored and
-  re-checked, and still credited on screen. Photographic stills stay PD/CC0.
+  re-checked, and still credited on screen. Photographic stills inside a
+  video stay PD/CC0. Second widening (owner, 2026-11-02, every domain): the
+  **thumbnail and Short-opening still** (the one-question picture) may also be
+  a Pixabay, Pexels or Mixkit photo under its free licence, through
+  `research/subject_photo.py` only, checked by the same
+  `research/food_footage.record_problems` (licence wording stored under
+  `channel/imagery/licences/`), and still credited; anything else, CC-BY
+  included, is refused (`visuals/question_card.licence_problems`).
 - **Nothing paid.** No model call, probe or lane in this repo may cost money.
   Her Claude subscription answers first, then her free-tier Gemini key, then the
   $0 OpenRouter list — and nothing else, ever: `max_cost_usd: 0`,

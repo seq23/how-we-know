@@ -1551,3 +1551,25 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - **Guard:** `loop/tests/test_subject_photo.py` (a fake CC0 hit is pinned and released; a CC-BY hit,
   a logo, a small file and an off-subject file are refused; escalation after five nights). Negative
   proof: letting `pd_licence_ok` accept CC BY 4.0 fails three checks; restored, green.
+
+## 2026-11-02 — Thumbnail and Short-opening stills may come from Pixabay, Pexels or Mixkit
+
+- **Owner ruling (binding, every domain):** the one-question picture (thumbnail and a Short's
+  first second) may also be a Pixabay, Pexels or Mixkit photo - the 13 Oct food-footage widening
+  (commercial reuse, no attribution required, licence wording stored and re-checked, still
+  credited). Stills INSIDE a video stay PD/CC0 (V29 unchanged).
+- **Code:** `research/subject_photo.py` searches Pixabay first (image API, the key the footage
+  chain already holds; every hit re-checked by id - type photo, not AI - before download; tags must
+  name the subject; brand/logo, size, domain-context and printed-page screens), then Commons
+  PD/CC0. Records carry `research/food_footage.record_problems`' rights fields and
+  `licence_text: licences/pixabay-content-license-summary.txt`. `visuals/question_card.
+  licence_problems` is the one gate (PD/CC0, or a free-library record that passes
+  `record_problems`); `photos()`, `thumb_contract.verify_question` (V76) and the opener check use it.
+  CC-BY and anything else are refused. Pexels: no key in the vault or key dir and new keys are
+  paused - the adapter reports PEXELS_KEY_MISSING and is skipped; Mixkit has no still library.
+  Nothing paid.
+- **Weak picks replaced** where a plainer photo of the subject existed (`subject_photo.py replace`).
+- **Guard:** `loop/tests/test_subject_photo.py` (free-library hit pinned with its licence wording;
+  an AI or video hit refused; a CC-BY record refused by `licence_problems`; a free-library record
+  without its committed wording refused). CLAUDE.md's imagery non-negotiable rewritten to match.
+
