@@ -775,22 +775,215 @@
       "queued": "2026-10-25"
     },
     {
-      "slug": "what-is-inside-happen-to-cheese",
+      "slug": "what-happens-to-meat-when-you-cook-it",
       "domain": "food-science",
-      "title": "What happens to meat when you cook it, What to do when chocolate is not melting and cheese made?",
-      "query": "what happens to meat when you cook it what to do when chocolate is not melting and cheese made",
+      "title": "What happens to meat when you cook it?",
+      "query": "what happens to meat when you cook it",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "an episode of three gated food rows, each of which passed: what-happens-to-meat-when-you-cook-it: demand 0.670 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling.; what-to-do-when-chocolate-is-not-melting: demand 0.581 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling.; how-is-cheese-made: demand 0.875 clears the 0.16 floor and title gap 0.35 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.670 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
       },
-      "first_video_parts": [
-        "what happens to meat when you cook it",
-        "what to do when chocolate is not melting",
-        "how is cheese made"
-      ],
-      "made_by": "loop/food_author.py + bin/food-session.sh (scripts/food/, rendered as pieces and stitched)",
-      "queued": "2026-11-01"
+      "demand": {
+        "demand_index": 0.6697,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "cook",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "what happens to meat when you cook it"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:32:19.047418+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.628,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.233,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 7953430.0,
+        "p90_views": 66774616,
+        "median_subscribers": 3405000.0,
+        "channels_under_100k_subs": 2,
+        "median_age_days": 643,
+        "published_last_365d": 5,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.067,
+          "view_ceiling": 0.014,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:55.411340+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6485,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 7,953,430 views and 3,405,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "what-to-do-when-chocolate-is-not-melting",
+      "domain": "food-science",
+      "title": "What to do when chocolate is not melting?",
+      "query": "what to do when chocolate is not melting",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.581 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5812,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 3,
+        "key_term": "melting",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 4,
+        "sample_completions": [
+          "what to do when chocolate is not melting"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:32:16.126364+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.678,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.383,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 988283.0,
+        "p90_views": 12219317,
+        "median_subscribers": 1006000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 686,
+        "published_last_365d": 3,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.142,
+          "view_ceiling": 0.144,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:51.836582+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6277,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field with real demand: 100% of top-20 titles do NOT answer the question, and demand index 0.58. Nobody has made this one."
+    },
+    {
+      "slug": "how-is-cheese-made",
+      "domain": "food-science",
+      "title": "How is cheese made?",
+      "query": "how is cheese made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.875 clears the 0.16 floor and title gap 0.35 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.8754,
+        "autocomplete_completions": 10,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 113,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 115,
+        "sample_completions": [
+          "how is cheese made",
+          "how is cheese made for kids",
+          "how is cheese made from milk",
+          "how is cheese made at home",
+          "how is cheese made traditionally"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-01T21:32:15.161805+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.366,
+        "title_gap": 0.35,
+        "title_coverage_mean": 0.825,
+        "strong_match_count": 13,
+        "results_examined": 20,
+        "median_views": 1221450.5,
+        "p90_views": 15162242,
+        "median_subscribers": 1755000.0,
+        "channels_under_100k_subs": 4,
+        "median_age_days": 1567,
+        "published_last_365d": 0,
+        "interpretation": "13 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.35,
+          "incumbent_subs": 0.108,
+          "view_ceiling": 0.13,
+          "staleness": 1.0
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-01T21:31:50.584513+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.566,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Strong demand (0.88) against partial coverage (35% title gap); winnable but contested."
     },
     {
       "slug": "what-to-do-if-melted-chocolate-is-too-thick",
@@ -1784,220 +1977,6 @@
       },
       "reason": "Middle of the field: title gap 0.35, demand 0.52, opportunity 0.39.",
       "episode": "why-bread-rises-steak-browns-chocolate-snaps"
-    },
-    {
-      "slug": "what-happens-to-meat-when-you-cook-it",
-      "domain": "food-science",
-      "title": "What happens to meat when you cook it?",
-      "query": "what happens to meat when you cook it",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.670 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.6697,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "cook",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what happens to meat when you cook it"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:32:19.047418+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.628,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.233,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 7953430.0,
-        "p90_views": 66774616,
-        "median_subscribers": 3405000.0,
-        "channels_under_100k_subs": 2,
-        "median_age_days": 643,
-        "published_last_365d": 5,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.067,
-          "view_ceiling": 0.014,
-          "staleness": 0.75
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T21:31:55.411340+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6485,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 7,953,430 views and 3,405,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
-      "episode": "what-is-inside-happen-to-cheese"
-    },
-    {
-      "slug": "what-to-do-when-chocolate-is-not-melting",
-      "domain": "food-science",
-      "title": "What to do when chocolate is not melting?",
-      "query": "what to do when chocolate is not melting",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.581 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5812,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 3,
-        "key_term": "melting",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 4,
-        "sample_completions": [
-          "what to do when chocolate is not melting"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:32:16.126364+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.678,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.383,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 988283.0,
-        "p90_views": 12219317,
-        "median_subscribers": 1006000.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 686,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.142,
-          "view_ceiling": 0.144,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T21:31:51.836582+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6277,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field with real demand: 100% of top-20 titles do NOT answer the question, and demand index 0.58. Nobody has made this one.",
-      "episode": "what-is-inside-happen-to-cheese"
-    },
-    {
-      "slug": "how-is-cheese-made",
-      "domain": "food-science",
-      "title": "How is cheese made?",
-      "query": "how is cheese made",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.875 clears the 0.16 floor and title gap 0.35 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.8754,
-        "autocomplete_completions": 10,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 113,
-        "key_term": "made",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 115,
-        "sample_completions": [
-          "how is cheese made",
-          "how is cheese made for kids",
-          "how is cheese made from milk",
-          "how is cheese made at home",
-          "how is cheese made traditionally"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:32:15.161805+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.366,
-        "title_gap": 0.35,
-        "title_coverage_mean": 0.825,
-        "strong_match_count": 13,
-        "results_examined": 20,
-        "median_views": 1221450.5,
-        "p90_views": 15162242,
-        "median_subscribers": 1755000.0,
-        "channels_under_100k_subs": 4,
-        "median_age_days": 1567,
-        "published_last_365d": 0,
-        "interpretation": "13 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.35,
-          "incumbent_subs": 0.108,
-          "view_ceiling": 0.13,
-          "staleness": 1.0
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T21:31:50.584513+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.566,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Strong demand (0.88) against partial coverage (35% title gap); winnable but contested.",
-      "episode": "what-is-inside-happen-to-cheese"
     }
   ],
   "first_video": [
@@ -2017,5 +1996,5 @@
     "why does popcorn pop",
     "why does salt make food taste better"
   ],
-  "queue_length": 12
+  "queue_length": 14
 }

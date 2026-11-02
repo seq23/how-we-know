@@ -2,6 +2,7 @@
 
     python loop/food_author.py              # stage "food-author" (loop-food-author.yml)
     python loop/food_author.py --plan       # print the next episode's parts; write nothing
+    python loop/food_author.py --unmake S   # undo an authored, unrendered episode
 
 WHY THIS EXISTS (2026-10-25). Food was an owner-approved niche (13 Oct: the
 round-2 sample and the first full video approved; one voice, normal pace, a
@@ -64,6 +65,11 @@ SPECS = ROOT / "channel" / "specs"
 SUPERSEDED = SPECS / "superseded"
 ORDER = ROOT / "research" / "publish_order_food_science.json"
 PARTS_PER_EPISODE = 3
+# Two food days a week (Wed + Sat, the owner's rotation) need two episodes a
+# week: the author runs Monday and Thursday and the Mac renders the oldest
+# first, so up to two can be authored and waiting (2 Nov 2026; it was one,
+# which capped food at one episode a week and left a food day empty weekly).
+MAX_IN_FLIGHT = 2
 # Fallback stitched rate, used only before any food episode is stitched; the
 # fit itself holds at every MEASURED rate (measured_rates, word_window).
 # 169.5 came from the first episode (4,830 words, 28.5 min) and overshot:
@@ -81,12 +87,20 @@ STOPWORDS = {"why", "how", "does", "do", "is", "are", "my", "the", "a", "an", "w
 
 # ------------------------------------------------------------- choosing
 def in_flight() -> list[str]:
-    """Lane-authored food episodes with no episode spec: the Mac's to render."""
+    """Lane-authored food episodes with no episode spec: the Mac's to render,
+    OLDEST AUTHORED FIRST (the episode row's `queued` date, then queue order),
+    so the Mac finishes the one it started before the next. Alphabetical order
+    (the old sort) would let a newer "what-is-inside-a..." jump the queue."""
     out = []
     for p in sorted(FOOD_DIR.glob("*.md")):
         if LANE_MARK in p.read_text() and not (SPECS / f"{p.stem}.json").exists():
             out.append(p.stem)
-    return out
+    try:
+        q = json.loads(ORDER.read_text()).get("queue") or []
+    except (OSError, ValueError):
+        q = []
+    rank = {r.get("slug"): (str(r.get("queued") or ""), i) for i, r in enumerate(q)}
+    return sorted(out, key=lambda s: rank.get(s, ("9999", len(q))))
 
 
 def _part_queries() -> set[str]:
@@ -97,24 +111,59 @@ def _part_queries() -> set[str]:
 
 def next_parts() -> list[dict]:
     """The next unmade food rows, best first: not a made episode, not a part
-    of one, not one of the six the nightly batch made the wrong way."""
+    of one, and never two parts about the same food in one episode.
+
+    A row the nightly batch scripted the wrong way (BQ.food_batch_made: its
+    script is scripts/<slug>.md, its explainer render is held by the contract
+    and never uploaded) IS a part: its already-validated script is the draft
+    (run() reads it instead of drafting again). Until 2 Nov 2026 these six
+    were excluded for good, so 6 of the 9 unmade food rows could never air and
+    food's Wednesday and Saturday sat empty (#271)."""
     taken = _part_queries()
-    out = []
+    out: list[dict] = []
+    foods: set[str] = set()
     for r in BQ.food_rows():
         s = r["slug"]
-        if r.get("first_video_parts") or BQ.food_made(s) or BQ.food_batch_made(s):
+        if r.get("first_video_parts") or BQ.food_made(s):
             continue
         if r.get("query") in taken:
             continue
+        f = food_of(r)
+        if f in foods:
+            continue
+        foods.add(f)
         out.append(r)
     return out[:PARTS_PER_EPISODE]
 
 
+# Words that can head a food question's content words without being its food:
+# participles and qualifiers ("melted chocolate", "my bread", "too thick").
+NOT_A_FOOD = {"my", "your", "too", "so", "not", "never", "very", "better", "good",
+              "bad", "best", "happen", "happens", "make", "made", "cook", "cooked",
+              "get", "gets", "to", "do", "when", "if", "you", "it"}
+
+
 def food_of(row: dict) -> str:
-    """The food noun a question is about: its first content word, singular."""
-    words = [w for w in re.findall(r"[a-z]+", (row.get("query") or "").lower())
-             if w not in STOPWORDS]
-    w = words[0] if words else row["slug"].split("-")[0]
+    """The food noun a question is about, singular: the first of its SUBJECT
+    words (loop/longform_title.subject_words' vocabulary, in question order)
+    that is not a qualifier or a participle.
+
+    WHY (2 Nov 2026): this took the first word outside a 13-word stoplist, so
+    "what happens to meat when you cook it" gave "happen" and "what to do when
+    chocolate is not melting" gave "to" - the episode was authored as
+    what-is-inside-happen-to-cheese, its narration said "Happen." and "To." as
+    food names, and kits searched stock footage for "happen" and "to".
+    Guarded by loop/tests/test_food_author_parts.py."""
+    import longform_title as LT                              # noqa: PLC0415
+    q = (row.get("query") or "").lower()
+    words = [w for w in LT.content_words(q)
+             if w not in LT.SUBJECT_GENERIC and w not in LT.STOP
+             and w not in NOT_A_FOOD and w not in STOPWORDS
+             and not (len(w) > 4 and w.endswith(("ed", "ing")))]
+    if not words:
+        words = [w for w in row["slug"].split("-")
+                 if w not in STOPWORDS and w not in NOT_A_FOOD] or [row["slug"].split("-")[0]]
+    w = words[0]
     return w[:-1] if w.endswith("s") and not w.endswith("ss") else w
 
 
@@ -458,10 +507,11 @@ def run(plan_only: bool = False) -> int:
     with Stage("food-author", week_id(),
                zero_work_hint="loop/food_author.py writes one food episode a run") as st:
         busy = in_flight()
-        if busy:
+        if len(busy) >= MAX_IN_FLIGHT:
             st.named_stop("FOOD_EPISODE_IN_FLIGHT",
-                          f"{busy[0]} is authored and waiting for the Mac's food nights "
-                          f"(bin/food-session.sh); one food episode is in flight at a time",
+                          f"{', '.join(busy)} authored and waiting for the Mac's food nights "
+                          f"(bin/food-session.sh); at most {MAX_IN_FLIGHT} food episodes are "
+                          f"in flight at a time",
                           unblock="Nothing to do: the food night that stitches it writes its "
                                   "spec, and the next run here authors the next episode.")
         rows = next_parts()
@@ -478,6 +528,11 @@ def run(plan_only: bool = False) -> int:
         deadline = time.monotonic() + 150 * 60
         drafts = []
         for r in rows:
+            made = ROOT / "scripts" / f"{r['slug']}.md"
+            if BQ.food_batch_made(r["slug"]) and made.exists():
+                drafts.append(made.read_text())
+                st.work(f"took {r['slug']} from its validated batch script (no redraft)")
+                continue
             try:
                 pov = pov_match.select(r["slug"], r["query"], [], domain="food-science")
             except Exception:                               # noqa: BLE001
@@ -514,6 +569,48 @@ def run(plan_only: bool = False) -> int:
     return 0
 
 
+def _segment_foods(text: str) -> list[str]:
+    m = re.search(r"\(segment order: ([^)]*)\)", text)
+    return [f.strip() for f in m.group(1).split(",")] if m else []
+
+
+def unmake(slug: str) -> list[str]:
+    """Undo an authored food episode the Mac has NOT rendered: its parts go
+    back into the queue where the episode stood, the episode row, its script
+    and any kit no other food script uses are removed. The next run authors
+    them again. Refuses a rendered (spec'd) or uploaded episode - forward only.
+    Used once on 2 Nov 2026 for what-is-inside-happen-to-cheese (food_of's
+    "happen"/"to" bug); returns what it changed."""
+    import ledger                                          # noqa: PLC0415
+    script = FOOD_DIR / f"{slug}.md"
+    if (SPECS / f"{slug}.json").exists() or slug in set(ledger.published_slugs()):
+        raise SystemExit(f"{slug}: rendered or uploaded - forward only, not unmade")
+    d = json.loads(ORDER.read_text())
+    queue = d.get("queue") or []
+    at = next((i for i, r in enumerate(queue) if r.get("slug") == slug), None)
+    if at is None:
+        raise SystemExit(f"{slug}: no episode row in {ORDER.name}")
+    parts = [r for r in d.get("parts_of_episodes") or [] if r.get("episode") == slug]
+    back = [{k: v for k, v in r.items() if k != "episode"} for r in parts]
+    d["queue"] = queue[:at] + back + queue[at + 1:]
+    d["parts_of_episodes"] = [r for r in d.get("parts_of_episodes") or []
+                              if r.get("episode") != slug]
+    d["queue_length"] = len(d["queue"])
+    ORDER.write_text(json.dumps(d, indent=2) + "\n")
+    changed = [f"{slug}: episode row removed, {len(back)} part(s) back in the queue"]
+    foods = _segment_foods(script.read_text()) if script.exists() else []
+    if script.exists():
+        script.unlink()
+        changed.append(f"removed scripts/food/{script.name}")
+    used = {f for p in FOOD_DIR.glob("*.md") for f in _segment_foods(p.read_text())}
+    for f in foods:
+        kp = KITS / f"{f}.json"
+        if f not in used and kp.exists():
+            kp.unlink()
+            changed.append(f"removed channel/food_kits/{kp.name}")
+    return changed
+
+
 def next_after(rows: list[dict]) -> str | None:
     taken = {r["slug"] for r in rows}
     for r in next_parts_all():
@@ -532,4 +629,7 @@ def next_parts_all() -> list[dict]:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--unmake":
+        print("\n".join(unmake(sys.argv[2])))
+        raise SystemExit(0)
     raise SystemExit(run(plan_only="--plan" in sys.argv))

@@ -1659,3 +1659,28 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - Guard: `loop/tests/test_stock_footage_all_domains.py` - negative proof: a stock clip marked
   attribution-required or commercial-use-forbidden is refused in a deep-sea episode by
   `usable_assets`, `assign` and `render_cut`; removing the gate turns 7 checks red.
+
+## 2026-11-02 — Food back to two a week: real food names, every unmade row, four food nights
+
+- **Found (CONFIRMED, W44 #271 / #267):** all four empty days in the next two weeks were food's
+  (Wed 4, Sat 7, Wed 11, Sat 14). Three causes, each in code:
+  1. `food_author.food_of()` took the first word outside a 13-word stoplist: the in-flight episode
+     was `what-is-inside-happen-to-cheese`, its narration named "Happen." and "To." as foods, and
+     its kits searched stock footage for "happen" and "to". Now the first subject word
+     (`longform_title` vocabulary, in question order) that is not a qualifier or participle.
+     The bad episode was unrendered and is undone by `food_author.py --unmake` (parts back in
+     the queue where it stood; script and orphan kits removed; a rendered episode is refused).
+  2. `next_parts()` excluded the six food rows the nightly batch scripted the wrong way, so 6 of
+     the 9 unmade food rows could never air. Their validated scripts are now taken as parts
+     as-is (no redraft); their explainer renders stay held by the contract and are never
+     uploaded. `batch_queue.food_unmade` counts them as food supply.
+  3. One food episode in flight and one author run and two Mac nights a week = ONE food episode
+     for TWO food days. Now: author Mon + Thu 14:00 CT, up to two in flight, rendered oldest
+     first; food nights Sun + Mon (shelved Tue, for Wed) and Wed + Thu (shelved Fri, for Sat).
+     Tue, Fri and Sat stay the batch's (~3 deep-sea/materials episodes a night; 4 needed a week).
+- **Also:** `what-is-inside-chili-coffee-honey` (rendered 28 Oct, contract holds) was held only
+  for its thumbnail; #280/#281's photo picker now finds one, built and shelved 2 Nov for Wed 4.
+- **Guard:** `loop/tests/test_food_author_parts.py`. Negative proofs: the old `food_of` fails on
+  "happen"/"to"; restoring the batch-made exclusion fails "not offered as a part"; alphabetical
+  `in_flight` fails "not oldest-first"; restored, green. `test_every_lane_has_a_runner.py` now
+  holds the food agent to Sun/Mon/Wed/Thu 22:58.
