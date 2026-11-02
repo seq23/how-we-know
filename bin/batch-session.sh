@@ -377,6 +377,12 @@ phase_prepare() {
 # moved aside (recorded in superseded_renders.json, which the cloud upload
 # lane refuses on) instead of shipping the old opening. A full re-render
 # unlinks the old plan; pending_plan is recomputed so tonight re-plans it.
+# THE PICTURE FLOOR (hostile review 2026-11-02, finding 1): an unaired render
+# with almost no pictures is moved aside and its plan dropped HERE, before
+# planning, so tonight re-plans it pictures-first and re-renders it from the
+# same narration. A render made after its heal airs as is (loop/render_gate.py).
+echo; echo "--- picture floor: re-render unaired episodes with almost no pictures ---"
+$PY loop/render_gate.py --picture-heal || echo "  picture heal exited $? - the full gate below still holds what fails"
 echo; echo "--- bind cloud re-opened scripts to this Mac's plans, wavs and renders ---"
 $PY loop/lengthen.py bind || echo "  lengthen bind exited $? - nothing was moved for an episode it refused"
 # PUSH THE BIND NOW, before anything plans, narrates or captions: the bind
