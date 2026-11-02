@@ -323,10 +323,15 @@ def main() -> int:
         import datetime as _dt                                 # noqa: PLC0415
         fresh_at = (_dt.datetime.now(_dt.timezone.utc)
                     - _dt.timedelta(days=1)).isoformat(timespec="seconds")
-        json.dump({"research/imagery_video.py": {
+        # Every harvester delegated to the Mac gets the fresh stamp, not one
+        # named file (research/imagery_stock_video.py joined it 2026-11-02).
+        import footage_lane as _fl                         # noqa: PLC0415
+        mac_fresh = {h["rel"]: {
             "host": "mac-batch", "last_run_at": fresh_at,
             "last_success_at": fresh_at, "ok": True, "exit": 0,
-            "records": 113, "tail": []}}, open(stamps_p, "w"))
+            "records": 113, "tail": []}
+            for h in _fl.declared_harvesters() if _fl.host_of(h) == "mac-batch"}
+        json.dump(mac_fresh, open(stamps_p, "w"))
         r1 = subprocess.run([PY, LANE_SRC, "--dry-run", "--host", "ci"],
                             capture_output=True, text=True, cwd=ROOT, env=env,
                             timeout=300)
@@ -399,10 +404,7 @@ def main() -> int:
             host_tools.HOST_TOOLS[k] = (d, lambda: True)
         stops2 = tempfile.mkdtemp(prefix="hwk-footage-stops2-")
         stamps2 = os.path.join(stops2, "harvest_runs.json")
-        json.dump({"research/imagery_video.py": {
-            "host": "mac-batch", "last_run_at": fresh_at,
-            "last_success_at": fresh_at, "ok": True, "exit": 0,
-            "records": 113, "tail": []}}, open(stamps2, "w"))
+        json.dump(mac_fresh, open(stamps2, "w"))
         os.environ["LOOP_STOPS_DIR"] = stops2
         os.environ["LOOP_HARVEST_STAMPS"] = stamps2
         try:
@@ -416,8 +418,8 @@ def main() -> int:
             os.environ.pop("LOOP_STOPS_DIR", None)
             os.environ.pop("LOOP_HARVEST_STAMPS", None)
         check("negative proof: with the tooling present and the Mac fresh the "
-              "ci lane takes no stop, runs its own three and verifies the "
-              "fourth", rc == 0 and not took_stop
+              "ci lane takes no stop, runs its own harvesters and verifies "
+              "the Mac's", rc == 0 and not took_stop
               and not [f for f in os.listdir(stops2) if "imagery-harvest" in f],
               f"rc={rc} stop={took_stop}")
         shutil.rmtree(stops2, ignore_errors=True)
