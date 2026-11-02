@@ -83,7 +83,7 @@ if [ -n "${GH_CALLS:-}" ]; then echo "$@" >> "$GH_CALLS"; fi
 case "$1 $2" in
   "issue view") echo "${GH_ISSUE_STATE:-OPEN}"; exit 0 ;;
   "label list")  cat "${GH_LABELS:-/dev/null}"; exit 0 ;;
-  "issue list")  exit 0 ;;
+  "issue list")  [ -n "${GH_OPEN_ISSUES:-}" ] && echo "$GH_OPEN_ISSUES"; exit 0 ;;
   "issue create") echo "https://github.com/seq23/how-we-know/issues/${GH_NEW_ISSUE:-777}"; exit 0 ;;
 esac
 exit 0
@@ -427,9 +427,12 @@ def c_the_wrapper():
         if rc != 3:
             fails.append(f"the wrapper exited {rc} on a hold's first report, "
                          f"expected 3\n{out[-600:]}")
-        if "label create loop-stop" not in calls:
+        # GUARD_HOLD is not her key or account, so since 2026-11-02 (finding
+        # 4) its issue is an agent's: labelled agent-fix, no @mention. The
+        # label must still be created when absent, or dedupe matches nothing.
+        if "label create agent-fix" not in calls:
             fails.append(
-                "bin/loop-stage.sh did not create the loop-stop label when it "
+                "bin/loop-stage.sh did not create the agent-fix label when it "
                 "was absent. CONFIRMED on the real repo 2026-09-07: the label "
                 "never existed, so `gh issue list --label loop-stop` matched "
                 "nothing and every stop opened a NEW issue (#17 and #20 are "
@@ -437,6 +440,9 @@ def c_the_wrapper():
                 "\"Already reported\" is undecidable while that is true.")
         if "issue create" not in calls:
             fails.append("the wrapper opened no issue for a stop that pages")
+        if "@seq23" in calls or "needs you" in calls:
+            fails.append("a stop that is not her key or account mentioned her "
+                         "or said 'needs you' (finding 4)")
 
         # 2. THE NUMBER IS WRITTEN BACK. Without this the next run has no
         #    tracker to name and deliberately pages instead.
@@ -472,6 +478,16 @@ def c_the_wrapper():
         if "HELD STOP" not in out:
             fails.append("the wrapper swallowed the HELD STOP banner, so the "
                          "green run says nothing about what is still broken")
+
+        # 4. A CLEAN RUN CLOSES ITS OLD ISSUES (finding 14); a run that took a
+        #    stop - even a green, held one - never does.
+        examined += 1
+        _, _, calls = stage(DO_WORK="1", GH_OPEN_ISSUES="4242")
+        if "issue close 4242" not in calls:
+            fails.append("a stage that ran clean left its old issue open")
+        _, _, calls = stage(GH_OPEN_ISSUES="4242")
+        if "issue close" in calls:
+            fails.append("a stage that took a stop closed its own tracker")
 
     return fails, examined
 

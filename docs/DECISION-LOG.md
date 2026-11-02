@@ -1795,3 +1795,29 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   bookable twice; it now refuses to schedule.
 - Guard: `loop/tests/test_calendar_fill.py`. Negative proofs: no borrowing, skipping the
   unreadable stamp, and `force=False` each turn it red; restored, green.
+## 2026-11-02 — Only her keys page her; one failed check holds one episode; clean runs close their issues
+
+- **Found (CONFIRMED, hostile review findings 4, 7, 14, 15, 19):** 89 stop codes tagged her by
+  default; RUNWAY_CRITICAL paged with "Nothing to run" as its own instruction; the digest told her
+  to "check the Mac" or "read the stop issue"; DELEGATED_HARVEST_STALE was filed as her key while
+  the harvesters worked. V21 (a wording check) tripped the channel-wide breaker on 12 Oct. #126
+  and six more issues stayed open after their stages recovered. #268 (a crash) pasted an older
+  success record. domains.publish_days (Sun/Tue deep sea) disagreed with the rotation (Mon/Thu).
+- **Changed:**
+  - bin/loop-stage.sh mentions her and titles "needs you" only for owner_action (her key or
+    account); everything else is labelled agent-fix with no mention. A crash no longer pastes a
+    stale stop record. A stage that does real work with no stop this run closes its own open
+    issues.
+  - A stop whose message or instruction starts "Nothing" never pages, except Rule 0 (ZERO_WORK)
+    and quota stops.
+  - The digest names an action only for owner_action stops.
+  - DELEGATED_HARVEST_STALE stays hers (her Mac must be awake) but the digest now says "wake the
+    Mac for its night run", not "add the missing key or login".
+  - draft.py holds exactly the episodes a validator failure names (loop/state/validator_hold.json,
+    read by backfill.library_pending). The breaker trips only on a failure that names no episode.
+  - publish_days now equals the rotation, and validate_plan fails if they ever differ.
+- **Tests rewritten to the new truth (never loosened):** test_held_stops (agent-fix label, no
+  mention, clean-run close), test_digest_queue_and_health (no "needs you" for agent stops; her
+  sign-in still does).
+- Guards: test_only_her_keys_page_her.py, test_validator_holds_the_episode.py; negative proofs
+  run (each break red, restored green).

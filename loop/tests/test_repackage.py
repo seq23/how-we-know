@@ -377,26 +377,29 @@ check(any("rotation day" in f for f in res["failures"]),
 import re as _re                                              # noqa: E402
 _wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()
 _crons = _re.findall(r"^\s*- cron: '([^']+)'", _wf, _re.M)
-check(_crons == ["30 18 * * *", "30 3 * * 0,2-6"],
-      f"loop-repackage crons are {_crons}, not the evening run + the 03:30 CT apply")
-# Both crons are Central wall-clock time (1 Nov 2026); 03:30 CT is 01:30 PT all
-# year, just after the YouTube quota reset at midnight PT.
+check(_crons == ["30 18 * * *", "30 11 * * 0,2-6"],
+      f"loop-repackage crons are {_crons}, not the evening run + the 11:30 CT apply")
+# Both crons are Central wall-clock time (1 Nov 2026). The apply runs at 11:30
+# CT, AFTER the 09:00 CT episode upload (finding 16, 2 Nov 2026): at 03:30 it
+# spent the quota the day's uploads needed.
 _tz = _re.findall(r"^\s*- cron: '[^']+'.*\n\s*timezone: (\S+)", _wf, _re.M)
 check(_tz == ["America/Chicago", "America/Chicago"],
       f"loop-repackage schedule zones are {_tz}, not America/Chicago on both crons")
-_EARLY = "github.event.schedule != '30 3 * * 0,2-6'"
+_EARLY = "github.event.schedule != '30 11 * * 0,2-6'"
 _steps = {m.group(1).strip(): m.group(2) for m in _re.finditer(
     r"- name: ([^\n]+)\n((?:        [^\n]*\n)+)", _wf)}
 _apply = next(v for k, v in _steps.items() if k.startswith("Apply new titles"))
 check(_EARLY not in _apply and "repackage.py apply" in _apply,
-      "the 03:30 CT cron does not run the apply step")
+      "the 11:30 CT cron does not run the apply step")
 for _name in ("Propose long-form titles", "Re-open / extend queued scripts",
               "Build contract thumbnails", "Prepare search blocks"):
     _body = next(v for k, v in _steps.items() if k.startswith(_name))
     check(_EARLY in _body.split("\n", 1)[0] or _EARLY in _body.split("run:", 1)[0],
-          f"{_name!r} also runs on the 03:30 CT apply-only cron")
-# 03:30 CT sits after the PT reset in BOTH clock seasons (it is 01:30 PT all
-# year); a bare UTC hour would drift across the reset with the clock change.
+          f"{_name!r} also runs on the 11:30 CT apply-only cron")
+# The 11:30 CT apply must come after the 09:00 CT upload, in Central time.
+_up = (ROOT / ".github" / "workflows" / "loop-upload-cloud.yml").read_text()
+check("cron: '0 9 * * *'" in _up and "11" > "09",
+      "the apply cron no longer follows the 09:00 CT episode upload")
 
 if examined == 0:
     fails.append("examined nothing")

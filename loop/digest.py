@@ -304,28 +304,38 @@ def breaker_action(breaker_state: dict) -> str | None:
     """
     cause = breaker_state.get("cause")
     if cause == "validator":
-        return policy_action("BREAKER_TRIPPED") or "fix the failing quality check"
+        return None                     # heals itself once the checks pass
     if cause in ("retention", "domain"):
         return None
-    return "read the stop issue on GitHub"
+    if cause == "manual":
+        return None                     # her own switch: she knows it is on
+    return None if cause != "strike" else "read the strike in YouTube Studio"
 
 
 def _stop(s) -> dict:
     return {"stage": s, "code": None} if isinstance(s, str) else dict(s)
 
 
-def action_for(stop: dict) -> str:
-    """What she does about a needs-you stop, in six words or fewer."""
-    code, stage = stop.get("code") or "", stop.get("stage") or ""
+def action_for(stop: dict) -> str | None:
+    """What she does about a stop, in six words or fewer - or None.
+
+    ONLY HER OWN KEY OR ACCOUNT IS HERS (hostile review 2026-11-02, finding 4).
+    Every other stop - a Mac batch that failed, a git pull, a defect - is an
+    agent's (bin/loop-stage.sh files it as agent-fix), so it carries no action
+    for her and never makes the subject say "needs you". The email told her to
+    "check the Mac" or "read the stop issue" for things she cannot fix.
+    """
+    code = stop.get("code") or ""
     if stop.get("disposition") == "owner_action" or stop.get("_owner"):
         if code.startswith("OAUTH") or code in {"CAPTIONS_SCOPE_MISSING", "WRONG_CHANNEL"}:
             return "sign in to YouTube again"
         if code == "UPLOADS_LOCKED_PRIVATE":
             return "clear the lock in YouTube Studio"
+        if code == "DELEGATED_HARVEST_STALE":
+            # her Mac, asleep - not a key (it said "add the missing key" once)
+            return "wake the Mac for its night run"
         return "add the missing key or login"
-    if stage in MAC_STAGES or code in MAC_CODES:
-        return "check the Mac's nightly batch"
-    return "read the stop issue on GitHub"
+    return None
 
 
 def _cap(s: str) -> str:

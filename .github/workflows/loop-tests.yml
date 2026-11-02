@@ -2,6 +2,9 @@ name: loop · tests
 
 on:
   push:
+    # main only: a branch push also ran the long suite, so a PR waited on it
+    # (finding 20, 2 Nov 2026). PRs get the fast gate from pull_request.
+    branches: [main]
     paths: ['loop/**', 'auth/**', 'bin/loop-*.sh', '.github/workflows/**',
             'scripts/**', 'pov/**', 'docs/CHANNEL-PLAN.md', 'research/publish_order.json',
             '.gitattributes']
@@ -27,7 +30,7 @@ on:
       - 'loop · owner override'
       - 'loop · Quarterly · refresh the candidate-niche taxonomy'
       - 'loop · daily 10:00 CT · reach (captions + localizations + tags)'
-      - 'loop · daily 18:30 CT (+ 03:30 CT apply) · long-form repackage (titles + thumbnails)'
+      - 'loop · daily 18:30 CT (+ 11:30 CT apply) · long-form repackage (titles + thumbnails)'
       - 'loop · Sat 06:00 · score demand ÷ competition'
       - 'loop · daily 18:00 CT · publish a Short from R2'
       - 'loop · Sun 12:00 · weekly digest'

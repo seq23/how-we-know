@@ -453,6 +453,18 @@ def c10_domains_admitted() -> Check:
         if not publish_days.get(domain_id):
             c.fail(f"{domain_id!r} has no publish_days in "
                    f"config.json domains.publish_days")
+        else:
+            # ONE CALENDAR (hostile review 2026-11-02, finding 19): the uploads
+            # follow cadence.rotation.weekdays, so publish_days must say the same.
+            names = {"mon": "Monday", "tue": "Tuesday", "wed": "Wednesday",
+                     "thu": "Thursday", "fri": "Friday", "sat": "Saturday",
+                     "sun": "Sunday"}
+            rot = (cfg.get("cadence", {}).get("rotation") or {}).get("weekdays") or {}
+            want = {names[k] for k, v in rot.items() if v == domain_id}
+            if rot and set(publish_days[domain_id]) != want:
+                c.fail(f"{domain_id!r}: domains.publish_days says "
+                       f"{sorted(publish_days[domain_id])} but the rotation the "
+                       f"uploads follow says {sorted(want)}")
 
         # line_domain() treats a bare `domain: null` line as
         # LEGACY_SPECIFIC_DOMAIN ("deep-sea-ocean-science") - the first

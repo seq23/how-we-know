@@ -183,11 +183,11 @@
     "queue_exhausted_note": "A domain's queue is THIN when its surviving, gated topic queue falls below this - two weeks of inventory at 2/week. Thin means REFILL (loop/score.py missing_queues, the Saturday miner), never retire: owner rule A of 2 Nov 2026 decides retirement on results only (domains.results_decide).",
     "publish_days": {
       "deep-sea-ocean-science": [
-        "Sunday",
-        "Tuesday"
+        "Monday",
+        "Thursday"
       ],
       "materials-and-manufacturing": [
-        "Monday",
+        "Tuesday",
         "Friday"
       ],
       "food-science": [

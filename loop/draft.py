@@ -21,6 +21,7 @@ its output fails validation - not the normal path.
 
 from __future__ import annotations
 
+import os
 import sys
 import time
 from pathlib import Path
@@ -125,6 +126,29 @@ def brief_for(topic: dict, week: str) -> Path:
     p = BRIEFS / f"{week}-{topic.get('slug') or topic['question'][:40]}.json"
     write_json(p, doc)
     return p
+
+
+VALIDATOR_HOLD = Path(os.environ.get("LOOP_VALIDATOR_HOLD")
+                      or LOOP / "state" / "validator_hold.json")
+
+
+def episodes_held_by(report: list[dict], slugs: set[str]) -> dict | None:
+    """{slug: [failures]} when EVERY failure names one of `slugs`, else None
+    (a failure about the channel, not an episode, still trips the breaker)."""
+    held: dict[str, list[str]] = {}
+    for row in report:
+        for f in row.get("failures") or []:
+            head = str(f).split(":", 1)[0].strip()
+            slug = next((s for s in slugs if s and s in head.split()), None) \
+                or (head if head in slugs else None)
+            if not slug:
+                return None
+            held.setdefault(slug, []).append(f"{row['validator']}: {f}")
+    return held or None
+
+
+def validator_held_slugs() -> set[str]:
+    return set((read_json(VALIDATOR_HOLD, default={}).get("held") or {}).keys())
 
 
 def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
@@ -638,6 +662,24 @@ def main() -> None:
         page = gate.build(queue, topics)
         st.work(f"rebuilt approval page {Path(page).relative_to(ROOT)}")
 
+        # HOLD THE EPISODE THAT FAILS, NOT THE CHANNEL (hostile review
+        # 2026-11-02, finding 7: one wording check, V21 on 12 Oct, halted all
+        # publishing). When every failure names an episode, exactly those
+        # episodes are held from upload (loop/state/validator_hold.json, read
+        # by backfill.library_pending) and everything else ships; the
+        # channel-wide breaker is kept for a failure that names no episode,
+        # strikes, retention and her own switch. The next passing run clears it.
+        held = episodes_held_by(report, {i["slug"] for i in items})
+        write_json(VALIDATOR_HOLD, {"held": held or {}, "week": week, "at": now()})
+        if not passed and held:
+            st.named_stop(
+                "EPISODES_HELD_BY_VALIDATOR",
+                f"{len(held)} episode(s) failed a validator and are held from "
+                f"upload; every other episode ships: {', '.join(sorted(held))}",
+                detail=held,
+                unblock="Re-authored or fixed on the next draft run; the hold "
+                        "lifts on the run whose validators pass.",
+                held_items=[f"{s_} - {'; '.join(r_)}" for s_, r_ in sorted(held.items())])
         if not passed:
             breaker.trip("validator",
                          "; ".join(f"{r['validator']}={r['status']}"

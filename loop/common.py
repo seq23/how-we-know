@@ -445,6 +445,13 @@ def _match_rule(section, code: str):
 # They compose rather than compete. owner_action is consulted first for the
 # sixteen codes it names; every other human-clearable stop falls through to the
 # hold, which is open to all of them. Nothing is classified in both.
+def nothing_to_do(message: str, unblock: str = "") -> bool:
+    """True when the stop's INSTRUCTION to a person starts with "Nothing" ("Nothing
+    to run", "Nothing for a person"). The message is not read: "Nothing is on
+    the shelf because ..." describes a defect (AUTHORED_NOT_QUEUED)."""
+    return str(unblock or "").lstrip().lower().startswith("nothing")
+
+
 def disposition(stage: str, code: str, detail, streak: int,
                 held_items=None, unblock: str = "") -> tuple[str, str]:
     """Classify one stop: ("self_resolving" | "held" | "needs_human", why).
@@ -732,6 +739,16 @@ class Stage:
         streak = streak_bump(self.name, s.code)
         disp, why = disposition(self.name, s.code, s.detail, streak,
                                 held_items=s.held_items, unblock=s.unblock)
+        # A STOP WHOSE OWN WORDS SAY "Nothing ..." HAS NOTHING FOR ANYONE TO DO
+        # (hostile review 2026-11-02, finding 4: RUNWAY_CRITICAL paged her in
+        # W44 with "Nothing to run" as its own instruction). It never pages.
+        # Never Rule 0 (ZERO_WORK: a stage that did nothing is loud by
+        # definition) and never a quota stop (it must say when it resets).
+        if (disp == "needs_human" and s.code != "ZERO_WORK"
+                and not s.code.startswith("QUOTA") and nothing_to_do(s.message, s.unblock)):
+            disp, why = ("self_resolving",
+                         "its own words say there is nothing to do, so it "
+                         "never pages (loop/common.py nothing_to_do)")
         rec = {
             "stage": self.name,
             "week": self.week,

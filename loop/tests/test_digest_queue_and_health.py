@@ -124,16 +124,18 @@ UPLOAD_PLAIN = digest.plain("UPLOAD_FAILED")
 mark, head, _ = digest.verdict(q, cal, pipe_ok, [UPLOAD_STOP])
 examined += 1
 if (mark != "🔴" or not head.lower().startswith(UPLOAD_PLAIN.lower())
-        or not head.endswith("— needs you: read the stop issue on GitHub")):
+        or not head.endswith("— not fixed yet") or "needs you" in head):
+    # Since 2026-11-02 (finding 4) a needs_human stop is an AGENT's: red, in
+    # its plain words, and it never tells her she is needed.
     fails.append(f"verdict: a needs_human stop must be red, say what happened in "
-                 f"its plain words and end with what to do; got {mark} {head}")
+                 f"its plain words, and not say 'needs you'; got {mark} {head}")
 
 # THE 2026-09-22 BUG, negative proof: a week with BOTH a red empty-slot reason
 # AND a needs_human stop must lead with the needs_human stop - the one with an
 # actual open GitHub issue behind it - not with the empty slot.
 mark, head, reasons = digest.verdict([], cal_red, pipe_ok, [UPLOAD_STOP])
 examined += 1
-if mark != "🔴" or not head.lower().startswith(UPLOAD_PLAIN.lower()) or "needs you" not in head:
+if mark != "🔴" or not head.lower().startswith(UPLOAD_PLAIN.lower()) or "needs you" in head:
     fails.append(f"verdict: a needs_human stop must win the headline over a routine "
                  f"empty-slot reason from the same week; got {mark} {head}")
 if head.startswith("Episode calendar"):
@@ -191,9 +193,9 @@ if '.subject").write_text' not in src:
 # subject and would have passed every check above while silently dropping
 # every reason computed above — this is the check that would have caught it.
 examined += 1
-full_verdict = "🔴 Shorts stopped: 1 of 9 published this week, 1 of 9 the week before — needs you: check the Mac's nightly batch"
+full_verdict = "🔴 Shorts stopped: 1 of 9 published this week, 1 of 9 the week before — needs you: sign in to YouTube again"
 subject = digest.digest_subject(full_verdict, "2026-W39")
-if "needs you: check the Mac's nightly batch" not in subject or "1 of 9" not in subject:
+if "needs you: sign in to YouTube again" not in subject or "1 of 9" not in subject:
     fails.append(f"digest_subject() drops the reason text - the exact 2026-09-23 "
                  f"bug (subject named no problem at all): {subject!r}")
 if not subject.startswith("🔴 Shorts stopped"):
@@ -296,12 +298,13 @@ a_mark, a_head, a_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28},
                                            None, two, [QUIET_SUPPLY, QUIET_OTHER], 2)
 seen_lines += [a_head] + a_reasons
 if (a_mark != "🔴" or not a_head.startswith("Shorts") or "1 of 9" not in a_head
-        or not a_head.endswith("— not fixed yet — +1 more needs you")
-        or "check the Mac" in a_head):
+        or not a_head.endswith("— not fixed yet")
+        or "needs you" in a_head or "check the Mac" in a_head):
     fails.append(f"(a) Shorts shortfall with a Mac stop: {a_mark} {a_head}")
+# The Mac stop is an agent's (finding 4): listed in the body, with no action of hers.
 if not any(r.startswith(digest.plain("MAC_NOT_SHIPPING")[:1].upper()) and "Mac" in r
-           and r.endswith("— check the Mac's nightly batch") for r in a_reasons[1:]):
-    fails.append(f"(a) the Mac stop is not listed, with its own action, under the subject line: {a_reasons}")
+           and "check the Mac" not in r and "needs you" not in r for r in a_reasons[1:]):
+    fails.append(f"(a) the Mac stop is not listed under the subject line, or names an action for her: {a_reasons}")
 subj = digest.digest_subject(f"{a_mark} {a_head}", "2026-W41")
 seen_lines.append(subj)
 if not subj.startswith("🔴 Shorts") or not subj.endswith(" — 2026-W41"):
@@ -352,18 +355,14 @@ if k_mark != "🔴" or not k_head.startswith("Publishing is halted") or "Mon 12 
 examined += 1
 import json as _json                                               # noqa: E402
 _pol = _json.load(open(os.path.join(LOOP, "stop_policy.json")))
-BREAKER_ACTION = (_pol["needs_human"]["BREAKER_TRIPPED"] or {}).get("action")
-if not BREAKER_ACTION:
-    fails.append("stop_policy.json: BREAKER_TRIPPED has no `action` for the subject to use")
-elif (not k_head.endswith(f"— needs you: {BREAKER_ACTION} — +1 more needs you")
-        or "check the Mac" in k_head):
-    fails.append(f"(W42) the breaker leads but the subject's action is not the "
-                 f"breaker's own plus '+1 more needs you': {k_head}")
-if not (any(r.startswith("Publishing is halted") and r.endswith(f"— {BREAKER_ACTION}")
-            for r in k_reasons)
-        and any("Mac" in r and r.endswith("— check the Mac's nightly batch") for r in k_reasons[1:])):
-    fails.append(f"(W42) the body must list the breaker and the Mac stop each with its "
-                 f"own action: {k_reasons}")
+# Since 2026-11-02 (finding 4): a validator trip heals itself once the checks
+# pass and a Mac stop is an agent's, so NEITHER asks anything of her: the
+# subject leads with the breaker and says "not fixed yet", never "needs you".
+if not k_head.endswith("— not fixed yet") or "needs you" in k_head or "check the Mac" in k_head:
+    fails.append(f"(W42) the breaker leads but the subject asks her for something: {k_head}")
+if not (any(r.startswith("Publishing is halted") for r in k_reasons)
+        and any("Mac" in r and "check the Mac" not in r for r in k_reasons[1:])):
+    fails.append(f"(W42) the body must list the breaker and the Mac stop: {k_reasons}")
 # breaker alone: its action, no "+N more".
 examined += 1
 k1_mark, k1_head, k1_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [],
@@ -371,8 +370,8 @@ k1_mark, k1_head, k1_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 2
                                               {"state": "tripped", "cause": "validator",
                                                "tripped_at": "2026-10-12T15:53:50+00:00"})
 seen_lines += [k1_head] + k1_reasons
-if k1_mark != "🔴" or not k1_head.endswith(f"— needs you: {BREAKER_ACTION}") or "more needs you" in k1_head:
-    fails.append(f"(W42) a breaker alone must end with its own action and no count: {k1_head}")
+if k1_mark != "🔴" or not k1_head.endswith("— not fixed yet") or "needs you" in k1_head:
+    fails.append(f"(W42) a validator trip alone is red and asks nothing of her: {k1_head}")
 # a retention trip is cleared by the weekly measurement: no action of hers.
 examined += 1
 _, k2_head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [MAC_STOP],
@@ -380,7 +379,7 @@ _, k2_head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [MAC_STOP],
                                {"state": "tripped", "cause": "retention",
                                 "tripped_at": "2026-10-12T15:53:50+00:00"})
 seen_lines.append(k2_head)
-if not k2_head.endswith("— not fixed yet — +1 more needs you") or "check the Mac" in k2_head:
+if not k2_head.endswith("— not fixed yet") or "needs you" in k2_head or "check the Mac" in k2_head:
     fails.append(f"(W42) a retention trip must not borrow another stop's action: {k2_head}")
 
 # (e) a self-resolving stop never reaches the subject when a shortfall exists.
