@@ -1,8 +1,12 @@
 {
-  "last_run_at": "2026-11-02T15:06:48+00:00",
+  "last_run_at": "2026-11-02T18:49:48+00:00",
   "lane": "handoff",
-  "deferred": [],
-  "resets_at": null,
+  "deferred": [
+    "7QtJ_B2kggQ",
+    "RPtB8FQhaA4",
+    "Z-Z1FNVQXW0"
+  ],
+  "resets_at": "2026-11-03T00:00:00-08:00",
   "notes": [
     "why-does-chocolate-taste-so-good: no episode in the ledger for this Short (_dEimGejxNc); nothing to hand off to",
     "why-does-steak-taste-better-seared: no episode in the ledger for this Short (EFGCT_ZLdzY); nothing to hand off to",
@@ -11,5 +15,5 @@
     "why-does-rice-get-sticky: no episode in the ledger for this Short (BPpmHWdQQ-w); nothing to hand off to",
     "why-does-meat-need-to-rest-after-cooking: no episode in the ledger for this Short (gzfS8409lV8); nothing to hand off to"
   ],
-  "units_spent": 406
+  "units_spent": 5
 }

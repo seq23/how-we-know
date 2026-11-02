@@ -1,0 +1,32 @@
+{
+  "stage": "handoff",
+  "week": "2026-W45",
+  "at": "2026-11-02T18:49:48+00:00",
+  "code": "HANDOFF_QUOTA_DEFERRED",
+  "message": "6 action(s) wait for tomorrow's quota; 0 applied this run",
+  "detail": {
+    "resets_at": "2026-11-03T00:00:00-08:00",
+    "deferred": [
+      "7QtJ_B2kggQ",
+      "RPtB8FQhaA4",
+      "Z-Z1FNVQXW0"
+    ],
+    "newest_input_at": null
+  },
+  "unblock": "Nothing to do; the allowance resets at midnight Pacific and this lane runs twice daily. Applied work is recorded.",
+  "disposition": "self_resolving",
+  "disposition_why": "The hand-off lane spends 50 units per write and stands aside for the day's episode upload and evening Shorts (quota.deferrable_reserve). What did not fit is listed in loop/state/handoff.json `deferred` and is done the next run after the allowance resets at midnight Pacific; everything applied this run is already recorded in the ledgers. The back catalogue (34 Shorts, 18 episodes) is expected to take two quota days. (run 1 of at most 5 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "why-does-chocolate-taste-so-good: no episode in the ledger for this Short (_dEimGejxNc); nothing to hand off to",
+    "why-does-steak-taste-better-seared: no episode in the ledger for this Short (EFGCT_ZLdzY); nothing to hand off to",
+    "why-is-my-bread-not-rising: no episode in the ledger for this Short (prHJLtgqN6g); nothing to hand off to",
+    "how-does-butter-get-made-from-cream: no episode in the ledger for this Short (JWwo4OPq9nk); nothing to hand off to",
+    "why-does-rice-get-sticky: no episode in the ledger for this Short (BPpmHWdQQ-w); nothing to hand off to",
+    "why-does-meat-need-to-rest-after-cooking: no episode in the ledger for this Short (gzfS8409lV8); nothing to hand off to",
+    "6 action(s), 6 write(s); 0 affordable today after the upload/Shorts reserve"
+  ]
+}
