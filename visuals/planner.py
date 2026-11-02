@@ -577,6 +577,10 @@ def plan_for_audio(slug, plans_dir=None, scripts_dir=None):
 # narration and pictures (owner, 2 Nov: aim for about 15 minutes).
 
 PICTURE_SEGMENTS = {"species_image", "ambient_drift", "material_image"}
+INFO_SEGMENTS = {"stat_card", "depth_descent", "comparison", "zone_column", "pressure_gauge",
+                 "light_attenuation", "world_map", "timeline", "anatomy_callout",
+                 "size_ladder", "thermal_ascent", "process_column", "evidence_chain",
+                 "process_steps", "source_compare", "magnitude_bar"}
 TEXT_CARDS = {"text_beat", "definition_card", "checklist_reveal", "contrast_pair"}
 FIRST_PICTURE_S = 5.0
 MAX_GAP_S = 15.0
@@ -688,6 +692,19 @@ def picture_pass(plan, md, domain, slug="", SPX=None):
             b["segment"], b["args"] = "species_image", species_args(subject)
             b["from"] = b.get("from", "") + "+look-like"
             have += 1
+    # 4b. a long run of footage returns to the section's own diagram every
+    # third beat, where the section has one (variety without words)
+    hero = {}
+    for b in plan:
+        if b["segment"] in INFO_SEGMENTS and b.get("heading") not in hero:
+            hero[b.get("heading")] = (b["segment"], b["args"])
+    run = 0
+    for b in plan:
+        run = run + 1 if b["segment"] == "ambient_drift" else 0
+        if run >= 3 and hero.get(b.get("heading")):
+            b["segment"], b["args"] = hero[b.get("heading")]
+            b["from"] = b.get("from", "") + "+relief"
+            run = 0
     # 5. cadence: a picture within FIRST_PICTURE_S, then never a gap > MAX_GAP_S
     t, run = 0.0, 0.0          # run: seconds since the last picture, quotes excluded
     for i, b in enumerate(plan):

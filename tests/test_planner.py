@@ -46,7 +46,10 @@ INFO = {"stat_card","depth_descent","comparison","zone_column","pressure_gauge",
         # (visuals/segments_materials.py) -- a second domain's segment
         # types are exactly as legitimate as deep sea's, 2026-09-03
         "thermal_ascent","process_column"}
-KNOWN = INFO | {"text_beat","quote_card","ambient_drift"}
+KNOWN = INFO | {"text_beat","quote_card","ambient_drift","species_image","material_image"}
+# Pictures first (2 Nov 2026): a run of picture beats is a montage of different
+# clips and stills, not one graphic held; only NON-picture types are limited.
+PICTURES = {"ambient_drift", "species_image", "material_image"}
 scripts = sorted(glob.glob(os.path.join(os.path.dirname(__file__), "..", "scripts", "*.md")))
 # A floor, not an exact count, 2026-09-03: this hardcoded == 20 broke the
 # moment materials-and-manufacturing's own scripts landed, which is exactly
@@ -65,7 +68,8 @@ for f in scripts:
         if b.get("args") is None: empty += 1
         for ln in (b["args"] or {}).get("lines", []) or []:
             pass
-        if b["segment"] == prev: cur += 1; worst = max(worst, cur)
+        if b["segment"] == prev and b["segment"] not in PICTURES:
+            cur += 1; worst = max(worst, cur)
         else: cur = 1
         prev = b["segment"]
     # every text beat's last line must not dangle
@@ -74,7 +78,7 @@ for f in scripts:
         if lines and lines[-1].split()[-1].lower().strip(",") in planner.DANGLING:
             dangle += 1
 
-check("no run exceeds 2", worst <= 2, f"worst run {worst}")
+check("no non-picture run exceeds 2", worst <= 2, f"worst run {worst}")
 check("no null args", empty == 0, str(empty))
 check("no unknown segment types", not unknown, str(unknown))
 check("no text beat ends on a dangling word", dangle == 0, f"{dangle} beats")
