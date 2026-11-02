@@ -1573,3 +1573,18 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   an AI or video hit refused; a CC-BY record refused by `licence_problems`; a free-library record
   without its committed wording refused). CLAUDE.md's imagery non-negotiable rewritten to match.
 
+## 2026-11-02 — No photo after five nights: a drawn card, never a held episode
+
+- **Owner ruling ("Yes, drawn card"):** when the subject-photo finder has searched five nights and
+  no photo passes the licence check, the one-question picture is a drawn card and the episode is
+  released. Replaces SUBJECT_PHOTO_EXHAUSTED (needs_human), which routed it to a person.
+- **Code:** `visuals/drawn_card.py` - PIL only (no image model, no AI, nothing paid), the channel's
+  colours, a plain schematic chosen from the episode's subject words (depth line + vehicle, sediment
+  layers + core, galaxy dots, a generic deep-sea fish outline, or plain rings), credited
+  "ILLUSTRATION — DRAWN BY HOW WE KNOW". `research/subject_photo.run` pins it in
+  `channel/imagery/subject_photos.json` with source "drawn card" and its own-work licence;
+  `visuals/question_card.licence_problems` accepts exactly that record.
+- **Guard:** `loop/tests/test_subject_photo.py` check 4 - the fifth empty night pins a drawn card
+  and releases the episode; a drawn card without its own-work licence is refused. Negative proof:
+  skipping the drawn-card step fails both checks; restored, green.
+

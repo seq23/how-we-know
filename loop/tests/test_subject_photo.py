@@ -12,7 +12,8 @@ LOOP_DRY_RUN=1, every path a scratch copy):
   3. a CC0 logo, a CC0 file under 1000 px, and a CC0 file whose title names
      none of the subject words are refused;
   4. run(): a slug still without a photo after MAX_TRIES nights escalates as
-     SUBJECT_PHOTO_EXHAUSTED; before that the night ends SUBJECT_PHOTO_SEARCHING
+     a DRAWN CARD (visuals/drawn_card.py) and the episode is released; before that
+     the night ends SUBJECT_PHOTO_SEARCHING
      (self_resolving), and the two NO_SUBJECT_PHOTO stops are self_resolving
      with the same cap in loop/stop_policy.json.
 
@@ -225,8 +226,20 @@ def run_code(slugs, today):
         return doc.get("code") or doc.get("stop", {}).get("code") or json.dumps(doc)[:120]
 
 
+# OWNER RULING 2 Nov 2026 ("Yes, drawn card"): the 5th empty night pins a
+# drawn card and RELEASES the episode - never held for a person.
+check(OTHER in SP.held([OTHER]), f"4 {OTHER} starts held")
 got = run_code([OTHER], "2026-11-02")
-check("SUBJECT_PHOTO_EXHAUSTED" in got, f"4 the {SP.MAX_TRIES}th empty night escalates: {got}")
+drawn = next((r for r in json.loads(SP.MANIFEST.read_text())["index"]
+              if r["subject"] == f"auto-{OTHER}"), {}) if SP.MANIFEST.exists() else {}
+check(got == "OK" and drawn.get("source") == "drawn card"
+      and (TMP / drawn.get("local_file", "x")).exists() and not QC.licence_problems(drawn),
+      f"4 the {SP.MAX_TRIES}th empty night pins a drawn card: {got} {drawn.get('title')}")
+check(OTHER not in SP.held([OTHER]) and SP.load_state()[OTHER]["status"] == "drawn card",
+      "4 and the episode is released, not held")
+check(bool(QC.licence_problems(dict(drawn, licence="CC BY 4.0"))),
+      "4 NEGATIVE: a drawn card without its own-work licence is refused")
+SP.MANIFEST.unlink()
 SP.save_state({})
 got = run_code([OTHER], "2026-11-03")
 check("SUBJECT_PHOTO_SEARCHING" in got, f"4 an empty first night is SEARCHING: {got}")
@@ -234,7 +247,9 @@ pol = json.loads((ROOT / "loop" / "stop_policy.json").read_text())
 for code in ("THUMB_NO_SUBJECT_PHOTO", "SHORT_NO_SUBJECT_PHOTO", "SUBJECT_PHOTO_SEARCHING"):
     check(pol["self_resolving"].get(code, {}).get("max_consecutive") == SP.MAX_TRIES,
           f"4 {code} is self_resolving, capped at {SP.MAX_TRIES}")
-check("SUBJECT_PHOTO_EXHAUSTED" in pol["needs_human"], "4 the exhausted stop reaches a person")
+check("SUBJECT_PHOTO_EXHAUSTED" not in json.dumps(pol)
+      and "SUBJECT_PHOTO_EXHAUSTED" not in (ROOT / "research" / "subject_photo.py").read_text(),
+      "4 no stop routes an exhausted episode to a person any more")
 check("research/subject_photo.py run" in (ROOT / "bin" / "batch-session.sh").read_text(),
       "4 the nightly batch runs the finder")
 

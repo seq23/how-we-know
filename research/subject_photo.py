@@ -32,8 +32,8 @@ night, for every held episode:
   4. A slug that finds nothing is retried on the next night, up to MAX_TRIES
      nights; the two NO_SUBJECT_PHOTO stops stay self_resolving meanwhile
      (loop/stop_policy.json, capped at the same count). After MAX_TRIES the
-     slug is SUBJECT_PHOTO_EXHAUSTED (needs_human): the search really found
-     nothing free, which is a defect in coverage someone must see.
+     slug gets a DRAWN CARD (visuals/drawn_card.py, owner ruling 2 Nov 2026)
+     and is released: never held for a person.
 
 State: loop/state/subject_photo.json {slug: {tries, last_tried, status, ...}}.
 Guarded by loop/tests/test_subject_photo.py.
@@ -449,6 +449,23 @@ def find(slug: str, attempts: int = 3, replace: str | None = None) -> dict:
             "why": "; ".join(whys)[-300:] or "no candidate"}
 
 
+def pin_drawn_card(slug: str) -> dict:
+    """Draw the episode's card (visuals/drawn_card.py) and pin it as its picture."""
+    import imagery_materials as M                          # noqa: PLC0415
+    import drawn_card as DC                                # noqa: PLC0415
+    key = f"auto-{slug}"
+    fname = f"auto__{key}__drawn-card.jpg"
+    terms = subject_terms(slug) or re.split(r"[-\s]+", re.sub(r"^\d+-", "", slug))
+    rec = DC.write(slug, terms, str(Path(M.ASSETS) / fname))
+    rec.update(subject=key, label=" ".join(terms[:3]).upper(), local_file=f"assets/{fname}",
+               title=f"Drawn card ({rec['motif']})", fetched_at=_now(),
+               subject_basis=(f"No licence-passing photo of {slug}'s subject in "
+                              f"{MAX_TRIES} nightly searches; a plain drawn schematic "
+                              f"(owner ruling 2 Nov 2026)."))
+    _pin(rec)
+    return rec
+
+
 def release(slug: str) -> str:
     """Build the thumbnail of a rendered episode now; its Shorts are re-cut by
     the batch's shelve step that follows (shorts_lane.cut_groups)."""
@@ -498,17 +515,17 @@ def run(slugs: list[str] | None = None, limit: int = PER_RUN, today: str | None 
                         f"{(r.get('why') or '')[:160]}")
                 if row["tries"] >= MAX_TRIES:
                     exhausted.append(s)
+        # OWNER RULING, 2 Nov 2026 ("Yes, drawn card"): after MAX_TRIES nights
+        # with no licence-passing photo, the episode gets a DRAWN CARD
+        # (visuals/drawn_card.py) and is released - never held for a person.
+        for s in sorted(set(exhausted)):
+            rec = pin_drawn_card(s)
+            row = state.setdefault(s, {"tries": MAX_TRIES})
+            row.update(status="drawn card", file=rec["local_file"],
+                       licence=rec["licence"], found_at=_now())
+            st.work(f"{s}: no photo in {MAX_TRIES} nights - drawn card "
+                    f"({rec['motif']}) pinned - {release(s)}")
         save_state(state)
-        if exhausted:
-            st.named_stop(
-                "SUBJECT_PHOTO_EXHAUSTED",
-                f"{len(exhausted)} episode(s) found no public-domain or CC0 photo of "
-                f"their subject in {MAX_TRIES} nightly Commons searches: "
-                + ", ".join(sorted(exhausted)),
-                held_items=sorted(exhausted),
-                unblock="The automatic search found nothing free under these subject "
-                        "words (loop/state/subject_photo.json has the queries). Pin a "
-                        "Commons file in research/imagery_*.py, or widen subject_terms.")
         if not st.units:
             st.named_stop(
                 "SUBJECT_PHOTO_SEARCHING",

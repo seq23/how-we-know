@@ -393,8 +393,9 @@ Your rule of 2 November 2026, built as code (mock-up approved that day).
   `SHORT_NO_SUBJECT_PHOTO`), never given the old text card, and every night
   `research/subject_photo.py` searches Pixabay, then Wikimedia Commons, for
   one (free licences only, CC-BY never; credited). Pexels needs a key it does
-  not have yet (`PEXELS_KEY_MISSING`); Mixkit has no photos. Only after five empty nights does it reach a person
-  (`SUBJECT_PHOTO_EXHAUSTED`).
+  not have yet (`PEXELS_KEY_MISSING`); Mixkit has no photos. After five empty nights it uses a **drawn card**
+  instead — a plain illustration of the subject in the channel's colours,
+  labelled as one — so no episode is ever held for a photo.
 - **The 19 videos of 25 Oct–2 Nov** were retitled to your approved list
   (`loop/state/one_question_backfill.json`); everything older is untouched.
 

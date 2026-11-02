@@ -62,7 +62,11 @@ and say what you chose and why.
   `research/subject_photo.py` only, checked by the same
   `research/food_footage.record_problems` (licence wording stored under
   `channel/imagery/licences/`), and still credited; anything else, CC-BY
-  included, is refused (`visuals/question_card.licence_problems`).
+  included, is refused (`visuals/question_card.licence_problems`). When no
+  photo passes after five nightly searches, that picture is a **drawn card**
+  (owner, 2026-11-02): a plain schematic drawn in-repo by
+  `visuals/drawn_card.py` (PIL only - no image model, no AI, nothing paid),
+  clearly an illustration and credited as one; the episode is never held.
 - **Nothing paid.** No model call, probe or lane in this repo may cost money.
   Her Claude subscription answers first, then her free-tier Gemini key, then the
   $0 OpenRouter list — and nothing else, ever: `max_cost_usd: 0`,
