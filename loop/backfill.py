@@ -52,7 +52,7 @@ import ledger                                    # noqa: E402
 import quota                                     # noqa: E402
 import publish as P                              # noqa: E402
 import upload as up                              # noqa: E402
-from common import Stage, config, now, week_id   # noqa: E402
+from common import Stage, config, now, read_json, week_id   # noqa: E402
 
 UPLOAD_UNITS, THUMB_UNITS, FLIP_UNITS = 1600, 50, 50
 DAILY_UNITS = 10000
@@ -422,6 +422,11 @@ def library_pending(verbose: bool = False,
     # and everything else stays pending - see loop/render_gate.py for the week
     # eight finished episodes waited behind one that was six seconds short.
     held = render_gate.held_slugs()
+    # An episode a draft validator failed (finding 7): held by name, the rest
+    # ship. loop/draft.py writes it; a missing file means nothing is held.
+    held |= set((read_json(Path(os.environ.get("LOOP_VALIDATOR_HOLD")
+                                or LOOP / "state" / "validator_hold.json"),
+                           default={}).get("held") or {}).keys())
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]

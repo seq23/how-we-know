@@ -113,6 +113,7 @@
   "self_resolving": {
     "OWNER_HOLD_LONGFORM": {"why": "Her own decision (2026-11-02): long-form uploads, dating and publishing are held until the hostile-review fixes land; Shorts keep going and rendering continues. loop/breaker.py longform_hold; lifted by `breaker.py lift-longform` when the work is on main.", "max_consecutive": 60, "escalation": "Sixty runs held means the hold outlived the work it waits for; check the hostile-review fixes landed and lift it.", "plain": "long-form episodes are held on purpose while the picture fixes land; Shorts keep going"},
     "RUNWAY_FULL": {"why": "The daily runway check (loop/draft.py --daily) found the runway at target and the Mac holding at least two nights of written scripts, so nothing needed authoring today. Finished, not blocked; it checks again tomorrow.", "max_consecutive": 400, "plain": "enough scripts are written; nothing needed today"},
+    "EPISODES_HELD_BY_VALIDATOR": {"why": "loop/draft.py: every validator failure named an episode, so exactly those episodes are held from upload (loop/state/validator_hold.json) and the rest ship (hostile review 2026-11-02, finding 7). The next draft run re-authors or re-validates them and the hold lifts on a pass.", "max_consecutive": 3, "escalation": "Three runs held means the same episodes keep failing validation - an agent reads the failures in the stop record.", "plain": "a few episodes failed a check and wait; the rest ship"},
     "HOOK_REOPEN_PENDING": {"why": "2026-10-13 hook rule (owner): every queued long-form episode opens stake-then-payoff before it ships. Queued episodes whose script breaks the rule, or whose re-opened script is not yet re-rendered, are held by loop/lengthen.py upload_hold(); loop-repackage re-opens the script daily on the $0 route and the Mac's nightly batch binds and re-renders it.", "max_consecutive": 7, "escalation": "A week of the same held episodes means the re-open keeps being refused (QUEUE_REOPEN_REFUSED) or the Mac is not binding (`loop/lengthen.py bind` in bin/batch-session.sh) - read loop/state/lengthen.json.", "plain": "queued episodes are waiting for their new hook to be written and rendered"},
     "QUEUE_HOOK_CLEAN": {"why": "Every queued long-form script opens stake-then-payoff and runs at least ten minutes, or is waiting for the Mac to bind it. The re-open stage is FINISHED, not blocked: a new script is checked the run after it lands.", "max_consecutive": 400, "_why_max_consecutive": "Idle is the normal state between Monday drafts; the lane runs daily for ever.", "plain": "every queued script already opens on its hook and runs ten minutes"},
     "QUEUE_REOPEN_REFUSED": {"why": "Every new opening (and tail) drafted for these queued scripts failed the gates after every attempt: the hook rule, directive truth, the title truth guard, exclusions or a dead source URL. The scripts are unchanged and the upload lanes hold them; the next daily run drafts again.", "max_consecutive": 5, "escalation": "Five days of refusals for the same scripts means the $0 route cannot write a passing opening for them; read the notes in the queue-reopen stop record.", "plain": "some queued scripts could not get a passing new hook yet; retrying daily"},
@@ -606,16 +607,6 @@
       },
       "plain": "the YouTube login is for a different channel; only you can sign in as the right one"
     },
-    "DELEGATED_HARVEST_STALE": {
-      "why": "research/imagery_video.py runs on the Mac's nightly batch (the only host with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows it has not run inside harvest.delegated_max_age_days. The batch runs it every night the Mac is awake with its lid open; the next run's stamp clears this. The Mac is the one external host she alone holds.",
-      "max_consecutive": 2,
-      "escalation": "Two consecutive Saturdays with no stamp from the Mac is nearly a month with no video harvest, on a pool the channel's format depends on. Go red - and if the Mac's batch IS running nightly, the harvest step in bin/batch-session.sh is not reaching loop/footage_lane.py --host mac-batch, which is a defect.",
-      "holds": {
-        "kind": "external_service",
-        "what": "the Mac, the only host with ffmpeg and Apple Vision"
-      },
-      "plain": "the Mac has not collected new footage recently"
-    },
     "LANE_NOT_ARMED_*": {
       "why": "A scheduled lane that has never completed a real run arms ITSELF: its first scheduled run with every required secret present is the arming run (loop/arming.py gate). This stop is raised only when one of those secrets is absent, and names which. Only she can supply a repository secret.",
       "max_consecutive": 10,
@@ -652,6 +643,16 @@
     "OWNER_HOLD_NOT_APPLIED": {
       "why": "loop/owner_hold.py asked YouTube to clear a withdrawn video's publishAt and keep it private, and after a second round trip and a delayed read it still carries a date or is not private: it may go public on that date. A real defect.",
       "plain": "a video taken off the schedule still shows a publish date on YouTube"
+    },
+    "DELEGATED_HARVEST_STALE": {
+      "why": "research/imagery_video.py runs on the Mac's nightly batch (the only host with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows it has not run inside harvest.delegated_max_age_days. The batch runs it every night the Mac is awake with its lid open; the next run's stamp clears this. The Mac is the one external host she alone holds.",
+      "max_consecutive": 2,
+      "escalation": "Two consecutive Saturdays with no stamp from the Mac is nearly a month with no video harvest, on a pool the channel's format depends on. Go red - and if the Mac's batch IS running nightly, the harvest step in bin/batch-session.sh is not reaching loop/footage_lane.py --host mac-batch, which is a defect.",
+      "holds": {
+        "kind": "external_service",
+        "what": "the Mac, the only host with ffmpeg and Apple Vision"
+      },
+      "plain": "the Mac has not collected new footage recently"
     },
     "ZERO_WORK": {
       "why": "Rule 0. A stage that did nothing is indistinguishable from a stage that is broken, so this one always reaches a person.",

@@ -50,6 +50,7 @@ export LOOP_STAGE="$STAGE"
 FILE="${1:?usage: loop-stage.sh <stage> <file.py> [args…]}"; shift
 
 echo "::group::$STAGE"
+STAGE_START="$(date +%s)"
 "$PY" "$FILE" "$@"
 RC=$?
 echo "::endgroup::"
@@ -355,19 +356,47 @@ else
   fi
 fi
 
+# ---------------------------------------------------------------- clean run
+# A STAGE THAT RUNS CLEAN CLOSES ITS OWN OLD ISSUES (hostile review 2026-11-02,
+# finding 14: #126 from September and six more stayed open after their stages
+# recovered). Only a run that did real work and took NO stop of its own this
+# run - a held or self-resolving stop also exits 0, and closing its tracker
+# would page again (loop/held.py).
+STOPPED_THIS_RUN=""
+if [ -f "$STOPFILE" ] && [ "$(stat -f %m "$STOPFILE" 2>/dev/null || stat -c %Y "$STOPFILE")" -ge "$STAGE_START" ]; then
+  STOPPED_THIS_RUN=1
+fi
+if [ "$RC" -eq 0 ] && [ -z "$STOPPED_THIS_RUN" ] && command -v gh >/dev/null 2>&1 \
+   && [ -n "${GITHUB_TOKEN:-}" ]; then
+  for n in $(STAGE="$STAGE" gh issue list --state open --limit 200 --json number,title \
+               --jq '.[] | select(.title | startswith("loop: " + env.STAGE + " ")) | .number' 2>/dev/null); do
+    gh issue close "$n" --comment "The **$STAGE** stage ran clean: <${GITHUB_SERVER_URL:-https://github.com}/${GITHUB_REPOSITORY:-}/actions/runs/${GITHUB_RUN_ID:-}>. Closed automatically." >/dev/null 2>&1 \
+      && echo "closed issue #$n: $STAGE ran clean"
+  done
+fi
+
 # ---------------------------------------------------------------- surface
 if [ "$RC" -ne 0 ] && command -v gh >/dev/null 2>&1 && [ -n "${GITHUB_TOKEN:-}" ]; then
-  TITLE="loop: $STAGE needs you — $WEEK"
+  # WHO IS WOKEN (hostile review 2026-11-02, finding 4). Only a stop that waits
+  # on HER key or account (disposition owner_action) mentions her and says
+  # "needs you". Every other stop and every crash is an agent's to fix: the
+  # issue is labelled agent-fix, carries the run link (and, for a stop, its
+  # record), and mentions nobody. 89 codes used to tag her by default.
+  if [ "$DISPOSITION" = "owner_action" ]; then
+    TITLE="loop: $STAGE needs you — $WEEK"
+    ISSUE_LABEL="loop-stop"
+  else
+    TITLE="loop: $STAGE agent fix — $WEEK"
+    ISSUE_LABEL="agent-fix"
+  fi
   BODY_FILE="$(mktemp)"
   {
-    # @-mention the owner. GitHub's DEFAULT notification setting for your own
-    # repositories is "Participating and @mentions" - an issue opened by Actions
-    # is neither, so without this line the issue appears silently in the repo
-    # and no email is ever sent. This is the only thing that makes a named stop
-    # reach a human who is not looking at GitHub, which is the entire point of
-    # a named stop.
-    echo "@${OWNER_HANDLE:-seq23}"
-    echo
+    # @-mention the owner ONLY for her own key or account. GitHub's default
+    # notification setting emails an @mention; nothing else reaches her.
+    if [ "$DISPOSITION" = "owner_action" ]; then
+      echo "@${OWNER_HANDLE:-seq23}"
+      echo
+    fi
     if [ "$RC" -eq 3 ]; then
       echo "The **$STAGE** stage took a NAMED STOP for week \`$WEEK\`."
       echo
@@ -376,8 +405,13 @@ if [ "$RC" -ne 0 ] && command -v gh >/dev/null 2>&1 && [ -n "${GITHUB_TOKEN:-}" 
       echo "The **$STAGE** stage FAILED for week \`$WEEK\` with exit code $RC."
     fi
     echo
-    if [ -f "$STOPFILE" ]; then
+    # The stop record only for a STOP (rc 3). A crash (rc 1) left whatever
+    # record an earlier run wrote, and #268 pasted a success record
+    # (HANDOFF_UP_TO_DATE) into a crash report (finding 15).
+    if [ "$RC" -eq 3 ] && [ -f "$STOPFILE" ]; then
       echo '```json'; cat "$STOPFILE"; echo '```'
+    elif [ "$RC" -ne 3 ]; then
+      echo "A crash, not a named stop: the traceback is in the run log below."
     fi
     echo
     echo "Run: <${GITHUB_SERVER_URL:-https://github.com}/${GITHUB_REPOSITORY:-}/actions/runs/${GITHUB_RUN_ID:-}>"
@@ -393,10 +427,10 @@ if [ "$RC" -ne 0 ] && command -v gh >/dev/null 2>&1 && [ -n "${GITHUB_TOKEN:-}" 
   # reported twice in six hours; #26 and #29 are one mon-draft stop. Creating
   # the label is what makes "already reported" answerable at all.
   if ! gh label list --limit 200 --json name --jq '.[].name' \
-       | grep -qx "loop-stop"; then
-    echo "creating the loop-stop label (it did not exist)"
-    gh label create loop-stop --color d73a4a \
-      --description "A loop stage took a named stop and needs the owner"
+       | grep -qx "$ISSUE_LABEL"; then
+    echo "creating the $ISSUE_LABEL label (it did not exist)"
+    gh label create "$ISSUE_LABEL" --color d73a4a \
+      --description "A loop stage stopped: loop-stop needs the owner, agent-fix an agent"
   fi
 
   # DEDUPE ON THE TITLE, NOT THE LABEL. The title is the stop's identity
@@ -413,7 +447,7 @@ if [ "$RC" -ne 0 ] && command -v gh >/dev/null 2>&1 && [ -n "${GITHUB_TOKEN:-}" 
       && echo "commented on issue #$EXISTING"
   else
     ISSUE_URL="$(gh issue create --title "$TITLE" --body-file "$BODY_FILE" \
-      --label loop-stop 2>/dev/null)"
+      --label "$ISSUE_LABEL" 2>/dev/null)"
     if [ -z "$ISSUE_URL" ]; then
       ISSUE_URL="$(gh issue create --title "$TITLE" --body-file "$BODY_FILE")"
     fi
