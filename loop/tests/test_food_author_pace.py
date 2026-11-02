@@ -35,16 +35,25 @@ def check(ok: bool, msg: str) -> None:
 
 
 MEASURED = {"chili-coffee-honey (26 Oct)": 5145 / (1953.321 / 60), "first episode": 169.5}
+# The OLD style (unstamped scripts: 13 Oct, chili/coffee/honey) keeps its own
+# window and rate; new episodes are calm (config/food_style.json, 2 Nov 2026).
+(OLD_MIN, OLD_AIM, OLD_WPM) = A.length_of(None)
 # 1. pinned to the slower measured rate (within 1 wpm)
-check(abs(A.FOOD_WPM - MEASURED["chili-coffee-honey (26 Oct)"]) <= 1.0,
-      f"FOOD_WPM {A.FOOD_WPM} is not the measured 158.0")
+check(abs(OLD_WPM - MEASURED["chili-coffee-honey (26 Oct)"]) <= 1.0,
+      f"the old style's FOOD_WPM {OLD_WPM} is not the measured 158.0")
 # 2. the aimed word count lands inside the window at EVERY measured rate
-aim_words = A.AIM_MINUTES * A.FOOD_WPM
+aim_words = OLD_AIM * OLD_WPM
 for name, rate in MEASURED.items():
     mins = aim_words / rate
-    check(A.MINUTES[0] <= mins <= A.MINUTES[1],
+    check(OLD_MIN[0] <= mins <= OLD_MIN[1],
           f"aim of {aim_words:.0f} words runs {mins:.1f} min at {name}'s {rate:.1f} wpm")
-check(tuple(A.MINUTES) == (28.0, 32.0), f"the window moved: {A.MINUTES}")
+check(tuple(OLD_MIN) == (28.0, 32.0), f"the old style's window moved: {OLD_MIN}")
+# ...and the calm style's: aim 15 min inside its own 10-18 window at its rate
+if A.STYLE:
+    L = A.STYLE["length"]
+    check(tuple(A.MINUTES) == tuple(L["minutes"]) and A.AIM_MINUTES == L["aim_minutes"],
+          f"new episodes are not authored in the calm window: {A.MINUTES}, aim {A.AIM_MINUTES}")
+    check(A.MINUTES[0] <= A.AIM_MINUTES <= A.MINUTES[1], "the calm aim is outside its window")
 
 # 3-4. the stop line carries the spec's own reason
 with tempfile.TemporaryDirectory() as td:

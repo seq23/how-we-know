@@ -52,24 +52,34 @@ def check(label: str, ok: bool, detail: str = "") -> None:
 
 
 # 1. one copy of the window
-check("food_author's window IS food_episode.EPISODE_MINUTES",
-      tuple(FA.MINUTES) == tuple(FE.EPISODE_MINUTES), f"{FA.MINUTES} vs {FE.EPISODE_MINUTES}")
+check("food_author's window IS food_episode's for the same style",
+      tuple(FA.MINUTES) == tuple(FE.minutes_for(FA.STYLE)), f"{FA.MINUTES} vs {FE.minutes_for(FA.STYLE)}")
+check("the old style's window is still food_episode.EPISODE_MINUTES",
+      tuple(FA.length_of(None)[0]) == tuple(FE.EPISODE_MINUTES), str(FA.length_of(None)))
+# cases 2-4 are the OLD style's (the renders the 26 Oct incident is about)
+OLD = None
+OLD_MIN = FA.length_of(OLD)[0]
 
 # 2. the measured rates
-rates = FA.measured_rates()
+rates = FA.measured_rates(style=OLD)
 check("measured_rates() reads at least two stitched food episodes", len(rates) >= 2, str(rates))
 check("a superseded render still counts (the 158 wpm chili measurement)",
       any(n == "what-is-inside-chili-coffee-honey" and 150 < r < 165 for n, r in rates), str(rates))
-rs = [r for _, r in rates] or [FA.FOOD_WPM]
+rs = [r for _, r in rates] or [FA.length_of(OLD)[2]]
 
 # 3. the window holds at every rate
-lo, aim, hi = FA.word_window(rs)
+lo, aim, hi = FA.word_window(rs, style=OLD)
 check("the window is not empty at the measured rates", lo <= aim <= hi, f"{lo}, {aim}, {hi}")
 for r in rs:
-    check(f"the window's floor {lo} runs >= {FA.MINUTES[0]} min at {r:.1f} wpm",
-          lo / r >= FA.MINUTES[0], f"{lo / r:.2f}")
-    check(f"the window's ceiling {hi} runs <= {FA.MINUTES[1]} min at {r:.1f} wpm",
-          hi / r <= FA.MINUTES[1], f"{hi / r:.2f}")
+    check(f"the window's floor {lo} runs >= {OLD_MIN[0]} min at {r:.1f} wpm",
+          lo / r >= OLD_MIN[0], f"{lo / r:.2f}")
+    check(f"the window's ceiling {hi} runs <= {OLD_MIN[1]} min at {r:.1f} wpm",
+          hi / r <= OLD_MIN[1], f"{hi / r:.2f}")
+# a calm render's rate never sizes an old-style script, nor the reverse
+if FA.STYLE:
+    check("measured_rates(calm) shares no render with the old style's",
+          not ({n for n, _ in rates} & {n for n, _ in FA.measured_rates()}),
+          str(FA.measured_rates()))
 
 # 4. the incident, reproduced
 incident = "**Word count:** 5151\n"
@@ -104,7 +114,8 @@ src = inspect.getsource(FL.run)
 gate, render = src.find("FOOD_RUNTIME_OFF_CONTRACT"), src.find('"render" not in st["stages"]')
 check("food_lane.run checks the voiced runtime before it renders",
       0 <= gate < render, f"gate at {gate}, render at {render}")
-check("food_lane.run reads the window from FE.EPISODE_MINUTES", "FE.EPISODE_MINUTES" in src)
+check("food_lane.run reads the window for the script's own style",
+      "FE.minutes_for(FE.script_style(script))" in src)
 check("food_lane.run keys its state and work dir on the script's sha",
       "script_sha" in src and "WORK / ep / sha" in src)
 

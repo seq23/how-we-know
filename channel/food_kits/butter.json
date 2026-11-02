@@ -58,6 +58,42 @@
    ],
    "take": 2,
    "sound": null
+  },
+  {
+   "query": "butter pouring slow motion",
+   "uses": [
+    "pour",
+    "liquid"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "butter mixing close up",
+   "uses": [
+    "mix",
+    "macro"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "butter melting close up",
+   "uses": [
+    "drip",
+    "macro"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "butter glossy macro",
+   "uses": [
+    "macro",
+    "coat"
+   ],
+   "take": 2,
+   "sound": null
   }
  ],
  "off": [

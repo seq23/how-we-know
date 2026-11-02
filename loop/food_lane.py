@@ -462,7 +462,7 @@ def run(slug: str | None, until: str | None) -> int:
         # IS the episode's length (the stitch matched it to 0.01 s), so a
         # narration outside check_episode's window is known here, not after
         # the stitch where only V55 on main would say so.
-        lo, hi = FE.EPISODE_MINUTES
+        lo, hi = FE.minutes_for(FE.script_style(script))   # the calm window if stamped
         if not lo <= off / 60 <= hi:
             say(f"NAMED STOP [FOOD_RUNTIME_OFF_CONTRACT]: {ep} narrates {off / 60:.1f} min, "
                 f"outside {lo:.0f}-{hi:.0f}; nothing rendered. Trim scripts/food/{ep}.md with "

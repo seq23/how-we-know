@@ -41,8 +41,22 @@ REGISTERS = HERE / "registers.json"
 SR = 24000
 
 
-def registers() -> dict:
-    return json.loads(REGISTERS.read_text())
+def registers(style: dict | None = None) -> dict:
+    """voice/registers.json; for a calm episode (its plan's beats carry the
+    style id) the food style's voice is laid over the one register
+    (config/food_style.json "voice": softer, slower, longer pauses; owner,
+    2 Nov 2026). Still ONE voice start to finish."""
+    regs = json.loads(REGISTERS.read_text())
+    if style:
+        regs["registers"]["standard"] = {**regs["registers"]["standard"], **style["voice"],
+                                         "style": style["id"]}
+    return regs
+
+
+def food_style() -> dict | None:
+    sys.path.insert(0, str(HERE.parent / "visuals"))
+    import food_style as FS                                  # noqa: PLC0415
+    return FS.for_lane("food-science")
 
 
 def pitch_factor(semitones: float) -> float:
@@ -78,7 +92,8 @@ def synthesise(plan: list[dict], out: Path, reference: str,
     import torch                                             # noqa: PLC0415
     from chatterbox.tts import ChatterboxTTS                 # noqa: PLC0415
     torch.set_num_threads(min(4, os.cpu_count() or 4))
-    regs = registers()["registers"]
+    style = food_style() if any(b.get("style") for b in plan) else None
+    regs = registers(style)["registers"]
     model = ChatterboxTTS.from_pretrained(device=device)
     out.mkdir(parents=True, exist_ok=True)
     import soundfile as sf                                   # noqa: PLC0415
@@ -136,6 +151,11 @@ def synthesise(plan: list[dict], out: Path, reference: str,
             gap = reg["pause_sentence_s"] if ci < len(chunks) - 1 else reg["pause_paragraph_s"]
             pieces.append(np.zeros(int(gap * SR), np.float32))
             cursor += gap
+        # imagery only: picture with no voice after this beat (calm style;
+        # visuals/food_episode.imagery_only_s puts it in the plan)
+        hold = float(beat.get("imagery_only_s") or 0)
+        if hold:
+            pieces.append(np.zeros(int(hold * SR), np.float32))
         audio = np.concatenate(pieces)
         peak = float(np.abs(audio).max())
         if peak > 0.97:
@@ -144,6 +164,8 @@ def synthesise(plan: list[dict], out: Path, reference: str,
         meta = {"index": i, "file": wav_path.name, "register": "standard",
                 "pitch_factor": round(f, 4), "text": beat["text"],
                 "words": len(beat["text"].split()), "seed": int(beat.get("seed", 1234)),
+                "imagery_only_s": float(beat.get("imagery_only_s") or 0),
+                **({"style": beat["style"]} if beat.get("style") else {}),
                 "duration": round(len(audio) / SR, 3), "spans": spans}
         meta_path.write_text(json.dumps(meta, indent=1))
         manifest["beats"].append(meta)
@@ -214,6 +236,7 @@ def measure(beat_dir: Path) -> dict:
         total = len(x) / sr
         f0 = _median_f0(x, sr)
         beats.append({"index": b["index"], "register": b.get("register", "standard"),
+                      **({"style": b["style"]} if b.get("style") else {}),
                       "pitch_factor": b.get("pitch_factor", 1.0), "words": b["words"],
                       "start_s": round(t0, 2), "total_s": round(total, 3),
                       "spoken_s": round(spoken, 3),
@@ -239,6 +262,35 @@ def measure(beat_dir: Path) -> dict:
             "words": sum(b["words"] for b in beats)}
 
 
+def narration_problems(meas: dict, style: dict | None = None) -> list[str]:
+    """YouTube's reused-content rule: original narration is the main content,
+    footage illustrates it. With the calm style's long imagery-only holds, the
+    voiced share of the runtime must stay >= narration.share_min and no beat may
+    leave more than narration.silence_max_s unvoiced. [] with no style.
+    (Worded "unvoiced ..." / "narration ...", never "beat N": the food night
+    re-draws "beat N" problems, and a re-draw cannot fix a hold.)"""
+    if style is None and any(b.get("style") for b in meas.get("beats") or []):
+        style = food_style()
+    if not style:
+        return []
+    n = style["narration"]
+    beats = meas.get("beats") or []
+    total = sum(float(b["total_s"]) for b in beats)
+    spoken = sum(float(b.get("spoken_s") or 0) for b in beats)
+    if not total:
+        return ["narration: nothing measured"]
+    p = []
+    if spoken / total < n["share_min"]:
+        p.append(f"narration covers {spoken / total:.0%} of the runtime, under "
+                 f"{n['share_min']:.0%}: footage would carry the video (reused content)")
+    for b in beats:
+        gap = float(b["total_s"]) - float(b.get("spoken_s") or 0)
+        if gap > n["silence_max_s"]:
+            p.append(f"unvoiced {gap:.1f}s at beat {b['index']}, over "
+                     f"{n['silence_max_s']:.0f}s")
+    return p
+
+
 def check(meas: dict, contract: dict | None = None) -> list[str]:
     """ONE voice start to finish, measured. [] = it holds; a mid-video change of
     pitch or pace is a failure."""
@@ -252,6 +304,7 @@ def check(meas: dict, contract: dict | None = None) -> list[str]:
         p.append(f"registers {sorted(regs)} - food videos are one voice ({c['only_register']})")
     if any(abs(float(b.get("pitch_factor") or 1.0) - 1.0) > 1e-3 for b in beats):
         p.append("a beat was pitch-shifted at synthesis - one voice means no shift anywhere")
+    p += narration_problems(meas)
     big = [b for b in beats if b["words"] >= c["min_words_per_measured_beat"]]
     if len(big) < 2:
         p.append(f"only {len(big)} beat(s) long enough to measure; need >= 2")

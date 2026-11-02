@@ -63,6 +63,24 @@ def piece_order(pcs: dict) -> list[str]:
         [p for p in pcs if p not in ("open", "tail")] + (["tail"] if "tail" in pcs else [])
 EPISODE_MINUTES = (28.0, 32.0)          # the first-video format; owner, 13 Oct 2026
 MIN_CLIPS_PER_SEGMENT = 10
+# The calm style (config/food_style.json, owner 2 Nov 2026: "we can aim for
+# 15 min videos", floor 10; longer holds put fewer distinct clips in a
+# segment) - for a stamped script / a spec made in it, never retroactively.
+import food_style as _style                                    # noqa: E402
+
+
+def minutes_for(style: dict | None) -> tuple[float, float]:
+    return tuple(style["length"]["minutes"]) if style else EPISODE_MINUTES
+
+
+def min_clips_for(style: dict | None) -> int:
+    return int(style["picture"]["min_clips_per_segment"]) if style else MIN_CLIPS_PER_SEGMENT
+
+
+def script_style(script: Path) -> dict | None:
+    return _style.style_of_text(Path(script).read_text(encoding="utf-8"))
+
+
 ATTRIBUTION_READ_SHARE_MIN = 0.8
 YT_MIN_CHAPTER_S = 10.0
 
@@ -76,13 +94,35 @@ def slug_of(script: Path) -> str:
 def plans(script: Path, out: Path) -> dict[str, int]:
     paras = food.parse(script)
     out.mkdir(parents=True, exist_ok=True)
+    style = script_style(script)
     made = {}
     for piece, idx in food.pieces(paras).items():
         plan = [{"text": paras[i]["text"], "register": "standard",
                  "section": paras[i]["section"]} for i in idx]
+        for k, beat in enumerate(plan):
+            hold = imagery_only_s(plan, k, piece, style)
+            if hold:
+                beat["imagery_only_s"] = hold
+            if style:
+                beat["style"] = style["id"]
         (out / f"plan-{piece}.json").write_text(json.dumps(plan, indent=1))
         made[piece] = len(plan)
     return made
+
+
+def imagery_only_s(plan: list[dict], k: int, piece: str, style: dict | None) -> float:
+    """Seconds of picture with no voice after beat k (the calm style; owner,
+    2 Nov 2026: "long amount of imagery with no talking"): a hold after each
+    section, a longer one after a food segment's last beat. 0 for the cold
+    open and the tail, and 0 with no style."""
+    io = (style or {}).get("imagery_only")
+    if not io or piece in ("open", "tail"):
+        return 0.0
+    if k == len(plan) - 1:
+        return float(io["after_segment_s"])
+    if plan[k + 1].get("section") != plan[k].get("section"):
+        return float(io["after_section_s"])
+    return 0.0
 
 
 # ----------------------------------------------------------------- render
@@ -292,6 +332,7 @@ def attribution_read(final: Path, pieces_meta: list[dict], per_piece: int = 4) -
 
 def stitch(script: Path, voice_root: Path, work: Path, final: Path) -> dict:
     slug = slug_of(script)
+    food.use(script_style(script))              # the spec's preset id names the style
     paras = food.parse(script)
     pcs = food.pieces(paras)
     order = piece_order(pcs)
@@ -488,12 +529,14 @@ def check_episode(spec: dict) -> list[str]:
         p.append(f"pieces {order}: an episode is the cold open, its segments, then the tail")
     if len(segs) != len(set(segs)):
         p.append(f"a segment appears twice: {order}")
-    lo, hi = EPISODE_MINUTES
+    style = _style.style_of_spec(spec)
+    lo, hi = minutes_for(style)
     mins = float(spec.get("duration_s") or 0) / 60
     if not lo <= mins <= hi:
         p.append(f"episode runs {mins:.1f} min, outside {lo:.0f}-{hi:.0f}")
     for pm in pieces:
-        role_spec = {"shots": pm.get("shots") or [], "piece": pm["piece"] if pm["piece"] in
+        role_spec = {"preset": spec.get("preset"),
+                     "shots": pm.get("shots") or [], "piece": pm["piece"] if pm["piece"] in
                      ("open", "tail", *food.SEGMENTS) else "sample",
                      "ai_assets": pm.get("ai_assets") or [], "clip_licences": pm.get("clip_licences") or {},
                      "credits": pm.get("credits") or {}, "captions": pm.get("captions") or {},
@@ -515,8 +558,8 @@ def check_episode(spec: dict) -> list[str]:
                 p.append(f"{pm['piece']}: does not open by saying its question plainly "
                          f"(first beat {q[:60]!r})")
     for seg, c in (spec.get("clips_per_segment") or {}).items():
-        if c.get("count", 0) < MIN_CLIPS_PER_SEGMENT:
-            p.append(f"{seg}: {c.get('count')} real clips on screen, fewer than {MIN_CLIPS_PER_SEGMENT}")
+        if c.get("count", 0) < min_clips_for(style):
+            p.append(f"{seg}: {c.get('count')} real clips on screen, fewer than {min_clips_for(style)}")
     for seg in segs:
         if seg not in (spec.get("clips_per_segment") or {}):
             p.append(f"{seg}: no clip count recorded")

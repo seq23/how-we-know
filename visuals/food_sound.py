@@ -52,6 +52,10 @@ CUE_FOR = {
     "snap": ("snap", "break"),
 }
 BED_DB = -26.0                    # cue level before ducking (dBFS RMS)
+# The calm style (config/food_style.json, owner 2 Nov 2026, "almost asmr")
+# sets a quieter bed for a calm episode: visuals/food.render sets BED_DB from
+# the episode's style before build_bed, and back to BASE_BED_DB otherwise.
+BASE_BED_DB = BED_DB
 CONTRACT = {
     "duck_db_at_least": 6.0,          # bed drops this much while she speaks
     "voice_over_bed_db_at_least": 15.0,

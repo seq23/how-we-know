@@ -1733,3 +1733,45 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - Guard: `loop/tests/test_owner_hold_longform.py` (17 checks). Negative proofs: removing the hold
   check in guard(), the withdrawn re-queue, the digest line, the footage filter or the read-back
   poll each turns it red; restored, green.
+
+## 2026-11-02 — Food goes calm: mesmerising imagery, limited talk, ~15 minutes
+
+- **Owner, 2 Nov 2026 (verbatim):** "The food videos need to focus on hypnotizing imagery and
+  pretty mesmerizing images that get people to be hooked disassociate and fall asleep to the point
+  is almost asmr" / "Don't give me a sample just do it going forward" / "We can have videos with
+  long amount of imagery with no talking too or limited talking. We need to optimize everything
+  for viewers." / "They can be less than 28 min - we can aim for 15 min videos". This supersedes
+  the 13 Oct "one voice, normal explainer pace" read and the 28-32 min window, for food only.
+- **Where it lives:** `config/food_style.json` (`food-calm-v1`), read only through
+  `visuals/food_style.for_lane("food-science")`:
+  - picture (`visuals/food.py` PRESET): opening cuts 5-8 s, body holds 10-20 s (was 6-12),
+    1.5 s crossfades, every plain body clip in slow motion, clips tagged pour/drip/liquid/
+    coat/mix/macro preferred; kits gain "pouring slow motion", "mixing close up", "melting close
+    up", "glossy macro" searches (stock licence checks unchanged);
+  - voice (`voice/food_voice.registers`): same one voice, softer and slower (exaggeration 0.3,
+    cfg 0.3, temperature 0.6), sentence pauses 0.5 s, paragraph pauses 1.6 s;
+  - imagery only (`visuals/food_episode.imagery_only_s`): 8 s of picture with no voice after each
+    section, 24 s after each food segment; none in the cold open or tail;
+  - sound: the bed at -30 dB (was -26), still ducked under the voice;
+  - length: window 10-18 min, aim 15, at an estimated 120 wpm total-time rate until a calm
+    episode is measured (old-style measurements no longer count).
+- **Per episode, never retroactive:** a script is calm when it carries `**Style:** food-calm-v1`
+  (`food_author.assemble` stamps every new one); a render is judged by the preset its spec
+  records (`food_style.style_of_spec`). The 13 Oct and chili/coffee/honey renders stay judged by
+  the old preset and 28-32 window; old-style voice rates never size a calm script, nor the reverse.
+- **Reused-content minimum (chosen):** narration must cover **at least 60 % of the runtime**, and
+  no beat may leave **more than 30 s unvoiced** (`food_voice.narration_problems`, inside the voice
+  contract the food night already runs before rendering). Why: YouTube demonetises "reused
+  content" where third-party footage carries the video without significant original commentary;
+  60 % keeps our own narration the main content while leaving ~6 of 15 minutes for imagery alone,
+  and the 30 s cap means no stretch is ever a bare run of stock clips.
+- **The in-flight episode:** `what-is-inside-butter-rice-meat` (authored that morning at 4,857
+  words, 28-32 min, unrendered) was re-assembled from its own part drafts at the new window
+  with `food_author.py --refit` (1,713 words, no model call) and its kits rewritten, so the Sat
+  7 Nov episode is the first calm one.
+- **Guard:** `loop/tests/test_food_calm_style.py`. Negative proofs: `"lanes": []` fails "the
+  food-science lane does not get the food style"; adding "deep-sea" fails "lane 'deep-sea' gets
+  the food style"; ignoring the stamp in `style_of_text` fails "the in-flight butter/rice/meat
+  script is not stamped calm"; restored, green. `test_food_author_pace.py` and
+  `test_food_runtime_fits_every_rate.py` now pin the old window/rate for the old style and the
+  calm window for new episodes.

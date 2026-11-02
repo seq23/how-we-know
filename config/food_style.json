@@ -1,0 +1,46 @@
+{
+  "_why": "The FOOD lane's style, read by the render code (visuals/food_style.py -> visuals/food.py PRESET, voice/food_voice.py, visuals/food_sound.py, visuals/food_episode.py, loop/food_author.py). Only the food-science lane reads it; deep sea and materials render through the batch and never import it. Owner, 2 Nov 2026: \"The food videos need to focus on hypnotizing imagery and pretty mesmerizing images that get people to be hooked disassociate and fall asleep to the point is almost asmr\" / \"Don't give me a sample just do it going forward\" / \"We can have videos with long amount of imagery with no talking too or limited talking. We need to optimize everything for viewers.\" / \"They can be less than 28 min - we can aim for 15 min videos\". Guarded by loop/tests/test_food_calm_style.py; decision in docs/DECISION-LOG.md (2026-11-02, calm food).",
+  "id": "food-calm-v1",
+  "lanes": ["food-science"],
+  "picture": {
+    "opening_cut_s": [5.0, 8.0],
+    "body_hold_s": [10.0, 20.0],
+    "min_clips_per_segment": 6,
+    "crossfade_s": 1.5,
+    "still_zoom": [1.0, 1.05],
+    "body_treatment": "slowmo",
+    "prefer_uses": ["pour", "drip", "liquid", "sheets", "coat", "mix", "macro"],
+    "extra_queries": [
+      ["{f} pouring slow motion", ["pour", "liquid"], 3],
+      ["{f} mixing close up", ["mix", "macro"], 2],
+      ["{f} melting close up", ["drip", "macro"], 2],
+      ["{f} glossy macro", ["macro", "coat"], 2]
+    ]
+  },
+  "voice": {
+    "exaggeration": 0.3,
+    "cfg_weight": 0.3,
+    "temperature": 0.6,
+    "pause_sentence_s": 0.5,
+    "pause_paragraph_s": 1.6
+  },
+  "imagery_only": {
+    "after_section_s": 8.0,
+    "after_segment_s": 24.0,
+    "_note": "silent picture after each section and each food segment: footage alone, the quiet bed under it"
+  },
+  "narration": {
+    "share_min": 0.6,
+    "silence_max_s": 30.0,
+    "_why": "YouTube's reused-content rule asks for significant original commentary; stock footage with long unvoiced stretches reads as a compilation. 60% of the runtime voiced keeps original narration the main content while leaving ~6 of 15 minutes for imagery alone, and no unvoiced stretch is longer than 30 s, so no part of the video is a bare clip run."
+  },
+  "sound": {
+    "bed_db": -30.0
+  },
+  "length": {
+    "minutes": [10.0, 18.0],
+    "aim_minutes": 15.0,
+    "wpm_estimate": 120.0,
+    "_why": "owner: aim 15, floor 10. wpm_estimate is the total-time rate (pauses and imagery-only included) used until a calm episode has been stitched and measured; the old register measured 158."
+  }
+}
