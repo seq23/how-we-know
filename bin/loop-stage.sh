@@ -216,6 +216,11 @@ if [ "$STAGE" = "mon-draft" ]; then
   git add scripts 2>/dev/null
   git add pov/pov-assignments.json 2>/dev/null
 fi
+# the daily runway check (2026-11-02) promotes scripts exactly as mon-draft does
+if [ "$STAGE" = "daily-runway" ]; then
+  git add scripts 2>/dev/null
+  git add pov/pov-assignments.json 2>/dev/null
+fi
 # The footage/imagery harvest writes the cleared manifests and the assets they
 # describe. Without this line the lane would run every week, harvest correctly,
 # and throw the result away on the runner - "runs but inert" with a green tick.
