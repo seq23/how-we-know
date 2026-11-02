@@ -257,11 +257,7 @@ def _check_output(path: str) -> None:
 
 
 # ------------------------------------------------------------ THE ONE LIST
-BUILDERS = {
-    DEEP_SEA: build_deep_sea,
-    MATERIALS: build_materials,
-    "food-science": build_food,
-}
+
 
 
 def builder_for(domain: str):
@@ -305,28 +301,42 @@ def _set_palette(dom: str) -> None:
 def build(slug: str, out_dir: str | None = None) -> str:
     """The thumbnail a long-form upload attaches.
 
-    2026-10-13 (owner decision, repackage job 1): the CONTRACT builder
-    (visuals/thumb_contract.py) runs first - three variants under
-    <out>/variants/<slug>/, one channel grade, <=3 words, one big subject - and
-    its chooser's variant A becomes <out>/<slug>.jpg. Only when no
-    rights-verified image of the episode's subject can meet the contract
-    (ContractRefused, printed by name) does the domain builder below draw the
-    card, and validator V48 reports that episode until an image exists."""
+    ONE QUESTION PER VIDEO (owner, 2 Nov 2026): the question-photo set
+    (visuals/thumb_contract.build_question_into - a PD/CC0 photo of the
+    subject, the title question over a dark gradient, "HOW WE KNOW" mark),
+    variant A copied to <out>/<slug>.jpg. There is NO fallback: until
+    2 Nov a refusal here silently drew the domain's old text card. Now a
+    refusal raises ContractRefused, main() reports it as the named stop
+    THUMB_NO_SUBJECT_PHOTO, and with no thumbnail the episode cannot be
+    shelved or uploaded (backfill.local_assets, cloud_upload)."""
     dom = domain_of(slug)
     _set_palette(dom)
     out = out_dir or OUT
     import thumb_contract                                  # noqa: PLC0415
-    try:
-        r = thumb_contract.build_variants(
-            slug, out_root=os.path.join(out, "variants"))
-        os.makedirs(out, exist_ok=True)
-        path = os.path.join(out, f"{slug}.jpg")
-        shutil.copyfile(r["chosen"], path)
-        _check_output(path)
-        return path
-    except thumb_contract.ContractRefused as e:
-        print(f"  CONTRACT_REFUSED {e}", flush=True)
-    return builder_for(dom)(slug, out_dir=out_dir)
+    r = thumb_contract.build_question_into(
+        slug, os.path.join(out, "variants", slug)
+        if out_dir else os.path.join(thumb_contract.VARIANTS_DIR, slug))
+    os.makedirs(out, exist_ok=True)
+    path = os.path.join(out, f"{slug}.jpg")
+    shutil.copyfile(r["chosen"], path)
+    _check_output(path)
+    return path
+
+
+def build_question(slug: str, out_dir: str | None = None,
+                   script_path: str | None = None) -> str:
+    """Every domain's builder since 2 Nov 2026 (the one layout)."""
+    return build(slug, out_dir=out_dir)
+
+
+# One layout for every domain (owner, 2 Nov 2026). The old per-domain
+# builders (build_deep_sea / build_materials / build_food) are kept only so
+# the hand-numbered legacy cards can be rebuilt by hand; nothing calls them.
+BUILDERS = {
+    DEEP_SEA: build_question,
+    MATERIALS: build_question,
+    "food-science": build_question,
+}
 
 
 def main(argv: list[str]) -> int:
@@ -352,6 +362,27 @@ def main(argv: list[str]) -> int:
             refused.append((slug, str(e)[:160]))
     for slug, why in refused:
         print(f"  SKIP {slug:<48} {why}")
+    photo = [s for s, w in refused if "NO_SUBJECT_PHOTO" in w]
+    if photo:
+        # A NAMED stop a human sees (loop/state/stops via common.Stage), never
+        # a silent text card: the episode stays off the shelf until a PD/CC0
+        # photo of its subject is harvested.
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        from common import NamedStop, Stage, week_id       # noqa: PLC0415
+        st = Stage("thumbnail-photo", week_id())
+        try:
+            st.named_stop(
+                "THUMB_NO_SUBJECT_PHOTO",
+                f"{len(photo)} rendered episode(s) have no public-domain or CC0 "
+                f"photograph of their subject, so no one-question thumbnail "
+                f"can be built and they are not shelved: {', '.join(photo)}",
+                held_items=sorted(photo),
+                unblock="Nothing to type: add the subject to research/"
+                        "imagery_materials.py / imagery_food.py (a pinned PD/CC0 "
+                        "Commons file) and run it; the next batch builds it.")
+        except NamedStop as e:
+            st._emit_stop(e)                               # noqa: SLF001
+        return 3
     if not made:
         # Rule 0: never exit 0 having built nothing.
         print("\nNAMED STOP: no thumbnail was built. Either none of these "

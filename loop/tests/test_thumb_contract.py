@@ -55,7 +55,7 @@ SLUGS = {"19-what-is-the-deepest-fish-ever-recorded":
 root = str(TMP / "variants")
 for slug, title in SLUGS.items():
     try:
-        r = TC.build_variants(slug, out_root=root, title=title)
+        r = TC.build_variants(slug, out_root=root, title=title, legacy=True)
     except TC.ContractRefused as e:
         check(False, f"{slug}: the contract refused an episode with verified "
                      f"imagery: {e}")

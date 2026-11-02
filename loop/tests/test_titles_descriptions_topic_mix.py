@@ -4,10 +4,11 @@ Proves, with no network and no credential (LOOP_DRY_RUN=1):
 
   TITLES (loop/titles.py)
   1. every query in every live publish-order queue gets a title that passes
-     title_problems(): keeps every search word, is not a bare question, no
+     title_problems(): keeps every search word, is ONE plain question (2 Nov 2026), no
      banned word, within 100 chars, no figure the script does not state;
   2. the rule-based rewrite is the shape the owner approved —
-     "what is the midnight zone" -> "The midnight zone — and how we know";
+     "what is the midnight zone" -> "What is the midnight zone?" (one question
+     per video, 2 Nov 2026; was "The midnight zone — and how we know");
   3. a script's own `## YouTube title` is used when it passes, and REFUSED
      (falling back) when it drops a search word, invents a number, is a bare
      question or uses clickbait — and the NEGATIVE proof: title_problems()
@@ -96,27 +97,34 @@ for r in rows:
         bad.append((r["query"], t, probs))
 check(f"all {len(rows)} queued queries get a clean title", not bad, str(bad[:3]))
 
+# ONE QUESTION PER VIDEO (owner, 2 Nov 2026): the title is the question alone.
 check("midnight zone shape",
-      T.title_for("what is the midnight zone") == "The midnight zone — and how we know",
+      T.title_for("what is the midnight zone") == "What is the midnight zone?",
       T.title_for("what is the midnight zone"))
 check("graphene shape",
-      T.title_for("how strong is graphene") == "How strong graphene really is — and how we know",
+      T.title_for("how strong is graphene") == "How strong is graphene?",
       T.title_for("how strong is graphene"))
-check("no new title is a bare question",
-      not any(T.title_for(r["query"]).endswith("?") for r in rows))
+check("a statement-shaped query becomes a grammatical question",
+      T.title_for("why deep sea creatures look so weird") == "Why do deep sea creatures look so weird?"
+      and T.title_for("why many deep sea creatures are red") == "Why are many deep sea creatures red?",
+      T.title_for("why deep sea creatures look so weird"))
+check("every new title is one plain question",
+      not [r["query"] for r in rows if T.one_question_problems(T.title_for(r["query"]))])
 
 script = ("# What is the deepest fish ever recorded?\n\n## YouTube title\n\n"
           "{t}\n\n## Direct-answer lock\n\nThe deepest fish recorded on video is "
           "a snailfish filmed at 8,336 meters.\n\n## Narration\n")
 q = "what is the deepest fish ever recorded"
-good = "The deepest fish ever recorded was filmed 8,336 m down — and how we know"
+good = "What is the deepest fish ever recorded at 8,336 m?"
 check("a passing script title is used verbatim",
       T.title_for(q, script.format(t=good)) == good, T.title_for(q, script.format(t=good)))
 for label, prop, needle in (
-        ("drops a search word", "The fish filmed 8,336 m down — and how we know", "drops search word"),
-        ("invents a number", "The deepest fish ever recorded was filmed 9,000 m down", "never does"),
-        ("is a bare question", "What is the deepest fish ever recorded?", "bare question"),
-        ("uses clickbait", "SHOCKING: the deepest fish ever recorded", "banned")):
+        ("drops a search word", "What fish was filmed 8,336 m down?", "drops search word"),
+        ("invents a number", "Was the deepest fish ever recorded 9,000 m down?", "never does"),
+        ("carries the old suffix", "The deepest fish ever recorded — and how we know",
+         "and how we know"),
+        ("is a claim", "The deepest fish ever recorded was filmed 8,336 m down", "not a question"),
+        ("uses clickbait", "SHOCKING: the deepest fish ever recorded?", "banned")):
     s_ = script.format(t=prop)
     got = T.title_for(q, s_)
     check(f"a script title that {label} is refused", got != prop, got)
@@ -138,13 +146,20 @@ import longform_title as LFT  # noqa: E402
 _saved_state = LFT.STATE
 LFT.STATE = Path(tempfile.mkdtemp(prefix="lf-title-")) / "titles.json"
 try:
+    # No titles.json row: the episode's own question, one plain question.
+    t0 = up.build_payload(item)["snippet"]["title"]
+    check("with no titles.json row the long-form upload is the plain question",
+          t0 == "How hot does a welding arc get?", t0)
+    _door = LFT.title_for_upload
+    LFT.title_for_upload = lambda *a, **k: (None, ["fixture"], "")
     try:
         up.build_payload(item)
         refused = False
     except up.TitleRefused:
         refused = True
-    check("upload.build_payload refuses a long-form upload with no passing title",
-          refused and LFT.script_title((ROOT / item["script"]).read_text()) is None)
+    finally:
+        LFT.title_for_upload = _door
+    check("upload.build_payload refuses a long-form upload with no passing title", refused)
     good_lf = "Is a Welding Arc Hotter Than the Sun?"
     LFT.STATE.write_text(json.dumps({"titles": {slug: {
         "new_title": good_lf, "checks_passed": True}}}))
@@ -155,16 +170,14 @@ try:
           "how we know" not in ep["snippet"]["title"].lower(), ep["snippet"]["title"])
     LFT.STATE.write_text(json.dumps({"titles": {slug: {
         "new_title": "Welding arc — and how we know", "checks_passed": True}}}))
-    try:
-        up.build_payload(item)
-        check("a failing titles.json title is refused at upload", False)
-    except up.TitleRefused:
-        check("a failing titles.json title is refused at upload", True)
+    t1 = up.build_payload(item)["snippet"]["title"]
+    check("a failing titles.json title never reaches the upload (the question does)",
+          t1 == "How hot does a welding arc get?", t1)
 finally:
     LFT.STATE = _saved_state
 sh = SL.build_payload("20-what-is-the-midnight-zone", "what is the midnight zone")
 check("shorts_lane.build_payload titles through titles.py",
-      sh["snippet"]["title"] == "The midnight zone — and how we know", sh["snippet"]["title"])
+      sh["snippet"]["title"] == "What is the midnight zone?", sh["snippet"]["title"])
 
 # ------------------------------------------------------------- affiliates
 print("affiliates")

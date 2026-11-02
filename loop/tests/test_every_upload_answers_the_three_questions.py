@@ -40,13 +40,23 @@ _item = {"slug": slug, "question": slug.split("-", 1)[-1].replace("-", " "),
          "script": os.path.relpath(script, os.path.join(LOOP, ".."))}
 _scratch = _P(_tf.mkdtemp(prefix="three-questions-")) / "titles.json"
 longform_title.STATE = _scratch
+# ONE QUESTION PER VIDEO (2 Nov 2026): with no titles.json row the door falls
+# back to the episode's own question - the payload must carry ONE plain
+# question; and when the door finds nothing passing, build_payload refuses.
+import titles as _titles                                           # noqa: E402
+_t0 = upload.build_payload(_item)["snippet"]["title"]
+if _titles.one_question_problems(_t0):
+    fails.append(f"with no titles.json row the payload title {_t0!r} is not one question")
+_door = longform_title.title_for_upload
+longform_title.title_for_upload = lambda *a, **k: (None, ["fixture"], "")
 try:
     upload.build_payload(_item)
-    if not longform_title.script_title(open(script).read()):
-        fails.append("upload.build_payload built a long-form payload with no "
-                     "passing title")
+    fails.append("upload.build_payload built a long-form payload with no "
+                 "passing title")
 except upload.TitleRefused:
     pass
+finally:
+    longform_title.title_for_upload = _door
 _scratch.write_text(_json.dumps({"titles": {slug: {
     "new_title": "Do Deep Sea Fish Look Weird Down There?",   # the lock (owner, 13 Oct)
     "checks_passed": True}}}))

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T10:23:15.493959+00:00",
+  "generated": "2026-11-02T04:51:06.073305+00:00",
   "domain": "food-science",
   "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
   "rights_fields_required": [
@@ -10,13 +10,14 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 10,
-  "subjects_total": 14,
+  "asset_count": 11,
+  "subjects_total": 15,
   "subjects_covered": [
     "bread-loaf",
     "chocolate-bar",
     "cocoa-beans",
     "cocoa-pod",
+    "cooked-rice",
     "dough",
     "gas-chromatograph",
     "pasteur",
@@ -143,6 +144,25 @@
       "width": 2700,
       "height": 1796,
       "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "cooked-rice",
+      "label": "COOKED RICE",
+      "title": "161White rice with pandan leaves 01.jpg",
+      "depicts": "photograph",
+      "subject_basis": "A plate of cooked white rice: the sticky grains the rice question is about.",
+      "credit_line": "COOKED RICE \u2014 PHOTOGRAPH, JUDGEFLORO (CC0)",
+      "treatment": "photo",
+      "source_org": "Judgefloro",
+      "licence": "CC0",
+      "matched_query": "__pinned__",
+      "item_url": "https://commons.wikimedia.org/wiki/File:161White_rice_with_pandan_leaves_01.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/161White_rice_with_pandan_leaves_01.jpg",
+      "local_file": "assets/food__cooked-rice__161white-rice-with-pandan-leaves-01-jpg.jpg",
+      "sha256": "2c1993e2460cf10b21fe4346bca400d3e2417dfc5b40d69af2cc79123f64ce48",
+      "width": 4608,
+      "height": 3456,
+      "licence_basis": "Commons item page asserts CC0 (CC0 dedication)"
     },
     {
       "subject": "dough",

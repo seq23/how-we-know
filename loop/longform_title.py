@@ -1,5 +1,14 @@
 """The long-form title formula, as code. Long-form ONLY; Shorts keep loop/titles.py.
 
+ONE QUESTION PER VIDEO (owner, 2 Nov 2026) SUPERSEDES THE CLAIM AND SERIES
+SHAPES BELOW: a long-form title is one plain question (titles.
+one_question_problems), a compilation takes its strongest single question, and
+the bare question IS the title (the "bare restatement" rule is gone). The
+plainness and truth guards still apply. title_for_upload falls back to the
+episode's own question when no proposed title passes, so a queued episode is
+not held for want of a draft. Live videos uploaded before titles.QUESTION_START
+are never re-proposed (published_needing): older videos keep their titles.
+
     .venv/bin/python loop/longform_title.py check <slug> "<title>"     # judge one
     .venv/bin/python loop/longform_title.py propose --slugs a b c      # draft + write
     .venv/bin/python loop/longform_title.py propose --pending --limit 6
@@ -399,8 +408,11 @@ def plainness_problems(title: str, question: str, script: str = "") -> list[str]
     return p
 
 
-def title_problems(title: str, script: str, question: str | None = None) -> list[str]:
-    """Everything wrong with `title` as a long-form title. [] = it may ship."""
+def title_problems(title: str, script: str, question: str | None = None,
+                   one_question: bool = True) -> list[str]:
+    """Everything wrong with `title` as a long-form title. [] = it may ship.
+    `one_question=False` only for a video uploaded before titles.QUESTION_START
+    (older videos keep their titles; V47 still holds their truth guard)."""
     p: list[str] = []
     t = (title or "").strip()
     if not t:
@@ -418,7 +430,6 @@ def title_problems(title: str, script: str, question: str | None = None) -> list
     if BRAND_PHRASE.search(t):
         p.append("title contains 'how we know' - the brand lives in the "
                  "channel name and the script's second act, never the title")
-    is_question = t.endswith("?")
     if "<" in t or ">" in t:
         p.append("title contains < or >, which YouTube rejects")
     low = t.lower()
@@ -431,17 +442,12 @@ def title_problems(title: str, script: str, question: str | None = None) -> list
     if len(cw) < MIN_CONTENT_WORDS:
         p.append(f"title has {len(cw)} content word(s); a specific subject "
                  f"needs at least {MIN_CONTENT_WORDS}")
-    if not is_question and not has_stake(t):
-        p.append("a claim title must state the script's contradiction (never/"
-                 "not/without ...) or a stake; otherwise ask the plain "
-                 "question a curious person would type")
+    import titles as _T                                    # noqa: PLC0415
+    if one_question:
+        p += [f"one question per video: {x}" for x in _T.one_question_problems(t)
+              if x != "title is empty"]
     p += plainness_problems(t, q, script)
     qs = {stem(w) for w in content_words(q)}
-    ts = {stem(w) for w in cw}
-    if ts and qs and ts <= qs:
-        p.append(f"title is a bare restatement of the question {q!r}: every "
-                 f"content word is already in it; say the stake the script "
-                 f"makes")
     # THE TRUTH GUARD.
     ev = evidence_text(script)
     have = {stem(w) for w in content_words(ev)} | qs
@@ -518,6 +524,19 @@ def title_for_upload(slug: str, script: str, question: str | None = None,
         if not pr:
             return own, [], "script"
         why += [f"script ## YouTube title: {x}" for x in pr]
+    # The episode's own question, as one plain question (owner, 2 Nov 2026:
+    # the question alone is the title). Held only if even that fails the
+    # plainness or length lock - then the proposer drafts a shorter question.
+    import titles as _T                                    # noqa: PLC0415
+    q = question if question is not None else question_of(script)
+    h1 = question_of(script)               # the script's own "# <question>?"
+    cands = ([_T.as_question(q)] + _T.strongest_questions(q)) if q else []
+    cands += ([_T.as_question(h1)] + _T.strongest_questions(h1)) if h1 else []
+    for plain in dict.fromkeys(cands):
+        pr = title_problems(plain, script, question)
+        if not pr:
+            return plain, [], "question"
+        why += [f"the question {plain!r}: {x}" for x in pr]
     if not cand and not own:
         why.append("no proposed title in loop/state/titles.json and no "
                    "## YouTube title in the script")
@@ -531,9 +550,10 @@ numbering, no quotes, nothing else.
 
 THE OWNER'S LOCKED RULE - a program checks every candidate:
 - at most {max} characters; aim for about {target};
-- ONE idea: usually the plain question a curious person would say out loud or \
-type into search; a short claim only when the script's answer is itself a \
-contradiction ("... is not ...");
+- ONE plain question and nothing else: the question a curious person would \
+say out loud or type into search, ending "?" - never a claim, never a second \
+clause, no dash, colon or "and how we know"; for a video that answers several \
+questions, its strongest single one;
 - sixth-grade words: short and common, no jargon, no word over three \
 syllables except the subject's own name;
 - name the subject in the first few words, in the word a stranger uses - one \
@@ -679,8 +699,15 @@ def published_needing(doc: dict | None = None) -> list[str]:
     lane proposes these (job 2, 13 Oct 2026). Unique, ledger order."""
     doc = doc if doc is not None else load()
     out: list[str] = []
+    # OLDER VIDEOS ARE UNTOUCHED (owner, 2 Nov 2026): a live video uploaded
+    # before the one-question rule keeps its title - its row is not re-proposed
+    # just because it no longer passes today's rule.
+    import ledger                                          # noqa: PLC0415
+    import titles as _T                                    # noqa: PLC0415
+    since = {r.get("slug"): (r.get("uploaded_at") or "")[:10]
+             for r in ledger.load().get("published") or [] if r.get("video_id")}
     for slug in published_slugs():
-        if slug in out:
+        if slug in out or since.get(slug, "") < _T.QUESTION_START:
             continue
         text = (SCRIPTS / f"{slug}.md").read_text(encoding="utf-8")
         row = doc["titles"].get(slug) or {}

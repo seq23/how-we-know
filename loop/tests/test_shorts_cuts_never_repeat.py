@@ -12,10 +12,10 @@ no network and no credential:
      opens on its OWN chapter's first beat(s), never on a cold-open or
      title-card beat, and no two ranks of one episode share an opening beat;
      the receipt says opening "chapter" and where the chapter starts;
-  2. titles.title_for_cut: rank 1 is title_for, unchanged; rank 2+ names its
-     chapter, keeps every query word (title_problems is empty) and is never
-     the rank-1 title or another rank's title - over every real script; a rank
-     2+ cut with no chapter is refused, never titled like rank 1;
+  2. titles.title_for_cut: rank 1 is title_for, unchanged; rank 2+ is the ONE
+     question its cut answers (owner, 2 Nov 2026: its chapter when that is a
+     question, else the episode's question), one plain question, on-search -
+     over every real script; a rank 2+ cut with no chapter is refused;
   3. build_payload: a rank 2+ description links the episode AT its chapter
      (?t=); rank 1 links the top; loop/handoff.py keeps the offset when it
      rewrites the line;
@@ -155,9 +155,18 @@ for slug in sorted(domains.by_slug()):
     got = [T.title_for_cut(q, text, 1)] + [
         T.title_for_cut(q, text, r, h) for r, h in ((2, heads[0]), (3, heads[1]))]
     check(f"2 {slug}: rank 1 title unchanged", got[0] == T.title_for(q, text), got[0])
-    check(f"2 {slug}: three cuts, three titles", len(set(got)) == 3, str(got))
+    # ONE QUESTION PER VIDEO (owner, 2 Nov 2026; supersedes the 14 Oct
+    # chapter-statement titles): each cut is titled with the ONE question it
+    # answers - its chapter heading when that is itself a question, else the
+    # episode's question. What keeps two cuts from reading as a repeat is the
+    # opening (checks 1 and 5), not a second clause in the title.
+    for (r_, h_), t_ in zip(((2, heads[0]), (3, heads[1])), got[1:]):
+        want = h_ if not T.one_question_problems(h_) else got[0]
+        check(f"2 {slug}: rank {r_} is the question its cut answers", t_ == want,
+              f"{t_!r} (chapter {h_!r})")
     for t_ in got:
-        check(f"2 {slug}: on-search and clean", not T.title_problems(t_, q, text),
+        check(f"2 {slug}: one plain question, on-search and clean",
+              not T.title_problems(t_, q, text) and not T.one_question_problems(t_),
               f"{t_!r}: {T.title_problems(t_, q, text)}")
 check("2 examined real scripts", n_scripts >= 10, str(n_scripts))
 try:
@@ -165,10 +174,13 @@ try:
     check("2 rank 2 with no chapter is refused", False, "returned a title")
 except ValueError:
     check("2 rank 2 with no chapter is refused", True)
-check("2 the owner's worked example",
+check("2 the owner's worked example (2 Nov 2026): a statement chapter -> the question",
       T.title_for_cut("what is the deepest part of the ocean", "", 2,
                       "What a depth number leaves out")
-      == "The deepest part of the ocean: what a depth number leaves out — and how we know")
+      == "What is the deepest part of the ocean?")
+check("2 a question chapter is that question",
+      T.title_for_cut("what is the deepest part of the ocean", "", 2,
+                      "How is a depth measured?") == "How is a depth measured?")
 
 # ---- 3: the description links the chapter -------------------------------
 deep = sorted(s for s, d in domains.by_slug().items() if d == "deep-sea-ocean-science"
@@ -184,8 +196,8 @@ d2 = p2["snippet"]["description"].split("\n", 1)[0]
 check("3 rank 1 links the top of the episode",
       d1.startswith(H.LINK_PREFIX + "EPI ") and "?t=" not in d1, d1)
 check("3 rank 2 links its chapter", d2.startswith(H.LINK_PREFIX + "EPI?t=55 "), d2)
-check("3 rank 2 title is not rank 1's",
-      p1["snippet"]["title"] != p2["snippet"]["title"], p2["snippet"]["title"])
+check("3 rank 2 title is one plain question (2 Nov 2026: the question its cut answers)",
+      not T.one_question_problems(p2["snippet"]["title"]), p2["snippet"]["title"])
 check("3 handoff sees the offset as the link",
       H.has_link(p2["snippet"]["description"], "EPI", 55.9)
       and not H.has_link(p1["snippet"]["description"], "EPI", 55.9))
@@ -208,7 +220,8 @@ new = tmp / "y-short3.mp4"
 new.write_bytes(b"x")
 Path(f"{new}.short.json").write_text(json.dumps(
     {"rank": 2, "opening": "chapter", "chapter": "Bones store energy",
-     "chapter_start_s": 148.1}))
+     "chapter_start_s": 148.1,
+     "opener": {"kind": "question-photo-v1", "question": "Why is it dark?"}}))
 check("4 new-rule rank 3 receipt read", SL.cut_chapter(new, 3) == ("Bones store energy", 148.1))
 check("4 rank 1 needs no chapter", SL.cut_chapter(tmp / "nothing.mp4", 1) == (None, None))
 if S is not None:
@@ -218,7 +231,12 @@ if S is not None:
           S.stale_opening(str(old), 1, published={old.name}) is False)
     check("4 --keep-existing keeps a chapter-opening cut",
           S.stale_opening(str(new), 2, published=set()) is False)
-    check("4 rank 1 is never stale", S.stale_opening(str(old), 0, published=set()) is False)
+    # ONE QUESTION PER VIDEO (2 Nov 2026): an unpublished cut of ANY rank
+    # without the photo-and-question opener is re-cut; a published one never.
+    check("4 an unpublished rank 1 without the opener is re-cut",
+          S.stale_opening(str(old), 0, published=set()) is True)
+    check("4 a published rank 1 is never stale",
+          S.stale_opening(str(old), 0, published={old.name}) is False)
 
 # ---- 5: real receipts on this machine -----------------------------------
 shorts_dir = ROOT / "shorts"

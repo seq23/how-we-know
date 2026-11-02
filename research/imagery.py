@@ -452,6 +452,7 @@ COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 # statement that the holder found no restrictions, not a public-domain
 # dedication, so it is not enough.
 PD_LICENCE_TAGS = {"public domain", "cc0", "cc0 1.0", "pd", "pd-usgov", "pdm-owner"}
+CC0_TAGS = {"cc0", "cc0 1.0"}
 
 
 def commons_imageinfo(title: str) -> dict:
@@ -473,6 +474,15 @@ def pd_licence_ok(info: dict) -> tuple[bool, str]:
 
     short = val("LicenseShortName").lower()
     copyrighted = val("Copyrighted").lower()
+    # CC0 IS A WAIVER OF A COPYRIGHT THAT EXISTS, so Commons reports every CC0
+    # file Copyrighted=True. Reading that flag alone rejected every CC0 photo
+    # the policy allows ("marks the work as copyrighted (cc0)" in
+    # materials.json and food.json's rejected lists - CONFIRMED 2026-11-01 on
+    # File:161White_rice_with_pandan_leaves_01.jpg, LicenseShortName CC0,
+    # UsageTerms "Creative Commons Zero, Public Domain Dedication"). A CC0
+    # tag is accepted on its own; everything else still needs Copyrighted=False.
+    if short in CC0_TAGS:
+        return True, f"Commons item page asserts {val('LicenseShortName')} (CC0 dedication)"
     if copyrighted == "true":
         return False, f"item page marks the work as copyrighted ({short or 'no licence tag'})"
     if short not in PD_LICENCE_TAGS:

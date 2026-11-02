@@ -217,6 +217,9 @@ check("5 materials rank 2 NOT shelved",
       str(res))
 
 # ---- 6: the nightly cut asks for the deeper ranks, and never re-renders ----
+# Cuts made under the one-question rule (2 Nov 2026) carry the opening picture.
+_OPENER = {"kind": "question-photo-v1", "question": "Why is the sea dark?",
+           "manifest": "rights.json", "seconds": 1.0}
 renders, shorts = tmp / "renders", tmp / "shorts"
 renders.mkdir()
 shorts.mkdir()
@@ -230,13 +233,20 @@ for s, ranks, elig in ((d_pub, (1,), 3), (d_new, (1, 2, 3), 3),
     for r in ranks:
         (shorts / SL.short_file(s, r)).write_bytes(b"x")
         (shorts / f"{SL.short_file(s, r)}.short.json").write_text(
-            json.dumps({"eligible_chapters": elig}))
+            json.dumps({"eligible_chapters": elig, "opener": _OPENER}))
 groups = SL.cut_groups(renders, shorts, cfg)
 check("6 cut_groups", groups == {3: [d_pub]} or
       groups == {3: sorted([d_pub])}, str(groups))
 (shorts / SL.short_file(m1)).unlink()
 groups = SL.cut_groups(renders, shorts, cfg)
 check("6 an uncut materials episode is cut once", groups.get(1) == [m1], str(groups))
+# ONE QUESTION PER VIDEO: an unpublished cut WITHOUT the opening picture is
+# re-cut (any rank); the fixture ledger has published none of these files.
+(shorts / f"{SL.short_file(d_new, 2)}.short.json").write_text(
+    json.dumps({"eligible_chapters": 3}))
+groups = SL.cut_groups(renders, shorts, cfg)
+check("6 an unpublished cut without the opener is re-cut", d_new in groups.get(3, []),
+      str(groups))
 
 src = (ROOT / "visuals" / "shorts.py").read_text()
 check("6 shorts.py --keep-existing skips a cut already on disk",

@@ -64,5 +64,11 @@
     "bytes": 36933425,
     "superseded_at": "2026-10-14T04:00:05+00:00",
     "why": "lengthen reopen: full re-render (new opening)"
+  },
+  "why-does-rice-get-sticky": {
+    "sha256": "5b2d0d8fd94a6fa49597232aafaf1f2029c573341ae0fb5e08bbb744f6b2a020",
+    "bytes": 38320404,
+    "superseded_at": "2026-11-01",
+    "why": "plan drew the deep-sea depth gauge on a food episode (visuals/plan_domain.py); re-rendered from the same narration"
   }
 }

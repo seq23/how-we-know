@@ -61,6 +61,9 @@ SPECS: dict[str, dict] = {
     "how-strong-is-titanium": dict(
         kicker="Titanium", hook="Strong for its weight, not absolutely",
         subject="titanium"),
+    "is-damascus-steel-better": dict(
+        kicker="Damascus steel", hook="Are Damascus knives better?",
+        subject="damascus-blade"),
     "how-is-damascus-steel-made": dict(
         kicker="Damascus steel", hook="The pattern is the weld",
         subject="damascus-blade"),

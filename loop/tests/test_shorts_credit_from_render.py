@@ -216,7 +216,7 @@ check("5 V14 fails a credit the master does not show",
 check("5 V14 reads the Short's credit strip at every beat",
       "_samples(rec, 10 ** 6)" in body and "_samples(rec, 1)" not in body)
 check("5 the chrome (credits) is ONE static overlay for the whole cut",
-      '"[0:v][1:v]overlay=0:0[base]"' in src)
+      '"[0:v][1:v]overlay=0:0[chr]"' in src)
 
 # ---- 6: real data (the Mac) -----------------------------------------------
 shorts_dir = ROOT / "shorts"

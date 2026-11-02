@@ -96,6 +96,11 @@ longform_title.STATE.unlink(missing_ok=True)
 if os.environ.get("TEST_SLUG") and os.environ.get("TEST_TITLE"):
     longform_title.STATE.write_text(json.dumps({"titles": {os.environ["TEST_SLUG"]: {
         "new_title": os.environ["TEST_TITLE"], "checks_passed": True}}}))
+# ONE QUESTION PER VIDEO (2 Nov 2026): with no titles.json row the door now
+# falls back to the episode's own question; TEST_NO_TITLE makes the door
+# itself say "nothing passes", which must still HOLD the slug.
+if os.environ.get("TEST_NO_TITLE"):
+    longform_title.title_for_upload = lambda *a, **k: (None, ["fixture: nothing passes"], "")
 
 # ---- every irreversible YouTube call, replaced by a recorder ---------------
 CALLS = []
@@ -275,10 +280,26 @@ try:
 except SystemExit as e:
     rc = e.code
 print("CALLS", json.dumps(CALLS))
-""", dict(stub_env, TEST_TITLE=""), tmp)
+""", dict(stub_env, TEST_TITLE="", TEST_NO_TITLE="1"), tmp)
         if '"insert"' in r_nt.stdout or "TITLE_REFUSED" not in (r_nt.stdout + r_nt.stderr):
             fails.append("with no passing long-form title the lane uploaded "
                          "anyway, or did not name TITLE_REFUSED")
+        examined += 1
+        r_q = run("""
+rc = 0
+try:
+    cloud_upload.run(limit=1)
+except SystemExit as e:
+    rc = e.code
+print("CALLS", json.dumps(CALLS))
+""", dict(stub_env, TEST_TITLE=""), tmp)
+        sys.path.insert(0, str(LOOP))
+        import titles as _T  # noqa: PLC0415
+        ins = [c for c in json.loads((r_q.stdout.split("CALLS ", 1) + ["[]"])[1]
+                                     .split("\n")[0] or "[]") if c[0] == "insert"]
+        if not ins or _T.one_question_problems(ins[0][1]):
+            fails.append("with no titles.json row the lane did not upload under "
+                         f"one plain question (the episode's own): {ins[:1]}")
         for want, why in (('"insert"', "no videos.insert was attempted"),
                           ('"privacy"', "the privacy/publishAt call was not made"),
                           ('"thumb"', "the thumbnail was not set")):
@@ -731,14 +752,19 @@ def shorts_run(body: str, env_extra: dict, tmp: Path):
                           cwd=ROOT, env=env)
 
 
-def shelve_short(shelf_dir: Path, slug: str) -> None:
+OPENER = {"kind": "question-photo-v1", "question": "Why is the sea dark?",
+          "seconds": 1.0, "manifest": "rights.json", "source": "assets/x.jpg"}
+
+
+def shelve_short(shelf_dir: Path, slug: str, opener: bool = True) -> None:
     sys.path.insert(0, str(LOOP))
     import r2                                              # noqa: PLC0415
     b = r2.LocalBackend(shelf_dir)
     src = shelf_dir / "_src"
     src.mkdir(exist_ok=True)
     (src / "s.mp4").write_bytes(b"\x00" * 2048)
-    (src / "s.json").write_text(json.dumps({"slug": slug, "beats": []}))
+    (src / "s.json").write_text(json.dumps({"slug": slug, "beats": [],
+                                            **({"opener": OPENER} if opener else {})}))
     b.put(src / "s.mp4", r2.short_key(slug))
     b.put(src / "s.json", r2.short_receipt_key(slug))
 
@@ -769,6 +795,7 @@ print("LEDGER", json.dumps(led["published"]))
 print("QUOTA", json.dumps(json.loads(quota.STATE.read_text())))
 """, env, tmp)
         out = r.stdout
+        good_out = out
         if "RC 0" not in out:
             fails.append(f"the Shorts lane did not exit 0 on a good run: "
                          f"{out.strip()[-500:]} {r.stderr[-500:]}")
@@ -841,6 +868,26 @@ print("CALLS", json.dumps(CALLS))
                          "saying so — that is a silent skip, not a named stop")
         if '"insert"' in r.stdout:
             fails.append("the Shorts lane uploaded a Short it could not afford")
+
+        # -- ONE QUESTION PER VIDEO: a cut without the opening picture -----
+        # (owner, 2 Nov 2026) is not offered, and nothing is uploaded; the
+        # Short that does go up is titled with its opener's question.
+        examined += 1
+        if '"Why is the sea dark?"' not in good_out:
+            fails.append("the Short was not titled with its opener's question")
+        old_shelf = tmp / "old-shelf"
+        shelve_short(old_shelf, slug, opener=False)
+        r = shorts_run("""
+rc = 0
+try:
+    shorts_cloud.run(limit=1)
+except SystemExit as e:
+    rc = e.code
+print("RC", rc)
+print("CALLS", json.dumps(CALLS))
+""", dict(base, R2_LOCAL_DIR=str(old_shelf)), tmp)
+        if '"insert"' in r.stdout:
+            fails.append("a shelved cut WITHOUT the one-question opener was uploaded")
 
         # -- a Short with no receipt is not publishable --------------------
         # The receipt is the only record of which beats were used and where the

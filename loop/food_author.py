@@ -122,7 +122,18 @@ def episode_slug(foods: list[str]) -> str:
     return "what-is-inside-" + "-".join(foods)
 
 
-def episode_title(foods: list[str]) -> str:
+def episode_title(foods: list[str], rows: list[dict] | None = None) -> str:
+    """ONE QUESTION PER VIDEO (owner, 2 Nov 2026; supersedes the 13 Oct
+    "<Food>, <Food>, <Food>: What's Inside?" series shape): a compilation's
+    title is its strongest single question - the first part's, as one plain
+    question (loop/titles.title_for). The series shape is only the fallback
+    when no part question is known (a plan-only print)."""
+    if rows:
+        import titles                                      # noqa: PLC0415
+        q = rows[0].get("query") or ""
+        t = titles.title_for(q)
+        if q and not titles.one_question_problems(t):
+            return t
     return ", ".join(f.capitalize() for f in foods) + ": What's Inside?"
 
 
@@ -311,7 +322,7 @@ def sources_of(text: str) -> list[str]:
 def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | None) -> str:
     qs = [r.get("title") or r["query"] for r in rows]
     open_ = episode_open(foods, qs, drafts)
-    title = episode_title(foods)
+    title = episode_title(foods, rows)
     close = episode_close(foods, nxt)
     segs = [segment_from_draft(t, f, r.get("title") or r["query"])
             for t, f, r in zip(drafts, foods, rows)]
@@ -440,7 +451,7 @@ def run(plan_only: bool = False) -> int:
         rows = next_parts()
         foods = [food_of(r) for r in rows]
         print(f"in flight: {in_flight() or 'none'}")
-        print(f"next food episode: {episode_slug(foods)}  ({episode_title(foods)})")
+        print(f"next food episode: {episode_slug(foods)}  ({episode_title(foods, rows)})")
         for f, r in zip(foods, rows):
             print(f"  {f:<8} {r['slug']}")
         return 0
@@ -498,7 +509,7 @@ def run(plan_only: bool = False) -> int:
             if not kp.exists():
                 kp.write_text(json.dumps(build_kit(f), indent=1) + "\n")
                 st.work(f"wrote channel/food_kits/{f}.json")
-        register_episode(slug, episode_title(foods), rows)
+        register_episode(slug, episode_title(foods, rows), rows)
         st.work(f"queued {slug} in research/publish_order_food_science.json")
     return 0
 

@@ -317,7 +317,12 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
                         f"its title went up earlier)")
                 continue
             script = (ROOT / "scripts" / f"{t['slug']}.md").read_text(encoding="utf-8")
-            why = LT.title_problems(t["title"], script, t.get("question"))
+            # A meta-only update (description + tags) does not change the
+            # title: the live one stays, so an older video's title is never
+            # re-judged under a newer title rule (owner, 2 Nov 2026: older
+            # videos keep their titles).
+            why = ([] if t.get("meta_only")
+                   else LT.title_problems(t["title"], script, t.get("question")))
             if why:
                 st.note(f"{t['slug']}: not applied, the title no longer passes: "
                         f"{why[0]}")
@@ -330,7 +335,9 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
             meta = search_meta(t["slug"], t.get("question"))
             extra = ({"description": meta["description"], "tags": meta["tags"]}
                      if meta else {})
-            snippet = ytmeta.merge_snippet(live.get("snippet"), title=t["title"],
+            title_ = ((live.get("snippet") or {}).get("title") or t["title"]
+                      if t.get("meta_only") else t["title"])
+            snippet = ytmeta.merge_snippet(live.get("snippet"), title=title_,
                                            **extra)
             yt.update_snippet(t["video_id"], snippet)
             spent = quota.VIDEO_READ + quota.VIDEO_UPDATE

@@ -76,32 +76,79 @@ MATERIALS_SIGNALS = [
                         rf"|GPa|MPa|nanometres?|nanometers?|microns?|micrometres?)"),
 ]
 
-# The ACTIVE domain decides, at import, exactly as visuals/design.py does - not
-# the presence of a word in a script. A deep-sea episode that says "thermal"
-# must not start getting materials cards.
+# FOOD (2026-11-01). Its device is the kitchen scale (visuals/domains.py
+# DEVICES["food-science"]: a temperature axis), drawn by the same
+# segments_materials renderers, which read the ACTIVE domain's device. Only
+# domain-agnostic or temperature signals: the ocean's entries must be ABSENT
+# for the same reason as materials' above.
+FOOD_SIGNALS = [
+    ("thermal_ascent",  r"\bdegrees?\b|\bcelsius\b|\bfahrenheit\b|\boven\b|\bbak(?:e|ed|ing)\b"
+                        r"|\bsear(?:ed|ing)?\b|\bboil(?:s|ed|ing)?\b|\broast"),
+    ("process_column",  r"\bstage\b|\bstages\b|\bstep\b|\bprocess\b|\bthe sequence\b"),
+    ("comparison",      r"\bcompared? (?:to|with)\b|\bversus\b|\btimes (?:the|as)\b"),
+    ("timeline",        r"\b(?:1[5-9]\d\d|20[0-2]\d)\b.*\b(?:1[5-9]\d\d|20[0-2]\d)\b|\bhistory\b"),
+    ("stat_card",       rf"\b{NUM}\s*(?:degrees?|percent|%|times|grams?|minutes?)"),
+]
+
+# THE SCRIPT'S OWN DOMAIN decides, per call - never the process environment.
+#
+# CONFIRMED 2026-11-01 (the owner's screenshot of the rice Short): until this
+# date the signal table was picked ONCE, at import, from visuals/design.py's
+# HWK_DOMAIN, defaulting to deep sea, and bin/batch-session.sh's "build any
+# missing shot plan" step runs the planner WITHOUT HWK_DOMAIN (only the render
+# step sets it). So every non-ocean script was planned with the ocean's
+# signals and the ocean's cold open: why-does-rice-get-sticky got two
+# `depth_descent` beats with empty args, which assemble.py then drew with
+# their defaults - "CHALLENGER DEEP ... METRES" - on a food episode. Four
+# materials plans carry the same defect (depth_descent, light_attenuation,
+# zone_column, anatomy_callout). And food-science had no row here at all, so
+# even with HWK_DOMAIN set it fell back to the ocean. Now: the script's
+# **Domain:** line (loop/domains.py's convention; no line = the channel's
+# first domain, deep sea), an undeclared domain raises, and
+# visuals/plan_domain.py refuses any plan that still carries another
+# domain's graphics (assemble.py, the batch and validator V77).
 _SIGNALS_BY_DOMAIN = {
     "deep-sea-ocean-science": (DEEP_SEA_SIGNALS, "depth_descent"),
     "materials-and-manufacturing": (MATERIALS_SIGNALS, "thermal_ascent"),
+    "food-science": (FOOD_SIGNALS, "thermal_ascent"),
 }
-try:
-    import design as _design
-    SIGNALS, COLD_OPEN_SEGMENT = _SIGNALS_BY_DOMAIN.get(
-        _design.DOMAIN, (DEEP_SEA_SIGNALS, "depth_descent"))
-except Exception:
-    SIGNALS, COLD_OPEN_SEGMENT = DEEP_SEA_SIGNALS, "depth_descent"
+DEFAULT_DOMAIN = "deep-sea-ocean-science"
+_DOMAIN_LINE = re.compile(r"^\*\*Domain:\*\*\s*([a-z0-9-]+)", re.M)
 
-def classify(text, heading):
+
+def script_domain(md):
+    """The domain a script declares, or the channel's first domain."""
+    m = _DOMAIN_LINE.search(md or "")
+    return m.group(1) if m else DEFAULT_DOMAIN
+
+
+def signals_for(domain):
+    """(signals, cold-open segment) for a domain; KeyError names the gap."""
+    try:
+        return _SIGNALS_BY_DOMAIN[domain]
+    except KeyError:
+        raise KeyError(f"planner has no signal table for domain {domain!r}: "
+                       f"add one to visuals/planner.py _SIGNALS_BY_DOMAIN "
+                       f"rather than plan it with another domain's graphics") from None
+
+
+# Kept for callers that read the module defaults; plan() never uses them.
+SIGNALS, COLD_OPEN_SEGMENT = DEEP_SEA_SIGNALS, "depth_descent"
+
+def classify(text, heading, signals=None, cold_open=None):
     """Ranked candidates, best first. Ranking is by signal strength, not order."""
+    signals = DEEP_SEA_SIGNALS if signals is None else signals
+    cold_open = cold_open or "depth_descent"
     h = heading.lower()
     if "producer pov" in h or "[HUMAN]" in text: return ["quote_card"]
     if "title card" in h:                        return ["text_beat"]
     scored = []
-    for name, pat in SIGNALS:
+    for name, pat in signals:
         hits = len(re.findall(pat, text, re.I))
         if hits: scored.append((hits, name))
     # a concrete measurement is a strong stat_card signal regardless of other matches
     if find_measures(text): scored.append((2, "stat_card"))
-    if "cold open" in h:   scored.append((3, COLD_OPEN_SEGMENT))
+    if "cold open" in h:   scored.append((3, cold_open))
     scored.sort(key=lambda x: -x[0])
     ranked = []
     for _, n in scored:
@@ -357,11 +404,15 @@ def build_args(seg, beat):
         return {}
     return {}
 
-def plan(md_path):
+def plan(md_path, domain=None):
     """Plan at SECTION level. A section gets a dominant visual; beats inside it
     alternate between that visual, typographic beats, and breathing room. This is
-    how explainers actually work — a diagram holds while narration continues."""
-    beats = parse(open(md_path).read())
+    how explainers actually work — a diagram holds while narration continues.
+
+    `domain` defaults to the script's own **Domain:** line (see signals_for)."""
+    md = open(md_path).read()
+    signals, cold_open = signals_for(domain or script_domain(md))
+    beats = parse(md)
     sections, order = {}, []
     for b in beats:
         h = b["heading"] or "_"
@@ -374,7 +425,7 @@ def plan(md_path):
         joined = " ".join(g["text"] for g in group)
         # rank using the whole section: far more signal than one sentence
         hero, hero_args = None, None
-        for cand in classify(joined, h):
+        for cand in classify(joined, h, signals, cold_open):
             if cand in ("text_beat",): continue
             if cand in recent_heroes[-2:]: continue
             for g in group:                       # find a beat that can populate it

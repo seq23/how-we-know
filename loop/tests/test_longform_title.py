@@ -3,11 +3,11 @@
 Owner decisions 12-13 Oct 2026 (repackage job 1). WHAT THIS PROVES, on real
 scripts, with the model fixtured and every state path a scratch file:
 
-  1. the formula: a staked, traceable title passes; "how we know" fails; an
-     invented figure fails; an unsupported word fails; a bare restatement of
-     the question fails; over 60 characters fails; no stake fails;
-  2. title_for_upload: titles.json first, the script's own title second,
-     nothing passing -> None (the upload is held, never a fallback title);
+  1. the formula: a plain traceable question passes; "how we know" fails; an
+     invented figure fails; an unsupported word fails; a claim, a second
+     clause or a missing "?" fails (one question per video, 2 Nov 2026);
+  2. title_for_upload: titles.json first, the script's own title second, the
+     episode's own question third; nothing passing -> None (held);
   3. the proposer: a first reply whose candidates all fail is fed back with
      the rejections, the second passes; run_propose writes slug, old title,
      new title, checks_passed and applied_at=null; an all-failing model
@@ -69,13 +69,18 @@ check(LT.EXEMPLARS == {
     "19-what-is-the-deepest-fish-ever-recorded": "How Deep Can a Fish Live?",
     "how-strong-is-titanium": "Is Titanium Stronger Than Steel?"},
     "the owner's three locked titles changed")
-# The owner's series shape for multi-question food videos (13 Oct 2026).
+# ONE QUESTION PER VIDEO (owner, 2 Nov 2026) supersedes the 13 Oct series
+# shape: a compilation ships its strongest single question.
 _fs = (ROOT / "scripts" / "food" / "why-bread-rises-steak-browns-chocolate-snaps.md").read_text(encoding="utf-8")
-check(not LT.title_problems("Bread, Steak, Chocolate: What's Inside?", _fs, LT.question_of(_fs)),
-      f"the owner's series title fails: {LT.title_problems(chr(66)+'read, Steak, Chocolate: What' + chr(39) + 's Inside?', _fs, LT.question_of(_fs))}")
-check(any("more than one idea" in x for x in LT.title_problems(
+check(any("one question" in x for x in LT.title_problems(
+          "Bread, Steak, Chocolate: What's Inside?", _fs, LT.question_of(_fs))),
+      "the retired series shape still passes")
+_ft, _fw, _fsrc = LT.title_for_upload("why-bread-rises-steak-browns-chocolate-snaps", _fs,
+                                      None, {"titles": {}})
+check(_ft == "Why does bread rise?", f"a compilation does not ship its strongest single question: {_ft} {_fw}")
+check(any("one question" in x for x in LT.title_problems(
           "Bread, Steak, Chocolate: Why It Works", _fs, LT.question_of(_fs))),
-      "a colon title outside the series shape passed")
+      "a colon title passed")
 good = "Is a Welding Arc Hotter Than the Sun?"
 check(not LT.title_problems(good, SCRIPT, Q),
       f"a plain, traceable question failed: {LT.title_problems(good, SCRIPT, Q)}")
@@ -83,13 +88,14 @@ cases = {
     "how we know": ("How we know a welding arc is hot", "how we know"),
     "invented figure": ("Can a Welding Arc Reach 45,000 Degrees?", "never does"),
     "unsupported word": ("Is a Welding Arc Hotter Than Lava?", "unsupported"),
-    "bare restatement": ("How hot does a welding arc get", "restatement"),
+    "a claim, not a question": ("A welding arc is not simple", "one question"),
     "too long": ("Is a Welding Arc Hotter Than the Sun Is Today?", "characters"),
-    "claim with no contradiction": ("The welding arc core temperature", "claim title"),
+    "no question mark": ("How hot does a welding arc get", "one question"),
+    "second clause": ("How hot is a welding arc — and how we know?", "one question"),
     "hard number": ("Does a Welding Arc Hit 11,487 Degrees?", "simple and vivid"),
-    "jargon": ("Welding arc tensile heat is not simple", "jargon"),
+    "jargon": ("Is welding arc tensile heat simple?", "jargon"),
     "subject late": ("Do Sun Fires Burn Hotter Than Welding?", "first 4 words"),
-    "two ideas": ("Welding arcs: hot, bright, and not safe", "more than one idea"),
+    "two ideas": ("Is a welding arc hot, or is it bright?", "one question"),
 }
 for label, (t, needle) in cases.items():
     pr = LT.title_problems(t, SCRIPT, Q)
@@ -108,7 +114,16 @@ t, why, src = LT.title_for_upload(SLUG, SCRIPT, Q)
 if own and not LT.title_problems(own, SCRIPT, Q):
     check(t == own and src == "script", f"the script's own title was not used: {t}")
 else:
-    check(t is None and why, f"no passing title must hold the upload: {t} {why}")
+    # ONE QUESTION PER VIDEO (2 Nov 2026): the question itself is the fallback
+    check(t == "How hot does a welding arc get?" and src == "question",
+          f"no passing draft must fall back to the plain question: {t} {why}")
+# ... and when not even the question passes, the upload is held (None)
+t, why, src = LT.title_for_upload(SLUG, SCRIPT.replace("## YouTube title", "## Old"),
+                                  "how hot does a welding arc get when the "
+                                  "electrode is tungsten and the shielding gas is argon "
+                                  "flowing at twelve litres a minute")
+check(t is None or not LT.title_problems(t, SCRIPT, Q),
+      f"a title that fails the gate was returned: {t}")
 LT.STATE.unlink()
 
 # ----------------------------------------------------------- 3. the proposer
@@ -149,13 +164,16 @@ check(r["checks_passed"] is False and r["problems"],
 import upload as up                                           # noqa: E402
 LT.STATE.write_text(json.dumps({"titles": {}}))
 item = {"slug": SLUG, "script": f"scripts/{SLUG}.md", "question": Q}
-if not (own and not LT.title_problems(own, SCRIPT, Q)):
-    try:
-        up.build_payload(item)
-        check(False, "upload.build_payload shipped a long-form upload with no "
-                     "passing title")
-    except up.TitleRefused as e:
-        check(SLUG in str(e), "TitleRefused does not name the slug")
+_door = LT.title_for_upload
+LT.title_for_upload = lambda *a, **k: (None, ["fixture: nothing passes"], "")
+try:
+    up.build_payload(item)
+    check(False, "upload.build_payload shipped a long-form upload with no "
+                 "passing title")
+except up.TitleRefused as e:
+    check(SLUG in str(e), "TitleRefused does not name the slug")
+finally:
+    LT.title_for_upload = _door
 import author                                                 # noqa: E402
 pov = {"line": "x" * 70}
 bad_draft = SCRIPT
@@ -271,9 +289,9 @@ check(any("subject" in x for x in LT.title_problems(
 # `repackage apply` (titles.json only) leaves its old title up for good.
 fake.write_text(json.dumps({"published": [
     {"slug": SLUG, "question": Q, "video_id": "LIVE1",
-     "uploaded_at": "2026-09-01T00:00:00+00:00"},
+     "uploaded_at": "2026-10-26T00:00:00+00:00"},
     {"slug": SLUG, "question": Q, "video_id": "DUP0",
-     "uploaded_at": "2026-09-01T00:00:00+00:00",
+     "uploaded_at": "2026-10-26T00:00:00+00:00",
      "retired_at": "2026-09-02T00:00:00+00:00"}], "queued": []}))
 ledger.LEDGER = fake
 try:
@@ -289,6 +307,15 @@ try:
     check(LT.published_needing() == [],
           f"a live video with a passing row is re-proposed: {LT.published_needing()}")
     check(SLUG not in LT.needed_slugs(), "needed_slugs re-proposes a titled live video")
+    # OLDER VIDEOS UNTOUCHED (owner, 2 Nov 2026): uploaded before
+    # titles.QUESTION_START, a failing row is never re-proposed.
+    fake.write_text(json.dumps({"published": [
+        {"slug": SLUG, "question": Q, "video_id": "OLD1",
+         "uploaded_at": "2026-10-20T00:00:00+00:00"}], "queued": []}))
+    LT.STATE.write_text(json.dumps({"titles": {SLUG: {
+        "new_title": "Welding — and how we know", "checks_passed": True}}}))
+    check(LT.published_needing() == [],
+          f"a pre-rule live video is re-proposed: {LT.published_needing()}")
 finally:
     ledger.LEDGER = saved
 wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()

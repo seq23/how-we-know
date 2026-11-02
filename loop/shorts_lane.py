@@ -359,6 +359,29 @@ def cut_chapter(path: Path, rank: int = 1) -> tuple[str | None, float | None]:
     return rec["chapter"], (float(at) if at is not None else None)
 
 
+OPENER_KIND = "question-photo-v1"
+
+
+def opener_of(rec: dict | None) -> tuple[str | None, str | None]:
+    """(the cut's one question, why it is refused) from its receipt.
+
+    ONE QUESTION PER VIDEO (owner, 2 Nov 2026): every new Short opens on the
+    photo-and-question picture for its first second, and its title IS that
+    question. A receipt without the opener is an old cut: refused, and the
+    Mac's nightly batch re-cuts it (visuals/shorts.stale_opening)."""
+    op = (rec or {}).get("opener") or {}
+    if op.get("kind") != OPENER_KIND:
+        return None, ("the cut predates the one-question opening picture; the "
+                      "Mac re-cuts it (bin/make-shorts.sh --keep-existing)")
+    if op.get("manifest") not in ("rights.json", "materials.json", "food.json"):
+        return None, f"its opening photo comes from {op.get('manifest')!r}, not a PD/CC0 photo manifest"
+    import titles                                          # noqa: PLC0415
+    bad = titles.one_question_problems(op.get("question") or "")
+    if bad:
+        return None, f"its opening question {op.get('question')!r}: {bad[0]}"
+    return op["question"], None
+
+
 def upload_short(st, token: str, slug: str, question: str, path: Path,
                  when: datetime, lane: str = "shorts", rank: int = 1) -> str:
     """Upload one cut Short, schedule it, record it, spend the quota.
@@ -372,11 +395,19 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     # otherwise the row is `handoff: pending` and loop/handoff.py finishes it.
     import handoff                                         # noqa: PLC0415
     chapter, at_s = cut_chapter(path, rank)
+    try:
+        rec = json.loads(Path(f"{path}.short.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        rec = None
+    title, why = opener_of(rec)
+    if title is None:
+        st.note(f"{slug} cut {rank} not uploaded: {why}")
+        return ""
     episode_id = handoff.episode_link_for(token, slug)
     related = None if episode_id else handoff.related_episode_for(token, slug)
     payload = build_payload(slug, question, episode_video_id=episode_id,
                             related=related, rank=rank, chapter=chapter,
-                            chapter_start_s=at_s)
+                            chapter_start_s=at_s, title=title)
     vid = up.resumable_upload(token, payload, path)
     stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     P.set_privacy(token, vid, "private", publish_at=stamp)
@@ -556,10 +587,23 @@ def cut_groups(renders_dir: Path | None = None, shorts_dir: Path | None = None,
                 eligible = want
             want = min(want, max(1, eligible))
             if all((shorts_dir / short_file(slug, r)).exists()
+                   and not _needs_opener(shorts_dir / short_file(slug, r))
                    for r in range(1, want + 1)):
                 continue
         groups.setdefault(want, []).append(slug)
     return groups
+
+
+def _needs_opener(cut: Path) -> bool:
+    """A cut on disk, not yet uploaded, without the one-question opening
+    picture: the batch re-cuts it (shorts.py --keep-existing does)."""
+    if cut.name in {r.get("file") for r in load_ledger()["published"]}:
+        return False
+    try:
+        rec = json.loads(Path(f"{cut}.short.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return True
+    return opener_of(rec)[0] is None
 
 
 VOICE_BLOCKED = Path(__file__).resolve().parent / "state" / "shorts_voice_blocked.json"
@@ -727,7 +771,8 @@ def build_payload(slug: str, question: str,
                   episode_video_id: str | None = None,
                   related: tuple[str, str] | None = None,
                   rank: int = 1, chapter: str | None = None,
-                  chapter_start_s: float | None = None) -> dict:
+                  chapter_start_s: float | None = None,
+                  title: str | None = None) -> dict:
     """Metadata for a Short. Deliberately NOT the episode's description.
 
     A Short carries a pointer back to the episode, because a viewer moving from
@@ -754,7 +799,10 @@ def build_payload(slug: str, question: str,
     # Rank 2+ names its own chapter (owner build 2026-10-14): titled from the
     # question alone it read as a repeat of rank 1. titles.title_for_cut keeps
     # every query word, so it still passes title_problems.
-    title = titles.title_for_cut(question, script_text, rank, chapter)
+    # ONE QUESTION PER VIDEO (owner, 2 Nov 2026): the title is the one
+    # question the cut answers - the same words its opening picture carries
+    # (the receipt's opener, passed in by upload_short).
+    title = title or titles.title_for_cut(question, script_text, rank, chapter)
     domain = domains.domain_of_slug(slug)
     blurb = DOMAIN_BLURB.get(domain, DOMAIN_BLURB["deep-sea-ocean-science"])
 

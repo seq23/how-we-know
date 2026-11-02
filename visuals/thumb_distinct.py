@@ -63,7 +63,8 @@ def distance(a: int, b: int) -> int:
     return bin(a ^ b).count("1")
 
 
-def check(images: dict[str, Image.Image | str], texts: dict[str, str]) -> list[str]:
+def check(images: dict[str, Image.Image | str], texts: dict[str, str],
+          require_text_variety: bool = True) -> list[str]:
     """[] when every pair of variants differs; named problems otherwise."""
     p: list[str] = []
     hs = {k: phash(v) for k, v in images.items()}
@@ -73,6 +74,8 @@ def check(images: dict[str, Image.Image | str], texts: dict[str, str]) -> list[s
             p.append(f"variants {a} and {b} are near-identical (pHash distance {d}, "
                      f"needs >= {MIN_PHASH_DISTANCE}): a variant test needs different pictures")
     t = [" ".join((texts.get(k) or "").upper().split()) for k in sorted(texts)]
-    if len(t) >= 2 and len(set(t)) == 1:
+    # The question-photo layout (owner, 2 Nov 2026) carries ONE question on
+    # every variant by rule: only the picture varies.
+    if require_text_variety and len(t) >= 2 and len(set(t)) == 1:
         p.append(f"all variants carry the same text {t[0]!r}: at least one must differ")
     return p

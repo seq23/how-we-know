@@ -130,6 +130,11 @@ SUBJECTS: list[dict] = [
      "depicts": "photograph",
      "subject_basis": "A differential scanning calorimeter: how each crystal form's melting "
                       "point is measured."},
+    {"key": "cooked-rice", "title_any": ["rice"], "label": "COOKED RICE",
+     "pinned": ["File:161White rice with pandan leaves 01.jpg"],
+     "queries": ["cooked white rice", "steamed rice bowl"],
+     "depicts": "photograph",
+     "subject_basis": "A plate of cooked white rice: the sticky grains the rice question is about."},
     {"key": "wheat-field", "title_none": ["van gogh", "painting", "reaper"], "title_any": ["wheat"], "label": "WHEAT",
      "queries": ["wheat field harvest", "wheat field", "wheat ears"],
      "depicts": "photograph",
