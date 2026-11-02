@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import fnmatch
 import glob
 import json
 import os
@@ -214,7 +215,7 @@ def _merge_records(a: dict, b: dict, newer_key: str | None = None) -> dict:
     return out
 
 
-def merge_comments_ledger(upstream: dict, mac: dict) -> dict:
+def merge_comments_ledger(upstream: dict, mac: dict, base: dict | None = None) -> dict:
     """Every record either side holds: cursors/seen/channel_comments keyed by
     id (the Mac's newer sweep wins a shared key), actions/sweeps appended."""
     out = _merge_records(upstream, mac)
@@ -224,15 +225,32 @@ def merge_comments_ledger(upstream: dict, mac: dict) -> dict:
     return out
 
 
-def merge_streaks(upstream: dict, mac: dict) -> dict:
+def merge_streaks(upstream: dict, mac: dict, base: dict | None = None) -> dict:
     """Keyed by stage; each host owns its own stages. A stage both touched
     keeps the record with the later last_at."""
     return _merge_records(upstream, mac, newer_key="last_at")
 
 
+def merge_owner_action(upstream: dict, mac: dict, base: dict | None = None) -> dict:
+    """Keyed by stage (loop/common.py owner_action_record/_clear). A three-way
+    merge per key, because a CLEAR is a deletion and a union would resurrect
+    it: a stage the Mac changed since the common base keeps the Mac's value
+    (or its absence); every other stage keeps upstream's."""
+    base = base or {}
+    out = {}
+    for k in sorted(set(upstream) | set(mac) | set(base)):
+        side = mac if mac.get(k) != base.get(k) else upstream
+        if k in side:
+            out[k] = side[k]
+    return out
+
+
 TWO_WRITER_MERGE = {
     "loop/state/comments/ledger.json": merge_comments_ledger,
     "loop/state/stops/_streaks.json": merge_streaks,
+    # Every Mac push carries the Mac's touched stop records (mac_owned_touched),
+    # owner_action.json among them, and the cloud's stages write it too.
+    "loop/state/stops/owner_action.json": merge_owner_action,
 }
 
 
@@ -258,9 +276,10 @@ def _resolve_two_writer_rebase(max_steps: int = 50) -> tuple[bool, list[str]]:
             try:
                 up = json.loads(_git("show", f":2:{p}").stdout or "{}")
                 mac = json.loads(_git("show", f":3:{p}").stdout or "{}")
+                base = json.loads(_git("show", f":1:{p}").stdout or "{}")
             except ValueError:
                 return False, merged
-            write_json(_repo() / p, TWO_WRITER_MERGE[p](up, mac))
+            write_json(_repo() / p, TWO_WRITER_MERGE[p](up, mac, base))
             _git("add", "--", p)
             merged.append(p)
     return False, merged
@@ -388,6 +407,34 @@ def bind_paths(state: Path | None = None) -> list[str]:
     return list(BIND_STATE) + [f"plans/{s}.json" for s in slugs]
 
 
+# WHAT THE MAC WRITES INTO TRACKED PATHS, BY CLASS, so every push carries it
+# whichever stage wrote it (2026-11-01). Each lane's push used to name its own
+# files, and three classes fell between the lists: stop records of stages that
+# have no push of their own (pov-repair, every week since W42), stops a refused
+# night wrote (guard's PULL_FAILED / MAC_NOT_ON_MAIN, pushed only for the
+# current week of the lane that wrote them), loop/state/stops/owner_action.json
+# (pushed under a path that does not exist, loop/state/owner_action.json), new
+# audio/<slug>/beats.json (the caption commit's `git add -u` stages tracked
+# files only) and the Shorts cutter's render records
+# renders/<slug>-final.mp4.footage.json (no push at all). 21 files sat in the
+# Mac checkout and the nightly housekeeping flagged it every night.
+# Guarded by loop/tests/test_mac_push_leaves_checkout_clean.py.
+MAC_OWNED_GLOBS = (
+    "loop/state/stops/*.json",
+    "audio/*/beats.json",
+    "renders/*-final.mp4.footage.json",
+)
+
+
+def mac_owned_touched() -> list[str]:
+    """Every modified, deleted or untracked path in a MAC_OWNED_GLOBS class."""
+    modified, untracked = local_touched()
+    return sorted(p for p in modified | untracked
+                  if "/" in p and any(fnmatch.fnmatch(p, g) and
+                                      p.count("/") == g.count("/")
+                                      for g in MAC_OWNED_GLOBS))
+
+
 def push(paths: list[str], message: str) -> tuple[bool, str]:
     """Commit exactly these paths (if changed) and push. Never `git add -A`."""
     if off_main_reason():
@@ -468,7 +515,7 @@ def main() -> int:
             # what the narrator's pronunciation gate learned (voice/pronounce.py);
             # only the Mac writes it, so every Mac push carries it
             "loop/state/pronunciation_learned.json",
-        ] + bind_paths()
+        ] + bind_paths() + mac_owned_touched()
         ok, msg = push(sorted(set(paths)), f"{a.lane}: Mac state {dt.date.today():%Y-%m-%d}")
         print(f"  {msg}")
         return 0 if ok else 3

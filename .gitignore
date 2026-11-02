@@ -105,3 +105,9 @@ loop/state/_v15/
 
 # Food sound layer files (2026-10-13): CC0/PD recordings, rights in channel/sound/food.json
 channel/sound/*.ogg
+
+# voice/pronounce.py's per-job log (audio/<slug>/pronunciation.json): written
+# beside the narration on every run and read by nothing - what it learns goes
+# to loop/state/pronunciation_learned.json, which the Mac pushes. Same class as
+# audio/narration_report.json above (ignored 2026-11-01: it sat untracked).
+audio/*/pronunciation.json

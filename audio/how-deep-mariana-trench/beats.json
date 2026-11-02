@@ -1,0 +1,357 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "The Mariana Trench reaches 10,984 meters below sea level. That figure comes from NOAA Ocean Exploration, synthesizing data from multiple expeditions using multibeam sonar and direct pressure measurement."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The number is precise, but what it means depends on what you compare it to."
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "Depth is not just distance downward. It is pressure, darkness, and the weight of an entire ocean pressing on a point smaller than a city block."
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "How deep is the Mariana Trench?"
+  },
+  {
+    "i": 4,
+    "segment": "comparison",
+    "narration": "Mount Everest stands 8,849 meters above sea level. Challenger Deep, the lowest point in the Mariana Trench, lies 10,984 meters below it."
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "If you placed Everest on the trench floor, its summit would still rest more than two kilometers underwater."
+  },
+  {
+    "i": 6,
+    "segment": "comparison",
+    "narration": "This comparison appears in nearly every public description of the trench, and it works because both figures are measured from the same reference plane: mean sea level."
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "The ocean surface is not arbitrary. It is the boundary where atmospheric pressure ends and hydrostatic pressure begins."
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "The Mariana Trench sits in the western Pacific Ocean, east of the Mariana Islands and roughly 200 kilometers from Guam."
+  },
+  {
+    "i": 9,
+    "segment": "world_map",
+    "narration": "It is a crescent-shaped depression stretching approximately 2,550 kilometers long and 69 kilometers wide at its broadest."
+  },
+  {
+    "i": 10,
+    "segment": "ambient_drift",
+    "narration": "The trench formed where the Pacific Plate subducts beneath the smaller Mariana Plate, a process that has continued for tens of millions of years."
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "The collision does not push rock upward here. It pulls the seafloor downward, creating the deepest topography on the planet."
+  },
+  {
+    "i": 12,
+    "segment": "evidence_chain",
+    "narration": "You cannot drop a tape measure into the ocean. Depth measurement relies on sound."
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "Multibeam sonar systems mounted on ships or submersibles emit acoustic pulses and record the time it takes for each pulse to reflect off the seafloor and return."
+  },
+  {
+    "i": 14,
+    "segment": "evidence_chain",
+    "narration": "The two-way travel time, divided by two, gives the distance\u2014but only if you know the speed of sound in seawater at every point along the path."
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "Sound speed varies with temperature, salinity, and pressure. Near the surface, sound travels about 1,500 meters per second."
+  },
+  {
+    "i": 16,
+    "segment": "evidence_chain",
+    "narration": "In the cold, high-pressure water near the trench floor, it moves slightly faster."
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "Without correcting for these variations, depth estimates can be off by tens of meters."
+  },
+  {
+    "i": 18,
+    "segment": "ambient_drift",
+    "narration": "The 10,984-meter figure for Challenger Deep comes from a 2010 survey conducted by NOAA and the Scripps Institution of Oceanography using a Kongsberg EM122 multibeam sonar system."
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "The team applied sound velocity profiles measured throughout the water column and cross-checked the data with pressure sensors on remotely operated vehicles."
+  },
+  {
+    "i": 20,
+    "segment": "stat_card",
+    "narration": "Earlier expeditions reported slightly different depths\u201410,911 meters in 1951, 10,920 meters in 1957, 10,994 meters in 2009\u2014not because the trench is changing, but because measurement methods and calibration have improved."
+  },
+  {
+    "i": 21,
+    "segment": "ambient_drift",
+    "narration": "The published range across credible sources spans roughly 80 meters, and all modern surveys place Challenger Deep between 10,900 and 11,000 meters."
+  },
+  {
+    "i": 22,
+    "segment": "quote_card",
+    "narration": "When I picture the deep ocean I don't see blue water or fish."
+  },
+  {
+    "i": 23,
+    "segment": "quote_card",
+    "narration": "I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
+  },
+  {
+    "i": 24,
+    "segment": "pressure_gauge",
+    "narration": "For every ten meters of depth, pressure rises by roughly one atmosphere."
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "At sea level, atmospheric pressure is about 101 kilopascals, or one atmosphere."
+  },
+  {
+    "i": 26,
+    "segment": "pressure_gauge",
+    "narration": "At 10,984 meters, the pressure reaches roughly 1,099 atmospheres, or more than 111 megapascals."
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "That is the weight of the entire water column above pressing on every square centimeter of the trench floor."
+  },
+  {
+    "i": 28,
+    "segment": "pressure_gauge",
+    "narration": "A human body at that depth would be crushed instantly. The air spaces in your lungs, sinuses, and ears would collapse."
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Submersibles that reach Challenger Deep require titanium or ceramic pressure hulls several centimeters thick, and even then, the hull compresses measurably under load."
+  },
+  {
+    "i": 30,
+    "segment": "ambient_drift",
+    "narration": "Only a handful of crewed vehicles have reached the bottom of Challenger Deep."
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "The first was the bathyscaphe Trieste in 1960, piloted by Jacques Piccard and Don Walsh."
+  },
+  {
+    "i": 32,
+    "segment": "pressure_gauge",
+    "narration": "The descent took nearly five hours. The pressure hull was a steel sphere less than two meters in diameter, and the two men inside had no room to stand."
+  },
+  {
+    "i": 33,
+    "segment": "ambient_drift",
+    "narration": "In 2012, filmmaker James Cameron descended solo in the Deepsea Challenger, a vertical submersible designed specifically for the trench."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "In 2019, Victor Vescovo completed multiple dives in the DSV Limiting Factor, a two-person submersible certified for full ocean depth."
+  },
+  {
+    "i": 35,
+    "segment": "pressure_gauge",
+    "narration": "Each of these vehicles cost tens of millions of dollars to design and build, and each required years of engineering to ensure the pressure hull would not fail."
+  },
+  {
+    "i": 36,
+    "segment": "light_attenuation",
+    "narration": "Sunlight penetrates seawater to a maximum depth of about 1,000 meters, and only in the clearest open ocean."
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "By 200 meters, most visible wavelengths have been absorbed. Red light disappears first, then orange, yellow, and green."
+  },
+  {
+    "i": 38,
+    "segment": "light_attenuation",
+    "narration": "Blue light penetrates deepest, but even it fades completely by the time you reach the bathypelagic zone, which begins at 1,000 meters."
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Below that depth, the ocean is entirely dark except for bioluminescence\u2014light produced by living organisms."
+  },
+  {
+    "i": 40,
+    "segment": "light_attenuation",
+    "narration": "At 10,984 meters, there is no sunlight, no bioluminescence from passing animals, and no ambient light of any kind unless a submersible brings it."
+  },
+  {
+    "i": 41,
+    "segment": "anatomy_callout",
+    "narration": "The absence of light means photosynthesis cannot occur. All energy at the trench floor arrives from above, either as marine snow\u2014dead organic matter sinking from the surface\u2014or through chemosynthesis at hydrothermal vents, where bacteria convert chemicals from the Earth's crust into usable energy."
+  },
+  {
+    "i": 42,
+    "segment": "ambient_drift",
+    "narration": "The organisms that live in the trench are adapted to total darkness."
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Many are transparent or pale. Some have no eyes. Others have eyes that detect only bioluminescent flashes from other deep-sea creatures."
+  },
+  {
+    "i": 44,
+    "segment": "anatomy_callout",
+    "narration": "Life exists at the bottom of the Mariana Trench. In 2014, researchers from the University of Aberdeen and JAMSTEC recorded a snailfish at 8,178 meters in the trench, the deepest fish ever filmed at that time."
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "In 2017, another snailfish was recorded at 8,336 meters. These fish belong to the family Liparidae and have soft, gelatinous bodies with no swim bladder."
+  },
+  {
+    "i": 46,
+    "segment": "anatomy_callout",
+    "narration": "A swim bladder, the gas-filled organ that helps most fish control buoyancy, would collapse under trench pressure."
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "Snailfish survive by having flexible skeletons, high concentrations of organic osmolytes that stabilize proteins under pressure, and metabolisms adapted to near-freezing temperatures and scarce food."
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "Amphipods, small shrimp-like crustaceans, are abundant in the trench. Some grow larger than their shallow-water relatives, a phenomenon called abyssal gigantism."
+  },
+  {
+    "i": 49,
+    "segment": "world_map",
+    "narration": "Researchers have collected amphipods from Challenger Deep itself, confirming that multicellular life persists even at the deepest point."
+  },
+  {
+    "i": 50,
+    "segment": "ambient_drift",
+    "narration": "Microbial life is even more widespread. Bacteria and archaea live in the sediment on the trench floor, breaking down organic matter and cycling nutrients in an ecosystem that receives no sunlight."
+  },
+  {
+    "i": 51,
+    "segment": "zone_column",
+    "narration": "The Mariana Trench is part of the hadal zone, defined as ocean depths below 6,000 meters."
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "The term comes from Hades, the ancient Greek underworld. Hadal zones are rare."
+  },
+  {
+    "i": 53,
+    "segment": "zone_column",
+    "narration": "They occur only in deep-ocean trenches, which cover less than two percent of the ocean floor."
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "The hadal zone is not a single environment. It includes steep slopes, flat abyssal plains, and isolated pockets separated by underwater ridges."
+  },
+  {
+    "i": 55,
+    "segment": "zone_column",
+    "narration": "Challenger Deep is the lowest point within the Mariana Trench, but the trench itself contains multiple deep basins, each with slightly different depths, sediment types, and biological communities."
+  },
+  {
+    "i": 56,
+    "segment": "zone_column",
+    "narration": "The seafloor at Challenger Deep is covered in a layer of fine sediment, primarily the remains of microscopic plankton shells that have drifted down from the surface over millions of years."
+  },
+  {
+    "i": 57,
+    "segment": "ambient_drift",
+    "narration": "This sediment, called ooze, can be several meters thick. Beneath it lies the basaltic crust of the Pacific Plate, which is being pulled downward into the mantle at a rate of a few centimeters per year."
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "The subduction process generates earthquakes, some of which originate more than 700 kilometers below the surface, deeper than earthquakes occur anywhere else on Earth."
+  },
+  {
+    "i": 59,
+    "segment": "depth_descent",
+    "narration": "When you watch the depth counter fall, notice that the first thousand meters pass quickly."
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "That is the epipelagic zone, where sunlight still penetrates and most marine life concentrates."
+  },
+  {
+    "i": 61,
+    "segment": "depth_descent",
+    "narration": "The next four thousand meters are the mesopelagic and bathypelagic zones, where light fades and pressure mounts but the seafloor is still far below."
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "The final descent, from 6,000 meters to 10,984 meters, crosses the hadal zone."
+  },
+  {
+    "i": 63,
+    "segment": "depth_descent",
+    "narration": "This is the part of the ocean we know least about. Fewer people have been to Challenger Deep than have walked on the Moon."
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "The depth of Challenger Deep is known to within about 50 meters, but the exact figure depends on which survey you cite and how sound velocity corrections were applied."
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "The 10,984-meter measurement is widely accepted, but it is not the only published value."
+  },
+  {
+    "i": 66,
+    "segment": "ambient_drift",
+    "narration": "Small differences in sonar calibration, water column temperature, and salinity profiles all affect the final number."
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "What is certain is that Challenger Deep is the deepest point we have measured in the ocean, and no other trench comes within 1,000 meters of it."
+  },
+  {
+    "i": 68,
+    "segment": "ambient_drift",
+    "narration": "The Mariana Trench is not a void. It is a place\u2014cold, dark, and under crushing pressure, but not empty."
+  },
+  {
+    "i": 69,
+    "segment": "ambient_drift",
+    "narration": "The depth is measurable. The pressure is calculable. The life is observable."
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "What remains difficult is imagining what it feels like to be there, in a steel sphere, surrounded by water pressing in from every direction, knowing that the surface is more than ten kilometers straight up."
+  }
+]

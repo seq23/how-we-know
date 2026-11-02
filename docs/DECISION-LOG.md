@@ -1477,3 +1477,18 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   entry, every scheduled runner is a listed lane, every rotation domain has an author and a render
   lane; on the Mac each agent is loaded) and `loop/tests/test_every_lane_has_a_runner.py` (nine breaks).
 
+
+## 2026-11-01 — Every Mac push carries what the Mac's stages wrote, by class
+
+- **Found (CONFIRMED):** 21 changes sat uncommitted in the Mac checkout and the nightly housekeeping
+  flagged it every night. Each lane's push named its own files and three classes fell between the
+  lists: pov-repair's stop records (no push named them, W42-W44), stops a refused night wrote for
+  an earlier week, `loop/state/stops/owner_action.json` (the footage lane pushed
+  `loop/state/owner_action.json`, which does not exist), new `audio/<slug>/beats.json` (the caption
+  commit's `git add -u` stages tracked files only) and `renders/<slug>-final.mp4.footage.json`
+  (no push at all). `audio/<slug>/pronunciation.json` is a write-only log that was never ignored.
+- **Fix:** `loop/mac_sync.py` `MAC_OWNED_GLOBS` / `mac_owned_touched()` ride on every `push`;
+  `owner_action.json` joins `TWO_WRITER_MERGE` with a three-way per-stage merge (a clear survives);
+  the footage lane's path corrected; the log is gitignored. The 17 real records were committed
+  with the fix; three resolved PULL_FAILED / MAC_NOT_ON_MAIN stops of W42-W43 were discarded.
+- Guard: `loop/tests/test_mac_push_leaves_checkout_clean.py` (negative proofs in its docstring).
