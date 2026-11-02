@@ -829,9 +829,9 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                  f"| {depth.get(name, 0)} "
                  f"| {'—' if weeks is None else f'{weeks:.1f}'} | {rmark} |")
     L.append("")
+    L += topics_block(cfg, led)
 
     L += auto_photos_block(now)
-    L += topics_block(cfg, led)
 
     loud = [s for s in stops if s["disposition"] == "needs_human"]
     quiet = [s for s in stops if s["disposition"] == "self_resolving"]
