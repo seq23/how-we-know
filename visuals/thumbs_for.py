@@ -320,6 +320,10 @@ def build(slug: str, out_dir: str | None = None) -> str:
     try:
         r = thumb_contract.build_question_into(slug, dest)
     except thumb_contract.ContractRefused:
+        # Only a real episode (its script on disk) gets a picture pinned: a
+        # name with no script is a caller's mistake, refused as before.
+        if _loop_domains().script_of(slug) is None:
+            raise
         sys.path.insert(0, os.path.join(ROOT, "research"))
         import subject_photo as SP                         # noqa: PLC0415
         got = SP.find(slug)

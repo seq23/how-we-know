@@ -846,7 +846,7 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
         name = shorts_lane.short_file(slug, rank)
         mp4 = shorts / name
         rec = shorts / f"{name}.short.json"
-        if name in shorts_lane.dropped_cuts():
+        if name in shorts_lane.dropped_cuts(shorts):
             continue                       # dropped after a failed re-cut
         if not mp4.exists() or not rec.exists():
             if rank == 1:
@@ -858,7 +858,7 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
         slug_label = shorts_lane.Pick(slug, rank).label
         if name in held_files:
             held.append(slug_label)
-            how = shorts_lane.heal_held_cut(name, slug)
+            how = shorts_lane.heal_held_cut(name, slug, shorts, ROOT / "renders")
             print(f"  ✗  hold {slug_label} short: V14/V15 failed for THIS cut; "
                   + ("moved aside, re-cut from the render tonight" if how == "recut"
                      else "dropped (second failure or no render); its siblings still ship"))

@@ -557,7 +557,7 @@ def uncut(renders_dir: Path | None = None,
     for f in finals:
         slug = f.name[:-len("-final.mp4")]
         if not (shorts_dir / f"{slug}-short.mp4").exists() \
-                and f"{slug}-short.mp4" not in dropped_cuts():
+                and f"{slug}-short.mp4" not in dropped_cuts(shorts_dir):
             out.append(slug)
     return out
 
@@ -571,18 +571,25 @@ def uncut(renders_dir: Path | None = None,
 # (cut_groups sees it missing). A second failure, or a render that is gone,
 # drops THAT cut (shorts/_dropped/, recorded so it is never re-cut); its
 # siblings ship either way.
-RECUT_STATE = Path(os.environ.get("LOOP_SHORTS_RECUT") or LOOP / "state" / "shorts_recut.json")
+# The record lives beside the cuts it describes (this Mac's shorts/), so a
+# fixture's shorts directory carries its own and the repo state is untouched.
+RECUT_NAME = "_recut_state.json"
 
 
-def _recut_state() -> dict:
+def _recut_path(shorts_dir: Path | None = None) -> Path:
+    env = os.environ.get("LOOP_SHORTS_RECUT")
+    return Path(env) if env else (shorts_dir or SHORTS_DIR) / RECUT_NAME
+
+
+def _recut_state(shorts_dir: Path | None = None) -> dict:
     try:
-        return json.loads(RECUT_STATE.read_text())
+        return json.loads(_recut_path(shorts_dir).read_text())
     except FileNotFoundError:
         return {}
 
 
-def dropped_cuts() -> set[str]:
-    return {n for n, r in _recut_state().items() if r.get("dropped")}
+def dropped_cuts(shorts_dir: Path | None = None) -> set[str]:
+    return {n for n, r in _recut_state(shorts_dir).items() if r.get("dropped")}
 
 
 def heal_held_cut(name: str, slug: str, shorts_dir: Path | None = None,
@@ -590,7 +597,7 @@ def heal_held_cut(name: str, slug: str, shorts_dir: Path | None = None,
     """'recut' or 'dropped' for a cut V14/V15 refused. Moves files; records."""
     shorts_dir = shorts_dir or SHORTS_DIR
     renders_dir = renders_dir or (ROOT / "renders")
-    st = _recut_state()
+    st = _recut_state(shorts_dir)
     rec = st.get(name) or {}
     gone = not (renders_dir / f"{slug}-final.mp4").exists()
     verdict = "dropped" if (rec.get("attempts", 0) >= 1 or gone) else "recut"
@@ -604,8 +611,8 @@ def heal_held_cut(name: str, slug: str, shorts_dir: Path | None = None,
                 "why": "render gone" if gone else "V14/V15 failed again" if verdict == "dropped"
                        else "V14/V15 failed; re-cut from the render",
                 "at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
-    RECUT_STATE.parent.mkdir(parents=True, exist_ok=True)
-    RECUT_STATE.write_text(json.dumps(st, indent=2) + "\n")
+    _recut_path(shorts_dir).parent.mkdir(parents=True, exist_ok=True)
+    _recut_path(shorts_dir).write_text(json.dumps(st, indent=2) + "\n")
     return verdict
 
 
@@ -637,7 +644,7 @@ def cut_groups(renders_dir: Path | None = None, shorts_dir: Path | None = None,
             except (OSError, ValueError, TypeError):
                 eligible = want
             want = min(want, max(1, eligible))
-            gone_ = dropped_cuts()
+            gone_ = dropped_cuts(shorts_dir)
             if all(short_file(slug, r) in gone_
                    or ((shorts_dir / short_file(slug, r)).exists()
                        and not _needs_opener(shorts_dir / short_file(slug, r)))
