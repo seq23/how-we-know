@@ -21,11 +21,11 @@ components each keeping their own list with nothing linking them:
     episodes WITH analytics. Below that the monthly review takes a named stop
     and holds the allocation exactly as it is — it does not fall back to an even
     split, which is a decision disguised as a default.
-4.  **A domain retires when its scored topic queue decays**, not on an episode
-    count. `research/publish_order.json` already gates topics on demand and
-    saturation; when a domain's surviving queue falls below
-    `domains.queue_exhausted_below`, that domain is exhausted and the next
-    domain in the taxonomy's own ranking takes its slots.
+4.  **Results decide** (owner rule A, 2 Nov 2026; replaced "a domain retires
+    when its queue decays"). Nothing retires until every domain has 30 long
+    videos with analytics; then the weakest retires only if it scores under
+    half the best (lifecycle()). A queue under `domains.queue_exhausted_below`
+    is refilled, never retired.
 
 Why eight, for rule 3: the monthly review may move an allocation by one slot,
 and one slot out of four is a 25% swing. Eight episodes is the point at which a
@@ -564,13 +564,57 @@ def split_rows(rows: list[dict], ledger_published: list[dict],
     return out
 
 
+# ------------------------------------------------------ RESULTS DECIDE
+# OWNER RULE "A. Results decide" (2 Nov 2026, spry brain): "none of our three
+# topics can really be decided right now because we've not had enough time".
+#   1. No domain is retired or promoted until EVERY allocated domain has
+#      `domains.results_decide.min_long_videos` (30) long-form videos with
+#      analytics. Until then: the named stop TOPICS_HELD_FOR_EVIDENCE, with the
+#      counts.
+#   2. Then, monthly, each domain is scored PER LONG VIDEO: the mean over its
+#      videos of  w_subs * (subscribers gained per 1,000 views)
+#                + w_hours * (hours watched)  - weights in config.
+#   3. If the weakest scores under `retire_below_ratio` (0.5) x the best, it
+#      retires; its slots go to the next-ranked domain onboarding_gaps() calls
+#      ready, else REPLACEMENT_NOT_ONBOARDED and the allocation holds.
+#   4. A low queue NEVER retires a domain: it is refilled (loop/score.py
+#      missing_queues, the Saturday miner) and the runway warning stays.
+
+def results_rule(cfg: dict) -> dict:
+    r = config_domains(cfg).get("results_decide") or {}
+    w = r.get("score_weights") or {}
+    return {"min_long_videos": int(r.get("min_long_videos", 30)),
+            "w_subs": float(w.get("subs_per_1000_views", 1.0)),
+            "w_hours": float(w.get("hours_watched", 1.0)),
+            "retire_below_ratio": float(r.get("retire_below_ratio", 0.5))}
+
+
+def results_score(rows: list[dict], cfg: dict) -> dict:
+    """{"videos": long videos with analytics, "score": per-video mean or None}."""
+    rule = results_rule(cfg)
+    by_vid: dict[str, dict] = {}
+    for r in rows:
+        if r.get("video_id") and r.get("average_view_duration_s") is not None:
+            by_vid[r["video_id"]] = r                      # one row per video (latest)
+    per = []
+    for r in by_vid.values():
+        v = float(r.get("views") or 0)
+        subs = float(r.get("subscribers_gained") or 0)
+        hours = float(r.get("estimated_minutes_watched") or 0) / 60.0
+        per.append(rule["w_subs"] * (subs / v * 1000 if v else 0.0)
+                   + rule["w_hours"] * hours)
+    return {"videos": len(by_vid),
+            "score": round(sum(per) / len(per), 3) if per else None}
+
+
 def evidence(rows: list[dict], cfg: dict) -> dict:
     """Retention, AVD and view totals for one domain's measured episodes."""
     measured = [r for r in rows if r.get("average_view_duration_s")]
     views = sum(r.get("views") or 0 for r in rows)
+    res = results_score(rows, cfg)
     if not measured:
         return {"measured": 0, "views": views, "avd_s": None, "avp": None,
-                "judgeable": False,
+                "judgeable": False, **res,
                 "why": "no episode in this domain has analytics yet"}
     avd = sum(float(r["average_view_duration_s"]) for r in measured) / len(measured)
     avps = [float(r["average_view_percentage"]) for r in measured
@@ -582,6 +626,7 @@ def evidence(rows: list[dict], cfg: dict) -> dict:
         "avd_s": round(avd, 1),
         "avp": round(sum(avps) / len(avps), 1) if avps else None,
         "judgeable": len(measured) >= need,
+        **res,
         "why": (None if len(measured) >= need else
                 f"{len(measured)} measured episode(s), below the "
                 f"{need}-episode floor this domain must clear before its "
@@ -597,8 +642,8 @@ def reallocate(cfg: dict, per_domain: dict[str, dict]) -> dict:
       * a domain below the minimum sample is HELD, never averaged away
       * at most one slot moves in a month, so a wrong call costs one episode
       * no domain is left with zero slots by a reallocation - dropping a domain
-        to nothing is retirement, and retirement is decided by queue decay, not
-        by one month of retention
+        to nothing is retirement, and retirement is decided by results
+        (lifecycle(), owner rule A), never by one month of retention
     """
     alloc = allocation(cfg)
     judgeable = {d: e for d, e in per_domain.items()
@@ -621,7 +666,7 @@ def reallocate(cfg: dict, per_domain: dict[str, dict]) -> dict:
     if best == worst or alloc.get(worst, 0) <= 1:
         return {"applied": False, "allocation": alloc, "held": held,
                 "why": (f"{worst} already holds its last slot; a domain is "
-                        f"retired on queue decay, never by reallocation.")
+                        f"retired by results (lifecycle()), never by reallocation.")
                 if alloc.get(worst, 0) <= 1 else
                 "one judgeable domain; nothing to move"}
 
@@ -706,64 +751,56 @@ def onboarding_gaps(name: str, cfg: dict) -> list[str]:
 
 def lifecycle(cfg: dict, per_domain: dict[str, dict],
               published_slugs: list[str] | None = None) -> dict:
-    """RETIRE a decayed domain and PROMOTE the next-ranked one into its slots.
+    """RESULTS DECIDE (owner rule A, 2 Nov 2026): retire the weakest domain into
+    the next ready one ONLY when every domain has enough long videos and the
+    weakest scores under half the best. A thin queue never retires anything.
 
-    `reallocate()` moves at most one slot between domains that are already
-    running. It deliberately cannot end a domain — it refuses to take a
-    domain's last slot, and says so. That left the lifecycle open at both ends:
-    `exhausted()` and `next_unused()` were computed every month, written into
-    the report as prose, and acted on by nobody. A niche could decay to nothing
-    and the allocation would still be feeding it, month after month, in a report
-    that said out loud which domain was finished.
-
-    This closes it. The decision is the same shape `reallocate()` returns, and
-    it goes through the SAME cooldown fence in monthly.apply_allocation(), so a
-    wrong retirement is bounded exactly like a wrong slot move.
-
-    What it will not do, and why:
-
-      * **Retire on an empty queue alone.** `exhausted()` already requires that
-        the domain actually published something. This adds a second floor: the
-        domain must have `min_episodes_to_judge` MEASURED episodes. A queue that
-        is thin after three episodes is a scoring backlog, and the honest fix is
-        to score more topics, not to end the niche.
-      * **Retire the last domain.** Retirement is only ever a SWAP. With no
-        replacement in the taxonomy the allocation is held and the stop is
-        named, because a channel with no domain publishes nothing.
-      * **Retire more than one domain a month.** One swap, so a wrong call costs
-        one domain's slots and is visible before the next one.
-      * **Change the slot total.** The promoted domain inherits exactly the
-        retired domain's slots, so the allocation still sums to `cadence.ceiling`
-        and `slots_at()` does not raise.
+    Returns the same shape as reallocate(), through the same cooldown fence in
+    monthly.apply_allocation():
+      * TOPICS_HELD_FOR_EVIDENCE - some allocated domain has fewer than
+        `min_long_videos` long videos with analytics; nothing retires or is
+        promoted, and the counts are named (`counts`, `need`);
+      * not applied - every domain judged, none under the ratio;
+      * REPLACEMENT_NOT_ONBOARDED / NO_REPLACEMENT_DOMAIN - a domain should
+        retire but nothing ready can take its slots; the allocation holds;
+      * applied - the weakest retires, its slots pass to the next-ranked ready
+        domain, the total unchanged.
+    `research_more` lists domains whose queue is under the floor: the Saturday
+    miner refills them (loop/score.py missing_queues); that is the only thing
+    a low queue does.
     """
     alloc = allocation(cfg)
-    ex = exhausted(cfg, published_slugs)
-    if not ex:
-        return {"applied": False, "allocation": alloc,
-                "why": (f"no allocated domain has decayed below the "
-                        f"{queue_exhausted_below(cfg)}-topic queue floor.")}
-
-    need = min_episodes_to_judge(cfg)
-    ready = [d for d in ex if (per_domain.get(d) or {}).get("measured", 0) >= need]
-    if not ready:
-        thin = {d: (per_domain.get(d) or {}).get("measured", 0) for d in ex}
+    rule = results_rule(cfg)
+    need = rule["min_long_videos"]
+    research_more = exhausted(cfg, published_slugs)
+    counts = {d: int((per_domain.get(d) or {}).get("videos") or 0) for d in alloc}
+    short = {d: n for d, n in counts.items() if n < need}
+    base = {"allocation": alloc, "counts": counts, "need": need,
+            "research_more": research_more}
+    if short:
         return {
-            "applied": False, "allocation": alloc,
-            "stop": "QUEUE_DECAYED_BUT_UNMEASURED",
-            "why": (f"{', '.join(ex)} has a queue below the "
-                    f"{queue_exhausted_below(cfg)}-topic floor but only "
-                    f"{thin} measured episode(s), under the {need} this domain "
-                    f"must clear before it may be ended. A thin queue this "
-                    f"early is a scoring backlog, not a finished niche — the "
-                    f"answer is to score more topics for it, not to retire it."),
-            "retire_candidates": ex,
+            **base, "applied": False, "stop": "TOPICS_HELD_FOR_EVIDENCE",
+            "why": ("No topic is retired or added until every topic has "
+                    f"{need} long videos with analytics (owner rule A, 2 Nov "
+                    "2026). Now: " + ", ".join(f"{d} {counts[d]}/{need}"
+                                               for d in sorted(counts))
+                    + "." + (f" Queue under the floor, refilled by the Saturday "
+                             f"miner (never retired): {', '.join(research_more)}."
+                             if research_more else "")),
         }
+    scores = {d: (per_domain.get(d) or {}).get("score") for d in alloc}
+    scores = {d: float(v or 0.0) for d, v in scores.items()}
+    best_d = max(scores, key=lambda d: (scores[d], d))
+    retire = min(scores, key=lambda d: (scores[d], d))
+    bar = rule["retire_below_ratio"] * scores[best_d]
+    base["scores"] = scores
+    if retire == best_d or not scores[retire] < bar:
+        return {**base, "applied": False,
+                "why": (f"every topic has {need}+ long videos; the weakest, "
+                        f"{retire} ({scores[retire]:.2f}), is not under "
+                        f"{rule['retire_below_ratio']:g} x the best, {best_d} "
+                        f"({scores[best_d]:.2f}). Nothing retires.")}
 
-    # Deterministic: the weakest holder of viewers among the decayed domains,
-    # ties broken by name so two runs of the same month agree.
-    retire = min(ready, key=lambda d: ((per_domain[d].get("avd_s") or 0.0), d))
-    # The next-ranked domain that can actually run. A higher-ranked one that
-    # is not onboarded is passed over by name, never promoted into a red main.
     skipped: dict[str, list[str]] = {}
     promote = None
     active = list(alloc)
@@ -777,47 +814,35 @@ def lifecycle(cfg: dict, per_domain: dict[str, dict],
     if not promote and skipped:
         first = next(iter(skipped))
         return {
-            "applied": False, "allocation": alloc,
-            "stop": "REPLACEMENT_NOT_ONBOARDED",
-            "why": (f"{retire} has decayed past the queue floor with "
-                    f"{per_domain[retire]['measured']} measured episode(s). "
-                    f"The next-ranked domain, {first}, is not onboarded: "
-                    f"{'; '.join(skipped[first])}. No other unused domain is "
-                    f"onboarded either, so the allocation is held and "
-                    f"{retire} keeps its slots until one is. Promoting a "
-                    f"domain nothing can tag, brand, source, author or render "
-                    f"publishes nothing and turns every lane red."),
-            "retire_candidates": ready,
-            "not_onboarded": skipped,
+            **base, "applied": False, "stop": "REPLACEMENT_NOT_ONBOARDED",
+            "why": (f"{retire} scores {scores[retire]:.2f} per long video, under "
+                    f"half of {best_d}'s {scores[best_d]:.2f}, and would retire - "
+                    f"but the next-ranked domain, {first}, is not onboarded: "
+                    f"{'; '.join(skipped[first])}. The allocation is held and "
+                    f"{retire} keeps its slots until a replacement is ready."),
+            "retire_candidates": [retire], "not_onboarded": skipped,
         }
     if not promote:
         return {
-            "applied": False, "allocation": alloc,
-            "stop": "NO_REPLACEMENT_DOMAIN",
-            "why": (f"{retire} has decayed past the queue floor with "
-                    f"{per_domain[retire]['measured']} measured episode(s), but "
-                    f"every domain in research/proposed-taxonomy.json is "
-                    f"already running. Retirement here is a SWAP, never a "
-                    f"subtraction — a channel with fewer domains than slots "
-                    f"publishes nothing — so the allocation is held."),
-            "retire_candidates": ready,
+            **base, "applied": False, "stop": "NO_REPLACEMENT_DOMAIN",
+            "why": (f"{retire} scores under half of {best_d} but every domain in "
+                    f"research/proposed-taxonomy.json is already running; "
+                    f"retirement is a swap, never a subtraction, so the "
+                    f"allocation is held."),
+            "retire_candidates": [retire],
         }
-
     new = {d: n for d, n in alloc.items() if d != retire}
     new[promote] = new.get(promote, 0) + alloc[retire]
     return {
-        "applied": True, "allocation": new, "from": alloc,
-        "retired": retire, "promoted": promote,
-        "passed_over": skipped,
+        **base, "applied": True, "allocation": new, "from": alloc,
+        "retired": retire, "promoted": promote, "passed_over": skipped,
         "moved": {"from": retire, "to": promote, "slots": alloc[retire]},
-        "why": (f"{retire}'s scored queue has decayed to "
-                f"{queue_depth().get(retire, 0)} topic(s), below the "
-                f"{queue_exhausted_below(cfg)} floor, after "
-                f"{per_domain[retire]['measured']} measured episode(s). Its "
-                f"{alloc[retire]} weekly slot(s) pass to {promote}, the "
-                f"next-ranked domain in research/proposed-taxonomy.json "
-                f"(demand {score(promote)['demand_side_score']}). Retirement "
-                f"is decided by queue decay, never by one month of retention."),
+        "why": (f"Results decide: every topic has {need}+ long videos. {retire} "
+                f"scores {scores[retire]:.2f} per long video (subscribers per "
+                f"1,000 views + hours watched), under "
+                f"{rule['retire_below_ratio']:g} x {best_d}'s {scores[best_d]:.2f}. "
+                f"Its {alloc[retire]} weekly slot(s) pass to {promote}, the "
+                f"next-ranked onboarded domain."),
     }
 
 

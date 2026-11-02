@@ -3415,10 +3415,13 @@ def v34_niche_lifecycle_is_acted_on() -> Result:
         return r
 
     victim = sorted(alloc)[0]
-    need = _dom.min_episodes_to_judge(cfg)
-    ev = {d: {"measured": need, "views": 100, "avd_s": 200.0, "avp": 30.0,
-              "judgeable": True} for d in alloc}
-    ev[victim]["avd_s"] = 10.0
+    # RESULTS DECIDE (owner rule A, 2 Nov 2026): the constructed month has
+    # every domain at the long-video floor and the victim scoring under half
+    # the best - the only thing that may retire a domain now.
+    need = _dom.results_rule(cfg)["min_long_videos"]
+    ev = {d: {"measured": need, "videos": need, "views": 100, "avd_s": 200.0,
+              "avp": 30.0, "judgeable": True, "score": 10.0} for d in alloc}
+    ev[victim]["score"] = 1.0
 
     # A queue empty for `victim`, full for everyone else.
     real_depth = _dom.queue_depth
@@ -3443,8 +3446,8 @@ def v34_niche_lifecycle_is_acted_on() -> Result:
         d = _dom.lifecycle(cfg, ev)
         r.examined += 1
         if not d.get("applied"):
-            r.fail(f"a domain measured past the {need}-episode floor with an "
-                   f"empty queue did NOT produce a retirement: "
+            r.fail(f"a domain at the {need}-video floor scoring under half the "
+                   f"best did NOT produce a retirement: "
                    f"{d.get('stop') or d.get('why', '')[:160]}")
             return r
         r.examined += 1

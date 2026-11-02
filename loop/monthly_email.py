@@ -288,7 +288,12 @@ def rules(cfg: dict, lrows: dict[str, dict], long_pub: list[dict],
             "triggered": bool(life.get("applied")),
             "retired": life.get("retired"), "promoted": life.get("promoted"),
             "need_measured": need, "queue_floor": floor_q,
+            "need_videos": domains.results_rule(cfg)["min_long_videos"],
+            "ratio": domains.results_rule(cfg)["retire_below_ratio"],
+            "judged": not life.get("stop") == "TOPICS_HELD_FOR_EVIDENCE",
             "domains": {label(d): {"measured": e["measured"],
+                                   "videos": e.get("videos", e["measured"]),
+                                   "score": e.get("score"),
                                    "queue": depth.get(d, 0),
                                    "avd_s": e.get("avd_s")}
                         for d, e in ev.items()},
@@ -466,13 +471,20 @@ def section_rules(f: dict) -> list[str]:
     r = f["rules"]
     L = ["## 3. Keep, change or pivot - what the rules say", ""]
     ds = r["domain_swap"]
-    L.append(f"- **Domain swap rule** (a domain is swapped out when its topic "
-             f"queue falls below {ds['queue_floor']} after {ds['need_measured']} "
-             f"measured episodes): "
-             + ("**TRIGGERED** - " + plain(ds["why"]) if ds["triggered"] else "not triggered."))
+    # RESULTS DECIDE (owner rule A, 2 Nov 2026): a topic is replaced only on
+    # results, never on a thin queue.
+    L.append(f"- **Domain swap rule** (results decide: once every topic has "
+             f"{ds['need_videos']} long videos with analytics, a topic scoring under "
+             f"{ds['ratio']:g} x the best - subscribers per 1,000 views + hours "
+             f"watched, per long video - is replaced; a thin queue is refilled, "
+             f"never retired): "
+             + ("**TRIGGERED** - " + plain(ds["why"]) if ds["triggered"] else
+                "not triggered" + ("." if ds["judged"] else " - still collecting.")))
     for d, e in sorted(ds["domains"].items()):
-        L.append(f"  - {d}: {e['measured']} measured episodes (needs "
-                 f"{ds['need_measured']}); queue {e['queue']} topics (floor {ds['queue_floor']}); "
+        sc = f"score {e['score']:.2f}" if ds["judged"] and e.get("score") is not None \
+            else "score not judged yet"
+        L.append(f"  - {d}: {e['videos']} of {ds['need_videos']} long videos; {sc}; "
+                 f"queue {e['queue']} topics (floor {ds['queue_floor']}, refilled when thin); "
                  f"average view duration {_n(e['avd_s'])} s.")
     sm = r["slot_move"]
     L.append(f"- **Slot move rule** (one weekly slot moves when both domains have "

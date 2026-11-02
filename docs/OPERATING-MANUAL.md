@@ -704,8 +704,9 @@ a decayed niche could never have been detected either.
 | Materials | 18 | 3 | 15 | 7.5 wks |
 
 Two things then worked exactly as designed. `lifecycle()` refused to retire deep
-sea, naming `QUEUE_DECAYED_BUT_UNMEASURED` — a thin queue with no analytics yet
-is a scoring backlog, not a finished niche. And `score.missing_queues()` now
+sea (then named `QUEUE_DECAYED_BUT_UNMEASURED`; since the owner's rule A of
+2 Nov 2026 a thin queue never retires anything - `TOPICS_HELD_FOR_EVIDENCE`
+until every topic has 30 long videos, then results decide). And `score.missing_queues()` now
 lists deep sea, so the **Saturday lane runs the topic gate for it automatically**;
 `publish_order_domain.py` reads deep sea's own deep mine
 (`research/mined_queries.json`, named in `DEEP_MINE_OVERRIDE` because it predates
