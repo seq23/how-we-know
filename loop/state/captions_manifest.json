@@ -1,6 +1,6 @@
 {
-  "week": "2026-W44",
-  "at": "2026-11-01T16:02:12+00:00",
+  "week": "2026-W45",
+  "at": "2026-11-02T16:02:17+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -424,6 +424,24 @@
       "sha256": "981b998e45883b351e759e93d63f35e9377a0313fb0f051e158925e1bfb6ac95",
       "order": 46,
       "already": true
+    },
+    {
+      "slug": "are-sea-pigs-real",
+      "video_id": "1v6HvoL-rUI",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/are-sea-pigs-real.srt",
+      "cues": 164,
+      "sha256": "6156d05a8309f8a4bf0d17b20c4102c1345833af01597f31b24b726416373a8a",
+      "order": 47,
+      "already": false
+    },
+    {
+      "slug": "does-damascus-steel-rust",
+      "video_id": "jLmKYjbX178",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/does-damascus-steel-rust.srt",
+      "cues": 187,
+      "sha256": "8fff824e6f0637d2b79a2b8207aa64e593d2f78f3ef037ec7c85ecac51096dc4",
+      "order": 48,
+      "already": false
     }
   ],
   "gaps": []

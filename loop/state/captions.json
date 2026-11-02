@@ -277,7 +277,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-07T15:18:09+00:00",
-      "verified_at": "2026-10-15T15:10:49+00:00"
+      "verified_at": "2026-11-02T16:02:19+00:00"
     },
     "kTBlLeWdi4g": {
       "slug": "what-is-a-semiconductor-made-of",
@@ -470,7 +470,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-10-15T15:10:46+00:00",
-      "verified_at": "2026-10-17T15:08:36+00:00"
+      "verified_at": "2026-11-02T16:02:19+00:00"
     },
     "09O44lDEYYo": {
       "slug": "what-is-hydrothermal-vents",
@@ -481,7 +481,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-10-15T15:10:47+00:00",
-      "verified_at": "2026-10-18T15:09:47+00:00",
+      "verified_at": "2026-11-02T16:02:20+00:00",
       "previous_sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b",
       "replaced_at": "2026-10-19T20:21:30+00:00"
     },
@@ -565,14 +565,34 @@
       "source": "inserted",
       "recorded_at": "2026-10-27T15:12:03+00:00",
       "verified_at": "2026-10-28T15:08:49+00:00"
+    },
+    "1v6HvoL-rUI": {
+      "slug": "are-sea-pigs-real",
+      "caption_id": "AUieDaa3fC3oYNC35tKAhxwqetXd-2cWrTbK9nZsPO6CnsXvIdjQs5pv",
+      "language": "en",
+      "srt_sha256": "6156d05a8309f8a4bf0d17b20c4102c1345833af01597f31b24b726416373a8a",
+      "cues": 164,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-02T16:02:18+00:00"
+    },
+    "jLmKYjbX178": {
+      "slug": "does-damascus-steel-rust",
+      "caption_id": "AUieDaZXF2P-OvIUWTGqwyTcJ8K_kdXfF0OiD-0cYz0nKLlCSSE5gK80",
+      "language": "en",
+      "srt_sha256": "8fff824e6f0637d2b79a2b8207aa64e593d2f78f3ef037ec7c85ecac51096dc4",
+      "cues": 187,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-02T16:02:19+00:00"
     }
   },
   "blocked": {},
-  "updated": "2026-11-01T16:02:13+00:00",
+  "updated": "2026-11-02T16:02:20+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-01T16:02:13+00:00",
+    "at": "2026-11-02T16:02:19+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
