@@ -255,11 +255,10 @@ rec["variants"]["B"]["text_bbox"] = [0, 0, 0, 0]
 pr = TC.verify(slug, str(bad_root))
 check(any("/B:" in p for p in pr),
       f"a contract whose recorded crop is not the published one passed: {pr}")
-try:
-    TC.draw(ungraded, "ONE TWO THREE FOUR FIVE", "credit")
-    check(False, "draw() accepted five words")
-except ValueError:
-    check(True, "")
+# Over MAX_WORDS: trimmed, never refused (owner, 2 Nov 2026).
+_five = TC.draw(ungraded, "ONE TWO THREE FOUR FIVE", "credit")[0]
+_four = TC.draw(ungraded, "ONE TWO THREE FOUR", "credit")[0]
+check(_five.tobytes() == _four.tobytes(), "draw() did not trim five words to the first four")
 try:
     TC.build_variants("how-strong-is-titanium", out_root=str(TMP / "none"),
                       title="Titanium alloys reach 1400 megapascals")

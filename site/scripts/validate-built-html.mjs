@@ -18,6 +18,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { assert } from './validation-helpers.mjs'
+import { lengthVerdict } from './floors.mjs'
 
 const OUT = '.output/public'
 assert(fs.existsSync(OUT), `${OUT} does not exist; run the build before this validator`)
@@ -86,7 +87,9 @@ for (const route of routes) {
   const where = route
 
   const title = decode((/<title[^>]*>([\s\S]*?)<\/title>/iu.exec(html)?.[1] ?? '').replace(/\s+/gu, ' ').trim())
-  if (title.length < 30 || title.length > 65) failures.push(`${where}: title is ${title.length} characters`)
+  { const v = lengthVerdict(title.length, 30, 65)
+    if (v === 'fail') failures.push(`${where}: title is ${title.length} characters (under 75% of 30)`)
+    else if (v === 'note') console.log(`note: ${where}: title is ${title.length} characters`) }
   if (titles.has(title)) failures.push(`${where}: repeats the title on ${titles.get(title)}`)
   else titles.set(title, where)
 

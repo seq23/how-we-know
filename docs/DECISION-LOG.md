@@ -1821,3 +1821,33 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   sign-in still does).
 - Guards: test_only_her_keys_page_her.py, test_validator_holds_the_episode.py; negative proofs
   run (each break red, restored green).
+## 2026-11-02 — No petty validation; titles from the question with a grammar pass; Shorts re-cut then drop; thumbnails never held
+
+- **Owner's ruling (personal brain, 2 Nov):** "No petty validation in any repo ... over a word limit
+  never fails; under one fails only below 75% of it; anything that would block for a reason a
+  reader would not notice becomes a generator fix or a note."
+- **V47:** what still holds an upload: an empty title, `<`/`>`, her one-question format (one
+  question, one idea - an "X, Y and Z" list is three questions) and the truth guard (unsupported
+  words, invented figures). Notes only (`title_notes`), with the proposer picking the fewest:
+  the 40-character cap, MAX_GRADE 6, shouting capitals, clickbait words, the brand phrase, subject
+  late, jargon, hard numbers.
+- **Finding 9:** `titles._grammar` now handles "how to X" -> "How do you X", a third-person verb
+  ("how powder metallurgy works" -> "How does powder metallurgy work?", "what blobfish actually
+  looks like" -> "What does blobfish actually look like?") and a statement ("most deep sea
+  creatures are not big" -> "Are most deep sea creatures big?").
+- **V48:** over MAX_WORDS is trimmed by the builder (draw/build), never refused.
+  `test_opening_hook`'s "15-word limit" prompt pin was deleted (a wording pin).
+- **Site:** one helper, `site/scripts/floors.mjs` (75%), used by six checks (built and live
+  title bands, script, transcript and direct-answer floors). Over a limit is a note.
+- **V15 (CONFIRMED not a near-miss):** 87.53 vs 86.65 is a Short that matches neither crop of
+  its master, i.e. cut from a different or missing source. Finding 6 fixes it: a cut failing
+  V14/V15 is moved aside and re-cut from the render the same night; a second failure, or a
+  render that is gone, drops that cut only (loop/state/shorts_recut.json; never re-cut).
+- **Finding 11:** `thumbs_for.build` pins a photo (subject_photo.find) or a drawn card on refusal
+  and builds again - never held for a photo, never the old text card.
+- **Kept:** V21 (verbatim narration across scripts) - YouTube's inauthentic-content policy, a
+  monetisation risk, not style. The author already rewrites a repeated sentence; since #296 a
+  failure holds only that episode.
+- Guards: `test_longform_title` (hard vs note, rewritten strictly), `test_thumb_contract` (trim
+  proven by identical pixels), `site/tests/floors.test.mjs`, `test_shorts_recut_then_drop.py`;
+  negative proofs run.

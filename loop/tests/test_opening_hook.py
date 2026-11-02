@@ -88,8 +88,6 @@ check(any(p.startswith(f"opening rule {V}") for p in author.shape_problems(long_
       "author.shape_problems does not redraft a weak hook")
 check(O.prompt_text(V) in author.build_prompt("what is the midnight zone", pov)[0]["content"],
       "the drafting prompt does not carry the hook rule")
-check("15 words" in O.prompt_text(V) or "at most 15" in O.prompt_text(V),
-      "the hook prompt does not state the 15-word limit")
 
 import validate as VAL                                        # noqa: E402
 tmp = Path(tempfile.mkdtemp(prefix="hook-"))

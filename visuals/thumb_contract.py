@@ -408,8 +408,10 @@ def text_problems(text: str, title: str, subject: set[str] | None = None) -> lis
     q = t.endswith("?")
     body = t[:-1].rstrip() if q else t
     words = body.split()
-    if not 1 <= len(words) <= MAX_WORDS:
-        p.append(f"{len(words)} words (1 to {MAX_WORDS})")
+    # Over MAX_WORDS is never a refusal (owner, 2 Nov 2026: no petty
+    # validation): draw() and build() trim to MAX_WORDS. Only no words fails.
+    if not words:
+        p.append("no words")
     if re.search(r"[^A-Z0-9' %,.-]", body):
         p.append("not plain capitals")
     if q and not (title or "").rstrip().endswith("?"):
@@ -528,9 +530,9 @@ def text_options(title: str, subject: set[str] | None = None) -> list[str]:
 
 def draw(base: Image.Image, text: str, credit: str, side: str = "left") -> tuple[Image.Image, list, list]:
     words = text.split()
-    if len(words) > MAX_WORDS:
-        raise ValueError(f"{text!r} is {len(words)} words; the contract "
-                         f"allows {MAX_WORDS}")
+    if len(words) > MAX_WORDS:              # the builder trims; never refuses
+        words = words[:MAX_WORDS]
+        text = " ".join(words)
     im = base.copy()
     d = ImageDraw.Draw(im)
     pad = 56
@@ -643,8 +645,8 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
     text_src = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
     title = title or title_for(slug, text_src)
     owner_texts = bool(texts)
-    if texts and any(len(t.split()) > MAX_WORDS for t in texts):
-        raise ContractRefused(f"{slug}: thumbnail text over {MAX_WORDS} words: {texts}")
+    if texts:                               # trimmed to fit, never refused
+        texts = [" ".join(t.split()[:MAX_WORDS]) for t in texts]
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     import longform_title as LT                            # noqa: PLC0415
     subject = subject_for(slug, text_src) if text_src else None

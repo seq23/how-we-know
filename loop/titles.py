@@ -163,15 +163,46 @@ def _grammar(q: str) -> str:
     pressure"). What/which/who questions ask about their subject and keep
     their order."""
     w = q.split(" ")
-    if len(w) < 3 or w[0].lower() not in ("why", "how", "where", "when"):
-        return q
-    if any(x.lower() in _AUX for x in w[1:4]):
-        return q
     low = [x.lower() for x in w]
+    if len(w) < 3:
+        return q
+    # GRAMMAR PASS (hostile review 2026-11-02, finding 9). "how to tell if
+    # steel is hardened" became "How is to tell if steel hardened?"; "how
+    # powder metallurgy works" became "How do powder metallurgy works?"; "most
+    # deep sea creatures are not big" shipped as a statement with a "?".
+    if low[0] == "how" and low[1] == "to":
+        return " ".join([w[0], "do", "you"] + w[2:])
+    if low[0] not in QUESTION_WORDS and low[0] not in ("why", "how", "where", "when"):
+        for aux in ("is", "are", "isn't", "aren't"):
+            if aux in low[1:]:
+                i = low.index(aux, 1)
+                rest = [x for x in w[i + 1:] if x.lower() != "not"]
+                return " ".join([aux.split("n'")[0].capitalize()] + [w[0].lower()]
+                                + w[1:i] + rest)
+        return q
+
+    def third_person(i: int) -> bool:
+        x = low[i]
+        # a verb's -s: the last word ("... works"), or right before "like"
+        return (len(x) > 3 and x.endswith("s") and not x.endswith("ss")
+                and x not in _AUX and (i == len(w) - 1
+                                       or (i + 1 < len(w) and low[i + 1] == "like")))
+    if low[0] == "what" and not any(x in _AUX for x in low[1:4]):
+        for i in range(2, len(w)):
+            if third_person(i):
+                return " ".join([w[0], "does"] + w[1:i] + [w[i][:-1]] + w[i + 1:])
+        return q
+    if low[0] not in ("why", "how", "where", "when"):
+        return q
+    if any(x in _AUX for x in low[1:4]):
+        return q
     for aux in ("is", "are"):
         if aux in low[2:]:
             i = low.index(aux, 2)
             return " ".join([w[0], aux] + w[1:i] + w[i + 1:])
+    for i in range(2, len(w)):
+        if third_person(i):
+            return " ".join([w[0], "does"] + w[1:i] + [w[i][:-1]] + w[i + 1:])
     return " ".join([w[0], "do"] + w[1:])
 
 
