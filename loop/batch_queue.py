@@ -123,6 +123,25 @@ def _published_questions() -> dict[str, str]:
             for r in ledger.load()["published"] if r.get("slug")}
 
 
+def _withdrawn_rows() -> list[dict]:
+    import ledger                                          # noqa: PLC0415
+    import re                                              # noqa: PLC0415
+    out = []
+    for r in ledger.load()["published"]:
+        if not r.get("slug") or not r.get("withdrawn_at"):
+            continue
+        row = {"slug": r["slug"], "_domain_file": "ledger:withdrawn",
+               "query": r.get("question") or r["slug"].replace("-", " "),
+               "script": f"scripts/{r['slug']}.md"}
+        p = ROOT / row["script"]
+        m = re.search(r"^\*\*Domain:\*\*\s*([a-z0-9-]+)", p.read_text(), re.M) \
+            if p.exists() else None
+        if m:
+            row["domain"] = m.group(1)
+        out.append(row)
+    return out
+
+
 def _screened() -> tuple[list[dict], list[dict]]:
     """(kept rows in queue order, refused rows).
 
@@ -214,8 +233,12 @@ def _raw_entries() -> list[dict]:
             f"no research/{PUBLISH_ORDER_GLOB} found under {ROOT} - refusing to "
             "report an empty queue, which is indistinguishable from a finished one"
         )
-    out: list[dict] = []
-    seen: set[str] = set()
+    # A WITHDRAWN episode (loop/owner_hold.py: uploaded, taken off the
+    # schedule before it aired, to be re-made) is queued first even when no
+    # publish-order file lists it any more, so the Mac re-renders it. It is in
+    # the ledger, so _screened never refuses it.
+    out: list[dict] = _withdrawn_rows()
+    seen: set[str] = {r["slug"] for r in out}
     for path in files:
         for row in json.loads(path.read_text()).get("queue") or []:
             row = dict(row) if isinstance(row, dict) else {"slug": row}

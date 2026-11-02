@@ -1706,3 +1706,30 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - **Guard:** `loop/tests/test_food_no_repeats.py`. Negative proof: disabling the `repeats()` check
   in `next_parts()` fails 2 cases (the constructed and the real queue both rebuild
   chocolate/steak/bread); restored, green.
+
+## 2026-11-02 — Long-form held; 13 scheduled episodes with no footage taken off the schedule
+
+- **Owner's ruling (via the coordinator, verbatim):** "I'm really concerned we fix this group:
+  including 13 already scheduled through 30 Nov. We need to take all these off the schedule and re
+  do them and [don't] let any more go out until all hostile review items fixed."
+- **Found (CONFIRMED):** all 13 scheduled, not-yet-public long-form videos (3-30 Nov) carried no
+  moving footage: 12 footage records all null, and are-sea-pigs-real rendered before #284.
+- **Done:** `loop/breaker.py hold-longform` holds the long-form lanes only (cloud-upload, backfill,
+  thu-upload, fri-publish, repackage-reschedule); Shorts keep going (coordinator's reading; she
+  can extend it). OWNER_HOLD_LONGFORM is self-resolving (her own decision never pages her); the
+  weekly digest shows one "held on purpose" line and does not report the hold's empty calendar as
+  a red gap. `loop/owner_hold.py unschedule --apply` cleared each publishAt (private, kept, never
+  deleted), marked the ledger row retired + `withdrawn_at` with `schedule_was`, and recorded the
+  old cut in superseded_renders.json (an earlier refused cut is kept, the new one added under
+  `also`; cloud_upload refuses both). Withdrawn episodes are queued first for re-render
+  (batch_queue `_raw_entries`).
+- **Near miss:** `publish.cancel_schedule` read back immediately; X2_UfcYnXwc first read its old
+  date, then no date, then its old date again minutes later. It now polls the shared
+  READBACK_WAITS_S, and owner_hold re-reads every withdrawn video after 60 s and redoes the round
+  trip once. `withdraw()` matched by slug and marked an older retired duplicate of
+  how-deep-can-a-sperm-whale-go; it now matches by video_id.
+- **Lifted** by `breaker.py lift-longform` only when every hostile-review finding this work owns
+  is on main and green.
+- Guard: `loop/tests/test_owner_hold_longform.py` (17 checks). Negative proofs: removing the hold
+  check in guard(), the withdrawn re-queue, the digest line, the footage filter or the read-back
+  poll each turns it red; restored, green.

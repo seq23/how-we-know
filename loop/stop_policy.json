@@ -111,6 +111,7 @@
     }
   },
   "self_resolving": {
+    "OWNER_HOLD_LONGFORM": {"why": "Her own decision (2026-11-02): long-form uploads, dating and publishing are held until the hostile-review fixes land; Shorts keep going and rendering continues. loop/breaker.py longform_hold; lifted by `breaker.py lift-longform` when the work is on main.", "max_consecutive": 60, "escalation": "Sixty runs held means the hold outlived the work it waits for; check the hostile-review fixes landed and lift it.", "plain": "long-form episodes are held on purpose while the picture fixes land; Shorts keep going"},
     "HOOK_REOPEN_PENDING": {"why": "2026-10-13 hook rule (owner): every queued long-form episode opens stake-then-payoff before it ships. Queued episodes whose script breaks the rule, or whose re-opened script is not yet re-rendered, are held by loop/lengthen.py upload_hold(); loop-repackage re-opens the script daily on the $0 route and the Mac's nightly batch binds and re-renders it.", "max_consecutive": 7, "escalation": "A week of the same held episodes means the re-open keeps being refused (QUEUE_REOPEN_REFUSED) or the Mac is not binding (`loop/lengthen.py bind` in bin/batch-session.sh) - read loop/state/lengthen.json.", "plain": "queued episodes are waiting for their new hook to be written and rendered"},
     "QUEUE_HOOK_CLEAN": {"why": "Every queued long-form script opens stake-then-payoff and runs at least ten minutes, or is waiting for the Mac to bind it. The re-open stage is FINISHED, not blocked: a new script is checked the run after it lands.", "max_consecutive": 400, "_why_max_consecutive": "Idle is the normal state between Monday drafts; the lane runs daily for ever.", "plain": "every queued script already opens on its hook and runs ten minutes"},
     "QUEUE_REOPEN_REFUSED": {"why": "Every new opening (and tail) drafted for these queued scripts failed the gates after every attempt: the hook rule, directive truth, the title truth guard, exclusions or a dead source URL. The scripts are unchanged and the upload lanes hold them; the next daily run drafts again.", "max_consecutive": 5, "escalation": "Five days of refusals for the same scripts means the $0 route cannot write a passing opening for them; read the notes in the queue-reopen stop record.", "plain": "some queued scripts could not get a passing new hook yet; retrying daily"},
@@ -647,6 +648,10 @@
       "or a validator that found what it was built to find. Red is the correct",
       "outcome for all three."
     ],
+    "OWNER_HOLD_NOT_APPLIED": {
+      "why": "loop/owner_hold.py asked YouTube to clear a withdrawn video's publishAt and keep it private, and after a second round trip and a delayed read it still carries a date or is not private: it may go public on that date. A real defect.",
+      "plain": "a video taken off the schedule still shows a publish date on YouTube"
+    },
     "ZERO_WORK": {
       "why": "Rule 0. A stage that did nothing is indistinguishable from a stage that is broken, so this one always reaches a person.",
       "plain": "a lane ran and did nothing at all"

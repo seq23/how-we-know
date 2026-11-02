@@ -79,6 +79,42 @@ GUARDED = {
 CLOSED = {"state": "closed", "tripped_at": None, "cause": None,
           "detail": None, "history": []}
 
+# THE OWNER'S LONG-FORM HOLD (owner, 2026-11-02: "take all these off the
+# schedule and re do them and [don't] let any more go out until all hostile
+# review items fixed"). Separate from the trip above on purpose: a trip halts
+# EVERY guarded lane, Shorts included, and this halts only the lanes that
+# upload, date or publish a LONG-FORM episode. Shorts keep going. It never
+# pages her (OWNER_HOLD_LONGFORM is self_resolving: it is her own decision),
+# the weekly digest shows it as one line, and it is lifted only by
+# `breaker.py lift-longform` once the work it waits for has landed.
+LONGFORM_STAGES = ("cloud-upload", "fri-publish", "thu-upload", "backfill",
+                   "repackage-reschedule")
+
+
+def longform_hold() -> dict | None:
+    """The live long-form hold record, or None."""
+    h = load().get("longform_hold")
+    return h if h and h.get("on") else None
+
+
+def hold_longform(detail: str, by: str = "owner") -> dict:
+    b = load()
+    b["longform_hold"] = {"on": True, "since": now(), "detail": detail, "by": by}
+    b.setdefault("history", []).append(
+        {"event": "longform_hold", "at": now(), "detail": detail, "by": by})
+    write_json(FLAG, b)
+    return b
+
+
+def lift_longform(note: str) -> dict:
+    b = load()
+    was = b.pop("longform_hold", None)
+    b.setdefault("history", []).append(
+        {"event": "longform_lift", "at": now(), "note": note,
+         "held_since": (was or {}).get("since")})
+    write_json(FLAG, b)
+    return b
+
 
 def load() -> dict:
     return read_json(FLAG, default=dict(CLOSED))
@@ -257,6 +293,17 @@ def guard(stage_name: str) -> None:
        are just as halted — the difference is only who wakes the owner.
     """
     b = load()
+    hold = b.get("longform_hold") or {}
+    if hold.get("on") and stage_name in LONGFORM_STAGES:
+        with Stage(stage_name) as st:
+            st.named_stop(
+                "OWNER_HOLD_LONGFORM",
+                f"long-form publishing is held on purpose since "
+                f"{str(hold.get('since'))[:10]}: {hold.get('detail')}. Shorts "
+                f"keep going; rendering continues.",
+                detail=hold,
+                unblock="Lifted by `python loop/breaker.py lift-longform "
+                        "--note ...` once the work it waits for is on main.")
     if b.get("state") != "tripped":
         return
     healed = autoreset()
@@ -311,12 +358,30 @@ def main() -> int:
     r.add_argument("--note", required=True)
     g = sub.add_parser("guard")
     g.add_argument("--stage", required=True)
+    h = sub.add_parser("hold-longform")
+    h.add_argument("--detail", required=True)
+    h.add_argument("--by", default="owner")
+    lf = sub.add_parser("lift-longform")
+    lf.add_argument("--note", required=True)
     a = ap.parse_args()
+
+    if a.cmd == "hold-longform":
+        hold_longform(a.detail, a.by)
+        print(f"long-form HELD: {a.detail} (Shorts continue)")
+        return EXIT_OK
+    if a.cmd == "lift-longform":
+        lift_longform(a.note)
+        print(f"long-form hold LIFTED: {a.note}")
+        return EXIT_OK
 
     if a.cmd == "status":
         b = load()
         state = b.get("state", "closed")
         print(f"breaker: {state.upper()}")
+        hold = longform_hold()
+        if hold:
+            print(f"long-form HELD since {str(hold.get('since'))[:10]}: "
+                  f"{hold.get('detail')} (Shorts continue)")
         if state == "tripped":
             print(f"  cause  : {b['cause']} — {CAUSES.get(b['cause'], '')}")
             print(f"  detail : {b['detail']}")

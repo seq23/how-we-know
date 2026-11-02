@@ -15,6 +15,8 @@ Hard-fails if it examines zero cases.
 """
 from __future__ import annotations
 
+import datetime as _dt
+
 import datetime as dt
 import json
 import os
@@ -454,7 +456,19 @@ def check() -> list[str]:
     import backfill as _bf                                   # noqa: PLC0415
     import ledger as _led                                    # noqa: PLC0415
     tail = cadence.scheduled_tail()
-    if not tail:
+    import breaker as _br                                    # noqa: PLC0415
+    if not tail and _br.longform_hold():
+        # The owner's long-form hold (2026-11-02) empties the calendar on
+        # purpose: nothing is dated, so nothing can move. Held to the new
+        # truth strictly: NO live row may still carry a future date.
+        examined += 1
+        _now = _dt.datetime.now(_dt.timezone.utc).isoformat()
+        dated = [r["slug"] for r in _led.load()["published"]
+                 if not r.get("retired_at") and (r.get("scheduled_publish_at") or "") > _now[:19]]
+        if dated:
+            fails.append(f"the long-form hold is on but these live rows are still "
+                         f"dated ahead and the tail reader missed them: {dated}")
+    elif not tail:
         examined += 1
         fails.append("no episode is scheduled ahead, so the 'nothing already "
                      "dated may move' proof examined ZERO rows")

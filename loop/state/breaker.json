@@ -111,6 +111,18 @@
       "at": "2026-10-12T18:04:40+00:00",
       "cleared_cause": "validator",
       "note": "automatic: all 40 validators pass again in the drafting run that re-ran the check"
+    },
+    {
+      "event": "longform_hold",
+      "at": "2026-11-02T20:29:17+00:00",
+      "detail": "owner hold 2 Nov: until hostile-review fixes land",
+      "by": "owner"
     }
-  ]
+  ],
+  "longform_hold": {
+    "on": true,
+    "since": "2026-11-02T20:29:17+00:00",
+    "detail": "owner hold 2 Nov: until hostile-review fixes land",
+    "by": "owner"
+  }
 }

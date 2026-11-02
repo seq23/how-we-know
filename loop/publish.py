@@ -18,6 +18,7 @@ import cadence
 
 import datetime as _dt
 import json
+import time
 import sys
 import urllib.error
 import urllib.parse
@@ -64,6 +65,7 @@ def read_status(token: str, video_id: str) -> dict:
 # 09:00 lane went red as SUPERSEDED_SWAP_NOT_SCHEDULED). Every lane that
 # verifies a write polls on THIS one list, never its own.
 READBACK_WAITS_S = (3, 6, 10, 15, 20)
+_sleep = time.sleep          # patched by tests
 
 
 def set_privacy(token: str, video_id: str, privacy: str,
@@ -110,6 +112,15 @@ def cancel_schedule(token: str, video_id: str) -> str | None:
     set_privacy(token, video_id, "unlisted")
     set_privacy(token, video_id, "private")
     after = read_status_full(token, video_id)
+    # The read-back is eventually consistent (READBACK_WAITS_S above): on
+    # 2026-11-02 X2_UfcYnXwc read its old publishAt straight after a round
+    # trip YouTube had applied, and this raised on a video that was in fact
+    # private with no date. Poll on the shared list before calling it failed.
+    for wait in READBACK_WAITS_S:
+        if not after.get("publishAt") and after.get("privacy") == "private":
+            break
+        _sleep(wait)
+        after = read_status_full(token, video_id)
     if after.get("publishAt"):
         raise RuntimeError(
             f"{video_id} still carries publishAt={after['publishAt']} after "
