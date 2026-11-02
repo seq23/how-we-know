@@ -84,12 +84,12 @@ if [ -f "$STOPFILE" ]; then
   # consent, a platform-side account flag) cannot self-heal and cannot be
   # retried away -- but failing this job every day until she gets to it is the
   # alarm nobody reads. It stays GREEN here and is carried in
-  # loop/state/owner_action.json, which the Sunday digest prints at the top.
+  # loop/state/stops/owner_action.json, which the Sunday digest prints at the top.
   # loop/common.py escalates it to exit 3 if it outlives its max_consecutive,
   # so a forgotten block still becomes loud eventually.
   if [ "$DISPOSITION" = "owner_action" ]; then
     echo "named stop [$STOP_CODE] is NEEDS A SECRET ONLY SHE HOLDS — recorded in"
-    echo "loop/state/owner_action.json and surfaced in the Sunday digest."
+    echo "loop/state/stops/owner_action.json and surfaced in the Sunday digest."
     echo "Green on purpose: she cannot act on a failed build any faster than"
     echo "she can act on the digest, and a daily red run is how a real alarm"
     echo "gets tuned out."

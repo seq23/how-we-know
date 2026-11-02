@@ -48,7 +48,7 @@
     "                  heal and retrying cannot clear it, so failing the job every",
     "                  day until she gets to it is the worst of both: she is paged",
     "                  and she still cannot act faster. GREEN, written to",
-    "                  loop/state/owner_action.json, printed at the TOP of the",
+    "                  loop/state/stops/owner_action.json, printed at the TOP of the",
     "                  Sunday digest, and escalated to red if it outlives its cap.",
     "  needs_human     a defect. Red, and still the default for anything unlisted.",
     "",

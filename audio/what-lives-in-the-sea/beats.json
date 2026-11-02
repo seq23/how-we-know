@@ -1,0 +1,327 @@
+[
+  {
+    "i": 0,
+    "segment": "depth_descent",
+    "narration": "Specimens collected in the 1970s still sit in museum jars, waiting for names."
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The World Register of Marine Species catalogs approximately 240,000 described marine species as of 2024, but the Census of Marine Life and Ocean Census estimate the total may reach 2.2 million species."
+  },
+  {
+    "i": 2,
+    "segment": "depth_descent",
+    "narration": "The first number is a database anyone can search: every entry is an organism someone formally described."
+  },
+  {
+    "i": 3,
+    "segment": "ambient_drift",
+    "narration": "The second is a model, built from taxonomists' estimates and scaled up by habitat area."
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "Together they settle that most ocean diversity is unnamed. They do not settle how much exists."
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "What lives in the sea?"
+  },
+  {
+    "i": 6,
+    "segment": "ambient_drift",
+    "narration": "The World Register of Marine Species is a live database, not a closed list."
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "Taxonomists add roughly 2,000 marine species each year. That rate has held steady for two decades, which tells you more about the number of working taxonomists than the number of species left to find."
+  },
+  {
+    "i": 8,
+    "segment": "ambient_drift",
+    "narration": "Ocean Census, launched in 2023, aims to describe 100,000 new marine species within ten years by pairing field expeditions with molecular sequencing and AI-assisted image sorting."
+  },
+  {
+    "i": 9,
+    "segment": "ambient_drift",
+    "narration": "The target is ambitious but grounded in collection rates from recent deep-sea surveys."
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "A single Schmidt Ocean Institute expedition to the Nazca and Salas y G\u00f3mez ridges in 2024 documented over 100 potentially new species in 28 days."
+  },
+  {
+    "i": 11,
+    "segment": "ambient_drift",
+    "narration": "The limiting factor is not discovery \u2014 it is the formal description process, which requires morphological analysis, genetic comparison and publication in a peer-reviewed journal."
+  },
+  {
+    "i": 12,
+    "segment": "stat_card",
+    "narration": "Marine life distributes unevenly across depth. The epipelagic zone, from the surface to 200 meters, receives enough sunlight for photosynthesis and holds the majority of described fish species."
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "The mesopelagic, from 200 to 1,000 meters, contains the ocean's largest animal biomass \u2014 small fish, squid and crustaceans that migrate vertically each night to feed near the surface."
+  },
+  {
+    "i": 14,
+    "segment": "stat_card",
+    "narration": "The bathypelagic, abyssal and hadal zones below 1,000 meters hold the least-known fauna."
+  },
+  {
+    "i": 15,
+    "segment": "ambient_drift",
+    "narration": "NOAA Ocean Exploration notes that humans have explored less than 25 percent of the global seafloor at a resolution sufficient to detect large animals."
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "Most of that 25 percent is shallow continental shelf. The deep ocean remains undersampled not because it is empty, but because sending an ROV to 4,000 meters costs tens of thousands of dollars per dive and requires a research vessel, a crew and weather that cooperates."
+  },
+  {
+    "i": 17,
+    "segment": "anatomy_callout",
+    "narration": "A described species is not always a single evolutionary lineage. DNA barcoding, which sequences a standardized gene region called cytochrome oxidase subunit one to identify organisms, routinely splits what taxonomists thought was one widespread species into several localized ones that look identical."
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "A 2016 study in the journal PLOS ONE found that 30 percent of coral reef fish species examined with molecular tools turned out to be species complexes \u2014 groups of two or more distinct species previously lumped under one name."
+  },
+  {
+    "i": 19,
+    "segment": "anatomy_callout",
+    "narration": "The World Register of Marine Species incorporates genetic data when available, but most of the 240,000 described species were named before molecular sequencing became routine."
+  },
+  {
+    "i": 20,
+    "segment": "ambient_drift",
+    "narration": "That means the true count is higher than the catalog, even for well-studied groups."
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "The 2.2 million estimate from the Census of Marine Life assumes similar cryptic diversity exists in less-studied taxa."
+  },
+  {
+    "i": 22,
+    "segment": "quote_card",
+    "narration": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
+  },
+  {
+    "i": 23,
+    "segment": "stat_card",
+    "narration": "Bacteria and archaea do not fit neatly into species counts. Microbiologists group prokaryotes into operational taxonomic units based on genetic similarity thresholds, typically 97 percent identity in the 16S ribosomal RNA gene."
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "By that measure, a 2016 estimate in the Proceedings of the National Academy of Sciences suggested Earth's oceans might harbor between 20,000 and 2 million bacterial operational taxonomic units, and between 5,000 and 500,000 archaeal operational taxonomic units."
+  },
+  {
+    "i": 25,
+    "segment": "stat_card",
+    "narration": "The range is wide because sampling is sparse and the definition is arbitrary."
+  },
+  {
+    "i": 26,
+    "segment": "ambient_drift",
+    "narration": "A three-percent genetic difference might separate ecologically identical populations or functionally distinct lineages."
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "The World Register of Marine Species does not attempt a comprehensive prokaryote catalog."
+  },
+  {
+    "i": 28,
+    "segment": "stat_card",
+    "narration": "The 240,000 figure refers almost entirely to eukaryotes \u2014 organisms with nucleated cells \u2014 and a small number of well-characterized bacterial genera."
+  },
+  {
+    "i": 29,
+    "segment": "ambient_drift",
+    "narration": "Microbial diversity likely exceeds macroscopic diversity by orders of magnitude, but the lack of a stable species concept for prokaryotes makes direct comparison difficult."
+  },
+  {
+    "i": 30,
+    "segment": "ambient_drift",
+    "narration": "Within the 240,000 described marine species, mollusks and crustaceans account for nearly half."
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "The World Register of Marine Species lists approximately 51,000 mollusk species and 47,000 crustacean species."
+  },
+  {
+    "i": 32,
+    "segment": "ambient_drift",
+    "narration": "Fish total around 20,000 marine species, and marine mammals number roughly 130."
+  },
+  {
+    "i": 33,
+    "segment": "ambient_drift",
+    "narration": "Those counts reflect both true diversity and taxonomic effort. Marine mammals are large, conspicuous and culturally valued, so their catalog is nearly complete."
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "Deep-sea invertebrates are small, difficult to collect and require specialist knowledge to identify, so their catalog is a small fraction of what exists."
+  },
+  {
+    "i": 35,
+    "segment": "ambient_drift",
+    "narration": "A 2011 analysis in PLOS Biology estimated that 91 percent of marine species remain undescribed, with the highest proportion of unknown species in the deep sea and among small-bodied invertebrates."
+  },
+  {
+    "i": 36,
+    "segment": "ambient_drift",
+    "narration": "The estimate is model-based, not a direct count, but it aligns with the discovery rate from recent deep-sea expeditions."
+  },
+  {
+    "i": 37,
+    "segment": "zone_column",
+    "narration": "The 25 percent of the seafloor that humans have explored is not a random sample."
+  },
+  {
+    "i": 38,
+    "segment": "text_beat",
+    "narration": "It clusters around continental margins, well-studied coral reefs and a few intensively surveyed deep-sea features like the East Pacific Rise and the Mid-Atlantic Ridge."
+  },
+  {
+    "i": 39,
+    "segment": "zone_column",
+    "narration": "The abyssal plains, which cover more than 50 percent of Earth's surface, remain largely unsampled at the spatial resolution needed to catalog fauna."
+  },
+  {
+    "i": 40,
+    "segment": "ambient_drift",
+    "narration": "GEBCO, the General Bathymetric Chart of the Oceans, reports that as of 2024 only about 25 percent of the seafloor is mapped at high resolution \u2014 defined as 100-meter grid spacing or finer."
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Biological surveys require even closer inspection. An ROV survey maps a corridor a few meters wide."
+  },
+  {
+    "i": 42,
+    "segment": "zone_column",
+    "narration": "Extrapolating species counts from that coverage to the entire ocean introduces large uncertainty, which is why the Census of Marine Life estimate spans an order of magnitude."
+  },
+  {
+    "i": 43,
+    "segment": "anatomy_callout",
+    "narration": "Environmental DNA sampling, in which seawater is filtered and sequenced to detect genetic material from organisms that passed through, can identify species without capturing them."
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "A 2022 study published in Nature used environmental DNA to survey fish diversity across ocean basins and detected 44 percent more species than traditional trawling in the same areas."
+  },
+  {
+    "i": 45,
+    "segment": "anatomy_callout",
+    "narration": "But detecting a genetic sequence is not the same as describing a species."
+  },
+  {
+    "i": 46,
+    "segment": "ambient_drift",
+    "narration": "Formal description requires a type specimen, a detailed morphological account and a published diagnosis that distinguishes the new species from its relatives."
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "That work still requires a human taxonomist. Ocean Census is funding taxonomic positions and digitizing museum collections to speed the process, but the backlog is decades deep."
+  },
+  {
+    "i": 48,
+    "segment": "anatomy_callout",
+    "narration": "Specimens collected in the 1970s sit undescribed in the Smithsonian's National Museum of Natural History and the Monterey Bay Aquarium Research Institute's archives."
+  },
+  {
+    "i": 49,
+    "segment": "ambient_drift",
+    "narration": "The technology for finding organisms has outpaced the capacity to name them."
+  },
+  {
+    "i": 50,
+    "segment": "ambient_drift",
+    "narration": "The 2.2 million figure is an extrapolation, not a count. It rests on the assumption that the ratio of described to undescribed species in well-sampled habitats applies to poorly sampled ones."
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "That assumption is plausible but not testable until the sampling is done."
+  },
+  {
+    "i": 52,
+    "segment": "ambient_drift",
+    "narration": "The Census of Marine Life used expert elicitation \u2014 asking taxonomists to estimate diversity in their groups \u2014 and scaled those estimates by habitat area."
+  },
+  {
+    "i": 53,
+    "segment": "ambient_drift",
+    "narration": "The method is transparent, but it propagates uncertainty. A 2011 follow-up in Current Biology revised the estimate downward to 1.4 million species after refining the statistical model."
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Both figures are consistent with the evidence; neither is a measurement. The described count is firm."
+  },
+  {
+    "i": 55,
+    "segment": "ambient_drift",
+    "narration": "The total is a projection that depends on how you model the unknown."
+  },
+  {
+    "i": 56,
+    "segment": "ambient_drift",
+    "narration": "The described count of 240,000 species is solid \u2014 those are named organisms in a database you can query."
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "The total estimate of 2.2 million is a model output that depends on assumptions about how biodiversity scales with habitat area and sampling effort."
+  },
+  {
+    "i": 58,
+    "segment": "ambient_drift",
+    "narration": "Published estimates range from half a million to 5 million marine species."
+  },
+  {
+    "i": 59,
+    "segment": "ambient_drift",
+    "narration": "The range reflects genuine uncertainty about deep-sea diversity, not sloppiness. No method currently exists to count species without collecting and describing them."
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "The evidence establishes that most marine diversity is undescribed and that the deep sea holds most of that undescribed diversity."
+  },
+  {
+    "i": 61,
+    "segment": "ambient_drift",
+    "narration": "It does not establish a precise total. The uncertainty is not a gap in knowledge that will close soon \u2014 it is intrinsic to the scale of the task and the rate at which taxonomic work proceeds."
+  },
+  {
+    "i": 62,
+    "segment": "size_ladder",
+    "narration": "What lives in the sea is a question with a growing answer."
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "The catalog expands every year, and the tools for expanding it improve."
+  },
+  {
+    "i": 64,
+    "segment": "size_ladder",
+    "narration": "The gap between what is known and what exists is not a failure of science \u2014 it is a measure of the ocean's size and the limited number of people trained to work at the boundary between collection and naming."
+  }
+]

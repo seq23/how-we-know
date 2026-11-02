@@ -388,7 +388,7 @@ def streak_clear(stage: str) -> None:
 #   owner_action    only she can clear it, and no amount of retrying will.
 #                   ALSO GREEN -- a red run every day for a thing she will fix
 #                   when she next sits down is the worst of both -- but it is
-#                   written into loop/state/owner_action.json and printed at the
+#                   written into loop/state/stops/owner_action.json and printed at the
 #                   TOP of the Sunday digest, so the fact reaches her as
 #                   information rather than as a failed build.
 #   needs_human     a defect. Red, as before, and still the default.
