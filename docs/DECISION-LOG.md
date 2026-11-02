@@ -1627,3 +1627,35 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   V34's constructed month. Negative proofs: restoring retirement on a decayed queue fails the
   hold check; `<` -> `<=` fails the exactly-half check; restored, green.
 
+## 2026-11-02 — Stock moving footage in every domain; footage placed in renders again
+
+- **Owner's ruling (spry brain, 2026-11-02):** "Yes, all topics." Moving footage from Pixabay,
+  Pexels and Mixkit may be used in every domain, not only food, on the food terms: commercial use,
+  no attribution required, each clip's licence wording stored and re-checked, still credited on
+  screen. Still photos inside videos stay PD/CC0. A clip that does not show the subject is worse
+  than none.
+- **Built:** `research/imagery_stock_video.py` (HARVESTER for deep sea and materials, `host:
+  mac-batch`, gate `stock_licence_ok`) reuses `research/food_footage.py`'s Pixabay and Mixkit
+  adapters and writes into `channel/imagery/video_rights.json` beside the NOAA clips. A clip is
+  taken only when the episode's subject phrase (from its slug, generic ocean words removed: "goblin
+  shark", never "shark") heads its first tag (see below). Whole length counted as text-free.
+  `visuals/footage.py` re-runs the licence gate on every stock record before a render, keeps NOAA
+  first (stock only where NOAA alone would repeat), never puts a stock clip on a species beat, and
+  never shows the same span of a clip twice. `loop/footage_lane.py` accepts a `domains` list.
+- **Pexels:** no key, and Pexels paused new API keys on 2026-10-13. Named stop
+  `PEXELS_KEY_ABSENT`, printed every run and kept in the manifest's `stock_source_stops`; no account
+  is created. A key at `~/.config/how-we-know/pexels.key` turns it on with no code change.
+- **Found while wiring (CONFIRMED):** nothing called `footage.assign()`. `visuals/assemble.py` on
+  main never placed footage; the last render receipts showing footage are dated 2026-09-01, and
+  `are-sea-pigs-real` (rendered 2026-11-02) drew all 14 ambient beats while a NOAA "Sea Pigs" clip
+  was cleared. assemble.py now places and renders footage (`render_cut`, exact frame count, no `-t`
+  input option); `loop/lengthen.py` splice segments stay drawn (a slice cannot know its episode).
+- **The subject gate, measured on live runs (worktree):** "any of the first three tags" took
+  roses for "red", club dancers for "recorded", a dolphin pool for "whale", a pigeon for "diamond"
+  and a rock band for "metal" (37 clips, most wrong). Now: adjectives and verbs are never subjects;
+  a Pixabay clip's FIRST tag must end with the phrase (and BE it for a one-word subject); a Mixkit
+  title must carry the phrase as the head of its noun phrase in its first five words. A re-run kept
+  9 of 10 (glasses of water, whales, a diamond ring) and named the episodes with no honest clip.
+- Guard: `loop/tests/test_stock_footage_all_domains.py` - negative proof: a stock clip marked
+  attribution-required or commercial-use-forbidden is refused in a deep-sea episode by
+  `usable_assets`, `assign` and `render_cut`; removing the gate turns 7 checks red.

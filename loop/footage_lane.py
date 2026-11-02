@@ -371,8 +371,12 @@ def harvesters_for(cfg: dict) -> tuple[list[dict], list[str]]:
     """
     alloc = domains.allocation(cfg)
     found = [h for h in declared_harvesters() if h.get("scheduled", True)]
-    picked = [h for h in found if h.get("domain") in alloc]
-    covered = {h["domain"] for h in picked}
+    # `domains` lets one harvester feed several (research/imagery_stock_video.py
+    # serves deep sea and materials); `domain` alone is the one-domain form.
+    def doms(h: dict) -> list[str]:
+        return list(h.get("domains") or [h.get("domain")])
+    picked = [h for h in found if any(d in alloc for d in doms(h))]
+    covered = {d for h in picked for d in doms(h)}
     return picked, [d for d in alloc if d not in covered]
 
 
