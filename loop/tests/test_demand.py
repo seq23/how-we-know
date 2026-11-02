@@ -311,6 +311,15 @@ check(not list(D.OUTDIR.glob("*.md")) if D.OUTDIR.exists() else True,
 D.render_email = orig
 path = D.write_email(d, St())
 check(path.exists() and path.with_suffix(".json").exists(), "email + its snapshot written")
+# Filed under the week it is SENT, whatever week the snapshot is from: the
+# send step opens loop/state/demand/<this ISO week>.md (2 Nov 2026: a failed
+# Monday pull left a W44 snapshot, the email went to W44.md, the sender found
+# no W45.md and main went red).
+stale = copy.deepcopy(d)
+stale["channel"]["week"] = "2000-W01"
+p2 = D.write_email(stale, St())
+check(p2.name == f"{D.week_id()}.md",
+      f"the email is filed under the sending week, not the snapshot's: {p2.name}")
 
 # ------------------------------------------------------------------ 6. V70
 print("── 6. V70 passes sound books and fails each broken one")

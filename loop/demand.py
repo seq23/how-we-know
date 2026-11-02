@@ -920,7 +920,12 @@ def write_email(doc: dict, st) -> Path:
                       unblock="A render bug in loop/demand.py render_email: "
                               "every number must come from loop/state/demand.json.")
     OUTDIR.mkdir(parents=True, exist_ok=True)
-    wk = doc["channel"]["week"]
+    # THE EMAIL IS FILED UNDER THE WEEK IT IS SENT, which is the file the
+    # workflow's send step opens (`date -u +%G-W%V`). It used the snapshot's
+    # own week, so a Monday whose pull failed (2 Nov 2026: ANALYTICS_HTTP_500,
+    # self-resolving) filed W44 while the sender looked for W45 and the run
+    # went red. The snapshot's date stays in the body ("as of").
+    wk = week_id()
     (OUTDIR / f"{wk}.md").write_text(body, encoding="utf-8")
     (OUTDIR / f"{wk}.subject").write_text(subj + "\n", encoding="utf-8")
     write_json(OUTDIR / f"{wk}.json", {k: v for k, v in doc.items() if k != "_rows"})
