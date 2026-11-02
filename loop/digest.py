@@ -628,6 +628,32 @@ def auto_photos_block(now: dt.datetime) -> list[str]:
             "The loop picked these itself rather than wait. Reply with the episode "
             "and what you'd like instead, and it is changed.", "",
             "| Episode | Picture | Source |", "|---|---|---|", *rows, ""]
+def topics_block(cfg: dict, led: dict) -> list[str]:
+    """RESULTS DECIDE (owner rule A, 2 Nov 2026): each topic's long videos with
+    analytics against the floor, and its score once every topic is judgeable.
+    No topic is described as ending: a thin queue is refilled, and only
+    results retire a topic (loop/domains.py lifecycle())."""
+    try:
+        rows = json.loads((ROOT / "loop" / "state" / "measurement.json").read_text()).get("videos") or []
+    except (OSError, ValueError):
+        rows = []
+    rule = domains.results_rule(cfg)
+    split = domains.split_rows(rows, led.get("published") or [])
+    res = {d: domains.results_score(split.get(d, []), cfg) for d in domains.allocation(cfg)}
+    need = rule["min_long_videos"]
+    judgeable = all(r["videos"] >= need for r in res.values())
+    out = ["## Topics", "",
+           (f"Every topic is judged on results once each has {need} long videos "
+            f"with analytics. Until then no topic is added or retired." if not judgeable
+            else f"Score = subscribers per 1,000 views x {rule['w_subs']:g} + hours "
+                 f"watched x {rule['w_hours']:g}, per long video. A topic under "
+                 f"{rule['retire_below_ratio']:g} x the best is replaced."), "",
+           "| Topic | Long videos measured | Score |", "|---|---|---|"]
+    for d, r in sorted(res.items()):
+        score = (f"{r['score']:.2f}" if judgeable and r["score"] is not None
+                 else "— (collecting)")
+        out.append(f"| {d} | {r['videos']} of {need} | {score} |")
+    return out + [""]
 
 
 def render(week: str, now: dt.datetime) -> tuple[str, dict]:
@@ -805,6 +831,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     L.append("")
 
     L += auto_photos_block(now)
+    L += topics_block(cfg, led)
 
     loud = [s for s in stops if s["disposition"] == "needs_human"]
     quiet = [s for s in stops if s["disposition"] == "self_resolving"]
