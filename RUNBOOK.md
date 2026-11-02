@@ -388,13 +388,15 @@ Your rule of 2 November 2026, built as code (mock-up approved that day).
   with the question in big white type, "HOW WE KNOW" small at the top.
 - **Every new Short opens on that same picture for one second**, then your
   captions carry on.
-- **No photo, no video — until one is found, automatically:** an episode with
+- **Every video gets a picture the same night:** an episode with
   no free photo of its subject is held (`THUMB_NO_SUBJECT_PHOTO` /
   `SHORT_NO_SUBJECT_PHOTO`), never given the old text card, and every night
   `research/subject_photo.py` searches Pixabay, then Wikimedia Commons, for
   one (free licences only, CC-BY never; credited). Pexels needs a key it does
-  not have yet (`PEXELS_KEY_MISSING`); Mixkit has no photos. Only after five empty nights does it reach a person
-  (`SUBJECT_PHOTO_EXHAUSTED`).
+  not have yet (`PEXELS_KEY_MISSING`); Mixkit has no photos. It never waits for you: it **picks the best
+  photo the same night**, or a **drawn card** (a plain illustration of the
+  subject in the channel's colours, labelled as one) when there is none. The
+  weekly digest lists every photo it picked — reply with the episode to change one.
 - **The 19 videos of 25 Oct–2 Nov** were retitled to your approved list
   (`loop/state/one_question_backfill.json`); everything older is untouched.
 

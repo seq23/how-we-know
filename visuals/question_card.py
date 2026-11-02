@@ -95,6 +95,13 @@ def licence_problems(rec: dict) -> list[str]:
     (its adapter's licence, the licence wording recorded and committed).
     Anything else - CC-BY included - is refused."""
     src = rec.get("source")
+    if src == "drawn card":
+        # our own drawing (visuals/drawn_card.py, owner ruling 2 Nov 2026)
+        import drawn_card as DC                            # noqa: PLC0415
+        p = [] if (rec.get("licence") == DC.LICENCE and rec.get("sha256")
+                   and rec.get("credit_line") == DC.CREDIT) else [
+            f"{rec.get('subject')}: a drawn card without its own-work record"]
+        return p
     if src in FREE_LIBRARIES:
         sys.path.insert(0, os.path.join(ROOT, "research"))
         import food_footage as F                           # noqa: PLC0415

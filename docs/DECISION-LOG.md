@@ -1573,3 +1573,33 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   an AI or video hit refused; a CC-BY record refused by `licence_problems`; a free-library record
   without its committed wording refused). CLAUDE.md's imagery non-negotiable rewritten to match.
 
+## 2026-11-02 — No photo after five nights: a drawn card, never a held episode
+
+- **Owner ruling ("Yes, drawn card"):** when the subject-photo finder has searched five nights and
+  no photo passes the licence check, the one-question picture is a drawn card and the episode is
+  released. Replaces SUBJECT_PHOTO_EXHAUSTED (needs_human), which routed it to a person.
+- **Code:** `visuals/drawn_card.py` - PIL only (no image model, no AI, nothing paid), the channel's
+  colours, a plain schematic chosen from the episode's subject words (depth line + vehicle, sediment
+  layers + core, galaxy dots, a generic deep-sea fish outline, or plain rings), credited
+  "ILLUSTRATION — DRAWN BY HOW WE KNOW". `research/subject_photo.run` pins it in
+  `channel/imagery/subject_photos.json` with source "drawn card" and its own-work licence;
+  `visuals/question_card.licence_problems` accepts exactly that record.
+- **Guard:** `loop/tests/test_subject_photo.py` check 4 - the fifth empty night pins a drawn card
+  and releases the episode; a drawn card without its own-work licence is refused. Negative proof:
+  skipping the drawn-card step fails both checks; restored, green.
+
+## 2026-11-02 — Pick a photo and move on; never hold an episode for one
+
+- **Owner, 2 Nov 2026 (spry brain), verbatim:** "In the future it should just pick a photo and
+  move on it's best to pick one and i ask to change it than wait".
+- **Code:** `research/subject_photo.run` resolves every held episode the SAME night: the
+  top-ranked licence-checked candidate is pinned at once; with zero candidates the drawn card
+  (`visuals/drawn_card.py`) is pinned at once - not after five nights. No picker page is ever
+  needed again (the one-off picker of 2 Nov pinned her choices 1A 2B 3A 4A 5B). Every auto-pick is
+  recorded `chosen_by: auto` and the weekly digest's "Photos picked automatically" table lists it
+  (episode, small thumbnail, source) with one line saying she can ask for a change.
+- **Stops:** SUBJECT_PHOTO_SEARCHING is gone; THUMB_/SHORT_NO_SUBJECT_PHOTO are capped at two runs.
+- **Guard:** `loop/tests/test_subject_photo.py` check 4 - an episode with a candidate is pinned the
+  same night and never held; one with none gets the card the same night. Negative proof: holding a
+  zero-candidate episode for another night fails both checks; restored, green.
+

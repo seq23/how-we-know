@@ -595,6 +595,41 @@ def r2_shelf_now(prev_sc: dict, now: dt.datetime) -> tuple[int | None, str, str 
                       f"(live read unavailable: {basis})", as_of)
 
 
+RAW = "https://raw.githubusercontent.com/seq23/how-we-know/main/channel/imagery/"
+
+
+def auto_photos_block(now: dt.datetime) -> list[str]:
+    """Every picture the subject-photo finder picked on its own this week
+    (owner, 2 Nov 2026: "it's best to pick one and i ask to change it than
+    wait"): episode, a small thumbnail, the source, and one line on how to
+    change it."""
+    try:
+        state = json.loads((ROOT / "loop" / "state" / "subject_photo.json").read_text())
+        man = {r["subject"]: r for r in json.loads(
+            (ROOT / "channel" / "imagery" / "subject_photos.json").read_text())["index"]}
+    except (OSError, ValueError, KeyError):
+        return []
+    since = (now - dt.timedelta(days=7)).isoformat()
+    rows = []
+    for slug, row in sorted(state.items()):
+        if row.get("chosen_by") != "auto" or (row.get("found_at") or "") < since[:19]:
+            continue
+        rec = man.get(f"auto-{slug}") or {}
+        if not rec.get("local_file"):
+            continue
+        src = ("drawn card" if rec.get("source") == "drawn card" else
+               f"{(rec.get('source') or 'commons').title()} · {rec.get('licence', '')}")
+        link = rec.get("item_url") if (rec.get("item_url") or "").startswith("http") else None
+        rows.append(f"| {slug} | <img src=\"{RAW}{rec['local_file']}\" width=\"120\"> | "
+                    + (f"[{src}]({link})" if link else src) + " |")
+    if not rows:
+        return []
+    return ["## Photos picked automatically", "",
+            "The loop picked these itself rather than wait. Reply with the episode "
+            "and what you'd like instead, and it is changed.", "",
+            "| Episode | Picture | Source |", "|---|---|---|", *rows, ""]
+
+
 def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     """The digest, and the counts it was built from."""
     cfg = config()
@@ -768,6 +803,8 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                  f"| {depth.get(name, 0)} "
                  f"| {'—' if weeks is None else f'{weeks:.1f}'} | {rmark} |")
     L.append("")
+
+    L += auto_photos_block(now)
 
     loud = [s for s in stops if s["disposition"] == "needs_human"]
     quiet = [s for s in stops if s["disposition"] == "self_resolving"]
