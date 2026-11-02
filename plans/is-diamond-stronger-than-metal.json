@@ -1,29 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Cold open",
     "narration": "A gem no file can scratch can still chip against a doorframe.",
     "args": {
-      "value": "10",
-      "unit": "Mohs",
-      "caption": "the hardest natural mineral",
-      "source": "Smithsonian"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Diamond is harder than any metal, but it is not tougher. The Smithsonian, which holds one of the best-known gem collections anywhere, describes diamond as the hardest natural mineral, the 10 at the top of the Mohs scale.",
     "args": {
-      "lines": [
-        "Diamond is harder than",
-        "any metal, but it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -39,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "A 10 tells you what diamond can scratch. It says nothing about what happens when you drop it, bend it, or hit it.",
     "args": {
-      "lines": [
-        "A 10 tells you",
-        "what diamond can scratch.",
-        "It says"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -92,18 +82,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Stronger hides three different properties",
     "narration": "It is at least three. ASM International, the professional society for materials engineers, treats them as separate properties for good reason.",
     "args": {
-      "lines": [
-        "It is at least",
-        "three. ASM International, the",
-        "professional society"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -119,18 +105,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Stronger hides three different properties",
     "narration": "It says nothing about impact. Strength is the stress a material can carry before it permanently deforms or breaks.",
     "args": {
-      "lines": [
-        "It says nothing about",
-        "impact. Strength is the",
-        "stress"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -146,34 +128,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Stronger hides three different properties",
     "narration": "Those three can point in opposite directions. Window glass resists scratching well, and you know what happens when you drop a glass.",
     "args": {
-      "term": "Toughness",
-      "includes": [
-        "energy absorbed as a crack grows"
-      ],
-      "excludes": [
-        "resistance to scratching"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Stronger hides three different properties",
     "narration": "A rubber band is barely hard at all, yet it survives being stretched again and again.",
     "args": {
-      "lines": [
-        "A rubber band is",
-        "barely hard at all,",
-        "yet it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -192,18 +164,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Stronger hides three different properties",
     "narration": "On toughness, ordinary steel wins outright. Strength sits in between, and it depends on whether you push, pull or bend.",
     "args": {
-      "lines": [
-        "On toughness, ordinary steel",
-        "wins outright. Strength sits",
-        "in between"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -227,18 +195,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "In the early nineteenth century, the German mineralogist Friedrich Mohs arranged ten reference minerals in order, each able to scratch the ones below it.",
     "args": {
-      "lines": [
-        "In the early nineteenth",
-        "century, the German mineralogist",
-        "Friedrich Mohs"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -262,110 +226,106 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "The harder mineral leaves the mark. Talc sits at 1. Corundum, the mineral behind ruby and sapphire, sits at 9. Diamond sits at 10, and nothing natural scratches it.",
     "args": {
-      "lines": [
-        "The harder mineral leaves",
-        "the mark. Talc sits",
-        "at 1."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "But the scale is a ranking, not a ruler. It tells you order, not distance.",
     "args": {
-      "lines": [
-        "But the scale is",
-        "a ranking, not a",
-        "ruler. It"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "The step from 9 to 10 looks the same on paper as the step from 1 to 2, and it is not.",
     "args": {
-      "variant": 0
+      "title": "Mohs scratch test",
+      "steps": [
+        [
+          "press a sharp edge",
+          ""
+        ],
+        [
+          "look for a groove",
+          ""
+        ]
+      ],
+      "note": "The harder mineral leaves the mark"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "On instrumented hardness tests, the jump from corundum to diamond is far larger than any other step on the scale.",
     "args": {
-      "lines": [
-        "On instrumented hardness tests,",
-        "the jump from corundum",
-        "to diamond"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "Published comparisons put the size of that gap in different places, but none of them make it small.",
     "args": {
-      "lines": [
-        "Published comparisons put the",
-        "size of that gap",
-        "in different"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The Mohs scale ranks, it does not measure",
+    "narration": "Steels, meanwhile, land somewhere in the middle of the ranking. Where exactly depends on the alloy and how it was heat treated. That spread is itself a clue: metal is not one material.",
+    "args": {
+      "title": "Mohs scratch test",
+      "steps": [
+        [
+          "press a sharp edge",
+          ""
+        ],
+        [
+          "look for a groove",
+          ""
+        ]
+      ],
+      "note": "The harder mineral leaves the mark"
+    },
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
-    "narration": "Steels, meanwhile, land somewhere in the middle of the ranking. Where exactly depends on the alloy and how it was heat treated. That spread is itself a clue: metal is not one material.",
-    "args": {
-      "variant": 1
-    },
-    "from": "directive+destagnate"
-  },
-  {
-    "segment": "contrast_pair",
-    "seconds": 9.0,
-    "heading": "The Mohs scale ranks, it does not measure",
     "narration": "Why is diamond at the top at all? Each carbon atom shares electrons with four neighbours, building a rigid three-dimensional network of short, strong bonds.",
     "args": {
-      "term": "Pure carbon",
-      "includes": [
-        "diamond, a rigid three-dimensional network"
-      ],
-      "excludes": [
-        "graphite, flat sheets that slide"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "To scratch diamond, you have to break them. Graphite is also pure carbon, but its atoms sit in flat sheets that slide past each other, which is why pencil lead is soft.",
     "args": {
-      "lines": [
-        "To scratch diamond, you",
-        "have to break them.",
-        "Graphite"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -400,18 +360,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Indentation turns hardness into a number, and diamond has to test itself",
     "narration": "In the Vickers and Knoop tests, a tiny diamond pyramid is driven into the sample under a known load, held, then lifted away.",
     "args": {
-      "lines": [
-        "In the Vickers and",
-        "Knoop tests, a tiny",
-        "diamond pyramid"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -430,18 +386,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Indentation turns hardness into a number, and diamond has to test itself",
     "narration": "Divide the load by the area of the mark and you have a hardness number.",
     "args": {
-      "lines": [
-        "Divide the load by",
-        "the area of the",
-        "mark"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -460,34 +412,24 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Indentation turns hardness into a number, and diamond has to test itself",
     "narration": "Notice the problem. The indenter is diamond. The method works for steel, because the tool is far harder than the sample, so only the sample deforms.",
     "args": {
-      "title": "Measuring diamond with diamond",
-      "items": [
-        "+the method works for steel",
-        "-the indenter is as hard as the sample",
-        "?depends on crystal orientation"
-      ],
-      "note": ""
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Indentation turns hardness into a number, and diamond has to test itself",
     "narration": "For diamond, the indenter is as hard as the sample. It can blunt or crack during the test.",
     "args": {
-      "lines": [
-        "For diamond, the indenter",
-        "is as hard as",
-        "the sample."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -506,18 +448,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Indentation turns hardness into a number, and diamond has to test itself",
     "narration": "So diamond's hardness is measured with real care and real disagreement. The ranking is certain.",
     "args": {
-      "lines": [
-        "So diamond's hardness is",
-        "measured with real care",
-        "and real"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -572,18 +510,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Toughness is where steel wins",
     "narration": "In a fracture toughness test, engineers cut or grow a sharp crack into a sample, load the sample, and record when the crack runs.",
     "args": {
-      "lines": [
-        "In a fracture toughness",
-        "test, engineers cut or",
-        "grow"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -611,18 +545,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Toughness is where steel wins",
     "narration": "The height the pendulum loses tells you how much energy the bar absorbed.",
     "args": {
-      "lines": [
-        "The height the pendulum",
-        "loses tells you how",
-        "much energy"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -650,34 +580,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Toughness is where steel wins",
     "narration": "Here steel and diamond swap places. In a metal, the bonding lets whole planes of atoms slip past one another along defects called dislocations.",
     "args": {
-      "term": "Steel under impact",
-      "includes": [
-        "dents and bends"
-      ],
-      "excludes": [
-        "shatters"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Toughness is where steel wins",
     "narration": "When a crack tip pushes forward, the metal around it flows, the tip blunts, and energy is soaked up as bending rather than breaking.",
     "args": {
-      "lines": [
-        "When a crack tip",
-        "pushes forward, the metal",
-        "around it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -696,18 +616,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Toughness is where steel wins",
     "narration": "At room temperature there is almost no slip available. The energy has nowhere to go except into the crack, so the crack runs, and the stone shatters.",
     "args": {
-      "lines": [
-        "At room temperature there",
-        "is almost no slip",
-        "available."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -730,18 +646,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 8.28,
     "heading": "Diamond breaks along its own geometry",
     "narration": "Diamond cutters exploited this for centuries, marking a rough stone and cleaving it with a single strike of a blade.",
     "args": {
-      "lines": [
-        "Diamond cutters exploited this",
-        "for centuries, marking a",
-        "rough stone"
-      ]
+      "subject": "damascus-blade",
+      "label": "BLADE",
+      "pick": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture+material"
   },
   {
     "segment": "ambient_drift",
@@ -754,32 +668,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Diamond breaks along its own geometry",
     "narration": "That is why a diamond ring can chip. A knock against a doorframe at the wrong angle, on a thin edge, can take a flake off a stone that no file could ever scratch.",
     "args": {
-      "lines": [
-        "That is why a",
-        "diamond ring can chip.",
-        "A knock"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Diamond breaks along its own geometry",
     "narration": "Gemologists inspect the thin outer edge of a cut diamond for exactly this kind of damage.",
     "args": {
-      "lines": [
-        "Gemologists inspect the thin",
-        "outer edge of a",
-        "cut diamond"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -807,17 +713,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "In a machine shop, iron dissolves diamond",
     "narration": "Plenty of tools are tipped with diamond, but not for steel. Diamond tooling excels at cutting stone, glass, ceramics and non-ferrous metals such as aluminium.",
     "args": {
-      "lines": [
-        "Plenty of tools are",
-        "tipped with diamond"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -835,18 +738,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "In a machine shop, iron dissolves diamond",
     "narration": "The tool wears away chemically, not mechanically. The hardness contest is never even decided.",
     "args": {
-      "lines": [
-        "The tool wears away",
-        "chemically, not mechanically. The",
-        "hardness contest"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -862,18 +761,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "In a machine shop, iron dissolves diamond",
     "narration": "It is used because hot iron attacks diamond. Heat matters in open air too.",
     "args": {
-      "lines": [
-        "It is used because",
-        "hot iron attacks diamond.",
-        "Heat matters"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -889,18 +784,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "In a machine shop, iron dissolves diamond",
     "narration": "Jewellers repairing a setting with a torch take this seriously. So even the claim that diamond beats steel at hardness carries a condition: room temperature, a scratch, no chemistry involved. Change the temperature or the chemistry, and the contest changes.",
     "args": {
-      "lines": [
-        "Jewellers repairing a setting",
-        "with a torch take",
-        "this seriously."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -919,18 +810,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Squeezed, diamond is formidable; small, it bends",
     "narration": "Physicists build diamond anvil cells, two gem-quality diamonds pressed tip to tip, to crush tiny samples to pressures found deep inside planets.",
     "args": {
-      "lines": [
-        "Physicists build diamond anvil",
-        "cells, two gem-quality diamonds",
-        "pressed tip"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -949,18 +836,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Squeezed, diamond is formidable; small, it bends",
     "narration": "Diamond's behaviour under compression is not the same as under tension, and a single word cannot hold both.",
     "args": {
-      "lines": [
-        "Diamond's behaviour under compression",
-        "is not the same",
-        "as under"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -991,18 +874,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Squeezed, diamond is formidable; small, it bends",
     "narration": "The likely reason is flaws. A large crystal almost always contains some defect where a crack can start.",
     "args": {
-      "lines": [
-        "The likely reason is",
-        "flaws. A large crystal",
-        "almost always"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1033,17 +912,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Squeezed, diamond is formidable; small, it bends",
     "narration": "A flawless sliver of diamond and a gem with a hidden inclusion are the same substance with very different breaking points.",
     "args": {
-      "lines": [
-        "A flawless sliver of",
-        "diamond and a gem"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1062,18 +938,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "What to notice in the edit",
     "narration": "A sentence will open with hardness and close with toughness, as if they were one quantity.",
     "args": {
-      "lines": [
-        "A sentence will open",
-        "with hardness and close",
-        "with toughness"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1092,18 +964,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "What to notice in the edit",
     "narration": "Ask which test, because a scratch ranking and an indentation number are different kinds of evidence.",
     "args": {
-      "lines": [
-        "Ask which test, because",
-        "a scratch ranking and",
-        "an indentation"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1122,31 +990,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Evidence limit",
     "narration": "This comparison does not produce a single verdict, and the evidence does not support one.",
     "args": {
-      "lines": [
-        "This comparison does not",
-        "produce a single verdict"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "There is no agreed single hardness figure for diamond. The measurement uses diamond to test diamond, and the result shifts with crystal direction.",
     "args": {
-      "lines": [
-        "There is no agreed",
-        "single hardness figure for",
-        "diamond."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1159,32 +1020,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Results for one do not transfer cleanly to another. The nanoscale bending results describe needles far smaller than any gem, not rings or drill bits.",
     "args": {
-      "lines": [
-        "Results for one do",
-        "not transfer cleanly to",
-        "another."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "And metal is a category, not a material: a soft pure metal and a hardened tool steel sit far apart on every one of these tests.",
     "args": {
-      "lines": [
-        "And metal is a",
-        "category, not a material:",
-        "a soft"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",

@@ -1,30 +1,29 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "species_image",
     "seconds": 4.97,
     "heading": "Cold open",
     "narration": "In 1979, a temperature probe lowered into a black smoker partly melted.",
     "args": {
-      "value": "400",
-      "unit": "degrees Celsius",
-      "caption": "hottest vent fluid, still liquid",
-      "source": "NOAA"
+      "subject": "black_smoker",
+      "label": "black smoker",
+      "pick": 6,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals.",
     "args": {
-      "lines": [
-        "A hydrothermal vent is",
-        "an opening in the",
-        "seafloor"
-      ]
+      "subject": "black_smoker",
+      "label": "hydrothermal vent",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +39,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "The evidence comes from instruments sent down by submersibles, fluid samples missing their magnesium, and a 1977 dive that found animals nobody expected.",
     "args": {
-      "lines": [
-        "The evidence comes from",
-        "instruments sent down by",
-        "submersibles, fluid"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -67,17 +62,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 3.5,
     "heading": "Title card",
     "narration": "What is a hydrothermal vent?",
     "args": {
-      "lines": [
-        "What is a hydrothermal",
-        "vent?"
-      ]
+      "subject": "black_smoker",
+      "label": "hydrothermal vent",
+      "pick": 4,
+      "zoom": 1.15
     },
-    "from": "heading"
+    "from": "heading+picture"
   },
   {
     "segment": "timeline",
@@ -99,18 +94,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Geologists predicted vents before anyone saw one",
     "narration": "If that was right, cold ocean water should be seeping into the young, cracked rock, warming up, and escaping somewhere.",
     "args": {
-      "lines": [
-        "If that was right,",
-        "cold ocean water should",
-        "be seeping"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "timeline",
@@ -132,18 +123,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Geologists predicted vents before anyone saw one",
     "narration": "So in 1977, scientists dove in the submersible Alvin, operated by the Woods Hole Oceanographic Institution, to find the source.",
     "args": {
-      "lines": [
-        "So in 1977, scientists",
-        "dove in the submersible",
-        "Alvin, operated"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "timeline",
@@ -165,32 +152,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Geologists predicted vents before anyone saw one",
     "narration": "The team was made up mostly of geologists and geochemists, and the biology arrived as a surprise.",
     "args": {
-      "lines": [
-        "The team was made",
-        "up mostly of geologists",
-        "and geochemists"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Geologists predicted vents before anyone saw one",
     "narration": "Two years later, in 1979, Alvin dives on the East Pacific Rise found something hotter.",
     "args": {
-      "lines": [
-        "Two years later, in",
-        "1979, Alvin dives on",
-        "the East Pacific Rise"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "timeline",
@@ -212,32 +191,27 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Geologists predicted vents before anyone saw one",
     "narration": "The temperature probe the team carried was not built for it; by WHOI's account, part of it melted.",
     "args": {
-      "lines": [
-        "The temperature probe the",
-        "team carried was not",
-        "built"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "Geologists predicted vents before anyone saw one",
     "narration": "Those first black smokers turned a predicted phenomenon into one of the most closely studied features of the deep ocean.",
     "args": {
-      "lines": [
-        "Those first black smokers",
-        "turned a predicted phenomenon",
-        "into one"
-      ]
+      "subject": "black_smoker",
+      "label": "black smokers",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "process_steps",
@@ -269,18 +243,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "Deeper in, that water is heated by magma sitting below the seafloor.",
     "args": {
-      "lines": [
-        "Deeper in, that water",
-        "is heated by magma",
-        "sitting below"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -312,18 +282,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "Hot fluid is buoyant, so it rises and exits through the seafloor, often along the same fractures that let it in.",
     "args": {
-      "lines": [
-        "Hot fluid is buoyant,",
-        "so it rises and",
-        "exits through"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -339,18 +305,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "That is what the black smoke is. NOAA describes it as a cloud of mineral particles, mostly metal sulfides, not smoke in any burning sense.",
     "args": {
-      "lines": [
-        "That is what the",
-        "black smoke is. NOAA",
-        "describes it"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -366,18 +328,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "Chimneys grow, crack, topple and regrow. Where hot fluid has already mixed with seawater underground, the vent runs cooler, carries lighter-colored minerals, and is called a white smoker.",
     "args": {
-      "lines": [
-        "Chimneys grow, crack, topple",
-        "and regrow. Where hot",
-        "fluid has"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -393,35 +351,24 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "No one has watched seawater travel down through the crust, so that leg of the loop is inferred.",
     "args": {
-      "title": "Inferring the hidden plumbing",
-      "stages": [
-        "vent fluid collected",
-        "almost stripped of magnesium",
-        "seismic surveys",
-        "laboratory experiments"
-      ],
-      "conclusion": "the water reacted with hot rock"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "The strongest evidence is chemical. Vent fluid collected by submersibles and robotic vehicles comes up almost stripped of magnesium, an element seawater normally carries in abundance.",
     "args": {
-      "lines": [
-        "The strongest evidence is",
-        "chemical. Vent fluid collected",
-        "by submersibles"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -441,18 +388,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "A vent is the exit of plumbing you cannot see",
     "narration": "Seismic surveys that image magma beneath ridges, and laboratory experiments that heat seawater with crushed basalt, point to the same loop.",
     "args": {
-      "lines": [
-        "Seismic surveys that image",
-        "magma beneath ridges, and",
-        "laboratory experiments"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -471,18 +414,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The water stays liquid because pressure moves the boiling point",
     "narration": "It is a property of water under the weight of one atmosphere of air.",
     "args": {
-      "lines": [
-        "It is a property",
-        "of water under the",
-        "weight"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -501,18 +440,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The water stays liquid because pressure moves the boiling point",
     "narration": "The boiling point is set by pressure, and it climbs with it.",
     "args": {
-      "lines": [
-        "The boiling point is",
-        "set by pressure, and",
-        "it climbs"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -531,32 +466,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The water stays liquid because pressure moves the boiling point",
     "narration": "Pressure raises the bar, but it does not remove it. Under some combinations of temperature and depth, vent fluid does boil underground, or separates into a lighter, vapor-like phase and a dense, salty brine.",
     "args": {
-      "lines": [
-        "Pressure raises the bar,",
-        "but it does not",
-        "remove it."
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The water stays liquid because pressure moves the boiling point",
     "narration": "Scientists detect this after the fact, in the saltiness of what comes out.",
     "args": {
-      "lines": [
-        "Scientists detect this after",
-        "the fact, in the",
-        "saltiness"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -569,18 +496,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "The water stays liquid because pressure moves the boiling point",
     "narration": "At the hottest and deepest extremes, the distinction between liquid and gas stops being meaningful at all.",
     "args": {
-      "lines": [
-        "At the hottest and",
-        "deepest extremes, the distinction",
-        "between liquid"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "light_attenuation",
@@ -591,18 +514,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "Life there runs instead on chemosynthesis. Microbes capture energy from chemical reactions, most famously by oxidizing the hydrogen sulfide in vent fluid, and use that energy to build sugars from carbon dioxide.",
     "args": {
-      "lines": [
-        "Life there runs instead",
-        "on chemosynthesis. Microbes capture",
-        "energy"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "light_attenuation",
@@ -613,18 +532,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "Either way, these microbes are the base of the vent food web.",
     "args": {
-      "lines": [
-        "Either way, these microbes",
-        "are the base of",
-        "the vent"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -654,18 +569,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "Adults have no mouth and no gut. Their red plume, colored by hemoglobin, takes up oxygen, carbon dioxide and hydrogen sulfide from the surrounding water.",
     "args": {
-      "lines": [
-        "Adults have no mouth",
-        "and no gut. Their",
-        "red plume"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -695,18 +606,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "The animal itself lives inside a tough white tube anchored to the rock.",
     "args": {
-      "lines": [
-        "The animal itself lives",
-        "inside a tough white",
-        "tube anchored"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -726,18 +633,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "Dissection showed there is no mouth and no gut. Microscopy showed bacteria inside the trophosome, densely packed in its cells.",
     "args": {
-      "lines": [
-        "Dissection showed there is",
-        "no mouth and no",
-        "gut. Microscopy"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -757,18 +660,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "And carbon signatures in the worm's tissue match carbon fixed by those bacteria, not carbon from food sinking down from the surface.",
     "args": {
-      "lines": [
-        "And carbon signatures in",
-        "the worm's tissue match",
-        "carbon fixed"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -788,32 +687,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "Vent communities also differ from ocean to ocean. Giant tube worms dominate many Pacific sites.",
     "args": {
-      "lines": [
-        "Vent communities also differ",
-        "from ocean to ocean.",
-        "Giant tube"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "On the Mid-Atlantic Ridge, swarming shrimp crowd the chimneys instead. In the Indian Ocean, the scaly-foot snail grows a shell layered with iron sulfide.",
     "args": {
-      "lines": [
-        "On the Mid-Atlantic Ridge,",
-        "swarming shrimp crowd the",
-        "chimneys instead."
-      ]
+      "subject": "red_shrimp",
+      "label": "shrimp",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "light_attenuation",
@@ -824,18 +718,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Vent life runs on chemistry, not sunlight",
     "narration": "How exactly animals colonize a newly formed vent remains an active question.",
     "args": {
-      "lines": [
-        "How exactly animals colonize",
-        "a newly formed vent",
-        "remains"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "timeline",
@@ -861,18 +751,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Some vents run on rock chemistry instead of magma",
     "narration": "NOAA Ocean Exploration has documented the site with remotely operated vehicles. Its chimneys are made of carbonate minerals, not metal sulfides, and its fluid is far cooler than a black smoker's and strongly alkaline rather than acidic.",
     "args": {
-      "lines": [
-        "NOAA Ocean Exploration has",
-        "documented the site with",
-        "remotely operated"
-      ]
+      "subject": "black_smoker",
+      "label": "black smoker",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -891,18 +780,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Some vents run on rock chemistry instead of magma",
     "narration": "When seawater reacts with that rock, in a process called serpentinization, the reaction itself releases heat, along with hydrogen and methane.",
     "args": {
-      "lines": [
-        "When seawater reacts with",
-        "that rock, in a",
-        "process called"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -921,18 +806,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Some vents run on rock chemistry instead of magma",
     "narration": "That matters because it means vents can exist away from active volcanic centers, and it gives microbes a different menu of chemical energy to live on.",
     "args": {
-      "lines": [
-        "That matters because it",
-        "means vents can exist",
-        "away"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -959,18 +840,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Vents shape more than the animals living on them",
     "narration": "Plumes of dissolved iron from vents have been traced far from their source.",
     "args": {
-      "lines": [
-        "Plumes of dissolved iron",
-        "from vents have been",
-        "traced far"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -997,70 +874,57 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Vents shape more than the animals living on them",
     "narration": "Much of this work is published by public bodies: NOAA reports on vent temperatures and expeditions, WHOI on Alvin and the 1977 dives, and the Smithsonian on deep-sea life.",
     "args": {
-      "lines": [
-        "Much of this work",
-        "is published by public",
-        "bodies: NOAA"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Vents shape more than the animals living on them",
     "narration": "Vents also sit at the center of one of science's open questions.",
     "args": {
-      "lines": [
-        "Vents also sit at",
-        "the center of one",
-        "of science's"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Vents shape more than the animals living on them",
+    "narration": "Some researchers propose that life on Earth began at hydrothermal vents, where chemical energy and mineral surfaces were both available, and alkaline systems like Lost City feature heavily in that argument.",
+    "args": {
+      "subject": "black_smoker",
+      "label": "hydrothermal vents",
+      "pick": 5,
+      "zoom": 1.3
+    },
+    "from": "directive+destagnate+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Vents shape more than the animals living on them",
+    "narration": "Others favor shallow pools on land, where repeated drying and wetting can concentrate molecules.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Vents shape more than the animals living on them",
-    "narration": "Some researchers propose that life on Earth began at hydrothermal vents, where chemical energy and mineral surfaces were both available, and alkaline systems like Lost City feature heavily in that argument.",
-    "args": {
-      "variant": 1
-    },
-    "from": "directive+destagnate"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 5.79,
-    "heading": "Vents shape more than the animals living on them",
-    "narration": "Others favor shallow pools on land, where repeated drying and wetting can concentrate molecules.",
-    "args": {
-      "lines": [
-        "Others favor shallow pools",
-        "on land, where repeated",
-        "drying"
-      ]
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 9.0,
-    "heading": "Vents shape more than the animals living on them",
     "narration": "Laboratory experiments support pieces of both ideas. Neither has been demonstrated, and you should treat any confident claim either way as ahead of the evidence.",
     "args": {
-      "lines": [
-        "Laboratory experiments support pieces",
-        "of both ideas. Neither",
-        "has"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "quote_card",
@@ -1094,18 +958,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "What to notice in the edit",
     "narration": "The black smoke looks slow and soft, but it is fluid hot enough to damage instruments not built for it.",
     "args": {
-      "lines": [
-        "The black smoke looks",
-        "slow and soft, but",
-        "it"
-      ]
+      "variant": 2
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1135,17 +995,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Evidence limit",
     "narration": "Second, tube worms are fed by symbionts, shown by several independent lines of evidence.",
     "args": {
-      "lines": [
-        "Second, tube worms are",
-        "fed by symbionts, shown"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1165,18 +1022,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Evidence limit",
     "narration": "The mid-ocean ridge system is enormous, only a small fraction has been surveyed closely, and estimates vary widely.",
     "args": {
-      "lines": [
-        "The mid-ocean ridge system",
-        "is enormous, only a",
-        "small fraction"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1196,32 +1049,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Evidence limit",
     "narration": "And where life began is not settled by anything in this video.",
     "args": {
-      "lines": [
-        "And where life began",
-        "is not settled by",
-        "anything"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "Closing",
     "narration": "A hydrothermal vent is seawater returning from a journey through hot rock, carrying the crust's chemistry back into the ocean.",
     "args": {
-      "lines": [
-        "A hydrothermal vent is",
-        "seawater returning from a",
-        "journey through"
-      ]
+      "subject": "black_smoker",
+      "label": "hydrothermal vent",
+      "pick": 3,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1234,17 +1082,13 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Closing",
     "narration": "Much of the seafloor where such vents could exist has still never been seen.",
     "args": {
-      "lines": [
-        "Much of the seafloor",
-        "where such vents could",
-        "exist has"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   }
 ]

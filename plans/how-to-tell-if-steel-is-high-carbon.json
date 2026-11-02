@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "A magnet grabs a razor-hard file and a soft nail exactly the same.",
     "args": {
-      "value": "0.6",
-      "unit": "percent carbon",
-      "caption": "Common lower bound for high-carbon steel",
-      "source": "ASM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "High-carbon steel is plain carbon steel holding roughly 0.6 percent carbon or more by weight, and the only certain way to confirm it is a laboratory chemical analysis.",
     "args": {
-      "lines": [
-        "High-carbon steel is plain",
-        "carbon steel holding roughly",
-        "0.6 percent"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Cold open",
     "narration": "What the figure does not tell you is how to see it.",
     "args": {
-      "lines": [
-        "What the figure does",
-        "not tell you is",
-        "how"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -80,34 +69,24 @@
     "from": "heading"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A magnet reads iron, never carbon",
     "narration": "Start with the test most people try first. Plain carbon steel is overwhelmingly iron, and iron at room temperature is strongly magnetic.",
     "args": {
-      "term": "Magnet test",
-      "includes": [
-        "iron is strongly magnetic"
-      ],
-      "excludes": [
-        "carbon"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A magnet reads iron, never carbon",
     "narration": "Adding a fraction of a percent of carbon does not switch that off.",
     "args": {
-      "lines": [
-        "Adding a fraction of",
-        "a percent of carbon",
-        "does"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -126,18 +105,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A magnet reads iron, never carbon",
     "narration": "A magnet can't tell them apart. What a magnet can sometimes do is separate certain stainless steels, whose crystal structure makes them weakly magnetic or not magnetic at all, from ordinary carbon steels.",
     "args": {
-      "lines": [
-        "A magnet can't tell",
-        "them apart. What a",
-        "magnet"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -156,18 +131,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "A magnet reads iron, never carbon",
     "narration": "Two bars of mild steel and high-carbon steel have nearly identical density and look the same when freshly cut.",
     "args": {
-      "lines": [
-        "Two bars of mild",
-        "steel and high-carbon steel",
-        "have nearly"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -186,18 +157,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "A magnet reads iron, never carbon",
     "narration": "It is in how a small amount of carbon arranges itself inside that iron.",
     "args": {
-      "lines": [
-        "It is in how",
-        "a small amount of",
-        "carbon arranges"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -213,18 +180,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "A magnet reads iron, never carbon",
     "narration": "Low-carbon steel, often called mild steel, sits below roughly 0.3 percent carbon.",
     "args": {
-      "lines": [
-        "Low-carbon steel, often called",
-        "mild steel, sits below",
-        "roughly 0.3"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -240,17 +203,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "A magnet reads iron, never carbon",
     "narration": "Go far enough, past roughly 2 percent carbon, and the material is usually called cast iron rather than steel.",
     "args": {
-      "lines": [
-        "Go far enough, past",
-        "roughly 2 percent carbon"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -266,18 +226,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A magnet reads iron, never carbon",
     "narration": "The word \"plain\" matters too. Alloy steels deliberately add other elements, and those additions change how the metal sparks, hardens and looks, which complicates every workshop test that follows.",
     "args": {
-      "lines": [
-        "The word \"plain\" matters",
-        "too. Alloy steels deliberately",
-        "add"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -293,18 +249,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A fraction of a percent rearranges the crystals",
     "narration": "Carbon atoms are small enough to tuck into the gaps between iron atoms.",
     "args": {
-      "lines": [
-        "Carbon atoms are small",
-        "enough to tuck into",
-        "the gaps"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -329,7 +281,7 @@
       "label": "PEARLITE",
       "pick": 0
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm+picture+material"
   },
   {
     "segment": "stat_card",
@@ -345,18 +297,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A fraction of a percent rearranges the crystals",
     "narration": "This is one way metallurgists estimate carbon by eye: they cut a sample, polish it, etch it and judge how much of the surface is pearlite.",
     "args": {
-      "lines": [
-        "This is one way",
-        "metallurgists estimate carbon by",
-        "eye: they"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -372,34 +320,24 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "A fraction of a percent rearranges the crystals",
     "narration": "Cool the steel quickly instead, by plunging it into water or oil, and the carbon has no time to escape.",
     "args": {
-      "title": "carbon controlling hardenability",
-      "stages": [
-        "the carbon has no time to escape",
-        "martensite",
-        "strain"
-      ],
-      "conclusion": "more trapped carbon means more strain and more hardness"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "A fraction of a percent rearranges the crystals",
     "narration": "It stays trapped in the iron, forcing the crystal lattice into a strained, distorted form called martensite.",
     "args": {
-      "lines": [
-        "It stays trapped in",
-        "the iron, forcing the",
-        "crystal lattice"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -418,18 +356,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "A fraction of a percent rearranges the crystals",
     "narration": "Low-carbon steel has too little carbon to harden much this way. High-carbon steel hardens dramatically.",
     "args": {
-      "lines": [
-        "Low-carbon steel has too",
-        "little carbon to harden",
-        "much"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -459,43 +393,24 @@
     "from": "heading"
   },
   {
-    "segment": "process_steps",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Sparks carry the signature of burning carbon",
     "narration": "The oldest workshop method is the spark test. You touch the steel to a grinding wheel and watch the stream of hot particles that flies off.",
     "args": {
-      "title": "The spark test",
-      "steps": [
-        [
-          "touch the steel to a grinding wheel",
-          ""
-        ],
-        [
-          "watch the stream of hot particles",
-          ""
-        ],
-        [
-          "read that density of bursts",
-          ""
-        ]
-      ],
-      "note": "a ranking, not a reading"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Sparks carry the signature of burning carbon",
     "narration": "Each particle is a tiny fragment of metal heated as it tears away.",
     "args": {
-      "lines": [
-        "Each particle is a",
-        "tiny fragment of metal",
-        "heated"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -523,18 +438,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Sparks carry the signature of burning carbon",
     "narration": "When enough gas builds inside a glowing particle, it bursts, splitting the spark into forks and stars.",
     "args": {
-      "lines": [
-        "When enough gas builds",
-        "inside a glowing particle,",
-        "it bursts"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -562,17 +473,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Sparks carry the signature of burning carbon",
     "narration": "An experienced eye reads that density of bursts as a rough carbon gauge.",
     "args": {
-      "lines": [
-        "An experienced eye reads",
-        "that density of bursts"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -591,18 +499,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Sparks carry the signature of burning carbon",
     "narration": "It can reliably separate low-carbon steel from high-carbon steel in plain steels.",
     "args": {
-      "lines": [
-        "It can reliably separate",
-        "low-carbon steel from high-carbon",
-        "steel"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -621,18 +525,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Sparks carry the signature of burning carbon",
     "narration": "Alloyed steels remain an open problem: some alloying elements suppress the bursts or change the colour of the stream, so an alloy steel can masquerade as a lower or higher carbon grade.",
     "args": {
-      "lines": [
-        "Alloyed steels remain an",
-        "open problem: some alloying",
-        "elements suppress"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -667,17 +567,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "Here the magnet finally earns its place, not as a carbon detector but as a thermometer: steel loses its magnetism close to the temperature where it is ready to harden.",
     "args": {
-      "lines": [
-        "Here the magnet finally",
-        "earns its place"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -696,70 +593,60 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "Read the result carefully. A skating file tells you the steel had enough carbon to harden.",
     "args": {
-      "lines": [
-        "Read the result carefully.",
-        "A skating file tells",
-        "you"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "It does not tell you how much. Medium-carbon steel also hardens noticeably, and many alloy steels harden more deeply than plain high-carbon steel at all.",
     "args": {
-      "lines": [
-        "It does not tell",
-        "you how much. Medium-carbon",
-        "steel also"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 6.62,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "The test also changes the sample, so it is unsuitable for anything you need to keep.",
     "args": {
-      "variant": 0
+      "title": "quench and file",
+      "stages": [
+        "no longer attracts a magnet",
+        "quench the piece",
+        "draw a file across it"
+      ],
+      "conclusion": "the file skates"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "Laboratories measure hardness with indentation instruments that press a shaped tip into the surface and record the mark, which turns \"the file skated\" into a value.",
     "args": {
-      "lines": [
-        "Laboratories measure hardness with",
-        "indentation instruments that press",
-        "a shaped"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "Even then, hardness depends on carbon, heat treatment and alloying together, so it can only point toward carbon, never isolate it.",
     "args": {
-      "lines": [
-        "Even then, hardness depends",
-        "on carbon, heat treatment",
-        "and alloying"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "process_steps",
@@ -791,18 +678,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Only chemistry returns a number",
     "narration": "The standard approach is combustion analysis. A small sample is cut, often as chips or a pin, and burned in a stream of pure oxygen inside a furnace.",
     "args": {
-      "lines": [
-        "The standard approach is",
-        "combustion analysis. A small",
-        "sample"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -834,18 +717,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Only chemistry returns a number",
     "narration": "The step that makes this trustworthy is calibration. The instrument is checked against certified reference steels whose carbon content has been established with great care.",
     "args": {
-      "lines": [
-        "The step that makes",
-        "this trustworthy is calibration.",
-        "The instrument"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -877,42 +756,24 @@
     "from": "directive"
   },
   {
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Only chemistry returns a number",
     "narration": "A second laboratory technique is spark emission spectrometry. The sample's surface is struck with an electrical spark under a protective gas, and the light given off is split into its wavelengths.",
     "args": {
-      "title": "chain of trust",
-      "sources": [
-        [
-          "NIST",
-          "certifies the reference"
-        ],
-        [
-          "ASTM International",
-          "describes the method"
-        ],
-        [
-          "ASM International",
-          "classification ranges"
-        ]
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Only chemistry returns a number",
     "narration": "Each element emits at characteristic wavelengths, so the strength of the carbon lines indicates the carbon content.",
     "args": {
-      "lines": [
-        "Each element emits at",
-        "characteristic wavelengths, so the",
-        "strength"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -939,18 +800,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Only chemistry returns a number",
     "narration": "Notice the chain of trust. NIST certifies the reference, ASTM International describes the method, ASM International publishes the classification ranges you compare the result against. Each link is a public body whose work you can inspect.",
     "args": {
-      "lines": [
-        "Notice the chain of",
-        "trust. NIST certifies the",
-        "reference, ASTM"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -969,18 +826,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Only chemistry returns a number",
     "narration": "But carbon is a very light element, and its signal is too weak for these instruments to measure reliably.",
     "args": {
-      "lines": [
-        "But carbon is a",
-        "very light element, and",
-        "its signal"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -999,32 +852,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Only chemistry returns a number",
     "narration": "Portable instruments that use a laser or a spark to make the metal emit light can measure carbon in the field, but they need careful surface preparation and calibration.",
     "args": {
-      "lines": [
-        "Portable instruments that use",
-        "a laser or a",
-        "spark"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A grade number is a claim you can check",
     "narration": "Often the simplest route is paperwork. In the four-digit grade system widely used in North America, plain carbon steels are numbered beginning with 10, and the last two digits indicate the approximate carbon content in hundredths of a percent.",
     "args": {
-      "lines": [
-        "Often the simplest route",
-        "is paperwork. In the",
-        "four-digit grade"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1037,32 +882,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "A grade number is a claim you can check",
     "narration": "A grade of 1080 means roughly 0.80 percent carbon, a high-carbon steel.",
     "args": {
-      "lines": [
-        "A grade of 1080",
-        "means roughly 0.80 percent",
-        "carbon"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "A grade number is a claim you can check",
     "narration": "Steel bought from a mill usually comes with a certificate listing its measured chemistry.",
     "args": {
-      "lines": [
-        "Steel bought from a",
-        "mill usually comes with",
-        "a certificate"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1075,18 +912,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A grade number is a claim you can check",
     "narration": "Unmarked or reused steel has no such trail, and assumptions about what an old part \"must\" be made from are guesses until tested.",
     "args": {
-      "lines": [
-        "Unmarked or reused steel",
-        "has no such trail,",
-        "and assumptions"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1109,18 +942,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "What to notice in the edit",
     "narration": "The combustion analysis and the spectrometer are measurements, anchored to certified references.",
     "args": {
-      "lines": [
-        "The combustion analysis and",
-        "the spectrometer are measurements,",
-        "anchored"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1133,30 +962,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "None of this makes the category sharper than it is. The line at roughly 0.6 percent carbon is a convention, and a steel just either side of it is not meaningfully different in use.",
     "args": {
-      "lines": [
-        "None of this makes",
-        "the category sharper than",
-        "it is."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Evidence limit",
     "narration": "Workshop tests rank steels; they do not measure them, and alloying elements can mislead both sparks and files.",
     "args": {
-      "lines": [
-        "Workshop tests rank steels"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1169,18 +992,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Evidence limit",
     "narration": "Where the sample is taken from matters as much as how it is analysed.",
     "args": {
-      "lines": [
-        "Where the sample is",
-        "taken from matters as",
-        "much"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",

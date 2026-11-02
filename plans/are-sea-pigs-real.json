@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "On the deep seafloor, an animal walks on hollow legs full of water.",
     "args": {
-      "value": "4,000",
-      "unit": "meters",
-      "caption": "the start of the abyssal zone",
-      "source": "NOAA"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Yes: sea pigs are real deep-sea animals, sea cucumbers in the genus Scotoplanes, and the name is a nickname, not a relationship to pigs.",
     "args": {
-      "lines": [
-        "Yes: sea pigs are",
-        "real deep-sea animals, sea",
-        "cucumbers"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "Sea pigs have been recorded at many deep-sea depths, including the abyssal plains.",
     "args": {
-      "lines": [
-        "Sea pigs have been",
-        "recorded at many deep-sea",
-        "depths, including"
-      ]
+      "subject": "sea_pig",
+      "label": "Sea pigs",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -67,99 +59,86 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "That figure tells you roughly where the habitat is. It does not tell you how many sea pigs exist, how long they live, or why they gather in groups. The animal is confirmed. Much of its life is not.",
     "args": {
-      "lines": [
-        "That figure tells you",
-        "roughly where the habitat",
-        "is. It"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "Start with the name, because it causes most of the confusion. \"Sea pig\" is a common name, the kind people give an animal because of how it looks.",
     "args": {
-      "term": "sea pig",
-      "meaning": "a sea cucumber in the genus Scotoplanes",
-      "boundary": "not a pig",
-      "source": "MBARI"
+      "subject": "sea_pig",
+      "label": "Sea pig",
+      "pick": 8,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "It is not a scientific claim. The scientific identity is this: a sea pig is a sea cucumber in the genus Scotoplanes.",
     "args": {
-      "lines": [
-        "It is not a",
-        "scientific claim. The scientific",
-        "identity"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "species_image",
     "seconds": 7.03,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "Sea cucumbers are echinoderms, the same group of animals as sea stars, brittle stars and sea urchins.",
     "args": {
-      "term": "sea pig",
-      "meaning": "a sea cucumber in the genus Scotoplanes",
-      "boundary": "not a pig",
-      "source": "MBARI"
+      "subject": "sea_cucumber",
+      "label": "Sea cucumbers",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "They have no relationship to pigs, or to any mammal. The resemblance is all surface.",
     "args": {
-      "lines": [
-        "They have no relationship",
-        "to pigs, or to",
-        "any mammal."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "A sea pig is plump, pinkish and often translucent, with a row of stubby legs underneath and a few soft projections on its back that can look like ears or horns.",
     "args": {
-      "term": "sea pig",
-      "meaning": "a sea cucumber in the genus Scotoplanes",
-      "boundary": "not a pig",
-      "source": "MBARI"
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 9,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "On a dim screen, that shape reads as a small pink pig.",
     "args": {
-      "lines": [
-        "On a dim screen,",
-        "that shape reads as",
-        "a small"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -175,17 +154,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.45,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "A sea pig is not a pig, in the same way a sea star is not a star.",
     "args": {
-      "lines": [
-        "A sea pig is",
-        "not a pig"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -198,28 +177,27 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 5.79,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "It is whether this particular sea cucumber exists the way the pictures show it.",
     "args": {
-      "variant": 1
+      "subject": "sea_cucumber",
+      "label": "sea cucumber",
+      "pick": 3,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The name is a nickname; the animal is an echinoderm",
     "narration": "And that turns into a question about evidence. Who saw it? With what instrument?",
     "args": {
-      "lines": [
-        "And that turns into",
-        "a question about evidence.",
-        "Who saw"
-      ]
+      "variant": 1
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -232,32 +210,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "Looking unreal is not the same as being unreal",
     "narration": "Part of the doubt comes from a reasonable instinct. Sea pigs look like a cartoon, and cartoons are invented.",
     "args": {
-      "lines": [
-        "Part of the doubt",
-        "comes from a reasonable",
-        "instinct. Sea"
-      ]
+      "subject": "sea_pig",
+      "label": "Sea pigs",
+      "pick": 3,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Looking unreal is not the same as being unreal",
     "narration": "But the deep sea is full of bodies that look odd to a land animal like you, because the conditions shaping them are unlike anything at the surface.",
     "args": {
-      "lines": [
-        "But the deep sea",
-        "is full of bodies",
-        "that look"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -270,32 +243,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Looking unreal is not the same as being unreal",
     "narration": "A soft, water-filled body with no hard skeleton to protect is not a disadvantage in a place like that.",
     "args": {
-      "lines": [
-        "A soft, water-filled body",
-        "with no hard skeleton",
-        "to protect"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Looking unreal is not the same as being unreal",
     "narration": "Strange means unfamiliar. It does not mean fake. The way to tell the two apart is not to judge the picture by how believable it feels.",
     "args": {
-      "lines": [
-        "Strange means unfamiliar. It",
-        "does not mean fake.",
-        "The way"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -324,18 +289,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Footage from the seafloor is the first line of evidence",
     "narration": "The stronger evidence is moving footage. Institutions such as MBARI send remotely operated vehicles, robots tethered to a ship by a cable, down to the deep seafloor.",
     "args": {
-      "lines": [
-        "The stronger evidence is",
-        "moving footage. Institutions such",
-        "as MBARI"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -354,18 +315,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Footage from the seafloor is the first line of evidence",
     "narration": "When a sea pig drifts into frame, the encounter is recorded and logged with the depth and location reported by the vehicle's own instruments.",
     "args": {
-      "lines": [
-        "When a sea pig",
-        "drifts into frame, the",
-        "encounter"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 4,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -404,17 +364,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Footage from the seafloor is the first line of evidence",
     "narration": "A video archive is much harder to fake in that way. It holds many encounters, from different dives, with the same kind of animal behaving the same way: walking slowly across soft sediment, its body flexing as it moves.",
     "args": {
-      "lines": [
-        "A video archive is",
-        "much harder to fake"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -437,18 +394,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Footage from the seafloor is the first line of evidence",
     "narration": "MBARI has filmed sea pigs alive in the deep sea. Exploration programs such as NOAA Ocean Exploration film deep-sea sea cucumbers of many kinds on their dives and share that footage publicly. No single clip carries the claim. The accumulation does.",
     "args": {
-      "lines": [
-        "MBARI has filmed sea",
-        "pigs alive in the",
-        "deep sea."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -480,18 +433,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Specimens settle what cameras cannot",
     "narration": "For that, scientists need specimens. A remotely operated vehicle can collect a specimen with a suction sampler or a robotic arm, and older expeditions dredged animals up from the bottom with nets dragged along the seafloor.",
     "args": {
-      "lines": [
-        "For that, scientists need",
-        "specimens. A remotely operated",
-        "vehicle"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -523,32 +472,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Specimens settle what cameras cannot",
     "narration": "Sea cucumber identification leans on details that no camera captures well. Many sea cucumbers have ossicles, tiny pieces of mineral embedded in the skin, and their shapes differ between groups.",
     "args": {
-      "lines": [
-        "Sea cucumber identification leans",
-        "on details that no",
-        "camera captures"
-      ]
+      "subject": "sea_cucumber",
+      "label": "Sea cucumber",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Specimens settle what cameras cannot",
     "narration": "Taxonomists examine the ossicles under a microscope, describe the tube feet and other structures, and compare against described species, each of which is anchored to a physical type specimen held in a collection.",
     "args": {
-      "lines": [
-        "Taxonomists examine the ossicles",
-        "under a microscope, describe",
-        "the tube"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -561,31 +505,27 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "Specimens settle what cameras cannot",
     "narration": "That is why the genus Scotoplanes is a defined thing rather than a loose label.",
     "args": {
-      "lines": [
-        "That is why the",
-        "genus Scotoplanes is a",
-        "defined thing"
-      ]
+      "subject": "sea_pig",
+      "label": "Scotoplanes",
+      "pick": 5,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Specimens settle what cameras cannot",
     "narration": "There are preserved animals in collections that anyone with the right training can re-examine and argue about.",
     "args": {
-      "lines": [
-        "There are preserved animals",
-        "in collections that anyone"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "quote_card",
@@ -599,34 +539,27 @@
     "from": "heading"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The legs run on water pressure, not on bones",
     "narration": "Once you accept that sea pigs exist, the next fair question is how they walk, because the legs are both the most pig-like part and the least intuitive.",
     "args": {
-      "term": "tube feet",
-      "includes": [
-        "water-filled tube feet"
-      ],
-      "excludes": [
-        "jointed legs"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 10,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The legs run on water pressure, not on bones",
     "narration": "They are not legs in the sense that your legs are legs.",
     "args": {
-      "lines": [
-        "They are not legs",
-        "in the sense that",
-        "your legs"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -645,69 +578,60 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The legs run on water pressure, not on bones",
     "narration": "It is a network of internal canals filled with fluid. By shifting that fluid and contracting muscles, the animal can extend or shorten each tube foot, a little like pressing on one end of a water balloon to push out the other.",
     "args": {
-      "lines": [
-        "It is a network",
-        "of internal canals filled",
-        "with fluid."
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "The legs run on water pressure, not on bones",
     "narration": "In most sea cucumbers, the tube feet are small and numerous, used for gripping surfaces.",
     "args": {
-      "lines": [
-        "In most sea cucumbers,",
-        "the tube feet are",
-        "small"
-      ]
+      "subject": "sea_cucumber",
+      "label": "sea cucumbers",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "The legs run on water pressure, not on bones",
+    "narration": "In sea pigs, some of them are enlarged into stubby walking feet along the underside, and the soft projections on the back are modified tube feet too.",
+    "args": {
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 11,
+      "zoom": 1.3
+    },
+    "from": "directive+destagnate+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "The legs run on water pressure, not on bones",
+    "narration": "How is it known that this is hydraulic, and not simply muscle?",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The legs run on water pressure, not on bones",
-    "narration": "In sea pigs, some of them are enlarged into stubby walking feet along the underside, and the soft projections on the back are modified tube feet too.",
-    "args": {
-      "variant": 3
-    },
-    "from": "directive+destagnate"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 4.97,
-    "heading": "The legs run on water pressure, not on bones",
-    "narration": "How is it known that this is hydraulic, and not simply muscle?",
-    "args": {
-      "lines": [
-        "How is it known",
-        "that this is hydraulic"
-      ]
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 9.0,
-    "heading": "The legs run on water pressure, not on bones",
     "narration": "Because the anatomy of dissected specimens shows the canals connecting to the tube feet, the same plan found across echinoderms, from sea stars to urchins.",
     "args": {
-      "lines": [
-        "Because the anatomy of",
-        "dissected specimens shows the",
-        "canals connecting"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -720,18 +644,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The legs run on water pressure, not on bones",
     "narration": "Two different kinds of evidence, gathered in two different places, describe the same animal.",
     "args": {
-      "lines": [
-        "Two different kinds of",
-        "evidence, gathered in two",
-        "different places"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "zone_column",
@@ -744,18 +664,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Sea pigs live on food that falls from far above",
     "narration": "They have been recorded across a wide band of deep-sea depths, from continental slopes down to abyssal plains, and the published ranges vary between species and between surveys.",
     "args": {
-      "lines": [
-        "They have been recorded",
-        "across a wide band",
-        "of deep-sea"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "zone_column",
@@ -768,18 +684,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Sea pigs live on food that falls from far above",
     "narration": "Sunlight does not reach anywhere near that far. No plants grow there.",
     "args": {
-      "lines": [
-        "Sunlight does not reach",
-        "anywhere near that far.",
-        "No plants"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "zone_column",
@@ -792,24 +704,30 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Sea pigs live on food that falls from far above",
     "narration": "Sea pigs are deposit feeders. They use tentacles around the mouth to gather the surface layer of sediment, and their gut extracts the organic material from it.",
     "args": {
-      "variant": 4
+      "subject": "sea_pig",
+      "label": "Sea pigs",
+      "pick": 12,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Sea pigs live on food that falls from far above",
     "narration": "Studies of deep-sea sea cucumbers suggest that many of them favor the freshest material, the part of marine snow that has only recently settled.",
     "args": {
-      "variant": 0
+      "subject": "sea_cucumber",
+      "label": "sea cucumbers",
+      "pick": 4,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "zone_column",
@@ -822,14 +740,17 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Sea pigs live on food that falls from far above",
     "narration": "Seafloor surveys have found that sea cucumbers can make up a large share of the visible animal life on parts of the deep floor.",
     "args": {
-      "variant": 2
+      "subject": "sea_cucumber",
+      "label": "sea cucumbers",
+      "pick": 5,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -842,35 +763,27 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "One of the striking things in seafloor footage is that sea pigs are often seen in groups, sometimes many in view at once.",
     "args": {
-      "title": "What the footage shows",
-      "items": [
-        "+seen in groups",
-        "+facing the same direction",
-        "?why they gather",
-        "-how many exist"
-      ],
-      "note": ""
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 13,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "In some recordings, many of them appear to be facing the same direction.",
     "args": {
-      "lines": [
-        "In some recordings, many",
-        "of them appear to",
-        "be facing"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -890,18 +803,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "That is a reasonable hypothesis. It is not a demonstrated fact. Footage records position.",
     "args": {
-      "lines": [
-        "That is a reasonable",
-        "hypothesis. It is not",
-        "a demonstrated"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -921,56 +830,50 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "So the checklist is uneven. Seen in groups: yes. Facing the same direction: in some footage. Why they gather: open. How many exist: unknown.",
     "args": {
-      "lines": [
-        "So the checklist is",
-        "uneven. Seen in groups:",
-        "yes. Facing"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "Something similar applies to the small animals that have been seen with them.",
     "args": {
-      "lines": [
-        "Something similar applies to",
-        "the small animals that",
-        "have"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "Footage has shown small crabs sheltering under or beside sea pigs. That association is real in the sense that it was recorded.",
     "args": {
-      "variant": 0
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 14,
+      "zoom": 1.3
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Herds are observed; their purpose is not settled",
     "narration": "Whether it helps the crab, harms the sea pig, or makes no difference to either is a separate question, and one that a camera alone cannot answer.",
     "args": {
-      "lines": [
-        "Whether it helps the",
-        "crab, harms the sea",
-        "pig"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 6,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -989,118 +892,98 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "Notice which shots come from remotely operated vehicles, with the lights casting a cone onto soft sediment, and which are illustrations made to show you a shape.",
     "args": {
-      "lines": [
-        "Notice which shots come",
-        "from remotely operated vehicles"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 6.62,
     "heading": "What to notice in the edit",
     "narration": "The claim that sea pigs are real rests on footage and specimens, not a single photograph.",
     "args": {
-      "term": "the evidence",
-      "includes": [
-        "footage and specimens"
-      ],
-      "excludes": [
-        "a single photograph"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 15,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "What to notice in the edit",
     "narration": "When a drawing appears, it is there to show the outline people recognize, not to stand in as evidence for it.",
     "args": {
-      "lines": [
-        "When a drawing appears,",
-        "it is there to",
-        "show"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "Evidence limit",
     "narration": "This evidence establishes that sea pigs exist, what group they belong to, how they move and broadly what they eat.",
     "args": {
-      "title": "What this evidence settles",
-      "items": [
-        "+sea pigs exist",
-        "+what group they belong to",
-        "-how many there are",
-        "?how long they live"
-      ],
-      "note": ""
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 16,
+      "zoom": 1.15
     },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 9.0,
-    "heading": "Evidence limit",
-    "narration": "It does not establish how many there are. The deep seafloor is vast and only a small fraction of it has ever been seen by cameras, so any population estimate would be an extrapolation from a limited number of sites.",
-    "args": {
-      "lines": [
-        "It does not establish",
-        "how many there are.",
-        "The deep"
-      ]
-    },
-    "from": "directive-rhythm"
-  },
-  {
-    "segment": "checklist_reveal",
-    "seconds": 9.0,
-    "heading": "Evidence limit",
-    "narration": "There is no reliable figure for how long they live. How many species belong in the genus Scotoplanes, and how they are related to each other, depends on how specimens are classified and on genetic work that is still limited.",
-    "args": {
-      "title": "What this evidence settles",
-      "items": [
-        "+sea pigs exist",
-        "+what group they belong to",
-        "-how many there are",
-        "?how long they live"
-      ],
-      "note": ""
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 9.0,
-    "heading": "Evidence limit",
-    "narration": "And the reasons sea pigs gather remain a hypothesis. When you meet confident numbers about sea pigs, ask where they came from.",
-    "args": {
-      "lines": [
-        "And the reasons sea",
-        "pigs gather remain a",
-        "hypothesis."
-      ]
-    },
-    "from": "directive-rhythm"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
     "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not establish how many there are. The deep seafloor is vast and only a small fraction of it has ever been seen by cameras, so any population estimate would be an extrapolation from a limited number of sites.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "There is no reliable figure for how long they live. How many species belong in the genus Scotoplanes, and how they are related to each other, depends on how specimens are classified and on genetic work that is still limited.",
+    "args": {
+      "subject": "sea_pig",
+      "label": "Scotoplanes",
+      "pick": 17,
+      "zoom": 1.3
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "And the reasons sea pigs gather remain a hypothesis. When you meet confident numbers about sea pigs, ask where they came from.",
+    "args": {
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 7,
+      "zoom": 1.15
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
     "heading": "Closing",
     "narration": "So yes, they are real. Not a pig, and not a hoax, but a sea cucumber walking on water-filled feet across the deep seafloor, filmed alive and kept in collections, with most of its life still out of view.",
     "args": {
-      "variant": 4
+      "subject": "sea_cucumber",
+      "label": "sea cucumber",
+      "pick": 6,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   }
 ]
