@@ -24,8 +24,10 @@ stay and are preferred wherever they match.
 THE SUBJECT GATE. An episode's subject words come from its own slug
 (`episode_phrases`), with question words and generic ocean words removed, so
 "what-does-a-goblin-shark-look-like" asks for "goblin shark" and never for
-"shark". A clip is accepted only when that phrase appears, word for word, in
-ONE of its own tags (or its Mixkit title). A pig on a beach is not a sea pig.
+"shark", and adjectives ("red", "transparent") are never subjects. A clip is
+accepted only when its own words say it IS that subject (`phrase_in`: the
+head of its first Pixabay tag, or of a noun phrase early in its Mixkit title).
+A pig on a beach is not a sea pig; a heavy-metal band is not metal.
 
 THE LICENCE GATE (`stock_licence_ok`) is re-run on every record by
 visuals/footage.verify immediately before a render, so a record that requires
@@ -159,6 +161,7 @@ tell keep keeping happen happens happened live lives living die dies brought rea
 strong stronger strongest good better best big bigger biggest small weird scary scariest creepier
 creepy creepers deeper deepest clear hot old new inside about from with at by into out up down
 something someone people scientists edible formed form forms surfacing occur occurs dive dives brought
+some other not survive pressure designed harden hardened rusting shatter red transparent part recorded
 """.split())
 # Words that never name a subject on their own and never make a phrase alone:
 # a clip of "the sea" does not show a deep-sea episode's subject.
@@ -212,23 +215,41 @@ def episode_phrases(slug: str) -> list[str]:
     return sorted(out, key=lambda s: -len(s.split()))
 
 
-HEAD_TAGS = 3
+# A sentence-style title (Mixkit) names its subject early, and the subject is
+# the HEAD of its noun phrase: followed by nothing, or by one of these.
+FOLLOW = set("""
+being is are was in on at with of and from under over into through for by while during
+""".split())
+TITLE_HEAD_WORDS = 5
 
 
 def phrase_in(phrase: str, text: str) -> bool:
-    """`phrase` word for word inside ONE of the first HEAD_TAGS comma-separated
-    tags of `text` (a Mixkit title has no commas: the whole title).
+    """True only when the clip IS the phrase, as far as its own words say.
 
-    Pixabay orders tags by what the clip IS. Measured on the first live run,
-    2026-11-02: any-tag matching took a clock ("clock, camera quick, ...
-    titanium watch") for "titanium" and a welder whose eighth tag was "steel".
-    The head of the list is the subject; the tail is the uploader's keywords."""
+    Tag lists (Pixabay, comma-separated): the FIRST tag must END with the
+    phrase - "window glass" is glass; "glass maker" is a person, "diamond
+    pigeon" a bird, "red poppy" a flower. Sentence titles (Mixkit): the phrase
+    must start within the first TITLE_HEAD_WORDS words and be the head of its
+    noun phrase - "molten glass being shaped" yes, "a diamond engagement
+    ring" and "multicolor diamond lights" no.
+
+    Measured 2026-11-02 on a full live run under the earlier any-of-three-tags
+    rule: 37 clips, among them roses for "red", club dancers for "recorded",
+    a dolphin pool for "whale" and a pigeon for "diamond". A clip that does
+    not show the subject is worse than none, so this errs toward none."""
     want = phrase.split()
-    for part in str(text or "").split(",")[:HEAD_TAGS]:
-        ws = _words(part)
-        for i in range(len(ws) - len(want) + 1):
-            if ws[i:i + len(want)] == want:
-                return True
+    n = len(want)
+    if "," in str(text or ""):
+        first = _words(str(text).split(",")[0])
+        if n == 1:
+            # One word is ambiguous at the end of a tag ("heavy metal" is a
+            # rock band, measured 2026-11-02): the first tag must BE it.
+            return first == want
+        return len(first) >= n and first[-n:] == want
+    ws = _words(str(text or ""))
+    for i in range(min(TITLE_HEAD_WORDS, len(ws) - n + 1)):
+        if ws[i:i + n] == want and (i + n == len(ws) or ws[i + n] in FOLLOW):
+            return True
     return False
 
 
@@ -340,6 +361,9 @@ def merge(new: list[dict], stops: list[dict], status: dict) -> dict:
         path = IMAGERY / a.get("local_file", "")
         if not ok:
             dropped.append(f"{a['post_id']}: {why}")
+        elif not phrase_in(str(a.get("subject") or ""), a.get("title", "")):
+            dropped.append(f"{a['post_id']}: its tags no longer show {a.get('subject')!r} "
+                           f"under the subject gate")
         elif not path.exists():
             dropped.append(f"{a['post_id']}: file gone")
         elif hashlib.sha256(path.read_bytes()).hexdigest() != a.get("sha256"):

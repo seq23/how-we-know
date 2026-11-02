@@ -202,8 +202,27 @@ def main() -> int:
          "a plain shark clip matched 'goblin shark'")
     want(not SV.phrase_in("sea pig", "pig, farm, sea"),
          "a farm pig by the sea matched 'sea pig'")
-    want(SV.phrase_in("sea pig", "seafloor, sea pigs, echinoderm"),
-         "a clip tagged 'sea pigs' did not match 'sea pig'")
+    want(SV.phrase_in("sea pig", "sea pigs, seafloor, echinoderm"),
+         "a clip whose first tag is 'sea pigs' did not match 'sea pig'")
+    # the clips a looser rule actually accepted on the 2026-11-02 live run
+    for phrase, title in [("diamond", "bird, diamond pigeon, pigeon species"),
+                          ("diamond", "a diamond engagement ring"),
+                          ("diamond", "multicolor diamond lights"),
+                          ("whale", "dolphin, whale, shark, pool"),
+                          ("metal", "heavy metal, rock band, music"),
+                          ("glass", "glass maker, glass blower, molten"),
+                          ("steel", "river, bridge, steel, railway"),
+                          ("sea pig", "seafloor, sea pigs, echinoderm")]:
+        want(not SV.phrase_in(phrase, title),
+             f"{title!r} was taken as showing {phrase!r}")
+    want(SV.phrase_in("glass", "molten glass being shaped"),
+         "a Mixkit title whose head noun is the subject was refused")
+    for other in ("05-why-many-deep-sea-creatures-are-red",
+                  "19-what-is-the-deepest-fish-ever-recorded",
+                  "10-what-is-the-deepest-part-of-the-ocean"):
+        want(SV.episode_phrases(other) == [],
+             f"{other} asks stock for {SV.episode_phrases(other)} - an adjective "
+             f"or verb is not a subject a clip can show")
     farm = stock("pixabay", "303", "pig, farm, sea", "sea pig", "clips/stock__pixabay-303.mp4", b"farm")
     want(FT.stock_pool(slug, [farm]) == [], "a farm-pig clip entered the sea-pig pool")
     octo = stock("pixabay", "404", "octopus, dumbo octopus", "dumbo octopus",
@@ -215,7 +234,7 @@ def main() -> int:
     red = "05-why-many-deep-sea-creatures-are-red"
     reds = [noaa(i, t, f"clips/n{i}.mp4", blob_n) for i, t in
             enumerate(["Red Shrimp", "Big Red Jelly", "Red Jelly"])]
-    red_stock = stock("pixabay", "505", "red, shrimp", "red", "clips/stock__pixabay-505.mp4", b"r")
+    red_stock = stock("pixabay", "505", "red shrimp, sea", "red shrimp", "clips/stock__pixabay-505.mp4", b"r")
     pool = FT.episode_pool(red, reds + [red_stock], needed=2)
     want(pool and all(not SV.is_stock(a) for a in pool),
          f"a stock clip entered {red}'s pool while NOAA covers it")

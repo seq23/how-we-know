@@ -1638,7 +1638,7 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   mac-batch`, gate `stock_licence_ok`) reuses `research/food_footage.py`'s Pixabay and Mixkit
   adapters and writes into `channel/imagery/video_rights.json` beside the NOAA clips. A clip is
   taken only when the episode's subject phrase (from its slug, generic ocean words removed: "goblin
-  shark", never "shark") is in its first three tags. Whole length counted as text-free.
+  shark", never "shark") heads its first tag (see below). Whole length counted as text-free.
   `visuals/footage.py` re-runs the licence gate on every stock record before a render, keeps NOAA
   first (stock only where NOAA alone would repeat), never puts a stock clip on a species beat, and
   never shows the same span of a clip twice. `loop/footage_lane.py` accepts a `domains` list.
@@ -1650,9 +1650,12 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   `are-sea-pigs-real` (rendered 2026-11-02) drew all 14 ambient beats while a NOAA "Sea Pigs" clip
   was cleared. assemble.py now places and renders footage (`render_cut`, exact frame count, no `-t`
   input option); `loop/lengthen.py` splice segments stay drawn (a slice cannot know its episode).
-- Live trial on the Mac (worktree, 7 episodes): 9 Pixabay clips accepted (glass, steel bridges, a
-  microchip board); a clock tagged "titanium watch" and a welder tagged "steel" eighth were refused
-  once matching was limited to the head tags.
+- **The subject gate, measured on live runs (worktree):** "any of the first three tags" took
+  roses for "red", club dancers for "recorded", a dolphin pool for "whale", a pigeon for "diamond"
+  and a rock band for "metal" (37 clips, most wrong). Now: adjectives and verbs are never subjects;
+  a Pixabay clip's FIRST tag must end with the phrase (and BE it for a one-word subject); a Mixkit
+  title must carry the phrase as the head of its noun phrase in its first five words. A re-run kept
+  9 of 10 (glasses of water, whales, a diamond ring) and named the episodes with no honest clip.
 - Guard: `loop/tests/test_stock_footage_all_domains.py` - negative proof: a stock clip marked
   attribution-required or commercial-use-forbidden is refused in a deep-sea episode by
   `usable_assets`, `assign` and `render_cut`; removing the gate turns 7 checks red.
