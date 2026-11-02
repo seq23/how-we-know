@@ -408,7 +408,8 @@ def reschedule_plan(led: dict | None = None) -> list[dict]:
         st = r.get("scheduled_publish_at")
         if (not st or not r.get("video_id") or r.get("retired_at")
                 or r.get("schedule_cancelled_at") or r.get("published_at")
-                or r.get("privacy") == "public"):
+                or r.get("privacy") == "public"
+                or r.get("borrowed_day")):      # given an empty day on purpose
             continue
         when = datetime.fromisoformat(st.replace("Z", "+00:00"))
         # A video due inside the lead time keeps its date: re-dating one that

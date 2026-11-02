@@ -81,11 +81,26 @@ for slug, t in zip(slugs, when):
     lt = t.astimezone(B.PUBLISH_TZ)
     dom = D.domain_of_slug(slug)
     days_seen.append(lt.date())
-    check(B.rotation_days(cfg).get(lt.weekday()) == dom and lt.weekday() not in (2, 5, 6)
+    # Its own rotation day - or, since 2 Nov 2026 (any-topic fill), an EMPTY
+    # food day within BORROW_DAYS, because no food episode is in this run.
+    # Never Sunday, never inside the lead, always the slot time.
+    own = B.rotation_days(cfg).get(lt.weekday()) == dom
+    borrowed = (lt.weekday() in (2, 5)
+                and t <= now + timedelta(days=B.BORROW_DAYS, hours=B.MIN_LEAD_HOURS))
+    check((own or borrowed) and lt.weekday() != 6
           and f"{lt:%H:%M}" == "10:00" and t >= now + timedelta(hours=24),
-          f"{slug} ({dom}) got {lt:%a %d %b %H:%M}: not its rotation day, or a "
-          f"food/Sunday day, or inside the lead")
+          f"{slug} ({dom}) got {lt:%a %d %b %H:%M}: not its rotation day nor an "
+          f"empty food day within {B.BORROW_DAYS} days, or Sunday, or inside the lead")
 check(len(days_seen) == len(set(days_seen)), "two episodes landed on one day")
+# A topic with an episode READY keeps its days: with a food slug in the run,
+# no other topic is given a food day.
+_food = [x for x in D.by_slug() if D.domain_of_slug(x) == FOOD][:1]
+if _food:
+    w3 = B.schedule_slugs(empty, [deep[0], deep[1], _food[0]], 6)
+    check(all(x.astimezone(B.PUBLISH_TZ).weekday() not in (2, 5) for x in w3[:2]),
+          "a deep-sea episode took a food day while a food episode was ready")
+else:
+    check(False, "no food slug found to prove a ready topic keeps its days")
 check(when[-1] is not None,
       "a slug with no script fell to no domain (it is treated as deep sea)")
 cfg_food = {**cfg, "domains": {**cfg["domains"], "allocation": {DEEP: 2, MAT: 2}}}

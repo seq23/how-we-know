@@ -1827,10 +1827,15 @@ def v20_cadence_schedule() -> Result:
             when = row["when"].astimezone(backfill.PUBLISH_TZ)
             dom_ = _dm.domain_of_slug(row["slug"]) or "deep-sea-ocean-science"
             per_day_seen[when.date()] = per_day_seen.get(when.date(), 0) + 1
-            if rot_days.get(when.weekday()) == dom_ and f"{when:%H:%M}" in times:
-                continue
             full = next((x for x in led["published"]
                          if x.get("video_id") == row.get("video_id")), {})
+            if f"{when:%H:%M}" in times and (
+                    rot_days.get(when.weekday()) == dom_
+                    # an empty day given to a ready episode of another topic
+                    # (backfill.schedule_slugs, 2 Nov 2026) - still a rotation
+                    # day, never Sunday
+                    or (full.get("borrowed_day") and rot_days.get(when.weekday()))):
+                continue
             why = (f"{row['slug']} ({dom_}) is dated {when:%a %d %b %H:%M %Z}, "
                    f"not its rotation day/time")
             if (full.get("rescheduled_at") or full.get("uploaded_at") or "") < ROTATION_START:
