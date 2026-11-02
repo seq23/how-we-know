@@ -1,0 +1,1283 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "The world's most famous ugly fish was photographed after it had been ruined.",
+    "args": {
+      "value": "100",
+      "unit": "atmospheres",
+      "caption": "about 100 atmospheres near 1000 metres",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "In its own habitat, a blobfish looks like a fairly ordinary deep-sea fish: a large head, a tapering body and visible fins, its soft flesh held in shape by the water around it.",
+    "args": {
+      "lines": [
+        "In its own habitat,",
+        "a blobfish looks like",
+        "a fairly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "NOAA notes that pressure rises by roughly one atmosphere for every ten metres of depth.",
+    "args": {
+      "value": "100",
+      "unit": "atmospheres",
+      "caption": "about 100 atmospheres near 1000 metres",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Near 1000 metres, a depth within the range reported for blobfish, NOAA's rule gives about 100 atmospheres pressing in from every side.",
+    "args": {
+      "lines": [
+        "Near 1000 metres, a",
+        "depth within the range",
+        "reported"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 5.79,
+    "heading": "Cold open",
+    "narration": "You might assume that crushing weight explains the melted face in the famous picture.",
+    "args": {
+      "value": "100",
+      "unit": "atmospheres",
+      "caption": "about 100 atmospheres near 1000 metres",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Mostly, it does not. The face sagged because something far more ordinary was taken away.",
+    "args": {
+      "lines": [
+        "Mostly, it does not.",
+        "The face sagged because",
+        "something far"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What does a blobfish actually look like?",
+    "args": {
+      "lines": [
+        "What does a blobfish",
+        "actually look like?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "Start with the picture most people carry around. It shows a pale, pinkish mass with a drooping flap where a nose might be, a downturned mouth, and almost no sense of a fish shape at all.",
+    "args": {
+      "term": "The famous image",
+      "includes": [
+        "a dead specimen out of water"
+      ],
+      "excludes": [
+        "a living fish in its habitat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "It is resting, not swimming. That detail matters, because it tells you the famous image is of a dead specimen out of water.",
+    "args": {
+      "lines": [
+        "It is resting, not",
+        "swimming. That detail matters,",
+        "because it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "A research trawl brought the animal up in the deep southwest Pacific.",
+    "args": {
+      "term": "The famous image",
+      "includes": [
+        "a dead specimen out of water"
+      ],
+      "excludes": [
+        "a living fish in its habitat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "It was photographed on deck and later preserved. Years afterwards it won a public vote as the world's ugliest animal, and the picture travelled everywhere.",
+    "args": {
+      "lines": [
+        "It was photographed on",
+        "deck and later preserved.",
+        "Years afterwards"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "But a photograph records a condition as much as a creature. Here the condition was clear.",
+    "args": {
+      "term": "The famous image",
+      "includes": [
+        "a dead specimen out of water"
+      ],
+      "excludes": [
+        "a living fish in its habitat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "The animal had been hauled from depth, handled, and set down in air.",
+    "args": {
+      "lines": [
+        "The animal had been",
+        "hauled from depth, handled,",
+        "and set"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "Whatever the picture shows, it is not a living fish in its habitat.",
+    "args": {
+      "term": "The famous image",
+      "includes": [
+        "a dead specimen out of water"
+      ],
+      "excludes": [
+        "a living fish in its habitat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "So the first task is to separate the nickname from the animal.",
+    "args": {
+      "lines": [
+        "So the first task",
+        "is to separate the",
+        "nickname"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "The name blobfish is usually applied to Psychrolutes marcidus, one of a group often called fathead sculpins.",
+    "args": {
+      "lines": [
+        "The name blobfish is",
+        "usually applied to Psychrolutes",
+        "marcidus, one"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "It lives over the continental slopes off southeastern Australia and New Zealand, in cold, dark water near the seafloor.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "Very few people have ever seen one alive. Most of the images in circulation show specimens on decks, in trays and in jars.",
+    "args": {
+      "lines": [
+        "Very few people have",
+        "ever seen one alive."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The famous face belongs to a dead specimen",
+    "narration": "That is not unusual for deep-sea fish. It does mean that the public picture of this species was built from the condition it ends up in, not the condition it lives in. The rest of this story is about closing that gap.",
+    "args": {
+      "lines": [
+        "That is not unusual",
+        "for deep-sea fish. It",
+        "does mean"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "I want to understand that chain before treating the final image or number as direct truth.",
+    "args": {
+      "text": "I want to understand that chain before treating the final image or number as direct truth.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "The common explanation goes like this. The blobfish lives under enormous pressure, so when it comes up, it decompresses and falls apart.",
+    "args": {
+      "title": "Why the face sags",
+      "stages": [
+        "no swim bladder",
+        "gelatinous flesh",
+        "lifted into air"
+      ],
+      "conclusion": "gravity flattens the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "There is something to that, but it skips a step. Many fish that suffer badly when brought up quickly have a swim bladder, a gas-filled organ used to control buoyancy.",
+    "args": {
+      "lines": [
+        "There is something to",
+        "that, but it skips",
+        "a step."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "Gas expands as pressure drops, and that expansion can rupture tissue and push organs out of place.",
+    "args": {
+      "title": "Why the face sags",
+      "stages": [
+        "no swim bladder",
+        "gelatinous flesh",
+        "lifted into air"
+      ],
+      "conclusion": "gravity flattens the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "Fathead sculpins like the blobfish are generally described as having no swim bladder.",
+    "args": {
+      "lines": [
+        "Fathead sculpins like the",
+        "blobfish are generally described",
+        "as having"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.86,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "Their bodies are built largely of gelatinous flesh, watery tissue close to the density of the seawater around it.",
+    "args": {
+      "title": "Why the face sags",
+      "stages": [
+        "no swim bladder",
+        "gelatinous flesh",
+        "lifted into air"
+      ],
+      "conclusion": "gravity flattens the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "Water and watery tissue barely compress, so the pressure change alone does relatively little to them.",
+    "args": {
+      "lines": [
+        "Water and watery tissue",
+        "barely compress, so the",
+        "pressure change"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "The decisive change comes at the end of the journey. The fish is lifted into air, and gravity flattens the body. That is why the face sags.",
+    "args": {
+      "title": "Why the face sags",
+      "stages": [
+        "no swim bladder",
+        "gelatinous flesh",
+        "lifted into air"
+      ],
+      "conclusion": "gravity flattens the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "Think about what holds a body's shape. In you, muscle and bone do that work against gravity all day.",
+    "args": {
+      "term": "gelatinous flesh",
+      "includes": [
+        "support from surrounding water"
+      ],
+      "excludes": [
+        "support from muscle and bone"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "In a blobfish, the water does much of it. A body close to neutral buoyancy is supported evenly from every side, so loose skin and gelatinous flesh hold their form without much internal structure.",
+    "args": {
+      "lines": [
+        "In a blobfish, the",
+        "water does much of",
+        "it."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "Take away that support from surrounding water and nothing replaces it. The tissue slumps, the way a jellyfish does on a beach.",
+    "args": {
+      "term": "gelatinous flesh",
+      "includes": [
+        "support from surrounding water"
+      ],
+      "excludes": [
+        "support from muscle and bone"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "That is why the body in the famous image spreads out, and why the skin over the snout hangs forward into that nose-like flap.",
+    "args": {
+      "lines": [
+        "That is why the",
+        "body in the famous",
+        "image spreads"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Pressure is real, but it did not melt the face",
+    "narration": "The shape was never held by support from muscle and bone. It was borrowed from the ocean.",
+    "args": {
+      "term": "gelatinous flesh",
+      "includes": [
+        "support from surrounding water"
+      ],
+      "excludes": [
+        "support from muscle and bone"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.86,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "It helps to walk through the journey from seabed to photograph in order, because each stage leaves a mark.",
+    "args": {
+      "title": "From seabed to photograph",
+      "steps": [
+        [
+          "caught in a trawl net",
+          ""
+        ],
+        [
+          "hauled up through the water",
+          ""
+        ],
+        [
+          "lifted into air",
+          ""
+        ],
+        [
+          "laid on a flat surface",
+          ""
+        ]
+      ],
+      "note": "each step distorts the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "First, the fish is caught in a trawl net and pressed against other animals, rocks and mesh as the net is towed.",
+    "args": {
+      "lines": [
+        "First, the fish is",
+        "caught in a trawl",
+        "net"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "A soft-skinned fish is easily scraped and torn. Second, it is hauled up through the water, passing from cold depths into warmer surface water while pressure falls steadily.",
+    "args": {
+      "title": "From seabed to photograph",
+      "steps": [
+        [
+          "caught in a trawl net",
+          ""
+        ],
+        [
+          "hauled up through the water",
+          ""
+        ],
+        [
+          "lifted into air",
+          ""
+        ],
+        [
+          "laid on a flat surface",
+          ""
+        ]
+      ],
+      "note": "each step distorts the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "For a body without gas, this is less dramatic than it is for a fish with a swim bladder, but it is not harmless.",
+    "args": {
+      "lines": [
+        "For a body without",
+        "gas, this is less",
+        "dramatic"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "Third, it is lifted into air, where its buoyant support disappears all at once.",
+    "args": {
+      "title": "From seabed to photograph",
+      "steps": [
+        [
+          "caught in a trawl net",
+          ""
+        ],
+        [
+          "hauled up through the water",
+          ""
+        ],
+        [
+          "lifted into air",
+          ""
+        ],
+        [
+          "laid on a flat surface",
+          ""
+        ]
+      ],
+      "note": "each step distorts the body"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "Finally, it is laid on a flat surface and photographed. Each step distorts the body, and the camera only sees the last one.",
+    "args": {
+      "lines": [
+        "Finally, it is laid",
+        "on a flat surface",
+        "and photographed."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "None of this requires guessing about hidden damage. It follows from things that are well established: how gas behaves under pressure, how buoyancy supports a body in water, and what trawling does to soft-skinned animals.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "The specific injuries to the famous specimen are a separate question. Nobody documented them in enough detail to list them one by one.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Every step from seabed to deck changes the body",
+    "narration": "What can be said is that the photograph is consistent with a fragile body that has lost its support and taken some damage along the way.",
+    "args": {
+      "lines": [
+        "What can be said",
+        "is that the photograph",
+        "is consistent"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.45,
+    "heading": "Living relatives show the intact shape",
+    "narration": "So how do we know what the living fish looks like, if so few people have seen one?",
+    "args": {
+      "title": "Who has seen the intact form",
+      "sources": [
+        [
+          "MBARI",
+          "filmed related fathead sculpins alive"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "publishes deep-sea imagery and fact pages"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living relatives show the intact shape",
+    "narration": "The strongest evidence comes from relatives filmed in place. Remotely operated vehicles are robot submersibles, tethered to a ship and carrying cameras and lights.",
+    "args": {
+      "lines": [
+        "The strongest evidence comes",
+        "from relatives filmed in",
+        "place. Remotely"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.79,
+    "heading": "Living relatives show the intact shape",
+    "narration": "They have recorded fathead sculpins sitting on the seafloor or hovering just above it.",
+    "args": {
+      "title": "Who has seen the intact form",
+      "sources": [
+        [
+          "MBARI",
+          "filmed related fathead sculpins alive"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "publishes deep-sea imagery and fact pages"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Living relatives show the intact shape",
+    "narration": "The Monterey Bay Aquarium Research Institute, known as MBARI, has filmed related fathead sculpins alive in the deep northeast Pacific.",
+    "args": {
+      "lines": [
+        "The Monterey Bay Aquarium",
+        "Research Institute, known as",
+        "MBARI, has"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Living relatives show the intact shape",
+    "narration": "NOAA Ocean Exploration publishes deep-sea imagery and fact pages from its own expeditions, and they show how differently deep animals look at depth compared with on a deck.",
+    "args": {
+      "title": "Who has seen the intact form",
+      "sources": [
+        [
+          "MBARI",
+          "filmed related fathead sculpins alive"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "publishes deep-sea imagery and fact pages"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living relatives show the intact shape",
+    "narration": "In that footage, these fish have a recognisable fish outline. They have a broad head, a body that narrows toward the tail, and fins that are spread and working.",
+    "args": {
+      "lines": [
+        "In that footage, these",
+        "fish have a recognisable",
+        "fish outline."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Living relatives show the intact shape",
+    "narration": "Put those images beside the famous photograph and the difference is plain.",
+    "args": {
+      "term": "the living animal",
+      "includes": [
+        "a broad head and a tapering body"
+      ],
+      "excludes": [
+        "a drooping pink mass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living relatives show the intact shape",
+    "narration": "The living animal has a broad head and a tapering body. Its skin sits smoothly over the head instead of hanging forward.",
+    "args": {
+      "lines": [
+        "The living animal has",
+        "a broad head and",
+        "a tapering"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Living relatives show the intact shape",
+    "narration": "Its eyes are visible, and its mouth is wide but not sagging.",
+    "args": {
+      "term": "the living animal",
+      "includes": [
+        "a broad head and a tapering body"
+      ],
+      "excludes": [
+        "a drooping pink mass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Living relatives show the intact shape",
+    "narration": "The overall effect is closer to an oversized tadpole than a melted face.",
+    "args": {
+      "lines": [
+        "The overall effect is",
+        "closer to an oversized",
+        "tadpole"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Living relatives show the intact shape",
+    "narration": "It still looks soft and somewhat lumpy, because it is. Nothing in the footage suggests a sleek predator.",
+    "args": {
+      "term": "the living animal",
+      "includes": [
+        "a broad head and a tapering body"
+      ],
+      "excludes": [
+        "a drooping pink mass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Living relatives show the intact shape",
+    "narration": "But it does not look like a drooping pink mass. That impression belongs almost entirely to the specimen on the deck.",
+    "args": {
+      "lines": [
+        "But it does not",
+        "look like a drooping",
+        "pink mass."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "There is a reason the blobfish is built this way, and it has nothing to do with appearance.",
+    "args": {
+      "title": "What the body design explains",
+      "items": [
+        "+no swim bladder",
+        "+gelatinous flesh",
+        "+little muscle",
+        "?how it hunts"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "This is what the body design explains. Deep water offers little food, so a body that costs little to build and run has an advantage.",
+    "args": {
+      "lines": [
+        "This is what the",
+        "body design explains. Deep",
+        "water offers"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "Gelatinous flesh is mostly water, which is cheap. With no swim bladder, the fish has no gas organ to adjust as its depth changes.",
+    "args": {
+      "title": "What the body design explains",
+      "items": [
+        "+no swim bladder",
+        "+gelatinous flesh",
+        "+little muscle",
+        "?how it hunts"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "A body near neutral buoyancy can stay just above the seafloor without spending energy on swimming.",
+    "args": {
+      "lines": [
+        "A body near neutral",
+        "buoyancy can stay just",
+        "above"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "Little muscle means low running costs. The trade-off is that the fish is not built for speed.",
+    "args": {
+      "title": "What the body design explains",
+      "items": [
+        "+no swim bladder",
+        "+gelatinous flesh",
+        "+little muscle",
+        "?how it hunts"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "It is thought to feed largely on small invertebrates that come within reach.",
+    "args": {
+      "lines": [
+        "It is thought to",
+        "feed largely on small",
+        "invertebrates"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "How it hunts in detail, though, is not well recorded. That part of the checklist stays open.",
+    "args": {
+      "title": "What the body design explains",
+      "items": [
+        "+no swim bladder",
+        "+gelatinous flesh",
+        "+little muscle",
+        "?how it hunts"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "Notice what that does to the famous image. Every feature that makes the specimen look grotesque also makes the living fish efficient.",
+    "args": {
+      "lines": [
+        "Notice what that does",
+        "to the famous image.",
+        "Every feature"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "The loose skin, the soft flesh and the lack of rigid structure add up to a quiet, economical animal in water.",
+    "args": {
+      "lines": [
+        "The loose skin, the",
+        "soft flesh and the",
+        "lack"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "Out of water they add up to a puddle. The photograph did not reveal an ugly fish.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "It revealed what happens to a body designed for one environment when it is dropped into another.",
+    "args": {
+      "lines": [
+        "It revealed what happens",
+        "to a body designed",
+        "for one"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A cheap body is a good body at depth",
+    "narration": "That is a real and interesting fact. It is just not the fact most people took from the picture.",
+    "args": {
+      "lines": [
+        "That is a real",
+        "and interesting fact. It",
+        "is just"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "Here is where honesty matters. This is how the living shape is inferred, and the argument has gaps.",
+    "args": {
+      "title": "How the living shape is inferred",
+      "stages": [
+        "footage of related fathead sculpins",
+        "shared body plan",
+        "few observations of the species itself"
+      ],
+      "conclusion": "a careful inference"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "The chain starts with footage of related fathead sculpins, not necessarily Psychrolutes marcidus itself.",
+    "args": {
+      "lines": [
+        "The chain starts with",
+        "footage of related fathead",
+        "sculpins"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "Those relatives have a shared body plan: no swim bladder, gelatinous flesh, little muscle.",
+    "args": {
+      "title": "How the living shape is inferred",
+      "stages": [
+        "footage of related fathead sculpins",
+        "shared body plan",
+        "few observations of the species itself"
+      ],
+      "conclusion": "a careful inference"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "When filmed alive, they hold a normal fish shape. For the blobfish, there are few observations of the species itself in its habitat.",
+    "args": {
+      "lines": [
+        "When filmed alive, they",
+        "hold a normal fish",
+        "shape."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "So the most reasonable conclusion is that the blobfish also looks like an ordinary soft-bodied fish when it is alive at depth.",
+    "args": {
+      "title": "How the living shape is inferred",
+      "stages": [
+        "footage of related fathead sculpins",
+        "shared body plan",
+        "few observations of the species itself"
+      ],
+      "conclusion": "a careful inference"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "That is a careful inference. It is a strong one, because the physics and anatomy behind it are well understood.",
+    "args": {
+      "lines": [
+        "That is a careful",
+        "inference. It is a",
+        "strong one"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Comparing relatives is evidence, not proof",
+    "narration": "But it is still an inference, not a long record of direct observation.",
+    "args": {
+      "title": "How the living shape is inferred",
+      "stages": [
+        "footage of related fathead sculpins",
+        "shared body plan",
+        "few observations of the species itself"
+      ],
+      "conclusion": "a careful inference"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "What to notice in the edit",
+    "narration": "When the two kinds of image appear on screen, look at the setting before the subject.",
+    "args": {
+      "term": "a photograph",
+      "includes": [
+        "a record of a condition"
+      ],
+      "excludes": [
+        "a portrait of a species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "A fish on a deck, in a tray or against a white background has already made the journey from seabed to surface.",
+    "args": {
+      "lines": [
+        "A fish on a",
+        "deck, in a tray",
+        "or against"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "A fish against dark water, lit from a vehicle above, is being seen in the condition it lives in.",
+    "args": {
+      "term": "a photograph",
+      "includes": [
+        "a record of a condition"
+      ],
+      "excludes": [
+        "a portrait of a species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "Neither image is false. A photograph is a record of a condition, not a portrait of a species.",
+    "args": {
+      "lines": [
+        "Neither image is false.",
+        "A photograph is a",
+        "record"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "Some of the footage shows a relative instead of the blobfish itself.",
+    "args": {
+      "term": "a photograph",
+      "includes": [
+        "a record of a condition"
+      ],
+      "excludes": [
+        "a portrait of a species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Those are the clearest living images available, so the comparison is made openly, and you should weigh it that way.",
+    "args": {
+      "lines": [
+        "Those are the clearest",
+        "living images available, so",
+        "the comparison"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "This evidence settles the main point. The famous image shows a damaged specimen out of water, and a living blobfish keeps a recognisable fish shape.",
+    "args": {
+      "lines": [
+        "This evidence settles the",
+        "main point. The famous",
+        "image shows"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not settle every detail of how a living Psychrolutes marcidus looks, from the exact set of its fins to its colour in natural conditions, because direct footage of this species alive is scarce.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "Colour in deep-sea footage also depends on the lights the vehicle carries, since almost no sunlight reaches these depths.",
+    "args": {
+      "lines": [
+        "Colour in deep-sea footage",
+        "also depends on the",
+        "lights"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "Nor does any of this tell you how blobfish behave, how long they live, or whether their numbers are changing.",
+    "args": {
+      "lines": [
+        "Nor does any of",
+        "this tell you how",
+        "blobfish behave"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "Those questions need observations that, for this fish, mostly have not been made yet.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "The blobfish became famous for a face it never wore while alive.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "What it actually looks like is quieter: a soft, broad-headed fish resting in cold water, held together by the same ocean that holds it up.",
+    "args": {
+      "lines": [
+        "What it actually looks",
+        "like is quieter: a",
+        "soft, broad-headed"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Closing",
+    "narration": "The ugly picture was real. It simply shows what happens after the water is gone.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  }
+]

@@ -1,0 +1,1344 @@
+[
+  {
+    "segment": "thermal_ascent",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Tungsten melts at about 3422 degrees Celsius, yet early lamp wire was shaped from it.",
+    "args": {
+      "to_temp": 3422,
+      "label": "Tungsten melts"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "That figure, the highest melting point of any metal, comes from standard property data of the kind ASM International publishes.",
+    "args": {
+      "lines": [
+        "That figure, the highest",
+        "melting point of any",
+        "metal, comes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Powder metallurgy makes metal parts by pressing fine metal powder into a shape and then heating it below its melting point, so the particles bond without the whole part ever turning liquid.",
+    "args": {
+      "to_temp": 3422,
+      "label": "Tungsten melts"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "That answer is correct, and it raises a harder question straight away.",
+    "args": {
+      "lines": [
+        "That answer is correct,",
+        "and it raises a",
+        "harder question"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "Solid grains of metal, never melted, become one piece. Nothing flows. So what actually moves, and how could anyone tell?",
+    "args": {
+      "to_temp": 3422,
+      "label": "Tungsten melts"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How does powder metallurgy work?",
+    "args": {
+      "lines": [
+        "How does powder metallurgy",
+        "work?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "The powder is designed before the part is",
+    "narration": "Start with making the powder, because almost everything later depends on it.",
+    "args": {
+      "title": "making the powder",
+      "steps": [
+        [
+          "atomization",
+          ""
+        ],
+        [
+          "chemical reduction",
+          ""
+        ],
+        [
+          "electrolysis",
+          ""
+        ]
+      ],
+      "note": "each route leaves its own particle shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "The powder is designed before the part is",
+    "narration": "The most common industrial route is atomization: a stream of molten metal is broken apart by jets of gas or water, and the droplets freeze in flight.",
+    "args": {
+      "subject": "molten-steel",
+      "label": "MOLTEN METAL",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "The powder is designed before the part is",
+    "narration": "The metal is melted here, at the powder stage, but the part itself will never melt.",
+    "args": {
+      "title": "making the powder",
+      "steps": [
+        [
+          "atomization",
+          ""
+        ],
+        [
+          "chemical reduction",
+          ""
+        ],
+        [
+          "electrolysis",
+          ""
+        ]
+      ],
+      "note": "each route leaves its own particle shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The powder is designed before the part is",
+    "narration": "Gas tends to give rounder particles; water tends to give irregular, ragged ones.",
+    "args": {
+      "lines": [
+        "Gas tends to give",
+        "rounder particles"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The powder is designed before the part is",
+    "narration": "Other routes skip melting entirely. In chemical reduction, a metal oxide is stripped of its oxygen, often by hydrogen, leaving a spongy metal that is then ground.",
+    "args": {
+      "title": "making the powder",
+      "steps": [
+        [
+          "atomization",
+          ""
+        ],
+        [
+          "chemical reduction",
+          ""
+        ],
+        [
+          "electrolysis",
+          ""
+        ]
+      ],
+      "note": "each route leaves its own particle shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The powder is designed before the part is",
+    "narration": "In electrolysis, metal is deposited from a solution and then broken up.",
+    "args": {
+      "lines": [
+        "In electrolysis, metal is",
+        "deposited from a solution"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "The powder is designed before the part is",
+    "narration": "Each route leaves its own particle shape, size spread and surface chemistry, and none of that is cosmetic.",
+    "args": {
+      "title": "making the powder",
+      "steps": [
+        [
+          "atomization",
+          ""
+        ],
+        [
+          "chemical reduction",
+          ""
+        ],
+        [
+          "electrolysis",
+          ""
+        ]
+      ],
+      "note": "each route leaves its own particle shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The powder is designed before the part is",
+    "narration": "Irregular particles interlock when pressed, which helps a part hold together before heating.",
+    "args": {
+      "lines": [
+        "Irregular particles interlock when",
+        "pressed, which helps a",
+        "part hold"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "The powder is designed before the part is",
+    "narration": "Round particles flow and pack smoothly, which matters when powder must fill a mold evenly.",
+    "args": {
+      "title": "making the powder",
+      "steps": [
+        [
+          "atomization",
+          ""
+        ],
+        [
+          "chemical reduction",
+          ""
+        ],
+        [
+          "electrolysis",
+          ""
+        ]
+      ],
+      "note": "each route leaves its own particle shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The powder is designed before the part is",
+    "narration": "Fine particles carry more surface per gram, and surface, as you will see, drives the whole process.",
+    "args": {
+      "lines": [
+        "Fine particles carry more",
+        "surface per gram, and",
+        "surface"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.86,
+    "heading": "The powder is designed before the part is",
+    "narration": "So powder is characterized before use: its size distribution is measured, its flow is timed, its packing is checked.",
+    "args": {
+      "title": "making the powder",
+      "steps": [
+        [
+          "atomization",
+          ""
+        ],
+        [
+          "chemical reduction",
+          ""
+        ],
+        [
+          "electrolysis",
+          ""
+        ]
+      ],
+      "note": "each route leaves its own particle shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The powder is designed before the part is",
+    "narration": "ASTM International publishes the standard test methods, so two labs measuring the same powder can compare results.",
+    "args": {
+      "lines": [
+        "ASTM International publishes the",
+        "standard test methods, so",
+        "two labs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "Next comes shaping. The powder, usually blended with a little lubricant, is poured into a hardened steel die and squeezed between punches.",
+    "args": {
+      "term": "green compact",
+      "meaning": "a pressed powder part before heating",
+      "boundary": "holds its shape but can crumble",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "Particles slide, rearrange, and then deform where they touch, flattening against one another.",
+    "args": {
+      "lines": [
+        "Particles slide, rearrange, and",
+        "then deform where they",
+        "touch, flattening"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "What comes out is called a green compact: a pressed powder part before heating.",
+    "args": {
+      "term": "green compact",
+      "meaning": "a pressed powder part before heating",
+      "boundary": "holds its shape but can crumble",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "It holds its shape but can crumble if you drop it. Its strength comes mostly from particles locked together mechanically, not from metallic bonds across them.",
+    "args": {
+      "lines": [
+        "It holds its shape",
+        "but can crumble if",
+        "you drop"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "The vocabulary of the field, which ASTM International also standardizes, keeps that distinction sharp, because a green part and a finished part can look identical.",
+    "args": {
+      "term": "green compact",
+      "meaning": "a pressed powder part before heating",
+      "boundary": "holds its shape but can crumble",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "Pressing has a known weakness. Friction against the die walls means pressure does not spread evenly, so a tall part can end up denser near the punches than in its middle, and uneven density shrinks unevenly later.",
+    "args": {
+      "lines": [
+        "Pressing has a known",
+        "weakness. Friction against the",
+        "die walls"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "Engineers answer with careful part design, with presses that move punches separately, and with isostatic pressing, where pressure arrives from every direction through a fluid.",
+    "args": {
+      "term": "green compact",
+      "meaning": "a pressed powder part before heating",
+      "boundary": "holds its shape but can crumble",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Pressing gives a part its shape, but almost none of its strength",
+    "narration": "The point to hold on to is simple. After pressing, you have the shape. You do not yet have the metal.",
+    "args": {
+      "lines": [
+        "The point to hold",
+        "on to is simple.",
+        "After pressing"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "An increase of 300% sounds dramatic until you find out it went from one case to four. A precise number is not automatically a reliable number.",
+    "args": {
+      "text": "An increase of 300% sounds dramatic until you find out it went from one case to four. A precise number is not automatically a reliable number.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "Now the heat. The green compact travels through a furnace under a protective atmosphere, often containing hydrogen or nitrogen, so the metal does not oxidize.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "The lubricant burns off first. Then the temperature climbs into the sintering range: hot, but below the melting point of the main metal.",
+    "args": {
+      "subject": "3d-printed-metal",
+      "label": "SINTER",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "Sintering is bonding by atomic diffusion below melting. It is not melting and solidifying.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "To see why it happens at all, consider the surface. An atom at a surface has fewer neighbors than one inside the metal, so it sits in a higher energy state.",
+    "args": {
+      "lines": [
+        "To see why it",
+        "happens at all, consider",
+        "the surface."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "A heap of fine powder has an enormous amount of surface, and so a lot of stored energy.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "At high temperature, atoms vibrate hard enough to hop from site to site.",
+    "args": {
+      "lines": [
+        "At high temperature, atoms",
+        "vibrate hard enough to",
+        "hop"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "They migrate one at a time: through the crystal, along the boundaries between crystals, and across surfaces.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "Where two particles touch, atoms gather at the contact and build a bridge called a neck.",
+    "args": {
+      "lines": [
+        "Where two particles touch,",
+        "atoms gather at the",
+        "contact"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "As necks widen, total surface falls, and the system settles toward lower energy.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "That is the driving force: not pressure, not melting, but the steady loss of surface.",
+    "args": {
+      "lines": [
+        "That is the driving",
+        "force: not pressure, not",
+        "melting"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "Here is the subtle part. Not every path shrinks the part. Atoms that travel only across surfaces widen necks and round off pores without pulling particle centers closer.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "Atoms that move from the boundaries between particles into the necks do pull centers together, and the part shrinks.",
+    "args": {
+      "lines": [
+        "Atoms that move from",
+        "the boundaries between particles"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Solid metal joins without melting because surface costs energy",
+    "narration": "Which path dominates depends on temperature, particle size and material, and that balance decides whether you get a stronger porous part or a denser one.",
+    "args": {
+      "term": "sintering",
+      "includes": [
+        "bonding by atomic diffusion below melting"
+      ],
+      "excludes": [
+        "melting and solidifying"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "No one watches those atoms directly in a production furnace, so the account rests on several independent measurements that have to agree.",
+    "args": {
+      "title": "measurements that have to agree",
+      "stages": [
+        "dilatometer",
+        "density measurement",
+        "polished cross-section"
+      ],
+      "conclusion": "necks and pores tell the story"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "The first is a dilatometer, an instrument that heats a small sample while tracking its length precisely.",
+    "args": {
+      "lines": [
+        "The first is a",
+        "dilatometer, an instrument that",
+        "heats"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "As sintering begins, the sample shrinks, and the shape of that shrinkage curve reveals when densification starts and how fast it runs.",
+    "args": {
+      "title": "measurements that have to agree",
+      "stages": [
+        "dilatometer",
+        "density measurement",
+        "polished cross-section"
+      ],
+      "conclusion": "necks and pores tell the story"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "Researchers compare such curves with models of each diffusion path; a model that predicts the wrong dependence on particle size or temperature can be ruled out.",
+    "args": {
+      "lines": [
+        "Researchers compare such curves",
+        "with models of each",
+        "diffusion path"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "The second is density measurement. A part is weighed in air and weighed again immersed in water, and the difference gives its volume, by Archimedes' principle.",
+    "args": {
+      "title": "measurements that have to agree",
+      "stages": [
+        "dilatometer",
+        "density measurement",
+        "polished cross-section"
+      ],
+      "conclusion": "necks and pores tell the story"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "Surface pores are sealed first, often with oil, so water does not seep in and falsify the result.",
+    "args": {
+      "lines": [
+        "Surface pores are sealed",
+        "first, often with oil,",
+        "so water"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "ASTM International publishes standard methods for this too. The third is a polished cross-section.",
+    "args": {
+      "title": "measurements that have to agree",
+      "stages": [
+        "dilatometer",
+        "density measurement",
+        "polished cross-section"
+      ],
+      "conclusion": "necks and pores tell the story"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "A part is cut, mounted, ground and polished to a mirror, then examined under an optical or electron microscope.",
+    "args": {
+      "lines": [
+        "A part is cut,",
+        "mounted, ground and polished"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "There, necks and pores tell the story. Early on you see distinct particles joined at narrow bridges.",
+    "args": {
+      "title": "measurements that have to agree",
+      "stages": [
+        "dilatometer",
+        "density measurement",
+        "polished cross-section"
+      ],
+      "conclusion": "necks and pores tell the story"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "Later the necks have merged, and the old spaces survive as isolated, rounded pores.",
+    "args": {
+      "lines": [
+        "Later the necks have",
+        "merged, and the old",
+        "spaces survive"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Shrinkage curves and polished cross-sections are how sintering is seen",
+    "narration": "When the shrinkage curve, the density and the microscope describe the same progression, sintering stops being a hypothesis and becomes a well-tested model.",
+    "args": {
+      "title": "measurements that have to agree",
+      "stages": [
+        "dilatometer",
+        "density measurement",
+        "polished cross-section"
+      ],
+      "conclusion": "necks and pores tell the story"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "Pressing and sintering usually leave some porosity, and that cuts both ways.",
+    "args": {
+      "title": "what porosity does",
+      "items": [
+        "+lowers strength",
+        "+holds oil in bearings",
+        "+lets fluid pass in filters",
+        "?where the pores sit"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "In a gear or structural part, porosity lowers strength, especially under repeated loading, because a pore concentrates stress and a crack can start there.",
+    "args": {
+      "lines": [
+        "In a gear or",
+        "structural part, porosity lowers",
+        "strength, especially"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "That is why some parts are pressed twice, sintered twice, or forged after sintering to close remaining voids.",
+    "args": {
+      "title": "what porosity does",
+      "items": [
+        "+lowers strength",
+        "+holds oil in bearings",
+        "+lets fluid pass in filters",
+        "?where the pores sit"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "In other parts, the pore is the product. A self-lubricating bronze bearing is left porous on purpose and soaked in oil; connected porosity holds oil in bearings, and as the shaft warms, oil seeps to the surface.",
+    "args": {
+      "lines": [
+        "In other parts, the",
+        "pore is the product.",
+        "A self-lubricating"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "Sintered metal filters work the other way round: a controlled pore network lets fluid pass in filters while stopping particles.",
+    "args": {
+      "title": "what porosity does",
+      "items": [
+        "+lowers strength",
+        "+holds oil in bearings",
+        "+lets fluid pass in filters",
+        "?where the pores sit"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "This is where a single density figure becomes treacherous. Two parts can report the same overall density and behave differently, because one has small, rounded, isolated pores and the other has large, connected, jagged ones.",
+    "args": {
+      "lines": [
+        "This is where a",
+        "single density figure becomes",
+        "treacherous. Two"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A pore can be a flaw or the whole design",
+    "narration": "The number is precise. What it leaves open is where the pores sit, how big they are, and whether they connect. You learn that from the cross-section, not from the scale.",
+    "args": {
+      "title": "what porosity does",
+      "items": [
+        "+lowers strength",
+        "+holds oil in bearings",
+        "+lets fluid pass in filters",
+        "?where the pores sit"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "Some materials are sintered with liquid present on purpose. The classic case is the cemented carbide in cutting tools and drill bits.",
+    "args": {
+      "title": "tungsten carbide",
+      "sources": [
+        [
+          "USGS",
+          "tracks tungsten supply and uses"
+        ],
+        [
+          "ASM International",
+          "property data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "Hard tungsten carbide powder is mixed with a smaller amount of cobalt powder.",
+    "args": {
+      "lines": [
+        "Hard tungsten carbide powder",
+        "is mixed with a",
+        "smaller amount"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "In the furnace the cobalt melts while the carbide stays solid. The liquid wets the carbide grains, pulls them together by capillary force, and lets carbide dissolve and reprecipitate, densifying the part far more completely than solid-state sintering alone.",
+    "args": {
+      "title": "tungsten carbide",
+      "sources": [
+        [
+          "USGS",
+          "tracks tungsten supply and uses"
+        ],
+        [
+          "ASM International",
+          "property data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 7.86,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "When it cools, hard carbide grains sit in a tougher metal binder, a structure casting could not practically produce.",
+    "args": {
+      "subject": "molten-steel",
+      "label": "CASTING",
+      "pick": 1
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.03,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "The USGS, which tracks tungsten supply and uses, reports cemented carbides among the largest uses of tungsten.",
+    "args": {
+      "title": "tungsten carbide",
+      "sources": [
+        [
+          "USGS",
+          "tracks tungsten supply and uses"
+        ],
+        [
+          "ASM International",
+          "property data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "And here the cold open returns. Pure tungsten is the other classic case.",
+    "args": {
+      "lines": [
+        "And here the cold",
+        "open returns. Pure tungsten"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "Its melting point was too high for early lamp makers to cast it into usable wire.",
+    "args": {
+      "title": "tungsten carbide",
+      "sources": [
+        [
+          "USGS",
+          "tracks tungsten supply and uses"
+        ],
+        [
+          "ASM International",
+          "property data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 6.62,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "Instead, tungsten powder was pressed into bars, sintered, then hammered and drawn into fine filament wire.",
+    "args": {
+      "subject": "3d-printed-metal",
+      "label": "SINTER",
+      "pick": 1
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "A little liquid, added deliberately, changes the rules",
+    "narration": "The property data ASM International publishes explains the obstacle; powder metallurgy explains the way around it.",
+    "args": {
+      "title": "tungsten carbide",
+      "sources": [
+        [
+          "USGS",
+          "tracks tungsten supply and uses"
+        ],
+        [
+          "ASM International",
+          "property data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Newer routes still run on the same powder physics",
+    "narration": "The same physics runs through newer routes. In metal injection molding, very fine powder is mixed with a polymer binder and injected into a mold like plastic; the binder is removed, and the part shrinks markedly as it sinters, so the mold is made oversize.",
+    "args": {
+      "title": "newer routes",
+      "steps": [
+        [
+          "metal injection molding",
+          ""
+        ],
+        [
+          "hot isostatic pressing",
+          ""
+        ],
+        [
+          "powder bed fusion",
+          ""
+        ]
+      ],
+      "note": "only one of them melts the powder"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Newer routes still run on the same powder physics",
+    "narration": "In hot isostatic pressing, powder sealed in a container is heated while gas squeezes it from every side, closing pores ordinary sintering leaves behind.",
+    "args": {
+      "lines": [
+        "In hot isostatic pressing,",
+        "powder sealed in a",
+        "container"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Newer routes still run on the same powder physics",
+    "narration": "Powder bed fusion, a form of metal additive manufacturing, is the outlier: a laser or electron beam melts thin layers of powder.",
+    "args": {
+      "title": "newer routes",
+      "steps": [
+        [
+          "metal injection molding",
+          ""
+        ],
+        [
+          "hot isostatic pressing",
+          ""
+        ],
+        [
+          "powder bed fusion",
+          ""
+        ]
+      ],
+      "note": "only one of them melts the powder"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Newer routes still run on the same powder physics",
+    "narration": "Only one of them melts the powder, and it brings its own defects, such as pores from trapped gas.",
+    "args": {
+      "lines": [
+        "Only one of them",
+        "melts the powder, and",
+        "it brings"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Newer routes still run on the same powder physics",
+    "narration": "That is why NIST and Fraunhofer study printing powders closely: the powder still sets the limits.",
+    "args": {
+      "title": "newer routes",
+      "steps": [
+        [
+          "metal injection molding",
+          ""
+        ],
+        [
+          "hot isostatic pressing",
+          ""
+        ],
+        [
+          "powder bed fusion",
+          ""
+        ]
+      ],
+      "note": "only one of them melts the powder"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "Notice that each explanation in this episode came paired with a measurement.",
+    "args": {
+      "lines": [
+        "Notice that each explanation",
+        "in this episode came",
+        "paired"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "Shrinkage came with a dilatometer curve. Density came with two weighings. Necks and pores came with a polished cross-section.",
+    "args": {
+      "lines": [
+        "Shrinkage came with a",
+        "dilatometer curve. Density came",
+        "with two"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "When an explainer about materials gives you a mechanism without saying what instrument shows it, the mechanism may well be right, but you have been handed a conclusion rather than the evidence.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "Notice too where the episode used a figure and where it declined to.",
+    "args": {
+      "lines": [
+        "Notice too where the",
+        "episode used a figure"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "Sintering temperatures depend on the metal, the powder and the furnace, so no single number would have been honest.",
+    "args": {
+      "lines": [
+        "Sintering temperatures depend on",
+        "the metal, the powder"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "This evidence establishes that sintering is driven by the loss of surface and carried by diffusion, and it shows how far a given part has densified.",
+    "args": {
+      "term": "a density figure",
+      "includes": [
+        "an average over the whole part"
+      ],
+      "excludes": [
+        "a map of where the pores sit"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "It does not let you predict, from first principles alone, exactly how a new powder will behave in a particular furnace.",
+    "args": {
+      "lines": [
+        "It does not let",
+        "you predict, from first",
+        "principles alone"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The models capture the trend; real powders have mixed particle sizes, surface oxides and trace impurities that shift the result, so industrial sintering cycles are still tuned by trial and measurement.",
+    "args": {
+      "term": "a density figure",
+      "includes": [
+        "an average over the whole part"
+      ],
+      "excludes": [
+        "a map of where the pores sit"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "And a density figure is an average over the whole part, not a map of where the pores sit.",
+    "args": {
+      "lines": [
+        "And a density figure",
+        "is an average over"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "A cross-section shows one plane through one part; it samples the structure, it does not survey it.",
+    "args": {
+      "term": "a density figure",
+      "includes": [
+        "an average over the whole part"
+      ],
+      "excludes": [
+        "a map of where the pores sit"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Fatigue life, the property that most often limits a sintered structural part, has to be tested directly, because no single snapshot of the microstructure settles it.",
+    "args": {
+      "lines": [
+        "Fatigue life, the property",
+        "that most often limits",
+        "a sintered"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "So the filament that began this episode was never a melted metal.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "It was a heap of grains, pressed into a bar and held hot until surfaces gave way to necks and necks gave way to solid.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "Powder metal parts that never melt still become one piece. Nothing poured.",
+    "args": {
+      "lines": [
+        "Powder metal parts that",
+        "never melt still become",
+        "one piece."
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Atoms moved one at a time, and the evidence that they did is a shrinking sample, a pair of weighings, and a polished face under a microscope.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  }
+]

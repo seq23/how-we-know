@@ -1,0 +1,516 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "In 1977, scientists found dense animal life where no sunlight has ever reached.",
+    "seconds": 6.064
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "That year, the submersible Alvin, operated by Woods Hole Oceanographic Institution, dove to hot springs on the Gal\u00e1pagos Rift and found clams, mussels and tubeworms crowded around them.",
+    "seconds": 11.098666666666666
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "The explanation is chemosynthesis. Chemosynthesis is how some microbes make food from carbon dioxide using energy from chemical reactions instead of sunlight.",
+    "seconds": 10.789333333333333
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "That answer is correct, and it hides an assumption worth breaking. The animals on that rift were not living without the sun.",
+    "seconds": 7.013333333333334
+  },
+  {
+    "i": 4,
+    "segment": "stat_card",
+    "narration": "Most of them were still breathing its leftovers. To see why, you have to follow the chemistry, and then follow the evidence for the chemistry.",
+    "seconds": 8.357333333333333
+  },
+  {
+    "i": 5,
+    "segment": "definition_card",
+    "narration": "Start with what any living cell needs. It needs carbon to build its body, and it needs energy to do the building.",
+    "seconds": 8.082666666666666
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "A plant gets its energy from light and its carbon from carbon dioxide.",
+    "seconds": 4.656
+  },
+  {
+    "i": 7,
+    "segment": "definition_card",
+    "narration": "A chemosynthetic microbe takes the same carbon dioxide, but it gets its energy somewhere else.",
+    "seconds": 6.32
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "NOAA describes the process in exactly these terms: microbes harvest energy from chemical reactions and use it to turn carbon into organic matter.",
+    "seconds": 9.061333333333334
+  },
+  {
+    "i": 9,
+    "segment": "definition_card",
+    "narration": "The reactions involve molecules that are, chemically speaking, loaded. Hydrogen sulfide is the classic example.",
+    "seconds": 7.1626666666666665
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "It carries electrons it will readily give up to oxygen, and when that hand-off happens, energy is released.",
+    "seconds": 7.1626666666666665
+  },
+  {
+    "i": 11,
+    "segment": "definition_card",
+    "narration": "The microbe captures some of that energy before it escapes as heat. That is the whole trick: chemosynthesis makes food without light.",
+    "seconds": 8.272
+  },
+  {
+    "i": 12,
+    "segment": "contrast_pair",
+    "narration": "So the difference from photosynthesis sits in one place, the first step.",
+    "seconds": 4.349333333333333
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "Photosynthesis captures energy from sunlight. Chemosynthesis captures energy from chemical reactions. After that first step the two converge more than you might expect.",
+    "seconds": 11.250666666666667
+  },
+  {
+    "i": 14,
+    "segment": "contrast_pair",
+    "narration": "Many chemosynthetic bacteria fix carbon with the same cycle plants use, the Calvin cycle, driven by the same carbon-grabbing enzyme, called RuBisCO.",
+    "seconds": 9.637333333333334
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "Others use different carbon-fixing pathways. Either way, the microbe ends up with sugars and other organic molecules, and anything that eats the microbe, or houses it, inherits that carbon.",
+    "seconds": 12.293333333333333
+  },
+  {
+    "i": 16,
+    "segment": "contrast_pair",
+    "narration": "That is the base of a food chain. The waste products differ too.",
+    "seconds": 3.8346666666666667
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "A sulfide-oxidizing microbe can leave behind elemental sulfur, sometimes stored as visible granules inside the cell.",
+    "seconds": 7.418666666666667
+  },
+  {
+    "i": 18,
+    "segment": "contrast_pair",
+    "narration": "Hold on to that detail. It turns out to be a clue.",
+    "seconds": 3.1226666666666665
+  },
+  {
+    "i": 19,
+    "segment": "evidence_chain",
+    "narration": "Why vents? Because they manufacture exactly the mismatch a chemosynthetic microbe needs.",
+    "seconds": 6.128
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "At ocean ridges, seawater seeps into the crust through cracks. Deep down, near hot rock and magma, heated rock strips out oxygen from that water and lets it dissolve metals and sulfur compounds.",
+    "seconds": 12.794666666666666
+  },
+  {
+    "i": 21,
+    "segment": "evidence_chain",
+    "narration": "The fluid gains hydrogen sulfide. Then, buoyant and hot, it rises and gushes back out.",
+    "seconds": 6.192
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "At the vent opening, hot fluid meets cold oxygenated seawater. Neither water alone is much use.",
+    "seconds": 7.344
+  },
+  {
+    "i": 23,
+    "segment": "evidence_chain",
+    "narration": "The vent fluid has fuel but nothing to burn it with. The ocean water has oxygen but almost no fuel.",
+    "seconds": 7.077333333333334
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "Where they mix, in a narrow and constantly shifting zone, microbes sit in the gap and run the reaction.",
+    "seconds": 5.925333333333334
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The hottest vent fluid reaches hundreds of degrees Celsius, and the published figures vary widely from site to site, so no single number tells the story.",
+    "seconds": 8.912
+  },
+  {
+    "i": 26,
+    "segment": "ambient_drift",
+    "narration": "The microbes do not live in the hottest fluid anyway. They live where it has cooled enough to mix.",
+    "seconds": 6.330666666666667
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "That detail matters, because it tells you where to look for the evidence: not in the plume itself, but on the surfaces, mats and animal tissues bathed in the mixture.",
+    "seconds": 9.936
+  },
+  {
+    "i": 28,
+    "segment": "quote_card",
+    "narration": "Reality is usually available. People keep choosing the version that's easier to sell.",
+    "seconds": 5.466666666666667
+  },
+  {
+    "i": 29,
+    "segment": "checklist_reveal",
+    "narration": "Before 1977, the working picture of the deep sea floor was one of scarcity.",
+    "seconds": 5.370666666666667
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "Food arrived from above as a slow fall of dead plankton and waste, often called marine snow, and life thinned out accordingly.",
+    "seconds": 8.112
+  },
+  {
+    "i": 31,
+    "segment": "checklist_reveal",
+    "narration": "The Gal\u00e1pagos Rift communities broke that budget. There were simply too many animals, packed too densely, for falling scraps to feed.",
+    "seconds": 8.485333333333333
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "The expedition was led largely by geologists, who had come to find hot springs, not to study animals.",
+    "seconds": 7.077333333333334
+  },
+  {
+    "i": 33,
+    "segment": "checklist_reveal",
+    "narration": "The biology was a surprise. And the density itself was the first piece of evidence.",
+    "seconds": 6.192
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "It meant there had to be a local food source. It did not yet say which organisms made the food, or how the animals got it.",
+    "seconds": 8.026666666666667
+  },
+  {
+    "i": 35,
+    "segment": "ambient_drift",
+    "narration": "A local source in total darkness could not be photosynthesis. The vent water smelled of hydrogen sulfide, and microbiologists already knew some bacteria could live on sulfur compounds.",
+    "seconds": 12.392
+  },
+  {
+    "i": 36,
+    "segment": "ambient_drift",
+    "narration": "Chemosynthesis itself was not new. Sergei Winogradsky had described bacteria living on inorganic chemicals in the late nineteenth century, working with sulfur bacteria from springs.",
+    "seconds": 11.770666666666667
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "What was new was the suggestion that a whole animal community, on the sea floor, could rest on it.",
+    "seconds": 6.458666666666667
+  },
+  {
+    "i": 38,
+    "segment": "ambient_drift",
+    "narration": "That was a hypothesis, and it needed more than a smell to stand on.",
+    "seconds": 4.037333333333334
+  },
+  {
+    "i": 39,
+    "segment": "timeline",
+    "narration": "The animal that made the case was the giant tubeworm, Riftia pachyptila.",
+    "seconds": 4.56
+  },
+  {
+    "i": 40,
+    "segment": "text_beat",
+    "narration": "Its body sits inside a white tube, topped by a bright red plume.",
+    "seconds": 4.157333333333334
+  },
+  {
+    "i": 41,
+    "segment": "timeline",
+    "narration": "When biologists dissected adults, they found something odd: no mouth and no gut.",
+    "seconds": 4.976
+  },
+  {
+    "i": 42,
+    "segment": "text_beat",
+    "narration": "An animal that large cannot live on nothing. Inside, though, was a spongy organ, later called the trophosome, and it held crystals of elemental sulfur.",
+    "seconds": 10.48
+  },
+  {
+    "i": 43,
+    "segment": "timeline",
+    "narration": "In 1981, Colleen Cavanaugh, then a graduate student, proposed that the trophosome was full of bacteria, and that those bacteria were chemosynthetic, feeding the worm from the inside.",
+    "seconds": 11.408
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "Notice the reasoning. The sulfur crystals matched the expected waste of sulfide-oxidizing microbes.",
+    "seconds": 6.096
+  },
+  {
+    "i": 45,
+    "segment": "timeline",
+    "narration": "The missing gut ruled out the ordinary route. The idea connected two facts that, on their own, explained nothing, and pointed straight at the bacteria that feed it.",
+    "seconds": 10.181333333333333
+  },
+  {
+    "i": 46,
+    "segment": "contrast_pair",
+    "narration": "The plume completes the picture. It is red because it is full of hemoglobin, but a specialised form that carries oxygen and sulfide together, binding the sulfide so it does not poison the worm's own cells.",
+    "seconds": 12.176
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "The worm, in other words, is a delivery system. It reaches into the mixing zone, loads both ingredients from the water, and its blood carries them down to the bacteria inside.",
+    "seconds": 11.045333333333334
+  },
+  {
+    "i": 48,
+    "segment": "contrast_pair",
+    "narration": "The plume is not a mouth. It is a gill doing double duty.",
+    "seconds": 3.525333333333333
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "The bacteria do the chemistry. The worm handles logistics. Evidence also indicates that young worms pick up their bacteria from the surrounding water rather than inheriting them, so each generation has to recruit its partners anew.",
+    "seconds": 14.074666666666667
+  },
+  {
+    "i": 50,
+    "segment": "process_steps",
+    "narration": "A plausible story is where evidence starts, not where it ends. The symbiosis was tested along several separate lines, and the strength of the conclusion comes from how they agree.",
+    "seconds": 11.418666666666667
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "First, microscopy. Thin sections of trophosome tissue showed it densely packed with bacterial cells.",
+    "seconds": 7.674666666666667
+  },
+  {
+    "i": 52,
+    "segment": "process_steps",
+    "narration": "Second, enzyme activity. Researchers measured enzymes involved in carbon fixation and in sulfur metabolism in trophosome tissue, enzymes an animal on its own would not be expected to supply.",
+    "seconds": 13.797333333333333
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "That showed the machinery was present and working, not just the cells.",
+    "seconds": 4.570666666666667
+  },
+  {
+    "i": 54,
+    "segment": "evidence_chain",
+    "narration": "Third, carbon isotopes. Carbon comes in a lighter and a heavier stable form, and different carbon-fixing routes take them up in slightly different proportions.",
+    "seconds": 9.786666666666667
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "That leaves a fingerprint, measured as a ratio of heavy to light carbon.",
+    "seconds": 4.0906666666666665
+  },
+  {
+    "i": 56,
+    "segment": "evidence_chain",
+    "narration": "In vent animals, the signature differs from plankton-derived food sinking from the surface.",
+    "seconds": 5.392
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "That is how you can say the carbon was fixed locally rather than imported.",
+    "seconds": 4.730666666666667
+  },
+  {
+    "i": 58,
+    "segment": "evidence_chain",
+    "narration": "Fourth, DNA sequencing. The tubeworm's symbionts have resisted being grown in the lab, so they were identified by their genes, and genomic work suggests some symbionts carry more than one carbon-fixing pathway.",
+    "seconds": 12.496
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "No single one of these independent lines of evidence proves the case. Together they leave very little room for another explanation.",
+    "seconds": 7.76
+  },
+  {
+    "i": 60,
+    "segment": "definition_card",
+    "narration": "Sulfide at hot vents is the famous example, but it is not the only one.",
+    "seconds": 4.4
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "At cold seeps, fluids rich in methane and sulfide leak from sediments along continental margins.",
+    "seconds": 6.16
+  },
+  {
+    "i": 62,
+    "segment": "definition_card",
+    "narration": "There is no volcanic heat required. Researchers at MBARI, the Monterey Bay Aquarium Research Institute, have used remotely operated vehicles to study seeps off the California coast, where clams, tubeworms and microbial mats gather much as they do at vents.",
+    "seconds": 18.130666666666666
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "Some seep mussels host bacteria that use methane itself. Strictly, that is a slightly different metabolism, because the carbon comes from methane rather than carbon dioxide, but it is usually counted under the chemosynthetic umbrella.",
+    "seconds": 15.269333333333334
+  },
+  {
+    "i": 64,
+    "segment": "checklist_reveal",
+    "narration": "In sediments with no oxygen at all, partnerships of archaea and sulfate-reducing bacteria break down methane together, a job neither seems to do well alone."
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "Elsewhere, microbes draw energy from hydrogen, from reduced iron, and from ammonia."
+  },
+  {
+    "i": 66,
+    "segment": "checklist_reveal",
+    "narration": "Ammonia-oxidizing microbes are spread through the dark open ocean, far from any vent, quietly fixing carbon."
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "How much carbon chemosynthesis fixes in the open ocean, as a share of the global total, is still being measured, and estimates vary."
+  },
+  {
+    "i": 68,
+    "segment": "checklist_reveal",
+    "narration": "Even a whale carcass on the sea floor can host the process, as bacteria break down the bones and release sulfide that other microbes then oxidize."
+  },
+  {
+    "i": 69,
+    "segment": "contrast_pair",
+    "narration": "Now return to the assumption from the opening. Vent communities are often described as living entirely without the sun."
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "That is half right. They are independent of sunlight as an energy source, because no light reaches them."
+  },
+  {
+    "i": 71,
+    "segment": "contrast_pair",
+    "narration": "They are not independent of photosynthesis. The most common vent reaction oxidizes sulfide using dissolved oxygen, and the oxygen in deep seawater was produced by photosynthesis near the surface, then carried down by ocean circulation."
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "Take away the sun, and over time the deep ocean's oxygen supply would run down, and with it most of these communities."
+  },
+  {
+    "i": 73,
+    "segment": "contrast_pair",
+    "narration": "The tubeworm's plume is, in a sense, reaching for sunlight that fell long ago."
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "There are exceptions, and they are where the research gets most interesting."
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "Some microbes make methane from hydrogen and carbon dioxide with no oxygen involved, and some vent systems release enough hydrogen to support them."
+  },
+  {
+    "i": 76,
+    "segment": "ambient_drift",
+    "narration": "Those communities come closest to running on Earth's internal chemistry alone. That possibility is one reason NASA supports research on vents."
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "If life can run on rock and water chemistry here, the same might hold on ocean worlds elsewhere. That is a reason to look, not a finding."
+  },
+  {
+    "i": 78,
+    "segment": "contrast_pair",
+    "narration": "Watch for footage of black smoke billowing from a chimney, captioned as the source of life."
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "That black cloud is mineral particles, forming as hot fluid hits cold water."
+  },
+  {
+    "i": 80,
+    "segment": "contrast_pair",
+    "narration": "The microbes doing chemosynthesis are mostly invisible: in thin mats on rock, in the mixing water, inside animal tissue."
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "When an animation shows a sulfide molecule drifting straight into a worm, it compresses a lot."
+  },
+  {
+    "i": 82,
+    "segment": "contrast_pair",
+    "narration": "The real hand-off runs through a blood protein, a specialised organ and a bacterial cell."
+  },
+  {
+    "i": 83,
+    "segment": "text_beat",
+    "narration": "And when a graphic says a vent ecosystem runs without the sun, you now know which caveat it dropped."
+  },
+  {
+    "i": 84,
+    "segment": "checklist_reveal",
+    "narration": "The tubeworm case is solid, but it reaches only so far. It shows how chemosynthesis works chemically, and it shows that specific animals depend on it."
+  },
+  {
+    "i": 85,
+    "segment": "text_beat",
+    "narration": "It does not tell you how much carbon chemosynthesis fixes in the open ocean, where the microbes are diffuse and hard to measure."
+  },
+  {
+    "i": 86,
+    "segment": "checklist_reveal",
+    "narration": "It does not tell you how many vent and seep sites exist, because most of the ridge system has never been visited."
+  },
+  {
+    "i": 87,
+    "segment": "text_beat",
+    "narration": "Many symbionts have never been grown in the lab, so much of what is known about their metabolism is read from genes rather than watched in action."
+  },
+  {
+    "i": 88,
+    "segment": "checklist_reveal",
+    "narration": "And it does not settle whether life began at vents. That is a serious idea, still debated, and unproven."
+  },
+  {
+    "i": 89,
+    "segment": "ambient_drift",
+    "narration": "So chemosynthesis is not life without the sun. It is life that found a second way to spend it: oxygen made in the light, meeting fuel made in the rock, in a thin layer of mixing water at the bottom of the ocean, where a microbe stands in the gap and keeps the difference."
+  }
+]

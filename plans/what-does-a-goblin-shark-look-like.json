@@ -1,0 +1,1138 @@
+[
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Most famous photographs of this animal show a pose that lasts an instant in life.",
+    "args": {
+      "term": "goblin shark jaws",
+      "includes": [
+        "tucked up beneath that snout"
+      ],
+      "excludes": [
+        "thrust out, teeth bared"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "A goblin shark is a soft-bodied, pinkish-grey deep-sea shark with a long, flat, blade-like snout projecting over a mouth of slender, needle-like teeth.",
+    "args": {
+      "lines": [
+        "A goblin shark is",
+        "a soft-bodied, pinkish-grey deep-sea",
+        "shark"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "In a living animal, the jaws sit tucked up beneath that snout.",
+    "args": {
+      "term": "goblin shark jaws",
+      "includes": [
+        "tucked up beneath that snout"
+      ],
+      "excludes": [
+        "thrust out, teeth bared"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "They swing forward only in the moment of a strike, a motion documented from rare video in the journal Scientific Reports, published by Nature.",
+    "args": {
+      "lines": [
+        "They swing forward only",
+        "in the moment of",
+        "a strike"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "Yet the image most people carry is the opposite: jaws thrust out, teeth bared, frozen in place.",
+    "args": {
+      "term": "goblin shark jaws",
+      "includes": [
+        "tucked up beneath that snout"
+      ],
+      "excludes": [
+        "thrust out, teeth bared"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That picture is real. It is also, in large part, what happens to the animal after it is hauled up from the dark.",
+    "args": {
+      "lines": [
+        "That picture is real.",
+        "It is also, in",
+        "large part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "So the useful question is not only what the goblin shark looks like, but which of its faces you are actually looking at, and how anyone came to know the difference.",
+    "args": {
+      "term": "goblin shark jaws",
+      "includes": [
+        "tucked up beneath that snout"
+      ],
+      "excludes": [
+        "thrust out, teeth bared"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What does a goblin shark look like?",
+    "args": {
+      "lines": [
+        "What does a goblin",
+        "shark look like?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "Almost everything we know about the goblin shark's appearance began with dead animals.",
+    "args": {
+      "title": "How the goblin shark entered science",
+      "stages": [
+        "someone catches it",
+        "someone preserves it",
+        "someone writes down what the body looks like"
+      ],
+      "conclusion": "a shape known from the dead"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "The species was described for science in the late nineteenth century by the American ichthyologist David Starr Jordan, working from material obtained off Japan.",
+    "args": {
+      "lines": [
+        "The species was described",
+        "for science in the",
+        "late nineteenth"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "He gave it the name Mitsukurina owstoni. The genus honours Kakichi Mitsukuri, a Japanese zoologist, and the species name honours Alan Owston, a collector based in Japan who supplied marine specimens to scientists.",
+    "args": {
+      "title": "How the goblin shark entered science",
+      "stages": [
+        "someone catches it",
+        "someone preserves it",
+        "someone writes down what the body looks like"
+      ],
+      "conclusion": "a shape known from the dead"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "That is the normal route by which a deep-sea animal enters the record.",
+    "args": {
+      "lines": [
+        "That is the normal",
+        "route by which a",
+        "deep-sea animal"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "Someone catches it, someone preserves it, and someone writes down what the body looks like.",
+    "args": {
+      "title": "How the goblin shark entered science",
+      "stages": [
+        "someone catches it",
+        "someone preserves it",
+        "someone writes down what the body looks like"
+      ],
+      "conclusion": "a shape known from the dead"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "Each of those steps leaves its own fingerprint on the result, and the goblin shark carries all three.",
+    "args": {
+      "lines": [
+        "Each of those steps",
+        "leaves its own fingerprint"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "The common name arrived as a translation, not as a description of behaviour.",
+    "args": {
+      "term": "the common name",
+      "includes": [
+        "a translation"
+      ],
+      "excludes": [
+        "a description of behaviour"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "In Japanese the animal has long been called tenguzame, after the tengu, a long-nosed goblin figure from Japanese folklore.",
+    "args": {
+      "lines": [
+        "In Japanese the animal",
+        "has long been called",
+        "tenguzame, after"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "English speakers carried the idea over as goblin shark. The name points straight at the snout, which is the first thing anyone notices.",
+    "args": {
+      "term": "the common name",
+      "includes": [
+        "a translation"
+      ],
+      "excludes": [
+        "a description of behaviour"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The shape was first described from bodies, not living animals",
+    "narration": "It does not tell you what the snout is for, and for a long time nobody could watch it being used.",
+    "args": {
+      "lines": [
+        "It does not tell",
+        "you what the snout"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "Measurements are made by people, using tools built by people, inside systems with assumptions.",
+    "args": {
+      "text": "Measurements are made by people, using tools built by people, inside systems with assumptions.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "Start at the front, because that is where your eye goes. The goblin shark's snout is long, flattened from top to bottom, and extends well past the mouth, like the blade of a paddle held out ahead of the face.",
+    "args": {
+      "term": "ampullae of Lorenzini",
+      "meaning": "jelly-filled pores that sense weak electric fields",
+      "boundary": "they detect prey; they do not strike it",
+      "source": "Smithsonian Ocean"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "It looks as if it could cut. It does not appear to be used that way.",
+    "args": {
+      "lines": [
+        "It looks as if",
+        "it could cut. It",
+        "does"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "Its underside is dense with ampullae of Lorenzini, jelly-filled pores that sense weak electric fields.",
+    "args": {
+      "term": "ampullae of Lorenzini",
+      "meaning": "jelly-filled pores that sense weak electric fields",
+      "boundary": "they detect prey; they do not strike it",
+      "source": "Smithsonian Ocean"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "Smithsonian Ocean describes these organs as part of how sharks sense prey they cannot see.",
+    "args": {
+      "lines": [
+        "Smithsonian Ocean describes these",
+        "organs as part of",
+        "how sharks"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "In the goblin shark they are spread across an unusually large surface. They detect prey; they do not strike it.",
+    "args": {
+      "term": "ampullae of Lorenzini",
+      "meaning": "jelly-filled pores that sense weak electric fields",
+      "boundary": "they detect prey; they do not strike it",
+      "source": "Smithsonian Ocean"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "If almost nobody has watched one hunt, that knowledge comes mostly from reading anatomy.",
+    "args": {
+      "title": "Reading a function from a body",
+      "steps": [
+        [
+          "examine the pores",
+          ""
+        ],
+        [
+          "compare their density",
+          ""
+        ],
+        [
+          "infer a use",
+          ""
+        ]
+      ],
+      "note": "an inference, not an observation"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "Researchers examine the pores on preserved heads, compare their density and arrangement with sharks whose behaviour is better studied, and infer a use.",
+    "args": {
+      "lines": [
+        "Researchers examine the pores",
+        "on preserved heads, compare",
+        "their density"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "In the deep, where eyes gather very little light, a broad electrosensory surface would let an animal pick up the faint fields produced by living prey hidden in the dark or buried in sediment.",
+    "args": {
+      "title": "Reading a function from a body",
+      "steps": [
+        [
+          "examine the pores",
+          ""
+        ],
+        [
+          "compare their density",
+          ""
+        ],
+        [
+          "infer a use",
+          ""
+        ]
+      ],
+      "note": "an inference, not an observation"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "That reasoning is strong, and it fits everything else about the animal.",
+    "args": {
+      "lines": [
+        "That reasoning is strong,",
+        "and it fits everything",
+        "else about"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The long snout is a sensor, not a blade",
+    "narration": "It is still an inference, not an observation, and it is worth keeping the two apart as you hear the rest of this.",
+    "args": {
+      "title": "Reading a function from a body",
+      "steps": [
+        [
+          "examine the pores",
+          ""
+        ],
+        [
+          "compare their density",
+          ""
+        ],
+        [
+          "infer a use",
+          ""
+        ]
+      ],
+      "note": "an inference, not an observation"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The pink colour is blood showing through",
+    "narration": "The colour is the second surprise. A fresh goblin shark is usually described as pinkish, sometimes pinkish-grey or pinkish-white, which is not a colour most people expect of a predator.",
+    "args": {
+      "term": "goblin shark colour",
+      "includes": [
+        "blood vessels beneath it show through"
+      ],
+      "excludes": [
+        "a pigment laid down in the skin"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pink colour is blood showing through",
+    "narration": "The explanation offered in descriptions of the species is that the skin is thin and somewhat translucent, so blood vessels beneath it show through.",
+    "args": {
+      "lines": [
+        "The explanation offered in",
+        "descriptions of the species"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The pink colour is blood showing through",
+    "narration": "The pink is closer to a blush than to paint. It is not chiefly a pigment laid down in the skin, the way markings are laid down on many shallow-water sharks.",
+    "args": {
+      "term": "goblin shark colour",
+      "includes": [
+        "blood vessels beneath it show through"
+      ],
+      "excludes": [
+        "a pigment laid down in the skin"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The pink colour is blood showing through",
+    "narration": "That has a consequence for what you see in pictures. After death and preservation, specimens tend to fade toward brown or dull grey, because the blood is no longer moving and preservatives change the tissue.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The pink colour is blood showing through",
+    "narration": "So a museum jar and a fresh catch can seem to show two quite different animals.",
+    "args": {
+      "lines": [
+        "So a museum jar",
+        "and a fresh catch",
+        "can seem"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The pink colour is blood showing through",
+    "narration": "And in its own habitat, the colour may barely matter. Red light is absorbed quickly in seawater, long before it reaches the depths where this shark lives.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pink colour is blood showing through",
+    "narration": "With no red light arriving, a pinkish animal would reflect almost nothing, and in dim water it would look dark, close to invisible.",
+    "args": {
+      "lines": [
+        "With no red light",
+        "arriving, a pinkish animal",
+        "would reflect"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 6.21,
+    "heading": "The pink colour is blood showing through",
+    "narration": "The colour you find striking is, in a sense, a colour the deep never sees.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The jaws are built to leave the head",
+    "narration": "Now to the feature that made the goblin shark famous. Beneath the snout, the jaws are attached in a way that lets them be thrown forward, far out from the head, and then pulled back.",
+    "args": {
+      "title": "The slingshot strike",
+      "stages": [
+        "lie tucked close under the face",
+        "the jaws thrust forward",
+        "then retract"
+      ],
+      "conclusion": "gripping slippery prey"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The jaws are built to leave the head",
+    "narration": "In a resting animal they lie tucked close under the face, and the mouth looks fairly modest.",
+    "args": {
+      "lines": [
+        "In a resting animal",
+        "they lie tucked close",
+        "under"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The jaws are built to leave the head",
+    "narration": "During a strike, the jaws thrust forward to meet the prey, then retract.",
+    "args": {
+      "title": "The slingshot strike",
+      "stages": [
+        "lie tucked close under the face",
+        "the jaws thrust forward",
+        "then retract"
+      ],
+      "conclusion": "gripping slippery prey"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The jaws are built to leave the head",
+    "narration": "The front teeth are long and slender, closer to nails or needles than to the broad, serrated teeth of a great white.",
+    "args": {
+      "lines": [
+        "The front teeth are",
+        "long and slender, closer",
+        "to nails"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The jaws are built to leave the head",
+    "narration": "Teeth like that suit gripping slippery prey rather than slicing pieces from it.",
+    "args": {
+      "title": "The slingshot strike",
+      "stages": [
+        "lie tucked close under the face",
+        "the jaws thrust forward",
+        "then retract"
+      ],
+      "conclusion": "gripping slippery prey"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The jaws are built to leave the head",
+    "narration": "Stomach contents from examined specimens have included fishes, squids and crustaceans, which fits that kind of grip.",
+    "args": {
+      "lines": [
+        "Stomach contents from examined",
+        "specimens have included fishes,",
+        "squids"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "The jaws are built to leave the head",
+    "narration": "For a long time this mechanism was pieced together from dead specimens, whose jaws were often found pushed outward.",
+    "args": {
+      "title": "What the video settled",
+      "items": [
+        "+the jaws move forward during feeding",
+        "+the strike is fast",
+        "?how often it hunts this way",
+        "-what normal daily behaviour looks like"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The jaws are built to leave the head",
+    "narration": "The strongest evidence came from rare video of living goblin sharks feeding in waters off Japan, analysed in a paper in Scientific Reports.",
+    "args": {
+      "lines": [
+        "The strongest evidence came",
+        "from rare video of",
+        "living goblin"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "The jaws are built to leave the head",
+    "narration": "Studied frame by frame, the footage showed that the jaws move forward during feeding, and that the strike is fast.",
+    "args": {
+      "title": "What the video settled",
+      "items": [
+        "+the jaws move forward during feeding",
+        "+the strike is fast",
+        "?how often it hunts this way",
+        "-what normal daily behaviour looks like"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The jaws are built to leave the head",
+    "narration": "The researchers called it slingshot feeding. What the video could not show is how often it hunts this way in its own habitat, or what normal daily behaviour looks like at depth.",
+    "args": {
+      "lines": [
+        "The researchers called it",
+        "slingshot feeding. What the",
+        "video"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "The jaws are built to leave the head",
+    "narration": "A small number of filmed strikes is a window, not a census.",
+    "args": {
+      "title": "What the video settled",
+      "items": [
+        "+the jaws move forward during feeding",
+        "+the strike is fast",
+        "?how often it hunts this way",
+        "-what normal daily behaviour looks like"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "Behind the head, the rest of the animal is easy to overlook, and it says a good deal.",
+    "args": {
+      "term": "goblin shark body",
+      "includes": [
+        "soft and flabby"
+      ],
+      "excludes": [
+        "a torpedo"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "The body is soft and flabby rather than firm, with relatively small, rounded fins.",
+    "args": {
+      "lines": [
+        "The body is soft",
+        "and flabby rather than",
+        "firm"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "The tail is long, with a dominant upper lobe and little or no lower lobe, so it trails behind more than it drives.",
+    "args": {
+      "term": "goblin shark body",
+      "includes": [
+        "soft and flabby"
+      ],
+      "excludes": [
+        "a torpedo"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "This is not a torpedo. Sharks that chase prey at speed tend to be firm, muscular and sharply finned.",
+    "args": {
+      "lines": [
+        "This is not a",
+        "torpedo. Sharks that chase",
+        "prey"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "The goblin shark's build points to an animal that moves slowly and spends energy sparingly, which fits life in deep water, where food is scarce and widely spread out.",
+    "args": {
+      "term": "goblin shark body",
+      "includes": [
+        "soft and flabby"
+      ],
+      "excludes": [
+        "a torpedo"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "That step is, again, an inference from shape. Biologists read body form the way an engineer reads a hull, and this reading is consistent with what is known of other deep-water sharks.",
+    "args": {
+      "lines": [
+        "That step is, again,",
+        "an inference from shape.",
+        "Biologists read"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "Deep-water sharks often carry a large, oily liver that helps with buoyancy, and the goblin shark is described as having one too.",
+    "args": {
+      "lines": [
+        "Deep-water sharks often carry",
+        "a large, oily liver",
+        "that helps"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "A liver like that would let an animal hang in the water with little effort, waiting rather than pursuing.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The body is built for hovering, not chasing",
+    "narration": "Whether the goblin shark spends most of its time hovering, cruising slowly over the seafloor, or doing something else entirely has not been watched directly over long periods.",
+    "args": {
+      "lines": [
+        "Whether the goblin shark",
+        "spends most of its",
+        "time hovering"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Setting shapes how you should picture this animal. Goblin sharks are known mainly from deep water along continental slopes and near undersea features, with records scattered across several ocean basins and many from waters off Japan.",
+    "args": {
+      "highlight": "TWILIGHT ZONE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Most of those records are animals caught incidentally in deep fishing gear.",
+    "args": {
+      "lines": [
+        "Most of those records",
+        "are animals caught incidentally",
+        "in deep"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 6.62,
+    "heading": "Where it lives is known only in outline",
+    "narration": "That means the map of where they live is partly a map of where people fish.",
+    "args": {
+      "highlight": "TWILIGHT ZONE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Depths reported for the species run from the twilight zone, where faint sunlight still filters down, into the midnight zone below it, where none does.",
+    "args": {
+      "lines": [
+        "Depths reported for the",
+        "species run from the",
+        "twilight zone"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Published depth ranges differ, and this episode will not give you a single number, because the sources do not agree on one.",
+    "args": {
+      "highlight": "TWILIGHT ZONE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Put together, the picture rests on different kinds of source. NOAA Ocean Exploration describes the layers of the deep, from the twilight zone, where light fades but does not vanish, to the midnight zone beneath it.",
+    "args": {
+      "title": "Who the evidence comes from",
+      "sources": [
+        [
+          "NOAA Ocean Exploration",
+          "the layers of the deep"
+        ],
+        [
+          "Smithsonian Ocean",
+          "how sharks sense prey"
+        ],
+        [
+          "Nature",
+          "slingshot feeding on video"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Smithsonian Ocean explains how sharks sense prey through the ampullae of Lorenzini.",
+    "args": {
+      "lines": [
+        "Smithsonian Ocean explains how",
+        "sharks sense prey through",
+        "the ampullae"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.38,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Nature's journal Scientific Reports carried the paper that documented slingshot feeding on video.",
+    "args": {
+      "title": "Who the evidence comes from",
+      "sources": [
+        [
+          "NOAA Ocean Exploration",
+          "the layers of the deep"
+        ],
+        [
+          "Smithsonian Ocean",
+          "how sharks sense prey"
+        ],
+        [
+          "Nature",
+          "slingshot feeding on video"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Where it lives is known only in outline",
+    "narration": "Each answers a different part of the question. None of them alone gives you the whole animal, and none of them followed a single goblin shark through its life.",
+    "args": {
+      "lines": [
+        "Each answers a different",
+        "part of the question.",
+        "None"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "When you see goblin shark images in this episode, or anywhere else, check three things before you trust the face.",
+    "args": {
+      "lines": [
+        "When you see goblin",
+        "shark images in this",
+        "episode"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "Check whether the animal is alive or dead. Check whether the jaws are tucked or thrust out.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "And check whether the colour is fresh pink or the faded grey of preservation.",
+    "args": {
+      "lines": [
+        "And check whether the",
+        "colour is fresh pink"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Most still images are of caught or dead animals, and many show the jaws pushed forward, a posture that in a living shark lasts only an instant.",
+    "args": {
+      "lines": [
+        "Most still images are",
+        "of caught or dead",
+        "animals"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The rare footage of live animals is the better guide to the resting face, which is quieter, smoother and far less monstrous than its reputation.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Here is what all this does not establish. The goblin shark's shape is well documented, but that documentation leans heavily on animals that were dying or dead when examined, on bycatch from particular fisheries, and on a small number of filmed strikes.",
+    "args": {
+      "title": "What the evidence leaves open",
+      "items": [
+        "+shape is well documented",
+        "+the jaws move forward during feeding",
+        "?how large the species can grow",
+        "-how many goblin sharks there are"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not tell us how many goblin sharks there are, how long they live, or how they behave across a normal day at depth.",
+    "args": {
+      "lines": [
+        "It does not tell",
+        "us how many goblin",
+        "sharks there"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not settle how large the species can grow; size estimates vary, and the biggest figures rest on very few animals.",
+    "args": {
+      "title": "What the evidence leaves open",
+      "items": [
+        "+shape is well documented",
+        "+the jaws move forward during feeding",
+        "?how large the species can grow",
+        "-how many goblin sharks there are"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "And the work of the snout, while strongly supported by anatomy, has not been watched in action in the deep.",
+    "args": {
+      "lines": [
+        "And the work of",
+        "the snout, while strongly",
+        "supported"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "The face is known. The life behind it is still mostly unseen.",
+    "args": {
+      "title": "What the evidence leaves open",
+      "items": [
+        "+shape is well documented",
+        "+the jaws move forward during feeding",
+        "?how large the species can grow",
+        "-how many goblin sharks there are"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "So the goblin shark looks like this: pale pink and soft, a flat blade of a snout lined with sensors, a modest mouth held close, and a long tail trailing behind.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The snapping, jaw-thrust face is real too. It just belongs to one fast moment in the dark, and to the deck of a boat.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  }
+]

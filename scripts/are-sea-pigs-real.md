@@ -109,19 +109,17 @@ So yes, they are real. Not a pig, and not a hoax, but a sea cucumber walking on 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:50 Title card
-- 00:55 The name is a nickname; the animal is an echinoderm
-- 02:20 Looking unreal is not the same as being unreal
-- 03:20 Footage from the seafloor is the first line of evidence
-- 05:00 Specimens settle what cameras cannot
-- 06:30 Producer POV
-- 06:40 The legs run on water pressure, not on bones
-- 08:05 Sea pigs live on food that falls from far above
-- 09:35 Herds are observed; their purpose is not settled
-- 10:45 What to notice in the edit
-- 11:05 Evidence limit
-- 11:50 Closing
+- 0:00 Cold open
+- 0:43 The name is a nickname; the animal is an echinoderm
+- 1:56 Looking unreal is not the same as being unreal
+- 2:43 Footage from the seafloor is the first line of evidence
+- 4:06 Specimens settle what cameras cannot
+- 5:26 The legs run on water pressure, not on bones
+- 6:39 Sea pigs live on food that falls from far above
+- 7:58 Herds are observed; their purpose is not settled
+- 9:06 What to notice in the edit
+- 9:32 Evidence limit
+- 10:13 Closing
 
 ## Sources
 

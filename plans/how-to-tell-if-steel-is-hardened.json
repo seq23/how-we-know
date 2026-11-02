@@ -1,0 +1,1356 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "A quenched knife and a soft nail both cling to the same magnet.",
+    "args": {
+      "value": "150",
+      "unit": "kilograms-force",
+      "caption": "Rockwell C total test force",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The dependable way to tell if steel is hardened is to measure its resistance to indentation, most often with a Rockwell C test that presses a diamond cone into the surface under 150 kilograms-force, a method standardized by ASTM International.",
+    "args": {
+      "lines": [
+        "The dependable way to",
+        "tell if steel is",
+        "hardened"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "Cold open",
+    "narration": "That number settles one thing well: how hard the steel is at one small spot near the surface.",
+    "args": {
+      "value": "150",
+      "unit": "kilograms-force",
+      "caption": "Rockwell C total test force",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "It does not settle how deep the hardness runs. It does not show whether the part was tempered afterwards, or whether the steel a few centimetres away behaved the same way in the quench.",
+    "args": {
+      "lines": [
+        "It does not settle",
+        "how deep the hardness",
+        "runs. It"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Each of those needs its own kind of evidence. The cheap shop tests you may have heard of answer different questions again.",
+    "args": {
+      "value": "150",
+      "unit": "kilograms-force",
+      "caption": "Rockwell C total test force",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How to tell if steel is hardened",
+    "args": {
+      "lines": [
+        "How to tell if",
+        "steel is hardened"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 7.86,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "Start with what hardening physically does. Carbon steel is iron with a small fraction of carbon dissolved in it.",
+    "args": {
+      "to_temp": 727,
+      "label": "eutectoid temperature"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "Heat it past 727 degrees Celsius, the eutectoid temperature on the iron-carbon phase diagram, and the iron reorganizes into a crystal structure called austenite, which can hold much more carbon in solution.",
+    "args": {
+      "subject": "micrograph-steel",
+      "label": "AUSTENITE",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "For many steels the hardening temperature sits somewhat above that line. The exact figure depends on the alloy, so a heat treater reads it from the data for that grade rather than from memory.",
+    "args": {
+      "to_temp": 727,
+      "label": "eutectoid temperature"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "Cool the steel slowly and the carbon has time to migrate out, forming softer, layered structures.",
+    "args": {
+      "lines": [
+        "Cool the steel slowly",
+        "and the carbon has",
+        "time"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 6.62,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "Quench it fast, in water, brine or oil, and the carbon is trapped where it sits.",
+    "args": {
+      "to_temp": 727,
+      "label": "eutectoid temperature"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "The iron lattice tries to shift back to its room-temperature arrangement anyway. What results is a strained, distorted crystal called martensite.",
+    "args": {
+      "lines": [
+        "The iron lattice tries",
+        "to shift back to",
+        "its room-temperature"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "Martensite is what a hardened part is mostly made of, and it is why this question is harder than it sounds.",
+    "args": {
+      "term": "martensite",
+      "meaning": "the strained crystal that forms when quenching traps carbon in iron",
+      "boundary": "hard and brittle as quenched, so it is tempered",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "ASM International's heat-treating references describe martensite as hard and brittle as quenched.",
+    "args": {
+      "lines": [
+        "ASM International's heat-treating references",
+        "describe martensite as hard",
+        "and brittle"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "That is why nearly every hardened tool is tempered afterwards: reheated to a moderate temperature to give up some hardness in exchange for toughness.",
+    "args": {
+      "term": "martensite",
+      "meaning": "the strained crystal that forms when quenching traps carbon in iron",
+      "boundary": "hard and brittle as quenched, so it is tempered",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "None of this announces itself on the surface. A quenched blade keeps its shape, looks much the same once cleaned, and carries no visible label.",
+    "args": {
+      "lines": [
+        "None of this announces",
+        "itself on the surface.",
+        "A quenched"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "Every practical test is therefore an indirect measurement of a structure you cannot see.",
+    "args": {
+      "term": "martensite",
+      "meaning": "the strained crystal that forms when quenching traps carbon in iron",
+      "boundary": "hard and brittle as quenched, so it is tempered",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Hardening rearranges the inside and leaves the outside alone",
+    "narration": "The useful habit is to ask, for each test, which property of that structure it actually touches.",
+    "args": {
+      "lines": [
+        "The useful habit is",
+        "to ask, for each",
+        "test"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "The magnet is the most common shortcut, and it fails for a simple reason.",
+    "args": {
+      "term": "magnet test",
+      "includes": [
+        "a test for ferromagnetic steel"
+      ],
+      "excludes": [
+        "a test for hardened steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "Ordinary carbon steel is ferromagnetic whether it is soft, annealed or fully hardened, so the knife and the nail both pass.",
+    "args": {
+      "lines": [
+        "Ordinary carbon steel is",
+        "ferromagnetic whether it is",
+        "soft, annealed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "The magnet cannot tell you about heat treatment at all. What it does respond to is the family of crystal structure.",
+    "args": {
+      "term": "magnet test",
+      "includes": [
+        "a test for ferromagnetic steel"
+      ],
+      "excludes": [
+        "a test for hardened steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "Many austenitic stainless steels, the kind used for kitchen sinks, are essentially non-magnetic in the annealed state, and they also cannot be hardened by quenching.",
+    "args": {
+      "lines": [
+        "Many austenitic stainless steels,",
+        "the kind used for",
+        "kitchen sinks"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "Martensitic stainless grades, used for many knife blades, are magnetic. So a magnet can sometimes hint at whether a steel is the kind that could be hardened. It says nothing about whether anyone has done it.",
+    "args": {
+      "term": "magnet test",
+      "includes": [
+        "a test for ferromagnetic steel"
+      ],
+      "excludes": [
+        "a test for hardened steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "Temper colours are the second shortcut. When bright steel is heated in air, a thin oxide film grows on it.",
+    "args": {
+      "title": "What a temper colour shows",
+      "items": [
+        "+the surface was heated in air",
+        "-the steel was quenched first",
+        "?how hard the steel is now"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "The film's thickness depends on temperature and time, and it produces colours running from pale straw through bronze and purple to blue.",
+    "args": {
+      "lines": [
+        "The film's thickness depends",
+        "on temperature and time,",
+        "and it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "Smiths have long used those colours to judge tempering. But read carefully what they record: the surface was heated in air to some temperature.",
+    "args": {
+      "title": "What a temper colour shows",
+      "items": [
+        "+the surface was heated in air",
+        "-the steel was quenched first",
+        "?how hard the steel is now"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "They do not show that the steel was quenched first, since soft mild steel colours the same way.",
+    "args": {
+      "lines": [
+        "They do not show",
+        "that the steel was",
+        "quenched first"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "And because time matters as well as temperature, a colour alone cannot tell you how hard the steel is now.",
+    "args": {
+      "title": "What a temper colour shows",
+      "items": [
+        "+the surface was heated in air",
+        "-the steel was quenched first",
+        "?how hard the steel is now"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "Grinding or polishing removes the film entirely. The spark test, where a grinding wheel throws sparks whose bursts reflect carbon content, has the same character.",
+    "args": {
+      "lines": [
+        "Grinding or polishing removes",
+        "the film entirely. The",
+        "spark test"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "A magnet and a temper colour are answering other questions",
+    "narration": "It suggests whether a steel could be hardened, not whether it has been.",
+    "args": {
+      "title": "What a temper colour shows",
+      "items": [
+        "+the surface was heated in air",
+        "-the steel was quenched first",
+        "?how hard the steel is now"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "Once I can locate the failure \u2014 bad source, lazy assumption, missing context, evidence I ignored because it was inconvenient \u2014 I can let the belief go.",
+    "args": {
+      "text": "Once I can locate the failure \u2014 bad source, lazy assumption, missing context, evidence I ignored because it was inconvenient \u2014 I can let the belief go.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "The file test is the oldest honest shortcut, because it actually tests hardness.",
+    "args": {
+      "title": "File test",
+      "steps": [
+        [
+          "Choose a sharp file",
+          ""
+        ],
+        [
+          "Draw it lightly across a clean edge",
+          ""
+        ],
+        [
+          "Feel whether it bites or skids",
+          ""
+        ]
+      ],
+      "note": "It ranks the surface only"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "A file is itself made of hardened steel. Choose a sharp file, draw it lightly across a clean edge of the part, and feel whether it bites or skids.",
+    "args": {
+      "lines": [
+        "A file is itself",
+        "made of hardened steel.",
+        "Choose"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "If it bites, cutting bright metal with a slight drag, the part is softer than the file.",
+    "args": {
+      "title": "File test",
+      "steps": [
+        [
+          "Choose a sharp file",
+          ""
+        ],
+        [
+          "Draw it lightly across a clean edge",
+          ""
+        ],
+        [
+          "Feel whether it bites or skids",
+          ""
+        ]
+      ],
+      "note": "It ranks the surface only"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "If it skids across with a glassy feel and leaves almost no mark, the part is about as hard as the file, or harder.",
+    "args": {
+      "lines": [
+        "If it skids across",
+        "with a glassy feel",
+        "and leaves"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "Industry still uses this as a screening check. Sets of files made to graded hardness exist, so that the skid point can be bracketed more closely.",
+    "args": {
+      "title": "File test",
+      "steps": [
+        [
+          "Choose a sharp file",
+          ""
+        ],
+        [
+          "Draw it lightly across a clean edge",
+          ""
+        ],
+        [
+          "Feel whether it bites or skids",
+          ""
+        ]
+      ],
+      "note": "It ranks the surface only"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "But notice what the file is touching: the outermost skin, and only where you dragged it.",
+    "args": {
+      "term": "file skid",
+      "includes": [
+        "evidence the surface is hard"
+      ],
+      "excludes": [
+        "evidence the whole part is hard"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "Two common situations break the inference. A case-hardened part, such as a carburized gear, has a hard shell over a deliberately softer core.",
+    "args": {
+      "lines": [
+        "Two common situations break",
+        "the inference. A case-hardened",
+        "part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "The file skids, correctly, yet the core may be far softer than the skid suggests.",
+    "args": {
+      "term": "file skid",
+      "includes": [
+        "evidence the surface is hard"
+      ],
+      "excludes": [
+        "evidence the whole part is hard"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "The reverse happens with decarburization, when carbon is lost from the surface during heating in air.",
+    "args": {
+      "lines": [
+        "The reverse happens with",
+        "decarburization, when carbon is",
+        "lost"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "The skin turns soft while the interior stays hard, and the file bites a part that is, underneath, properly hardened.",
+    "args": {
+      "term": "file skid",
+      "includes": [
+        "evidence the surface is hard"
+      ],
+      "excludes": [
+        "evidence the whole part is hard"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "The result also depends on the file's sharpness and the pressure of your hand.",
+    "args": {
+      "lines": [
+        "The result also depends",
+        "on the file's sharpness"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "A file ranks hardness by whether it can cut",
+    "narration": "So it ranks the surface only, and it ranks it against the file you happen to hold.",
+    "args": {
+      "term": "file skid",
+      "includes": [
+        "evidence the surface is hard"
+      ],
+      "excludes": [
+        "evidence the whole part is hard"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.62,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "The Rockwell C test replaces the hand with a machine and the feel with a depth.",
+    "args": {
+      "title": "Rockwell C test",
+      "stages": [
+        "10 kilograms-force preload",
+        "150 kilograms-force total",
+        "depth difference"
+      ],
+      "conclusion": "Rockwell C number"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "A diamond cone with a 120-degree tip is first pressed against the surface with a 10 kilograms-force preload.",
+    "args": {
+      "lines": [
+        "A diamond cone with",
+        "a 120-degree tip is",
+        "first pressed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "That seats the indenter and sets a zero below any surface roughness.",
+    "args": {
+      "title": "Rockwell C test",
+      "stages": [
+        "10 kilograms-force preload",
+        "150 kilograms-force total",
+        "depth difference"
+      ],
+      "conclusion": "Rockwell C number"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "Then the load rises to 150 kilograms-force total, is held briefly, and is reduced back to the preload.",
+    "args": {
+      "lines": [
+        "Then the load rises",
+        "to 150 kilograms-force total,",
+        "is held"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.86,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "The machine records the depth difference between the two preload readings: how much permanent dent the full load left.",
+    "args": {
+      "title": "Rockwell C test",
+      "stages": [
+        "10 kilograms-force preload",
+        "150 kilograms-force total",
+        "depth difference"
+      ],
+      "conclusion": "Rockwell C number"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "A harder steel resists, the dent is shallower, and the Rockwell C number is higher.",
+    "args": {
+      "lines": [
+        "A harder steel resists,",
+        "the dent is shallower"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "On this scale each point corresponds to two thousandths of a millimetre of depth.",
+    "args": {
+      "title": "Rockwell C test",
+      "stages": [
+        "10 kilograms-force preload",
+        "150 kilograms-force total",
+        "depth difference"
+      ],
+      "conclusion": "Rockwell C number"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "That is why the reading is so sensitive to dirt, scale and vibration.",
+    "args": {
+      "lines": [
+        "That is why the",
+        "reading is so sensitive",
+        "to dirt"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "ASTM International sets out the procedure in its standard for Rockwell testing of metallic materials, designated E18.",
+    "args": {
+      "value": "150",
+      "unit": "kilograms-force",
+      "caption": "Rockwell C total test force",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "It specifies the indenter, the forces, the dwell times, and rules a non-specialist would not think to ask about.",
+    "args": {
+      "lines": [
+        "It specifies the indenter,",
+        "the forces, the dwell",
+        "times"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "The test piece must be thick enough that the dent does not reach the far side, or the anvil underneath is partly being measured.",
+    "args": {
+      "value": "150",
+      "unit": "kilograms-force",
+      "caption": "Rockwell C total test force",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "Indentations must be spaced away from edges and from each other, because each one disturbs the metal around it.",
+    "args": {
+      "lines": [
+        "Indentations must be spaced",
+        "away from edges"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "Curved surfaces, like round bars, need corrections, because a cone sinks differently into a curve.",
+    "args": {
+      "value": "150",
+      "unit": "kilograms-force",
+      "caption": "Rockwell C total test force",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "A Rockwell number taken without those conditions met is a number, but not yet evidence.",
+    "args": {
+      "lines": [
+        "A Rockwell number taken",
+        "without those conditions met"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "Other methods trade convenience for different strengths. The Brinell test presses a hard ball into the metal and measures the width of the round impression, which averages over coarser structures but leaves a large mark.",
+    "args": {
+      "term": "Vickers test",
+      "includes": [
+        "a measured diagonal of a square diamond dent"
+      ],
+      "excludes": [
+        "a depth reading"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "The Vickers test uses a square-based diamond pyramid and measures the diagonals of the dent under a microscope.",
+    "args": {
+      "lines": [
+        "The Vickers test uses",
+        "a square-based diamond pyramid",
+        "and measures"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A Rockwell number is a depth, read twice",
+    "narration": "With small loads it can place indentations a fraction of a millimetre apart, which matters for a question the file could never answer.",
+    "args": {
+      "term": "Vickers test",
+      "includes": [
+        "a measured diagonal of a square diamond dent"
+      ],
+      "excludes": [
+        "a depth reading"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "Here is the part of the chain most people never see. A hardness tester does not measure an absolute physical quantity the way a ruler measures length.",
+    "args": {
+      "title": "Reference blocks",
+      "sources": [
+        [
+          "NIST",
+          "produces Rockwell C reference test blocks"
+        ],
+        [
+          "ASTM International",
+          "specifies how machines are verified against blocks"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "The number depends on the exact geometry of the diamond, the accuracy of the forces, and the depth sensor.",
+    "args": {
+      "lines": [
+        "The number depends on",
+        "the exact geometry of",
+        "the diamond"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "Two machines that differ slightly in any of those will disagree. So machines are checked against reference test blocks: pieces of steel prepared to be uniform and certified at a known hardness.",
+    "args": {
+      "title": "Reference blocks",
+      "sources": [
+        [
+          "NIST",
+          "produces Rockwell C reference test blocks"
+        ],
+        [
+          "ASTM International",
+          "specifies how machines are verified against blocks"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "NIST produces Rockwell C reference test blocks, calibrated on its own standardizing equipment, and the ASTM International standard specifies how machines are verified against blocks.",
+    "args": {
+      "lines": [
+        "NIST produces Rockwell C",
+        "reference test blocks, calibrated"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "When a lab reports a hardness, the defensible claim is that the machine read a certified block correctly that day, and then read your part.",
+    "args": {
+      "title": "Reference blocks",
+      "sources": [
+        [
+          "NIST",
+          "produces Rockwell C reference test blocks"
+        ],
+        [
+          "ASTM International",
+          "specifies how machines are verified against blocks"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "That traceability is what turns the file's private judgement into a public measurement.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "A hardness number is only as good as the block behind it",
+    "narration": "Your hand cannot be sent to another laboratory. A certified block can.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "Hardness tells you how much the metal resists; the microscope tells you why.",
+    "args": {
+      "title": "Metallographic check",
+      "steps": [
+        [
+          "Cross-section",
+          ""
+        ],
+        [
+          "Polishing",
+          ""
+        ],
+        [
+          "Nital etch",
+          ""
+        ],
+        [
+          "Microscope",
+          ""
+        ]
+      ],
+      "note": "Martensite looks needle-like"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "A metallographer cuts a cross-section through the part, mounting it and polishing it flat, then gives it a nital etch.",
+    "args": {
+      "lines": [
+        "A metallographer cuts a",
+        "cross-section through the part,",
+        "mounting it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "Nital is a dilute solution of nitric acid in alcohol. The acid attacks different structures at different rates, so the grain pattern appears.",
+    "args": {
+      "title": "Metallographic check",
+      "steps": [
+        [
+          "Cross-section",
+          ""
+        ],
+        [
+          "Polishing",
+          ""
+        ],
+        [
+          "Nital etch",
+          ""
+        ],
+        [
+          "Microscope",
+          ""
+        ]
+      ],
+      "note": "Martensite looks needle-like"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 6.62,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "Under a microscope, properly hardened steel shows martensite, which looks needle-like or lath-like, fine and dense.",
+    "args": {
+      "subject": "micrograph-steel",
+      "label": "MARTENSITE",
+      "pick": 1
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "Slowly cooled steel shows rounded grains and layered bands instead. Soft spots, where the quench was too slow, show up as patches of the wrong structure.",
+    "args": {
+      "title": "Metallographic check",
+      "steps": [
+        [
+          "Cross-section",
+          ""
+        ],
+        [
+          "Polishing",
+          ""
+        ],
+        [
+          "Nital etch",
+          ""
+        ],
+        [
+          "Microscope",
+          ""
+        ]
+      ],
+      "note": "Martensite looks needle-like"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "The same section answers the depth question the file could not. Run a line of small Vickers or Knoop indentations from the surface inward, and you get a hardness profile.",
+    "args": {
+      "lines": [
+        "The same section answers",
+        "the depth question the",
+        "file"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "On a case-hardened gear the numbers start high and fall off with depth.",
+    "args": {
+      "lines": [
+        "On a case-hardened gear",
+        "the numbers start high",
+        "and fall"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "The depth at which they cross an agreed threshold is reported as the case depth.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "ASTM International publishes the microindentation method used for this kind of traverse.",
+    "args": {
+      "lines": [
+        "ASTM International publishes the",
+        "microindentation method used for",
+        "this kind"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A cross-section shows why the number is high",
+    "narration": "The cost is obvious: the part has been cut in half. In production, that is why a test coupon, or a sacrificial part from the same batch, carries the destructive evidence for the rest.",
+    "args": {
+      "lines": [
+        "The cost is obvious:",
+        "the part has been",
+        "cut"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "As you watch, notice where each diagram ends. The file test ranks the surface.",
+    "args": {
+      "title": "Tests in this episode",
+      "items": [
+        "+file test ranks the surface",
+        "+Rockwell C test measures a depth",
+        "-magnet test detects hardening",
+        "?case depth needs a cross-section"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "What to notice in the edit",
+    "narration": "The Rockwell C test measures a depth at one point, traced back to a certified block.",
+    "args": {
+      "lines": [
+        "The Rockwell C test",
+        "measures a depth at",
+        "one point"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Nothing in this episode shows that the magnet test detects hardening, which is why it never earns a place on the hardened side.",
+    "args": {
+      "title": "Tests in this episode",
+      "items": [
+        "+file test ranks the surface",
+        "+Rockwell C test measures a depth",
+        "-magnet test detects hardening",
+        "?case depth needs a cross-section"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "And case depth needs a cross-section, which means some of the most important evidence about a hardened part is gathered on a different, destroyed piece of the same batch.",
+    "args": {
+      "lines": [
+        "And case depth needs",
+        "a cross-section, which means",
+        "some"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The tests are not ranked from crude to good. Each one is matched to a narrower question than it first appears to answer.",
+    "args": {
+      "title": "Tests in this episode",
+      "items": [
+        "+file test ranks the surface",
+        "+Rockwell C test measures a depth",
+        "-magnet test detects hardening",
+        "?case depth needs a cross-section"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "A hardness reading does not establish that a part is fit for its job.",
+    "args": {
+      "term": "hardness",
+      "includes": [
+        "resistance to one indenter under one load"
+      ],
+      "excludes": [
+        "toughness or wear life"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "It measures resistance to one indenter under one load at one spot.",
+    "args": {
+      "lines": [
+        "It measures resistance to",
+        "one indenter under one",
+        "load"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not measure toughness, so a part can read high and still crack in service if it was left untempered or tempered badly.",
+    "args": {
+      "term": "hardness",
+      "includes": [
+        "resistance to one indenter under one load"
+      ],
+      "excludes": [
+        "toughness or wear life"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "It does not directly measure wear life or fatigue strength, which depend on structure, residual stress and surface finish as well.",
+    "args": {
+      "lines": [
+        "It does not directly",
+        "measure wear life or",
+        "fatigue strength"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Conversions between Rockwell, Vickers and Brinell numbers come from published tables that are empirical and approximate, so a converted value is weaker evidence than a direct one.",
+    "args": {
+      "term": "hardness",
+      "includes": [
+        "resistance to one indenter under one load"
+      ],
+      "excludes": [
+        "toughness or wear life"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "And none of these tests, alone, tells you the heat-treatment history that produced the result.",
+    "args": {
+      "lines": [
+        "And none of these",
+        "tests, alone, tells you",
+        "the heat-treatment"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "So the knife and the nail are told apart by a dent, not by a magnet: a dent of a known depth, under a known force, from a machine that read a certified block that morning.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Closing",
+    "narration": "Everything you want to say beyond that spot, you have to go and measure.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  }
+]

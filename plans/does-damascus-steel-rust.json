@@ -1,0 +1,1360 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 5.79,
+    "heading": "Cold open",
+    "narration": "Leave a prized patterned blade wet overnight, and by morning it can bloom orange.",
+    "args": {
+      "value": "10.5",
+      "unit": "percent chromium",
+      "caption": "Minimum chromium for stainless steel",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Yes: most Damascus steel rusts, because nearly all of it, historical crucible blades and modern pattern-welded knives alike, is carbon steel without enough chromium to protect itself.",
+    "args": {
+      "lines": [
+        "Yes: most Damascus steel",
+        "rusts, because nearly all",
+        "of it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "ASM International, the professional society for materials engineers, gives the working line: steel needs at least 10.5 percent chromium to count as stainless.",
+    "args": {
+      "value": "10.5",
+      "unit": "percent chromium",
+      "caption": "Minimum chromium for stainless steel",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Most Damascus sits far below that. But that number settles less than it seems to.",
+    "args": {
+      "lines": [
+        "Most Damascus sits far",
+        "below that. But that",
+        "number settles"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "It does not explain why one patterned blade stays bright for years while another spots within days.",
+    "args": {
+      "value": "10.5",
+      "unit": "percent chromium",
+      "caption": "Minimum chromium for stainless steel",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "It does not explain why the pattern itself can make the problem worse. For that, you need to know what the pattern actually is.",
+    "args": {
+      "lines": [
+        "It does not explain",
+        "why the pattern itself",
+        "can make"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "The word Damascus names two different steels",
+    "narration": "The first thing to settle is that the word does not describe one material.",
+    "args": {
+      "term": "Damascus",
+      "includes": [
+        "crucible steel or pattern-welded steel"
+      ],
+      "excludes": [
+        "one single recipe"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The word Damascus names two different steels",
+    "narration": "Historically, Damascus referred to blades forged from crucible steel, a high-carbon steel made by melting iron with carbon-bearing material in a sealed vessel and cooling it slowly.",
+    "args": {
+      "lines": [
+        "Historically, Damascus referred to",
+        "blades forged from crucible",
+        "steel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The word Damascus names two different steels",
+    "narration": "That steel was produced in South Asia and traded west, and smiths forged it into swords whose surfaces showed a flowing, watery pattern.",
+    "args": {
+      "term": "Damascus",
+      "includes": [
+        "crucible steel or pattern-welded steel"
+      ],
+      "excludes": [
+        "one single recipe"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The word Damascus names two different steels",
+    "narration": "Today, most knives sold as Damascus are something else: pattern-welded steel. A smith stacks layers of two different steels, heats them, hammers them into one bar, folds or twists the bar, and repeats.",
+    "args": {
+      "lines": [
+        "Today, most knives sold",
+        "as Damascus are something",
+        "else: pattern-welded"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "The word Damascus names two different steels",
+    "narration": "So when you ask whether Damascus rusts, you are really asking about two families of steel, not one single recipe.",
+    "args": {
+      "term": "Damascus",
+      "includes": [
+        "crucible steel or pattern-welded steel"
+      ],
+      "excludes": [
+        "one single recipe"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The word Damascus names two different steels",
+    "narration": "The two families share one important trait. Neither recipe is stainless by default.",
+    "args": {
+      "lines": [
+        "The two families share",
+        "one important trait. Neither",
+        "recipe"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The word Damascus names two different steels",
+    "narration": "Historical crucible steel was iron and carbon with small amounts of other elements picked up from the ore.",
+    "args": {
+      "lines": [
+        "Historical crucible steel was",
+        "iron and carbon with",
+        "small amounts"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The word Damascus names two different steels",
+    "narration": "Its chromium content was nowhere near the threshold that defines stainless. Modern pattern-welded billets are usually built from a plain high-carbon steel paired with a nickel-bearing steel, chosen because the two respond differently to acid and give strong visual contrast.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The word Damascus names two different steels",
+    "narration": "Nickel helps a little with corrosion, but it is not what makes steel stainless.",
+    "args": {
+      "lines": [
+        "Nickel helps a little",
+        "with corrosion, but it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The word Damascus names two different steels",
+    "narration": "Chromium is. And in most Damascus, chromium is either absent or present only in trace amounts.",
+    "args": {
+      "lines": [
+        "Chromium is. And in",
+        "most Damascus, chromium is",
+        "either absent"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "To see why that matters, it helps to be precise about what rust is.",
+    "args": {
+      "title": "How iron rusts",
+      "stages": [
+        "iron",
+        "oxygen",
+        "water"
+      ],
+      "conclusion": "iron oxide"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "Rust is not dirt and it is not simple decay. It is an electrochemical reaction.",
+    "args": {
+      "lines": [
+        "Rust is not dirt",
+        "and it is not",
+        "simple decay."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "When iron, oxygen and water meet, tiny regions of the metal surface begin to behave like the two ends of a battery.",
+    "args": {
+      "title": "How iron rusts",
+      "stages": [
+        "iron",
+        "oxygen",
+        "water"
+      ],
+      "conclusion": "iron oxide"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "At one region, iron atoms give up electrons and go into solution.",
+    "args": {
+      "lines": [
+        "At one region, iron",
+        "atoms give up electrons",
+        "and go"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "At another, oxygen dissolved in the water takes those electrons. The products combine into hydrated iron oxide, the flaky orange-brown material you recognise.",
+    "args": {
+      "title": "How iron rusts",
+      "stages": [
+        "iron",
+        "oxygen",
+        "water"
+      ],
+      "conclusion": "iron oxide"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "Take away the water or take away the oxygen, and the reaction stalls.",
+    "args": {
+      "lines": [
+        "Take away the water",
+        "or take away the",
+        "oxygen"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "That is why a dry blade in a dry room can sit unchanged for a very long time.",
+    "args": {
+      "title": "How iron rusts",
+      "stages": [
+        "iron",
+        "oxygen",
+        "water"
+      ],
+      "conclusion": "iron oxide"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "Salt changes the speed, not the basic chemistry. Dissolved salt makes water a much better conductor, so the little battery on the surface runs faster.",
+    "args": {
+      "term": "Salt",
+      "includes": [
+        "an electrolyte that speeds the current"
+      ],
+      "excludes": [
+        "the cause of rust on its own"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "Chloride ions also attack protective films directly. This is why a blade used to cut salted food, or carried near the sea, or simply handled with sweaty fingers, can rust far faster than one wiped with plain water.",
+    "args": {
+      "lines": [
+        "Chloride ions also attack",
+        "protective films directly. This",
+        "is why"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "Salt is an electrolyte that speeds the current. It is not the cause of rust on its own.",
+    "args": {
+      "term": "Salt",
+      "includes": [
+        "an electrolyte that speeds the current"
+      ],
+      "excludes": [
+        "the cause of rust on its own"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Rust is an electrical reaction, and the pattern does not opt out",
+    "narration": "The cause is unprotected iron in contact with oxygen and moisture, and carbon steel Damascus is exactly that.",
+    "args": {
+      "lines": [
+        "The cause is unprotected",
+        "iron in contact with",
+        "oxygen"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "So what does chromium actually do? It does not make steel harder in any way that stops rust, and that distinction matters.",
+    "args": {
+      "term": "passive film",
+      "meaning": "a thin, self-repairing chromium oxide layer",
+      "boundary": "forms continuously only above the chromium threshold",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "Hardness and corrosion resistance are separate properties. A blade can be extremely hard and still rust quickly.",
+    "args": {
+      "lines": [
+        "Hardness and corrosion resistance",
+        "are separate properties. A",
+        "blade"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "What chromium does is react with oxygen to form a thin, self-repairing chromium oxide layer on the surface, often called a passive film.",
+    "args": {
+      "term": "passive film",
+      "meaning": "a thin, self-repairing chromium oxide layer",
+      "boundary": "forms continuously only above the chromium threshold",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "That film is far too thin to see, but it is continuous and tightly bonded, and it blocks water and oxygen from reaching the iron underneath.",
+    "args": {
+      "lines": [
+        "That film is far",
+        "too thin to see,",
+        "but it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "If you scratch it, the exposed chromium reacts with the air and the film closes again.",
+    "args": {
+      "term": "passive film",
+      "meaning": "a thin, self-repairing chromium oxide layer",
+      "boundary": "forms continuously only above the chromium threshold",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "As ASM International describes it, the film forms continuously only above the chromium threshold.",
+    "args": {
+      "lines": [
+        "As ASM International describes",
+        "it, the film forms",
+        "continuously only"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "The threshold of 10.5 percent exists because below roughly that level, there is not enough chromium at the surface for the film to form as an unbroken sheet.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "You get patches of protection with gaps between them, and corrosion starts in the gaps.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "That is the real reason most Damascus rusts. It is not that the steel is old-fashioned or poorly made.",
+    "args": {
+      "lines": [
+        "That is the real",
+        "reason most Damascus rusts.",
+        "It"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "It is that the alloy was never designed to carry a passive film at all.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Chromium protects by forming a film, not by being harder",
+    "narration": "It was designed to hold a keen edge and to show a pattern, and those goals pull its composition away from stainless.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.28,
+    "heading": "Producer POV",
+    "narration": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+    "args": {
+      "text": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "That observation applies on a small scale to a single knife. The rust you see is the end of a chain, and one link is the way the pattern is made visible.",
+    "args": {
+      "title": "How the pattern appears",
+      "steps": [
+        [
+          "forge layers of two steels together",
+          ""
+        ],
+        [
+          "grind the blade flat",
+          ""
+        ],
+        [
+          "etch in acid",
+          ""
+        ]
+      ],
+      "note": "the layers dissolve at different rates"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "Smiths forge layers of two steels together, and after forging, a pattern-welded blade looks plain.",
+    "args": {
+      "lines": [
+        "Smiths forge layers of",
+        "two steels together, and",
+        "after forging"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "The smith must grind the blade flat and then etch in acid, commonly a ferric chloride solution.",
+    "args": {
+      "title": "How the pattern appears",
+      "steps": [
+        [
+          "forge layers of two steels together",
+          ""
+        ],
+        [
+          "grind the blade flat",
+          ""
+        ],
+        [
+          "etch in acid",
+          ""
+        ]
+      ],
+      "note": "the layers dissolve at different rates"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "The acid attacks the two steels at different rates, so the layers dissolve at different rates.",
+    "args": {
+      "lines": [
+        "The acid attacks the",
+        "two steels at different",
+        "rates"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "The high-carbon layers darken and recede slightly. The nickel-bearing layers stay bright and stand a little proud.",
+    "args": {
+      "title": "How the pattern appears",
+      "steps": [
+        [
+          "forge layers of two steels together",
+          ""
+        ],
+        [
+          "grind the blade flat",
+          ""
+        ],
+        [
+          "etch in acid",
+          ""
+        ]
+      ],
+      "note": "the layers dissolve at different rates"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "The pattern you admire is, quite literally, a map of where the acid found the metal easier to dissolve.",
+    "args": {
+      "lines": [
+        "The pattern you admire",
+        "is, quite literally, a",
+        "map"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "Think about what that leaves behind. An etched surface is a fine landscape of ridges and valleys, not a smooth sealed finish.",
+    "args": {
+      "term": "Etched surface",
+      "includes": [
+        "a fine landscape of ridges and valleys"
+      ],
+      "excludes": [
+        "a smooth sealed finish"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "The valleys can hold moisture and salt after you rinse the blade.",
+    "args": {
+      "lines": [
+        "The valleys can hold",
+        "moisture and salt after",
+        "you rinse"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "And the surface now presents two different metals side by side, both wetted by the same film of water.",
+    "args": {
+      "term": "Etched surface",
+      "includes": [
+        "a fine landscape of ridges and valleys"
+      ],
+      "excludes": [
+        "a smooth sealed finish"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "When two dissimilar metals sit in contact through an electrolyte, the less noble one tends to corrode preferentially.",
+    "args": {
+      "lines": [
+        "When two dissimilar metals",
+        "sit in contact through",
+        "an electrolyte"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "This is ordinary galvanic corrosion, the same principle engineers manage when they join different metals in a structure.",
+    "args": {
+      "term": "Etched surface",
+      "includes": [
+        "a fine landscape of ridges and valleys"
+      ],
+      "excludes": [
+        "a smooth sealed finish"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Etching exposes the very differences that corrosion exploits",
+    "narration": "How strong the effect is on a given blade depends on the specific steels and the finish, and that varies from maker to maker.",
+    "args": {
+      "lines": [
+        "How strong the effect",
+        "is on a given",
+        "blade depends"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.45,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "How is any of this actually known, rather than assumed? Corrosion resistance is measured, not judged by eye.",
+    "args": {
+      "title": "Who measures corrosion",
+      "sources": [
+        [
+          "ASTM International",
+          "standard salt spray test, B117"
+        ],
+        [
+          "NIST",
+          "corrosion measurement research"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "ASTM International publishes the standard salt spray test, designated B117, in which samples sit in a chamber filled with a fine fog of salt water and are inspected over time.",
+    "args": {
+      "lines": [
+        "ASTM International publishes the",
+        "standard salt spray test,",
+        "designated B117"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "NIST, the United States national measurement laboratory, carries out corrosion measurement research on how materials degrade.",
+    "args": {
+      "title": "Who measures corrosion",
+      "sources": [
+        [
+          "ASTM International",
+          "standard salt spray test, B117"
+        ],
+        [
+          "NIST",
+          "corrosion measurement research"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "Tests like these let a lab compare alloys under identical, repeatable conditions, so a claim that one steel outlasts another rests on observation rather than reputation.",
+    "args": {
+      "lines": [
+        "Tests like these let",
+        "a lab compare alloys",
+        "under identical"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "But you should be clear about what such a test does and does not settle.",
+    "args": {
+      "title": "What a salt spray test settles",
+      "items": [
+        "+comparing alloys under identical conditions",
+        "+repeatable results",
+        "-predicting service life in a real kitchen"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "It is good at comparing alloys under identical conditions, and it gives repeatable results.",
+    "args": {
+      "lines": [
+        "It is good at",
+        "comparing alloys under identical",
+        "conditions"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "It is not good at predicting service life in a real kitchen.",
+    "args": {
+      "title": "What a salt spray test settles",
+      "items": [
+        "+comparing alloys under identical conditions",
+        "+repeatable results",
+        "-predicting service life in a real kitchen"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "The ASTM standard itself cautions that salt spray results do not reliably predict how a material will behave in natural environments.",
+    "args": {
+      "lines": [
+        "The ASTM standard itself",
+        "cautions that salt spray",
+        "results do"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "A knife on a counter faces cycles of wetting, drying, food acids and handling that no single fog chamber reproduces.",
+    "args": {
+      "title": "What a salt spray test settles",
+      "items": [
+        "+comparing alloys under identical conditions",
+        "+repeatable results",
+        "-predicting service life in a real kitchen"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Corrosion is measured with standard tests, and those tests have limits",
+    "narration": "So lab data can rank steels, while daily use decides how fast a particular blade actually rusts.",
+    "args": {
+      "lines": [
+        "So lab data can",
+        "rank steels, while daily",
+        "use decides"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "The historical blades add a different kind of evidence. In 2006, a team led by Marianne Reibold at the Technical University of Dresden reported in the journal Nature that they had examined a centuries-old Damascus sabre with a transmission electron microscope.",
+    "args": {
+      "value": "2006",
+      "unit": "year",
+      "caption": "Carbon nanotubes reported in a Damascus sabre",
+      "source": "Nature"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "After dissolving a sample in acid, they found carbon nanotubes and what appeared to be nanowires of cementite, the hard iron carbide that forms bands in crucible steel.",
+    "args": {
+      "lines": [
+        "After dissolving a sample",
+        "in acid, they found",
+        "carbon nanotubes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.69,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "The finding drew attention because it suggested that old smithing, done without any knowledge of microstructure, produced remarkably fine internal architecture.",
+    "args": {
+      "value": "2006",
+      "unit": "year",
+      "caption": "Carbon nanotubes reported in a Damascus sabre",
+      "source": "Nature"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "It is worth noticing what that study did not show. It was evidence about internal structure, not evidence about rust resistance.",
+    "args": {
+      "term": "The 2006 finding",
+      "includes": [
+        "evidence about internal structure"
+      ],
+      "excludes": [
+        "evidence about rust resistance"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "Fine carbide bands and nanoscale features help explain the toughness and the visible pattern of crucible steel.",
+    "args": {
+      "lines": [
+        "Fine carbide bands and",
+        "nanoscale features help explain",
+        "the toughness"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "They do nothing to create a passive film. Many surviving historical blades are in good condition, but museum survival tells you about storage, oiling and handling over centuries, not about the steel being immune.",
+    "args": {
+      "term": "The 2006 finding",
+      "includes": [
+        "evidence about internal structure"
+      ],
+      "excludes": [
+        "evidence about rust resistance"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The ancient blades reveal structure, not rust resistance",
+    "narration": "Blades that were neglected did not survive to be studied, which quietly biases what you see in a display case toward the well-cared-for.",
+    "args": {
+      "lines": [
+        "Blades that were neglected",
+        "did not survive to",
+        "be studied"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.38,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "There is a third kind of Damascus, and it answers the question differently.",
+    "args": {
+      "title": "Chromium content",
+      "unit": "percent",
+      "items": [
+        [
+          "Stainless threshold",
+          "10.5"
+        ],
+        [
+          "Plain carbon steel",
+          "0"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "Some makers forge pattern-welded billets from two stainless alloys, each above the stainless threshold of 10.5 percent chromium.",
+    "args": {
+      "lines": [
+        "Some makers forge pattern-welded",
+        "billets from two stainless",
+        "alloys"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 8.69,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "The finished blade carries a passive film across its whole surface, so it resists rust far better than carbon steel Damascus.",
+    "args": {
+      "title": "Chromium content",
+      "unit": "percent",
+      "items": [
+        [
+          "Stainless threshold",
+          "10.5"
+        ],
+        [
+          "Plain carbon steel",
+          "0"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "Plain carbon steel, by contrast, is made with essentially no deliberate chromium, close to 0 percent.",
+    "args": {
+      "lines": [
+        "Plain carbon steel, by",
+        "contrast, is made with",
+        "essentially"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "The trade-off is usually visual: stainless alloys are chemically similar to each other, so the acid has less difference to work with, and the pattern can look softer.",
+    "args": {
+      "title": "Chromium content",
+      "unit": "percent",
+      "items": [
+        [
+          "Stainless threshold",
+          "10.5"
+        ],
+        [
+          "Plain carbon steel",
+          "0"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "Even here, stainless does not mean stain-proof. The passive film can break down locally when chloride sits on it, producing small, deep pits rather than broad rust.",
+    "args": {
+      "lines": [
+        "Even here, stainless does",
+        "not mean stain-proof. The",
+        "passive film"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "A stainless Damascus blade left in salty water, or stored damp in a sheath, can still mark.",
+    "args": {
+      "lines": [
+        "A stainless Damascus blade",
+        "left in salty water,",
+        "or stored"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "The resistance is real and large, but it is resistance, not immunity.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Stainless Damascus trades some contrast for real protection",
+    "narration": "So the honest answer for this third family is that it rarely rusts in normal use, and it can still corrode if conditions are harsh enough for long enough.",
+    "args": {
+      "lines": [
+        "So the honest answer",
+        "for this third family"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Care, not the pattern, is the actual protection",
+    "narration": "For carbon steel Damascus, then, the protection comes from you. Dry it promptly after use, so water never has time to sit in the etched valleys.",
+    "args": {
+      "title": "What protects carbon steel Damascus",
+      "items": [
+        "+dry it promptly",
+        "+a thin film of oil",
+        "+avoid leaving salt on it",
+        "-the pattern itself"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Care, not the pattern, is the actual protection",
+    "narration": "Keep a thin film of oil on it, which keeps oxygen and moisture away from the metal.",
+    "args": {
+      "lines": [
+        "Keep a thin film",
+        "of oil on it,",
+        "which keeps"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Care, not the pattern, is the actual protection",
+    "narration": "Avoid leaving salt on it. Many owners also let a dark patina develop, a stable oxide layer that slows further attack, and some smiths apply one deliberately.",
+    "args": {
+      "title": "What protects carbon steel Damascus",
+      "items": [
+        "+dry it promptly",
+        "+a thin film of oil",
+        "+avoid leaving salt on it",
+        "-the pattern itself"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Care, not the pattern, is the actual protection",
+    "narration": "What never protects the blade is the pattern itself. The pattern is the record of how the steel was made, and the chemistry underneath it remains ordinary iron.",
+    "args": {
+      "lines": [
+        "What never protects the",
+        "blade is the pattern",
+        "itself."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "When you watch this back, notice where each claim comes from. The chromium threshold is a definition used by ASM International.",
+    "args": {
+      "title": "What the evidence chain shows",
+      "stages": [
+        "composition",
+        "etching",
+        "moisture and salt"
+      ],
+      "conclusion": "rust"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "The salt spray method is a published ASTM International standard, with its own stated limits.",
+    "args": {
+      "lines": [
+        "The salt spray method",
+        "is a published ASTM",
+        "International standard"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "The nanotube finding comes from one study in Nature, on one sabre.",
+    "args": {
+      "title": "What the evidence chain shows",
+      "stages": [
+        "composition",
+        "etching",
+        "moisture and salt"
+      ],
+      "conclusion": "rust"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The rest is the ordinary electrochemistry of iron, oxygen and water. The chain runs from composition, to etching, to moisture and salt, to rust, and each link is a separate piece of evidence rather than one sweeping claim.",
+    "args": {
+      "lines": [
+        "The rest is the",
+        "ordinary electrochemistry of iron,",
+        "oxygen"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "What this does not establish is how quickly any particular Damascus knife will rust.",
+    "args": {
+      "title": "What this does not establish",
+      "items": [
+        "+Confidence in the threshold is high",
+        "-how quickly any particular Damascus knife will rust",
+        "?Confidence about any single blade is low"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The threshold of 10.5 percent tells you whether a continuous film can form; it says nothing precise about a blade below it, where protection is partial and depends on the exact alloys, the depth of the etch, the finish and the care it gets.",
+    "args": {
+      "lines": [
+        "The threshold of 10.5",
+        "percent tells you whether",
+        "a continuous"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "Makers rarely publish full compositions for their billets, and lab tests do not predict life in a kitchen.",
+    "args": {
+      "title": "What this does not establish",
+      "items": [
+        "+Confidence in the threshold is high",
+        "-how quickly any particular Damascus knife will rust",
+        "?Confidence about any single blade is low"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "Nor does one sabre in one study speak for every historical blade.",
+    "args": {
+      "lines": [
+        "Nor does one sabre",
+        "in one study speak"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "Confidence in the threshold is high. Confidence about any single blade is low.",
+    "args": {
+      "title": "What this does not establish",
+      "items": [
+        "+Confidence in the threshold is high",
+        "-how quickly any particular Damascus knife will rust",
+        "?Confidence about any single blade is low"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Closing",
+    "narration": "So yes, most Damascus steel rusts, because the beauty of the pattern comes from the same unprotected iron that rust needs.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The swirl is a record of fire, hammer and acid. Keeping it bright is still up to the cloth and the oil.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  }
+]

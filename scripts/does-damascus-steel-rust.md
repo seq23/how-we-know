@@ -117,20 +117,18 @@ So yes, most Damascus steel rusts, because the beauty of the pattern comes from 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:48 Title card
-- 00:52 The word Damascus names two different steels
-- 02:00 Rust is an electrical reaction, and the pattern does not opt out
-- 03:15 Chromium protects by forming a film, not by being harder
-- 04:25 Producer POV
-- 04:35 Etching exposes the very differences that corrosion exploits
-- 05:45 Corrosion is measured with standard tests, and those tests have limits
-- 06:55 The ancient blades reveal structure, not rust resistance
-- 08:05 Stainless Damascus trades some contrast for real protection
-- 09:10 Care, not the pattern, is the actual protection
-- 09:55 What to notice in the edit
-- 10:35 Evidence limit
-- 11:35 Closing
+- 0:00 Cold open
+- 0:47 The word Damascus names two different steels
+- 2:13 Rust is an electrical reaction, and the pattern does not opt out
+- 3:29 Chromium protects by forming a film, not by being harder
+- 4:51 Etching exposes the very differences that corrosion exploits
+- 6:12 Corrosion is measured with standard tests, and those tests have limits
+- 7:27 The ancient blades reveal structure, not rust resistance
+- 8:38 Stainless Damascus trades some contrast for real protection
+- 9:43 Care, not the pattern, is the actual protection
+- 10:16 What to notice in the edit
+- 10:49 Evidence limit
+- 11:23 Closing
 
 ## Sources
 

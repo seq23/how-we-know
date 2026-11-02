@@ -1,0 +1,1007 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "A giant tubeworm has no mouth and no gut, yet it thrives in total darkness.",
+    "args": {
+      "value": "1977",
+      "unit": "year",
+      "caption": "scientists diving in the submersible Alvin found animals crowded around warm water on the Gal\u00e1pagos Rift",
+      "source": "Woods Hole Oceanographic Institution"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The reason is chemistry. Chemosynthesis occurs wherever microbes can harvest energy from chemical reactions instead of sunlight, most famously at deep-sea hydrothermal vents, cold seeps and whale falls.",
+    "args": {
+      "lines": [
+        "The reason is chemistry.",
+        "Chemosynthesis occurs wherever microbes",
+        "can harvest"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "In 1977, scientists diving in the submersible Alvin found animals crowded around warm water on the Gal\u00e1pagos Rift, a discovery recorded by the Woods Hole Oceanographic Institution, which operates Alvin.",
+    "args": {
+      "value": "1977",
+      "unit": "year",
+      "caption": "scientists diving in the submersible Alvin found animals crowded around warm water on the Gal\u00e1pagos Rift",
+      "source": "Woods Hole Oceanographic Institution"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That dive answered one question and opened a larger one. If whole communities can live this way at vents, the vents were never likely to be the only address.",
+    "args": {
+      "lines": [
+        "That dive answered one",
+        "question and opened a",
+        "larger one."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The harder part is finding out how many other addresses there are, and how much of that work happens in places nobody has looked.",
+    "args": {
+      "value": "1977",
+      "unit": "year",
+      "caption": "scientists diving in the submersible Alvin found animals crowded around warm water on the Gal\u00e1pagos Rift",
+      "source": "Woods Hole Oceanographic Institution"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "Start with what the word actually means, because the definition decides the map.",
+    "args": {
+      "term": "Chemosynthesis",
+      "meaning": "microbes harvest energy from chemical reactions instead of sunlight",
+      "boundary": "it describes where the energy comes from, not where the organisms live",
+      "source": "Smithsonian"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "In photosynthesis, light supplies the energy that lets an organism turn carbon dioxide into the carbon compounds of its own body.",
+    "args": {
+      "lines": [
+        "In photosynthesis, light supplies",
+        "the energy that lets",
+        "an organism"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "In chemosynthesis, that energy comes from a chemical reaction instead. Microbes take a compound that holds usable energy, such as hydrogen sulfide, methane, hydrogen or ammonia, and react it with something that will accept electrons, often oxygen.",
+    "args": {
+      "term": "Chemosynthesis",
+      "meaning": "microbes harvest energy from chemical reactions instead of sunlight",
+      "boundary": "it describes where the energy comes from, not where the organisms live",
+      "source": "Smithsonian"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "The energy released is used to build living tissue from carbon. The Smithsonian describes deep-sea vent and seep communities in exactly these terms: food webs whose base is microbes, not plants or algae.",
+    "args": {
+      "lines": [
+        "The energy released is",
+        "used to build living",
+        "tissue"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "That framing matters. Chemosynthesis is a source of energy, not a type of place.",
+    "args": {
+      "term": "chemosynthesis",
+      "includes": [
+        "a source of energy"
+      ],
+      "excludes": [
+        "a type of place"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "So the honest answer to where it occurs is not a list of landmarks.",
+    "args": {
+      "lines": [
+        "So the honest answer",
+        "to where it occurs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "It is a list of conditions. You need a supply of reduced chemicals, you need something for them to react with, and you need microbes positioned at the boundary where the two meet.",
+    "args": {
+      "term": "chemosynthesis",
+      "includes": [
+        "a source of energy"
+      ],
+      "excludes": [
+        "a type of place"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sunlight is one foundation for a food web, not the only one",
+    "narration": "Anywhere those conditions hold, chemosynthesis is possible. Whether it is actually happening there, and at what rate, is a separate question that has to be measured, not assumed.",
+    "args": {
+      "lines": [
+        "Anywhere those conditions hold,",
+        "chemosynthesis is possible. Whether",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know.",
+    "args": {
+      "text": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "The idea itself was older than the dive. On land, the microbiologist Sergei Winogradsky had shown long before that certain bacteria, including Beggiatoa, could live by oxidizing sulfur compounds.",
+    "args": {
+      "title": "How a dive became a conclusion",
+      "stages": [
+        "warm water on the Gal\u00e1pagos Rift",
+        "dense animal communities",
+        "bacteria inside the tubeworm"
+      ],
+      "conclusion": "energy from chemistry, not sunlight"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "What nobody expected was an entire animal community running on that process at the bottom of the ocean.",
+    "args": {
+      "lines": [
+        "What nobody expected was",
+        "an entire animal community",
+        "running"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "The team that took Alvin to the Gal\u00e1pagos Rift was largely there to study geology.",
+    "args": {
+      "title": "How a dive became a conclusion",
+      "stages": [
+        "warm water on the Gal\u00e1pagos Rift",
+        "dense animal communities",
+        "bacteria inside the tubeworm"
+      ],
+      "conclusion": "energy from chemistry, not sunlight"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "They were looking for warm water venting from the seafloor. They found warm water, and around it they found clams, mussels and dense thickets of tubeworms, in a place where food falling from the surface should have been scarce.",
+    "args": {
+      "lines": [
+        "They were looking for",
+        "warm water venting from",
+        "the seafloor."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "The explanation came from looking inside the animals. The giant tubeworm, Riftia pachyptila, turned out to carry an organ packed with bacteria, called the trophosome.",
+    "args": {
+      "lines": [
+        "The explanation came from",
+        "looking inside the animals.",
+        "The giant"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "Its red plume holds a form of hemoglobin that binds both oxygen and hydrogen sulfide and carries them to those bacteria.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "The bacteria oxidize the sulfide and fix carbon. The worm lives on what they make.",
+    "args": {
+      "lines": [
+        "The bacteria oxidize the",
+        "sulfide and fix carbon.",
+        "The worm"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "That is how you get a tubeworm with no mouth that lives without sunlight.",
+    "args": {
+      "lines": [
+        "That is how you",
+        "get a tubeworm with",
+        "no mouth"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "The key point for this episode is how that was established. It was not inferred from the location alone.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The deep-sea evidence came from a dive, not from a theory",
+    "narration": "It was shown by anatomy, by the chemistry of the blood, and by the bacteria themselves.",
+    "args": {
+      "lines": [
+        "It was shown by",
+        "anatomy, by the chemistry"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Vents are only the most visible address",
+    "narration": "Hydrothermal vents are where seawater circulates through hot volcanic rock near mid-ocean ridges and returns loaded with dissolved chemicals, including hydrogen sulfide.",
+    "args": {
+      "title": "Known deep-sea chemosynthetic settings",
+      "items": [
+        "+hydrothermal vents",
+        "+cold seeps",
+        "+whale falls",
+        "?the full extent of any of them"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Vents are only the most visible address",
+    "narration": "But chemosynthesis does not require heat. Cold seeps are places where methane and other hydrocarbons leak slowly out of seafloor sediments, often along continental margins such as the Gulf of Mexico.",
+    "args": {
+      "lines": [
+        "But chemosynthesis does not",
+        "require heat. Cold seeps",
+        "are places"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Vents are only the most visible address",
+    "narration": "NOAA Ocean Exploration has documented seep communities of mussels and tubeworms that host bacteria much as vent animals do.",
+    "args": {
+      "title": "Known deep-sea chemosynthetic settings",
+      "items": [
+        "+hydrothermal vents",
+        "+cold seeps",
+        "+whale falls",
+        "?the full extent of any of them"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Vents are only the most visible address",
+    "narration": "Some of those mussels carry bacteria that oxidize methane rather than sulfide.",
+    "args": {
+      "lines": [
+        "Some of those mussels",
+        "carry bacteria that oxidize",
+        "methane rather"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Vents are only the most visible address",
+    "narration": "Deep in the sediment below them, partnerships of archaea and bacteria break down methane without oxygen at all.",
+    "args": {
+      "title": "Known deep-sea chemosynthetic settings",
+      "items": [
+        "+hydrothermal vents",
+        "+cold seeps",
+        "+whale falls",
+        "?the full extent of any of them"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Vents are only the most visible address",
+    "narration": "Then there are whale falls. When a whale dies and sinks, the carcass passes through recognisable stages.",
+    "args": {
+      "title": "How a whale fall changes over time",
+      "steps": [
+        [
+          "mobile scavenger stage",
+          ""
+        ],
+        [
+          "enrichment opportunist stage",
+          ""
+        ],
+        [
+          "sulfophilic stage",
+          ""
+        ]
+      ],
+      "note": "chemosynthesis arrives last"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Vents are only the most visible address",
+    "narration": "In the mobile scavenger stage, fish and other animals strip the soft tissue.",
+    "args": {
+      "lines": [
+        "In the mobile scavenger",
+        "stage, fish and other",
+        "animals strip"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Vents are only the most visible address",
+    "narration": "In the enrichment opportunist stage, dense populations of small animals colonize the bones and surrounding sediment.",
+    "args": {
+      "title": "How a whale fall changes over time",
+      "steps": [
+        [
+          "mobile scavenger stage",
+          ""
+        ],
+        [
+          "enrichment opportunist stage",
+          ""
+        ],
+        [
+          "sulfophilic stage",
+          ""
+        ]
+      ],
+      "note": "chemosynthesis arrives last"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Vents are only the most visible address",
+    "narration": "In the sulfophilic stage, bacteria break down the fats stored inside the bones, releasing sulfide, and chemosynthetic microbes grow on it.",
+    "args": {
+      "lines": [
+        "In the sulfophilic stage,",
+        "bacteria break down the",
+        "fats stored"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Vents are only the most visible address",
+    "narration": "Researchers at MBARI, studying whale carcasses in Monterey Canyon, also discovered Osedax, bone-eating worms.",
+    "args": {
+      "title": "How a whale fall changes over time",
+      "steps": [
+        [
+          "mobile scavenger stage",
+          ""
+        ],
+        [
+          "enrichment opportunist stage",
+          ""
+        ],
+        [
+          "sulfophilic stage",
+          ""
+        ]
+      ],
+      "note": "chemosynthesis arrives last"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Vents are only the most visible address",
+    "narration": "The worms are a useful warning against overgeneralizing: their own bacterial partners are not chemosynthetic.",
+    "args": {
+      "lines": [
+        "The worms are a",
+        "useful warning against overgeneralizing:",
+        "their"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "Vents are only the most visible address",
+    "narration": "Being at a chemosynthetic site does not make every organism there chemosynthetic.",
+    "args": {
+      "title": "How a whale fall changes over time",
+      "steps": [
+        [
+          "mobile scavenger stage",
+          ""
+        ],
+        [
+          "enrichment opportunist stage",
+          ""
+        ],
+        [
+          "sulfophilic stage",
+          ""
+        ]
+      ],
+      "note": "chemosynthesis arrives last"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "Some vents run on rock chemistry, not volcanic heat",
+    "narration": "For a while, the working picture was that vent life needed magma close below the seafloor.",
+    "args": {
+      "term": "Lost City",
+      "includes": [
+        "driven by reactions between seawater and mantle rock"
+      ],
+      "excludes": [
+        "driven by volcanic heat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Some vents run on rock chemistry, not volcanic heat",
+    "narration": "The Lost City hydrothermal field, on the Atlantis Massif near the Mid-Atlantic Ridge, broke that picture.",
+    "args": {
+      "lines": [
+        "The Lost City hydrothermal",
+        "field, on the Atlantis",
+        "Massif near"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Some vents run on rock chemistry, not volcanic heat",
+    "narration": "Its pale carbonate chimneys sit away from the volcanic axis. The fluid there is shaped mainly by a reaction called serpentinization, in which seawater reacts with mantle rock and produces hydrogen and methane.",
+    "args": {
+      "term": "Lost City",
+      "includes": [
+        "driven by reactions between seawater and mantle rock"
+      ],
+      "excludes": [
+        "driven by volcanic heat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Some vents run on rock chemistry, not volcanic heat",
+    "narration": "Those gases are energy for microbes. NOAA Ocean Exploration has supported expeditions to the site, and the microbial communities there run on chemistry that comes from the rock itself.",
+    "args": {
+      "lines": [
+        "Those gases are energy",
+        "for microbes. NOAA Ocean",
+        "Exploration has"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Some vents run on rock chemistry, not volcanic heat",
+    "narration": "This matters for the map in a specific way. If chemosynthesis can be fuelled by water reacting with rock, then the question of where it occurs is partly a question about where that rock is exposed and where water can reach it.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Some vents run on rock chemistry, not volcanic heat",
+    "narration": "That pushes the possible range well beyond the volcanic ridges. It also explains why researchers interested in life elsewhere in the solar system pay close attention to sites like this one.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "The vents and seeps are the photogenic part. A large share of chemosynthesis may be happening in places with no chimneys, no tubeworms and nothing to film.",
+    "args": {
+      "title": "How hidden chemosynthesis is detected",
+      "stages": [
+        "water or sediment sampled in darkness",
+        "carbon uptake measured",
+        "genes for carbon fixation identified"
+      ],
+      "conclusion": "chemosynthesis inferred where nothing is visible"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "In the dark water of the deep ocean, microbes that oxidize ammonia, many of them archaea, fix carbon without light.",
+    "args": {
+      "lines": [
+        "In the dark water",
+        "of the deep ocean,",
+        "microbes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "In seafloor sediments, microbes work along chemical boundaries a few layers down.",
+    "args": {
+      "title": "How hidden chemosynthesis is detected",
+      "stages": [
+        "water or sediment sampled in darkness",
+        "carbon uptake measured",
+        "genes for carbon fixation identified"
+      ],
+      "conclusion": "chemosynthesis inferred where nothing is visible"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "In the rock of the ocean crust beneath the sediment, water circulates and microbes live in the cracks.",
+    "args": {
+      "lines": [
+        "In the rock of",
+        "the ocean crust beneath",
+        "the sediment"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "None of this can be seen with a camera, so the evidence is indirect.",
+    "args": {
+      "lines": [
+        "None of this can",
+        "be seen with a",
+        "camera"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "Researchers seal water or sediment samples in the dark, add carbon labelled so it can be traced, and measure how much ends up in living cells.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "They sequence the microbes present and look for the genes that build carbon-fixing enzymes.",
+    "args": {
+      "lines": [
+        "They sequence the microbes",
+        "present and look for",
+        "the genes"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "They compare the chemical fingerprints of carbon, because chemosynthetic carbon and photosynthetic carbon often carry different isotope signatures.",
+    "args": {
+      "lines": [
+        "They compare the chemical",
+        "fingerprints of carbon, because",
+        "chemosynthetic carbon"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Much of it may happen where nobody is filming",
+    "narration": "Each method shows that chemosynthesis can happen in a sample. Scaling that up to a whole ocean is where the estimates spread out, and the published range is wide.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "Vent communities are often described as life completely independent of the sun.",
+    "args": {
+      "term": "vent ecosystems",
+      "includes": [
+        "independent of sunlight for energy"
+      ],
+      "excludes": [
+        "independent of the sunlit world"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "That is close, but not exact. Many of the bacteria in a tubeworm oxidize sulfide using oxygen, and the oxygen dissolved in deep seawater was produced, originally, by photosynthesis near the surface.",
+    "args": {
+      "lines": [
+        "That is close, but",
+        "not exact. Many of",
+        "the bacteria"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "The energy comes from chemistry. One of the ingredients comes from the sunlit world.",
+    "args": {
+      "term": "vent ecosystems",
+      "includes": [
+        "independent of sunlight for energy"
+      ],
+      "excludes": [
+        "independent of the sunlit world"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "Chemosynthesis that uses no oxygen at all, like the methane breakdown in seep sediments, is more fully detached, but it is the less famous half of the story.",
+    "args": {
+      "lines": [
+        "Chemosynthesis that uses no",
+        "oxygen at all, like",
+        "the methane"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "The same logic carries onto land. Soil bacteria that oxidize ammonia are chemosynthetic, and they are part of the ordinary nitrogen cycle under your feet.",
+    "args": {
+      "lines": [
+        "The same logic carries",
+        "onto land. Soil bacteria",
+        "that oxidize"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "Hot springs host chemosynthetic microbes. Movile Cave in Romania is a sealed cave whose food web is built on chemosynthesis, with microbial mats feeding the animals living there.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The line between light and chemistry is blurrier than diagrams suggest",
+    "narration": "The deep sea is where the process is most dramatic and best documented as the base of whole animal communities, but it was never confined there.",
+    "args": {
+      "lines": [
+        "The deep sea is",
+        "where the process is",
+        "most dramatic"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "As you watch, notice which claims rest on what. The vent and seep communities were established by people going to them, seeing them, and sampling the animals.",
+    "args": {
+      "title": "How each claim was supported",
+      "items": [
+        "+direct observation at vents and seeps",
+        "+anatomy and blood chemistry of the tubeworm",
+        "+labelled carbon and gene surveys",
+        "?ocean-wide totals"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "The tubeworm's dependence on bacteria was established through its anatomy and blood chemistry.",
+    "args": {
+      "lines": [
+        "The tubeworm's dependence on",
+        "bacteria was established through",
+        "its anatomy"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "The hidden chemosynthesis in dark water, sediment and crust rests on laboratory measurements and gene surveys from individual samples.",
+    "args": {
+      "title": "How each claim was supported",
+      "items": [
+        "+direct observation at vents and seeps",
+        "+anatomy and blood chemistry of the tubeworm",
+        "+labelled carbon and gene surveys",
+        "?ocean-wide totals"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Those are different kinds of evidence, and the edit should not let footage of a vent stand in for a claim about the open ocean.",
+    "args": {
+      "lines": [
+        "Those are different kinds",
+        "of evidence, and the",
+        "edit should"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "This evidence does not tell you how much chemosynthesis the planet supports overall, or what fraction of deep-ocean carbon it accounts for.",
+    "args": {
+      "lines": [
+        "This evidence does not",
+        "tell you how much",
+        "chemosynthesis"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "Most of the seafloor has never been sampled for it, and many vents and seeps are known from a single expedition.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "New vent fields and seeps are still being found, so any list of sites is a list of where people have looked.",
+    "args": {
+      "lines": [
+        "New vent fields and",
+        "seeps are still being",
+        "found"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "Rates measured in a sealed sample may not match rates in the open ocean.",
+    "args": {
+      "lines": [
+        "Rates measured in a",
+        "sealed sample may not",
+        "match rates"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "And the subseafloor, which may hold a large share of this activity, is reached only by occasional drilling.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "We know where chemosynthesis can occur. We do not yet know how much of it is out there.",
+    "args": {
+      "lines": [
+        "We know where chemosynthesis",
+        "can occur. We do",
+        "not yet"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Closing",
+    "narration": "The tubeworm on the Gal\u00e1pagos Rift was the first clear sign. Everything since has widened the boundary rather than closed it.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Chemosynthesis occurs wherever chemistry offers energy and a microbe is in place to take it, and the map of those places is still being drawn.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  }
+]
