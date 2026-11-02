@@ -1,4 +1,7 @@
-"""Real NOAA footage inside the assembler.
+"""Real footage inside the assembler: NOAA ROV clips first, licence-checked
+stock clips (Pixabay / Mixkit / Pexels, owner ruling 2026-11-02) where NOAA has
+nothing that shows the episode's subject. visuals/assemble.py calls assign()
+and render_cut() for every episode it renders.
 
 `research/imagery_video.py` harvests rights-cleared ROV clips and records, per
 clip, three things this module exists to honour:
@@ -115,6 +118,14 @@ try:
 except Exception:                                   # harvester not importable
     EPISODE_SUBJECTS = {}
 
+# Stock footage (Pixabay / Mixkit / Pexels; owner ruling 2026-11-02, every
+# domain). Its licence gate and the episode subject words live with its
+# harvester, and this module re-runs that gate on every stock record before a
+# render. Imported unguarded: a renderer that cannot check a stock clip's
+# licence must not place one.
+sys.path.insert(0, os.path.join(ROOT, "research"))
+import imagery_stock_video as STOCK  # noqa: E402
+
 
 # ------------------------------------------------------------------- manifest
 
@@ -178,6 +189,13 @@ def verify(asset: dict) -> str:
     """
     rel = asset.get("local_file") or ""
     path = os.path.join(IMAGERY_DIR, rel)
+    if STOCK.is_stock(asset):
+        # Re-checked every time, cache or not: the licence wording is the
+        # rights decision for a stock clip, and it is read, not remembered.
+        ok, why = STOCK.stock_licence_ok(asset)
+        if not ok:
+            raise RightsRefusal(f"{asset.get('title')!r} ({asset.get('post_id')}): "
+                                f"stock licence refused - {why}")
     if rel in _VERIFIED:
         return _VERIFIED[rel]
     if not rel or not os.path.exists(path):
@@ -243,7 +261,13 @@ def place_cut(asset: dict, seconds: float, nth: int = 0) -> dict | None:
     span = hi - lo
     # Walk the offset so repeated beats off one clip are not the same frames.
     slots = max(1, int(span // seconds))
-    off = (nth // max(1, len(cands))) % slots
+    if nth // max(1, len(cands)) >= slots:
+        # Every distinct span of this clip is already on screen once. Wrapping
+        # round would show the same frames twice in one episode; the beat
+        # keeps its drawn treatment instead (a one-clip pool on fourteen
+        # ambient beats is the case this exists for).
+        return None
+    off = nth // max(1, len(cands))
     start = round(lo + off * seconds, 3)
     end = round(start + seconds, 3)
     if end > hi + 1e-9:                     # last slot short: pin to the tail
@@ -295,20 +319,55 @@ def _matches(asset: dict, pattern: str) -> bool:
     return bool(re.search(pattern, blob, re.I))
 
 
-def episode_pool(slug: str, assets: list[dict]) -> list[dict]:
+def episode_domain(slug: str) -> str:
+    return STOCK.domain_of(slug) or os.environ.get("HWK_DOMAIN", "deep-sea-ocean-science")
+
+
+def noaa_pool(slug: str, assets: list[dict]) -> list[dict]:
+    """NOAA clips for this episode: its hand-written SUBJECTS pattern, else -
+    deep sea only - a clip whose TITLE carries one of the episode's subject
+    phrases."""
+    noaa = [a for a in assets if not STOCK.is_stock(a)]
     pat = EPISODE_SUBJECTS.get(slug)
-    if not pat:
+    if pat:
+        return [a for a in noaa if _matches(a, pat)]
+    if episode_domain(slug) != "deep-sea-ocean-science":
         return []
-    return [a for a in assets if _matches(a, pat)]
+    phrases = STOCK.episode_phrases(slug)
+    return [a for a in noaa
+            if any(STOCK.phrase_in(p, a.get("title", "")) for p in phrases)]
+
+
+def stock_pool(slug: str, assets: list[dict]) -> list[dict]:
+    """Stock clips that show THIS episode's subject: harvested for one of its
+    subject phrases, and carrying that phrase in their own tags."""
+    if episode_domain(slug) not in STOCK.DOMAINS:
+        return []
+    phrases = STOCK.episode_phrases(slug)
+    return [a for a in assets if STOCK.is_stock(a)
+            and a.get("subject") in phrases
+            and STOCK.phrase_in(a["subject"], a.get("title", ""))]
+
+
+def episode_pool(slug: str, assets: list[dict], needed: int = 0) -> list[dict]:
+    """NOAA first, and only NOAA when it alone covers `needed` beats without
+    repeating a clip; stock fills the rest. NOAA stays preferred where it
+    matches; a stock clip never displaces one."""
+    noaa = noaa_pool(slug, assets)
+    if noaa and len(noaa) >= needed:
+        return noaa
+    return noaa + stock_pool(slug, assets)
 
 
 def subject_pool(subject: str, assets: list[dict]) -> list[dict]:
+    """Species beats are labelled with the species: NOAA clips only, never a
+    stock clip of a relative."""
     if subject in UNILLUSTRATABLE:
         return []
     pat = SUBJECT_FOOTAGE.get(subject)
     if not pat:
         return []
-    return [a for a in assets if _matches(a, pat)]
+    return [a for a in assets if not STOCK.is_stock(a) and _matches(a, pat)]
 
 
 def assign(plan: list[dict], durations: list[float], slug: str,
@@ -319,7 +378,8 @@ def assign(plan: list[dict], durations: list[float], slug: str,
     re-render is reproducible and a validator can assert against it.
     """
     assets = usable_assets() if assets is None else assets
-    amb = episode_pool(slug, assets)
+    amb = episode_pool(slug, assets,
+                       needed=sum(1 for b in plan if b.get("segment") == "ambient_drift"))
     out: list[dict | None] = [None] * len(plan)
     n_amb = 0
     per_subject: dict[str, int] = {}
@@ -402,7 +462,8 @@ def _caption_pngs(burner, t0: float, t1: float, workdir: str, prefix: str):
 
 
 def render_cut(cut: dict, out_clip: str, seconds: float, workdir: str,
-               credit: bool = True, burner=None, t0: float = 0.0) -> str:
+               credit: bool = True, burner=None, t0: float = 0.0,
+               frames: int | None = None) -> str:
     """Render one footage beat to a silent clip of exactly `seconds`.
 
     Re-checks the sha256 and the window containment immediately before the
@@ -425,8 +486,12 @@ def render_cut(cut: dict, out_clip: str, seconds: float, workdir: str,
     if burner is not None:
         layers += _caption_pngs(burner, t0, t0 + seconds, workdir, prefix)
 
+    # EXACT FRAMES, never `-t` as an input option: on ffmpeg 8.1.1 it returns
+    # the wrong frame count (CLAUDE.md, traps), and visuals/assemble.py
+    # allocates frames across the whole episode so picture and voice agree.
+    n = int(frames if frames is not None else round(seconds * FPS))
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
-           "-ss", f"{cut['start']:.3f}", "-t", f"{seconds:.3f}", "-i", src]
+           "-ss", f"{cut['start']:.3f}", "-i", src]
     for png, _, _ in layers:
         cmd += ["-i", png]
 
@@ -436,11 +501,19 @@ def render_cut(cut: dict, out_clip: str, seconds: float, workdir: str,
         chain.append(f"[v{k}][{k + 1}:v]overlay=0:0{en}[v{k + 1}]")
     last = f"[v{len(layers)}]"
     cmd += ["-an", "-filter_complex", ";".join(chain), "-map", last,
-            "-r", str(FPS), "-c:v", "libx264", "-pix_fmt", "yuv420p",
-            "-crf", "20", out_clip]
+            "-r", str(FPS), "-frames:v", str(n), "-c:v", "libx264",
+            "-pix_fmt", "yuv420p", "-crf", "20", out_clip]
     subprocess.run(cmd, check=True)
     for png, _, _ in layers:
         os.remove(png)
+    got = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
+                          "-count_packets", "-show_entries", "stream=nb_read_packets",
+                          "-of", "default=nw=1:nk=1", out_clip],
+                         capture_output=True, text=True).stdout.strip()
+    if got != str(n):
+        raise RuntimeError(f"{asset.get('title')!r}: footage beat rendered {got} "
+                           f"frame(s), {n} were allocated - picture would drift "
+                           f"from the narration")
     return out_clip
 
 

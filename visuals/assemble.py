@@ -91,7 +91,7 @@ def mix_bed(narration, out, duck_db=-32.0, seed=7):
 
 
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
-             music=True, burn_captions=False):
+             music=True, burn_captions=False, footage=True, slug=None):
     plan = json.load(open(plan_path))
     # A DOMAIN'S GRAPHICS NEVER APPEAR IN ANOTHER DOMAIN'S VIDEO (2026-11-01:
     # the deep-sea depth gauge on the rice episode). The active domain is
@@ -148,10 +148,29 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
         f"allocated {emitted} frame(s) = {emitted / FPS:.3f}s for {total_s:.3f}s "
         f"of narration; the mux would clip the last beat")
 
+    # REAL FOOTAGE on the beats visuals/footage.py may place it on (ambient
+    # drift; species beats with an exact NOAA match): NOAA first, licence-checked
+    # stock where NOAA has nothing that shows the episode's subject. Until
+    # 2026-11-02 nothing called footage.assign() at all - the placement module
+    # and its four validators existed, and every render since 4 Sep 2026 drew
+    # every beat (renders/*.render.json last showed footage that day).
+    import footage as FT                                  # noqa: PLC0415
+    slug = slug or os.path.splitext(os.path.basename(plan_path))[0]
+    cuts = FT.assign(plan, durations, slug) if footage else [None] * len(plan)
+    used = FT.summarise(cuts)
+    if used["footage_beats"]:
+        print(f"  footage: {used['footage_beats']} beat(s), "
+              f"{used['footage_seconds']}s from {len(used['clips'])} clip(s)", flush=True)
+
     clips, t0 = [], 0.0
     for i, b in enumerate(plan):
-        clips.append(render_beat(b, i, workdir, durations[i], burner, t0,
-                                 frames=frames[i]))
+        if cuts[i]:
+            clip = os.path.join(workdir, f"c{i:04d}.mp4")
+            clips.append(FT.render_cut(cuts[i], clip, frames[i] / FPS, workdir,
+                                       burner=burner, t0=t0, frames=frames[i]))
+        else:
+            clips.append(render_beat(b, i, workdir, durations[i], burner, t0,
+                                     frames=frames[i]))
         # Captions are drawn at the frame times actually emitted, so the words
         # cannot drift from the picture the drift correction just adjusted.
         t0 += frames[i] / FPS
@@ -195,7 +214,8 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
     total = probe(out_path)
     shutil.rmtree(workdir, ignore_errors=True)
     return {"output": out_path, "beats": len(plan), "duration_s": round(total,1),
-            "audio": bool(track), "timing": "audio" if audio_clips else "estimate"}
+            "audio": bool(track), "timing": "audio" if audio_clips else "estimate",
+            "footage": used}
 
 if __name__ == "__main__":
     import argparse
@@ -205,7 +225,10 @@ if __name__ == "__main__":
     ap.add_argument("--no-music", action="store_true")
     ap.add_argument("--burn-captions", action="store_true",
                     help="draw the measured caption track into the frames")
+    ap.add_argument("--no-footage", action="store_true",
+                    help="draw every beat; place no real footage")
     a = ap.parse_args()
     r = assemble(a.plan, a.out, a.audio_dir, a.master_audio,
-                 music=not a.no_music, burn_captions=a.burn_captions)
+                 music=not a.no_music, burn_captions=a.burn_captions,
+                 footage=not a.no_footage)
     print(json.dumps(r, indent=2))
