@@ -207,6 +207,18 @@ def _screened() -> tuple[list[dict], list[dict]]:
                     "why": f"names another channel, show or game ({ch}); "
                            f"the searcher wants that, not our episode"}
                 continue
+            # THE SAME VIDEO, named on the row (2026-11-02): the research for
+            # why-blobfish-look-weird lists "what blobfish actually looks like"
+            # as one of its own searches; two scripts answered it. Only an
+            # explicit same-video link refuses - never word overlap (owner:
+            # the repeat check blocks only the SAME video).
+            twin = r.get("same_video_as")
+            if twin and twin != r["slug"] and twin not in refused and (
+                    twin in published or any(x["slug"] == twin for x in rows)):
+                refused[r["slug"]] = {
+                    **r, "killed_by": "SAME_VIDEO", "matched": twin,
+                    "why": f"the same video as {twin} (its row says so)"}
+                continue
             keys = [(q, T.question_key(q)) for q in qs]
             if all(T.is_vague(k) for _, k in keys):
                 refused[r["slug"]] = {

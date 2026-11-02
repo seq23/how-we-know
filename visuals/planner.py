@@ -475,7 +475,8 @@ def plan(md_path, domain=None):
             out.append({"segment": seg, "seconds": round(dur(b["text"]),2),
                         "heading": h, "narration": b["text"], "args": args,
                         "from": "heuristic"})
-    return destagnate(out)
+    slug = os.path.splitext(os.path.basename(md_path))[0]
+    return picture_pass(destagnate(out), md, domain or script_domain(md), slug)
 
 
 MAX_RUN = 2   # never show the same segment type more than twice in a row
@@ -546,3 +547,182 @@ def plan_for_audio(slug, plans_dir=None, scripts_dir=None):
         with open(pf) as f:
             return json.load(f), "plan"
     return plan(os.path.join(scripts_dir or SCRIPTS_DIR, f"{slug}.md")), "script"
+
+
+# ---------------------------------------------------------------------------
+# PICTURES FIRST (hostile review, 2026-11-02; owner: "We need to optimize
+# everything for viewers").
+#
+# CONFIRMED: 55-68% of every video's shots were typographic cards repeating the
+# narration word for word, and "What does a goblin shark look like?" was
+# planned with no picture of the shark at all. The median viewer left at about
+# 1:46. So, on top of the section planning above, and WITHOUT changing a beat's
+# count, order or narration (the audio is indexed by beat position):
+#
+#   * a picture on screen within FIRST_PICTURE_S of the start;
+#   * never more than MAX_GAP_S without one;
+#   * typographic cards at most TEXT_MAX_SHARE of the running time, and a
+#     text_beat never repeats the narration: the heuristic/rhythm text_beat
+#     becomes a picture, and a title card shows the episode's question;
+#   * a "what does X look like" episode shows X in at least LOOK_LIKE_SHARE of
+#     its shots (verified public-domain records, visuals/segments_species.py);
+#   * anywhere else, a beat whose narration names exactly one covered animal
+#     may show it (segments_species.heuristic_beat - never a lookalike).
+#
+# A "picture" is a species_image (a verified still or NOAA footage of the
+# animal) or an ambient_drift beat, which visuals/footage.assign fills with the
+# episode's own licence-checked footage. Whether a render really carried
+# pictures is measured on the render by loop/render_gate.py's picture floor.
+# Length is never padded with words or cards: the 10-minute floor is met by
+# narration and pictures (owner, 2 Nov: aim for about 15 minutes).
+
+PICTURE_SEGMENTS = {"species_image", "ambient_drift", "material_image"}
+TEXT_CARDS = {"text_beat", "definition_card", "checklist_reveal", "contrast_pair"}
+FIRST_PICTURE_S = 5.0
+MAX_GAP_S = 15.0
+TEXT_MAX_SHARE = 0.25
+LOOK_LIKE_SHARE = 0.30
+_LOOK_LIKE = re.compile(r"\blooks? like\b|\blook (?:so )?(?:weird|strange)\b", re.I)
+
+
+def _title(md):
+    m = re.search(r"^# (.+)$", md or "", re.M)
+    return m.group(1).strip() if m else ""
+
+
+def _species():
+    try:
+        import segments_species as SPX
+        SPX.index()
+        return SPX
+    except Exception:
+        return None
+
+
+def look_like_subject(md, SPX=None):
+    """The species key a "what does X look like" title asks about, or None."""
+    SPX = SPX or _species()
+    t = _title(md)
+    if not SPX or not _LOOK_LIKE.search(t):
+        return None
+    hits = [h for h in SPX.match_subjects(t) if SPX.available(h[0])]
+    return hits[0][0] if len(hits) == 1 else None
+
+
+def is_picture(b):
+    return b["segment"] in PICTURE_SEGMENTS
+
+
+def _locked(b):
+    """Beats this pass never repaints: her own POV quote."""
+    return b["segment"] == "quote_card" or "[HUMAN]" in b.get("narration", "")
+
+
+def picture_pass(plan, md, domain, slug="", SPX=None):
+    SPX = SPX if SPX is not None else (_species() if domain == DEFAULT_DOMAIN else None)
+    subject = look_like_subject(md, SPX) if SPX else None
+    picks = {}
+
+    def species_args(key, label=""):
+        n = picks.get(key, 0)
+        picks[key] = n + 1
+        return {"subject": key, "label": label, "pick": n,
+                "zoom": (1.0, 1.15, 1.3)[n % 3]}
+
+    def to_picture(b, prefer=None):
+        hit = None
+        if SPX:
+            names = [h for h in SPX.match_subjects(b["narration"]) if SPX.available(h[0])]
+            if subject and any(k == subject for k, _ in names):
+                hit = (subject, next(f for k, f in names if k == subject))
+            elif len(names) == 1:
+                hit = names[0]
+            elif prefer:
+                hit = (prefer, "")
+        if hit:
+            b["segment"], b["args"] = "species_image", species_args(*hit)
+        else:
+            b["segment"], b["args"] = "ambient_drift", {"variant": len(picks) % 5}
+        b["from"] = b.get("from", "") + "+picture"
+
+    # 1. the narration's own text never becomes the on-screen text
+    title = _title(md)
+    for b in plan:
+        if _locked(b) or b["segment"] != "text_beat":
+            continue
+        if "title card" in (b.get("heading") or "").lower() and title:
+            b["args"] = {"lines": wrap_lines(title)}
+        else:
+            to_picture(b)
+    # 2. a beat that names one covered animal shows it
+    if SPX:
+        for b in plan:
+            if not _locked(b) and b["segment"] in TEXT_CARDS | {"ambient_drift"}:
+                names = [h for h in SPX.match_subjects(b["narration"]) if SPX.available(h[0])]
+                if len(names) == 1 or (subject and any(k == subject for k, _ in names)):
+                    to_picture(b)
+    # 3. typographic cards capped by running time
+    total = sum(b["seconds"] for b in plan) or 1.0
+    text = [b for b in plan if b["segment"] in TEXT_CARDS and not _locked(b)]
+    over = sum(b["seconds"] for b in text) - TEXT_MAX_SHARE * total
+    for b in text[1::2] + text[0::2]:
+        if over <= 0:
+            break
+        if "title card" in (b.get("heading") or "").lower():
+            continue
+        over -= b["seconds"]
+        to_picture(b)
+    # 4. a look-like episode shows its animal in >= LOOK_LIKE_SHARE of shots
+    if subject:
+        need = -(-int(LOOK_LIKE_SHARE * 100) * len(plan) // 100)
+        have = sum(1 for b in plan if b["segment"] == "species_image"
+                   and b["args"].get("subject") == subject)
+        order = ([b for b in plan if b["segment"] == "ambient_drift"]
+                 + [b for b in plan if b["segment"] in TEXT_CARDS]
+                 + [b for b in plan if not is_picture(b) and b["segment"] not in TEXT_CARDS])
+        for b in order:
+            if have >= need:
+                break
+            if _locked(b) or (b["segment"] == "species_image"):
+                continue
+            b["segment"], b["args"] = "species_image", species_args(subject)
+            b["from"] = b.get("from", "") + "+look-like"
+            have += 1
+    # 5. cadence: a picture within FIRST_PICTURE_S, then never a gap > MAX_GAP_S
+    t, last_pic_end = 0.0, 0.0
+    for i, b in enumerate(plan):
+        end = t + b["seconds"]
+        nxt = plan[i + 1] if i + 1 < len(plan) else None
+        # her POV quote cannot be repainted, so the beat BEFORE it carries the
+        # picture when the quote would otherwise stretch the gap
+        ahead = nxt["seconds"] if nxt is not None and _locked(nxt) else 0.0
+        if not is_picture(b) and not _locked(b):
+            if (t < FIRST_PICTURE_S and last_pic_end == 0.0 and i == 0) \
+                    or end + ahead - last_pic_end > MAX_GAP_S:
+                to_picture(b)
+        if is_picture(b):
+            last_pic_end = end
+        t = end
+    return plan
+
+
+def picture_report(plan):
+    """(first picture start s, longest gap s, text-card share, by-subject shares)."""
+    t, first, last, gap = 0.0, None, 0.0, 0.0
+    for b in plan:
+        if is_picture(b):
+            first = t if first is None else first
+            gap = max(gap, t - last)
+            last = t + b["seconds"]
+        t += b["seconds"]
+    gap = max(gap, t - last)
+    total = t or 1.0
+    text = sum(b["seconds"] for b in plan if b["segment"] in TEXT_CARDS) / total
+    subj = {}
+    for b in plan:
+        if b["segment"] == "species_image":
+            k = b["args"].get("subject")
+            subj[k] = subj.get(k, 0) + 1
+    return {"first_picture_s": first, "max_gap_s": round(gap, 2),
+            "text_share": round(text, 3),
+            "subject_share": {k: round(v / len(plan), 3) for k, v in subj.items()}}
