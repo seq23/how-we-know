@@ -277,7 +277,7 @@ try:
     batch_queue.food_made = lambda slug: slug in ("food-made", "food-aired")
     batch_queue.is_food = lambda r: (r.get("domain") if isinstance(r, dict)
                                      else "") == "food-science"
-    food_count = len(batch_queue.food_unmade())
+    food_unmade = sorted(r["slug"] for r in batch_queue.food_unmade())
 finally:
     (cadence.ordered_inventory, cadence.ledger.inventory,
      cadence.ledger.published_slugs, batch_queue.food_batch_made,
@@ -287,9 +287,12 @@ if rw["publishable"] != 2:
     fails.append(f"runway counted {rw['publishable']} publishable, want 2 "
                  f"(deep-a + the food pipeline's unaired script; batch-made "
                  f"food scripts never air)")
-if food_count != 1:
-    fails.append(f"food rows the food pipeline has yet to make: {food_count}, "
-                 f"want 1 (food-todo)")
+# A batch-scripted food row is food-pipeline SUPPLY since 2 Nov 2026: the food
+# author takes its validated script as a part (loop/food_author.next_parts).
+# A made or aired row is not.
+if food_unmade != ["food-batch-1", "food-todo"]:
+    fails.append(f"food rows the food pipeline has yet to make: {food_unmade}, "
+                 f"want ['food-batch-1', 'food-todo'] (not food-made, not food-aired)")
 
 # ------------- 4. relevance: grown-seed junk never reaches the scored queue
 import re                                                  # noqa: E402

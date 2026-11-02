@@ -8,9 +8,12 @@
 #                                        battery interrupted; a no-op in well
 #                                        under a second otherwise (2026-10-12)
 #
-#   TUE+THU 22:58  bin/food-session.sh   the food lane: footage, voice, render,
-#                                        stitch, shelve one food episode a week
-#                                        (2026-10-25; it holds the batch's lock)
+#   SUN+MON+WED+THU 22:58  bin/food-session.sh   the food lane: footage, voice,
+#                                        render, stitch, shelve - two food
+#                                        episodes a week, one per Wed and Sat
+#                                        slot (2026-11-02; was Tue+Thu, one a
+#                                        week, which left a food day empty
+#                                        every week). It holds the batch's lock.
 #
 # ONE NARRATOR at a time (the food agent takes the batch's own lock), because
 # only one thing here may narrate at once. tuesday and
@@ -155,11 +158,16 @@ print_one(){
     batch)        plist batch    batch-session.sh - 23 ;;
     nightquit)    plist nightquit night-quit.sh - 22 55 ;;
     batch-resume) plist_interval batch-resume 300 batch-session.sh --resume-if-interrupted ;;
-    # THE FOOD LANE (2026-10-25): Tuesday and Thursday at 22:58, two minutes
-    # before the batch, holding the batch's own lock - so it is the ONE
-    # narrator on those nights. One food episode a week over two nights; the
-    # reason is written at the top of bin/food-session.sh.
-    food)         plist_weekdays food food-session.sh 22 58 2 4 ;;
+    # THE FOOD LANE: Sunday, Monday, Wednesday and Thursday at 22:58, two
+    # minutes before the batch, holding the batch's own lock - so it is the
+    # ONE narrator on those nights. Two food episodes a week, each over two
+    # nights: Sun+Mon finish is shelved Tuesday morning, >= 24 h before
+    # Wednesday's 10:00 slot; Wed+Thu finish is shelved Friday morning, before
+    # Saturday's. Tue, Fri and Sat stay the batch's (deep sea and materials,
+    # ~3 episodes a night), and a food night with nothing to render exits in
+    # seconds so the 23:00 batch runs. Until 2 Nov 2026 it was Tue+Thu only:
+    # one food episode a week for two food days, so one was empty every week.
+    food)         plist_weekdays food food-session.sh 22 58 0 1 3 4 ;;
     # EVERY 300 s AND AT LOGIN: resume a food night that died (2026-10-25: the
     # Mac went down mid-narration and nothing re-ran it). The decision is
     # loop/food_lane.py resume-gate's; it exits in well under a second otherwise.

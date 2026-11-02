@@ -12,7 +12,7 @@ WHAT THIS PROVES
      the plists bin/loop-install-launchd.sh writes), with every launchd agent
      taken as loaded - and, on this Mac, against the real `launchctl list`.
   2. The food lane is a real runner: com.howweknow.food is in the installer,
-     fires Tuesday and Thursday at 22:58, runs bin/food-session.sh, and the
+     fires Sunday, Monday, Wednesday and Thursday at 22:58, runs bin/food-session.sh, and the
      cloud half (loop-food-author.yml) has an uncommented cron invoking
      loop/food_author.py.
   NEGATIVE PROOFS - each break must fail V73, naming the right thing:
@@ -80,8 +80,10 @@ raw = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--
 pl = plistlib.loads(raw.encode())
 cal = pl.get("StartCalendarInterval") or []
 examined += 1
-if sorted((c.get("Weekday"), c.get("Hour"), c.get("Minute")) for c in cal) != [(2, 22, 58), (4, 22, 58)]:
-    fails.append(f"com.howweknow.food does not fire Tue + Thu 22:58: {cal}")
+if sorted((c.get("Weekday"), c.get("Hour"), c.get("Minute")) for c in cal) != [
+        (0, 22, 58), (1, 22, 58), (3, 22, 58), (4, 22, 58)]:
+    fails.append(f"com.howweknow.food does not fire Sun + Mon + Wed + Thu 22:58 "
+                 f"(two nights before each of food's two weekly slots): {cal}")
 if "bin/food-session.sh" not in " ".join(pl.get("ProgramArguments") or []):
     fails.append("com.howweknow.food does not run bin/food-session.sh")
 # 2a. a food night that dies is resumed: com.howweknow.food-resume (2026-10-25)
@@ -140,7 +142,7 @@ with tempfile.TemporaryDirectory() as td:
     d = Path(td) / "workflows"
     shutil.copytree(ROOT / ".github" / "workflows", d)
     p = d / "loop-food-author.yml"
-    p.write_text(p.read_text().replace("    - cron: '0 14 * * 1'", "    # - cron: '0 14 * * 1'"))
+    p.write_text(p.read_text().replace("    - cron: '0 14 * * 1,4'", "    # - cron: '0 14 * * 1,4'"))
     expect_fail("commented cron", run(workflows_dir=d), "has no uncommented schedule cron")
 
 # 7. an agent nothing loaded

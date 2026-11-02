@@ -370,9 +370,11 @@ def food_unmade() -> list[dict]:
         pub = set(ledger.published_slugs())
     except Exception:                                      # never break a count
         pub = set()
+    # A batch-made row (food_batch_made) counts: since 2 Nov 2026 the food
+    # author takes its validated script as a part (loop/food_author.next_parts).
     return [r for r in queued_entries()
             if is_food(r) and not food_made(r["slug"])
-            and not food_batch_made(r["slug"]) and r["slug"] not in pub]
+            and not r.get("first_video_parts") and r["slug"] not in pub]
 
 
 # FOOD EPISODES (2026-10-13). A food-science episode is written, voiced and

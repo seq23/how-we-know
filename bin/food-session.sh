@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# THE FOOD LANE'S MAC NIGHT (launchd com.howweknow.food, Tue and Thu 22:58).
+# THE FOOD LANE'S MAC NIGHT (launchd com.howweknow.food, Sun, Mon, Wed and Thu 22:58).
 #
 #   bin/food-session.sh            # render the in-flight food episode, then shelve it
 #   bin/food-session.sh --slug S   # a named episode (a hand proof)
@@ -19,17 +19,17 @@
 # 23:00 batch, so on a food night the batch finds the lock held, says so and
 # exits, and batch-resume does the same every 300 s while this runs.
 #
-# CADENCE, AND WHY (2026-10-25). One food episode a week, rendered over two
-# nights. The long-form target is 4 a week across three niches (memory,
-# docs/CHANNEL-PLAN.md), so food's share is about one; the rotation's
-# Wednesday and Saturday food slots take it as it comes. A 30-minute episode
-# is ~25-30 minutes of new narration - most of one 23:00-07:00 window on this
-# Mac - plus five pieces to render, so it needs TWO nights, and the other five
-# nights a week stay the batch's (deep sea and materials). Tuesday and
-# Thursday: Monday's cloud author lane has the script ready for Tuesday, and
-# Thursday's finish is shelved Friday morning, at least 24 hours ahead of
-# Saturday's food slot. Everything resumes from disk, so a night that runs
-# out of window is continued by the next food night.
+# CADENCE, AND WHY (2026-11-02; was Tue+Thu, one a week, from 2026-10-25).
+# Two food episodes a week, each rendered over two nights: the cadence is 6
+# a week (the owner's rotation) and food owns Wednesday and Saturday, so one
+# a week left a food day empty every week (#271). A 30-minute episode is
+# ~25-30 minutes of new narration - most of one 23:00-07:00 window on this
+# Mac - plus five pieces. Sunday + Monday: Thursday's cloud author lane has
+# the script ready, and Monday night's finish is shelved Tuesday morning,
+# >= 24 h ahead of Wednesday's slot. Wednesday + Thursday: Monday's script,
+# shelved Friday morning for Saturday. Tuesday, Friday and Saturday stay the
+# batch's (deep sea and materials, ~3 episodes a night). Everything resumes
+# from disk, so a night that runs out of window is continued by the next one.
 #
 # A NIGHT THAT DIES IS RESUMED THE SAME NIGHT (2026-10-25). The Mac went down
 # at 19:25-19:56 mid-narration and the night ended with no line at all; nothing
