@@ -33,6 +33,8 @@ LANES: dict[str, dict] = {
     # ---- the cloud (GitHub Actions)
     "mon-draft":        {"runner": "workflow", "file": "loop-mon-draft.yml", "entry": "loop/draft.py",
                          "makes": "author", "domains": [DEEP, MATS]},
+    "daily-runway":     {"runner": "workflow", "file": "loop-daily-runway.yml", "entry": "loop/draft.py",
+                         "makes": "author", "domains": [DEEP, MATS]},
     "food-author":      {"runner": "workflow", "file": "loop-food-author.yml",
                          "entry": "loop/food_author.py", "makes": "author", "domains": [FOOD]},
     "demand":           {"runner": "workflow", "file": "loop-demand.yml", "entry": "loop/demand.py"},

@@ -1775,3 +1775,23 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   script is not stamped calm"; restored, green. `test_food_author_pace.py` and
   `test_food_runtime_fits_every_rate.py` now pin the old window/rate for the old style and the
   calm window for new episodes.
+## 2026-11-02 — Daily runway check; an empty day may take a ready episode from any topic
+
+- **Found (CONFIRMED, hostile review findings 3 and 8):** batch.log 28-31 Oct read "to narrate
+  now: none" four nights running while 12 of the next 24 publish days were empty; scripts were
+  written only on Mondays and the runway alarm fired on 1 Nov, after the gap.
+  `are-sea-pigs-real` was dated 30 Nov while Wed 4 Nov sat empty, because each weekday belongs to
+  one topic.
+- **Built:** `loop/draft.py --daily` (workflow `loop-daily-runway.yml`, 19:00 CT, so a script
+  promoted today is narrated at 23:00 CT) authors and promotes scripts the same day whenever the
+  runway is under target OR the Mac holds fewer than two nights (8) of written scripts, through
+  the same `rebuild_runway_if_short` - same validation, $0 route and `runway.rebuild_max_extra`
+  cap as Monday. Otherwise the self-resolving stop RUNWAY_FULL.
+- **DECIDED (the coordinator's call, reversible, under her viewer-first ruling of 2 Nov):** an
+  empty publish day within 14 days goes to a ready episode from ANY topic when the day's own
+  topic has nothing ready in that run (`backfill.schedule_slugs`, BORROW_DAYS). A topic with a
+  ready episode always keeps its own day. Reverse by setting BORROW_DAYS to 0.
+- **Finding 18:** `backfill.rotation_slots` skipped an unreadable publish time, leaving its day
+  bookable twice; it now refuses to schedule.
+- Guard: `loop/tests/test_calendar_fill.py`. Negative proofs: no borrowing, skipping the
+  unreadable stamp, and `force=False` each turn it red; restored, green.

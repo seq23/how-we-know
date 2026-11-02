@@ -282,7 +282,10 @@ def rotation_slots(start: datetime, n: int, days: tuple[int, ...],
         try:
             dt = datetime.fromisoformat(t.replace("Z", "+00:00")).astimezone(PUBLISH_TZ)
         except ValueError:
-            continue
+            # Skipping it left that day looking free, so it could be booked
+            # twice (hostile review 2026-11-02, finding 18). Refuse instead.
+            raise ValueError(f"unreadable publish time {t!r} on the calendar; "
+                             f"refusing to schedule rather than double-book its day") from None
         by_day[dt.date()] = by_day.get(dt.date(), 0) + 1
     day = start.astimezone(PUBLISH_TZ).date()
     for _ in range(4000):
@@ -494,6 +497,13 @@ def schedule_for(led: dict, n: int, per_week: int,
     return rotation_slots(base, n, days, taken)
 
 
+BORROW_DAYS = 14
+# Slots schedule_slugs handed to another topic's empty day this process;
+# upload_one marks those ledger rows `borrowed_day` so V20 and the repackage
+# reschedule know the day was given on purpose.
+BORROWED: set[str] = set()
+
+
 def schedule_slugs(led: dict, slugs: list[str], per_week: int) -> list[datetime | None]:
     """One slot per slug, each on ITS OWN domain's rotation weekdays, in the
     order given; slots handed out here count as taken for the next. A slug
@@ -503,6 +513,13 @@ def schedule_slugs(led: dict, slugs: list[str], per_week: int) -> list[datetime 
     taken = set(occupied(led))
     split = domain_weekdays(config(), per_week)
     base = datetime.now(timezone.utc) + timedelta(hours=MIN_LEAD_HOURS)
+    # AN EMPTY DAY GOES TO A READY EPISODE FROM ANY TOPIC (coordinator's call
+    # under her viewer-first ruling, 2 Nov 2026; DECISION-LOG). Only a day
+    # within BORROW_DAYS whose own topic has nothing in THIS run may be
+    # borrowed - a topic with a ready episode always keeps its day.
+    doms = {_dom.domain_of_slug(s) or "deep-sea-ocean-science" for s in slugs}
+    spare = tuple(sorted(wd for d, wds in split.items() if d not in doms for wd in wds))
+    horizon = base + timedelta(days=BORROW_DAYS)
     out: list[datetime | None] = []
     for slug in slugs:
         days = split.get(_dom.domain_of_slug(slug) or "deep-sea-ocean-science")
@@ -510,6 +527,11 @@ def schedule_slugs(led: dict, slugs: list[str], per_week: int) -> list[datetime 
             out.append(None)
             continue
         t = rotation_slots(base, 1, days, taken)[0]
+        if spare:
+            b_ = rotation_slots(base, 1, spare, taken)[0]
+            if b_ < t and b_ <= horizon:
+                t = b_
+                BORROWED.add(t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
         taken.add(t.isoformat())
         out.append(t)
     return out
@@ -569,6 +591,7 @@ def upload_one(st, token: str, slug: str, question: str, render: Path,
         "title": payload["snippet"]["title"],
         "uploaded_at": now(), "privacy": "private",
         "scheduled_publish_at": stamp,
+        **({"borrowed_day": True} if stamp in BORROWED else {}),
         "note": f"{lane}: scheduled, not yet public"})
     led["updated"] = now()
     (LOOP / "state" / "ledger.json").write_text(json.dumps(led, indent=2) + "\n")

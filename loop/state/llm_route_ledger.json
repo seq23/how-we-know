@@ -581,36 +581,6 @@
     ],
     "nvidia/nemotron-3-ultra-550b-a55b:free": [
       {
-        "lane": "test_llm_routing.py",
-        "latency_s": null,
-        "outcome": "failed_validation",
-        "ts": "2026-10-30T22:40:46Z"
-      },
-      {
-        "lane": "test_llm_routing.py",
-        "latency_s": 0.0,
-        "outcome": "error",
-        "ts": "2026-10-30T22:40:46Z"
-      },
-      {
-        "lane": "test_claude_subscription_route.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:43:44Z"
-      },
-      {
-        "lane": "test_claude_subscription_route.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:43:44Z"
-      },
-      {
-        "lane": "test_claude_subscription_route.py",
-        "latency_s": 0.0,
-        "outcome": "answered",
-        "ts": "2026-10-30T22:43:44Z"
-      },
-      {
         "lane": "test_claude_subscription_route.py",
         "latency_s": 0.0,
         "outcome": "answered",
@@ -699,6 +669,36 @@
         "latency_s": null,
         "outcome": "failed_validation",
         "ts": "2026-11-01T04:08:28Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-02T21:24:59Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-02T21:24:59Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-02T21:24:59Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-02T21:25:00Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-02T21:25:00Z"
       }
     ],
     "nvidia/nemotron-3.5-lightning:free": [

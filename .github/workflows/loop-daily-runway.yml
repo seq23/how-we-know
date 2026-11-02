@@ -1,0 +1,101 @@
+name: loop · daily 19:00 CT · runway check (author the shortfall the same day, $0)
+
+# Hostile review 2026-11-02 (findings 3 and 8): scripts were written only on
+# Mondays, so the Mac sat idle four nights with nothing to narrate while the
+# calendar emptied. Every day at 19:00 CT this authors and promotes scripts
+# when the runway is under target or the Mac's written queue is under two
+# nights - in time for the 23:00 CT narration. Same validation, $0 route and
+# per-run cap as Monday (loop/draft.py rebuild_runway_if_short).
+on:
+  schedule:
+    - cron: '0 19 * * *'  # America/Chicago, all year
+      timezone: America/Chicago
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  daily-runway:
+    # DAILY_BUDGET_MIN (120) + setup and validation; done by 21:20 CT,
+    # before the Mac's 23:00 CT narration pulls main.
+    timeout-minutes: 140
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      # Owner 2026-10-12: "use my claude subscription usage in advance of the
+      # $0 openrouter". The headless Claude Code CLI, pinned; loop/llm_router.py
+      # asks it first and falls back to the $0 list on any failure.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the Claude Code CLI (subscription tier, pinned)
+        run: npm install -g @anthropic-ai/claude-code@2.1.296
+
+      # ACT ON THE STATE THIS JOB WILL BE JUDGED AGAINST.
+      #
+      # A run's SHA is pinned when it is QUEUED, not when it starts. Every lane
+      # in the `loop-state` concurrency group waits behind the others, so a lane
+      # routinely sits in the queue while another pushes a new ledger — then
+      # checks out the older commit it was pinned to.
+      #
+      # `bin/loop-stage.sh` pulls at the END of each stage, so state moves
+      # forward mid-job. On 2026-09-07 that produced a failure that looked like a
+      # caption bug and was not: reach's captions stage ran against a ledger with
+      # 13 videos, the pull after it brought in two the upload lane had just
+      # added, and V16 then failed for two videos the captions stage never had a
+      # chance to see (run 34136862505). Neither stage was wrong.
+      #
+      # Pulling here means every stage in the job, and the validators that judge
+      # them, read the same state.
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          before="$(git rev-parse --short HEAD)"
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+          after="$(git rev-parse --short HEAD)"
+          if [ "$before" = "$after" ]; then
+            echo "already current at $after"
+          else
+            echo "advanced $before -> $after (queued behind another lane's push)"
+          fi
+      # Print-only: shows whether the subscription tier answers today. Never
+      # fails the job; the stage falls back to the $0 route by itself. Same
+      # flags as loop/llm_router.py (not --bare: --bare never reads the OAuth
+      # token).
+      - name: Probe the Claude subscription tier (print only)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          cd "$(mktemp -d)"
+          { claude -p --output-format json --model opus --max-turns 1 --tools "" \
+              --no-session-persistence --setting-sources "" --strict-mcp-config \
+              --disable-slash-commands --exclude-dynamic-system-prompt-sections \
+              --system-prompt "Answer in one word." <<< "Reply with exactly: ok" \
+            | python3 -c 'import json,sys; d=json.load(sys.stdin); print("[claude-route] probe:", d.get("subtype"), "is_error=%s" % d.get("is_error"), repr(str(d.get("result"))[:80]))'; } \
+            || echo "[claude-route] probe failed; the stage falls back to the \$0 route"
+      - name: Author today's shortfall
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The authoring lane. Absent -> a named OPENROUTER_KEY_MISSING stop
+          # and the week ships whatever inventory covers; never a crash.
+          # No OPENROUTER_MODEL here since 2026-10-11: loop/llm_router.py
+          # picks from config/llm_routing.json, which holds $0 models only.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Her Claude subscription answers first (prepaid, no per-call bill);
+          # absent or failing -> the $0 OpenRouter list above, unchanged.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bin/loop-stage.sh daily-runway loop/draft.py --daily

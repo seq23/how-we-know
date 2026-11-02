@@ -129,7 +129,8 @@ def brief_for(topic: dict, week: str) -> Path:
 
 def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
                             skip_slugs: set[str],
-                            deadline: float | None = None) -> None:
+                            deadline: float | None = None,
+                            force: bool = False) -> None:
     """A runway warning that only ever LOGGED is a warning nobody has to act
     on until it is nearly too late. 2026-09-03: `runway.warn_weeks`/
     `critical_weeks` existed only as a number in a report; nothing ran the
@@ -169,6 +170,11 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
     # only the ones short by their own count (run 41341136790 authored 4
     # materials scripts and left deep sea's 15 topics untouched).
     if rw["weeks_remaining"] < target and "any" not in short:
+        short = list(short) + ["any"]
+    # THE MAC'S OWN QUEUE (daily check, 2026-11-02): weeks of runway can read
+    # "ok" while the Mac has nothing written to narrate tonight (28-31 Oct:
+    # "to narrate now: none" four nights running). `force` authors anyway.
+    if force and "any" not in short:
         short = list(short) + ["any"]
     if not short:
         st.note(f"runway rebuild: not needed - {rw['message']}")
@@ -686,5 +692,50 @@ def main() -> None:
                                 deadline=deadline)
 
 
+# ---------------------------------------------------------------- daily check
+#
+# CONFIRMED 2026-11-02 (hostile review, findings 3 and 8): the Mac sat idle
+# 28-31 Oct with nothing written to narrate while 12 of the next 24 publish
+# days were empty; scripts were only written on Mondays, and the runway alarm
+# fired on 1 Nov, after the gap. This runs EVERY day (loop-daily-runway.yml,
+# 19:00 CT, so a script promoted today is narrated tonight at 23:00 CT): when
+# the runway is under target OR the Mac's written-but-unmade queue is under
+# MAC_BUFFER (two nights of narration), it authors and promotes scripts the
+# same day through rebuild_runway_if_short - the same validation, the same
+# $0 route and the same per-run cap (runway.rebuild_max_extra) as Monday.
+MAC_BUFFER = 8                    # ~4 episodes a night x 2 nights
+DAILY_BUDGET_MIN = 120
+
+
+def mac_queue() -> list[str]:
+    """Written scripts not yet on YouTube: what the Mac can make next."""
+    live = {r["slug"] for r in ledger.load()["published"] if not r.get("withdrawn_at")}
+    return [s for s in batch_queue.written_slugs() if s not in live]
+
+
+def daily() -> None:
+    cfg = config()
+    per_week, _ = cadence.effective(explain=True)
+    with Stage("daily-runway", week_id()) as st:
+        q = mac_queue()
+        rw = cadence.runway(per_week)
+        force = len(q) < MAC_BUFFER
+        st.note(f"runway {rw['message']}; the Mac has {len(q)} written "
+                f"script(s) to make (buffer {MAC_BUFFER})")
+        used_ids = [r.get("pov_id") for r in ledger.load()["published"] if r.get("pov_id")]
+        rebuild_runway_if_short(st, cfg, per_week, used_ids, set(),
+                                deadline=time.monotonic() + DAILY_BUDGET_MIN * 60,
+                                force=force)
+        if not st.units:
+            st.named_stop(
+                "RUNWAY_FULL",
+                f"nothing to author today: {rw['message']}; the Mac has {len(q)} "
+                f"written script(s) to make",
+                unblock="Nothing to run. The check repeats tomorrow.")
+
+
 if __name__ == "__main__":
-    main()
+    if "--daily" in sys.argv[1:]:
+        daily()
+    else:
+        main()
