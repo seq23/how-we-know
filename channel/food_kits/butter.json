@@ -1,0 +1,147 @@
+{
+ "_why": "visuals/food_kits.py; written by loop/food_author.py",
+ "food": "butter",
+ "label": "BUTTER",
+ "words": [
+  "butter"
+ ],
+ "queries": [
+  {
+   "query": "butter",
+   "uses": [
+    "subject",
+    "scale"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "butter close up",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "butter slow motion",
+   "uses": [
+    "subject",
+    "pour"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "butter macro",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "butter kitchen",
+   "uses": [
+    "subject",
+    "process"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "butter food",
+   "uses": [
+    "subject"
+   ],
+   "take": 2,
+   "sound": null
+  }
+ ],
+ "off": [
+  "cartoon",
+  "drawing",
+  "logo",
+  "advert"
+ ],
+ "word_uses": [
+  [
+   "butter",
+   [
+    "subject"
+   ]
+  ],
+  [
+   "pour",
+   [
+    "pour",
+    "liquid"
+   ]
+  ],
+  [
+   "drip",
+   [
+    "drip",
+    "liquid"
+   ]
+  ],
+  [
+   "melt",
+   [
+    "melt",
+    "liquid"
+   ]
+  ],
+  [
+   "crystal",
+   [
+    "crystal",
+    "macro"
+   ]
+  ],
+  [
+   "molecule",
+   [
+    "macro"
+   ]
+  ],
+  [
+   "heat",
+   [
+    "heat",
+    "subject"
+   ]
+  ],
+  [
+   "roast",
+   [
+    "roast"
+   ]
+  ],
+  [
+   "field",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "farm",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "inside",
+   [
+    "macro"
+   ]
+  ]
+ ],
+ "diagram": {
+  "key": "butter-cross-macro",
+  "subject": "butter",
+  "prompt": "a butter cut open in cross-section, its inner structure glowing softly, extreme macro, realistic"
+ }
+}

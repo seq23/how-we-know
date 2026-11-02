@@ -362,209 +362,22 @@
       "queued": "2026-11-02"
     },
     {
-      "slug": "how-does-butter-get-made-from-cream",
+      "slug": "what-is-inside-butter-rice-meat",
       "domain": "food-science",
-      "title": "How does butter get made from cream?",
-      "query": "how does butter get made from cream",
+      "title": "How does butter get made from cream, rice get sticky and meat need to rest after cooking?",
+      "query": "how does butter get made from cream rice get sticky and meat need to rest after cooking",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.427 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+        "reason": "an episode of three gated food rows, each of which passed: how-does-butter-get-made-from-cream: demand 0.427 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling.; why-does-rice-get-sticky: demand 0.322 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling.; why-does-meat-need-to-rest-after-cooking: demand 0.303 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
       },
-      "demand": {
-        "demand_index": 0.4274,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "butter",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "how does cream turn into butter"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:13:56.626848+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.614,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.375,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 2218591.5,
-        "p90_views": 8459259,
-        "median_subscribers": 1695000.0,
-        "channels_under_100k_subs": 4,
-        "median_age_days": 1045,
-        "published_last_365d": 3,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.11,
-          "view_ceiling": 0.093,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:28.523716+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5123,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 90% lexical title gap, but median 2,218,592 views and 1,695,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "why-does-rice-get-sticky",
-      "domain": "food-science",
-      "title": "Why does rice get sticky?",
-      "query": "why does rice get sticky",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.322 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3222,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "sticky",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does rice get mushy"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:12.671858+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.667,
-        "title_gap": 0.947,
-        "title_coverage_mean": 0.579,
-        "strong_match_count": 1,
-        "results_examined": 19,
-        "median_views": 314982,
-        "p90_views": 3537616,
-        "median_subscribers": 1110000,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 1585,
-        "published_last_365d": 2,
-        "interpretation": "1 of 19 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.947,
-          "incumbent_subs": 0.136,
-          "view_ceiling": 0.215,
-          "staleness": 0.895
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:50.016488+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.4636,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (94% of top-20 titles miss the question) but thin demand (0.32) -- uncontested because few ask it."
-    },
-    {
-      "slug": "why-does-meat-need-to-rest-after-cooking",
-      "domain": "food-science",
-      "title": "Why does meat need to rest after cooking?",
-      "query": "why does meat need to rest after cooking",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.303 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3031,
-        "autocomplete_completions": 0,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "after",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:09.088767+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.699,
-        "title_gap": 0.95,
-        "title_coverage_mean": 0.28,
-        "strong_match_count": 1,
-        "results_examined": 20,
-        "median_views": 60071.5,
-        "p90_views": 9750524,
-        "median_subscribers": 104500.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 863,
-        "published_last_365d": 4,
-        "interpretation": "1 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.95,
-          "incumbent_subs": 0.283,
-          "view_ceiling": 0.317,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:45.111895+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.4603,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.30) -- uncontested because few ask it."
+      "first_video_parts": [
+        "how does butter get made from cream",
+        "why does rice get sticky",
+        "why does meat need to rest after cooking"
+      ],
+      "made_by": "loop/food_author.py + bin/food-session.sh (scripts/food/, rendered as pieces and stitched)",
+      "queued": "2026-11-02"
     },
     {
       "slug": "what-is-inside-chili-coffee-honey",
@@ -1998,6 +1811,214 @@
       },
       "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it.",
       "episode": "what-is-inside-chocolate-steak-bread"
+    },
+    {
+      "slug": "how-does-butter-get-made-from-cream",
+      "domain": "food-science",
+      "title": "How does butter get made from cream?",
+      "query": "how does butter get made from cream",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.427 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4274,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "butter",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how does cream turn into butter"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:13:56.626848+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.614,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.375,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 2218591.5,
+        "p90_views": 8459259,
+        "median_subscribers": 1695000.0,
+        "channels_under_100k_subs": 4,
+        "median_age_days": 1045,
+        "published_last_365d": 3,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.11,
+          "view_ceiling": 0.093,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:28.523716+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5123,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 90% lexical title gap, but median 2,218,592 views and 1,695,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "episode": "what-is-inside-butter-rice-meat"
+    },
+    {
+      "slug": "why-does-rice-get-sticky",
+      "domain": "food-science",
+      "title": "Why does rice get sticky?",
+      "query": "why does rice get sticky",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.322 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3222,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "sticky",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does rice get mushy"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:12.671858+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.667,
+        "title_gap": 0.947,
+        "title_coverage_mean": 0.579,
+        "strong_match_count": 1,
+        "results_examined": 19,
+        "median_views": 314982,
+        "p90_views": 3537616,
+        "median_subscribers": 1110000,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 1585,
+        "published_last_365d": 2,
+        "interpretation": "1 of 19 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.947,
+          "incumbent_subs": 0.136,
+          "view_ceiling": 0.215,
+          "staleness": 0.895
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:50.016488+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4636,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (94% of top-20 titles miss the question) but thin demand (0.32) -- uncontested because few ask it.",
+      "episode": "what-is-inside-butter-rice-meat"
+    },
+    {
+      "slug": "why-does-meat-need-to-rest-after-cooking",
+      "domain": "food-science",
+      "title": "Why does meat need to rest after cooking?",
+      "query": "why does meat need to rest after cooking",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.303 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3031,
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "after",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:09.088767+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.699,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.28,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 60071.5,
+        "p90_views": 9750524,
+        "median_subscribers": 104500.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 863,
+        "published_last_365d": 4,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.283,
+          "view_ceiling": 0.317,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:45.111895+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4603,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.30) -- uncontested because few ask it.",
+      "episode": "what-is-inside-butter-rice-meat"
     }
   ],
   "first_video": [
@@ -2017,5 +2038,5 @@
     "why does popcorn pop",
     "why does salt make food taste better"
   ],
-  "queue_length": 12
+  "queue_length": 10
 }

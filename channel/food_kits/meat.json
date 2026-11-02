@@ -1,0 +1,147 @@
+{
+ "_why": "visuals/food_kits.py; written by loop/food_author.py",
+ "food": "meat",
+ "label": "MEAT",
+ "words": [
+  "meat"
+ ],
+ "queries": [
+  {
+   "query": "meat",
+   "uses": [
+    "subject",
+    "scale"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "meat close up",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "meat slow motion",
+   "uses": [
+    "subject",
+    "pour"
+   ],
+   "take": 3,
+   "sound": null
+  },
+  {
+   "query": "meat macro",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "meat kitchen",
+   "uses": [
+    "subject",
+    "process"
+   ],
+   "take": 2,
+   "sound": null
+  },
+  {
+   "query": "meat food",
+   "uses": [
+    "subject"
+   ],
+   "take": 2,
+   "sound": null
+  }
+ ],
+ "off": [
+  "cartoon",
+  "drawing",
+  "logo",
+  "advert"
+ ],
+ "word_uses": [
+  [
+   "meat",
+   [
+    "subject"
+   ]
+  ],
+  [
+   "pour",
+   [
+    "pour",
+    "liquid"
+   ]
+  ],
+  [
+   "drip",
+   [
+    "drip",
+    "liquid"
+   ]
+  ],
+  [
+   "melt",
+   [
+    "melt",
+    "liquid"
+   ]
+  ],
+  [
+   "crystal",
+   [
+    "crystal",
+    "macro"
+   ]
+  ],
+  [
+   "molecule",
+   [
+    "macro"
+   ]
+  ],
+  [
+   "heat",
+   [
+    "heat",
+    "subject"
+   ]
+  ],
+  [
+   "roast",
+   [
+    "roast"
+   ]
+  ],
+  [
+   "field",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "farm",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "inside",
+   [
+    "macro"
+   ]
+  ]
+ ],
+ "diagram": {
+  "key": "meat-cross-macro",
+  "subject": "meat",
+  "prompt": "a meat cut open in cross-section, its inner structure glowing softly, extreme macro, realistic"
+ }
+}
