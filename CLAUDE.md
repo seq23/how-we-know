@@ -51,11 +51,18 @@ and say what you chose and why.
 - **Public-domain imagery only** — the channel is monetised, and CC-BY is not a
   public-domain dedication. Stripping or omitting attribution is the one thing
   this pipeline may not do. If a credit cannot be resolved, drop the beat.
-  One owner-approved widening (2026-10-13, food sample round 2): **real food
-  FOOTAGE** may also come from libraries whose licence allows commercial reuse
-  with no attribution required (Pixabay, Pexels, Mixkit), through
-  `research/food_footage.py` only, each clip's licence wording stored and
-  re-checked, and still credited on screen. Photographic stills stay PD/CC0.
+  One owner-approved widening (2026-10-13, food sample round 2), extended to
+  EVERY domain on 2026-11-02 ("Yes, all topics"): **real moving FOOTAGE** may
+  also come from libraries whose licence allows commercial reuse with no
+  attribution required (Pixabay, Pexels, Mixkit) - food through
+  `research/food_footage.py`, deep sea and materials through
+  `research/imagery_stock_video.py` into `channel/imagery/video_rights.json`;
+  each clip's licence wording is stored and re-checked
+  (`stock_licence_ok`, re-run by `visuals/footage.verify` before every
+  render), it is matched to the episode's own subject words, and it is still
+  credited on screen. NOAA footage stays preferred wherever it matches. Pexels has no key
+  (`PEXELS_KEY_ABSENT`); never create an account. Photographic stills inside
+  a video stay PD/CC0.
 - **Nothing paid.** No model call, probe or lane in this repo may cost money.
   Her Claude subscription answers first, then her free-tier Gemini key, then the
   $0 OpenRouter list — and nothing else, ever: `max_cost_usd: 0`,

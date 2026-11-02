@@ -971,7 +971,12 @@ def _run(cmd: list[str]) -> subprocess.CompletedProcess:
 def _assemble(plan_path: str, out: str, audio_dir: str) -> dict:
     sys.path.insert(0, str(ROOT / "visuals"))
     import assemble                                        # noqa: PLC0415
-    return assemble.assemble(plan_path, out, audio_dir, burn_captions=True)
+    # footage=False: a splice segment is a slice of a plan, so assemble.py
+    # cannot know the episode it belongs to (its subject words, its NOAA
+    # pattern) or where the rotation stood; the new opening and tail are drawn
+    # and the kept body keeps whatever footage the original render placed.
+    return assemble.assemble(plan_path, out, audio_dir, burn_captions=True,
+                             footage=False)
 
 
 def _ffprobe_s(path: Path) -> float:
