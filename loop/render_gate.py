@@ -118,7 +118,12 @@ def picture_share(slug: str, renders: Path | None = None,
     if not beats:
         return None
     foot = int(((rec or {}).get("footage") or {}).get("footage_beats") or 0)
-    stills = sum(1 for b in (plan or []) if b.get("segment") in STILL_SEGMENTS)
+    # A plan re-written AFTER the render (a pictures-first re-plan) says
+    # nothing about what that render shows: count its stills only if it is
+    # older than the render.
+    mp4 = renders / f"{slug}-final.mp4"
+    stale = plan and mp4.exists() and pp.stat().st_mtime > mp4.stat().st_mtime
+    stills = 0 if stale else sum(1 for b in (plan or []) if b.get("segment") in STILL_SEGMENTS)
     return min(1.0, (foot + stills) / beats)
 
 
