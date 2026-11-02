@@ -322,7 +322,8 @@ def build(slug: str, out_dir: str | None = None) -> str:
     except thumb_contract.ContractRefused:
         # Only a real episode (its script on disk) gets a picture pinned: a
         # name with no script is a caller's mistake, refused as before.
-        if _loop_domains().script_of(slug) is None:
+        # LOOP_DRY_RUN: no network and no manifest writes (the repo-wide rule).
+        if _loop_domains().script_of(slug) is None or os.environ.get("LOOP_DRY_RUN") == "1":
             raise
         sys.path.insert(0, os.path.join(ROOT, "research"))
         import subject_photo as SP                         # noqa: PLC0415
