@@ -153,11 +153,8 @@ def held(slugs: list[str] | None = None) -> list[str]:
     for s in slugs:
         if not needs_picture(s, led, sled):
             continue
-        try:
-            if QC.photos(s):
-                continue
-        except Exception:                                  # noqa: BLE001
-            pass
+        if QC.photos(s):            # a photo it can already use: nothing to find
+            continue
         out.append(s)
     # rendered on this machine first: those are the ones a stop is holding now
     return sorted(out, key=lambda s: (not (ROOT / "renders" / f"{s}-final.mp4").exists(), s))
