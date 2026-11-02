@@ -387,9 +387,12 @@ Your rule of 2 November 2026, built as code (mock-up approved that day).
   with the question in big white type, "HOW WE KNOW" small at the top.
 - **Every new Short opens on that same picture for one second**, then your
   captions carry on.
-- **No photo, no video:** an episode with no free photo of its subject is held
-  and named (`THUMB_NO_SUBJECT_PHOTO` / `SHORT_NO_SUBJECT_PHOTO`) — it never
-  gets the old text card. The fix is a pinned photo in `research/imagery_*.py`.
+- **No photo, no video — until one is found, automatically:** an episode with
+  no free photo of its subject is held (`THUMB_NO_SUBJECT_PHOTO` /
+  `SHORT_NO_SUBJECT_PHOTO`), never given the old text card, and every night
+  `research/subject_photo.py` searches Wikimedia Commons for one (PD/CC0 only,
+  credited). Only after five empty nights does it reach a person
+  (`SUBJECT_PHOTO_EXHAUSTED`).
 - **The 19 videos of 25 Oct–2 Nov** were retitled to your approved list
   (`loop/state/one_question_backfill.json`); everything older is untouched.
 

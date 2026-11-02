@@ -52,7 +52,8 @@ TALL_QUESTION_BOTTOM = 1040
 TALL_GRADIENT = (0.22, 0.52)  # (begins, full strength) as shares of the height
 OPENER_SECONDS = 1.0          # owner: "for its first second"
 # Manifests whose images are photographs cleared PD/CC0. food_ai.json is AI.
-PHOTO_MANIFESTS = ("rights.json", "materials.json", "food.json")
+PHOTO_MANIFESTS = ("rights.json", "materials.json", "food.json",
+                   "subject_photos.json")   # research/subject_photo.py, same gate
 
 _BOLD = ("/System/Library/Fonts/Supplemental/Arial Bold.ttf",
          "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",

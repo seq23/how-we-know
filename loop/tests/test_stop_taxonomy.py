@@ -284,7 +284,11 @@ def d_policy_reaches_its_lanes() -> tuple[list[str], int]:
     generated = set(AUDIT.GENERATED)
     seen = {code: 0 for code in rules
             if code not in generated and not code.endswith("*")}
-    for path in sorted(glob.glob(os.path.join(LOOP, "*.py"))):
+    # visuals/ and research/ raise stops too (2 Nov 2026: the subject-photo
+    # stops) - the same file set test_every_stop_is_classified scans.
+    for path in sorted(glob.glob(os.path.join(LOOP, "*.py"))
+                       + glob.glob(os.path.join(ROOT, "visuals", "*.py"))
+                       + glob.glob(os.path.join(ROOT, "research", "*.py"))):
         tree = ast.parse(open(path).read(), path)
         for node in ast.walk(tree):
             if not (isinstance(node, ast.Call)

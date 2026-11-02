@@ -1533,3 +1533,21 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   with Copyrighted=True, which Commons reports for every CC0 dedication. CC0 is now accepted on its tag.
 - **Guards:** V75 plan-domain, V76 one-question (`loop/validate.py`); tests
   `loop/tests/test_one_question_per_video.py`, `loop/tests/test_plan_domain.py`.
+
+## 2026-11-02 — A held episode finds its own subject photo
+
+- **Found:** the one-question rule held 16 of 53 rendered episodes (THUMB_NO_SUBJECT_PHOTO /
+  SHORT_NO_SUBJECT_PHOTO) for want of a PD/CC0 photo of their subject, and the only way out was a
+  person pinning a Commons file - a stop that waits on a person (rule 1).
+- **Fix:** `research/subject_photo.py`, run by the nightly batch before the Shorts cut. For every
+  episode that still needs a picture and has none, it searches Wikimedia Commons with the episode's
+  own subject words through the hand harvest's gate (`research/imagery_materials.harvest`: licence
+  read live, PD or CC0 only; copyright-assertion screen; new brand/logo/packaging screen; >= 1000 px;
+  the file title names a subject word; a deep-sea photo's page must place it at sea), records the
+  licence wording, item URL, sha256 and credit line in `channel/imagery/subject_photos.json`, pins
+  it (`thumb_contract.candidates` reads it) and builds the thumbnail; the shelve step re-cuts the
+  Shorts the same night. Up to five nights per slug; the two NO_SUBJECT_PHOTO stops and
+  SUBJECT_PHOTO_SEARCHING are self_resolving capped at five; then SUBJECT_PHOTO_EXHAUSTED (needs_human).
+- **Guard:** `loop/tests/test_subject_photo.py` (a fake CC0 hit is pinned and released; a CC-BY hit,
+  a logo, a small file and an off-subject file are refused; escalation after five nights). Negative
+  proof: letting `pd_licence_ok` accept CC BY 4.0 fails three checks; restored, green.

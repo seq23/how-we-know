@@ -373,7 +373,8 @@ def opener_of(rec: dict | None) -> tuple[str | None, str | None]:
     if op.get("kind") != OPENER_KIND:
         return None, ("the cut predates the one-question opening picture; the "
                       "Mac re-cuts it (bin/make-shorts.sh --keep-existing)")
-    if op.get("manifest") not in ("rights.json", "materials.json", "food.json"):
+    if op.get("manifest") not in ("rights.json", "materials.json", "food.json",
+                                  "subject_photos.json"):
         return None, f"its opening photo comes from {op.get('manifest')!r}, not a PD/CC0 photo manifest"
     import titles                                          # noqa: PLC0415
     bad = titles.one_question_problems(op.get("question") or "")

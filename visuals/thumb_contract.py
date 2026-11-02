@@ -265,6 +265,14 @@ def candidates(slug: str, script_path: str | None = None) -> list[dict]:
                                 "manifest": "food_ai.json" if r["ai"] else "food.json"})
         except Exception:                                  # noqa: BLE001
             pass
+    if not out:
+        # THE AUTOMATIC FINDER (research/subject_photo.py, 2 Nov 2026): a PD/CC0
+        # Commons photo pinned for this slug by its own subject words.
+        sp_man = os.path.join(IMAGERY, "subject_photos.json")
+        if os.path.exists(sp_man):
+            for r in json.load(open(sp_man)).get("index") or []:
+                if r.get("subject") == f"auto-{slug}" and r.get("local_file"):
+                    out.append(_record(r, "subject_photos.json", r["subject"]))
     seen, uniq = set(), []
     for c in out:
         if c["local_file"] in seen or not os.path.exists(c["path"]):
