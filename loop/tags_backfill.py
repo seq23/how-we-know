@@ -139,6 +139,17 @@ def run(limit: int = 200, dry_run: bool = False) -> int:
             want_tags, want_hashtags = wanted
             want_line = discovery.hashtag_line(want_hashtags)
 
+            # KEEP THE DAY'S UPLOADS WHOLE (hostile review 2026-11-02, finding
+            # 16: upkeep spent ~3,300 units on 2 Nov and chili-coffee-honey went
+            # undated). Stop before eating into what the episode and Shorts
+            # uploads still need today; the rest run tomorrow.
+            if not dry_run and (quota.remaining() - spent
+                                < quota.deferrable_reserve() + quota.VIDEO_READ
+                                + quota.VIDEO_UPDATE):
+                st.note(f"quota: stopped before {slug}, keeping "
+                        f"{quota.deferrable_reserve()} units for today's uploads; "
+                        f"the rest run tomorrow")
+                break
             current = ytmeta.get_video(token, vid)
             spent += quota.VIDEO_READ
             if not current or not current.get("snippet"):
