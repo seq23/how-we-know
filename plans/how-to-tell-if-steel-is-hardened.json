@@ -143,14 +143,15 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "seconds": 4.97,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "ASM International's heat-treating references describe martensite as hard and brittle as quenched.",
     "args": {
-      "variant": 0
+      "to_temp": 727,
+      "label": "eutectoid temperature"
     },
-    "from": "directive-rhythm+picture"
+    "from": "directive-rhythm+picture+relief"
   },
   {
     "segment": "definition_card",
@@ -985,14 +986,33 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 6.21,
     "heading": "A cross-section shows why the number is high",
     "narration": "The depth at which they cross an agreed threshold is reported as the case depth.",
     "args": {
-      "variant": 0
+      "title": "Metallographic check",
+      "steps": [
+        [
+          "Cross-section",
+          ""
+        ],
+        [
+          "Polishing",
+          ""
+        ],
+        [
+          "Nital etch",
+          ""
+        ],
+        [
+          "Microscope",
+          ""
+        ]
+      ],
+      "note": "Martensite looks needle-like"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

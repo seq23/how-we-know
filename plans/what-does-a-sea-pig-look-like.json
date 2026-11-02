@@ -384,14 +384,29 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "If a source gives you a single confident number without saying which species or how it was counted, that is exactly the kind of figure worth tracing back before you repeat it.",
     "args": {
-      "variant": 2
+      "title": "A tube foot works by hydraulics",
+      "steps": [
+        [
+          "Fluid is pushed into the foot",
+          ""
+        ],
+        [
+          "the foot extends",
+          ""
+        ],
+        [
+          "muscles in its wall pull it back",
+          ""
+        ]
+      ],
+      "note": "hydraulics, not bones"
     },
-    "from": "directive+picture"
+    "from": "directive+picture+relief"
   },
   {
     "segment": "species_image",

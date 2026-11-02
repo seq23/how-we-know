@@ -568,14 +568,33 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "Every step from seabed to deck changes the body",
     "narration": "The specific injuries to the famous specimen are a separate question. Nobody documented them in enough detail to list them one by one.",
     "args": {
-      "variant": 1
+      "title": "From seabed to photograph",
+      "steps": [
+        [
+          "caught in a trawl net",
+          ""
+        ],
+        [
+          "hauled up through the water",
+          ""
+        ],
+        [
+          "lifted into air",
+          ""
+        ],
+        [
+          "laid on a flat surface",
+          ""
+        ]
+      ],
+      "note": "each step distorts the body"
     },
-    "from": "directive"
+    "from": "directive+relief"
   },
   {
     "segment": "ambient_drift",

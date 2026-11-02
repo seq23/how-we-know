@@ -601,30 +601,30 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 7.45,
     "heading": "It reaches kitchens by trap and by trawl, and nobody is counting",
     "narration": "Everything we can say about how it tastes comes from that last, very unusual moment of its life.",
     "args": {
-      "variant": 1
+      "title": "From seafloor to plate",
+      "stages": [
+        "baited traps",
+        "trawl nets",
+        "seafood markets"
+      ],
+      "conclusion": "restaurant menus"
     },
-    "from": "directive"
+    "from": "directive+relief"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Taste reports are anecdotes, not measurements",
     "narration": "Taste is where most of the popular coverage lives. People who have eaten giant isopod tend to compare it to crab or lobster, and some describe the meat as sweet.",
     "args": {
-      "term": "taste report",
-      "includes": [
-        "one person's experience"
-      ],
-      "excludes": [
-        "a controlled tasting"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",

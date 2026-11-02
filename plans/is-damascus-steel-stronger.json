@@ -373,14 +373,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 7.45,
     "heading": "The watered pattern is a map of carbide",
     "narration": "The surrounding steel is less brittle than solid carbide would be, so the blade does not simply shatter.",
     "args": {
-      "variant": 1
+      "title": "Reading the pattern",
+      "stages": [
+        "Cut, polish and etch sections",
+        "Microscope",
+        "Bands of iron carbide in a softer steel matrix"
+      ],
+      "conclusion": "The watered pattern is those bands"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

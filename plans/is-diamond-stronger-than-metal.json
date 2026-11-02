@@ -246,14 +246,25 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "The step from 9 to 10 looks the same on paper as the step from 1 to 2, and it is not.",
     "args": {
-      "variant": 0
+      "title": "Mohs scratch test",
+      "steps": [
+        [
+          "press a sharp edge",
+          ""
+        ],
+        [
+          "look for a groove",
+          ""
+        ]
+      ],
+      "note": "The harder mineral leaves the mark"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -276,30 +287,35 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "Steels, meanwhile, land somewhere in the middle of the ranking. Where exactly depends on the alloy and how it was heat treated. That spread is itself a clue: metal is not one material.",
     "args": {
-      "variant": 1
+      "title": "Mohs scratch test",
+      "steps": [
+        [
+          "press a sharp edge",
+          ""
+        ],
+        [
+          "look for a groove",
+          ""
+        ]
+      ],
+      "note": "The harder mineral leaves the mark"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The Mohs scale ranks, it does not measure",
     "narration": "Why is diamond at the top at all? Each carbon atom shares electrons with four neighbours, building a rigid three-dimensional network of short, strong bonds.",
     "args": {
-      "term": "Pure carbon",
-      "includes": [
-        "diamond, a rigid three-dimensional network"
-      ],
-      "excludes": [
-        "graphite, flat sheets that slide"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",

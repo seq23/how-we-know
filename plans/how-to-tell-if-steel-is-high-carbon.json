@@ -613,14 +613,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 6.62,
     "heading": "Hardness only speaks after heat treatment",
     "narration": "The test also changes the sample, so it is unsuitable for anything you need to keep.",
     "args": {
-      "variant": 0
+      "title": "quench and file",
+      "stages": [
+        "no longer attracts a magnet",
+        "quench the piece",
+        "draw a file across it"
+      ],
+      "conclusion": "the file skates"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

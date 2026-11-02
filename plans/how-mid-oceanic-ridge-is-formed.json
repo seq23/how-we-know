@@ -118,14 +118,33 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 8.28,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "The mainstream view, which you will find in the plate tectonics material published by USGS, runs mostly the other way.",
     "args": {
-      "variant": 0
+      "title": "Building new seafloor",
+      "steps": [
+        [
+          "plates pulled apart",
+          ""
+        ],
+        [
+          "mantle rises",
+          ""
+        ],
+        [
+          "rock melts",
+          ""
+        ],
+        [
+          "basalt erupts",
+          ""
+        ]
+      ],
+      "note": "new ocean crust"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -579,14 +598,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 5.38,
     "heading": "The first clue was a valley nobody expected",
     "narration": "For that, someone needed a way to read time off the seafloor itself.",
     "args": {
-      "variant": 1
+      "title": "Mapping the Atlantic floor",
+      "stages": [
+        "echo-sounding depth profiles",
+        "hand-drawn cross-sections",
+        "a valley along the crest"
+      ],
+      "conclusion": "a rift where the crust splits"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "process_steps",

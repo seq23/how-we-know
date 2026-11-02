@@ -299,14 +299,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 7.86,
     "heading": "A vent is where two incompatible waters meet",
     "narration": "The microbes do not live in the hottest fluid anyway. They live where it has cooled enough to mix.",
     "args": {
-      "variant": 0
+      "title": "How a vent makes fuel",
+      "stages": [
+        "seawater seeps into the crust",
+        "heated rock strips out oxygen",
+        "the fluid gains hydrogen sulfide"
+      ],
+      "conclusion": "hot fluid meets cold oxygenated seawater"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

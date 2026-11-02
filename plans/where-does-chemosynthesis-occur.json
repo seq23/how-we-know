@@ -227,14 +227,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 8.69,
     "heading": "The deep-sea evidence came from a dive, not from a theory",
     "narration": "Its red plume holds a form of hemoglobin that binds both oxygen and hydrogen sulfide and carries them to those bacteria.",
     "args": {
-      "variant": 0
+      "title": "How a dive became a conclusion",
+      "stages": [
+        "warm water on the Gal\u00e1pagos Rift",
+        "dense animal communities",
+        "bacteria inside the tubeworm"
+      ],
+      "conclusion": "energy from chemistry, not sunlight"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -257,14 +263,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 7.86,
     "heading": "The deep-sea evidence came from a dive, not from a theory",
     "narration": "The key point for this episode is how that was established. It was not inferred from the location alone.",
     "args": {
-      "variant": 1
+      "title": "How a dive became a conclusion",
+      "stages": [
+        "warm water on the Gal\u00e1pagos Rift",
+        "dense animal communities",
+        "bacteria inside the tubeworm"
+      ],
+      "conclusion": "energy from chemistry, not sunlight"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -608,14 +620,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "Much of it may happen where nobody is filming",
     "narration": "Researchers seal water or sediment samples in the dark, add carbon labelled so it can be traced, and measure how much ends up in living cells.",
     "args": {
-      "variant": 2
+      "title": "How hidden chemosynthesis is detected",
+      "stages": [
+        "water or sediment sampled in darkness",
+        "carbon uptake measured",
+        "genes for carbon fixation identified"
+      ],
+      "conclusion": "chemosynthesis inferred where nothing is visible"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -638,14 +656,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "Much of it may happen where nobody is filming",
     "narration": "Each method shows that chemosynthesis can happen in a sample. Scaling that up to a whole ocean is where the estimates spread out, and the published range is wide.",
     "args": {
-      "variant": 3
+      "title": "How hidden chemosynthesis is detected",
+      "stages": [
+        "water or sediment sampled in darkness",
+        "carbon uptake measured",
+        "genes for carbon fixation identified"
+      ],
+      "conclusion": "chemosynthesis inferred where nothing is visible"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "contrast_pair",

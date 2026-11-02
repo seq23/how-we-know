@@ -208,14 +208,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 8.69,
     "heading": "The record is a sensor reading, not a sighting",
     "narration": "Most of those dives were shallower than the record. That matters, because it tells you how to read the headline number.",
     "args": {
-      "variant": 0
+      "title": "How the record was made",
+      "stages": [
+        "tag attached at the surface",
+        "pressure sensor logs depth",
+        "data relayed by satellite"
+      ],
+      "conclusion": "2,992 metres"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -353,14 +359,29 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "Before tags, depth was inferred from clues",
     "narration": "A whale could spend an hour travelling sideways. Each of these clues was real, and each pointed downward, but none of them could put a single trustworthy number on a dive.",
     "args": {
-      "variant": 1
+      "title": "Older lines of evidence",
+      "steps": [
+        [
+          "entangled cables",
+          ""
+        ],
+        [
+          "stomach contents",
+          ""
+        ],
+        [
+          "timed disappearances",
+          ""
+        ]
+      ],
+      "note": "depth inferred, not measured"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -789,38 +810,30 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 7.45,
     "heading": "The deepest known dive is a floor, not a ceiling",
     "narration": "Researchers can describe what tagged whales did. Describing what they could do is a different and harder problem.",
     "args": {
-      "variant": 2
+      "title": "Why the record understates the limit",
+      "stages": [
+        "few animals tagged",
+        "tags fall off within weeks",
+        "sensors have a rated maximum depth"
+      ],
+      "conclusion": "the true limit is unknown"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "Notice that every number in this episode came from an instrument that rode along with an animal, or from arithmetic you can check yourself.",
     "args": {
-      "title": "Who reports what",
-      "sources": [
-        [
-          "Guinness World Records",
-          "deepest dive by a mammal"
-        ],
-        [
-          "NOAA Ocean Exploration",
-          "pressure rises with depth"
-        ],
-        [
-          "Smithsonian Ocean",
-          "no sunlight in the deep sea"
-        ]
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",

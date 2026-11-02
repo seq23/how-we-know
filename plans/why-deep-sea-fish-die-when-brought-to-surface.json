@@ -290,14 +290,29 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 4.97,
     "heading": "Dissolved gases come out of solution in tissues",
     "narration": "At high pressure, more gas dissolves into the blood and tissue fluids.",
     "args": {
-      "variant": 0
+      "title": "BUBBLE FORMATION",
+      "steps": [
+        [
+          "pressure drops rapidly",
+          ""
+        ],
+        [
+          "gas solubility decreases",
+          ""
+        ],
+        [
+          "bubbles nucleate in tissue",
+          ""
+        ]
+      ],
+      "note": "circulation blocked"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -320,14 +335,29 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 6.21,
     "heading": "Dissolved gases come out of solution in tissues",
     "narration": "This is decompression sickness, the same mechanism that affects human divers who ascend too quickly.",
     "args": {
-      "variant": 1
+      "title": "BUBBLE FORMATION",
+      "steps": [
+        [
+          "pressure drops rapidly",
+          ""
+        ],
+        [
+          "gas solubility decreases",
+          ""
+        ],
+        [
+          "bubbles nucleate in tissue",
+          ""
+        ]
+      ],
+      "note": "circulation blocked"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "process_steps",
@@ -732,14 +762,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "Observation requires either in situ study or fatal collection",
     "narration": "NOAA Ocean Exploration and the Monterey Bay Aquarium Research Institute deploy remotely operated vehicles and crewed submersibles to observe, film and sample deep sea life without bringing it to the surface.",
     "args": {
-      "variant": 2
+      "title": "FATAL COLLECTION",
+      "stages": [
+        "net trawl",
+        "rapid ascent",
+        "specimen dies"
+      ],
+      "conclusion": "preserved for anatomy only"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

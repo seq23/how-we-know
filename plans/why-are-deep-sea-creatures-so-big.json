@@ -1,25 +1,26 @@
 [
   {
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "A giant isopod is only giant beside the woodlice under a garden stone.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid.",
     "args": {
-      "lines": [
-        "Most deep-sea creatures are",
-        "not big. Gigantism appears",
-        "in particular"
-      ]
+      "subject": "giant_squid",
+      "label": "giant squid",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "heuristic"
+    "from": "heuristic+picture"
   },
   {
     "segment": "depth_descent",
@@ -40,18 +41,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Cold open",
     "narration": "On its own, it does not show why they grow, or whether depth has anything to do with it.",
     "args": {
-      "lines": [
-        "On its own, it",
-        "does not show why",
-        "they grow"
-      ]
+      "variant": 1
     },
-    "from": "heuristic"
+    "from": "heuristic+picture"
   },
   {
     "segment": "text_beat",
@@ -67,34 +64,27 @@
     "from": "heading"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Most deep-sea animals are small, and the giants are the exception",
     "narration": "Start with the part the popular image leaves out. Watch footage from a remotely operated vehicle descending through the deep water column, and you will see that most of what drifts past its lights is small: jellies, shrimp, copepods, worms, and the larvae of animals that live somewhere else.",
     "args": {
-      "term": "deep-sea life",
-      "includes": [
-        "outnumbered many times over by animals you could hold on a fingertip"
-      ],
-      "excludes": [
-        "a habitat dominated by giants"
-      ]
+      "subject": "red_shrimp",
+      "label": "shrimp",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Most deep-sea animals are small, and the giants are the exception",
     "narration": "On the seafloor, much of the life is buried in the mud, and a lot of it is too small to see without a microscope.",
     "args": {
-      "lines": [
-        "On the seafloor, much",
-        "of the life is",
-        "buried"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -113,31 +103,24 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Most deep-sea animals are small, and the giants are the exception",
     "narration": "So the honest version of the question is narrower. Why do some deep-sea animals grow much larger than their shallow-water relatives?",
     "args": {
-      "term": "deep-sea gigantism",
-      "meaning": "some deep-sea animals growing much larger than their shallow-water relatives",
-      "boundary": "always a comparison within a group, not across the whole ocean",
-      "source": "NOAA Ocean Exploration"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Most deep-sea animals are small, and the giants are the exception",
     "narration": "Biologists call that pattern deep-sea gigantism, or sometimes abyssal gigantism. You will find the term in explainers published by NOAA Ocean Exploration and Smithsonian Ocean.",
     "args": {
-      "lines": [
-        "Biologists call that pattern",
-        "deep-sea gigantism, or sometimes",
-        "abyssal gigantism."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -153,18 +136,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Most deep-sea animals are small, and the giants are the exception",
     "narration": "It is always a comparison within a group, not across the whole ocean.",
     "args": {
-      "lines": [
-        "It is always a",
-        "comparison within a group,",
-        "not across"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -185,18 +164,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The giants cluster in a few cold-blooded groups",
     "narration": "The giant isopod, Bathynomus giganteus, scavenges on the deep seafloor. Alicella gigantea is a giant amphipod, a relative of the small sandhoppers on a beach, and it has been hauled up in baited traps from great depth.",
     "args": {
-      "lines": [
-        "The giant isopod, Bathynomus",
-        "giganteus, scavenges on the",
-        "deep seafloor."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -217,18 +192,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.69,
     "heading": "The giants cluster in a few cold-blooded groups",
     "narration": "The giant squid, Architeuthis, is among the longest invertebrates known. Fish, as a group, do not show the same consistent pattern.",
     "args": {
-      "lines": [
-        "The giant squid, Architeuthis,",
-        "is among the longest",
-        "invertebrates known."
-      ]
+      "subject": "giant_squid",
+      "label": "Architeuthis",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -249,32 +223,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The giants cluster in a few cold-blooded groups",
     "narration": "Look at what the giants share. They are ectotherms, animals whose body temperature follows the water around them.",
     "args": {
-      "lines": [
-        "Look at what the",
-        "giants share. They are",
-        "ectotherms, animals"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The giants cluster in a few cold-blooded groups",
     "narration": "Most are crustaceans or molluscs. The same groups also produce giants in the shallow, cold seas around Antarctica, where great depth plays no part.",
     "args": {
-      "lines": [
-        "Most are crustaceans or",
-        "molluscs. The same groups",
-        "also produce"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -287,18 +253,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The giants cluster in a few cold-blooded groups",
     "narration": "Cold may be. On this reading, depth matters mostly because the deep is where the cold water is.",
     "args": {
-      "lines": [
-        "Cold may be. On",
-        "this reading, depth matters",
-        "mostly because"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "quote_card",
@@ -323,56 +285,50 @@
     "from": "heading"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Cold water makes cold-blooded bodies mature larger",
     "narration": "Biologists have long observed a pattern called Bergmann's rule: within related groups, larger forms tend to be found in colder places.",
     "args": {
-      "lines": [
-        "Biologists have long observed",
-        "a pattern called Bergmann's",
-        "rule: within"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Cold water makes cold-blooded bodies mature larger",
     "narration": "It was first described for warm-blooded animals. A related pattern holds for ectotherms, and it is usually called the temperature-size rule.",
     "args": {
-      "lines": [
-        "It was first described",
-        "for warm-blooded animals. A",
-        "related pattern"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "Cold water makes cold-blooded bodies mature larger",
     "narration": "Raise the same species in colder water in a laboratory and, very often, it grows more slowly but reaches maturity at a larger body size.",
     "args": {
-      "variant": 1
+      "title": "The temperature clue",
+      "stages": [
+        "cold water",
+        "slower growth",
+        "later maturity"
+      ],
+      "conclusion": "larger adult body"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Cold water makes cold-blooded bodies mature larger",
     "narration": "In many of these animals, the cells themselves also tend to be larger at low temperature.",
     "args": {
-      "lines": [
-        "In many of these",
-        "animals, the cells themselves",
-        "also tend"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "evidence_chain",
@@ -391,18 +347,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Cold water makes cold-blooded bodies mature larger",
     "narration": "No warm season speeds things up. So the chain runs like this: cold water, slower growth, later maturity, larger adult body.",
     "args": {
-      "lines": [
-        "No warm season speeds",
-        "things up. So the",
-        "chain runs"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -421,18 +373,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold water makes cold-blooded bodies mature larger",
     "narration": "You can test it in tanks, changing one variable at a time and holding the rest steady, and the result repeats across many species.",
     "args": {
-      "lines": [
-        "You can test it",
-        "in tanks, changing one",
-        "variable"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -460,18 +408,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "Oxygen might. As an animal grows, its volume rises faster than its surface.",
     "args": {
-      "lines": [
-        "Oxygen might. As an",
-        "animal grows, its volume",
-        "rises faster"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -499,18 +443,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "Cold water helps in two separate ways. First, cold water holds more dissolved oxygen than warm water does.",
     "args": {
-      "lines": [
-        "Cold water helps in",
-        "two separate ways. First,",
-        "cold water"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -538,38 +478,24 @@
     "from": "directive"
   },
   {
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "In 1999, Gauthier Chapelle and Lloyd Peck, the latter of the British Antarctic Survey, published the amphipod oxygen study in Nature.",
     "args": {
-      "title": "The oxygen evidence",
-      "sources": [
-        [
-          "Nature",
-          "published the amphipod oxygen study"
-        ],
-        [
-          "British Antarctic Survey",
-          "Lloyd Peck"
-        ]
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "Amphipods were a good choice. They live almost everywhere, in warm water and in cold, and the largest known sizes of many species had already been recorded.",
     "args": {
-      "lines": [
-        "Amphipods were a good",
-        "choice. They live almost",
-        "everywhere"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -592,18 +518,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "Temperature on its own was not the best predictor. The amount of oxygen the water could carry was. Where oxygen was plentiful, the biggest amphipods appeared.",
     "args": {
-      "lines": [
-        "Temperature on its own",
-        "was not the best",
-        "predictor."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -622,18 +544,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "That water sank and spread along the ocean floor, carrying its oxygen with it.",
     "args": {
-      "lines": [
-        "That water sank and",
-        "spread along the ocean",
-        "floor, carrying"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -652,48 +570,30 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Oxygen may set the ceiling, and cold deep water carries more of it",
     "narration": "There is a useful exception. In many regions, layers at middle depths run low on oxygen, and those layers are not known for giants. That fits the idea. It does not prove it.",
     "args": {
-      "lines": [
-        "There is a useful",
-        "exception. In many regions,",
-        "layers"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Scarce food rewards a body that can search far and wait long",
     "narration": "The second family of explanations is about food. Below the sunlit layer, nothing photosynthesises in open water.",
     "args": {
-      "lines": [
-        "The second family of",
-        "explanations is about food.",
-        "Below"
-      ]
+      "variant": 1
     },
-    "from": "directive"
-  },
-  {
-    "segment": "ambient_drift",
-    "seconds": 9.0,
-    "heading": "Scarce food rewards a body that can search far and wait long",
-    "narration": "Most deep-sea life therefore depends on what sinks from above: dead plankton, faecal pellets, flakes of drifting debris, and now and then the carcass of a fish or a whale. Food arrives rarely, and it lands in places nobody can predict.",
-    "args": {
-      "variant": 2
-    },
-    "from": "directive+destagnate"
+    "from": "directive+picture"
   },
   {
     "segment": "process_steps",
     "seconds": 9.0,
     "heading": "Scarce food rewards a body that can search far and wait long",
-    "narration": "A larger body changes the arithmetic. It stores more. And under a relationship known as Kleiber's law, bigger animals burn energy more slowly per gram of tissue than small ones do.",
+    "narration": "Most deep-sea life therefore depends on what sinks from above: dead plankton, faecal pellets, flakes of drifting debris, and now and then the carcass of a fish or a whale. Food arrives rarely, and it lands in places nobody can predict.",
     "args": {
       "title": "The food argument",
       "steps": [
@@ -712,21 +612,27 @@
       ],
       "note": "a big scavenger can travel and wait"
     },
-    "from": "directive"
+    "from": "directive+destagnate+relief"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Scarce food rewards a body that can search far and wait long",
+    "narration": "A larger body changes the arithmetic. It stores more. And under a relationship known as Kleiber's law, bigger animals burn energy more slowly per gram of tissue than small ones do.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Scarce food rewards a body that can search far and wait long",
     "narration": "Put those together. Food arrives rarely, a larger body stores more, it burns energy more slowly per gram, and so a big scavenger can travel and wait.",
     "args": {
-      "lines": [
-        "Put those together. Food",
-        "arrives rarely, a larger",
-        "body stores"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -754,18 +660,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Scarce food rewards a body that can search far and wait long",
     "narration": "A large amphipod can cover more seafloor and reach a fallen fish before smaller competitors do.",
     "args": {
-      "lines": [
-        "A large amphipod can",
-        "cover more seafloor and",
-        "reach"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -784,18 +686,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Scarce food rewards a body that can search far and wait long",
     "narration": "Less food can just as easily mean smaller bodies. In many deep-sea groups, typical size falls with depth, while in some it rises.",
     "args": {
-      "lines": [
-        "Less food can just",
-        "as easily mean smaller",
-        "bodies."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -814,32 +712,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Scarce food rewards a body that can search far and wait long",
     "narration": "Scarce food is not a push toward large size everywhere. The same pressure produces different outcomes depending on how an animal makes its living.",
     "args": {
-      "lines": [
-        "Scarce food is not",
-        "a push toward large",
-        "size everywhere."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Our nets and traps favour the big ones",
     "narration": "There is also a quieter problem underneath all the explanations so far: how the animals were found in the first place.",
     "args": {
-      "lines": [
-        "There is also a",
-        "quieter problem underneath all",
-        "the explanations"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -852,32 +742,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Our nets and traps favour the big ones",
     "narration": "A baited trap attracts mobile scavengers, which are exactly the animals the food argument predicts will be large.",
     "args": {
-      "lines": [
-        "A baited trap attracts",
-        "mobile scavengers, which are",
-        "exactly"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Our nets and traps favour the big ones",
     "narration": "A coarse net keeps big animals and lets small ones slip through the mesh.",
     "args": {
-      "lines": [
-        "A coarse net keeps",
-        "big animals and lets",
-        "small ones"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -906,18 +788,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Our nets and traps favour the big ones",
     "narration": "But the impression of a deep sea full of large animals partly reflects what the trap caught, not what lives there.",
     "args": {
-      "lines": [
-        "But the impression of",
-        "a deep sea full",
-        "of large"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -936,32 +814,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Our nets and traps favour the big ones",
     "narration": "Studies built like that are slow and expensive, and there are still relatively few of them.",
     "args": {
-      "lines": [
-        "Studies built like that",
-        "are slow and expensive,",
-        "and there"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Seeing giants alive is changing what can be asked",
     "narration": "For most of history, the largest deep-sea animals were known only from dead or dying specimens, washed ashore or brought up tangled in nets.",
     "args": {
-      "lines": [
-        "For most of history,",
-        "the largest deep-sea animals",
-        "were known"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "timeline",
@@ -987,32 +857,27 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Seeing giants alive is changing what can be asked",
     "narration": "You cannot see how it hunts, how fast it moves, or how much energy it spends doing so.",
     "args": {
-      "lines": [
-        "You cannot see how",
-        "it hunts, how fast",
-        "it moves"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.69,
     "heading": "Seeing giants alive is changing what can be asked",
     "narration": "In 2004, Tsunemi Kubodera and a colleague took the first photographs of a live giant squid in the wild, off Japan.",
     "args": {
-      "lines": [
-        "In 2004, Tsunemi Kubodera",
-        "and a colleague took",
-        "the first"
-      ]
+      "subject": "giant_squid",
+      "label": "giant squid",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "timeline",
@@ -1038,40 +903,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "timeline",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Seeing giants alive is changing what can be asked",
     "narration": "In 2025, an expedition run by the Schmidt Ocean Institute with the Ocean Census filmed a colossal squid alive in its natural habitat for the first time, near the South Sandwich Islands.",
     "args": {
-      "events": [
-        [
-          2004,
-          "first photographs of a live giant squid"
-        ],
-        [
-          2012,
-          "first video of a giant squid"
-        ],
-        [
-          2025,
-          "colossal squid alive in its natural habitat"
-        ]
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Seeing giants alive is changing what can be asked",
     "narration": "It was a juvenile, and it was small. That is a useful correction.",
     "args": {
-      "lines": [
-        "It was a juvenile,",
-        "and it was small."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "timeline",
@@ -1097,18 +946,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Seeing giants alive is changing what can be asked",
     "narration": "How it becomes enormous is a question about growth in cold, dark water over a long time, and live observation can begin to answer that kind of question.",
     "args": {
-      "lines": [
-        "How it becomes enormous",
-        "is a question about",
-        "growth"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1127,18 +972,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "What to notice in the edit",
     "narration": "Without a scale bar or laser dots, size on video is a guess from the frame.",
     "args": {
-      "lines": [
-        "Without a scale bar",
-        "or laser dots, size",
-        "on video"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1157,18 +998,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "What to notice in the edit",
     "narration": "And notice what is not on screen: the small animals all around it.",
     "args": {
-      "lines": [
-        "And notice what is",
-        "not on screen: the",
-        "small animals"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1188,18 +1025,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Evidence limit",
     "narration": "Cold, oxygen and food all change with depth, and they are hard to separate in the field.",
     "args": {
-      "lines": [
-        "Cold, oxygen and food",
-        "all change with depth,",
-        "and they"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1219,18 +1052,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "So whether oxygen sets the ceiling remains open. Which cause matters most probably differs from one group to another, and in many groups it has never been measured.",
     "args": {
-      "lines": [
-        "So whether oxygen sets",
-        "the ceiling remains open.",
-        "Which cause"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",

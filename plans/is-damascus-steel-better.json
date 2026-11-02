@@ -395,14 +395,20 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "A reproduction is harder to fake: either the pattern appears when the impurity is present and the cycling is done, or it does not.",
     "args": {
-      "variant": 3
+      "title": "Reproduction evidence",
+      "stages": [
+        "trace vanadium",
+        "repeated heating and cooling",
+        "carbide particles line up"
+      ],
+      "conclusion": "banded pattern"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -613,14 +619,24 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "source_compare",
     "seconds": 9.0,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "That plausibly explains reports of a keen, aggressive edge. But carbide is brittle, and a blade with too much of it, or with coarse carbide, can chip or snap.",
     "args": {
-      "variant": 4
+      "title": "Measuring hardness",
+      "sources": [
+        [
+          "ASTM International",
+          "standard scales"
+        ],
+        [
+          "NIST",
+          "reference blocks"
+        ]
+      ]
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",
@@ -753,14 +769,19 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "Modern steel wins on control",
     "narration": "On hardness, wear resistance and toughness taken together, well-made modern tool and stainless steels match or exceed the historical blades that have been examined, and they do it reliably.",
     "args": {
-      "variant": 0
+      "title": "Modern control",
+      "stages": [
+        "measured composition",
+        "controlled heat treatment"
+      ],
+      "conclusion": "consistent blades"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

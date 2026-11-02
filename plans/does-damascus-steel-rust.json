@@ -964,14 +964,25 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "magnitude_bar",
     "seconds": 4.97,
     "heading": "Stainless Damascus trades some contrast for real protection",
     "narration": "The resistance is real and large, but it is resistance, not immunity.",
     "args": {
-      "variant": 1
+      "title": "Chromium content",
+      "unit": "percent",
+      "items": [
+        [
+          "Stainless threshold",
+          "10.5"
+        ],
+        [
+          "Plain carbon steel",
+          "0"
+        ]
+      ]
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

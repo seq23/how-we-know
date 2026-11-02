@@ -358,14 +358,29 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "Sinking is the easy half; rising is the puzzle",
     "narration": "Heat and salt alone cannot supply it. The oceanographer Walter Munk worked through the arithmetic and argued that slow turbulent mixing, stirred by tides and by internal waves breaking deep inside the ocean, could gradually blend cold deep water with warmer water above and let it rise.",
     "args": {
-      "variant": 0
+      "title": "The return path",
+      "steps": [
+        [
+          "sinks near the poles",
+          ""
+        ],
+        [
+          "spreads through the deep basins",
+          ""
+        ],
+        [
+          "rises in the Southern Ocean",
+          ""
+        ]
+      ],
+      "note": "winds and mixing supply the lift"
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+relief"
   },
   {
     "segment": "ambient_drift",

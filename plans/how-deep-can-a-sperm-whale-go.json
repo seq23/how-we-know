@@ -1111,24 +1111,24 @@
     "from": "directive+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "pressure_gauge",
     "seconds": 9.0,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "We moved from accidental, often fatal encounters to precise, non-invasive observation. This has allowed us to see that the 1,133 meter cable record was actually a conservative estimate of the whale's true range.",
     "args": {
-      "variant": 2
+      "depth_m": 1133
     },
-    "from": "directive+picture"
+    "from": "directive+picture+relief"
   },
   {
-    "segment": "pressure_gauge",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "Modern data shows they regularly double that depth as part of their daily routine, a feat that was once thought impossible for a mammal.",
     "args": {
-      "depth_m": 1133
+      "variant": 2
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
