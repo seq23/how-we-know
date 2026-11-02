@@ -1,30 +1,26 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Cold open",
     "narration": "Its name promises a monster from hell, but the animal is about a foot long.",
     "args": {
-      "value": "30",
-      "unit": "centimetres",
-      "caption": "adult length",
-      "source": "MBARI"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "The vampire squid is a small, soft deep-sea cephalopod, about 30 centimetres long, dark reddish-brown to black, with eight arms joined by a web of skin, a pair of fins that stick out like ears, and eyes that, relative to its body, are often described as the largest of any animal.",
     "args": {
-      "lines": [
-        "The vampire squid is",
-        "a small, soft deep-sea",
-        "cephalopod, about"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +36,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "It does not explain why the picture took so long to get right.",
     "args": {
-      "lines": [
-        "It does not explain",
-        "why the picture took",
-        "so long"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 10,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "stat_card",
@@ -67,31 +62,30 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Its adult length is the easy part. Its shape, its colour and even what it eats were first read from damaged evidence and corrected later.",
     "args": {
-      "lines": [
-        "Its adult length is",
-        "the easy part. Its",
-        "shape"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 11,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 3.5,
     "heading": "Title card",
     "narration": "What does a vampire squid look like?",
     "args": {
-      "lines": [
-        "What does a vampire",
-        "squid look like?"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 8,
+      "zoom": 1.3
     },
-    "from": "heading"
+    "from": "heading+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -126,18 +120,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "The vampire squid is closer to a small umbrella. Its body, called the mantle, is short and rounded, and eight arms hang from it.",
     "args": {
-      "lines": [
-        "The vampire squid is",
-        "closer to a small",
-        "umbrella."
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -172,18 +165,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.38,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "A sheet of skin, the web, runs between them almost to their tips.",
     "args": {
-      "lines": [
-        "A sheet of skin,",
-        "the web, runs between",
-        "them almost"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 12,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "anatomy_callout",
@@ -218,18 +210,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "The vampire part of the name comes from that cape. Two fins sit on the mantle, one on each side, and from the front they look like ears. The animal flaps them to swim, and it swims slowly.",
     "args": {
-      "lines": [
-        "The vampire part of",
-        "the name comes from",
-        "that cape."
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 13,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -248,18 +239,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "They look like fangs, and footage is often edited to make them seem like fangs.",
     "args": {
-      "lines": [
-        "They look like fangs,",
-        "and footage is often",
-        "edited"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 14,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -278,18 +268,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "They do not bite and they do not grip. This is the first place where what the animal looks like and what it actually is come apart.",
     "args": {
-      "lines": [
-        "They do not bite",
-        "and they do not",
-        "grip."
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 15,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -308,32 +297,30 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "Their likely role is sensory. The word likely matters. That role is an inference from structure and behaviour. Nobody has measured it as a function.",
     "args": {
-      "lines": [
-        "Their likely role is",
-        "sensory. The word likely",
-        "matters."
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 16,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "Then there are the eyes. The animal is roughly a foot long, and its eyes are large enough to dominate its head.",
     "args": {
-      "lines": [
-        "Then there are the",
-        "eyes. The animal is",
-        "roughly"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 17,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture+look-like"
   },
   {
     "segment": "anatomy_callout",
@@ -368,32 +355,30 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "Their colour on film depends on the lighting. Under the white lamps of an underwater camera they can look blue or red.",
     "args": {
-      "lines": [
-        "Their colour on film",
-        "depends on the lighting.",
-        "Under"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 18,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture+look-like"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is a cloak, not a torpedo",
     "narration": "The skin behaves the same way. The animal is usually described as black to reddish-brown, but the colour you see in any image partly depends on the lamp.",
     "args": {
-      "lines": [
-        "The skin behaves the",
-        "same way. The animal",
-        "is usually"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 19,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture+look-like"
   },
   {
     "segment": "anatomy_callout",
@@ -428,34 +413,27 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "Here is how the animal was first known. For a long time, deep-sea animals were brought up in trawl nets towed behind ships.",
     "args": {
-      "title": "How the animal was first known",
-      "stages": [
-        "trawl nets",
-        "preserved in a jar",
-        "drawn and described"
-      ],
-      "conclusion": "distance from the living animal"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "A net is a good way to learn that something exists. It is a poor way to learn what that thing looks like.",
     "args": {
-      "lines": [
-        "A net is a",
-        "good way to learn",
-        "that something"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 20,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "evidence_chain",
@@ -474,18 +452,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "Each specimen was then preserved in a jar, drawn and described, and every step added distance from the living animal.",
     "args": {
-      "lines": [
-        "Each specimen was then",
-        "preserved in a jar,",
-        "drawn"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 21,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "evidence_chain",
@@ -529,18 +506,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "MBARI, working off the coast of California, has spent decades sending remotely operated vehicles into the deep water column.",
     "args": {
-      "lines": [
-        "MBARI, working off the",
-        "coast of California, has",
-        "spent decades"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 22,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "process_steps",
@@ -568,17 +544,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "A camera records the animal undamaged and in its own posture. It records minutes of movement instead of a single frozen moment.",
     "args": {
-      "lines": [
-        "A camera records the",
-        "animal undamaged"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 23,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "process_steps",
@@ -630,18 +606,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.03,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "Preserved specimens in natural history collections let anatomists dissect and measure the parts that video cannot reach.",
     "args": {
-      "lines": [
-        "Preserved specimens in natural",
-        "history collections let anatomists",
-        "dissect"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 24,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "source_compare",
@@ -668,18 +643,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.79,
     "heading": "The first pictures came from wrecked specimens",
     "narration": "Each kind of evidence covers a weakness in another. Video cannot show stomach contents.",
     "args": {
-      "lines": [
-        "Each kind of evidence",
-        "covers a weakness in",
-        "another. Video"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 25,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "source_compare",
@@ -717,34 +691,30 @@
     "from": "heading"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 5.79,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "Despite the name, it is not a squid. It is not an octopus either.",
     "args": {
-      "term": "vampire squid",
-      "includes": [
-        "its own order"
-      ],
-      "excludes": [
-        "a squid"
-      ]
+      "subject": "deep_squid",
+      "label": "squid",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "Its common name calls it a squid, but the first scientific description placed it among the octopuses, and later work moved it again.",
     "args": {
-      "lines": [
-        "Its common name calls",
-        "it a squid, but",
-        "the first"
-      ]
+      "subject": "deep_squid",
+      "label": "squid",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -763,18 +733,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 4.97,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "Unlike an octopus, it also carries two extra filaments tucked into pockets.",
     "args": {
-      "lines": [
-        "Unlike an octopus, it",
-        "also carries two extra",
-        "filaments tucked"
-      ]
+      "subject": "vampire_squid",
+      "label": "",
+      "pick": 26,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -793,18 +762,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "Its formal name, Vampyroteuthis infernalis, translates roughly as vampire squid from hell. A name records first impressions. It is not a description.",
     "args": {
-      "lines": [
-        "Its formal name, Vampyroteuthis",
-        "infernalis, translates roughly as",
-        "vampire squid"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -824,49 +792,37 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "Several were described under different names before researchers recognised them as a single species.",
     "args": {
-      "lines": [
-        "Several were described under",
-        "different names before researchers",
-        "recognised them"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "The fins show why this happened. Young vampire squid pass through a stage with two pairs of fins, and adults have one pair.",
     "args": {
-      "title": "Its own order",
-      "items": [
-        "+eight webbed arms",
-        "+two extra filaments",
-        "-not a squid",
-        "-not an octopus"
-      ],
-      "note": ""
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 9,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "It is not a squid, and not an octopus either",
     "narration": "A biologist working from a few jars could reasonably conclude that a juvenile and an adult were different animals.",
     "args": {
-      "lines": [
-        "A biologist working from",
-        "a few jars could",
-        "reasonably conclude"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -886,45 +842,24 @@
     "from": "directive"
   },
   {
-    "segment": "anatomy_callout",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Two filaments explain the strangest part of its outline",
     "narration": "The feeding filaments are easy to miss in a photograph, because the animal can pull them back into pockets between its arms.",
     "args": {
-      "title": "The feeding filaments",
-      "parts": [
-        [
-          "filaments",
-          0.2,
-          0.6
-        ],
-        [
-          "filaments",
-          0.8,
-          0.6
-        ],
-        [
-          "pockets",
-          0.45,
-          0.45
-        ]
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Two filaments explain the strangest part of its outline",
     "narration": "Extended, they can reach much farther than the length of its body.",
     "args": {
-      "lines": [
-        "Extended, they can reach",
-        "much farther than the",
-        "length"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -954,18 +889,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.79,
     "heading": "Two filaments explain the strangest part of its outline",
     "narration": "Together, these showed that the vampire squid uses its filaments for collecting marine snow.",
     "args": {
-      "lines": [
-        "Together, these showed that",
-        "the vampire squid uses",
-        "its filaments"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 3,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -995,18 +929,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Two filaments explain the strangest part of its outline",
     "narration": "The animal gathers this material in mucus and passes it to its mouth with its arms.",
     "args": {
-      "lines": [
-        "The animal gathers this",
-        "material in mucus and",
-        "passes it"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1025,18 +955,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "Two filaments explain the strangest part of its outline",
     "narration": "Judged by what is in its stomach and what it is seen doing, the vampire squid is a collector.",
     "args": {
-      "lines": [
-        "Judged by what is",
-        "in its stomach and",
-        "what it"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 4,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1055,18 +984,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Two filaments explain the strangest part of its outline",
     "narration": "The cape, the cirri and the dark colour look like a hunter's equipment.",
     "args": {
-      "lines": [
-        "The cape, the cirri",
-        "and the dark colour",
-        "look like"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1093,18 +1018,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Light is part of how it looks",
     "narration": "At the depths this animal prefers, only a faint trace of blue remains.",
     "args": {
-      "lines": [
-        "At the depths this",
-        "animal prefers, only a",
-        "faint trace"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "light_attenuation",
@@ -1115,18 +1036,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Light is part of how it looks",
     "narration": "In that blue gloom, a dark red or black body is effectively invisible.",
     "args": {
-      "lines": [
-        "In that blue gloom,",
-        "a dark red or",
-        "black body"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "light_attenuation",
@@ -1137,32 +1054,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.45,
     "heading": "Light is part of how it looks",
     "narration": "The vampire squid is covered in light organs called photophores, and the tips of its arms can glow.",
     "args": {
-      "lines": [
-        "The vampire squid is",
-        "covered in light organs",
-        "called photophores"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 5,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Light is part of how it looks",
     "narration": "When it is disturbed, it can do something unusual. Other cephalopods release a cloud of dark ink.",
     "args": {
-      "lines": [
-        "When it is disturbed,",
-        "it can do something",
-        "unusual."
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "light_attenuation",
@@ -1173,32 +1085,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Light is part of how it looks",
     "narration": "The cloud lingers in the water while the animal moves away. In another defensive display, it pulls its webbed arms up and back over its body and turns itself inside out, so that the cirri face outward.",
     "args": {
-      "lines": [
-        "The cloud lingers in",
-        "the water while the",
-        "animal moves"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Light is part of how it looks",
     "narration": "Researchers sometimes call this the pineapple posture. In that position the animal looks like a spiny ball, and the dark cape disappears entirely.",
     "args": {
-      "lines": [
-        "Researchers sometimes call this",
-        "the pineapple posture. In",
-        "that position"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "zone_column",
@@ -1211,18 +1115,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Its habitat explains its build",
     "narration": "That is in the twilight zone, in a layer called the oxygen minimum zone, where the water holds very little oxygen.",
     "args": {
-      "lines": [
-        "That is in the",
-        "twilight zone, in a",
-        "layer called"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "zone_column",
@@ -1235,18 +1135,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "Its habitat explains its build",
     "narration": "Its tissues are soft and watery, its muscles are weak compared with a squid's, and its metabolism is slow.",
     "args": {
-      "lines": [
-        "Its tissues are soft",
-        "and watery, its muscles",
-        "are weak"
-      ]
+      "subject": "deep_squid",
+      "label": "squid",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "zone_column",
@@ -1259,18 +1158,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Its habitat explains its build",
     "narration": "That physical logic explains its appearance. A soft, slow, drifting body is the shape of a life lived on a tight budget.",
     "args": {
-      "lines": [
-        "That physical logic explains",
-        "its appearance. A soft,",
-        "slow, drifting"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1293,18 +1188,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "What to notice in the edit",
     "narration": "Those are different shapes of the same body. Third, look at the scale.",
     "args": {
-      "lines": [
-        "Those are different shapes",
-        "of the same body.",
-        "Third, look"
-      ]
+      "variant": 2
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1334,17 +1225,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "But most video of living vampire squid comes from a few regions where research vehicles dive regularly, and many observations come from off California.",
     "args": {
-      "lines": [
-        "But most video of",
-        "living vampire squid comes"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 6,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1364,18 +1255,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Evidence limit",
     "narration": "Every image is artificially lit, so its colour under natural light is inferred, not observed.",
     "args": {
-      "lines": [
-        "Every image is artificially",
-        "lit, so its colour",
-        "under natural"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1395,31 +1282,26 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "Closing",
     "narration": "So the vampire squid is a small, dark, soft animal with a webbed cape, ear-like fins and very large eyes.",
     "args": {
-      "lines": [
-        "So the vampire squid",
-        "is a small, dark,",
-        "soft animal"
-      ]
+      "subject": "vampire_squid",
+      "label": "vampire squid",
+      "pick": 7,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "The more interesting part is how scientists earned that picture: first from wrecked bodies in jars, then from cameras that went down to meet the animal where it lives.",
     "args": {
-      "lines": [
-        "The more interesting part",
-        "is how scientists earned",
-        "that picture:"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   }
 ]

@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Cold open",
     "narration": "Even a spotless window pane reflects about 8 percent of the light striking it.",
     "args": {
-      "value": "8",
-      "unit": "percent",
-      "caption": "Light a clean window pane reflects",
-      "source": "NIST"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "That loss is real, and it is almost the only loss. Glass is clear because visible light does not carry enough energy to excite the electrons held in its silicon and oxygen bonds, so the light passes through instead of being absorbed.",
     "args": {
-      "lines": [
-        "That loss is real,",
-        "and it is almost",
-        "the only"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Cold open",
     "narration": "The refractive-index measurements behind that 8 percent are the kind NIST publishes.",
     "args": {
-      "lines": [
-        "The refractive-index measurements behind",
-        "that 8 percent are",
-        "the kind"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -67,18 +56,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "The answer overturns a common assumption. Glass does not do something special to become transparent. It simply fails to stop the light.",
     "args": {
-      "lines": [
-        "The answer overturns a",
-        "common assumption. Glass does",
-        "not do"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -94,45 +79,34 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "To absorb a photon, an electron has to be lifted from a filled band into an empty one.",
     "args": {
-      "lines": [
-        "To absorb a photon,",
-        "an electron has to",
-        "be lifted"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "The gap between a filled band and an empty one is called the band gap.",
     "args": {
-      "term": "band gap",
-      "meaning": "the gap between a filled band and an empty one",
-      "boundary": "photons with less energy than the gap pass through",
-      "source": "MIT DMSE"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "Photons with less energy than the gap pass through. The electron cannot accept the photon, so the photon has nowhere to deposit its energy, and it travels on.",
     "args": {
-      "lines": [
-        "Photons with less energy",
-        "than the gap pass",
-        "through."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -148,32 +122,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "Visible light spans wavelengths of roughly 400 to 700 nanometres, the range NIST treats as visible in its work on light measurement.",
     "args": {
-      "lines": [
-        "Visible light spans wavelengths",
-        "of roughly 400 to",
-        "700 nanometres"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "A shorter wavelength means more energy in each photon. Even a violet photon, the most energetic colour you can see, carries only a few electron volts.",
     "args": {
-      "lines": [
-        "A shorter wavelength means",
-        "more energy in each",
-        "photon. Even"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -186,32 +152,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "The band gap of pure silica sits several times higher, out in the deep ultraviolet.",
     "args": {
-      "lines": [
-        "The band gap of",
-        "pure silica sits several",
-        "times higher"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "Across the entire visible range, no electronic transition is available for light to drive.",
     "args": {
-      "lines": [
-        "Across the entire visible",
-        "range, no electronic transition",
-        "is available"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -224,34 +182,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "A metal behaves very differently. In aluminium or copper, the electrons are not locked into bonds.",
     "args": {
-      "term": "transparent",
-      "includes": [
-        "no electronic transition for visible light"
-      ],
-      "excludes": [
-        "a special property added to glass"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "They move freely, and they respond to light of almost any colour.",
     "args": {
-      "lines": [
-        "They move freely, and",
-        "they respond to light",
-        "of almost"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -270,18 +218,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "Silicon, the element on its own, has a band gap small enough that visible light is absorbed.",
     "args": {
-      "lines": [
-        "Silicon, the element on",
-        "its own, has a",
-        "band gap"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -300,32 +244,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Visible light is too weak to be absorbed",
     "narration": "The transparency of glass is not a special property added to glass. Put simply, there is no electronic transition for visible light.",
     "args": {
-      "lines": [
-        "The transparency of glass",
-        "is not a special",
-        "property added"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Disorder is why glass does not scatter",
     "narration": "Not absorbing light is necessary, but it is not enough. A material can refuse to absorb light and still be opaque, because it scatters the light instead.",
     "args": {
-      "lines": [
-        "Not absorbing light is",
-        "necessary, but it is",
-        "not enough."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -338,32 +274,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Disorder is why glass does not scatter",
     "narration": "Grind it and you get a white powder, even though nothing chemical has changed.",
     "args": {
-      "lines": [
-        "Grind it and you",
-        "get a white powder,",
-        "even though"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Disorder is why glass does not scatter",
     "narration": "Every surface between grains bends and reflects a little light. After thousands of those surfaces, the light has been sent in every direction. White is what scattered, unabsorbed light looks like.",
     "args": {
-      "lines": [
-        "Every surface between grains",
-        "bends and reflects a",
-        "little light."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -382,18 +310,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Disorder is why glass does not scatter",
     "narration": "As an ordinary polycrystalline ceramic, it is white. That form is made of countless tiny grains with pores between them.",
     "args": {
-      "lines": [
-        "As an ordinary polycrystalline",
-        "ceramic, it is white.",
-        "That form"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -412,18 +336,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Disorder is why glass does not scatter",
     "narration": "Making a ceramic transparent depends on removing pores and controlling grain boundaries. The chemistry stays the same.",
     "args": {
-      "lines": [
-        "Making a ceramic transparent",
-        "depends on removing pores",
-        "and controlling"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -439,18 +359,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Disorder is why glass does not scatter",
     "narration": "When molten glass cools, it stiffens before its atoms can arrange themselves into crystals.",
     "args": {
-      "lines": [
-        "When molten glass cools,",
-        "it stiffens before its",
-        "atoms"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -466,18 +382,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Disorder is why glass does not scatter",
     "narration": "Features that small scatter light only weakly, through a process called Rayleigh scattering, and that scattering falls off steeply as the wavelength grows longer.",
     "args": {
-      "lines": [
-        "Features that small scatter",
-        "light only weakly, through",
-        "a process"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -504,31 +416,24 @@
     "from": "heading"
   },
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The light glass loses goes mostly to its surfaces",
     "narration": "The figure from the opening has a simple origin. Ordinary window glass has a refractive index of about 1.5, the kind of value NIST measures and publishes for optical materials.",
     "args": {
-      "value": "4",
-      "unit": "percent",
-      "caption": "Reflected at each air-glass surface",
-      "source": "NIST"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The light glass loses goes mostly to its surfaces",
     "narration": "Whenever light crosses from one refractive index to another, some of it reflects.",
     "args": {
-      "lines": [
-        "Whenever light crosses from",
-        "one refractive index to",
-        "another, some"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -544,18 +449,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The light glass loses goes mostly to its surfaces",
     "narration": "For air and glass, it works out to about 4 percent. A pane has two surfaces, front and back, so roughly 8 percent goes back the way it came.",
     "args": {
-      "lines": [
-        "For air and glass,",
-        "it works out to",
-        "about 4"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -571,35 +472,24 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The light glass loses goes mostly to its surfaces",
     "narration": "The losses in a clear pane fall into three categories. Reflection at both surfaces is usually the largest.",
     "args": {
-      "title": "Where light goes in a clear pane",
-      "items": [
-        "+reflection at both surfaces",
-        "+faint Rayleigh scattering",
-        "+absorption by trace impurities",
-        "?how much each contributes in a given pane"
-      ],
-      "note": ""
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The light glass loses goes mostly to its surfaces",
     "narration": "Faint Rayleigh scattering comes from the frozen density fluctuations. Absorption by trace impurities is where colour comes from.",
     "args": {
-      "lines": [
-        "Faint Rayleigh scattering comes",
-        "from the frozen density",
-        "fluctuations. Absorption"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -619,18 +509,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The light glass loses goes mostly to its surfaces",
     "narration": "Anti-reflection coatings on camera lenses and eyeglasses reduce the first loss directly.",
     "args": {
-      "lines": [
-        "Anti-reflection coatings on camera",
-        "lenses and eyeglasses reduce",
-        "the first"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -650,32 +536,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "Look at the edge of a sheet of ordinary window glass, and it is green.",
     "args": {
-      "lines": [
-        "Look at the edge",
-        "of a sheet of",
-        "ordinary window"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "Look through the face, and you barely notice any tint. Both views show the same material, but the edge gives the light a much longer path.",
     "args": {
-      "lines": [
-        "Look through the face,",
-        "and you barely notice",
-        "any tint."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -688,31 +566,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "Unlike the silica around them, iron ions do have electronic transitions in the visible range.",
     "args": {
-      "lines": [
-        "Unlike the silica around",
-        "them, iron ions do",
-        "have electronic"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "They absorb a little of the red end of the spectrum and a little of the blue.",
     "args": {
-      "lines": [
-        "They absorb a little",
-        "of the red end"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -725,18 +596,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "Manufacturers sell low-iron glass for display cases and solar panels specifically to remove that tint.",
     "args": {
-      "lines": [
-        "Manufacturers sell low-iron glass",
-        "for display cases and",
-        "solar panels"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -755,18 +622,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "Ancient glassmakers could not buy pure sand, and much early glass is tinted or deeply coloured.",
     "args": {
-      "lines": [
-        "Ancient glassmakers could not",
-        "buy pure sand, and",
-        "much early"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -785,18 +648,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Colour in glass comes from what was added, not from silica",
     "narration": "Their makers added compounds of manganese or antimony to counteract the tint of iron.",
     "args": {
-      "lines": [
-        "Their makers added compounds",
-        "of manganese or antimony",
-        "to counteract"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -844,18 +703,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A spectrophotometer turns clear into a curve",
     "narration": "The method is simple. You shine light of one wavelength through the sample.",
     "args": {
-      "lines": [
-        "The method is simple.",
-        "You shine light of",
-        "one wavelength"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -887,18 +742,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "A spectrophotometer turns clear into a curve",
     "narration": "Then you repeat across the spectrum, from ultraviolet through visible to infrared.",
     "args": {
-      "lines": [
-        "Then you repeat across",
-        "the spectrum, from ultraviolet",
-        "through visible"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -930,18 +781,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A spectrophotometer turns clear into a curve",
     "narration": "The ultraviolet drop is itself evidence for the band gap argument. It is the point where photons finally carry enough energy to be absorbed.",
     "args": {
-      "lines": [
-        "The ultraviolet drop is",
-        "itself evidence for the",
-        "band gap"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -960,18 +807,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A spectrophotometer turns clear into a curve",
     "narration": "That is why NIST issues calibrated glass filters as reference materials. A laboratory measures the filter, compares its reading with the certified value, and corrects its instrument.",
     "args": {
-      "lines": [
-        "That is why NIST",
-        "issues calibrated glass filters",
-        "as reference"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -990,18 +833,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "A spectrophotometer turns clear into a curve",
     "narration": "It lets two laboratories on different continents agree about how clear a piece of glass is.",
     "args": {
-      "lines": [
-        "It lets two laboratories",
-        "on different continents agree",
-        "about how"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -1020,34 +859,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "The steep drops at either end of the curve matter. At the ultraviolet end, photons carry enough energy to reach electronic transitions.",
     "args": {
-      "term": "clear",
-      "includes": [
-        "a window in the spectrum"
-      ],
-      "excludes": [
-        "a property at every wavelength"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "Some of those transitions belong to the silica, and some belong to impurities and additives in ordinary glass, so absorption rises.",
     "args": {
-      "lines": [
-        "Some of those transitions",
-        "belong to the silica,",
-        "and some"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1066,18 +895,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "The same pane you call clear is darkened across parts of the ultraviolet and opaque across much of the infrared.",
     "args": {
-      "lines": [
-        "The same pane you",
-        "call clear is darkened",
-        "across parts"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1096,31 +921,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "The most demanding glass operates near the edges of that window. Telecommunications fibre is silica purified far beyond window glass.",
     "args": {
-      "lines": [
-        "The most demanding glass",
-        "operates near the edges"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "Its lowest losses sit in the near infrared, at wavelengths of around 1550 nanometres.",
     "args": {
-      "lines": [
-        "Its lowest losses sit",
-        "in the near infrared,",
-        "at wavelengths"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1133,32 +951,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "That is low enough for light to cross many kilometres of glass before it needs amplification.",
     "args": {
-      "lines": [
-        "That is low enough",
-        "for light to cross",
-        "many kilometres"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Clear is a window in the spectrum, not a property of glass",
     "narration": "In fibre this pure, the impurities are nearly gone. Most of the remaining loss is Rayleigh scattering from the frozen disorder of the glass itself, the same effect that is invisible in a window.",
     "args": {
-      "lines": [
-        "In fibre this pure,",
-        "the impurities are nearly",
-        "gone."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1181,18 +991,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "A frosted pane shows scattering. It is made deliberately by roughening a surface that is chemically identical to the clear glass beside it.",
     "args": {
-      "lines": [
-        "A frosted pane shows",
-        "scattering. It is made",
-        "deliberately"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1232,18 +1038,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Evidence limit",
     "narration": "The arrangement of atoms in an amorphous solid cannot be read directly the way a crystal structure can.",
     "args": {
-      "lines": [
-        "The arrangement of atoms",
-        "in an amorphous solid",
-        "cannot"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1263,18 +1065,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Evidence limit",
     "narration": "A general explanation also cannot tell you the losses of any given pane.",
     "args": {
-      "lines": [
-        "A general explanation also",
-        "cannot tell you the",
-        "losses"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1294,18 +1092,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Evidence limit",
     "narration": "The settled parts are why visible light is not absorbed and why glass does not scatter.",
     "args": {
-      "lines": [
-        "The settled parts are",
-        "why visible light is",
-        "not absorbed"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",

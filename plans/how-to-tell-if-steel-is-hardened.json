@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "A quenched knife and a soft nail both cling to the same magnet.",
     "args": {
-      "value": "150",
-      "unit": "kilograms-force",
-      "caption": "Rockwell C total test force",
-      "source": "ASTM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "The dependable way to tell if steel is hardened is to measure its resistance to indentation, most often with a Rockwell C test that presses a diamond cone into the surface under 150 kilograms-force, a method standardized by ASTM International.",
     "args": {
-      "lines": [
-        "The dependable way to",
-        "tell if steel is",
-        "hardened"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "It does not settle how deep the hardness runs. It does not show whether the part was tempered afterwards, or whether the steel a few centimetres away behaved the same way in the quench.",
     "args": {
-      "lines": [
-        "It does not settle",
-        "how deep the hardness",
-        "runs. It"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -73,22 +62,21 @@
     "narration": "How to tell if steel is hardened",
     "args": {
       "lines": [
-        "How to tell if",
-        "steel is hardened"
+        "How do you tell",
+        "if steel is hardened?"
       ]
     },
     "from": "heading"
   },
   {
-    "segment": "thermal_ascent",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "Start with what hardening physically does. Carbon steel is iron with a small fraction of carbon dissolved in it.",
     "args": {
-      "to_temp": 727,
-      "label": "eutectoid temperature"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "material_image",
@@ -100,7 +88,7 @@
       "label": "AUSTENITE",
       "pick": 0
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm+picture+material"
   },
   {
     "segment": "thermal_ascent",
@@ -114,18 +102,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "Cool the steel slowly and the carbon has time to migrate out, forming softer, layered structures.",
     "args": {
-      "lines": [
-        "Cool the steel slowly",
-        "and the carbon has",
-        "time"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "thermal_ascent",
@@ -139,45 +123,34 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "The iron lattice tries to shift back to its room-temperature arrangement anyway. What results is a strained, distorted crystal called martensite.",
     "args": {
-      "lines": [
-        "The iron lattice tries",
-        "to shift back to",
-        "its room-temperature"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "Martensite is what a hardened part is mostly made of, and it is why this question is harder than it sounds.",
     "args": {
-      "term": "martensite",
-      "meaning": "the strained crystal that forms when quenching traps carbon in iron",
-      "boundary": "hard and brittle as quenched, so it is tempered",
-      "source": "ASM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "ASM International's heat-treating references describe martensite as hard and brittle as quenched.",
     "args": {
-      "lines": [
-        "ASM International's heat-treating references",
-        "describe martensite as hard",
-        "and brittle"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -193,18 +166,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "None of this announces itself on the surface. A quenched blade keeps its shape, looks much the same once cleaned, and carries no visible label.",
     "args": {
-      "lines": [
-        "None of this announces",
-        "itself on the surface.",
-        "A quenched"
-      ]
+      "subject": "damascus-blade",
+      "label": "BLADE",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+material"
   },
   {
     "segment": "definition_card",
@@ -220,18 +191,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Hardening rearranges the inside and leaves the outside alone",
     "narration": "The useful habit is to ask, for each test, which property of that structure it actually touches.",
     "args": {
-      "lines": [
-        "The useful habit is",
-        "to ask, for each",
-        "test"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -250,18 +217,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "A magnet and a temper colour are answering other questions",
     "narration": "Ordinary carbon steel is ferromagnetic whether it is soft, annealed or fully hardened, so the knife and the nail both pass.",
     "args": {
-      "lines": [
-        "Ordinary carbon steel is",
-        "ferromagnetic whether it is",
-        "soft, annealed"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -280,18 +243,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A magnet and a temper colour are answering other questions",
     "narration": "Many austenitic stainless steels, the kind used for kitchen sinks, are essentially non-magnetic in the annealed state, and they also cannot be hardened by quenching.",
     "args": {
-      "lines": [
-        "Many austenitic stainless steels,",
-        "the kind used for",
-        "kitchen sinks"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -310,34 +269,24 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "A magnet and a temper colour are answering other questions",
     "narration": "Temper colours are the second shortcut. When bright steel is heated in air, a thin oxide film grows on it.",
     "args": {
-      "title": "What a temper colour shows",
-      "items": [
-        "+the surface was heated in air",
-        "-the steel was quenched first",
-        "?how hard the steel is now"
-      ],
-      "note": ""
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A magnet and a temper colour are answering other questions",
     "narration": "The film's thickness depends on temperature and time, and it produces colours running from pale straw through bronze and purple to blue.",
     "args": {
-      "lines": [
-        "The film's thickness depends",
-        "on temperature and time,",
-        "and it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -356,18 +305,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "A magnet and a temper colour are answering other questions",
     "narration": "They do not show that the steel was quenched first, since soft mild steel colours the same way.",
     "args": {
-      "lines": [
-        "They do not show",
-        "that the steel was",
-        "quenched first"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -386,18 +331,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A magnet and a temper colour are answering other questions",
     "narration": "Grinding or polishing removes the film entirely. The spark test, where a grinding wheel throws sparks whose bursts reflect carbon content, has the same character.",
     "args": {
-      "lines": [
-        "Grinding or polishing removes",
-        "the film entirely. The",
-        "spark test"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -452,18 +393,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A file ranks hardness by whether it can cut",
     "narration": "A file is itself made of hardened steel. Choose a sharp file, draw it lightly across a clean edge of the part, and feel whether it bites or skids.",
     "args": {
-      "lines": [
-        "A file is itself",
-        "made of hardened steel.",
-        "Choose"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -491,18 +428,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A file ranks hardness by whether it can cut",
     "narration": "If it skids across with a glassy feel and leaves almost no mark, the part is about as hard as the file, or harder.",
     "args": {
-      "lines": [
-        "If it skids across",
-        "with a glassy feel",
-        "and leaves"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -530,34 +463,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "A file ranks hardness by whether it can cut",
     "narration": "But notice what the file is touching: the outermost skin, and only where you dragged it.",
     "args": {
-      "term": "file skid",
-      "includes": [
-        "evidence the surface is hard"
-      ],
-      "excludes": [
-        "evidence the whole part is hard"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A file ranks hardness by whether it can cut",
     "narration": "Two common situations break the inference. A case-hardened part, such as a carburized gear, has a hard shell over a deliberately softer core.",
     "args": {
-      "lines": [
-        "Two common situations break",
-        "the inference. A case-hardened",
-        "part"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -576,18 +499,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "A file ranks hardness by whether it can cut",
     "narration": "The reverse happens with decarburization, when carbon is lost from the surface during heating in air.",
     "args": {
-      "lines": [
-        "The reverse happens with",
-        "decarburization, when carbon is",
-        "lost"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -606,17 +525,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "A file ranks hardness by whether it can cut",
     "narration": "The result also depends on the file's sharpness and the pressure of your hand.",
     "args": {
-      "lines": [
-        "The result also depends",
-        "on the file's sharpness"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -651,18 +567,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "A diamond cone with a 120-degree tip is first pressed against the surface with a 10 kilograms-force preload.",
     "args": {
-      "lines": [
-        "A diamond cone with",
-        "a 120-degree tip is",
-        "first pressed"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -681,18 +593,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "Then the load rises to 150 kilograms-force total, is held briefly, and is reduced back to the preload.",
     "args": {
-      "lines": [
-        "Then the load rises",
-        "to 150 kilograms-force total,",
-        "is held"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -711,17 +619,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "A harder steel resists, the dent is shallower, and the Rockwell C number is higher.",
     "args": {
-      "lines": [
-        "A harder steel resists,",
-        "the dent is shallower"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -740,18 +645,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "That is why the reading is so sensitive to dirt, scale and vibration.",
     "args": {
-      "lines": [
-        "That is why the",
-        "reading is so sensitive",
-        "to dirt"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -767,18 +668,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "It specifies the indenter, the forces, the dwell times, and rules a non-specialist would not think to ask about.",
     "args": {
-      "lines": [
-        "It specifies the indenter,",
-        "the forces, the dwell",
-        "times"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -794,17 +691,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "Indentations must be spaced away from edges and from each other, because each one disturbs the metal around it.",
     "args": {
-      "lines": [
-        "Indentations must be spaced",
-        "away from edges"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -820,17 +714,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "A Rockwell number taken without those conditions met is a number, but not yet evidence.",
     "args": {
-      "lines": [
-        "A Rockwell number taken",
-        "without those conditions met"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -849,18 +740,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "A Rockwell number is a depth, read twice",
     "narration": "The Vickers test uses a square-based diamond pyramid and measures the diagonals of the dent under a microscope.",
     "args": {
-      "lines": [
-        "The Vickers test uses",
-        "a square-based diamond pyramid",
-        "and measures"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -879,38 +766,24 @@
     "from": "directive"
   },
   {
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A hardness number is only as good as the block behind it",
     "narration": "Here is the part of the chain most people never see. A hardness tester does not measure an absolute physical quantity the way a ruler measures length.",
     "args": {
-      "title": "Reference blocks",
-      "sources": [
-        [
-          "NIST",
-          "produces Rockwell C reference test blocks"
-        ],
-        [
-          "ASTM International",
-          "specifies how machines are verified against blocks"
-        ]
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "A hardness number is only as good as the block behind it",
     "narration": "The number depends on the exact geometry of the diamond, the accuracy of the forces, and the depth sensor.",
     "args": {
-      "lines": [
-        "The number depends on",
-        "the exact geometry of",
-        "the diamond"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -933,17 +806,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A hardness number is only as good as the block behind it",
     "narration": "NIST produces Rockwell C reference test blocks, calibrated on its own standardizing equipment, and the ASTM International standard specifies how machines are verified against blocks.",
     "args": {
-      "lines": [
-        "NIST produces Rockwell C",
-        "reference test blocks, calibrated"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1015,18 +885,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "A cross-section shows why the number is high",
     "narration": "A metallographer cuts a cross-section through the part, mounting it and polishing it flat, then gives it a nital etch.",
     "args": {
-      "lines": [
-        "A metallographer cuts a",
-        "cross-section through the part,",
-        "mounting it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -1067,7 +933,7 @@
       "label": "MARTENSITE",
       "pick": 1
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm+picture+material"
   },
   {
     "segment": "process_steps",
@@ -1099,32 +965,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A cross-section shows why the number is high",
     "narration": "The same section answers the depth question the file could not. Run a line of small Vickers or Knoop indentations from the surface inward, and you get a hardness profile.",
     "args": {
-      "lines": [
-        "The same section answers",
-        "the depth question the",
-        "file"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A cross-section shows why the number is high",
     "narration": "On a case-hardened gear the numbers start high and fall off with depth.",
     "args": {
-      "lines": [
-        "On a case-hardened gear",
-        "the numbers start high",
-        "and fall"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1137,32 +995,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "A cross-section shows why the number is high",
     "narration": "ASTM International publishes the microindentation method used for this kind of traverse.",
     "args": {
-      "lines": [
-        "ASTM International publishes the",
-        "microindentation method used for",
-        "this kind"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A cross-section shows why the number is high",
     "narration": "The cost is obvious: the part has been cut in half. In production, that is why a test coupon, or a sacrificial part from the same batch, carries the destructive evidence for the rest.",
     "args": {
-      "lines": [
-        "The cost is obvious:",
-        "the part has been",
-        "cut"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1182,18 +1032,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "What to notice in the edit",
     "narration": "The Rockwell C test measures a depth at one point, traced back to a certified block.",
     "args": {
-      "lines": [
-        "The Rockwell C test",
-        "measures a depth at",
-        "one point"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1213,18 +1059,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "And case depth needs a cross-section, which means some of the most important evidence about a hardened part is gathered on a different, destroyed piece of the same batch.",
     "args": {
-      "lines": [
-        "And case depth needs",
-        "a cross-section, which means",
-        "some"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1260,18 +1102,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Evidence limit",
     "narration": "It measures resistance to one indenter under one load at one spot.",
     "args": {
-      "lines": [
-        "It measures resistance to",
-        "one indenter under one",
-        "load"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1290,18 +1128,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Evidence limit",
     "narration": "It does not directly measure wear life or fatigue strength, which depend on structure, residual stress and surface finish as well.",
     "args": {
-      "lines": [
-        "It does not directly",
-        "measure wear life or",
-        "fatigue strength"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1320,18 +1154,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Evidence limit",
     "narration": "And none of these tests, alone, tells you the heat-treatment history that produced the result.",
     "args": {
-      "lines": [
-        "And none of these",
-        "tests, alone, tells you",
-        "the heat-treatment"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",

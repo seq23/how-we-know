@@ -1,32 +1,26 @@
 [
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Cold open",
     "narration": "Haul this animal up from the abyss, and the body you came to see collapses.",
     "args": {
-      "title": "where you have to be",
-      "stages": [
-        "dredges and trawls",
-        "remotely operated vehicles"
-      ],
-      "conclusion": "It does not come from jars"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "A sea pig is a small, plump, translucent pinkish sea cucumber that walks across the deep ocean floor on several pairs of fluid-filled legs, with a few longer projections standing up from its back.",
     "args": {
-      "lines": [
-        "A sea pig is",
-        "a small, plump, translucent",
-        "pinkish sea"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -44,18 +38,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "Cold open",
     "narration": "It does not come from jars. Specimens pulled up by dredges and trawls tend to arrive soft, deflated and faded.",
     "args": {
-      "lines": [
-        "It does not come",
-        "from jars. Specimens pulled",
-        "up"
-      ]
+      "subject": "sea_pig",
+      "label": "",
+      "pick": 21,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "evidence_chain",
@@ -73,58 +66,56 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "Cold open",
     "narration": "It is where you have to be, and what you have to carry, to see it as it is.",
     "args": {
-      "lines": [
-        "It is where you",
-        "have to be, and",
-        "what you"
-      ]
+      "subject": "sea_pig",
+      "label": "",
+      "pick": 22,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 3.5,
     "heading": "Title card",
     "narration": "What does a sea pig look like?",
     "args": {
-      "lines": [
-        "What does a sea",
-        "pig look like?"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 15,
+      "zoom": 1.0
     },
-    "from": "heading"
+    "from": "heading+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "Start with the name, because it points you the wrong way. Sea pig is a common name, not a classification.",
     "args": {
-      "term": "sea pig",
-      "meaning": "a deep-sea sea cucumber in the genus Scotoplanes",
-      "boundary": "a common name, not a classification",
-      "source": "Smithsonian"
+      "subject": "sea_pig",
+      "label": "Sea pig",
+      "pick": 16,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.69,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "The animal is a deep-sea sea cucumber in the genus Scotoplanes, and there is more than one species in that genus.",
     "args": {
-      "lines": [
-        "The animal is a",
-        "deep-sea sea cucumber in",
-        "the genus"
-      ]
+      "subject": "sea_pig",
+      "label": "Scotoplanes",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -140,61 +131,53 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "Nothing about it is mammalian. It has no bones, no lungs, no eyes and no brain of the kind a vertebrate has.",
     "args": {
-      "lines": [
-        "Nothing about it is",
-        "mammalian. It has no",
-        "bones"
-      ]
+      "subject": "sea_pig",
+      "label": "",
+      "pick": 23,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
-    "segment": "definition_card",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "Smithsonian Ocean's deep-sea pages describe a seafloor where much of the food arrives as debris sinking from the sunlit water far above, and a sea pig is one of the animals built to make a living from that slow rain.",
     "args": {
-      "term": "sea pig",
-      "meaning": "a deep-sea sea cucumber in the genus Scotoplanes",
-      "boundary": "a common name, not a classification",
-      "source": "Smithsonian"
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 17,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 6.62,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "Sea cucumbers are echinoderms, the group that also includes sea stars, sea urchins and brittle stars.",
     "args": {
-      "term": "sea pig",
-      "includes": [
-        "a sea cucumber"
-      ],
-      "excludes": [
-        "a pig"
-      ]
+      "subject": "sea_cucumber",
+      "label": "Sea cucumbers",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "That family tree explains most of what you see. Echinoderms build their bodies around a water vascular system: a network of internal canals filled with fluid and connected to many small tube feet.",
     "args": {
-      "lines": [
-        "That family tree explains",
-        "most of what you",
-        "see. Echinoderms"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -213,48 +196,43 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 4.97,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "On a typical sea cucumber, they run along the body in rows.",
     "args": {
-      "lines": [
-        "On a typical sea",
-        "cucumber, they run along",
-        "the body"
-      ]
+      "subject": "sea_cucumber",
+      "label": "sea cucumber",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "A useful way to picture a sea cucumber is as a stretched-out echinoderm lying on its side, with its mouth at one end and its anus at the other.",
     "args": {
-      "term": "sea pig",
-      "includes": [
-        "a sea cucumber"
-      ],
-      "excludes": [
-        "a pig"
-      ]
+      "subject": "sea_cucumber",
+      "label": "sea cucumber",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A sea pig is a sea cucumber, and the name points the wrong way",
     "narration": "A sea pig takes that plan and enlarges one part of it until that part becomes the most obvious thing about the animal.",
     "args": {
-      "lines": [
-        "A sea pig takes",
-        "that plan and enlarges",
-        "one part"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "quote_card",
@@ -293,18 +271,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "So it helps to go back to what the anatomy itself shows.",
     "args": {
-      "lines": [
-        "So it helps to",
-        "go back to what",
-        "the anatomy"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -332,18 +306,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "They are enlarged tube feet. A tube foot works by hydraulics. Fluid is pushed into the foot, the foot extends, and muscles in its wall pull it back and steer it.",
     "args": {
-      "lines": [
-        "They are enlarged tube",
-        "feet. A tube foot",
-        "works"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -371,31 +341,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "In video, the gait looks slow and slightly wobbly, which is what you would expect from hydraulics, not bones.",
     "args": {
-      "lines": [
-        "In video, the gait",
-        "looks slow and slightly",
-        "wobbly"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.62,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "You will see different counts given for how many of these legs a sea pig has.",
     "args": {
-      "lines": [
-        "You will see different",
-        "counts given for how"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 3,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -408,62 +374,47 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "The safe description is several pairs, arranged along the sides of the flattened underside.",
     "args": {
-      "lines": [
-        "The safe description is",
-        "several pairs, arranged along",
-        "the sides"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The legs are tube feet, inflated rather than jointed",
     "narration": "If a source gives you a single confident number without saying which species or how it was counted, that is exactly the kind of figure worth tracing back before you repeat it.",
     "args": {
-      "lines": [
-        "If a source gives",
-        "you a single confident",
-        "number without"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 6.62,
     "heading": "The \"antennae\" on its back are tube feet too",
     "narration": "On top of the body, near the front, a sea pig carries a few longer structures.",
     "args": {
-      "term": "the projections on its back",
-      "includes": [
-        "modified tube feet"
-      ],
-      "excludes": [
-        "antennae"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 18,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The \"antennae\" on its back are tube feet too",
     "narration": "In photographs, the projections on its back stand up like antennae or the ears of a cartoon animal, and many popular descriptions call them that.",
     "args": {
-      "lines": [
-        "In photographs, the projections",
-        "on its back stand",
-        "up like"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -482,18 +433,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The \"antennae\" on its back are tube feet too",
     "narration": "They are not antennae in the insect sense, and they are not ears.",
     "args": {
-      "lines": [
-        "They are not antennae",
-        "in the insect sense,",
-        "and they"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -512,18 +459,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The \"antennae\" on its back are tube feet too",
     "narration": "The evidence for any one function is limited, so treat confident claims about what they do with caution.",
     "args": {
-      "lines": [
-        "The evidence for any",
-        "one function is limited,",
-        "so treat"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -554,18 +497,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.38,
     "heading": "Its colour is partly a product of the camera's lights",
     "narration": "But the deep seafloor where sea pigs live receives no sunlight at all.",
     "args": {
-      "lines": [
-        "But the deep seafloor",
-        "where sea pigs live",
-        "receives"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 4,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "light_attenuation",
@@ -576,18 +518,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Its colour is partly a product of the camera's lights",
     "narration": "NOAA Ocean Exploration's published ocean facts cover how light fades as you descend.",
     "args": {
-      "lines": [
-        "NOAA Ocean Exploration's published",
-        "ocean facts cover how",
-        "light fades"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "light_attenuation",
@@ -598,18 +536,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "Its colour is partly a product of the camera's lights",
     "narration": "Every colour you have seen in a sea pig image was revealed by lamps carried down on a vehicle.",
     "args": {
-      "lines": [
-        "Every colour you have",
-        "seen in a sea",
-        "pig image"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 5,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "light_attenuation",
@@ -620,36 +557,27 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A specimen on deck is not what the animal looks like",
     "narration": "That brings back the opening problem. For a long time, the main way to know a deep-sea animal was to drag a net or dredge across the bottom and haul up whatever came with it.",
     "args": {
-      "title": "What a specimen can and cannot show",
-      "items": [
-        "+internal anatomy",
-        "+the body plan",
-        "-the living shape",
-        "-the living colour",
-        "?the function of the projections"
-      ],
-      "note": ""
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A specimen on deck is not what the animal looks like",
     "narration": "For a sea pig, that journey is damaging. Its body is soft and watery, supported largely by internal fluid rather than a rigid frame.",
     "args": {
-      "lines": [
-        "For a sea pig,",
-        "that journey is damaging.",
-        "Its body"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 6,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -670,18 +598,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A specimen on deck is not what the animal looks like",
     "narration": "A specimen is still valuable. It shows the internal anatomy and confirms the body plan, and it lets taxonomists compare one animal against another in detail.",
     "args": {
-      "lines": [
-        "A specimen is still",
-        "valuable. It shows the",
-        "internal anatomy"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -702,18 +626,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "A specimen on deck is not what the animal looks like",
     "narration": "That is what a specimen can and cannot show. And neither specimens nor brief video settle the function of the projections.",
     "args": {
-      "lines": [
-        "That is what a",
-        "specimen can and cannot",
-        "show."
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -731,18 +651,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A specimen on deck is not what the animal looks like",
     "narration": "MBARI has used vehicles like these off California for decades, and its archive of remotely operated vehicle footage is one of the reasons sea pigs became familiar to the public at all.",
     "args": {
-      "lines": [
-        "MBARI has used vehicles",
-        "like these off California",
-        "for decades"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 7,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -760,31 +679,27 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Its mouth is built for eating the seafloor",
     "narration": "Look at the front of the underside and you find the mouth, ringed by short tentacles.",
     "args": {
-      "term": "deposit feeder",
-      "meaning": "an animal that eats organic material from sediment",
-      "boundary": "it eats the seafloor, not prey",
-      "source": "Smithsonian"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "Its mouth is built for eating the seafloor",
     "narration": "A sea pig is a deposit feeder: an animal that eats organic material from sediment.",
     "args": {
-      "lines": [
-        "A sea pig is",
-        "a deposit feeder: an",
-        "animal"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 8,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -800,18 +715,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Its mouth is built for eating the seafloor",
     "narration": "In other words, it eats the seafloor, not prey. That food comes from above.",
     "args": {
-      "lines": [
-        "In other words, it",
-        "eats the seafloor, not",
-        "prey."
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -827,18 +738,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its mouth is built for eating the seafloor",
     "narration": "Where that material settles on the bottom, a sea pig can graze it, and its blunt front end is suited to working along the surface of the mud.",
     "args": {
-      "lines": [
-        "Where that material settles",
-        "on the bottom, a",
-        "sea pig"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 9,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -865,17 +775,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Video shows sea pigs gathering in groups",
     "narration": "Observations from MBARI's remotely operated vehicle footage, and from other deep-sea expeditions, record these aggregations.",
     "args": {
-      "lines": [
-        "Observations from MBARI's remotely",
-        "operated vehicle footage"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -902,18 +809,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 4.97,
     "heading": "Video shows sea pigs gathering in groups",
     "narration": "Juvenile crabs have also been reported sheltering on or beneath sea pigs.",
     "args": {
-      "lines": [
-        "Juvenile crabs have also",
-        "been reported sheltering on",
-        "or beneath"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 10,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -940,32 +846,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Video shows sea pigs gathering in groups",
     "narration": "A camera sees only where the vehicle happens to go, so how common these patterns are, and what drives them, is still a question for deep-sea ecology.",
     "args": {
-      "lines": [
-        "A camera sees only",
-        "where the vehicle happens",
-        "to go"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "What to notice in the edit",
     "narration": "As you watch the footage in this episode, notice three things. First, watch the edges of the light.",
     "args": {
-      "lines": [
-        "As you watch the",
-        "footage in this episode,",
-        "notice three"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -978,32 +876,30 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "Second, look for scale. Many research vehicles project a pair of laser dots a known distance apart, so that scientists can measure animals on screen; without a reference like that, a sea pig can look any size.",
     "args": {
-      "lines": [
-        "Second, look for scale.",
-        "Many research vehicles project",
-        "a pair"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 11,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.45,
     "heading": "What to notice in the edit",
     "narration": "Published sizes vary by species and by source, but descriptions generally put a sea pig at roughly hand-sized.",
     "args": {
-      "lines": [
-        "Published sizes vary by",
-        "species and by source,",
-        "but descriptions"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 12,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1016,48 +912,40 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "What to notice in the edit",
     "narration": "The two can look like different creatures, and that difference is the whole subject of this episode.",
     "args": {
-      "lines": [
-        "The two can look",
-        "like different creatures, and",
-        "that difference"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "seconds": 7.03,
     "heading": "Evidence limit",
     "narration": "Everything here describes appearance, and appearance is the part of sea pig biology the evidence handles best.",
     "args": {
-      "term": "the evidence",
-      "includes": [
-        "appearance"
-      ],
-      "excludes": [
-        "how many sea pigs there are"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 19,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "It does not establish how many sea pigs there are, how far their populations extend, how long they live, or how the different species compare in life rather than in preserved collections.",
     "args": {
-      "lines": [
-        "It does not establish",
-        "how many sea pigs",
-        "there"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pigs",
+      "pick": 13,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1076,28 +964,30 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Specimens over-represent animals that survive being collected. The images you know are real, but they are a narrow window, and the most familiar picture of a sea pig may be a picture of one population, under one set of lights, in one region.",
     "args": {
-      "lines": [
-        "Specimens over-represent animals that",
-        "survive being collected. The",
-        "images you"
-      ]
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 14,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "So a sea pig looks like a small, soft, pinkish sea cucumber on fluid-filled legs, carrying a few raised tube feet on its back.",
     "args": {
-      "variant": 2
+      "subject": "sea_pig",
+      "label": "sea pig",
+      "pick": 20,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",

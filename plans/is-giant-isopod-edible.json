@@ -1,27 +1,23 @@
 [
   {
-    "segment": "pressure_gauge",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Cold open",
     "narration": "An animal that eats whatever dies and sinks has ended up on restaurant menus.",
     "args": {
-      "depth_m": 1000
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Cold open",
     "narration": "Yes, the giant isopod is edible in the plain sense: people catch it, cook it and eat it.",
     "args": {
-      "lines": [
-        "Yes, the giant isopod",
-        "is edible in the",
-        "plain sense:"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -34,18 +30,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Cold open",
     "narration": "That is where the easy answer stops. Calling something edible tells you that people eat it.",
     "args": {
-      "lines": [
-        "That is where the",
-        "easy answer stops. Calling",
-        "something edible"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -71,34 +63,24 @@
     "from": "heading"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Edible is a claim about people, not about the animal",
     "narration": "Before the biology, it helps to be precise about the word. In this episode, edible means eaten by people somewhere, by choice, as food.",
     "args": {
-      "term": "edible",
-      "includes": [
-        "eaten by people"
-      ],
-      "excludes": [
-        "recommended"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Edible is a claim about people, not about the animal",
     "narration": "It does not mean recommended, and it does not mean tested. Plenty of things are edible in the first sense and poorly studied in the second.",
     "args": {
-      "lines": [
-        "It does not mean",
-        "recommended, and it does",
-        "not mean"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -117,18 +99,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Edible is a claim about people, not about the animal",
     "narration": "In Japan it has been sold as a novelty food, including flavoured crackers.",
     "args": {
-      "lines": [
-        "In Japan it has",
-        "been sold as a",
-        "novelty food"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -147,32 +125,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Edible is a claim about people, not about the animal",
     "narration": "The harder questions sit underneath. What kind of animal is it, what does it eat, how does it reach a kitchen, and what is actually known about its flesh.",
     "args": {
-      "lines": [
-        "The harder questions sit",
-        "underneath. What kind of",
-        "animal"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Edible is a claim about people, not about the animal",
     "narration": "Each one rests on a different kind of evidence, and the evidence gets thinner as you go down the list.",
     "args": {
-      "lines": [
-        "Each one rests on",
-        "a different kind of",
-        "evidence"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -202,18 +172,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It is a crustacean, which is why the plate looks familiar",
     "narration": "Giant isopods belong to the genus Bathynomus, and the best known species, Bathynomus giganteus, lives in the deep western Atlantic, including the Gulf of Mexico.",
     "args": {
-      "lines": [
-        "Giant isopods belong to",
-        "the genus Bathynomus, and",
-        "the best"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -243,18 +209,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It is a crustacean, which is why the plate looks familiar",
     "narration": "The name isopod means equal feet. Look at a giant isopod from below and you see the head, then fourteen walking legs, seven pairs, tucked beneath a series of overlapping shell plates that let the animal partly curl up when it is threatened.",
     "args": {
-      "lines": [
-        "The name isopod means",
-        "equal feet. Look at",
-        "a giant"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -282,18 +244,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It is a crustacean, which is why the plate looks familiar",
     "narration": "Someone has to collect a specimen, compare its anatomy with species already described, and publish a description, so that other specialists can check it against animals held in museum collections.",
     "args": {
-      "lines": [
-        "Someone has to collect",
-        "a specimen, compare its",
-        "anatomy"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -321,17 +279,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "It is a crustacean, which is why the plate looks familiar",
     "narration": "It is also, in a small irony, tied to the food trade.",
     "args": {
-      "lines": [
-        "It is also, in",
-        "a small irony, tied"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -370,34 +325,24 @@
     "from": "heading"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Its size is a deep-sea pattern that is still argued over",
     "narration": "Size is the reason anyone looked at these animals as food in the first place.",
     "args": {
-      "term": "deep-sea gigantism",
-      "includes": [
-        "a pattern"
-      ],
-      "excludes": [
-        "a settled explanation"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Its size is a deep-sea pattern that is still argued over",
     "narration": "A pill bug fits on a fingertip. A large giant isopod can fill two cupped hands, closer to a small lobster than a woodlouse.",
     "args": {
-      "lines": [
-        "A pill bug fits",
-        "on a fingertip. A",
-        "large giant"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -416,18 +361,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Its size is a deep-sea pattern that is still argued over",
     "narration": "It is a pattern, not a settled explanation. Cold water, which slows growth but may extend life, is one proposed factor.",
     "args": {
-      "lines": [
-        "It is a pattern,",
-        "not a settled explanation.",
-        "Cold water"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -446,17 +387,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Its size is a deep-sea pattern that is still argued over",
     "narration": "These ideas are debated in the scientific literature, and each may explain part of the picture in different groups of animals.",
     "args": {
-      "lines": [
-        "These ideas are debated",
-        "in the scientific literature"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -475,33 +413,27 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "It eats the dead, which is a fact about diet, not about cleanliness",
     "narration": "The next piece of evidence concerns diet, and it is the one that tends to put people off.",
     "args": {
-      "title": "What sinks to the seafloor",
-      "stages": [
-        "dead fish and whales",
-        "baited cameras and traps"
-      ],
-      "conclusion": "giant isopods are scavengers"
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "It eats the dead, which is a fact about diet, not about cleanliness",
     "narration": "Much of what a giant isopod eats is what sinks to the seafloor: mostly dead fish and whales, along with squid and anything else that falls out of the sunlit water into a place where food is scarce.",
     "args": {
-      "lines": [
-        "Much of what a",
-        "giant isopod eats is",
-        "what sinks"
-      ]
+      "subject": "deep_squid",
+      "label": "squid",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -519,18 +451,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It eats the dead, which is a fact about diet, not about cleanliness",
     "narration": "That is how we know that giant isopods are scavengers. They also take slow-moving live prey when they can, which is a reminder that scavenger describes a habit, not a rule.",
     "args": {
-      "lines": [
-        "That is how we",
-        "know that giant isopods",
-        "are scavengers."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -549,18 +477,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "It eats the dead, which is a fact about diet, not about cleanliness",
     "narration": "A scavenger diet is a fact about what it eats. It is not a measurement of what is in its flesh.",
     "args": {
-      "lines": [
-        "A scavenger diet is",
-        "a fact about what",
-        "it eats."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -579,18 +503,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "It eats the dead, which is a fact about diet, not about cleanliness",
     "narration": "What a diet of carcasses does is raise a sensible question about what might accumulate over time.",
     "args": {
-      "lines": [
-        "What a diet of",
-        "carcasses does is raise",
-        "a sensible"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -609,18 +529,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It eats the dead, which is a fact about diet, not about cleanliness",
     "narration": "Their lifespan has not been well measured. If they are long-lived, as a slow metabolism suggests, then long lives and patchy meals are exactly the conditions in which a chemist would want to look closely.",
     "args": {
-      "lines": [
-        "Their lifespan has not",
-        "been well measured. If",
-        "they"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -639,18 +555,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It reaches kitchens by trap and by trawl, and nobody is counting",
     "narration": "Mostly in two ways. Giant isopods are drawn to baited traps, the same basic tool used for deep-water crabs, and they are taken as bycatch in trawl nets dragged along the bottom for other species.",
     "args": {
-      "lines": [
-        "Mostly in two ways.",
-        "Giant isopods are drawn",
-        "to baited"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -669,18 +581,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "It reaches kitchens by trap and by trawl, and nobody is counting",
     "narration": "That gap matters. The honest answer to whether any catch is sustainable starts with a count, and here the count is largely missing.",
     "args": {
-      "lines": [
-        "That gap matters. The",
-        "honest answer to whether",
-        "any catch"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -719,17 +627,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Taste reports are anecdotes, not measurements",
     "narration": "Others report that there is less of it than the size suggests, because so much of the animal is shell, legs and internal organs, and that some parts taste bitter or unpleasant.",
     "args": {
-      "lines": [
-        "Others report that there",
-        "is less of it"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -748,18 +653,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Taste reports are anecdotes, not measurements",
     "narration": "It is not a controlled tasting, and the animals involved may have been different species, cooked in different ways, at different degrees of freshness.",
     "args": {
-      "lines": [
-        "It is not a",
-        "controlled tasting, and the",
-        "animals involved"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -798,18 +699,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The deep sea is not a clean room",
     "narration": "It comes from smaller relatives, and it shows that pollution reaches the trenches.",
     "args": {
-      "lines": [
-        "It comes from smaller",
-        "relatives, and it shows",
-        "that pollution"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -832,18 +729,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The deep sea is not a clean room",
     "narration": "Amphipods are small scavenging crustaceans. The finding showed that chemicals made at the surface had reached animals living about as far from people as anything can.",
     "args": {
-      "lines": [
-        "Amphipods are small scavenging",
-        "crustaceans. The finding showed",
-        "that chemicals"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -866,35 +759,24 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The deep sea is not a clean room",
     "narration": "What that study does not do is measure giant isopods. The step from trench amphipods to a Bathynomus on a plate is an inference, not a result.",
     "args": {
-      "title": "What is known about eating it",
-      "items": [
-        "+people eat it",
-        "+it is a crustacean",
-        "-flesh chemistry measured",
-        "?how much meat it yields"
-      ],
-      "note": ""
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "The deep sea is not a clean room",
     "narration": "So here is what is known about eating it. That people eat it is established.",
     "args": {
-      "lines": [
-        "So here is what",
-        "is known about eating",
-        "it."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -914,18 +796,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The deep sea is not a clean room",
     "narration": "How much meat it yields, and from which parts, still rests on anecdote.",
     "args": {
-      "lines": [
-        "How much meat it",
-        "yields, and from which",
-        "parts, still"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -943,18 +821,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "What to notice in the edit",
     "narration": "When the screen shows a market stall or a cooked isopod, that is observation: people really do this.",
     "args": {
-      "lines": [
-        "When the screen shows",
-        "a market stall or",
-        "a cooked"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -972,18 +846,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "What to notice in the edit",
     "narration": "When it shows a checklist with gaps, each gap is an open question, and it is left open on purpose.",
     "args": {
-      "lines": [
-        "When it shows a",
-        "checklist with gaps, each",
-        "gap"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1002,18 +872,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "In short, this isopod is eaten, not proven safe. No body of published work this episode could find measures contaminants, parasites or nutrients in giant isopod flesh.",
     "args": {
-      "lines": [
-        "In short, this isopod",
-        "is eaten, not proven",
-        "safe."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1032,18 +898,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "The population question is open as well. Without counts of how many are caught, nobody can say from the public record whether eating giant isopods is a passing novelty or a real pressure on animals we barely understand.",
     "args": {
-      "lines": [
-        "The population question is",
-        "open as well. Without",
-        "counts"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1066,16 +928,13 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Closing",
     "narration": "Knowing that something is eaten is the beginning of the evidence, not the end.",
     "args": {
-      "lines": [
-        "Knowing that something is",
-        "eaten is the beginning"
-      ]
+      "variant": 1
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   }
 ]

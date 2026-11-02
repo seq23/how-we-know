@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Cold open",
     "narration": "The strongest steels break at more than twice the stress titanium's workhorse alloy survives.",
     "args": {
-      "value": "2,000",
-      "unit": "megapascals",
-      "caption": "strongest steels, tensile strength",
-      "source": "ASM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Titanium is not stronger than steel in absolute terms: the strongest steels outperform any titanium alloy, and steel is nearly twice as stiff.",
     "args": {
-      "lines": [
-        "Titanium is not stronger",
-        "than steel in absolute",
-        "terms:"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "What that figure does not settle is the question most people actually mean, which is strength for the weight you have to carry.",
     "args": {
-      "lines": [
-        "What that figure does",
-        "not settle is the",
-        "question"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -80,31 +69,24 @@
     "from": "heading"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Engineers do not use the word strength the way a hardware shop label does.",
     "args": {
-      "term": "strength",
-      "meaning": "the stress a metal withstands before it yields or breaks",
-      "boundary": "not stiffness, hardness or toughness",
-      "source": "ASM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Strength, in the strict sense, is the stress a metal withstands before it yields or breaks, not stiffness, hardness or toughness.",
     "args": {
-      "lines": [
-        "Strength, in the strict",
-        "sense, is the stress",
-        "a metal"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -120,18 +102,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Ultimate tensile strength is the highest stress it carries before it starts to neck and fail.",
     "args": {
-      "lines": [
-        "Ultimate tensile strength is",
-        "the highest stress it",
-        "carries before"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -147,18 +125,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Hardness is resistance to denting and scratching. Toughness is how much energy a material absorbs while a crack runs through it.",
     "args": {
-      "lines": [
-        "Hardness is resistance to",
-        "denting and scratching. Toughness",
-        "is how"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -174,34 +148,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Each of these can point in a different direction for the same pair of metals.",
     "args": {
-      "term": "stronger",
-      "includes": [
-        "higher stress before yield or fracture"
-      ],
-      "excludes": [
-        "lighter, stiffer or harder"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Stronger, strictly, means higher stress before yield or fracture. It does not mean lighter, stiffer or harder.",
     "args": {
-      "lines": [
-        "Stronger, strictly, means higher",
-        "stress before yield or",
-        "fracture. It"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -220,18 +184,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "It is a family of iron alloys that runs from soft construction grades to tool steels and maraging steels heat treated for extreme loads.",
     "args": {
-      "lines": [
-        "It is a family",
-        "of iron alloys that",
-        "runs"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -250,17 +210,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Strength is several properties, and the question blends them",
     "narration": "Any honest comparison has to name both members of each family before it names a winner.",
     "args": {
-      "lines": [
-        "Any honest comparison has",
-        "to name both members"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -292,18 +249,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Every figure here comes from pulling a sample until it breaks",
     "narration": "Technicians machine a standard specimen, a bar with wide ends and a narrower gauge section in the middle.",
     "args": {
-      "lines": [
-        "Technicians machine a standard",
-        "specimen, a bar with",
-        "wide ends"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -335,18 +288,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Every figure here comes from pulling a sample until it breaks",
     "narration": "They record load and extension the entire time. Then they convert to stress and strain, dividing the force by the original cross-section and the stretch by the original length.",
     "args": {
-      "lines": [
-        "They record load and",
-        "extension the entire time.",
-        "Then they"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -378,34 +327,24 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Every figure here comes from pulling a sample until it breaks",
     "narration": "The load cell and extensometer feed a stress strain curve. From that curve you read yield and tensile strength.",
     "args": {
-      "title": "From curve to claim",
-      "stages": [
-        "load cell and extensometer",
-        "stress strain curve",
-        "yield and tensile strength"
-      ],
-      "conclusion": "a property value for one condition"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Every figure here comes from pulling a sample until it breaks",
     "narration": "What you end up with is a property value for one condition, and that last phrase matters, because every link carries a condition.",
     "args": {
-      "lines": [
-        "What you end up",
-        "with is a property",
-        "value"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -424,18 +363,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Every figure here comes from pulling a sample until it breaks",
     "narration": "The same Ti-6Al-4V bar can be annealed, or solution treated and aged, and its strength shifts.",
     "args": {
-      "lines": [
-        "The same Ti-6Al-4V bar",
-        "can be annealed, or",
-        "solution treated"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -454,18 +389,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Every figure here comes from pulling a sample until it breaks",
     "narration": "Reference compilations from ASM International and measurement work at NIST exist precisely so engineers can compare like with like instead of trading anecdotes.",
     "args": {
-      "lines": [
-        "Reference compilations from ASM",
-        "International and measurement work",
-        "at NIST"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "quote_card",
@@ -504,18 +435,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Bar against bar, the best steels win clearly",
     "narration": "Annealed Ti-6Al-4V reaches around 900 megapascals, more than twice as much. That is the comparison most people have in mind when they say titanium is stronger, and against mild steel they are right.",
     "args": {
-      "lines": [
-        "Annealed Ti-6Al-4V reaches around",
-        "900 megapascals, more than",
-        "twice"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -543,18 +470,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Bar against bar, the best steels win clearly",
     "narration": "Against those, titanium's workhorse alloy carries less than half the stress before it fails.",
     "args": {
-      "lines": [
-        "Against those, titanium's workhorse",
-        "alloy carries less than",
-        "half"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -598,18 +521,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Bar against bar, the best steels win clearly",
     "narration": "Titanium loses to the strongest steels. And whichever comparison you pick, the result depends on heat treatment as much as on the base metal, which is why a one-sentence answer to this question always smuggles in a choice of steel.",
     "args": {
-      "lines": [
-        "Titanium loses to the",
-        "strongest steels. And whichever",
-        "comparison you"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -633,17 +552,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Per kilogram, titanium changes the answer",
     "narration": "Steel sits close to 7.8. A titanium part of the same shape weighs a little over half as much as its steel twin.",
     "args": {
-      "lines": [
-        "Steel sits close to",
-        "7.8. A titanium part"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -667,18 +583,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Per kilogram, titanium changes the answer",
     "narration": "On that measure, Ti-6Al-4V is roughly four times as strong per kilogram as mild steel.",
     "args": {
-      "lines": [
-        "On that measure, Ti-6Al-4V",
-        "is roughly four times",
-        "as strong"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -702,34 +614,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Per kilogram, titanium changes the answer",
     "narration": "Here is the part most comparisons leave out. Run the same division for the strongest steels and the arithmetic lands them in the same neighbourhood as titanium, sometimes slightly ahead.",
     "args": {
-      "term": "specific strength",
-      "includes": [
-        "strength divided by density"
-      ],
-      "excludes": [
-        "strength alone"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Per kilogram, titanium changes the answer",
     "narration": "The per kilogram advantage is decisive against ordinary steel and narrow against the best.",
     "args": {
-      "lines": [
-        "The per kilogram advantage",
-        "is decisive against ordinary",
-        "steel"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -748,18 +650,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Per kilogram, titanium changes the answer",
     "narration": "A steel tube trimmed down to titanium's weight becomes a thin shell that can crumple before its material strength is ever reached.",
     "args": {
-      "lines": [
-        "A steel tube trimmed",
-        "down to titanium's weight",
-        "becomes"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -783,18 +681,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Steel is nearly twice as stiff, and stiffness often decides",
     "narration": "Steel is nearly twice as stiff. That figure barely moves with heat treatment or alloying, unlike strength, because it reflects the bonding between atoms rather than the arrangement of grains and defects.",
     "args": {
-      "lines": [
-        "Steel is nearly twice",
-        "as stiff. That figure",
-        "barely moves"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -818,18 +712,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Steel is nearly twice as stiff, and stiffness often decides",
     "narration": "Designers who need rigidity, in machine frames for example, often choose steel for this reason alone.",
     "args": {
-      "lines": [
-        "Designers who need rigidity,",
-        "in machine frames for",
-        "example, often"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -848,18 +738,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Steel is nearly twice as stiff, and stiffness often decides",
     "narration": "That is why drill bits and cutting edges are steel or carbide, never titanium.",
     "args": {
-      "lines": [
-        "That is why drill",
-        "bits and cutting edges",
-        "are steel"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -878,18 +764,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Steel is nearly twice as stiff, and stiffness often decides",
     "narration": "It is not. The coating is a ceramic compound, and the bit beneath it is still steel.",
     "args": {
-      "lines": [
-        "It is not. The",
-        "coating is a ceramic",
-        "compound"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -908,32 +790,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Titanium is costly because it is hard to make, not hard to find",
     "narration": "Titanium's advantages raise an obvious puzzle about why it stays a specialty metal, and the answer lies in manufacturing rather than geology.",
     "args": {
-      "lines": [
-        "Titanium's advantages raise an",
-        "obvious puzzle about why",
-        "it stays"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Titanium is costly because it is hard to make, not hard to find",
     "narration": "Titanium is not rare. The United States Geological Survey tracks titanium minerals worldwide, and its reporting shows that most titanium mineral production becomes white titanium dioxide pigment for paint, paper and plastics, not metal. The bottleneck is chemistry.",
     "args": {
-      "lines": [
-        "Titanium is not rare.",
-        "The United States Geological",
-        "Survey tracks"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "process_steps",
@@ -970,7 +844,7 @@
       "label": "BLAST FURNACE",
       "pick": 0
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm+picture+material"
   },
   {
     "segment": "process_steps",
@@ -998,18 +872,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Titanium is costly because it is hard to make, not hard to find",
     "narration": "Producers chlorinate the ore to make titanium tetrachloride. They reduce with magnesium, leaving a porous metal sponge.",
     "args": {
-      "lines": [
-        "Producers chlorinate the ore",
-        "to make titanium tetrachloride.",
-        "They reduce"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -1037,29 +907,24 @@
     "from": "directive"
   },
   {
-    "segment": "thermal_ascent",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Titanium is costly because it is hard to make, not hard to find",
     "narration": "Its melting point does not help. Pure titanium melts at 1668 degrees Celsius, well above iron's 1538, and it must be kept away from air the whole time it is hot.",
     "args": {
-      "to_temp": 1668,
-      "label": "titanium melts"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Titanium is costly because it is hard to make, not hard to find",
     "narration": "Machining is awkward too, because titanium conducts heat poorly, so the cutting zone stays hot and tools wear quickly.",
     "args": {
-      "lines": [
-        "Machining is awkward too,",
-        "because titanium conducts heat",
-        "poorly"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "thermal_ascent",
@@ -1073,34 +938,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Titanium's clearest win is not strength at all",
     "narration": "Titanium's surface grows a thin, tightly bonded oxide film the moment it meets air, and that film reforms when it is scratched.",
     "args": {
-      "term": "titanium's edge",
-      "includes": [
-        "corrosion resistance and strength for weight"
-      ],
-      "excludes": [
-        "raw strength"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Titanium's clearest win is not strength at all",
     "narration": "In seawater and many industrial chemicals, titanium resists attack that would pit or rust ordinary steel.",
     "args": {
-      "lines": [
-        "In seawater and many",
-        "industrial chemicals, titanium resists",
-        "attack"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1119,18 +974,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Titanium's clearest win is not strength at all",
     "narration": "Titanium's edge, then, is corrosion resistance and strength for weight, not raw strength.",
     "args": {
-      "lines": [
-        "Titanium's edge, then, is",
-        "corrosion resistance and strength",
-        "for weight"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1149,31 +1000,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "What to notice in the edit",
     "narration": "When you see these two metals compared, notice which number is actually on screen.",
     "args": {
-      "lines": [
-        "When you see these",
-        "two metals compared, notice",
-        "which number"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "What to notice in the edit",
     "narration": "If it is tensile strength, ask which steel and which heat treatment.",
     "args": {
-      "lines": [
-        "If it is tensile",
-        "strength, ask which steel"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1186,32 +1030,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "What to notice in the edit",
     "narration": "If it is how much something flexes, that is stiffness, and steel leads it.",
     "args": {
-      "lines": [
-        "If it is how",
-        "much something flexes, that",
-        "is stiffness"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "A chart showing a single bar for steel is hiding a range that runs from around 400 to above 2,000 megapascals. The most useful habit is simply to ask what was measured.",
     "args": {
-      "lines": [
-        "A chart showing a",
-        "single bar for steel",
-        "is hiding"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1234,18 +1070,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Fatigue, crack growth and temperature all reshape the comparison, and for many real components the published data is thinner than confident tables suggest.",
     "args": {
-      "lines": [
-        "Fatigue, crack growth and",
-        "temperature all reshape the",
-        "comparison"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1258,16 +1090,13 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "Titanium is not stronger than steel, only lighter for the strength it gives you, and that is a different and more useful claim.",
     "args": {
-      "lines": [
-        "Titanium is not stronger",
-        "than steel, only lighter"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   }
 ]

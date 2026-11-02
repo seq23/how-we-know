@@ -1,31 +1,25 @@
 [
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Inside a centuries-old sword, a microscope found structures resembling carbon nanotubes. Original Damascus steel was better than most steel of its own era, but it is not better than good modern steel.",
     "args": {
-      "lines": [
-        "Inside a centuries-old sword,",
-        "a microscope found structures",
-        "resembling carbon"
-      ]
+      "subject": "damascus-blade",
+      "label": "DAMASCUS",
+      "pick": 0
     },
-    "from": "directive"
+    "from": "directive+picture+material"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Cold open",
     "narration": "That nanotube result, reported in the journal Nature in 2006, is often quoted as proof of a lost super-technology.",
     "args": {
-      "lines": [
-        "That nanotube result, reported",
-        "in the journal Nature",
-        "in 2006"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -38,18 +32,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Cold open",
     "narration": "Whether that structure made the blade superior is a separate question, and the evidence for it is thinner than the legend.",
     "args": {
-      "lines": [
-        "Whether that structure made",
-        "the blade superior is",
-        "a separate"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -68,18 +58,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "One name covers two different materials",
     "narration": "Small charges of iron and carbon-bearing material were sealed in clay crucibles and heated until the metal melted and absorbed carbon, then cooled slowly into a solid cake.",
     "args": {
-      "lines": [
-        "Small charges of iron",
-        "and carbon-bearing material were",
-        "sealed"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -98,32 +84,26 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "One name covers two different materials",
     "narration": "Whether the word Damascus refers to the city, to trade passing through it, or to the watery damask look of the steel is still argued. The written record does not settle it.",
     "args": {
-      "lines": [
-        "Whether the word Damascus",
-        "refers to the city,",
-        "to trade"
-      ]
+      "subject": "damascus-blade",
+      "label": "DAMASCUS",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+material"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "One name covers two different materials",
     "narration": "The other thing called Damascus is what most knife shops sell today.",
     "args": {
-      "lines": [
-        "The other thing called",
-        "Damascus is what most",
-        "knife shops"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -136,30 +116,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "One name covers two different materials",
     "narration": "It is a real and skilled craft with its own long history.",
     "args": {
-      "lines": [
-        "It is a real",
-        "and skilled craft"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "One name covers two different materials",
     "narration": "But it is a laminate. Its pattern sits in the arrangement of layers.",
     "args": {
-      "lines": [
-        "But it is a",
-        "laminate. Its pattern sits"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -185,18 +159,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "The wootz pattern is written in carbide",
     "narration": "At that level, iron cannot hold all the carbon in its usual crystal form as it cools.",
     "args": {
-      "lines": [
-        "At that level, iron",
-        "cannot hold all the",
-        "carbon"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -228,18 +198,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The wootz pattern is written in carbide",
     "narration": "Polished and etched, the sheets show as light bands against a darker background, and those bands are the famous pattern.",
     "args": {
-      "lines": [
-        "Polished and etched, the",
-        "sheets show as light",
-        "bands against"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -258,18 +224,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The wootz pattern is written in carbide",
     "narration": "The light swirls resolve into particles of carbide lying in lines. Done on authenticated blades, that procedure is the backbone of everything that follows. It is also destructive, which matters later.",
     "args": {
-      "lines": [
-        "The light swirls resolve",
-        "into particles of carbide",
-        "lying"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -301,18 +263,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The wootz pattern is written in carbide",
     "narration": "Work it too cold and the brittle steel cracks. Accounts of the process describe forging at a relatively low heat, a dull glow rather than a bright one.",
     "args": {
-      "lines": [
-        "Work it too cold",
-        "and the brittle steel",
-        "cracks. Accounts"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -355,34 +313,24 @@
     "from": "heading"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "After the tradition faded, people who tried to copy the blades mostly failed, and historians still disagree about exactly when and why the supply ended.",
     "args": {
-      "title": "Reproduction evidence",
-      "stages": [
-        "trace vanadium",
-        "repeated heating and cooling",
-        "carbide particles line up"
-      ],
-      "conclusion": "banded pattern"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "The most convincing modern explanation came from reproduction rather than from texts.",
     "args": {
-      "lines": [
-        "The most convincing modern",
-        "explanation came from reproduction",
-        "rather"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -401,18 +349,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "Their key finding was that the pattern formed reliably only when the steel carried tiny amounts of certain other elements, trace vanadium above all, at levels far too small for any smith of the period to measure.",
     "args": {
-      "lines": [
-        "Their key finding was",
-        "that the pattern formed",
-        "reliably only"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -431,32 +375,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "This is a strong kind of evidence, and it is worth seeing why.",
     "args": {
-      "lines": [
-        "This is a strong",
-        "kind of evidence, and",
-        "it"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "A story about an old process can be shaped to fit almost any artifact.",
     "args": {
-      "lines": [
-        "A story about an",
-        "old process can be",
-        "shaped"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -469,32 +405,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "They also reported trace elements in analysed historical blades consistent with that mechanism.",
     "args": {
-      "lines": [
-        "They also reported trace",
-        "elements in analysed historical",
-        "blades consistent"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A trace impurity turned out to be part of the recipe",
     "narration": "The implication is quiet but important. If the recipe depended on impurities in particular ore sources, the loss of the technique may have followed a change in those sources rather than the death of a secret. That remains an inference, not a documented fact.",
     "args": {
-      "lines": [
-        "The implication is quiet",
-        "but important. If the",
-        "recipe depended"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -514,18 +442,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "The nanotubes are real, and they are not the edge",
     "narration": "They dissolved a fragment in hydrochloric acid and studied what remained with high-resolution transmission electron microscopy.",
     "args": {
-      "lines": [
-        "They dissolved a fragment",
-        "in hydrochloric acid and",
-        "studied what"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -545,18 +469,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The nanotubes are real, and they are not the edge",
     "narration": "The images are extraordinary, and they changed how people talk about old steel.",
     "args": {
-      "lines": [
-        "The images are extraordinary,",
-        "and they changed how",
-        "people talk"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -575,18 +495,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The nanotubes are real, and they are not the edge",
     "narration": "They proposed that the trace elements and the forging cycles could have helped such structures form, and that the nanotubes might have guided the carbide into fine wires.",
     "args": {
-      "lines": [
-        "They proposed that the",
-        "trace elements and the",
-        "forging cycles"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -605,18 +521,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The nanotubes are real, and they are not the edge",
     "narration": "Nobody has shown how common they are across the surviving blades, and other microscopists have asked whether some features could arise during sample preparation.",
     "args": {
-      "lines": [
-        "Nobody has shown how",
-        "common they are across",
-        "the surviving"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -635,18 +547,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The nanotubes are real, and they are not the edge",
     "narration": "The popular version, nanotech swords slicing a falling silk scarf, welds a real observation onto an old anecdote that was never tested.",
     "args": {
-      "lines": [
-        "The popular version, nanotech",
-        "swords slicing a falling",
-        "silk scarf"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -662,17 +570,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "Hardness means resisting a dent or scratch; it lets an edge stay sharp.",
     "args": {
-      "lines": [
-        "Hardness means resisting a",
-        "dent or scratch"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -688,31 +593,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "Toughness is not the same as hardness, and in most steels, raising one costs some of the other.",
     "args": {
-      "lines": [
-        "Toughness is not the",
-        "same as hardness"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "Wootz is a striking compromise. The carbide bands are extremely hard, so the edge holds hard particles in a softer, tougher surrounding steel, a little like a saw with microscopic teeth.",
     "args": {
-      "lines": [
-        "Wootz is a striking",
-        "compromise. The carbide bands",
-        "are extremely"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -725,18 +623,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "Quality varied from smith to smith and from cake to cake. The good blades were good. The record does not tell you how many were not.",
     "args": {
-      "lines": [
-        "Quality varied from smith",
-        "to smith and from",
-        "cake"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "source_compare",
@@ -759,18 +653,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "Those scales are defined in published standards from ASTM International, and NIST maintains reference blocks so laboratories can check their machines against a common benchmark.",
     "args": {
-      "lines": [
-        "Those scales are defined",
-        "in published standards from",
-        "ASTM International"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -793,18 +683,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Hardness and toughness pull in opposite directions",
     "narration": "Toughness tests are different: they need notched specimens broken on purpose, which is exactly what nobody does to a historic sword.",
     "args": {
-      "lines": [
-        "Toughness tests are different:",
-        "they need notched specimens",
-        "broken"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -822,18 +708,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Modern steel wins on control",
     "narration": "Then comes controlled heat treatment, in furnaces that hold temperature far more evenly than a charcoal forge could, followed by quenching and tempering on a schedule.",
     "args": {
-      "lines": [
-        "Then comes controlled heat",
-        "treatment, in furnaces that",
-        "hold temperature"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -851,32 +733,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Modern steel wins on control",
     "narration": "Vanadium shows up again, this time deliberately. Modern makers add it in controlled amounts to form hard vanadium carbides that resist wear.",
     "args": {
-      "lines": [
-        "Vanadium shows up again,",
-        "this time deliberately. Modern",
-        "makers add"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Modern steel wins on control",
     "narration": "The trace element wootz smiths depended on without knowing it is now a line on a specification sheet.",
     "args": {
-      "lines": [
-        "The trace element wootz",
-        "smiths depended on without",
-        "knowing it"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -889,18 +763,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Modern steel wins on control",
     "narration": "That is the core of the answer. Wootz was exceptional against what else existed. It is not exceptional against what exists now.",
     "args": {
-      "lines": [
-        "That is the core",
-        "of the answer. Wootz",
-        "was exceptional"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -919,17 +789,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Modern steel wins on control",
     "narration": "A good one can be an excellent knife. But the swirl is the signature of the process, not a source of performance.",
     "args": {
-      "lines": [
-        "A good one can",
-        "be an excellent knife."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -952,18 +819,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The best evidence sits in cases that cannot be cut",
     "narration": "So the metallurgical picture rests on a fairly small number of blades that were already damaged, sampled at the edges, or sacrificed long ago.",
     "args": {
-      "lines": [
-        "So the metallurgical picture",
-        "rests on a fairly",
-        "small number"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -986,32 +849,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The best evidence sits in cases that cannot be cut",
     "narration": "That limit shapes the claims. When you read that Damascus blades had a certain microstructure, it usually means some sectioned blades had it.",
     "args": {
-      "lines": [
-        "That limit shapes the",
-        "claims. When you read",
-        "that Damascus"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "The best evidence sits in cases that cannot be cut",
     "narration": "Stretching that to a whole tradition, across many workshops and generations, is a step the evidence should take cautiously.",
     "args": {
-      "lines": [
-        "Stretching that to a",
-        "whole tradition, across many",
-        "workshops"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "process_steps",
@@ -1039,18 +894,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "A pattern alone does not reveal which material you are looking at; wootz and pattern-welded steel both look watered, though trained eyes read them differently.",
     "args": {
-      "lines": [
-        "A pattern alone does",
-        "not reveal which material",
-        "you"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -1078,18 +929,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "If the answer to the last one is a story rather than a measurement, the claim has not been tested. And always ask better at what.",
     "args": {
-      "lines": [
-        "If the answer to",
-        "the last one is",
-        "a story"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1109,18 +956,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Evidence limit",
     "narration": "It does not establish a cutting advantage from nanotubes, because no one has measured one.",
     "args": {
-      "lines": [
-        "It does not establish",
-        "a cutting advantage from",
-        "nanotubes, because"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1140,18 +983,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Evidence limit",
     "narration": "It does not fix when the recipe was lost or why, beyond a reasonable inference about ore.",
     "args": {
-      "lines": [
-        "It does not fix",
-        "when the recipe was",
-        "lost"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1191,17 +1030,13 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Closing",
     "narration": "What it shows instead is how far careful practice can run ahead of theory.",
     "args": {
-      "lines": [
-        "What it shows instead",
-        "is how far careful",
-        "practice"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   }
 ]

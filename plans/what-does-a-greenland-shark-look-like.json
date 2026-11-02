@@ -1,30 +1,29 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "species_image",
     "seconds": 5.79,
     "heading": "Cold open",
     "narration": "Many Greenland sharks carry a parasite fastened directly to the surface of the eye.",
     "args": {
-      "value": "502",
-      "unit": "centimetres",
-      "caption": "Longest shark measured in the study",
-      "source": "Science"
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 23,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "A Greenland shark is a large, heavy-bodied, slow-moving shark, grey to blackish-brown, with a short rounded snout, small eyes, two small dorsal fins and no anal fin.",
     "args": {
-      "lines": [
-        "A Greenland shark is",
-        "a large, heavy-bodied, slow-moving",
-        "shark, grey"
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +39,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "That number records one animal on one deck. It does not tell you what the species looks like alive, in darkness, far below the surface.",
     "args": {
-      "lines": [
-        "That number records one",
-        "animal on one deck.",
-        "It does"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 8,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "stat_card",
@@ -67,44 +65,43 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 3.5,
     "heading": "Title card",
     "narration": "What does a Greenland shark look like?",
     "args": {
-      "lines": [
-        "What does a Greenland",
-        "shark look like?"
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 6,
+      "zoom": 1.0
     },
-    "from": "heading"
+    "from": "heading+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "Start with the outline. The scientific name is Somniosus microcephalus, and microcephalus means small head.",
     "args": {
-      "term": "Somniosus microcephalus",
-      "meaning": "the scientific name of the Greenland shark",
-      "boundary": "microcephalus means small head",
-      "source": "Science"
+      "subject": "greenland_shark",
+      "label": "Somniosus microcephalus",
+      "pick": 7,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 4.97,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "Once you see a whole animal laid out, the name makes sense.",
     "args": {
-      "lines": [
-        "Once you see a",
-        "whole animal laid out,",
-        "the name"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 9,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "definition_card",
@@ -120,18 +117,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "The snout is short and rounded rather than pointed. The overall impression is less a torpedo than a heavy, slightly flattened log that happens to carry fins.",
     "args": {
-      "lines": [
-        "The snout is short",
-        "and rounded rather than",
-        "pointed."
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 10,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "checklist_reveal",
@@ -151,18 +147,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.28,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "A Greenland shark has two small dorsal fins, low and set well back, and neither dorsal fin carries a spine.",
     "args": {
-      "lines": [
-        "A Greenland shark has",
-        "two small dorsal fins,",
-        "low"
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 1,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -182,18 +177,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "The pectoral fins are modest for an animal this size. All of it points the same way, toward a body that is not built for speed.",
     "args": {
-      "lines": [
-        "The pectoral fins are",
-        "modest for an animal",
-        "this size."
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 11,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "checklist_reveal",
@@ -213,34 +207,27 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "Colour is harder than it sounds. Described specimens run in a range from grey to blackish-brown, sometimes with paler patches, scars and scrapes.",
     "args": {
-      "term": "Colour",
-      "includes": [
-        "a range from grey to blackish-brown"
-      ],
-      "excludes": [
-        "a fixed pattern you can use as a fingerprint"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.38,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "But colour in an image depends on the light it was made in.",
     "args": {
-      "lines": [
-        "But colour in an",
-        "image depends on the",
-        "light it"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 12,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -259,56 +246,56 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "Treat colour as a range, not a fixed pattern you can use as a fingerprint.",
     "args": {
-      "lines": [
-        "Treat colour as a",
-        "range, not a fixed",
-        "pattern you"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 13,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.45,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "Up close, the skin is rough. Like other sharks, it is covered in dermal denticles, small tooth-like scales.",
     "args": {
-      "lines": [
-        "Up close, the skin",
-        "is rough. Like other",
-        "sharks, it"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 14,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture+look-like"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "That is a family resemblance rather than a special feature, but it shapes what you see on camera: a matte surface that scatters light instead of shining.",
     "args": {
-      "variant": 0
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 15,
+      "zoom": 1.0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+look-like"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "Its body is built for slowness, not for pursuit",
     "narration": "That is part of why these animals so often look dull, almost velvety, on footage.",
     "args": {
-      "lines": [
-        "That is part of",
-        "why these animals so",
-        "often look"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 16,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture+look-like"
   },
   {
     "segment": "light_attenuation",
@@ -319,18 +306,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The eyes are small, and often not alone",
     "narration": "As Smithsonian Ocean's overview of the deep sea explains, sunlight fades quickly with depth, and colours drop out one by one as the water absorbs them.",
     "args": {
-      "lines": [
-        "As Smithsonian Ocean's overview",
-        "of the deep sea",
-        "explains, sunlight"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 17,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "light_attenuation",
@@ -341,33 +327,30 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The eyes are small, and often not alone",
     "narration": "Many Greenland sharks carry a copepod called Ommatokoita elongata. A copepod is a small crustacean, a relative of animals at the base of many ocean food webs, but this one has taken a parasitic path.",
     "args": {
-      "title": "How the parasite is identified",
-      "stages": [
-        "sharks examined in hand",
-        "the parasite removed and studied"
-      ],
-      "conclusion": "Ommatokoita elongata"
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 24,
+      "zoom": 1.0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 7.86,
     "heading": "The eyes are small, and often not alone",
     "narration": "It anchors itself into the surface of the eye and trails away from it as a pale, ribbon-like body.",
     "args": {
-      "lines": [
-        "It anchors itself into",
-        "the surface of the",
-        "eye"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 18,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "evidence_chain",
@@ -385,18 +368,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The eyes are small, and often not alone",
     "narration": "It is known the plain way: sharks examined in hand, the parasite removed and studied, and the same species found on eye after eye across many catches.",
     "args": {
-      "lines": [
-        "It is known the",
-        "plain way: sharks examined",
-        "in hand"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 19,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "evidence_chain",
@@ -430,18 +412,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The eyes are small, and often not alone",
     "narration": "Be careful here. Examinations have found damage to the surface of the eye where the parasite attaches, and it is reasonable to think vision suffers.",
     "args": {
-      "lines": [
-        "Be careful here. Examinations",
-        "have found damage to",
-        "the surface"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 20,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -460,18 +441,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "The eyes are small, and often not alone",
     "narration": "Where little sunlight reaches, the practical cost of poorer vision is also hard to judge.",
     "args": {
-      "lines": [
-        "Where little sunlight reaches,",
-        "the practical cost of",
-        "poorer vision"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 21,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "contrast_pair",
@@ -505,18 +485,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The teeth do two different jobs",
     "narration": "Along the top sit narrow, pointed upper teeth, built to hold. Along the bottom sit broad, angled lower teeth whose cusps lean sideways and line up edge to edge, forming something close to a continuous cutting blade.",
     "args": {
-      "lines": [
-        "Along the top sit",
-        "narrow, pointed upper teeth,",
-        "built"
-      ]
+      "subject": "greenland_shark",
+      "label": "",
+      "pick": 22,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture+look-like"
   },
   {
     "segment": "evidence_chain",
@@ -534,32 +513,27 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The teeth do two different jobs",
     "narration": "That jaw is why stomach contents matter so much to this story.",
     "args": {
-      "lines": [
-        "That jaw is why",
-        "stomach contents matter so",
-        "much"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "The teeth do two different jobs",
     "narration": "Greenland sharks caught by researchers and fishers have been found with fish, and sometimes with the remains of seals, in their stomachs.",
     "args": {
-      "lines": [
-        "Greenland sharks caught by",
-        "researchers and fishers have",
-        "been found"
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 2,
+      "zoom": 1.3
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -572,18 +546,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The teeth do two different jobs",
     "narration": "Appearance can tell you what an animal is equipped to do. It cannot tell you how often it does it.",
     "args": {
-      "lines": [
-        "Appearance can tell you",
-        "what an animal is",
-        "equipped"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "quote_card",
@@ -622,18 +592,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Its size is measured; the biggest claims are not",
     "narration": "In the 2016 Science study led by Julius Nielsen, the longest shark was a female at 502 centimetres, just over five metres.",
     "args": {
-      "lines": [
-        "In the 2016 Science",
-        "study led by Julius",
-        "Nielsen"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -661,34 +627,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Its size is measured; the biggest claims are not",
     "narration": "You will find larger figures in popular articles and older accounts. Some may be accurate.",
     "args": {
-      "term": "Size claims",
-      "includes": [
-        "a measured specimen with a method"
-      ],
-      "excludes": [
-        "a repeated number with no specimen behind it"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Its size is measured; the biggest claims are not",
     "narration": "But a repeated number with no specimen behind it is not the same as a measured specimen with a method, and this script cannot trace those larger figures to animals someone measured and recorded.",
     "args": {
-      "lines": [
-        "But a repeated number",
-        "with no specimen behind",
-        "it"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -707,34 +663,27 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "You cannot read its age from its appearance",
     "narration": "Here is a limit of looking that surprises most people. A Greenland shark gives you almost no visible clue to its age, and the growth bands used to age many other sharks are not usable in this species.",
     "args": {
-      "title": "Eye lens dating",
-      "stages": [
-        "lens nucleus formed before birth",
-        "radiocarbon measured",
-        "compared with the bomb pulse"
-      ],
-      "conclusion": "an age estimate with a wide range"
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 25,
+      "zoom": 1.15
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "You cannot read its age from its appearance",
     "narration": "Nielsen's team turned to the eye instead. The centre of the eye lens, the lens nucleus formed before birth, stays essentially unchanged for life.",
     "args": {
-      "lines": [
-        "Nielsen's team turned to",
-        "the eye instead. The",
-        "centre"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -753,18 +702,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "You cannot read its age from its appearance",
     "narration": "Sharks born after the spike carry its signal. Older ones do not.",
     "args": {
-      "lines": [
-        "Sharks born after the",
-        "spike carry its signal.",
-        "Older ones"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -783,33 +728,27 @@
     "from": "directive"
   },
   {
-    "segment": "uncertainty_bar",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "You cannot read its age from its appearance",
     "narration": "The width of that range is the point. In the Science study, the estimated age of the largest female, the 502 centimetre animal, was 392 years, with an uncertainty of 120 years either way, a range from 272 to 512 years.",
     "args": {
-      "value": "392",
-      "unit": "years",
-      "plus": "120",
-      "minus": null,
-      "confidence": "stated range",
-      "caption": "Estimated age of the largest female"
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 6.21,
     "heading": "You cannot read its age from its appearance",
     "narration": "The study's headline in Science is that Greenland sharks live for at least 272 years.",
     "args": {
-      "lines": [
-        "The study's headline in",
-        "Science is that Greenland",
-        "sharks live"
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 3,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -827,18 +766,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "You cannot read its age from its appearance",
     "narration": "A long body suggests an old animal, but growth in the cold is so poorly known that two sharks of the same length could differ in age by a great deal.",
     "args": {
-      "lines": [
-        "A long body suggests",
-        "an old animal, but",
-        "growth"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -857,18 +792,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A photograph does not always name the species",
     "narration": "Often you do not. The Greenland shark has a close relative, the Pacific sleeper shark, and the two look strikingly alike: the same heavy body, small fins, absent anal fin and muted colour.",
     "args": {
-      "lines": [
-        "Often you do not.",
-        "The Greenland shark has",
-        "a close"
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 4,
+      "zoom": 1.15
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -887,18 +821,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A photograph does not always name the species",
     "narration": "So when a camera far from the Arctic films a large, slow, dark shark with small fins, the image is evidence of the genus, not proof of the species.",
     "args": {
-      "lines": [
-        "So when a camera",
-        "far from the Arctic",
-        "films"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -926,17 +856,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "A photograph does not always name the species",
     "narration": "Only then do you get a confident name. That is why so many descriptions of what a Greenland shark looks like lean on landed animals rather than live footage. Footage shows behaviour and setting. Specimens settle identity.",
     "args": {
-      "lines": [
-        "Only then do you",
-        "get a confident name."
-      ]
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 5,
+      "zoom": 1.3
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -959,18 +889,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "What to notice in the edit",
     "narration": "Landed sharks reveal proportions, fins and teeth clearly, but bodies sag out of water and eyes lose their shape.",
     "args": {
-      "lines": [
-        "Landed sharks reveal proportions,",
-        "fins and teeth clearly,",
-        "but bodies"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -993,18 +919,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "What to notice in the edit",
     "narration": "Notice too where each number comes from. Science stands behind the length and age figures.",
     "args": {
-      "lines": [
-        "Notice too where each",
-        "number comes from. Science",
-        "stands behind"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1027,35 +949,24 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "This evidence settles the body plan, fins and teeth well, because those are visible on every landed animal and consistent across them.",
     "args": {
-      "title": "What the evidence settles",
-      "items": [
-        "+the body plan, fins and teeth",
-        "+the eye parasite is a copepod",
-        "-the maximum size",
-        "?whether the parasite impairs vision"
-      ],
-      "note": ""
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "It settles that the eye parasite is a copepod. It does not establish the maximum size the species reaches, and it does not establish how colour varies across its range.",
     "args": {
-      "lines": [
-        "It settles that the",
-        "eye parasite is a",
-        "copepod. It"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1075,18 +986,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "And it cannot turn an image into an age. A careful description of this shark has edges, and the edges are part of the description.",
     "args": {
-      "lines": [
-        "And it cannot turn",
-        "an image into an",
-        "age."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",

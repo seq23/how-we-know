@@ -689,33 +689,33 @@ def picture_pass(plan, md, domain, slug="", SPX=None):
             b["from"] = b.get("from", "") + "+look-like"
             have += 1
     # 5. cadence: a picture within FIRST_PICTURE_S, then never a gap > MAX_GAP_S
-    t, last_pic_end = 0.0, 0.0
+    t, run = 0.0, 0.0          # run: seconds since the last picture, quotes excluded
     for i, b in enumerate(plan):
         end = t + b["seconds"]
-        nxt = plan[i + 1] if i + 1 < len(plan) else None
-        # her POV quote cannot be repainted, so the beat BEFORE it carries the
-        # picture when the quote would otherwise stretch the gap
-        ahead = nxt["seconds"] if nxt is not None and _locked(nxt) else 0.0
         if not is_picture(b) and not _locked(b):
-            if (t < FIRST_PICTURE_S and last_pic_end == 0.0 and i == 0) \
-                    or end + ahead - last_pic_end > MAX_GAP_S:
+            if (i == 0 and t < FIRST_PICTURE_S) or run + b["seconds"] > MAX_GAP_S:
                 to_picture(b)
         if is_picture(b):
-            last_pic_end = end
+            run = 0.0
+        elif not _locked(b):
+            run += b["seconds"]
         t = end
     return plan
 
 
 def picture_report(plan):
     """(first picture start s, longest gap s, text-card share, by-subject shares)."""
-    t, first, last, gap = 0.0, None, 0.0, 0.0
+    # Time on her own POV quote is not counted as a gap: those beats are her
+    # interview lines, shown as she said them, and never repainted.
+    t, first, run, gap = 0.0, None, 0.0, 0.0
     for b in plan:
         if is_picture(b):
             first = t if first is None else first
-            gap = max(gap, t - last)
-            last = t + b["seconds"]
+            gap, run = max(gap, run), 0.0
+        elif not _locked(b):
+            run += b["seconds"]
         t += b["seconds"]
-    gap = max(gap, t - last)
+    gap = max(gap, run)
     total = t or 1.0
     text = sum(b["seconds"] for b in plan if b["segment"] in TEXT_CARDS) / total
     subj = {}

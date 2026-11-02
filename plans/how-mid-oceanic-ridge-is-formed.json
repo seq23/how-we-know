@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Earth's longest mountain range was built without a single collision. A mid-ocean ridge forms where two tectonic plates are pulled apart: the mantle beneath rises to fill the gap, melts as its pressure drops, and erupts as fresh basalt that cools into new ocean crust.",
     "args": {
-      "value": "65,000",
-      "unit": "kilometres",
-      "caption": "A continuous range of underwater volcanoes",
-      "source": "NOAA"
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "NOAA describes the result as a continuous range of underwater volcanoes stretching nearly 65,000 kilometres around the globe, like the seams on a baseball.",
     "args": {
-      "lines": [
-        "NOAA describes the result",
-        "as a continuous range",
-        "of underwater"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "And it hides an older assumption that this evidence overturned: that mountains are what you get when the crust is squeezed. This one is what you get when it is stretched.",
     "args": {
-      "lines": [
-        "And it hides an",
-        "older assumption that this",
-        "evidence overturned:"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "text_beat",
@@ -83,17 +72,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "A mid-ocean ridge is a crack being filled, not a fold being pushed up.",
     "args": {
-      "lines": [
-        "A mid-ocean ridge is",
-        "a crack being filled"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -112,32 +98,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "Something from below always arrives to close it. The ridge is the shape that filling takes.",
     "args": {
-      "lines": [
-        "Something from below always",
-        "arrives to close it.",
-        "The ridge"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "That changes how you should picture the process. It is tempting to imagine molten rock forcing its way upward and shoving the plates aside, like a wedge driven into a log.",
     "args": {
-      "lines": [
-        "That changes how you",
-        "should picture the process.",
-        "It"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -150,31 +128,24 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "The plates are pulled apart by forces acting elsewhere, chiefly the weight of old, cold plate sinking back into the mantle at subduction zones, often thousands of kilometres from the ridge.",
     "args": {
-      "lines": [
-        "The plates are pulled",
-        "apart by forces acting",
-        "elsewhere, chiefly"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "The ridge responds to that pull. It is less an engine than an opening that keeps healing.",
     "args": {
-      "lines": [
-        "The ridge responds to",
-        "that pull. It"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "process_steps",
@@ -206,18 +177,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "The mantle beneath the crest rises passively into the space the plates leave behind.",
     "args": {
-      "lines": [
-        "The mantle beneath the",
-        "crest rises passively into",
-        "the space"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -249,18 +216,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The ridge is a crack being filled, not a fold being pushed up",
     "narration": "It erupts onto the seafloor or freezes just beneath it, and the cooled basalt becomes new ocean crust, welded onto the trailing edges of both plates.",
     "args": {
-      "lines": [
-        "It erupts onto the",
-        "seafloor or freezes just",
-        "beneath it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -305,18 +268,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The mantle melts because pressure falls, not because it heats up",
     "narration": "It is extremely hot, but it is also under enormous pressure, and pressure raises the temperature at which rock melts.",
     "args": {
-      "lines": [
-        "It is extremely hot,",
-        "but it is also",
-        "under enormous"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -332,18 +291,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "The mantle melts because pressure falls, not because it heats up",
     "narration": "At some point it crosses its own melting point without any heat being added at all.",
     "args": {
-      "lines": [
-        "At some point it",
-        "crosses its own melting",
-        "point without"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -375,18 +330,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "The mantle melts because pressure falls, not because it heats up",
     "narration": "First, lab experiments on mantle rock squeeze and heat samples to map the conditions where they begin to melt.",
     "args": {
-      "lines": [
-        "First, lab experiments on",
-        "mantle rock squeeze and",
-        "heat samples"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -405,18 +356,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "The mantle melts because pressure falls, not because it heats up",
     "narration": "Only a fraction of the rock melts, and that melt carries a recognisable chemical signature.",
     "args": {
-      "lines": [
-        "Only a fraction of",
-        "the rock melts, and",
-        "that melt"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -435,18 +382,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The mantle melts because pressure falls, not because it heats up",
     "narration": "None of these alone proves the process. Together they point the same way: the mantle partly melts as it rises.",
     "args": {
-      "lines": [
-        "None of these alone",
-        "proves the process. Together",
-        "they point"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "quote_card",
@@ -476,18 +419,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The ridge stands tall because its rock is young",
     "narration": "The answer is temperature. Freshly made crust, and the mantle just beneath it, are hot, and hot rock takes up more room than the same rock cold.",
     "args": {
-      "lines": [
-        "The answer is temperature.",
-        "Freshly made crust, and",
-        "the mantle"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -506,18 +445,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The ridge stands tall because its rock is young",
     "narration": "The ridge is a long, broad swell of warm, young rock, sloping down on either side into the older, colder, deeper floor of the abyss.",
     "args": {
-      "lines": [
-        "The ridge is a",
-        "long, broad swell of",
-        "warm, young"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -572,18 +507,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The first clue was a valley nobody expected",
     "narration": "Marie Tharp, working with the geologist Bruce Heezen, turned those echo-sounding depth profiles into hand-drawn cross-sections of the ocean floor.",
     "args": {
-      "lines": [
-        "Marie Tharp, working with",
-        "the geologist Bruce Heezen,",
-        "turned those"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -602,17 +533,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The first clue was a valley nobody expected",
     "narration": "Tharp argued it was a rift, a place where the crust was splitting.",
     "args": {
-      "lines": [
-        "Tharp argued it was",
-        "a rift, a place"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -631,31 +559,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The first clue was a valley nobody expected",
     "narration": "But the pattern held as more soundings came in, and it lined up with where earthquakes clustered beneath the ocean. A rift where the crust splits was the reading that survived.",
     "args": {
-      "lines": [
-        "But the pattern held",
-        "as more soundings came"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The first clue was a valley nobody expected",
     "narration": "A map, though, shows shape. It cannot show motion. A valley along a ridge is consistent with spreading, but it does not prove it.",
     "args": {
-      "lines": [
-        "A map, though, shows",
-        "shape. It cannot show",
-        "motion."
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -697,18 +618,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The seafloor recorded its own age in magnetism",
     "narration": "The iron minerals lock in the field as it was at that moment.",
     "args": {
-      "lines": [
-        "The iron minerals lock",
-        "in the field as",
-        "it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -740,18 +657,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "The seafloor recorded its own age in magnetism",
     "narration": "Ships towing magnetometers had already found long stripes of seafloor magnetised alternately one way and the other.",
     "args": {
-      "lines": [
-        "Ships towing magnetometers had",
-        "already found long stripes",
-        "of seafloor"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -783,31 +696,24 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "The seafloor recorded its own age in magnetism",
     "narration": "Vine and Matthews published their argument in the journal Nature, and it turned an earlier hypothesis into something testable.",
     "args": {
-      "term": "seafloor spreading",
-      "meaning": "new crust forming at a ridge and moving away on both sides",
-      "boundary": "it does not say what drives the plates",
-      "source": "Nature"
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "The seafloor recorded its own age in magnetism",
     "narration": "Harry Hess had already proposed seafloor spreading: new crust forming at a ridge and moving away on both sides.",
     "args": {
-      "lines": [
-        "Harry Hess had already",
-        "proposed seafloor spreading: new",
-        "crust forming"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -823,18 +729,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The seafloor recorded its own age in magnetism",
     "narration": "Notice what the idea did not explain on its own. It does not say what drives the plates.",
     "args": {
-      "lines": [
-        "Notice what the idea",
-        "did not explain on",
-        "its own."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -850,35 +752,24 @@
     "from": "directive"
   },
   {
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Drilling and diving checked the prediction",
     "narration": "A good hypothesis sticks its neck out, and spreading made predictions that could have failed.",
     "args": {
-      "title": "What spreading predicted",
-      "items": [
-        "+sediment thickens away from the ridge",
-        "+crust grows older away from the ridge",
-        "+hot water venting at the crest",
-        "?what drives the plates"
-      ],
-      "note": ""
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Drilling and diving checked the prediction",
     "narration": "If the crust is born at the ridge, then sediment thickens away from the ridge, because older floor has had longer to collect the particles that drift down from above.",
     "args": {
-      "lines": [
-        "If the crust is",
-        "born at the ridge,",
-        "then sediment"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -898,18 +789,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Drilling and diving checked the prediction",
     "narration": "The oldest sediment lying directly on the basalt got older with distance from the crest, on both sides.",
     "args": {
-      "lines": [
-        "The oldest sediment lying",
-        "directly on the basalt",
-        "got older"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -942,18 +829,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 9.0,
     "heading": "Drilling and diving checked the prediction",
     "narration": "In 1977, scientists diving in the submersible Alvin, operated by Woods Hole Oceanographic Institution, known as WHOI, found hydrothermal vents on the Gal\u00e1pagos Rift, a spreading centre in the eastern Pacific.",
     "args": {
-      "lines": [
-        "In 1977, scientists diving",
-        "in the submersible Alvin,",
-        "operated"
-      ]
+      "subject": "black_smoker",
+      "label": "hydrothermal vents",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -969,18 +855,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Drilling and diving checked the prediction",
     "narration": "The geology was confirmed, and the biology opened an entirely new field.",
     "args": {
-      "lines": [
-        "The geology was confirmed,",
-        "and the biology opened",
-        "an entirely"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -999,18 +881,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Spreading speed shapes the ridge",
     "narration": "Ridges that spread faster, such as the East Pacific Rise, receive magma more steadily.",
     "args": {
-      "lines": [
-        "Ridges that spread faster,",
-        "such as the East",
-        "Pacific Rise"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1029,18 +907,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Spreading speed shapes the ridge",
     "narration": "Fast ridges show the reverse: a broad swell with little or no valley at its crest.",
     "args": {
-      "lines": [
-        "Fast ridges show the",
-        "reverse: a broad swell",
-        "with little"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1059,32 +933,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Spreading speed shapes the ridge",
     "narration": "Fractures also break the ridge into offset segments. These transform faults, where the plates slide past each other sideways, are why the ridge zigzags on a map instead of running in one clean line.",
     "args": {
-      "lines": [
-        "Fractures also break the",
-        "ridge into offset segments.",
-        "These transform"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Spreading speed shapes the ridge",
     "narration": "And in one place the ridge rises above the waves. Iceland sits on the Mid-Atlantic Ridge, where an unusually generous magma supply, usually attributed to a mantle hotspot, has built the crest high enough to form land.",
     "args": {
-      "lines": [
-        "And in one place",
-        "the ridge rises above",
-        "the waves."
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1121,18 +987,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "What to notice in the edit",
     "narration": "The length of the ridge system comes from NOAA. The description of spreading and plate motion leans on USGS.",
     "args": {
-      "lines": [
-        "The length of the",
-        "ridge system comes from",
-        "NOAA."
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1159,18 +1021,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "What to notice in the edit",
     "narration": "Most of this story is told in mechanisms rather than figures, because the mechanism is what the evidence actually pins down.",
     "args": {
-      "lines": [
-        "Most of this story",
-        "is told in mechanisms",
-        "rather"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1190,18 +1048,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "It does not establish exactly how melt gathers beneath the crest: how it migrates upward through mostly solid rock and focuses into a narrow band at the axis is still modelled and argued over.",
     "args": {
-      "lines": [
-        "It does not establish",
-        "exactly how melt gathers",
-        "beneath"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1221,18 +1075,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Evidence limit",
     "narration": "Most of the ridge has never been seen up close, and the mantle beneath it has never been sampled in place.",
     "args": {
-      "lines": [
-        "Most of the ridge",
-        "has never been seen",
-        "up close"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",

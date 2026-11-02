@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Cold open",
     "narration": "An aluminum bar can match mild steel's strength and still bend nearly three times further.",
     "args": {
-      "value": "2.7",
-      "unit": "grams per cubic centimetre",
-      "caption": "Aluminum density, against about 7.8 for steel",
-      "source": "ASM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Piece for piece, steel is usually stronger than aluminum and nearly three times stiffer, but it is also nearly three times as dense.",
     "args": {
-      "lines": [
-        "Piece for piece, steel",
-        "is usually stronger than",
-        "aluminum"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Cold open",
     "narration": "That one ratio is where the simple question starts to come apart.",
     "args": {
-      "lines": [
-        "That one ratio is",
-        "where the simple question",
-        "starts"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -67,18 +56,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Cold open",
     "narration": "And the word stronger is doing more work than it looks, because engineers mean at least three different things by it.",
     "args": {
-      "lines": [
-        "And the word stronger",
-        "is doing more work",
-        "than it"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "text_beat",
@@ -107,18 +92,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Stronger splits into separate measurements",
     "narration": "A tensile test, described in standard methods published by ASTM International, takes a specimen shaped a little like a dog bone, grips both ends, and stretches it while recording force and extension.",
     "args": {
-      "lines": [
-        "A tensile test, described",
-        "in standard methods published",
-        "by ASTM"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -134,18 +115,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Stronger splits into separate measurements",
     "narration": "The steep straight section at the start gives stiffness, the elastic modulus: how hard the material resists stretching before it springs back.",
     "args": {
-      "lines": [
-        "The steep straight section",
-        "at the start gives",
-        "stiffness"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -161,18 +138,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Stronger splits into separate measurements",
     "narration": "The peak of the curve gives ultimate tensile strength, the most stress it carries before it narrows and tears.",
     "args": {
-      "lines": [
-        "The peak of the",
-        "curve gives ultimate tensile",
-        "strength"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -204,18 +177,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Stronger splits into separate measurements",
     "narration": "In the United States, the chain of calibration for testing machines traces back to measurement standards maintained by NIST, the National Institute of Standards and Technology.",
     "args": {
-      "lines": [
-        "In the United States,",
-        "the chain of calibration",
-        "for testing"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -234,18 +203,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Stronger splits into separate measurements",
     "narration": "It is also why you should be wary of any comparison that quotes one number for aluminum and one for steel.",
     "args": {
-      "lines": [
-        "It is also why",
-        "you should be wary",
-        "of any"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -264,39 +229,24 @@
     "from": "directive"
   },
   {
-    "segment": "magnitude_bar",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Steel wins a same-size fight",
     "narration": "Start with the property that is least ambiguous. Stiffness barely changes with alloying or heat treatment, which makes it the cleanest comparison.",
     "args": {
-      "title": "Stiffness, elastic modulus",
-      "unit": "gigapascals",
-      "items": [
-        [
-          "Steel",
-          "200"
-        ],
-        [
-          "Aluminum",
-          "70"
-        ]
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Steel wins a same-size fight",
     "narration": "ASM International reference data put the elastic modulus of steel at about 200 gigapascals and aluminum at about 70.",
     "args": {
-      "lines": [
-        "ASM International reference data",
-        "put the elastic modulus",
-        "of steel"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -329,7 +279,7 @@
       "label": "MICROSTRUCTURE",
       "pick": 0
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm+picture+material"
   },
   {
     "segment": "magnitude_bar",
@@ -353,18 +303,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Steel wins a same-size fight",
     "narration": "An aluminum ladder flexes in a way a steel one of the same profile would not.",
     "args": {
-      "lines": [
-        "An aluminum ladder flexes",
-        "in a way a",
-        "steel one"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -388,34 +334,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Equal weight flips the bending contest",
     "narration": "Now divide each stiffness by its density. At equal size, steel is nearly three times stiffer, but it is also nearly three times as dense, so the two ratios land almost on top of each other.",
     "args": {
-      "term": "Steel at equal size",
-      "includes": [
-        "nearly three times stiffer"
-      ],
-      "excludes": [
-        "meaningfully stiffer per kilogram"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Equal weight flips the bending contest",
     "narration": "Steel is not meaningfully stiffer per kilogram. Where aluminum pulls ahead is in bending.",
     "args": {
-      "lines": [
-        "Steel is not meaningfully",
-        "stiffer per kilogram. Where",
-        "aluminum pulls"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -434,17 +370,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Equal weight flips the bending contest",
     "narration": "Bending stiffness grows far faster than thickness does, so a thicker aluminum panel of equal weight can be considerably stiffer than the thin steel one it replaces.",
     "args": {
-      "lines": [
-        "Bending stiffness grows far",
-        "faster than thickness does"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -487,17 +420,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Alloying moves aluminum past ordinary steel",
     "narration": "A thin strip bends easily in your fingers, and the pure metal is used where conductivity or corrosion resistance matters more than load.",
     "args": {
-      "lines": [
-        "A thin strip bends",
-        "easily in your fingers"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -513,18 +443,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Alloying moves aluminum past ordinary steel",
     "narration": "The everyday structural steel used in buildings, specified under the ASTM A36 standard, must have a yield strength of at least 250 megapascals.",
     "args": {
-      "lines": [
-        "The everyday structural steel",
-        "used in buildings, specified",
-        "under"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -540,31 +466,24 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Alloying moves aluminum past ordinary steel",
     "narration": "Metallurgists know what causes that jump because they can see it. Electron microscopes resolve particles far too small for any optical instrument, and comparisons between the same alloy in different heat-treated states link particle size and spacing to measured strength.",
     "args": {
-      "term": "Precipitation hardening",
-      "meaning": "strengthening by tiny particles that form inside the grains during heat treatment",
-      "boundary": "the particles grow and coarsen",
-      "source": "ASM International"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Alloying moves aluminum past ordinary steel",
     "narration": "The process is called precipitation hardening: strengthening by tiny particles that form inside the grains during heat treatment.",
     "args": {
-      "lines": [
-        "The process is called",
-        "precipitation hardening: strengthening by",
-        "tiny particles"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -580,18 +499,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Alloying moves aluminum past ordinary steel",
     "narration": "The mechanism has an edge. Heat the alloy too much, or for too long, and the particles grow and coarsen, spacing out until dislocations slip between them and the strength falls away.",
     "args": {
-      "lines": [
-        "The mechanism has an",
-        "edge. Heat the alloy",
-        "too much"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -611,18 +526,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The strongest steels stay out of reach",
     "narration": "Steel can be quenched and tempered, and specialized grades are alloyed with nickel, chromium, molybdenum and other elements.",
     "args": {
-      "lines": [
-        "Steel can be quenched",
-        "and tempered, and specialized",
-        "grades"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -642,18 +553,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "The strongest steels stay out of reach",
     "narration": "So the honest scorecard reads like this. Heat-treated alloys can exceed the A36 minimum.",
     "args": {
-      "lines": [
-        "So the honest scorecard",
-        "reads like this. Heat-treated",
-        "alloys"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -673,18 +580,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The strongest steels stay out of reach",
     "narration": "But steel stays nearly three times stiffer at equal size, and high-strength steels remain far stronger outright, by any measure that ignores weight.",
     "args": {
-      "lines": [
-        "But steel stays nearly",
-        "three times stiffer at",
-        "equal size"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -704,42 +607,26 @@
     "from": "directive"
   },
   {
-    "segment": "source_compare",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "The strongest steels stay out of reach",
     "narration": "Strength alone also does not decide which metal gets used. The USGS, which tracks mineral commodities, documents the production of aluminum from bauxite, a chain that ends in smelting with very large amounts of electricity.",
     "args": {
-      "title": "Who publishes the evidence",
-      "sources": [
-        [
-          "ASM International",
-          "reference data on density, stiffness and strength"
-        ],
-        [
-          "ASTM International",
-          "the A36 standard and tensile test methods"
-        ],
-        [
-          "USGS",
-          "production of aluminum from bauxite"
-        ]
-      ]
+      "subject": "blast-furnace",
+      "label": "SMELTING",
+      "pick": 0
     },
-    "from": "directive"
+    "from": "directive+picture+material"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The strongest steels stay out of reach",
     "narration": "Steel comes from abundant iron ore through an older and generally cheaper industry.",
     "args": {
-      "lines": [
-        "Steel comes from abundant",
-        "iron ore through an",
-        "older"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -766,18 +653,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "The strongest steels stay out of reach",
     "narration": "ASM International compiles reference data on density, stiffness and strength. ASTM International publishes the A36 standard and tensile test methods.",
     "args": {
-      "lines": [
-        "ASM International compiles reference",
-        "data on density, stiffness",
-        "and strength."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -815,18 +698,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Fatigue and heat expose what a tensile test misses",
     "narration": "Many steels show what is called an endurance limit: below a certain stress, they survive an effectively unlimited number of cycles in testing.",
     "args": {
-      "lines": [
-        "Many steels show what",
-        "is called an endurance",
-        "limit: below"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "thermal_ascent",
@@ -840,18 +719,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Fatigue and heat expose what a tensile test misses",
     "narration": "ASM International's fatigue literature treats this as a central design difference, and it is why aluminum aircraft structures are inspected on schedules rather than assumed to last indefinitely.",
     "args": {
-      "lines": [
-        "ASM International's fatigue literature",
-        "treats this as a",
-        "central design"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "thermal_ascent",
@@ -865,18 +740,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Fatigue and heat expose what a tensile test misses",
     "narration": "Steel keeps useful strength to higher temperatures, which is one reason it remains the default for many structures that must survive heat.",
     "args": {
-      "lines": [
-        "Steel keeps useful strength",
-        "to higher temperatures, which",
-        "is one"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -895,18 +766,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Aluminum seals itself while steel rusts through",
     "narration": "Freshly cut aluminum reacts with oxygen almost immediately, forming a thin film of aluminum oxide that clings to the surface and slows further attack.",
     "args": {
-      "lines": [
-        "Freshly cut aluminum reacts",
-        "with oxygen almost immediately,",
-        "forming"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -925,18 +792,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Aluminum seals itself while steel rusts through",
     "narration": "That is why an unpainted aluminum window frame can last for decades, while unprotected mild steel needs paint, galvanizing, or a different alloy such as stainless steel.",
     "args": {
-      "lines": [
-        "That is why an",
-        "unpainted aluminum window frame",
-        "can last"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -955,18 +818,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Aluminum seals itself while steel rusts through",
     "narration": "Aluminum is not immune either. Some high-strength alloys, especially those containing copper, corrode more readily and are often clad with a layer of purer aluminum for that reason.",
     "args": {
-      "lines": [
-        "Aluminum is not immune",
-        "either. Some high-strength alloys,",
-        "especially those"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -994,18 +853,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "A chart that puts aluminum and steel side by side has already made choices: which alloy, which property, and whether it compares at equal size or equal weight.",
     "args": {
-      "lines": [
-        "A chart that puts",
-        "aluminum and steel side",
-        "by side"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -1033,18 +888,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "What to notice in the edit",
     "narration": "The same alloy set beside a quenched and tempered high-strength steel tells the opposite one.",
     "args": {
-      "lines": [
-        "The same alloy set",
-        "beside a quenched and",
-        "tempered high-strength"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -1072,32 +923,26 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "These figures describe test specimens under controlled conditions, not finished parts. A handbook value for an alloy is a typical or minimum figure drawn from many tests, and an individual batch can sit above or below it.",
     "args": {
-      "lines": [
-        "These figures describe test",
-        "specimens under controlled conditions,",
-        "not finished"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Real components carry welds, holes, scratches and stresses locked in during manufacturing, and welding in particular can soften heat-treated aluminum near the joint.",
     "args": {
-      "lines": [
-        "Real components carry welds,",
-        "holes, scratches and stresses",
-        "locked"
-      ]
+      "subject": "welding-arc",
+      "label": "WELDING",
+      "pick": 0
     },
-    "from": "directive"
+    "from": "directive+picture+material"
   },
   {
     "segment": "ambient_drift",
@@ -1110,18 +955,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "That ranking comes from design calculation, safety margins and testing of the actual part, which is a separate body of evidence from the material data.",
     "args": {
-      "lines": [
-        "That ranking comes from",
-        "design calculation, safety margins",
-        "and testing"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1144,17 +985,13 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Closing",
     "narration": "The metal does not answer the question. The question you ask it does.",
     "args": {
-      "lines": [
-        "The metal does not",
-        "answer the question. The",
-        "question you"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   }
 ]

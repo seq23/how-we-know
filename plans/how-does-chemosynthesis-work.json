@@ -1,30 +1,23 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "In 1977, scientists found dense animal life where no sunlight has ever reached.",
     "args": {
-      "value": "1977",
-      "unit": "year",
-      "caption": "dense animal life where no sunlight has ever reached",
-      "source": "Woods Hole Oceanographic Institution"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "That year, the submersible Alvin, operated by Woods Hole Oceanographic Institution, dove to hot springs on the Gal\u00e1pagos Rift and found clams, mussels and tubeworms crowded around them.",
     "args": {
-      "lines": [
-        "That year, the submersible",
-        "Alvin, operated by Woods",
-        "Hole Oceanographic Institution"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -40,18 +33,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "That answer is correct, and it hides an assumption worth breaking. The animals on that rift were not living without the sun.",
     "args": {
-      "lines": [
-        "That answer is correct,",
-        "and it hides an",
-        "assumption worth"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "stat_card",
@@ -67,58 +56,44 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "Start with what any living cell needs. It needs carbon to build its body, and it needs energy to do the building.",
     "args": {
-      "term": "chemosynthesis",
-      "meaning": "make food from carbon dioxide using energy from chemical reactions",
-      "boundary": "instead of sunlight",
-      "source": "NOAA"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "A plant gets its energy from light and its carbon from carbon dioxide.",
     "args": {
-      "lines": [
-        "A plant gets its",
-        "energy from light and",
-        "its carbon"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "A chemosynthetic microbe takes the same carbon dioxide, but it gets its energy somewhere else.",
     "args": {
-      "term": "chemosynthesis",
-      "meaning": "make food from carbon dioxide using energy from chemical reactions",
-      "boundary": "instead of sunlight",
-      "source": "NOAA"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "NOAA describes the process in exactly these terms: microbes harvest energy from chemical reactions and use it to turn carbon into organic matter.",
     "args": {
-      "lines": [
-        "NOAA describes the process",
-        "in exactly these terms:",
-        "microbes harvest"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -134,31 +109,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "It carries electrons it will readily give up to oxygen, and when that hand-off happens, energy is released.",
     "args": {
-      "lines": [
-        "It carries electrons it",
-        "will readily give up",
-        "to oxygen"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "The microbe captures some of that energy before it escapes as heat. That is the whole trick: chemosynthesis makes food without light.",
     "args": {
-      "term": "chemosynthesis",
-      "meaning": "make food from carbon dioxide using energy from chemical reactions",
-      "boundary": "instead of sunlight",
-      "source": "NOAA"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -177,48 +145,34 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "Photosynthesis captures energy from sunlight. Chemosynthesis captures energy from chemical reactions. After that first step the two converge more than you might expect.",
     "args": {
-      "lines": [
-        "Photosynthesis captures energy from",
-        "sunlight. Chemosynthesis captures energy",
-        "from chemical"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "Many chemosynthetic bacteria fix carbon with the same cycle plants use, the Calvin cycle, driven by the same carbon-grabbing enzyme, called RuBisCO.",
     "args": {
-      "term": "the difference",
-      "includes": [
-        "energy from chemical reactions"
-      ],
-      "excludes": [
-        "energy from sunlight"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "Others use different carbon-fixing pathways. Either way, the microbe ends up with sugars and other organic molecules, and anything that eats the microbe, or houses it, inherits that carbon.",
     "args": {
-      "lines": [
-        "Others use different carbon-fixing",
-        "pathways. Either way, the",
-        "microbe ends"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -237,34 +191,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "A sulfide-oxidizing microbe can leave behind elemental sulfur, sometimes stored as visible granules inside the cell.",
     "args": {
-      "lines": [
-        "A sulfide-oxidizing microbe can",
-        "leave behind elemental sulfur,",
-        "sometimes stored"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Chemosynthesis runs on a chemical mismatch, not on light",
     "narration": "Hold on to that detail. It turns out to be a clue.",
     "args": {
-      "term": "the difference",
-      "includes": [
-        "energy from chemical reactions"
-      ],
-      "excludes": [
-        "energy from sunlight"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "evidence_chain",
@@ -283,18 +227,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A vent is where two incompatible waters meet",
     "narration": "At ocean ridges, seawater seeps into the crust through cracks. Deep down, near hot rock and magma, heated rock strips out oxygen from that water and lets it dissolve metals and sulfur compounds.",
     "args": {
-      "lines": [
-        "At ocean ridges, seawater",
-        "seeps into the crust",
-        "through cracks."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -313,18 +253,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "A vent is where two incompatible waters meet",
     "narration": "At the vent opening, hot fluid meets cold oxygenated seawater. Neither water alone is much use.",
     "args": {
-      "lines": [
-        "At the vent opening,",
-        "hot fluid meets cold",
-        "oxygenated seawater."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -343,32 +279,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "A vent is where two incompatible waters meet",
     "narration": "Where they mix, in a narrow and constantly shifting zone, microbes sit in the gap and run the reaction.",
     "args": {
-      "lines": [
-        "Where they mix, in",
-        "a narrow and constantly",
-        "shifting zone"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A vent is where two incompatible waters meet",
     "narration": "The hottest vent fluid reaches hundreds of degrees Celsius, and the published figures vary widely from site to site, so no single number tells the story.",
     "args": {
-      "lines": [
-        "The hottest vent fluid",
-        "reaches hundreds of degrees",
-        "Celsius"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -381,18 +309,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A vent is where two incompatible waters meet",
     "narration": "That detail matters, because it tells you where to look for the evidence: not in the plume itself, but on the surfaces, mats and animal tissues bathed in the mixture.",
     "args": {
-      "lines": [
-        "That detail matters, because",
-        "it tells you where",
-        "to look"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "quote_card",
@@ -422,18 +346,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The first clue was an ecosystem that broke the food budget",
     "narration": "Food arrived from above as a slow fall of dead plankton and waste, often called marine snow, and life thinned out accordingly.",
     "args": {
-      "lines": [
-        "Food arrived from above",
-        "as a slow fall",
-        "of dead"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -452,18 +372,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "The first clue was an ecosystem that broke the food budget",
     "narration": "The expedition was led largely by geologists, who had come to find hot springs, not to study animals.",
     "args": {
-      "lines": [
-        "The expedition was led",
-        "largely by geologists, who",
-        "had come"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -482,18 +398,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The first clue was an ecosystem that broke the food budget",
     "narration": "It meant there had to be a local food source. It did not yet say which organisms made the food, or how the animals got it.",
     "args": {
-      "lines": [
-        "It meant there had",
-        "to be a local",
-        "food source."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "ambient_drift",
@@ -516,18 +428,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "The first clue was an ecosystem that broke the food budget",
     "narration": "What was new was the suggestion that a whole animal community, on the sea floor, could rest on it.",
     "args": {
-      "lines": [
-        "What was new was",
-        "the suggestion that a",
-        "whole animal"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "ambient_drift",
@@ -559,17 +467,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A worm with no gut forced the mechanism into view",
     "narration": "Its body sits inside a white tube, topped by a bright red plume.",
     "args": {
-      "lines": [
-        "Its body sits inside",
-        "a white tube, topped"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "timeline",
@@ -591,18 +496,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A worm with no gut forced the mechanism into view",
     "narration": "An animal that large cannot live on nothing. Inside, though, was a spongy organ, later called the trophosome, and it held crystals of elemental sulfur.",
     "args": {
-      "lines": [
-        "An animal that large",
-        "cannot live on nothing.",
-        "Inside, though"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "timeline",
@@ -624,18 +525,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "A worm with no gut forced the mechanism into view",
     "narration": "Notice the reasoning. The sulfur crystals matched the expected waste of sulfide-oxidizing microbes.",
     "args": {
-      "lines": [
-        "Notice the reasoning. The",
-        "sulfur crystals matched the",
-        "expected waste"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "timeline",
@@ -657,34 +554,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A worm with no gut forced the mechanism into view",
     "narration": "The plume completes the picture. It is red because it is full of hemoglobin, but a specialised form that carries oxygen and sulfide together, binding the sulfide so it does not poison the worm's own cells.",
     "args": {
-      "term": "the plume",
-      "includes": [
-        "a gill doing double duty"
-      ],
-      "excludes": [
-        "a mouth"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A worm with no gut forced the mechanism into view",
     "narration": "The worm, in other words, is a delivery system. It reaches into the mixing zone, loads both ingredients from the water, and its blood carries them down to the bacteria inside.",
     "args": {
-      "lines": [
-        "The worm, in other",
-        "words, is a delivery",
-        "system. It"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -703,18 +590,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "A worm with no gut forced the mechanism into view",
     "narration": "The bacteria do the chemistry. The worm handles logistics. Evidence also indicates that young worms pick up their bacteria from the surrounding water rather than inheriting them, so each generation has to recruit its partners anew.",
     "args": {
-      "lines": [
-        "The bacteria do the",
-        "chemistry. The worm handles",
-        "logistics. Evidence"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -746,18 +629,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Measurements, not the story, made the symbiosis stick",
     "narration": "First, microscopy. Thin sections of trophosome tissue showed it densely packed with bacterial cells.",
     "args": {
-      "lines": [
-        "First, microscopy. Thin sections",
-        "of trophosome tissue showed",
-        "it densely"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -789,18 +668,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Measurements, not the story, made the symbiosis stick",
     "narration": "That showed the machinery was present and working, not just the cells.",
     "args": {
-      "lines": [
-        "That showed the machinery",
-        "was present and working,",
-        "not just"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -818,18 +693,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Measurements, not the story, made the symbiosis stick",
     "narration": "That leaves a fingerprint, measured as a ratio of heavy to light carbon.",
     "args": {
-      "lines": [
-        "That leaves a fingerprint,",
-        "measured as a ratio",
-        "of heavy"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -847,18 +718,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Measurements, not the story, made the symbiosis stick",
     "narration": "That is how you can say the carbon was fixed locally rather than imported.",
     "args": {
-      "lines": [
-        "That is how you",
-        "can say the carbon",
-        "was fixed"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -876,18 +743,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Measurements, not the story, made the symbiosis stick",
     "narration": "No single one of these independent lines of evidence proves the case. Together they leave very little room for another explanation.",
     "args": {
-      "lines": [
-        "No single one of",
-        "these independent lines of",
-        "evidence proves"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -903,18 +766,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "The same trick runs on several fuels",
     "narration": "At cold seeps, fluids rich in methane and sulfide leak from sediments along continental margins.",
     "args": {
-      "lines": [
-        "At cold seeps, fluids",
-        "rich in methane and",
-        "sulfide leak"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -930,18 +789,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The same trick runs on several fuels",
     "narration": "Some seep mussels host bacteria that use methane itself. Strictly, that is a slightly different metabolism, because the carbon comes from methane rather than carbon dioxide, but it is usually counted under the chemosynthetic umbrella.",
     "args": {
-      "lines": [
-        "Some seep mussels host",
-        "bacteria that use methane",
-        "itself. Strictly"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -962,18 +817,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "The same trick runs on several fuels",
     "narration": "Elsewhere, microbes draw energy from hydrogen, from reduced iron, and from ammonia.",
     "args": {
-      "lines": [
-        "Elsewhere, microbes draw energy",
-        "from hydrogen, from reduced",
-        "iron"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -994,18 +845,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The same trick runs on several fuels",
     "narration": "How much carbon chemosynthesis fixes in the open ocean, as a share of the global total, is still being measured, and estimates vary.",
     "args": {
-      "lines": [
-        "How much carbon chemosynthesis",
-        "fixes in the open",
-        "ocean"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1026,34 +873,24 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Most vent life still depends on sunlight",
     "narration": "Now return to the assumption from the opening. Vent communities are often described as living entirely without the sun.",
     "args": {
-      "term": "vent ecosystems",
-      "includes": [
-        "independent of sunlight as an energy source"
-      ],
-      "excludes": [
-        "independent of photosynthesis"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Most vent life still depends on sunlight",
     "narration": "That is half right. They are independent of sunlight as an energy source, because no light reaches them.",
     "args": {
-      "lines": [
-        "That is half right.",
-        "They are independent of",
-        "sunlight"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1072,18 +909,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Most vent life still depends on sunlight",
     "narration": "Take away the sun, and over time the deep ocean's oxygen supply would run down, and with it most of these communities.",
     "args": {
-      "lines": [
-        "Take away the sun,",
-        "and over time the",
-        "deep ocean's"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1102,32 +935,24 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 4.97,
     "heading": "Most vent life still depends on sunlight",
     "narration": "There are exceptions, and they are where the research gets most interesting.",
     "args": {
-      "lines": [
-        "There are exceptions, and",
-        "they are where the",
-        "research gets"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Most vent life still depends on sunlight",
     "narration": "Some microbes make methane from hydrogen and carbon dioxide with no oxygen involved, and some vent systems release enough hydrogen to support them.",
     "args": {
-      "lines": [
-        "Some microbes make methane",
-        "from hydrogen and carbon",
-        "dioxide"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "ambient_drift",
@@ -1140,18 +965,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Most vent life still depends on sunlight",
     "narration": "If life can run on rock and water chemistry here, the same might hold on ocean worlds elsewhere. That is a reason to look, not a finding.",
     "args": {
-      "lines": [
-        "If life can run",
-        "on rock and water",
-        "chemistry here"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1170,18 +991,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "What to notice in the edit",
     "narration": "That black cloud is mineral particles, forming as hot fluid hits cold water.",
     "args": {
-      "lines": [
-        "That black cloud is",
-        "mineral particles, forming as",
-        "hot fluid"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1200,18 +1017,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.62,
     "heading": "What to notice in the edit",
     "narration": "When an animation shows a sulfide molecule drifting straight into a worm, it compresses a lot.",
     "args": {
-      "lines": [
-        "When an animation shows",
-        "a sulfide molecule drifting",
-        "straight"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -1230,18 +1043,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "What to notice in the edit",
     "narration": "And when a graphic says a vent ecosystem runs without the sun, you now know which caveat it dropped.",
     "args": {
-      "lines": [
-        "And when a graphic",
-        "says a vent ecosystem",
-        "runs without"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1260,18 +1069,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "It does not tell you how much carbon chemosynthesis fixes in the open ocean, where the microbes are diffuse and hard to measure.",
     "args": {
-      "lines": [
-        "It does not tell",
-        "you how much carbon",
-        "chemosynthesis fixes"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -1290,18 +1095,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Many symbionts have never been grown in the lab, so much of what is known about their metabolism is read from genes rather than watched in action.",
     "args": {
-      "lines": [
-        "Many symbionts have never",
-        "been grown in the",
-        "lab"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",

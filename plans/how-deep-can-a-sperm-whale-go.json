@@ -1,25 +1,23 @@
 [
   {
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "seconds": 5.79,
     "heading": "Cold open",
     "narration": "A telegraph cable hauled up in 1955 held a dead whale from 1,133 meters.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Today the number is far larger. A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Life.",
     "args": {
-      "lines": [
-        "Today the number is",
-        "far larger. A sperm",
-        "whale"
-      ]
+      "variant": 0
     },
-    "from": "heuristic"
+    "from": "heuristic+picture"
   },
   {
     "segment": "depth_descent",
@@ -78,18 +76,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "For most of the twentieth century, our understanding of whale depth was based on indirect evidence from whaling or accidental encounters.",
     "args": {
-      "lines": [
-        "For most of the",
-        "twentieth century, our understanding",
-        "of whale"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -117,18 +111,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "A DTAG is a compact device equipped with a suite of sensors, including pressure gauges, accelerometers, and magnetometers.",
     "args": {
-      "lines": [
-        "A DTAG is a",
-        "compact device equipped with",
-        "a suite"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -156,18 +146,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "Using a 12-meter carbon fiber POLE DEPLOYMENT, the team achieves a SUCTION ATTACHMENT of the tag onto the whale\u2019s back.",
     "args": {
-      "lines": [
-        "Using a 12-meter carbon",
-        "fiber POLE DEPLOYMENT, the",
-        "team achieves"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "process_steps",
@@ -210,18 +196,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "As the whale descends, the increasing weight of the water column exerts force on a silicon diaphragm within the sensor.",
     "args": {
-      "lines": [
-        "As the whale descends,",
-        "the increasing weight of",
-        "the water"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -239,18 +221,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "Because the tag records data multiple times per second, researchers can reconstruct a high-resolution profile of the entire dive.",
     "args": {
-      "lines": [
-        "Because the tag records",
-        "data multiple times per",
-        "second, researchers"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -268,18 +246,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "This method has transformed marine biology from a science of surface observations into a science of deep-sea tracking, allowing us to map the three-dimensional path of a whale as it navigates the dark.",
     "args": {
-      "lines": [
-        "This method has transformed",
-        "marine biology from a",
-        "science"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -297,18 +271,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "It is important to note that we have only tagged a small fraction of the global population.",
     "args": {
-      "lines": [
-        "It is important to",
-        "note that we have",
-        "only tagged"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -326,18 +296,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "The variation in these figures often depends on the local bathymetry and the depth at which their prey is located.",
     "args": {
-      "lines": [
-        "The variation in these",
-        "figures often depends on",
-        "the local"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -355,18 +321,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Digital acoustic tags provide the primary evidence",
     "narration": "We must view the 2,992 meter record as a verified minimum for the species' potential, rather than an absolute ceiling.",
     "args": {
-      "lines": [
-        "We must view the",
-        "2,992 meter record as",
-        "a verified"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -384,27 +346,24 @@
     "from": "directive"
   },
   {
-    "segment": "pressure_gauge",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "At a depth of 2,992 meters, the pressure is approximately 300 times greater than at the surface.",
     "args": {
-      "depth_m": 2992
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "For a human, or any unpressurized vessel, this would be catastrophic. To survive this, the sperm whale has evolved a suite of biological adaptations.",
     "args": {
-      "lines": [
-        "For a human, or",
-        "any unpressurized vessel"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -417,18 +376,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "Unlike humans, whose rigid chests would crack under the weight of the deep ocean, a sperm whale\u2019s ribs are connected by flexible cartilage.",
     "args": {
-      "lines": [
-        "Unlike humans, whose rigid",
-        "chests would crack under",
-        "the weight"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -441,18 +396,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "By eliminating the air space, the whale becomes essentially incompressible, its internal tissues matching the pressure of the surrounding sea.",
     "args": {
-      "lines": [
-        "By eliminating the air",
-        "space, the whale becomes",
-        "essentially incompressible"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -477,18 +428,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "The SPERM WHALE has a high concentration of hemoglobin in its blood and an even higher concentration of myoglobin in its muscle tissue.",
     "args": {
-      "lines": [
-        "The SPERM WHALE has",
-        "a high concentration of",
-        "hemoglobin"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -513,18 +460,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "This allows them to remain submerged for 90 minutes or more, even though their COLLAPSIBLE LUNGS are non-functional for the duration of the deep dive.",
     "args": {
-      "lines": [
-        "This allows them to",
-        "remain submerged for 90",
-        "minutes"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "anatomy_callout",
@@ -549,18 +492,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "During the dive, the whale can shunt blood away from its extremities, prioritizing the oxygen supply for the brain and heart, ensuring that critical functions remain active even as the body endures extreme cold and pressure.",
     "args": {
-      "lines": [
-        "During the dive, the",
-        "whale can shunt blood",
-        "away"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -579,18 +518,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "By managing their oxygen stores carefully, they can stay below the surface for long periods without building up excessive lactic acid.",
     "args": {
-      "lines": [
-        "By managing their oxygen",
-        "stores carefully, they can",
-        "stay below"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -609,18 +544,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "Data from WHOI suggests that most sperm whale dives stay within this AEROBIC limit, ensuring they can dive again shortly after a brief interval of breathing at the surface.",
     "args": {
-      "lines": [
-        "Data from WHOI suggests",
-        "that most sperm whale",
-        "dives stay"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "contrast_pair",
@@ -639,17 +570,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Physiology allows survival at 300 atmospheres",
     "narration": "The whale is not just surviving the dive; it is maintaining a high level of athletic performance in an environment that would be lethal to almost any other mammal.",
     "args": {
-      "lines": [
-        "The whale is not",
-        "just surviving the dive"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -665,18 +593,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The spermaceti organ may manage buoyancy",
     "narration": "For decades, scientists have debated the function of this organ. One leading hypothesis, supported by the Monterey Bay Aquarium Research Institute, or MBARI, is that it acts as a buoyancy regulator.",
     "args": {
-      "lines": [
-        "For decades, scientists have",
-        "debated the function of",
-        "this organ."
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "definition_card",
@@ -692,18 +616,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The spermaceti organ may manage buoyancy",
     "narration": "This cooling process is facilitated by a complex heat exchange system involving the right and left nasal passages, which can selectively expose the oil to the ambient temperature of the deep.",
     "args": {
-      "lines": [
-        "This cooling process is",
-        "facilitated by a complex",
-        "heat exchange"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -722,18 +642,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The spermaceti organ may manage buoyancy",
     "narration": "When the whale is ready to return to the surface, increased blood flow to the organ could warm the wax, melting it and making the whale more buoyant.",
     "args": {
-      "lines": [
-        "When the whale is",
-        "ready to return to",
-        "the surface"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -752,17 +668,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The spermaceti organ may manage buoyancy",
     "narration": "However, the sheer size of the organ\u2014occupying nearly one-third of the whale's body length\u2014suggests it plays a fundamental role in its deep-sea lifestyle alongside its COLLAPSIBLE LUNGS and high MYOGLOBIN levels.",
     "args": {
-      "lines": [
-        "However, the sheer size",
-        "of the organ"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "checklist_reveal",
@@ -801,18 +714,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The spermaceti organ may manage buoyancy",
     "narration": "This energy conservation is what makes the sperm whale one of the most successful predators in the ocean's interior, allowing it to spend the majority of its life in a realm where food is scarce and the environment is unforgiving.",
     "args": {
-      "lines": [
-        "This energy conservation is",
-        "what makes the sperm",
-        "whale one"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+picture"
   },
   {
     "segment": "evidence_chain",
@@ -830,18 +739,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "In the total darkness of the deep ocean, eyes are of limited use.",
     "args": {
-      "lines": [
-        "In the total darkness",
-        "of the deep ocean,",
-        "eyes"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -859,18 +764,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "By forcing air through specialized structures in its nasal passage known as phonic lips, the whale produces loud clicks.",
     "args": {
-      "lines": [
-        "By forcing air through",
-        "specialized structures in its",
-        "nasal passage"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -888,18 +789,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 8.69,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "When the sound hits an object, like a giant squid, it creates a TARGET REFLECTION that echoes back to the whale.",
     "args": {
-      "lines": [
-        "When the sound hits",
-        "an object, like a",
-        "giant squid"
-      ]
+      "subject": "giant_squid",
+      "label": "giant squid",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "evidence_chain",
@@ -917,43 +817,24 @@
     "from": "directive"
   },
   {
-    "segment": "magnitude_bar",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "The interval between the click and the echo tells the whale exactly how far away the prey is.",
     "args": {
-      "title": "DEPTH",
-      "unit": "METERS",
-      "items": [
-        [
-          "RECORD",
-          "2,992"
-        ],
-        [
-          "COMMON",
-          "2,250"
-        ],
-        [
-          "CABLE",
-          "1,133"
-        ]
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "As the whale closes in on its target, the rate of clicking increases, creating a sound known as a \"terminal buzz.\" By syncing this audio data with the depth data from the pressure sensor, researchers can confirm that sperm whales are actively foraging at the bottom of their dives.",
     "args": {
-      "lines": [
-        "As the whale closes",
-        "in on its target,",
-        "the rate"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -981,18 +862,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "This depth far exceeds the 1,133 meter CABLE record from the mid-twentieth century and the 2,250 meter COMMON foraging depth compared to the 2,992 meter RECORD.",
     "args": {
-      "lines": [
-        "This depth far exceeds",
-        "the 1,133 meter CABLE",
-        "record"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "magnitude_bar",
@@ -1040,18 +917,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "While we rarely see these battles directly, the evidence is written on the whales themselves.",
     "args": {
-      "lines": [
-        "While we rarely see",
-        "these battles directly, the",
-        "evidence"
-      ]
+      "variant": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1074,18 +947,17 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "species_image",
     "seconds": 5.79,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "Furthermore, the stomach contents of stranded whales often contain thousands of indigestible squid beaks.",
     "args": {
-      "lines": [
-        "Furthermore, the stomach contents",
-        "of stranded whales often",
-        "contain thousands"
-      ]
+      "subject": "deep_squid",
+      "label": "squid",
+      "pick": 0,
+      "zoom": 1.0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1108,18 +980,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Echolocation reveals the deep-sea hunt",
     "narration": "The DATA SOURCES from WHOI and NOAA consistently point to 2,992 and 2,250 meters respectively for these deep-sea predators, confirming that their entire life cycle is tethered to the abyss.",
     "args": {
-      "lines": [
-        "The DATA SOURCES from",
-        "WHOI and NOAA consistently",
-        "point"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "quote_card",
@@ -1143,18 +1011,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "In the mid-twentieth century, as global communication networks expanded across the ocean floor, repair crews began finding whales entangled in the lines.",
     "args": {
-      "lines": [
-        "In the mid-twentieth century,",
-        "as global communication networks",
-        "expanded across"
-      ]
+      "variant": 2
     },
-    "from": "heuristic"
+    "from": "heuristic+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -1177,18 +1041,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "Later, in 1991, SONAR observations began to provide more dynamic data, leading eventually to the first DTAG deployments in 2000 by researchers Mark Johnson and Peter Tyack.",
     "args": {
-      "lines": [
-        "Later, in 1991, SONAR",
-        "observations began to provide",
-        "more dynamic"
-      ]
+      "variant": 2
     },
-    "from": "heuristic"
+    "from": "heuristic+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -1211,17 +1071,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "However, these incidents established the sperm whale\u2019s reputation as a deep diver long before we had the sensors to prove it.",
     "args": {
-      "lines": [
-        "However, these incidents established",
-        "the sperm whale\u2019s reputation"
-      ]
+      "variant": 2
     },
-    "from": "heuristic"
+    "from": "heuristic+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -1244,32 +1101,24 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "The transition from cable entanglements to acoustic tagging represents a shift in how we know the ocean.",
     "args": {
-      "lines": [
-        "The transition from cable",
-        "entanglements to acoustic tagging",
-        "represents"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "We moved from accidental, often fatal encounters to precise, non-invasive observation. This has allowed us to see that the 1,133 meter cable record was actually a conservative estimate of the whale's true range.",
     "args": {
-      "lines": [
-        "We moved from accidental,",
-        "often fatal encounters to",
-        "precise, non-invasive"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "pressure_gauge",
@@ -1282,18 +1131,14 @@
     "from": "directive+destagnate"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.28,
     "heading": "Historical evidence came from telegraph cables",
     "narration": "This evolution of evidence highlights the importance of technological advancement in our quest to understand the planet's least accessible environments.",
     "args": {
-      "lines": [
-        "This evolution of evidence",
-        "highlights the importance of",
-        "technological advancement"
-      ]
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
     "segment": "source_compare",
@@ -1316,17 +1161,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "Most scientific literature, including publications from NOAA, focuses on the 2,250 meter range because that is where the majority of the population spends its time.",
     "args": {
-      "lines": [
-        "Most scientific literature, including",
-        "publications from NOAA, focuses"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "source_compare",
@@ -1349,18 +1191,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "In the edit, you will see that the depth profile of a sperm whale dive is often shaped like a \"U,\" with a rapid descent, a long period of foraging at a consistent depth, and a steady ascent. This \"U\" shape is the hallmark of a focused, energy-efficient hunter.",
     "args": {
-      "lines": [
-        "In the edit, you",
-        "will see that the",
-        "depth profile"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -1378,18 +1216,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "While 2,992 METERS is the highest figure currently recorded by a DTAG, it does not necessarily represent the absolute physiological limit of the species.",
     "args": {
-      "lines": [
-        "While 2,992 METERS is",
-        "the highest figure currently",
-        "recorded"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -1407,18 +1241,14 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Evidence limit",
     "narration": "Our knowledge of \"the deepest\" is always a moving target, defined by the latest successful tag recovery.",
     "args": {
-      "lines": [
-        "Our knowledge of \"the",
-        "deepest\" is always a",
-        "moving target"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "uncertainty_bar",
@@ -1436,29 +1266,24 @@
     "from": "directive"
   },
   {
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "We know the sperm whale can reach 2,992 meters because we have measured the pressure on its back and heard the sound of its hunt in the dark.",
     "args": {
-      "to_depth": 2992,
-      "label": "SPERM WHALE RECORD"
+      "variant": 2
     },
-    "from": "directive"
+    "from": "directive+picture"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.45,
     "heading": "Closing",
     "narration": "This figure is not a guess, but a data point captured by sensors that survive where we cannot.",
     "args": {
-      "lines": [
-        "This figure is not",
-        "a guess, but a",
-        "data point"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   },
   {
     "segment": "depth_descent",
@@ -1472,17 +1297,13 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "The sperm whale remains a sentinel of the abyss, a bridge between the world of air and the world of crushing pressure.",
     "args": {
-      "lines": [
-        "The sperm whale remains",
-        "a sentinel of the",
-        "abyss"
-      ]
+      "variant": 2
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+picture"
   }
 ]
