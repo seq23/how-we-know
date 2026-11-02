@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31T10:41:07.261242+00:00",
+  "generated": "2026-11-02T04:50:46.614085+00:00",
   "domain": "materials-and-manufacturing",
   "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
   "rights_fields_required": [
@@ -10,7 +10,7 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 12,
+  "asset_count": 13,
   "subjects_total": 18,
   "subjects_covered": [
     "3d-printed-metal",
@@ -19,6 +19,7 @@
     "carbon-fiber",
     "cleanroom",
     "concrete",
+    "damascus-blade",
     "graphene-lattice",
     "microchip-die",
     "micrograph-steel",
@@ -506,6 +507,25 @@
       "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
       "width": 3000,
       "height": 2400,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "damascus-blade",
+      "label": "PATTERN-WELDED STEEL",
+      "title": "Boker damascus knife.jpg",
+      "depicts": "photograph",
+      "subject_basis": "A blade showing the surface pattern of pattern-welded or crucible steel. Captioned as pattern-welded unless the item page identifies wootz.",
+      "credit_line": "PATTERN-WELDED STEEL \u2014 PHOTOGRAPH, MXR AT GERMAN WIKIPEDIA (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Mxr at German Wikipedia",
+      "licence": "Public domain",
+      "matched_query": "__pinned__",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Boker_damascus_knife.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Boker_damascus_knife.jpg",
+      "local_file": "assets/mat__damascus-blade__boker-damascus-knife-jpg.jpg",
+      "sha256": "4d0e470b789cbebc97d50511ea73225180a2015c9eb66330b54d0ac787c86b4b",
+      "width": 1280,
+      "height": 853,
       "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
     },
     {

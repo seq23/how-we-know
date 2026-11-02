@@ -272,8 +272,11 @@ for p in food:
     check(D.domain_of_script(p) == FOOD, f"{p.name}: **Domain:** food-science")
     probs = A.directive_truth_problems(t) + A.directive_parse_problems(t) \
         + opening.problems(t, opening.active())
-    title = LT.script_title(t)
-    probs += LT.title_problems(title, t) if title else ["no ## YouTube title"]
+    # ONE QUESTION PER VIDEO (owner, 2 Nov 2026): what ships is title_for_upload's
+    # answer - the script's own title if it is one plain question, else the
+    # strongest single question - and it must exist and pass.
+    title, why_, _src = LT.title_for_upload(p.stem, t)
+    probs += [] if title and not LT.title_problems(title, t) else (why_ or ["no title"])
     if "Part:" in t:
         pid = re.search(r"FROM POV BANK \((pov-\d+)\)", t).group(1)
         line = next(ln for ln in pov_match.bank() if ln["id"] == pid)

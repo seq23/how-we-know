@@ -191,6 +191,7 @@ SUBJECTS: list[dict] = [
      "depicts": "photograph",
      "subject_basis": "Woven carbon-fibre fabric or a cured laminate."},
     {"key": "damascus-blade", "label": "PATTERN-WELDED STEEL",
+     "pinned": ["File:Boker damascus knife.jpg"],
      "queries": ["damascus steel blade pattern", "pattern welded blade", "damascus steel knife"],
      "depicts": "photograph",
      "subject_basis": "A blade showing the surface pattern of pattern-welded or crucible steel. "
@@ -327,8 +328,11 @@ def harvest(dry_run: bool = False, only: list[str] | None = None, *,
             accepted.append(prior[sub["key"]])
             continue
         got = None
-        for phrase in sub["queries"]:
-            for title in _search(phrase):
+        # PINNED files first (2026-11-01): a hand-chosen Commons file (the
+        # identification is human), its licence still gated live below.
+        pinned = list(sub.get("pinned") or [])
+        for phrase in (["__pinned__"] if pinned else []) + list(sub["queries"]):
+            for title in (pinned if phrase == "__pinned__" else _search(phrase)):
                 # IDENTITY, by name (2026-10-13): a subject may list words of
                 # which the FILE TITLE must contain one. "chocolate bar"
                 # matched a Spitzer image of the Milky Way on the food pass;

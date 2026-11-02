@@ -93,6 +93,16 @@ def mix_bed(narration, out, duck_db=-32.0, seed=7):
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
              music=True, burn_captions=False):
     plan = json.load(open(plan_path))
+    # A DOMAIN'S GRAPHICS NEVER APPEAR IN ANOTHER DOMAIN'S VIDEO (2026-11-01:
+    # the deep-sea depth gauge on the rice episode). The active domain is
+    # HWK_DOMAIN, which bin/batch-session.sh sets from the script's own line.
+    import plan_domain as _pd
+    _bad = _pd.foreign(plan, os.environ.get("HWK_DOMAIN", _pd.DEEP))
+    if _bad:
+        raise ValueError(
+            f"PLAN_DOMAIN_FOREIGN {plan_path}: {len(_bad)} beat(s) draw another "
+            f"domain's graphics ({_bad[0][2]}, beat {_bad[0][0]}); "
+            f"visuals/plan_domain.py sweep re-plans it")
     workdir = workdir or out_path + ".work"
     os.makedirs(workdir, exist_ok=True)
 

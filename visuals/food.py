@@ -324,6 +324,7 @@ THUMB_SUBJECTS = {
         ["thumb-chocolate-halves", "chocolate-snap", "chocolate-break-macro"],
     "why-does-bread-rise": ["dough-field", "bread-loaf", "loaf-crumb-macro"],
     "why-does-seared-meat-taste-good": ["thousand-steaks", "seared-crust-macro", "seared-steak"],
+    "why-does-rice-get-sticky": ["cooked-rice"],
 }
 # Treatment per clip use: liquids in slow motion, solids pushed in, the rest as shot.
 SLOW_USES = {"pour", "drip", "liquid", "sheets", "coat",

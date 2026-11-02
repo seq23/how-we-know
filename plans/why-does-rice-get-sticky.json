@@ -1,10 +1,12 @@
 [
   {
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "A grain sold as glutinous contains no gluten whatsoever. Rice gets sticky because cooking makes its starch granules swell and break down, and starch released at the grain surface acts as a glue between neighbouring grains.",
-    "args": {},
+    "args": {
+      "variant": 0
+    },
     "from": "heuristic"
   },
   {
@@ -22,11 +24,13 @@
     "from": "heuristic"
   },
   {
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "It is a starch story built from two molecules, which chemical databases such as PubChem list as separate entries: amylose and amylopectin.",
-    "args": {},
+    "args": {
+      "variant": 1
+    },
     "from": "heuristic"
   },
   {
@@ -35,7 +39,7 @@
     "heading": "Cold open",
     "narration": "That much is settled. What it does not settle is why the same two molecules give you loose, separate grains of basmati in one pot and a single cohesive mass of sticky rice in another.",
     "args": {
-      "variant": 0
+      "variant": 2
     },
     "from": "heuristic"
   },
@@ -304,15 +308,13 @@
     "from": "directive"
   },
   {
-    "segment": "stat_card",
+    "segment": "thermal_ascent",
     "seconds": 6.62,
     "heading": "Heat and water take the granule apart below boiling",
     "narration": "Here is a detail that surprises many cooks. Rice starch gelatinizes well below the boiling point.",
     "args": {
-      "value": "100",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "to_temp": 100,
+      "label": null
     },
     "from": "heuristic"
   },
@@ -322,7 +324,7 @@
     "heading": "Heat and water take the granule apart below boiling",
     "narration": "Water at sea level boils at 100 degrees Celsius, and a pot of simmering rice sits close to that, but the granules begin swelling and losing their order at noticeably lower temperatures.",
     "args": {
-      "variant": 1
+      "variant": 3
     },
     "from": "heuristic"
   },
@@ -341,15 +343,13 @@
     "from": "heuristic"
   },
   {
-    "segment": "stat_card",
+    "segment": "thermal_ascent",
     "seconds": 7.03,
     "heading": "Heat and water take the granule apart below boiling",
     "narration": "The published values vary with variety and method, so this script will not quote a single figure.",
     "args": {
-      "value": "100",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "to_temp": 100,
+      "label": null
     },
     "from": "heuristic"
   },
@@ -359,7 +359,7 @@
     "heading": "Heat and water take the granule apart below boiling",
     "narration": "What matters is that by the time the pot is simmering, gelatinization is well under way.",
     "args": {
-      "variant": 2
+      "variant": 4
     },
     "from": "heuristic"
   },
@@ -1001,7 +1001,7 @@
     "heading": "What to notice in the edit",
     "narration": "When the cross-section glows, watch the granules, not the grain. The grain barely changes shape, while its starch granules swell and spill.",
     "args": {
-      "variant": 3
+      "variant": 0
     },
     "from": "directive"
   },
@@ -1011,7 +1011,7 @@
     "heading": "What to notice in the edit",
     "narration": "Every instrument in this episode, polarized light, X-ray diffraction, calorimetry, iodine and viscosity, is looking at that same small event from a different side.",
     "args": {
-      "variant": 4
+      "variant": 1
     },
     "from": "directive"
   },

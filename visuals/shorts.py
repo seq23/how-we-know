@@ -963,6 +963,23 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     sel = select_beats(beats, direct_answer(slug), max_seconds, target_seconds, rank)
     picked = sel["beats"]
 
+    # --- a domain's graphics never appear in another domain's Short ---------
+    # (2026-11-01: the deep-sea depth gauge on the rice Short.) A beat that
+    # draws another domain's graphic is dropped like an uncredited one;
+    # losing the answer beat refuses the cut. visuals/plan_domain.py.
+    import plan_domain as _pd                              # noqa: PLC0415
+    foreign = {i: w for i, _seg, w in _pd.foreign(plan, _pd.domain_of(slug))}
+    if foreign:
+        if sel["anchor"] in foreign:
+            raise ValueError(f"{slug}: the anchor beat {sel['anchor']} draws "
+                             f"another domain's graphic ({foreign[sel['anchor']]}); "
+                             f"refusing to cut it")
+        sel["dropped_foreign_domain"] = {str(i): foreign[i] for i in picked
+                                         if i in foreign}
+        picked = [i for i in picked if i not in foreign]
+        sel["beats"] = picked
+        sel["seconds"] = sum(by_index[i]["video_s"] for i in picked)
+
     # --- attribution decides the beat list, not the other way round ----------
     # A beat whose credit cannot be read back out of the manifests is dropped
     # rather than shown uncredited. Dropping the anchor would leave a Short with
@@ -1025,6 +1042,8 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     sel["narration"] = " ".join(by_index[i]["narration"] for i in picked)
     sel["slug"] = slug
     stem = f"{slug}-short" if rank == 0 else f"{slug}-short{rank + 1}"
+    # --- ONE QUESTION PER VIDEO: the Short's title IS this question ----------
+    sel["question"] = opener_question(slug, rank, sel.get("chapter"))
     if dry_run:
         sel["output"] = os.path.join(outdir, f"{stem}.mp4")
         return sel
@@ -1112,18 +1131,28 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     cues = caption_cues(picked, by_index)
     chrome = os.path.join(work, "chrome.png")
     draw_chrome(chrome, credits, band_y, band_h)
+    # THE OPENING SECOND (owner, 2 Nov 2026): the same picture as the video's
+    # thumbnail - a PD/CC0 photo of the subject with the question on it - for
+    # the first second, the captions she likes still drawn over it and
+    # carrying on after. No photo = NoSubjectPhoto, a named stop; never cut
+    # without it.
+    import question_card as QC                             # noqa: PLC0415
+    opener_png = os.path.join(work, "opener.png")
+    sel["opener"] = QC.tall_card(slug, sel["question"], opener_png)
     cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
-           "-i", silent, "-i", chrome]
+           "-i", silent, "-i", chrome, "-i", opener_png]
     for n, c in enumerate(cues):
         png = os.path.join(work, f"c{n:03d}.png")
         draw_caption(c["text"], png)
         cmd += ["-i", png]
     cmd += ["-i", narration]
 
-    graph, cur = ["[0:v][1:v]overlay=0:0[base]"], "base"
+    graph = ["[0:v][1:v]overlay=0:0[chr]",
+             f"[chr][2:v]overlay=0:0:enable='lt(t,{QC.OPENER_SECONDS:.3f})'[base]"]
+    cur = "base"
     for n, c in enumerate(cues):
         nxt = f"o{n}"
-        graph.append(f"[{cur}][{n+2}:v]overlay=0:{CAP_BOX_Y}:"
+        graph.append(f"[{cur}][{n+3}:v]overlay=0:{CAP_BOX_Y}:"
                      f"enable='between(t,{c['start']:.3f},{c['end']:.3f})'[{nxt}]")
         cur = nxt
     graph.append(f"[{cur}]format=yuv420p[v]")
@@ -1143,7 +1172,7 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     # audio stream comes out sample-exact against the WAV (see av_verdict).
     out = os.path.join(outdir, f"{stem}.mp4")
     cmd += ["-filter_complex", ";".join(graph),
-            "-map", "[v]", "-map", f"{len(cues)+2}:a",
+            "-map", "[v]", "-map", f"{len(cues)+3}:a",
             "-c:v", "libx264", "-preset", "medium", "-crf", "20",
             "-c:a", "aac", "-b:a", "192k",
             "-movflags", "+faststart", out]
@@ -1289,6 +1318,18 @@ def verify(path: str, narration_s: float | None = None) -> dict:
 
 # ------------------------------------------------------------------------ cli
 
+def opener_question(slug: str, rank: int, chapter: str | None) -> str:
+    """The ONE question this cut answers - its title and its opening picture's
+    words (loop/titles.title_for_cut; rank is 0-based here)."""
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import backfill                                        # noqa: PLC0415
+    import titles                                          # noqa: PLC0415
+    sp = os.path.join(ROOT, "scripts", f"{slug}.md")
+    text = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
+    return titles.title_for_cut(backfill.question_for(slug), text, rank + 1,
+                                chapter or (None if rank == 0 else ""))
+
+
 def _published_files() -> set[str]:
     """Cut file names already uploaded, per loop/state/shorts_ledger.json."""
     try:
@@ -1306,16 +1347,18 @@ def stale_opening(mp4: str, rank: int, published: set[str] | None = None) -> boo
     six weeks of apparent repeats would reach the channel. A cut already on
     YouTube is kept as it is - it is never re-uploaded, so re-cutting it would
     only make the file on disk disagree with the video."""
-    if rank == 0:
-        return False
     try:
         rec = json.load(open(f"{mp4}.short.json"))
     except (OSError, ValueError):
-        return True
-    if rec.get("opening") == "chapter":
-        return False
+        return rank != 0
     pub = _published_files() if published is None else published
-    return os.path.basename(mp4) not in pub
+    if os.path.basename(mp4) in pub:
+        return False                  # on YouTube: never re-cut
+    # ONE QUESTION PER VIDEO (owner, 2 Nov 2026): a cut not yet uploaded
+    # without the photo-and-question opening second is re-cut, any rank.
+    if (rec.get("opener") or {}).get("kind") != "question-photo-v1":
+        return True
+    return rank != 0 and rec.get("opening") != "chapter"
 
 
 def main(argv=None):
@@ -1350,7 +1393,7 @@ def main(argv=None):
         sys.exit("FAIL: empty input set - no finished -final.mp4 renders to cut from")
 
     os.makedirs(a.out, exist_ok=True)
-    results, failed, kept = [], [], []
+    results, failed, kept, no_photo = [], [], [], []
     for slug in slugs:
         for rank in range(a.count):
             stem = f"{slug}-short" if rank == 0 else f"{slug}-short{rank + 1}"
@@ -1365,6 +1408,10 @@ def main(argv=None):
                 r = make_short(slug, a.out, a.max_seconds, a.target_seconds,
                                a.dry_run, rank)
             except Exception as e:
+                if type(e).__name__ == "NoSubjectPhoto":
+                    no_photo.append(slug)
+                    print(f"NO_SUBJECT_PHOTO {slug}: {e}", file=sys.stderr)
+                    break
                 # Rank 0 failing is a real failure. Rank 2+ failing just means the
                 # episode has only one self-contained idea, which is normal.
                 if rank == 0:
@@ -1391,6 +1438,24 @@ def main(argv=None):
                       f"(-{r['band_rows_lost']})  {len(r['credits'])} credit(s)"
                       + (f"  PROBLEMS: {r['problems']}" if r["problems"] else ""))
 
+    if no_photo:
+        # A NAMED stop a human sees (loop/state/stops), never a Short without
+        # its opening picture or with the old text card.
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        from common import NamedStop, Stage, week_id       # noqa: PLC0415
+        st = Stage("shorts-photo", week_id())
+        try:
+            st.named_stop(
+                "SHORT_NO_SUBJECT_PHOTO",
+                f"{len(no_photo)} episode(s) have no public-domain or CC0 photo "
+                f"of their subject, so their Shorts cannot open on the "
+                f"one-question picture and are not cut: {', '.join(no_photo)}",
+                held_items=sorted(set(no_photo)),
+                unblock="Nothing to type: add a pinned PD/CC0 Commons photo of "
+                        "the subject to research/imagery_*.py and run it; the "
+                        "next batch cuts these.")
+        except NamedStop as e:
+            st._emit_stop(e)                               # noqa: SLF001
     if not results and not kept:
         sys.exit("FAIL: produced nothing")
     bad = [r for r in results if not a.dry_run and not r["ok"]]

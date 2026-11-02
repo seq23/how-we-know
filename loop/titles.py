@@ -1,4 +1,8 @@
-"""YouTube titles for NEW uploads: curiosity-led, specific, still on-search.
+"""YouTube titles for NEW uploads: ONE plain question (owner, 2 Nov 2026).
+
+CURRENT RULE: the title is the question alone - see one_question_problems()
+and the 2026-11-02 DECISION-LOG entry. The 2026-10-08 history below explains
+the statement-plus-promise titles it replaced; title_for() no longer makes them.
 
     .venv/bin/python loop/titles.py "what is the midnight zone"   # print one
 
@@ -56,6 +60,19 @@ BANNED = ("you won't believe", "shocking", "insane", "mind-blowing",
           "mind blowing", "jaw-dropping", "gone wrong", "secret they",
           "nobody tells you", "!!")
 
+# ONE QUESTION PER VIDEO (owner, 2 Nov 2026, from the approved mock-up): the
+# title is ONE plain question and nothing else - no "— and how we know"
+# suffix, no second clause, no chapter statement. It binds every title path
+# (Shorts rank 1 and 2+, long-form via loop/longform_title.py, the repackage
+# and demand lanes that retitle through it). Older videos keep their titles:
+# the rule binds uploads from QUESTION_START (the 25 Oct-2 Nov backfill,
+# loop/tools/one_question_backfill.py, is the one retitle of live videos).
+QUESTION_START = "2026-10-25"
+QUESTION_WORDS = ("how", "why", "what", "which", "who", "where", "when", "is",
+                  "are", "was", "were", "do", "does", "did", "can", "could",
+                  "will", "would", "should", "has", "have")
+QUESTION_MAX = 70          # what a phone shows; the owner's longest is 47
+
 # Proper nouns the lowercase search queries flatten. Multi-word names first.
 PROPER_PHRASES = {"challenger deep": "Challenger Deep",
                   "mariana trench": "Mariana Trench"}
@@ -96,6 +113,78 @@ def _cap_proper(s: str) -> str:
 def _sentence(s: str) -> str:
     s = _cap_proper(s.strip())
     return s[:1].upper() + s[1:] if s else s
+
+
+def one_question_problems(title: str) -> list[str]:
+    """Everything that stops `title` being ONE plain question. [] = it is."""
+    t = (title or "").strip()
+    if not t:
+        return ["title is empty"]
+    p: list[str] = []
+    if not t.endswith("?"):
+        p.append("title is not a question - one plain question, ending '?'")
+    if t.count("?") != 1:
+        p.append("title asks more than one question")
+    first = t.split()[0].lower().replace("\u2019", "'")
+    if first.split("'")[0] not in QUESTION_WORDS:
+        p.append(f"title starts with {t.split()[0]!r}: a plain question starts "
+                 f"with a question word (How, Why, What, Is, Can ...)")
+    if not t[0].isupper():
+        p.append("title does not start with a capital")
+    if re.search(r"\s[\u2014\u2013-]\s|:|;|\.\s|!", t):
+        p.append("title has a second clause (a dash, colon, semicolon or "
+                 "second sentence) - the question alone")
+    if re.search(r"\band how we know\b|here's how we know", t, re.I):
+        p.append("title carries the 'and how we know' suffix - the question alone")
+    if re.search(r",?\s+(?:and|or|but)\s+(?:how|why|what|where|when|which|who|"
+                 r"is|are|does|do|can)\b", t, re.I):
+        p.append("title joins two questions - ask the strongest one")
+    if len(t) > QUESTION_MAX:
+        p.append(f"title is {len(t)} characters, over {QUESTION_MAX}")
+    return p
+
+
+_CONTRACT = {"does not": "doesn't", "do not": "don't", "is not": "isn't",
+             "are not": "aren't", "can not": "can't", "cannot": "can't"}
+
+
+_AUX = {"is", "are", "was", "were", "do", "does", "did", "can", "could", "will",
+        "would", "should", "has", "have", "had", "doesn't", "don't", "isn't",
+        "aren't", "can't", "didn't"}
+
+
+def _grammar(q: str) -> str:
+    """A search query is often a statement behind a question word ("why deep
+    sea creatures look so weird"). Make it a question with the query's own
+    words: a trailing is/are moves up ("why many deep sea creatures are red"
+    -> "why are many deep sea creatures red"); otherwise why/how/where/when
+    with no auxiliary in its first three words takes "do" ("how deep sea
+    creatures survive the pressure" -> "how do deep sea creatures survive the
+    pressure"). What/which/who questions ask about their subject and keep
+    their order."""
+    w = q.split(" ")
+    if len(w) < 3 or w[0].lower() not in ("why", "how", "where", "when"):
+        return q
+    if any(x.lower() in _AUX for x in w[1:4]):
+        return q
+    low = [x.lower() for x in w]
+    for aux in ("is", "are"):
+        if aux in low[2:]:
+            i = low.index(aux, 2)
+            return " ".join([w[0], aux] + w[1:i] + w[i + 1:])
+    return " ".join([w[0], "do"] + w[1:])
+
+
+def as_question(question: str) -> str:
+    """The search query as one plain question: sentence case, proper nouns,
+    the query's own words, '?' - "why does rice get sticky" ->
+    "Why does rice get sticky?". Adds nothing the query does not say beyond
+    the auxiliary a question needs (_grammar)."""
+    q = re.sub(r"\s+", " ", (question or "").strip().rstrip("?").strip())
+    for k, v in _CONTRACT.items():
+        q = re.sub(rf"\b{k}\b", v, q, flags=re.I)
+    q = _grammar(q)
+    return _sentence(q) + "?" if q else ""
 
 
 def from_question(question: str) -> str:
@@ -197,8 +286,7 @@ def title_problems(title: str, question: str, script_text: str = "") -> list[str
         return ["title is empty"]
     if len(t) > TITLE_MAX:
         p.append(f"title is {len(t)} chars, over YouTube's {TITLE_MAX}")
-    if t.endswith("?"):
-        p.append("title is a bare question — lead with the subject instead")
+    p += [x for x in one_question_problems(t) if x != "title is empty"]
     if "<" in t or ">" in t:
         p.append("title contains < or >, which YouTube rejects")
     low = t.lower()
@@ -208,7 +296,10 @@ def title_problems(title: str, question: str, script_text: str = "") -> list[str
     if any(len(w) > 3 and w.isupper() and w.isalpha() for w in t.split()):
         p.append("title shouts a word in capitals")
     have = {_stem(w) for w in _norm(t).split()}
-    missing = [w for w in content_words(question) if _stem(w) not in have]
+    # A compilation's strongest single question (strongest_questions) answers
+    # PART of its query by rule (owner, 2 Nov 2026): it keeps its own words.
+    q_eff = t if t in strongest_questions(question) else question
+    missing = [w for w in content_words(q_eff) if _stem(w) not in have]
     if missing:
         p.append(f"title drops search word(s) {missing} from the query "
                  f"{question!r}, so it no longer matches the search it was "
@@ -230,21 +321,51 @@ def title_problems(title: str, question: str, script_text: str = "") -> list[str
 
 
 def title_for(question: str, script_text: str = "") -> str:
-    """The title a NEW upload gets. Never raises; always passes title_problems."""
+    """The title a NEW upload gets: ONE plain question. The script's own
+    `## YouTube title` when it passes title_problems, else the query itself as
+    a question (as_question). Never raises."""
     proposed = script_title(script_text)
     if proposed and not title_problems(proposed, question, script_text):
         return proposed
-    t = from_question(question)
-    if title_problems(t, question, script_text):
-        # The rule-based rewrite failed its own check (an odd query shape).
-        # Fall back to the query as a statement with the promise, which keeps
-        # every word by construction.
-        base = _sentence(re.sub(r"\s+", " ",
-                                (question or "").strip().rstrip("?")))
-        t = f"{base} — {PROMISE}"
-        if len(t) > TITLE_MAX:
-            t = base[:TITLE_MAX]
-    return t
+    plain = as_question(question)
+    if not one_question_problems(plain):
+        return plain
+    for cand in strongest_questions(question):
+        if not one_question_problems(cand):
+            return cand
+    return plain
+
+
+_SUBORDINATE = r"\s+(?:when|while|if|because|after|before|even though|although)\s+"
+_QWORD = r"\s+(?=(?:what|why|how|where|which|who)\s)"
+
+
+def strongest_questions(question: str) -> list[str]:
+    """Shorter single questions from a query too long or compound to be one:
+    a compilation's first question (its queue title's first comma clause, or
+    the query cut where a second question word starts), then the question
+    without its trailing subordinate clause ("... the deep ocean when we've
+    explored so little of it" -> "... the deep ocean?"). Only the query's own
+    words, in their order."""
+    q = re.sub(r"\s+", " ", (question or "").strip().rstrip("?")).strip()
+    out: list[str] = []
+    try:
+        import batch_queue                                 # noqa: PLC0415
+        for e in batch_queue.queued_entries():
+            if e.get("query") == q and "," in (e.get("title") or ""):
+                out.append(as_question(e["title"].split(",")[0]))
+    except Exception:                                      # noqa: BLE001
+        pass
+    if "," in q:                          # a compilation's own "A, B and C?"
+        out.append(as_question(q.split(",")[0]))
+    parts = re.split(_QWORD, q, flags=re.I)
+    if len(parts) > 1:
+        out.append(as_question(parts[0]))
+    for base in [q] + ([parts[0]] if len(parts) > 1 else []):
+        cut = re.split(_SUBORDINATE, base, maxsplit=1, flags=re.I)
+        if len(cut) > 1 and len(cut[0].split()) >= 3:
+            out.append(as_question(cut[0]))
+    return out
 
 
 def _subject(base: str) -> str:
@@ -267,34 +388,19 @@ def _chapter_phrase(chapter: str) -> str:
 
 def chapter_title(question: str, chapter: str, script_text: str = "",
                   rank: int = 2) -> str:
-    """The title of a rank 2+ cut: the episode's subject, then ITS chapter.
+    """The title of a rank 2+ cut: the single question ITS chapter answers.
 
-    Owner build 2026-10-14. A rank 2+ cut titled from the episode question
-    alone read as a repeat of rank 1 ("What is the deepest part of the
-    ocean?" in September, "The deepest part of the ocean — and how we know"
-    in October). The subject words stay - the title must still pass
-    `title_problems` against the QUERY, so it is still on-search - and the
-    chapter heading says which angle this cut takes:
-    "The deepest part of the ocean: what a depth number leaves out — and how
-    we know". Never raises; never returns the rank-1 title.
-    """
-    base = title_for(question, script_text)
-    subj = _subject(base) or _sentence(question.strip().rstrip("?"))
-    ch = _chapter_phrase(chapter)
-    cands = []
-    if ch:
-        cands += [f"{subj}: {ch} — {PROMISE}", f"{subj}: {ch}"]
-        words = ch.split(" ")
-        while len(words) > 2:              # trim the angle, never the subject
-            words.pop()
-            if words[-1].lower().strip(",;—") in STOPWORDS or words[-1] == "—":
-                continue                   # never end on "from", "the", "and"
-            cands.append(f"{subj}: {' '.join(words).rstrip(',;')}")
-    cands.append(f"{subj}: part {rank} — {PROMISE}")
-    for t in cands:
-        if t != base and not title_problems(t, question, script_text):
-            return t
-    return f"{_sentence(question.strip().rstrip('?'))}, part {rank}"[:TITLE_MAX]
+    Owner rule, 2 Nov 2026 (supersedes the 2026-10-14 chapter statements such
+    as "The deepest part of the ocean: what a depth number leaves out — and
+    how we know"): a Short's title is the one question its cut answers. A
+    chapter heading that is itself one plain question is that question;
+    otherwise the cut answers the episode's question, and its title is that
+    question (the cut still opens on its own chapter - visuals/shorts.py -
+    so it is not a repeat of rank 1's picture)."""
+    ch = re.sub(r"\s+", " ", (chapter or "").strip())
+    if ch and not one_question_problems(ch):
+        return _cap_proper(ch)
+    return title_for(question, script_text)
 
 
 def title_for_cut(question: str, script_text: str = "", rank: int = 1,

@@ -176,7 +176,7 @@ code = run(RP.run_apply, yt=FakeYT())
 check(code == "REPACKAGE_UP_TO_DATE", f"after the thumbnail pass: {code}")
 # a REBUILT variant A (new text, new bytes) reaches the live video alone
 TC.build_variants(SLUG, out_root=str(TMP / "variants"),
-                  title="The welding arc is not one thing")
+                  title="Is a welding arc hotter than lava?")
 yt = FakeYT()
 code = run(RP.run_apply, yt=yt)
 check(code is None and yt.calls == [("set_thumbnail", "OLD1", "A.jpg")],

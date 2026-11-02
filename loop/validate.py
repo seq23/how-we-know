@@ -918,8 +918,16 @@ def _ocr_words(ocr, path: str) -> str:
 def _samples(rec: dict, n: int = 3) -> list[tuple[float, float]]:
     """(short_t, source_t) at the midpoint of the longest `n` beats."""
     segs = sorted(rec.get("segments") or [], key=lambda s: -s["seconds"])[:n]
-    return [(s["short_start"] + s["seconds"] / 2,
-             s["source_start"] + s["seconds"] / 2) for s in segs]
+    # The one-question opening picture (2 Nov 2026) covers the first second;
+    # a sample inside it would read the opener, not the cut.
+    lead = float((rec.get("opener") or {}).get("seconds") or 0) + 0.25
+    out = []
+    for s in segs:
+        mid = s["seconds"] / 2
+        if rec.get("opener") and s["short_start"] + mid < lead:
+            mid = min(s["seconds"] - 0.05, lead - s["short_start"])
+        out.append((s["short_start"] + mid, s["source_start"] + mid))
+    return out
 
 
 SRC_FPS = 30          # renders/<slug>-final.mp4 (visuals/assemble.py)
@@ -4446,7 +4454,7 @@ def v47_longform_title(items) -> Result:
     r.examined += 1
     probe = ("# what is the midnight zone\n\n## Direct-answer lock\n\nAt "
              "1,000 meters the last sunlight is gone.\n\n## Narration\n\n"
-             "No sunlight reaches the midnight zone.\n")
+             "No sunlight reaches the midnight zone. It is dark.\n")
     for bad in ("The midnight zone — and how we know",
                 "Sunlight is gone at 4,000 meters in the midnight zone",
                 # PLAINNESS (owner, 13 Oct 2026): a staked, traceable title
@@ -4454,8 +4462,19 @@ def v47_longform_title(items) -> Result:
                 "The last sunlight is gone at 1,000 meters"):
         if not _lt.title_problems(bad, probe):
             r.fail(f"self-check: the formula accepted {bad!r}")
-    if _lt.title_problems("The midnight zone has no sunlight", probe):
-        r.fail("self-check: the formula refused a plain, traceable, staked title")
+    if _lt.title_problems("Why is the midnight zone dark?", probe):
+        r.fail("self-check: the formula refused a plain, traceable question: "
+               f"{_lt.title_problems('Why is the midnight zone dark?', probe)}")
+    # ONE QUESTION PER VIDEO (owner, 2 Nov 2026): a claim no longer ships
+    if not _lt.title_problems("The midnight zone has no sunlight", probe):
+        r.fail("self-check: the formula accepted a claim title")
+    import titles as _T                                    # noqa: PLC0415
+    up_at = {row.get("slug"): (row.get("uploaded_at") or "")[:10]
+             for row in _led.load().get("published") or [] if row.get("video_id")}
+
+    def _oq(slug):
+        # older videos keep their titles: judged without the one-question rule
+        return up_at.get(slug, "9999") >= _T.QUESTION_START
 
     import domains as _dom                                 # noqa: PLC0415
 
@@ -4480,7 +4499,8 @@ def v47_longform_title(items) -> Result:
         if text is None:
             r.fail(f"{row['slug']}: no script to trace its title to")
             continue
-        probs = _lt.title_problems(t, text, row.get("question"))
+        probs = _lt.title_problems(t, text, row.get("question"),
+                                   one_question=_oq(row["slug"]))
         # A LIVE TITLE THAT FAILS IS REPAIRED BY loop/repackage.py apply, which
         # waits on quota. 2026-10-13: the Mac's backfill, running 39 commits
         # behind main from the wrong branch (see loop/mac_sync.py guard),
@@ -4512,7 +4532,16 @@ def v47_longform_title(items) -> Result:
         if text is None:
             r.fail(f"{slug}: titles.json proposes a title for a missing script")
             continue
-        for p in _lt.title_problems(row["new_title"], text, row.get("question")):
+        pr_ = _lt.title_problems(row["new_title"], text, row.get("question"),
+                                 one_question=_oq(slug))
+        if pr_ and slug not in up_at and _lt.title_for_upload(slug, text,
+                                                              row.get("question"))[0]:
+            # Not uploaded yet: the upload takes the question itself
+            # (title_for_upload), so a pre-rule draft is superseded, not live.
+            r.note(f"{slug}: titles.json draft {row['new_title']!r} predates the "
+                   f"one-question rule; the upload uses the question")
+            continue
+        for p in pr_:
             r.fail(f"{slug}: titles.json title {row['new_title']!r} no longer "
                    f"passes: {p}")
     pending = []
@@ -5392,9 +5421,142 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v53_food_preset(),
                v54_food_voice_sound(),
                v55_food_episode(),
-               v70_demand_verdict()]
+               v70_demand_verdict(),
+               v75_plan_domain(),
+               v76_one_question()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
+
+
+def v75_plan_domain(plans_dir: Path | None = None, live: set | None = None) -> Result:
+    """V75 - a domain's graphics never appear in another domain's video.
+
+    CONFIRMED 2026-11-01 (the owner's screenshot): the rice Short showed the
+    deep-sea "CHALLENGER DEEP ... METRES" depth gauge - the planner chose its
+    signal table from HWK_DOMAIN (unset in the batch's plan step, default deep
+    sea) and had no food row. Fails any plan of an episode whose long-form is
+    not yet uploaded that draws another domain's segment (visuals/plan_domain.py
+    SEGMENT_DOMAINS) or an agnostic card on its ocean defaults; a live video's
+    plan is a note (forward only). Self-checks the detector on a fixture and
+    that the planner plans a non-ocean script with no ocean graphic.
+    Hard-fails on zero plans."""
+    r = Result("V75 plan-domain")
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import plan_domain as _pd                              # noqa: PLC0415
+    fx = [{"segment": "depth_descent", "args": {}}, {"segment": "text_beat", "args": {}},
+          {"segment": "stat_card", "args": {}}]
+    if [i for i, _s, _w in _pd.foreign(fx, _pd.FOOD)] != [0, 2]:
+        r.fail("self-check: the detector does not see an ocean gauge (or an "
+               "ocean-default stat card) in a food plan")
+    if _pd.foreign(fx[:2], _pd.DEEP):
+        r.fail("self-check: the detector flags deep sea's own gauge")
+    import planner as _pl                                  # noqa: PLC0415
+    for slug, dom in (("why-does-rice-get-sticky", _pd.FOOD),
+                      ("how-hot-does-a-welding-arc-get", _pd.MAT)):
+        sp = ROOT / "scripts" / f"{slug}.md"
+        if sp.exists():
+            r.examined += 1
+            bad = _pd.foreign(_pl.plan(str(sp)), dom)
+            if bad:
+                r.fail(f"self-check: planner.plan({slug}) still draws "
+                       f"{sorted({x[1] for x in bad})} in a {dom} video")
+    got = _pd.check(plans_dir, live)
+    r.examined += got["examined"]
+    if not got["examined"]:
+        r.fail("no plan examined: V75 cannot reach what it governs")
+    for slug, bad in sorted(got["bad"].items()):
+        r.fail(f"{slug}: {len(bad)} beat(s) draw another domain's graphics "
+               f"({bad[0][2]}, beat {bad[0][0]}) - visuals/plan_domain.py sweep")
+    for slug, bad in sorted(got["live"].items()):
+        r.note(f"{slug} is live with {sorted({x[1] for x in bad})} (forward only; "
+               f"its Shorts drop those beats)")
+    return r
+
+
+ONE_QUESTION_LIVE = "2026-11-03"   # first upload day under the one-question code
+
+
+def v76_one_question(led: dict | None = None, sled: dict | None = None,
+                     record_path: Path | None = None) -> Result:
+    """V76 - one plain question per video (owner, 2 Nov 2026).
+
+    Every title path makes one question: titles.title_for for every queued
+    query, a rank-2 cut with a statement chapter, and the owner's 19 approved
+    titles all pass titles.one_question_problems, while the shapes it replaced
+    ("— and how we know", "subject: chapter statement", a claim) fail. Every
+    long-form and Short uploaded from ONE_QUESTION_LIVE carries a one-question
+    title; the 25 Oct-2 Nov backfill, once run, read back all 19 and the
+    ledgers carry the approved titles; a question-photo thumbnail set holds
+    its contract. Hard-fails on zero items."""
+    r = Result("V76 one-question")
+    import titles as _T                                    # noqa: PLC0415
+    sys.path.insert(0, str(ROOT / "loop" / "tools"))
+    import one_question_backfill as _B                     # noqa: PLC0415
+    for bad in ("Why does rice get sticky — and how we know",
+                "The deepest part of the ocean: what a depth number leaves out",
+                "Damascus steel is not better now",
+                "What is a black smoker and why does it not boil?"):
+        r.examined += 1
+        if not _T.one_question_problems(bad):
+            r.fail(f"self-check: {bad!r} passes as one question")
+    for _k, slug, t in _B.APPROVED:
+        r.examined += 1
+        if _T.one_question_problems(t):
+            r.fail(f"self-check: the owner's approved {t!r} fails: "
+                   f"{_T.one_question_problems(t)[0]}")
+    cut = _T.title_for_cut("what is the deepest part of the ocean", "", 2,
+                           "What a depth number leaves out")
+    if _T.one_question_problems(cut):
+        r.fail(f"a rank-2 cut is titled {cut!r}, not one question")
+    try:
+        import batch_queue as _bq                          # noqa: PLC0415
+        qs = [e.get("query") for e in _bq.queued_entries() if e.get("query")]
+    except Exception as e:                                 # noqa: BLE001
+        qs = []
+        r.note(f"queue unreadable ({e})")
+    for q in qs:
+        r.examined += 1
+        t = _T.title_for(q)
+        if _T.one_question_problems(t):
+            r.fail(f"title_for({q!r}) = {t!r}: {_T.one_question_problems(t)[0]}")
+    led = led if led is not None else read_json(ROOT / "loop" / "state" / "ledger.json", default={})
+    sled = sled if sled is not None else read_json(ROOT / "loop" / "state" / "shorts_ledger.json", default={})
+    for kind, doc in (("long-form", led), ("Short", sled)):
+        for row in doc.get("published") or []:
+            if (row.get("uploaded_at") or "")[:10] >= ONE_QUESTION_LIVE and row.get("video_id"):
+                r.examined += 1
+                pr = _T.one_question_problems(row.get("title") or "")
+                if pr:
+                    r.fail(f"{kind} {row['video_id']} ({row.get('slug')}) uploaded "
+                           f"{row['uploaded_at'][:10]} titled {row.get('title')!r}: {pr[0]}")
+    rec_p = record_path or _B.RECORD
+    if rec_p.exists():
+        rec = read_json(rec_p, default={})
+        vids = rec.get("videos") or {}
+        r.examined += len(vids)
+        if len(vids) != len(_B.APPROVED) or not all(v.get("applied") for v in vids.values()):
+            r.fail(f"one-question backfill: {sum(1 for v in vids.values() if v.get('applied'))}"
+                   f" of {len(_B.APPROVED)} read back the approved title")
+        titled = {row.get("video_id"): row.get("title")
+                  for doc in (led, sled) for row in doc.get("published") or []}
+        for vid, v in vids.items():
+            if v.get("applied") and titled.get(vid) != v.get("approved"):
+                r.fail(f"{vid} ({v.get('slug')}): ledger says {titled.get(vid)!r}, "
+                       f"YouTube read back {v.get('approved')!r}")
+    else:
+        r.note("the 25 Oct-2 Nov backfill has not run yet "
+               "(loop/tools/one_question_backfill.py)")
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import thumb_contract as _TC                           # noqa: PLC0415
+    for slug in _TC.contract_slugs():
+        c = read_json(Path(_TC.VARIANTS_DIR) / slug / "contract.json", default={})
+        if c.get("layout") == "question-photo-v1":
+            r.examined += 1
+            for x in _TC.verify(slug):
+                r.fail(x)
+    if not r.examined:
+        r.fail("V76 examined nothing")
+    return r
 
 
 def v72_food_one_definition() -> Result:

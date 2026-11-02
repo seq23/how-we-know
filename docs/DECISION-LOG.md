@@ -1492,3 +1492,44 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   the footage lane's path corrected; the log is gitignored. The 17 real records were committed
   with the fix; three resolved PULL_FAILED / MAC_NOT_ON_MAIN stops of W42-W43 were discarded.
 - Guard: `loop/tests/test_mac_push_leaves_checkout_clean.py` (negative proofs in its docstring).
+
+## 2026-11-02 — One question per video (owner rule, from the approved mock-up)
+
+- **The rule (owner, binding):** every video gets ONE plain question. It is the title (no "— and
+  how we know", no second clause, no chapter statements; a compilation takes its strongest single
+  question), it sits on a public-domain/CC0 PHOTO of the subject for the thumbnail (big bold white
+  type over a dark bottom gradient, small "HOW WE KNOW" mark, credit), and it is the first second of
+  every new Short, the existing captions carrying on. Supersedes the 2026-10-08 statement-plus-promise
+  titles, the 2026-10-13 claim/series long-form shapes and <=4-word graded thumbnails, and the
+  2026-10-14 chapter-statement titles for rank 2+ Shorts (a rank 2+ Short is titled with its chapter
+  if the chapter is itself one question, else the episode's question; it still opens on its own chapter).
+- **Code:** `loop/titles.py` (`one_question_problems`, `as_question`, `strongest_questions`) is the one
+  gate; `loop/longform_title.py` applies it and falls back to the episode's own question instead of
+  holding; `visuals/question_card.py` draws the picture; `visuals/thumb_contract.py
+  build_question_into` (A/B/C vary the photo, never the question); `visuals/shorts.py` overlays the
+  tall card for 1.0 s and records it in the receipt; `loop/shorts_lane.upload_short` titles a Short from
+  that receipt and refuses a cut without it (the Mac re-cuts unpublished old cuts). No photo is the
+  named stop THUMB_NO_SUBJECT_PHOTO / SHORT_NO_SUBJECT_PHOTO - the old text-card fallback in
+  `visuals/thumbs_for.build` is removed. AI stills (food_ai.json) are not photos.
+- **Older videos untouched:** titles.QUESTION_START = 2026-10-25. `longform_title.published_needing`,
+  `thumb_contract.needed_slugs` and `repackage apply`'s meta-only path never re-judge a video uploaded
+  before it.
+- **Backfill (once, after merge):** the 19 videos of 25 Oct-2 Nov (1 long-form + 18 Shorts) retitled to
+  the owner's exact list by `loop/tools/one_question_backfill.py` (videos.update, live snippet merged,
+  description unchanged, read back); the long-form also got its question-photo thumbnail. So the
+  demand verdict does not judge the new titles on the old titles' views, the long-form row in
+  titles.json carries `applied_at` = the retitle (demand.packaging_pass_at starts the window there) and
+  every Short row keeps `title_was` + `retitled_at`. Record: loop/state/one_question_backfill.json.
+- **Found with it (CONFIRMED, the owner's screenshot): the deep-sea depth gauge on the rice Short.**
+  `visuals/planner.py` picked its signal table at import from HWK_DOMAIN (default deep sea), the
+  batch's plan step never set it, and food-science had no row: why-does-rice-get-sticky planned two
+  `depth_descent` beats with empty args, drawn with their defaults "CHALLENGER DEEP ... METRES". Four
+  live materials plans carry the same defect (forward only: not re-rendered; their Shorts drop those
+  beats). Fix: the planner plans from the script's own **Domain:** line (an undeclared domain raises);
+  `visuals/plan_domain.py` is the guard - assemble.py refuses a foreign plan, shorts.py drops a foreign
+  beat, `sweep` (batch, before rendering) re-plans and retires the render; the rice plan is re-planned
+  beat for beat and its render recorded superseded so the cloud refuses the old cut. V75.
+- **Found with it: CC0 photos were being rejected.** `research/imagery.pd_licence_ok` failed every file
+  with Copyrighted=True, which Commons reports for every CC0 dedication. CC0 is now accepted on its tag.
+- **Guards:** V75 plan-domain, V76 one-question (`loop/validate.py`); tests
+  `loop/tests/test_one_question_per_video.py`, `loop/tests/test_plan_domain.py`.

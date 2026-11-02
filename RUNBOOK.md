@@ -376,18 +376,35 @@ nothing on a second run.
 
 ---
 
+## One question per video — nothing for you to do
+
+Your rule of 2 November 2026, built as code (mock-up approved that day).
+
+- **Title = one plain question**, nothing else — no "— and how we know", no
+  second clause. Shorts and long-form alike; a compilation takes its strongest
+  single question. Every title path, including the automatic repackage, obeys it.
+- **Thumbnail = a free photo of the subject** (public domain or CC0, credited)
+  with the question in big white type, "HOW WE KNOW" small at the top.
+- **Every new Short opens on that same picture for one second**, then your
+  captions carry on.
+- **No photo, no video:** an episode with no free photo of its subject is held
+  and named (`THUMB_NO_SUBJECT_PHOTO` / `SHORT_NO_SUBJECT_PHOTO`) — it never
+  gets the old text card. The fix is a pinned photo in `research/imagery_*.py`.
+- **The 19 videos of 25 Oct–2 Nov** were retitled to your approved list
+  (`loop/state/one_question_backfill.json`); everything older is untouched.
+
 ## Long-form repackage — nothing for you to do
 
 Your decisions of 12–13 October 2026, built as code. **Long-form only; Shorts are
 untouched. Forward only:** a published video is never re-rendered, re-uploaded,
 extended or made private — its title and thumbnail are the only things that change.
 
-- **Titles** (`loop/longform_title.py`): at most 60 characters, a subject plus
-  a stake, never "how we know", and every word and figure must be in the
+- **Titles** (`loop/longform_title.py`): one plain question since 2 Nov (see
+  above), at most 40 characters, never "how we know", every word in the
   script. No passing title, no upload — the slug waits a day while
   `loop-repackage` drafts one.
-- **Thumbnails** (`visuals/thumb_contract.py`): one big subject, at most three
-  words, one channel colour grade; three variants per episode, A goes up.
+- **Thumbnails** (`visuals/thumb_contract.py`): since 2 Nov the photo + question
+  picture above; three variants (different photo or crop, same question), A goes up.
 - **New titles and thumbnails on what is already up** (`loop/repackage.py apply`),
   public and scheduled alike, within the day's YouTube allowance.
 - **Openings** (`loop/opening.py`): the first sentence is a hook of 15 words or

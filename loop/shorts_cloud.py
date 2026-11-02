@@ -98,6 +98,20 @@ def shelf_lookup(shelf):
             look.unverified.append(
                 (SL.Pick(slug, rank).label, "the cut is shelved but its .short.json receipt is not"))
             return "the cut is shelved but its .short.json receipt is not"
+        # ONE QUESTION PER VIDEO (owner, 2 Nov 2026): a shelved cut without
+        # the photo-and-question opening second is not offered; the Mac
+        # re-cuts and re-shelves it (shorts_lane.opener_of).
+        getter = getattr(shelf, "get", None)
+        if getter is not None:
+            try:
+                with tempfile.TemporaryDirectory() as td:
+                    rp = Path(td) / "r.short.json"
+                    getter(r2.short_receipt_key(slug, rank), rp)
+                    _q, why = SL.opener_of(json.loads(rp.read_text()))
+            except Exception as e:                         # noqa: BLE001
+                why = f"its receipt could not be read ({e})"
+            if why:
+                return why
         return True
     look.unverified = []
     return look
@@ -263,9 +277,10 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                 # (shorts_lane.cut_chapter), so it is pulled beside the cut.
                 meta = shelf.head(r2.short_receipt_key(slug, rank))
                 fetch_verified(shelf, r2.short_key(slug, rank), path)
-                if rank > 1:
-                    fetch_verified(shelf, r2.short_receipt_key(slug, rank),
-                                   Path(f"{path}.short.json"))
+                # Every rank since 2 Nov 2026: the receipt's opener is the
+                # Short's one question (its title) - shorts_lane.opener_of.
+                fetch_verified(shelf, r2.short_receipt_key(slug, rank),
+                               Path(f"{path}.short.json"))
                 st.work(f"pulled {SL.Pick(slug, rank).label} Short from {shelf.label} "
                         f"({path.stat().st_size:,} bytes, verified; receipt "
                         f"{meta['size']} bytes)")

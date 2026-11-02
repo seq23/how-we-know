@@ -305,13 +305,12 @@ the twenty existing scripts and the pipeline parses it.
 
 ## YouTube title
 
-<ONE line of AT MOST 60 characters, NOT a question. A specific subject plus a
-stake: a concrete figure your Direct-answer lock states, a contradiction
-(never, without, not, only) or something lost, broken or survived. NEVER the
-words "how we know" (the brand is the channel name). Never just the question
-reworded. Every word and figure must appear in your own script. Shape, for the
-question "what is the midnight zone": "The ocean layer where sunlight never
-reaches". No clickbait words.>
+<ONE plain question, AT MOST 40 characters, ending "?" (owner rule, 2 Nov
+2026: one question per video). The question a curious person would type,
+in short sixth-grade words - nothing else: no second clause, no dash, no
+colon, never "and how we know", never a claim. Shape, for the question
+"what is the midnight zone": "Why is the deep sea so dark?". Every word must
+appear in your own script. No clickbait words.>
 
 ## Direct-answer lock
 
@@ -775,8 +774,8 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     import longform_title                                  # noqa: PLC0415
     own = longform_title.script_title(text)
     if not own:
-        p.append("missing '## YouTube title' (one line, <=60 characters, "
-                 "subject plus stake, never 'how we know')")
+        p.append("missing '## YouTube title' (one plain question, <=40 "
+                 "characters, ending '?', nothing else)")
     else:
         p += [f"YouTube title {own!r}: {x}"
               for x in longform_title.title_problems(own, text)]

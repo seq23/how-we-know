@@ -182,7 +182,11 @@ with tempfile.TemporaryDirectory() as td:
 import longform_title as LT  # noqa: E402
 sp = D.script_of(SLUG)
 title, why, _ = LT.title_for_upload(SLUG, sp.read_text(), None)
-check(title == "Bread, Steak, Chocolate: What's Inside?", f"the title passes from scripts/food/: {title} {why}")
+# ONE QUESTION PER VIDEO (owner, 2 Nov 2026): a compilation ships its strongest
+# single question, not the series shape.
+import titles as _T  # noqa: E402
+check(bool(title) and not _T.one_question_problems(title),
+      f"the title passes from scripts/food/ as one question: {title} {why}")
 src_cu = (ROOT / "loop" / "cloud_upload.py").read_text()
 gate = src_cu[src_cu.index("the TITLE gate"):src_cu.index("TITLE_REFUSED")]
 check("script_of(" in gate, "the cloud lane's title gate resolves the script with domains.script_of")

@@ -1,4 +1,15 @@
-"""The long-form thumbnail CONTRACT, as code: three variants, one grade, variant A ships.
+"""The long-form thumbnail CONTRACT, as code: three variants, variant A ships.
+
+ONE QUESTION PER VIDEO (owner, 2 Nov 2026) - THE CURRENT LAYOUT. Every set
+built from that day is a question-photo set (visuals/question_card.py,
+layout "question-photo-v1"): a PD/CC0 PHOTO of the subject, the title question
+in large bold white type over a dark bottom gradient, a small "HOW WE KNOW"
+mark, the credit. No grade, no word-cut, no template. A/B/C keep the SAME
+question and vary the photo or its crop (pHash-distinct pictures). No photo =
+ContractRefused, by name; visuals/thumbs_for.py never falls back to a text
+card. The sections below describe the legacy sets (grade
+hwk-split-navy-amber-v1, <=4 words), which stay on disk for videos uploaded
+before the rule and are still verified as they were built.
 
     python visuals/thumb_contract.py <slug> [<slug> ...]     build variants
     python visuals/thumb_contract.py --verify <slug> [...]   re-check what is on disk
@@ -594,7 +605,7 @@ def build_variants(slug: str, out_root: str | None = None,
                    title: str | None = None,
                    script_path: str | None = None,
                    texts: list[str] | None = None,
-                   keep_a: bool = False) -> dict:
+                   keep_a: bool = False, legacy: bool = False) -> dict:
     """Build A, B, C and contract.json. Raises ContractRefused, named.
     `texts` (owner-given thumbnail words, each <= MAX_WORDS) replace the phrases
     taken from the title - the food sample's "WHAT'S INSIDE?" is the owner's.
@@ -602,14 +613,23 @@ def build_variants(slug: str, out_root: str | None = None,
     words) and rebuilds only B and C - the repair for a set whose B or C
     duplicates A (owner, 13 Oct 2026)."""
     return build_into(slug, os.path.join(out_root or VARIANTS_DIR, slug),
-                      title=title, script_path=script_path, texts=texts, keep_a=keep_a)
+                      title=title, script_path=script_path, texts=texts, keep_a=keep_a,
+                      legacy=legacy)
 
 
 def build_into(slug: str, final_dir: str, title: str | None = None,
                script_path: str | None = None,
-               texts: list[str] | None = None, keep_a: bool = False) -> dict:
+               texts: list[str] | None = None, keep_a: bool = False,
+               legacy: bool = False) -> dict:
     """build_variants with the set's directory named by the caller (so the
-    lane's write set is a path, not a slug - loop/tools/write_set.py)."""
+    lane's write set is a path, not a slug - loop/tools/write_set.py).
+
+    Every new set is a question-photo set (owner, 2 Nov 2026); `texts` are
+    ignored. Only `keep_a` (repairing a legacy set's B/C) or `legacy` (the
+    tests that hold the legacy sets' verify()) builds the old layout."""
+    if not keep_a and not legacy:
+        return build_question_into(slug, final_dir, title=title,
+                                   script_path=script_path)
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     sp = script_path or os.path.join(SCRIPTS, f"{slug}.md")
     text_src = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
@@ -737,6 +757,147 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
             "contract": rec}
 
 
+# ------------------------------------------------- the question-photo layout
+def build_question_into(slug: str, final_dir: str, title: str | None = None,
+                        script_path: str | None = None) -> dict:
+    """A/B/C question-photo variants (owner, 2 Nov 2026). Same question on
+    each; the PICTURE differs (another photo first, then another crop).
+    Raises ContractRefused, named, when no title question or no PD/CC0 photo."""
+    import question_card as QC                             # noqa: PLC0415
+    import thumb_distinct as TD                            # noqa: PLC0415
+    import tempfile                                        # noqa: PLC0415
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    sp = script_path or os.path.join(SCRIPTS, f"{slug}.md")
+    if not os.path.exists(sp):
+        alt = os.path.join(SCRIPTS, "food", f"{slug}.md")
+        sp = alt if os.path.exists(alt) else sp
+    text_src = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
+    if not title:
+        import longform_title as LT                        # noqa: PLC0415
+        title, why, _src = LT.title_for_upload(slug, text_src)
+        if not title:
+            raise ContractRefused(f"{slug}: no one-question title passes yet "
+                                  f"({'; '.join(why)[:160]})")
+    bad = QC.question_problems(title)
+    if bad:
+        raise ContractRefused(f"{slug}: title {title!r} is not one plain "
+                              f"question: {bad[0]}")
+    cands = QC.photos(slug, sp)
+    if not cands:
+        raise ContractRefused(
+            f"{slug}: NO_SUBJECT_PHOTO - no public-domain or CC0 photograph of "
+            f"this video's subject in channel/imagery (AI stills are not "
+            f"photos); harvest one with research/imagery_*.py")
+    crops = [(0.85, (0.5, 0.42)), (0.72, (0.34, 0.5)), (0.95, (0.66, 0.45)),
+             (0.62, (0.5, 0.35)), (0.98, (0.3, 0.5)), (0.98, (0.7, 0.5)),
+             (0.55, (0.5, 0.5))]
+    plan = [("A", [0], crops[:1]), ("B", [1, 0, 2], crops[1:] + crops[:1]),
+            ("C", [2, 1, 0], crops[2:] + crops[:2])]
+    os.makedirs(os.path.dirname(final_dir), exist_ok=True)
+    out_dir = tempfile.mkdtemp(prefix=".contract-", dir=os.path.dirname(final_dir))
+    rec = {"slug": slug, "title": title, "layout": QC.LAYOUT, "chosen": CHOSEN,
+           "variants": {}}
+    srcs: dict[int, Image.Image] = {}
+    made: dict[str, int] = {}
+    for name, order, options in plan:
+        order = [k for k in dict.fromkeys(order + list(range(len(cands)))) if k < len(cands)]
+        ok = best = None
+        for k in order:
+            if k not in srcs:
+                srcs[k] = QC.open_photo(cands[k])
+            for target, place in options:
+                box = crop_box(srcs[k], target, place)
+                pic = QC.base(srcs[k], box, QC.WIDE)
+                h = TD.phash(pic)
+                dmin = min((TD.distance(h, x) for x in made.values()), default=64)
+                cand = (dmin, k, box, pic, h)
+                if best is None or dmin > best[0]:
+                    best = cand
+                if dmin >= TD.MIN_PHASH_DISTANCE:
+                    ok = cand
+                    break
+            if ok:
+                break
+        if ok is None:
+            shutil.rmtree(out_dir, ignore_errors=True)
+            raise ContractRefused(
+                f"{slug}: variant {name}: every crop of the {len(cands)} photo(s) is "
+                f"a near-duplicate of another variant (best pHash distance "
+                f"{best[0] if best else '-'}); a second PD/CC0 photo is needed")
+        _d, k, box, pic, h = ok
+        made[name] = h
+        im, boxes = QC.draw(pic, title, cands[k]["credit"])
+        im.save(os.path.join(out_dir, f"{name}.jpg"), "JPEG", quality=92,
+                optimize=True, progressive=True)
+        rec["variants"][name] = {
+            "file": f"{name}.jpg", "source": cands[k]["local_file"],
+            "manifest": cands[k]["manifest"], "subject": cands[k]["subject"],
+            "sha256": cands[k]["sha256"], "box": list(box), "crop": cands[k]["crop"],
+            "text": title, "credit": cands[k]["credit"], "bboxes": boxes}
+    with open(os.path.join(out_dir, "contract.json"), "w") as fh:
+        json.dump(rec, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    if os.path.isdir(final_dir):
+        shutil.rmtree(final_dir)
+    os.replace(out_dir, final_dir)
+    return {"dir": final_dir, "chosen": os.path.join(final_dir, f"{CHOSEN}.jpg"),
+            "contract": rec}
+
+
+def verify_question(slug: str, d: str, rec: dict) -> list[str]:
+    """Re-check a question-photo set on disk: the photo is the cleared bytes
+    from a PD/CC0 photo manifest, every variant carries the SAME one-question
+    title, the pixels outside the type are the photo + gradient, and the
+    pictures are pHash-distinct."""
+    import question_card as QC                             # noqa: PLC0415
+    import thumb_distinct as TD                            # noqa: PLC0415
+    p: list[str] = []
+    if rec.get("chosen") != CHOSEN:
+        p.append(f"{slug}: chooser names {rec.get('chosen')!r}, not {CHOSEN}")
+    q = rec.get("title") or ""
+    p += [f"{slug}: title {q!r}: {x}" for x in QC.question_problems(q)]
+    pics = {}
+    for name in VARIANT_NAMES:
+        v = (rec.get("variants") or {}).get(name)
+        f = os.path.join(d, f"{name}.jpg")
+        if not v or not os.path.exists(f):
+            p.append(f"{slug}: variant {name} missing")
+            continue
+        if v.get("text") != q:
+            p.append(f"{slug}/{name}: carries {v.get('text')!r}, not the title "
+                     f"question - variants vary the photo, never the question")
+        if v.get("manifest") not in QC.PHOTO_MANIFESTS:
+            p.append(f"{slug}/{name}: picture from {v.get('manifest')!r}, which is "
+                     f"not a PD/CC0 photo manifest")
+        if not v.get("credit"):
+            p.append(f"{slug}/{name}: no credit")
+        src_path = os.path.join(IMAGERY, v["source"])
+        if not os.path.exists(src_path) or _sha(src_path) != v["sha256"]:
+            p.append(f"{slug}/{name}: source {v['source']} missing or not the "
+                     f"cleared bytes")
+            continue
+        with Image.open(f) as im:
+            if im.size != QC.WIDE or im.format != "JPEG":
+                p.append(f"{slug}/{name}: {im.format} {im.size}, not a 1280x720 JPEG")
+                continue
+            got = np.asarray(im.convert("RGB")).astype(np.float32)
+        pic = QC.base(QC.open_photo({"path": src_path, "crop": v.get("crop")}),
+                      v["box"], QC.WIDE)
+        pics[name] = pic
+        want = np.asarray(pic).astype(np.float32)
+        mask = np.ones((TH, TW), bool)
+        for bb in (v.get("bboxes") or {}).values():
+            x0, y0, x1, y1 = bb
+            mask[max(0, y0 - 4):y1 + 4, max(0, x0 - 4):x1 + 4] = False
+        diff = float(np.abs(got - want)[mask].mean())
+        if diff > GRADE_TOLERANCE:
+            p.append(f"{slug}/{name}: pixels differ from the photo + gradient by "
+                     f"{diff:.1f} per channel - not the question-photo layout")
+    if len(pics) == len(VARIANT_NAMES):
+        p += [f"{slug}: {x}" for x in TD.check(pics, {}, require_text_variety=False)]
+    return p
+
+
 def chooser(slug: str, root: str | None = None) -> str:
     """The variant thumbnails.set receives: always A."""
     return os.path.join(root or VARIANTS_DIR, slug, f"{CHOSEN}.jpg")
@@ -750,6 +911,8 @@ def verify(slug: str, root: str | None = None) -> list[str]:
     if not os.path.exists(cpath):
         return [f"{slug}: no contract.json in {d}"]
     rec = json.load(open(cpath))
+    if rec.get("layout") == "question-photo-v1":
+        return verify_question(slug, d, rec)
     if rec.get("layout") == "triptych":
         # The owner's multi-subject layout (13 Oct 2026) has its own contract.
         import thumb_triptych                              # noqa: PLC0415
@@ -833,10 +996,14 @@ def needed_slugs() -> list[str]:
     another title than today's (the lock re-titles; the words follow)."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     import ledger                                          # noqa: PLC0415
+    import titles as _T                                    # noqa: PLC0415
     out = []
     for r in ledger.load()["published"]:
         slug = r.get("slug")
         if not r.get("video_id") or r.get("retired_at") or slug in out:
+            continue
+        # Older videos keep their thumbnails (owner, 2 Nov 2026).
+        if (r.get("uploaded_at") or "")[:10] < _T.QUESTION_START:
             continue
         sp = os.path.join(SCRIPTS, f"{slug}.md")
         if not os.path.exists(sp):
@@ -846,7 +1013,7 @@ def needed_slugs() -> list[str]:
             rec = json.load(open(os.path.join(VARIANTS_DIR, slug, "contract.json")))
         except (OSError, ValueError):
             rec = {}
-        if rec.get("title") != title:
+        if rec.get("title") != title or rec.get("layout") != "question-photo-v1":
             out.append(slug)
     return out
 
@@ -880,7 +1047,7 @@ def main(argv: list[str]) -> int:
             made += 1
             c = r["contract"]["variants"]
             print(f"  OK   {s}: " + ", ".join(
-                f"{n} {c[n]['text']!r} fill {c[n]['fill']:.0%}" for n in c))
+                f"{n} {c[n]['text']!r} ({c[n]['source']})" for n in c))
         except ContractRefused as e:
             print(f"  REFUSED {e}")
     if not made:

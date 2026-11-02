@@ -415,6 +415,17 @@ print(f'    {len(p)} beat(s)')" || { echo "    FAILED to plan $slug"; continue; 
 done
 pending_plan=""
 
+echo; echo "--- a domain's graphics never appear in another domain's video ---"
+# visuals/plan_domain.py (2026-11-01): re-plans any not-yet-uploaded plan that
+# draws another domain's graphics (the depth gauge on the rice episode) and
+# retires its render, plus any render already recorded as superseded, so the
+# render step below rebuilds it from the same narration.
+$PY visuals/plan_domain.py sweep || echo "  plan_domain sweep exited $? - the episode(s) named above stay unrendered (assemble.py refuses a foreign plan)"
+# Its writes (re-planned plans/<slug>.json, loop/state/superseded_renders.json)
+# are the Mac's own: pushed now, so origin's upload lane refuses the old cut.
+# shellcheck disable=SC2046
+$PY loop/mac_sync.py push --lane plan-domain $(ls plans/*.json) 2>&1 | tail -1
+
 echo; echo "--- self-heal any untraced producer POV ---"
 $PY loop/pov_repair.py || echo "  (see the banner above; nothing was changed for any episode it refused)"
 
