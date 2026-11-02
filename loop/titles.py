@@ -349,13 +349,12 @@ def strongest_questions(question: str) -> list[str]:
     words, in their order."""
     q = re.sub(r"\s+", " ", (question or "").strip().rstrip("?")).strip()
     out: list[str] = []
-    try:
-        import batch_queue                                 # noqa: PLC0415
-        for e in batch_queue.queued_entries():
-            if e.get("query") == q and "," in (e.get("title") or ""):
-                out.append(as_question(e["title"].split(",")[0]))
-    except Exception:                                      # noqa: BLE001
-        pass
+    # The queue is read, never guessed at: a queue that cannot be read is a
+    # defect that fails here loudly, not a title chosen as if it were empty.
+    import batch_queue                                     # noqa: PLC0415
+    for e in batch_queue.queued_entries():
+        if e.get("query") == q and "," in (e.get("title") or ""):
+            out.append(as_question(e["title"].split(",")[0]))
     if "," in q:                          # a compilation's own "A, B and C?"
         out.append(as_question(q.split(",")[0]))
     parts = re.split(_QWORD, q, flags=re.I)

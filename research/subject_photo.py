@@ -153,11 +153,8 @@ def held(slugs: list[str] | None = None) -> list[str]:
     for s in slugs:
         if not needs_picture(s, led, sled):
             continue
-        try:
-            if QC.photos(s):
-                continue
-        except Exception:                                  # noqa: BLE001
-            pass
+        if QC.photos(s):            # a photo it can already use: nothing to find
+            continue
         out.append(s)
     # rendered on this machine first: those are the ones a stop is holding now
     return sorted(out, key=lambda s: (not (ROOT / "renders" / f"{s}-final.mp4").exists(), s))
@@ -418,11 +415,9 @@ def find(slug: str, attempts: int = 3, replace: str | None = None) -> dict:
             (Path(M.ASSETS).parent / old["local_file"]).unlink(missing_ok=True)
         return {"pinned": rec, "queries": sub["queries"], "replaced": replace}
     sub["skip_titles"] = (["File:" + old["title"]] if old and not old.get("source") else [])
-    try:                                    # one picture, one episode (Commons too)
+    if MANIFEST.exists():                   # one picture, one episode (Commons too)
         sub["skip_titles"] += ["File:" + r["title"] for r in json.loads(MANIFEST.read_text())["index"]
                                if r.get("subject") != sub["key"] and not r.get("source")]
-    except (OSError, ValueError):
-        pass
     for _ in range(attempts):
         man = M.harvest(only=[sub["key"]], subjects=[sub], manifest=str(MANIFEST),
                         domain="any", prefix="auto", unillustratable={})
