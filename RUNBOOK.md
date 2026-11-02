@@ -383,15 +383,17 @@ Your rule of 2 November 2026, built as code (mock-up approved that day).
 - **Title = one plain question**, nothing else — no "— and how we know", no
   second clause. Shorts and long-form alike; a compilation takes its strongest
   single question. Every title path, including the automatic repackage, obeys it.
-- **Thumbnail = a free photo of the subject** (public domain or CC0, credited)
+- **Thumbnail = a free photo of the subject** (public domain, CC0, or since
+  2 Nov a Pixabay/Pexels/Mixkit photo under its free licence; always credited)
   with the question in big white type, "HOW WE KNOW" small at the top.
 - **Every new Short opens on that same picture for one second**, then your
   captions carry on.
 - **No photo, no video — until one is found, automatically:** an episode with
   no free photo of its subject is held (`THUMB_NO_SUBJECT_PHOTO` /
   `SHORT_NO_SUBJECT_PHOTO`), never given the old text card, and every night
-  `research/subject_photo.py` searches Wikimedia Commons for one (PD/CC0 only,
-  credited). Only after five empty nights does it reach a person
+  `research/subject_photo.py` searches Pixabay, then Wikimedia Commons, for
+  one (free licences only, CC-BY never; credited). Pexels needs a key it does
+  not have yet (`PEXELS_KEY_MISSING`); Mixkit has no photos. Only after five empty nights does it reach a person
   (`SUBJECT_PHOTO_EXHAUSTED`).
 - **The 19 videos of 25 Oct–2 Nov** were retitled to your approved list
   (`loop/state/one_question_backfill.json`); everything older is untouched.

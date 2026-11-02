@@ -122,7 +122,7 @@ with tempfile.TemporaryDirectory() as td:
         "is-damascus-steel-better", str(d), bad)), "4 NEGATIVE: another text on B fails")
     bad = json.loads(json.dumps(rec))
     bad["variants"]["C"]["manifest"] = "food_ai.json"
-    check(any("PD/CC0 photo manifest" in x for x in TC.verify_question(
+    check(any("cleared photo manifest" in x for x in TC.verify_question(
         "is-damascus-steel-better", str(d), bad)), "4 NEGATIVE: an AI picture fails")
 
 # 5

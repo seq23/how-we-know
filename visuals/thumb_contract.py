@@ -876,7 +876,11 @@ def verify_question(slug: str, d: str, rec: dict) -> list[str]:
                      f"question - variants vary the photo, never the question")
         if v.get("manifest") not in QC.PHOTO_MANIFESTS:
             p.append(f"{slug}/{name}: picture from {v.get('manifest')!r}, which is "
-                     f"not a PD/CC0 photo manifest")
+                     f"not a cleared photo manifest (PD/CC0 or free-library)")
+        elif v.get("manifest") == "subject_photos.json":
+            mrec = QC.manifest_record(v.get("source") or "")
+            p += ([f"{slug}/{name}: no subject_photos.json record for {v.get('source')}"]
+                  if not mrec else [f"{slug}/{name}: {x}" for x in QC.licence_problems(mrec)])
         if not v.get("credit"):
             p.append(f"{slug}/{name}: no credit")
         src_path = os.path.join(IMAGERY, v["source"])

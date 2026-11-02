@@ -65,6 +65,8 @@ SP.STATE = TMP / "subject_photo.json"
 common.STOPS = TMP / "stops"
 M.MIN_INTERVAL = 0
 
+import food_footage as FF                                       # noqa: E402
+FF.key_for = lambda name: None          # Commons cases first: no free-library key
 check(SLUG in SP.held([SLUG]), "0 the fixture slug starts held (no PD/CC0 photo)")
 
 HITS: dict[str, dict] = {}
@@ -154,8 +156,60 @@ check(bool(QC.photos(SLUG)) and QC.photos(SLUG)[0]["manifest"] == "subject_photo
       "1 question_card.photos now finds it")
 check(SLUG not in SP.held([SLUG]), "1 the slug is released (no longer held)")
 
-# 4 - escalation after MAX_TRIES, self_resolving before
+# 5 - FREE LIBRARIES (owner ruling 2 Nov 2026): a Pixabay PHOTO is pinned with
+# the footage chain's rights fields and its licence wording; an AI or video
+# hit is refused; question_card.licence_problems refuses CC-BY and a
+# free-library record without its committed wording.
 SP.MANIFEST.unlink()
+for f_ in (TMP / "assets").glob("*"):
+    f_.unlink()
+FF.key_for = lambda name: "fixture-key" if name == "pixabay" else None
+PIX = {"101": {"id": 101, "type": "photo", "isAiGenerated": True, "tags": "sperm whale, ocean",
+               "user": "ai", "pageURL": "https://pixabay.com/photos/101/",
+               "largeImageURL": "https://cdn.pixabay.example/101_1280.jpg"},
+       "102": {"id": 102, "type": "photo", "isAiGenerated": False,
+               "tags": "sperm whale, whale, ocean, sea", "user": "diver",
+               "pageURL": "https://pixabay.com/photos/sperm-whale-102/",
+               "largeImageURL": "https://cdn.pixabay.example/102_1280.jpg"}}
+
+
+def fake_pixabay(params):
+    if params.startswith("id="):
+        return {"hits": [PIX[params.split("=", 1)[1]]]}
+    return {"hits": list(PIX.values())}
+
+
+def _wide_jpeg(seed):
+    rng = _np.random.default_rng(seed)
+    b = io.BytesIO()
+    _Image.fromarray(rng.integers(20, 200, (800, 1280, 3)).astype("uint8")).save(b, "JPEG")
+    return b.getvalue()
+
+
+SP._pixabay = fake_pixabay
+FF._get = lambda url, binary=False, gap=1.0, host="", headers=None: _wide_jpeg(len(url))
+r = SP.find(SLUG)
+rec = r["pinned"] or {}
+check(rec.get("source") == "pixabay" and rec.get("source_id") == "102"
+      and rec.get("licence") == "Pixabay Content License"
+      and rec.get("licence_text") == "licences/pixabay-content-license-summary.txt"
+      and "PIXABAY" in rec.get("credit_line", "") and not FF.record_problems(rec),
+      f"5 a Pixabay photo is pinned with its licence wording (the AI hit refused): {rec}")
+check(not QC.licence_problems(rec), f"5 the free-library record passes the one gate: "
+                                    f"{QC.licence_problems(rec)}")
+check(bool(QC.photos(SLUG)) and SLUG not in SP.held([SLUG]), "5 and releases the slug")
+check(bool(QC.licence_problems({"subject": "x", "licence": "CC BY 4.0"})),
+      "5 NEGATIVE: a CC-BY record is refused by the one gate")
+check(bool(QC.licence_problems(dict(rec, licence_text=None))),
+      "5 NEGATIVE: a free-library record without its licence wording is refused")
+check(bool(QC.licence_problems(dict(rec, licence="Pexels License"))),
+      "5 NEGATIVE: a Pixabay record claiming another library's licence is refused")
+FF.key_for = lambda name: None
+check("PEXELS_KEY_MISSING" in SP.sources_status()["pexels"],
+      "5 Pexels without a key is a named, skipped source - never paid")
+SP.MANIFEST.unlink()
+
+# 4 - escalation after MAX_TRIES, self_resolving before
 search_returns()
 OTHER = "how-deep-can-whales-dive"
 SP.save_state({OTHER: {"tries": SP.MAX_TRIES - 1, "last_tried": "2026-01-01"}})
