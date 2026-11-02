@@ -4119,6 +4119,12 @@ def v43_queue_asks_distinct_questions(items) -> Result:
         r.fail("the publish queue holds no unpublished row, so this examined "
                "nothing")
         return r
+    # A chapter of a queued episode is that episode's work, not a second
+    # question: the food author takes batch-made food scripts (still listed
+    # in render_queue.json, held by the food contract) as an episode's parts
+    # (2 Nov 2026: what-is-inside-butter-rice-meat vs its butter part).
+    chapter_of = {T.question_key(pq): x["slug"] for x in rows
+                  for pq in (x.get("first_video_parts") or [])}
     for i, (label, slug, q) in enumerate(subjects):
         r.examined += 1 if label.startswith("this week") else 0
         ch = T.names_other_channel(q)
@@ -4132,7 +4138,10 @@ def v43_queue_asks_distinct_questions(items) -> Result:
         for label2, slug2, q2 in subjects[:i]:
             if slug2 == slug:
                 continue                  # the same slug, queued and picked
-            why = T.why_same(key, T.question_key(q2))
+            key2 = T.question_key(q2)
+            if chapter_of.get(key) == slug2 or chapter_of.get(key2) == slug:
+                continue                  # a chapter and its own episode
+            why = T.why_same(key, key2)
             if why:
                 r.fail(f"{label} ({q!r}) and {label2} ({q2!r}) are the same "
                        f"question: {why}")

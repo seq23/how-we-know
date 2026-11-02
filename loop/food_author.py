@@ -120,6 +120,7 @@ def next_parts() -> list[dict]:
     were excluded for good, so 6 of the 9 unmade food rows could never air and
     food's Wednesday and Saturday sat empty (#271)."""
     taken = _part_queries()
+    made = made_sets()
     out: list[dict] = []
     foods: set[str] = set()
     for r in BQ.food_rows():
@@ -130,6 +131,10 @@ def next_parts() -> list[dict]:
             continue
         f = food_of(r)
         if f in foods:
+            continue
+        # never the same set of foods as an episode already made, published
+        # or scheduled (made_sets; 2 Nov 2026: chocolate-steak-bread was the 13 Oct video)
+        if len(out) + 1 == PARTS_PER_EPISODE and repeats(foods | {f}, made):
             continue
         foods.add(f)
         out.append(r)
@@ -165,6 +170,88 @@ def food_of(row: dict) -> str:
                  if w not in STOPWORDS and w not in NOT_A_FOOD] or [row["slug"].split("-")[0]]
     w = words[0]
     return w[:-1] if w.endswith("s") and not w.endswith("ss") else w
+
+
+# ------------------------------------------------------------- no repeats
+def _one(food: str) -> str:
+    f = (food or "").lower().strip()
+    return f[:-1] if f.endswith("s") and not f.endswith("ss") else f
+
+
+def _food_vocab() -> set[str]:
+    """Food nouns the channel has a kit for (channel/food_kits/<food>.json)."""
+    return {_one(p.stem) for p in KITS.glob("*.json") if not p.stem.startswith("what-is-inside-")}
+
+
+def _foods_in(text: str, vocab: set[str]) -> set[str]:
+    return {_one(w) for w in re.split(r"[^a-z]+", (text or "").lower()) if w and _one(w) in vocab}
+
+
+def made_sets(skip_episode: str | None = None) -> dict:
+    """Every food episode the channel has already made - authored, rendered,
+    scheduled or published - keyed both by its SET of foods (order-insensitive)
+    and by its slug, to the episode. Read from every record there is:
+      * every episode row in research/publish_order_food_science.json
+        (`first_video_parts` and the foods named in its slug);
+      * every food episode spec (channel/specs/, superseded included) - its
+        segments' first subjects;
+      * every upload in the ledger (loop/state/ledger.json) whose slug is food,
+        by the foods named in its slug and title.
+
+    WHY (2 Nov 2026): the 13 Oct video "Bread, Steak, Chocolate: What's
+    Inside?" (8bVPoTWAfFQ, public 17 Oct) was made, and the author then wrote
+    what-is-inside-chocolate-steak-bread - the same video again - due to render
+    that night. ONLY THE SAME VIDEO is a repeat: the same trio, or the same
+    slug. A different trio that shares a food is not (owner, 2 Nov: "a new
+    video with another meat in it but a different trio is fine"). Guarded by
+    loop/tests/test_food_no_repeats.py."""
+    vocab = _food_vocab()
+    out: dict = {}
+
+    def add(foods, ep: str) -> None:
+        s = frozenset(_one(f) for f in foods if f)
+        if len(s) >= 2:
+            out.setdefault(s, ep)
+        out.setdefault(ep, ep)
+
+    try:
+        d = json.loads(ORDER.read_text())
+    except (OSError, ValueError):
+        d = {}
+    for r in d.get("queue") or []:
+        ep = r.get("slug") or ""
+        if ep == skip_episode or not r.get("first_video_parts"):
+            continue
+        add([food_of({"query": q, "slug": ep}) for q in r["first_video_parts"]], ep)
+        add(_foods_in(ep, vocab), ep)
+    for p in sorted(SPECS.glob("*.json")) + sorted(SUPERSEDED.glob("*.json")):
+        if p.stem == skip_episode:
+            continue
+        try:
+            s = json.loads(p.read_text())
+        except (OSError, ValueError):
+            continue
+        if s.get("domain") != BQ.FOOD_DOMAIN:
+            continue
+        add([(seg.get("subjects") or [""])[0] for seg in s.get("segments") or []], p.stem)
+    try:
+        import ledger                                      # noqa: PLC0415
+        pub = ledger.load().get("published") or []
+    except Exception:                                      # noqa: BLE001
+        pub = []
+    for r in pub:
+        s = r.get("slug") or ""
+        if s == skip_episode or not BQ.is_food(s):
+            continue
+        add(_foods_in(" ".join([s, r.get("title") or ""]), vocab), s)
+    return out
+
+
+def repeats(foods, made: dict | None = None) -> str | None:
+    """The made episode that IS this one - same set of foods, or same slug."""
+    made = made_sets() if made is None else made
+    foods = list(foods)
+    return made.get(frozenset(_one(f) for f in foods)) or made.get(episode_slug(foods))
 
 
 def episode_slug(foods: list[str]) -> str:
