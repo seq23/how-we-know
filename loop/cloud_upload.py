@@ -90,8 +90,9 @@ def shelf_lookup(shelf):
         # the re-rendered cut hashes differently, so the refusal ends the
         # moment the real repair reaches the shelf. Nothing is deleted; the
         # object is replaced by content, as push-to-r2.sh has always done.
-        old = (superseded.get(slug) or {}).get("sha256")
-        if old and meta.get("sha256") == old:
+        rec = superseded.get(slug) or {}
+        olds = {rec.get("sha256")} | {a.get("sha256") for a in rec.get("also", [])}
+        if meta.get("sha256") and meta.get("sha256") in olds:
             return (f"the shelved render is the cut that was superseded on "
                     f"{superseded[slug].get('superseded_at', '?')[:10]} "
                     f"({superseded[slug].get('why', 'replaced')}). The Mac has "

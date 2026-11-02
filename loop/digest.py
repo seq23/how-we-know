@@ -413,6 +413,12 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
         red.append((f"Publishing is halted: the safety switch tripped"
                     f"{f' {when:%a %d %b}' if when else ''} because {cause}",
                     breaker_action(breaker_state)))
+    held = (breaker_state or {}).get("longform_hold") or {}
+    if held.get("on"):
+        when = _when(held.get("since"))
+        yellow.append((f"Long-form held on purpose"
+                       f"{f' since {when:%a %d %b}' if when else ''}: "
+                       f"{held.get('detail')}; Shorts keep going", None))
     sflag, stext = shorts_problem(shorts)
     # A supply stop that kept "clearing itself" while output fell is listed
     # right under the shortfall it explains, as its own line - never in the
@@ -426,7 +432,7 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
         red.append((f"{_cap(plain(s.get('code')))}{_repeat(s)}", action_for(s)))
     empty = [c for c in cal if not c["slug"]]
     soon = [c for c in empty if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
-    if soon:
+    if soon and not held.get("on"):    # the hold empties the calendar on purpose
         red.append((f"Episode calendar has gaps: {len(soon)} empty day(s) in the next "
                     f"two weeks, first {soon[0]['date']:%a %d %b} ({soon[0]['domain']})", None))
     wd = pipe.get("waiting_days")

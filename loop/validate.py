@@ -1853,7 +1853,11 @@ def v20_cadence_schedule() -> Result:
         # No dated tail is legitimate only when the channel has none. Do NOT
         # let that pass silently as zero examined.
         r.examined += 1
-        if any(row.get("scheduled_publish_at") for row in led["published"]):
+        import breaker as _br                                # noqa: PLC0415
+        if _br.longform_hold(committed=True):
+            r.note("no dated tail: the owner's long-form hold is on "
+                   f"({_br.longform_hold(committed=True).get('detail')})")
+        elif any(row.get("scheduled_publish_at") for row in led["published"]):
             r.fail("the ledger carries scheduled rows but none resolved as a "
                    "future slot — the tail reader is not reaching what it "
                    "governs")
@@ -3113,6 +3117,15 @@ def v32_scheduled_pov_is_hers() -> Result:
 
     r.examined += 1
     if not pending:
+        # THE OWNER'S LONG-FORM HOLD (2026-11-02) empties the calendar on
+        # purpose. Only that named, visible reason passes; any other empty
+        # calendar still fails.
+        import breaker as _br                                # noqa: PLC0415
+        hold = _br.longform_hold(committed=True)
+        if hold:
+            r.note(f"nothing dated ahead: the owner's long-form hold is on since "
+                   f"{str(hold.get('since'))[:10]} ({hold.get('detail')})")
+            return r
         r.fail("no episode is scheduled ahead, so this examined nothing - "
                "either an empty calendar or a ledger it cannot read.")
         return r

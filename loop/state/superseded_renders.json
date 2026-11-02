@@ -21,13 +21,29 @@
     "sha256": "68353d0c10877746800468ce298650277bc8f9055831da73431d8aac1930a967",
     "bytes": 43861084,
     "superseded_at": "2026-09-08",
-    "why": "producer POV beat replaced by loop/pov_repair.py"
+    "why": "producer POV beat replaced by loop/pov_repair.py",
+    "also": [
+      {
+        "sha256": "7726f846a63362fda3eb5ace625b7fee3eeca27fbdb2474fc2b97556e563811a",
+        "bytes": 40538536,
+        "superseded_at": "2026-11-02",
+        "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+      }
+    ]
   },
   "what-is-concrete-made-of": {
     "sha256": "8217d73d8eaedba68a59407f2389261ffd4400298c6d75f70c432c8e5327de41",
     "bytes": 45023435,
     "superseded_at": "2026-09-08",
-    "why": "producer POV beat replaced by loop/pov_repair.py"
+    "why": "producer POV beat replaced by loop/pov_repair.py",
+    "also": [
+      {
+        "sha256": "23966cf7b14f28bea848e35508c4c4a9a71e75bf48f9946766d91dda6be46c12",
+        "bytes": 36936870,
+        "superseded_at": "2026-11-02",
+        "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+      }
+    ]
   },
   "what-is-kevlar-made-of": {
     "sha256": "cd929820ab7bbf195df8a9e4bf7fb49fb5a6b2ac993e2b261d580917092391b6",
@@ -51,24 +67,96 @@
     "sha256": "dc2b53ca772b40bf3b941bda063f877a8b051fa18c59e5498a804f252540e60d",
     "bytes": 35712732,
     "superseded_at": "2026-10-14T04:00:05+00:00",
-    "why": "lengthen reopen: full re-render (new opening)"
+    "why": "lengthen reopen: full re-render (new opening)",
+    "also": [
+      {
+        "sha256": "4561788489853e8c1c900386ae5c5ece690a4329b0391e741dbd3a13bdde87c2",
+        "bytes": 43322756,
+        "superseded_at": "2026-11-02",
+        "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+      }
+    ]
   },
   "how-deep-can-a-sperm-whale-go": {
     "sha256": "0e6e7edf0069385e6d86425bf15bcc939b29066dde8d4140427efd9b94df8ebb",
     "bytes": 54772104,
     "superseded_at": "2026-10-14T04:00:05+00:00",
-    "why": "lengthen reopen: full re-render (new opening)"
+    "why": "lengthen reopen: full re-render (new opening)",
+    "also": [
+      {
+        "sha256": "3bc81aafc7ff2ebefbe20a24ffeb2dbcca9d78ef76d0ca387ebd76534f5dca76",
+        "bytes": 52874661,
+        "superseded_at": "2026-11-02",
+        "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+      }
+    ]
   },
   "what-is-hydrothermal-vents": {
     "sha256": "e30c3179ce88d14a385956545b7007dc608e671efb469a7119bddebe27083837",
     "bytes": 36933425,
     "superseded_at": "2026-10-14T04:00:05+00:00",
-    "why": "lengthen reopen: full re-render (new opening)"
+    "why": "lengthen reopen: full re-render (new opening)",
+    "also": [
+      {
+        "sha256": "3cbcf0e14b672a24660380463f366bcc0a7b5fe17a5aefa63b46515b6ff9e93d",
+        "bytes": 37367629,
+        "superseded_at": "2026-11-02",
+        "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+      }
+    ]
   },
   "why-does-rice-get-sticky": {
     "sha256": "5b2d0d8fd94a6fa49597232aafaf1f2029c573341ae0fb5e08bbb744f6b2a020",
     "bytes": 38320404,
     "superseded_at": "2026-11-01",
     "why": "plan drew the deep-sea depth gauge on a food episode (visuals/plan_domain.py); re-rendered from the same narration"
+  },
+  "why-deep-sea-fish-die-when-brought-to-surface": {
+    "sha256": "9a1f253b305cc33b3a130872dd5fd23c55b4848781b9218356726bc1dd7f6e17",
+    "bytes": 42550091,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "what-lives-in-mariana-trench": {
+    "sha256": "54b3d1a74dcfa5ef38a0a0dc4fa8424f9fac380f1f04306cc1eb42c94f04379d",
+    "bytes": 40883756,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "how-deep-can-whales-dive": {
+    "sha256": "195268b656b2ebf1b50770f031ca4d5e88b99978206e9543464561fbc0b008b7",
+    "bytes": 37341451,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "why-deep-sea-creatures-are-creepers": {
+    "sha256": "c40d40fbbcdb63e6fc1e21a12ad6c1cf7f9e5cc20724106b58b434e4ddef7e9c",
+    "bytes": 37658438,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "why-are-deep-sea-creatures-so-big": {
+    "sha256": "1d83991441b51b6aee149323d1470ae556e63173d28f5cac2c93892643224681",
+    "bytes": 39242089,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "is-damascus-steel-better": {
+    "sha256": "b859a6437398aa47e883567bd4b445ffdb1ac9d00c70e97036830cf9fb3d8a00",
+    "bytes": 42102478,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "are-sea-pigs-real": {
+    "sha256": "29c8802240038000aed9b22817f659a4dcaa18ecb4b95f67a8423e7735da600f",
+    "bytes": 38973893,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
+  },
+  "does-damascus-steel-rust": {
+    "sha256": "1963bad37ed665b8654818bb2c97a7dc8ad88d4a165dcb39460362dc0149eb2f",
+    "bytes": 41600974,
+    "superseded_at": "2026-11-02",
+    "why": "owner hold 2 Nov 2026: re-render with pictures (hostile review)"
   }
 }
