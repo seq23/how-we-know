@@ -192,8 +192,9 @@ check("full-month subject", M.subject(full) ==
 
 print("\n── c. every rule, with numbers, triggered or not")
 rules = body[body.index("## 3."):body.index("### What the data suggests")]
-for needle in ("**Domain swap rule**", "below 4 after 8 measured", "deep sea: 2 measured episodes (needs 8); queue 6 topics",
-               "materials: 1 measured episodes (needs 8); queue 7 topics",
+for needle in ("**Domain swap rule**", "results decide", "still collecting",
+               "deep sea: 2 of 30 long videos; score not judged yet; queue 6 topics",
+               "materials: 1 of 30 long videos; score not judged yet; queue 7 topics",
                "**Slot move rule**", "spread now 5 s", "30 s of average view duration",
                "**Opening-line experiment**", "of 3 eligible episodes aired",
                "decision date not set yet",
@@ -205,13 +206,24 @@ for needle in ("**Domain swap rule**", "below 4 after 8 measured", "deep sea: 2 
 check("September's decline is not this month's kill", "old-one" not in rules)
 check("rules section carries no raw domain ids", DS not in rules and MAT not in rules)
 
-mat_hist = hist + [{"kind": "long", "video_id": f"M{i}", "date": "2026-10-12",
-                    "views": 1, "average_view_duration_s": 60}
-                   for i in range(8)]
-mat_rows = long_pub + [{"slug": f"mat-m{i}", "question": f"m{i}", "video_id": f"M{i}",
-                        "scheduled_publish_at": "2026-09-0%dT15:00:00Z" % (i + 1)}
-                       for i in range(8)]
-setup(long_rows=mat_rows, history=mat_hist, depth={DS: 6, MAT: 2})
+# RESULTS DECIDE (owner rule A, 2 Nov 2026): every topic at 30 long videos,
+# materials scoring under half the best - and its queue full, because only
+# results retire a topic.
+FOOD = "food-science"
+alloc_ = list(domains.allocation(cfg))
+mat_hist, mat_rows = list(hist), list(long_pub)
+for dom_, tag, subs, mins in ((DS, "D", 10, 600), (MAT, "M", 0, 30), (FOOD, "F", 10, 600)):
+    if dom_ not in alloc_:
+        continue
+    for i in range(30):
+        slug_ = f"{tag.lower()}-r{i}"
+        DOMAIN[slug_] = dom_
+        mat_rows.append({"slug": slug_, "question": slug_, "video_id": f"{tag}R{i}",
+                         "scheduled_publish_at": "2026-09-0%dT15:00:00Z" % (i % 9 + 1)})
+        mat_hist.append({"kind": "long", "video_id": f"{tag}R{i}", "date": "2026-10-12",
+                         "views": 1000, "average_view_duration_s": 60,
+                         "subscribers_gained": subs, "estimated_minutes_watched": mins})
+setup(long_rows=mat_rows, history=mat_hist, depth={d_: 20 for d_ in alloc_})
 # The real next-ranked domain is not onboarded (1 Nov 2026), so the swap is
 # held and the email says why; with it onboarded, the swap fires.
 held = M.build(TODAY, True, cfg, ask_model=False)
@@ -225,7 +237,7 @@ try:
     fired = M.build(TODAY, True, cfg, ask_model=False)
 finally:
     domains.onboarding_gaps = _real_gaps
-check("domain swap triggers on a decayed, measured queue",
+check("domain swap triggers on results: 30+ videos each, materials under half the best",
       fired["rules"]["domain_swap"]["triggered"], fired["rules"]["domain_swap"]["why"])
 check("subject names the triggered rule in plain words",
       M.subject(fired).endswith("domain swap rule triggered for materials"),

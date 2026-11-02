@@ -13,7 +13,7 @@ WHAT THIS PROVES:
   4. the codes that used to park a decision are now automated policy
      (SHORTS_INVENTORY_EXHAUSTED, CADENCE_SCALE_WITHHELD,
      SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL, INSUFFICIENT_DOMAIN_EVIDENCE,
-     QUEUE_DECAYED_BUT_UNMEASURED, NO_REPLACEMENT_DOMAIN, RUNWAY_WARN), and
+     TOPICS_HELD_FOR_EVIDENCE, NO_REPLACEMENT_DOMAIN, RUNWAY_WARN), and
      FORMAT_PROBLEM is no stop at all;
   5. an unarmed lane arms itself when its secrets are present, and stops -
      naming the missing secret - only when one is absent.
@@ -92,7 +92,7 @@ if not any("planted.py" in x for x in res["problems"]):
 cls = {r["code"]: r["class"] for r in a["rows"]}
 for code in ("SHORTS_INVENTORY_EXHAUSTED", "CADENCE_SCALE_WITHHELD",
              "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL",
-             "INSUFFICIENT_DOMAIN_EVIDENCE", "QUEUE_DECAYED_BUT_UNMEASURED",
+             "INSUFFICIENT_DOMAIN_EVIDENCE", "TOPICS_HELD_FOR_EVIDENCE",
              "NO_REPLACEMENT_DOMAIN", "RUNWAY_WARN"):
     examined += 1
     if cls.get(code) != "automated":
