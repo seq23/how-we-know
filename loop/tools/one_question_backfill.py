@@ -86,7 +86,10 @@ def resolve(led: dict | None = None, sled: dict | None = None) -> list[dict]:
     for kind, slug, title in APPROVED:
         rows = (sled if kind == "short" else led).get("published") or []
         hits = [r for r in rows if r.get("slug") == slug and r.get("video_id")
-                and _in_window(r) and not r.get("retired_at")
+                and _in_window(r)
+                # withdrawn (owner hold, 2 Nov) is retired only to be re-made;
+                # its applied title still stands on that video
+                and (not r.get("retired_at") or r.get("withdrawn_at"))
                 and (kind == "short" or r["video_id"] not in shorts)]
         if len(hits) != 1:
             bad.append(f"{kind} {slug}: {len(hits)} ledger rows in the window")

@@ -294,7 +294,8 @@ def guard(stage_name: str) -> None:
     """
     b = load()
     hold = b.get("longform_hold") or {}
-    if hold.get("on") and stage_name in LONGFORM_STAGES:
+    # A real trip (a strike above all) outranks her hold: it owns the alarm.
+    if b.get("state") != "tripped" and hold.get("on") and stage_name in LONGFORM_STAGES:
         with Stage(stage_name) as st:
             st.named_stop(
                 "OWNER_HOLD_LONGFORM",

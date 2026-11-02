@@ -134,6 +134,8 @@ def _withdrawn_rows() -> list[dict]:
                "query": r.get("question") or r["slug"].replace("-", " "),
                "script": f"scripts/{r['slug']}.md"}
         p = ROOT / row["script"]
+        if not p.exists():
+            continue                    # nothing to re-render from on this tree
         m = re.search(r"^\*\*Domain:\*\*\s*([a-z0-9-]+)", p.read_text(), re.M) \
             if p.exists() else None
         if m:

@@ -117,7 +117,7 @@ def check_requeue() -> tuple[list[str], int]:
     real = ledger.load
     slug = sorted(p[:-3] for p in os.listdir(os.path.join(ROOT, "scripts"))
                   if p.endswith(".md"))[0]
-    fake = {"published": [{"slug": "zz-withdrawn-test", "question": "zz test",
+    fake = {"published": [{"slug": slug, "question": "zz test",
                            "video_id": "Z", "retired_at": "x", "withdrawn_at": "x"}],
             "queued": [], "updated": None}
     ledger.load = lambda: fake
@@ -125,9 +125,8 @@ def check_requeue() -> tuple[list[str], int]:
         q = batch_queue.queued_slugs()
     finally:
         ledger.load = real
-    fails = [] if q and q[0] == "zz-withdrawn-test" else [
+    fails = [] if q and q[0] == slug else [
         f"a withdrawn episode is not queued first for re-render (queue head {q[:2]})"]
-    del slug
     return fails, 1
 
 
