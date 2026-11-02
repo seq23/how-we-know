@@ -58,6 +58,16 @@ def want(cond: bool, msg: str) -> None:
         fails.append(msg)
 
 
+def refusal_of(call) -> BaseException | None:
+    """What `call` raised, or None when it returned. The caller asserts it is
+    the refusal it expects, so a call that goes through is a named failure."""
+    try:
+        call()
+    except Exception as e:                       # noqa: BLE001 - returned to the caller, which asserts its type
+        return e
+    return None
+
+
 def stock(source: str, sid: str, tags: str, subject: str, local: str, blob: bytes) -> dict:
     lic = SV.LICENCES[source]
     wording = open(os.path.join(SV.IMAGERY, lic["licence_text"])).read()
@@ -174,20 +184,15 @@ def main() -> int:
             why = refused([bad])
             want(why is not None and "stock licence refused" in why,
                  f"footage.usable_assets did not refuse a clip with {label} in {slug}")
-            try:
-                FT.assign(ambient(2), [3.0, 3.0], slug)
-                fails.append(f"footage.assign placed footage from a manifest holding "
-                             f"a clip with {label} in {slug}")
-            except FT.RightsRefusal:
-                pass
-            try:
-                FT.render_cut({**cuts[0], "asset": bad}, os.devnull, 3.0, fx.dir)
-                fails.append(f"render_cut rendered a clip with {label}")
-            except FT.RightsRefusal:
-                pass
-            except Exception as e:                       # noqa: BLE001
-                fails.append(f"render_cut went past the licence gate for a clip "
-                             f"with {label} ({type(e).__name__})")
+            raised = refusal_of(lambda: FT.assign(ambient(2), [3.0, 3.0], slug))
+            want(isinstance(raised, FT.RightsRefusal),
+                 f"footage.assign did not refuse a manifest holding a clip with "
+                 f"{label} in {slug} (raised {type(raised).__name__})")
+            raised = refusal_of(lambda: FT.render_cut(
+                {**cuts[0], "asset": bad}, os.devnull, 3.0, fx.dir))
+            want(isinstance(raised, FT.RightsRefusal),
+                 f"render_cut did not stop at the licence gate for a clip with "
+                 f"{label} (raised {type(raised).__name__})")
         fx.write([pig])
         want(refused([pig]) is None, "the restored clip is still refused")
         want(sum(1 for c in FT.assign(ambient(2), [3.0, 3.0], slug) if c) == 2,
