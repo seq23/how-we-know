@@ -91,9 +91,15 @@ LONGFORM_STAGES = ("cloud-upload", "fri-publish", "thu-upload", "backfill",
                    "repackage-reschedule")
 
 
-def longform_hold() -> dict | None:
-    """The live long-form hold record, or None."""
-    h = load().get("longform_hold")
+def longform_hold(committed: bool = False) -> dict | None:
+    """The live long-form hold record, or None.
+
+    `committed=True` reads loop/state/breaker.json itself, never the
+    LOOP_BREAKER_FLAG scratch copy the test suite points FLAG at: a validator
+    judging the real calendar must see the real hold (CI run 41527494777).
+    """
+    src = read_json(STATE / "breaker.json", default={}) if committed else load()
+    h = src.get("longform_hold")
     return h if h and h.get("on") else None
 
 

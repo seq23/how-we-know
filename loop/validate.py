@@ -1854,9 +1854,9 @@ def v20_cadence_schedule() -> Result:
         # let that pass silently as zero examined.
         r.examined += 1
         import breaker as _br                                # noqa: PLC0415
-        if _br.longform_hold():
+        if _br.longform_hold(committed=True):
             r.note("no dated tail: the owner's long-form hold is on "
-                   f"({_br.longform_hold().get('detail')})")
+                   f"({_br.longform_hold(committed=True).get('detail')})")
         elif any(row.get("scheduled_publish_at") for row in led["published"]):
             r.fail("the ledger carries scheduled rows but none resolved as a "
                    "future slot — the tail reader is not reaching what it "
@@ -3121,7 +3121,7 @@ def v32_scheduled_pov_is_hers() -> Result:
         # purpose. Only that named, visible reason passes; any other empty
         # calendar still fails.
         import breaker as _br                                # noqa: PLC0415
-        hold = _br.longform_hold()
+        hold = _br.longform_hold(committed=True)
         if hold:
             r.note(f"nothing dated ahead: the owner's long-form hold is on since "
                    f"{str(hold.get('since'))[:10]} ({hold.get('detail')})")

@@ -457,7 +457,7 @@ def check() -> list[str]:
     import ledger as _led                                    # noqa: PLC0415
     tail = cadence.scheduled_tail()
     import breaker as _br                                    # noqa: PLC0415
-    if not tail and _br.longform_hold():
+    if not tail and _br.longform_hold(committed=True):
         # The owner's long-form hold (2026-11-02) empties the calendar on
         # purpose: nothing is dated, so nothing can move. Held to the new
         # truth strictly: NO live row may still carry a future date.
