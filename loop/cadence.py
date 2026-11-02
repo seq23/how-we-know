@@ -266,7 +266,7 @@ def scheduled_tail() -> list[dict]:
     now_utc = _dt.datetime.now(_dt.timezone.utc)
     for r in rows:
         stamp = r.get("scheduled_publish_at")
-        if not stamp or r.get("privacy") == "public":
+        if not stamp or r.get("withdrawn_at") or r.get("privacy") == "public":
             continue
         try:
             when = _dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))

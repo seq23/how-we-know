@@ -590,7 +590,7 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
             # NAME THE STATE, don't guess it. See diagnose_empty_shelf().
             import render_gate                             # noqa: PLC0415
             import lengthen                                # noqa: PLC0415
-            done_ = {r["slug"] for r in ledger.load()["published"]}
+            done_ = ledger.published_slugs()
             gate_held = render_gate.held_slugs()
             # THE HOOK RULE holds queued episodes on purpose (loop/lengthen.py
             # upload_hold): the repackage lane re-opens the script and the

@@ -657,7 +657,7 @@ def cut_groups(renders_dir: Path | None = None, shorts_dir: Path | None = None,
 def _needs_opener(cut: Path) -> bool:
     """A cut on disk, not yet uploaded, without the one-question opening
     picture: the batch re-cuts it (shorts.py --keep-existing does)."""
-    if cut.name in {r.get("file") for r in load_ledger()["published"]}:
+    if cut.name in {r.get("file") for r in load_ledger()["published"] if not r.get("withdrawn_at")}:
         return False
     try:
         rec = json.loads(Path(f"{cut}.short.json").read_text(encoding="utf-8"))
@@ -697,7 +697,7 @@ def pending(have=None, cfg: dict | None = None) -> list[Pick]:
     # definition of the publish queue across domains, and V27 exists to stop
     # exactly this -- it simply had not been pointed at this module.
     done = {(r["slug"], int(r.get("rank") or 1))
-            for r in load_ledger()["published"] if r.get("slug")}
+            for r in load_ledger()["published"] if r.get("slug") and not r.get("withdrawn_at")}
     # A HELD RENDER REACHES YOUTUBE BY NO ROUTE - THIS ONE INCLUDED. The render
     # gate (loop/render_gate.py) holds a finished episode that is clipped or
     # under the runtime floor, and both episode upload routes consult that
@@ -709,10 +709,16 @@ def pending(have=None, cfg: dict | None = None) -> list[Pick]:
     # returns the run after the hold lifts, and its cut is never re-made.
     held = render_gate.held_slugs()
     blocked = voice_blocked()
+    import ledger
+    import domains
+    dated = {r["slug"] for r in ledger.load()["published"]
+             if r.get("scheduled_publish_at") and not r.get("withdrawn_at")}
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in held:
+            continue
+        if domains.domain_of_slug(slug) == "food-science" and slug not in dated:
             continue
         for rank in range(1, cuts_for(slug, cfg) + 1):
             if (slug, rank) in done or (slug, rank) in blocked:

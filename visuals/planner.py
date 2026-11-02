@@ -476,7 +476,10 @@ def plan(md_path, domain=None):
                         "heading": h, "narration": b["text"], "args": args,
                         "from": "heuristic"})
     slug = os.path.splitext(os.path.basename(md_path))[0]
-    return picture_pass(destagnate(out), md, domain or script_domain(md), slug)
+    result = picture_pass(destagnate(out), md, domain or script_domain(md), slug)
+    if "**Picture target seconds:** 900" in md and result:
+        result[0]["picture_target_s"] = 900
+    return result
 
 
 MAX_RUN = 2   # never show the same segment type more than twice in a row

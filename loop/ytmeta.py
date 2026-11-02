@@ -156,7 +156,7 @@ def live_videos() -> list[dict]:
     is retired, so this returns each episode once.
     """
     rows = ledger.load()["published"]
-    return [r for r in rows if r.get("video_id") and not r.get("retired_at")]
+    return [r for r in rows if r.get("video_id") and not r.get("retired_at") and not r.get("withdrawn_at")]
 
 
 if __name__ == "__main__":

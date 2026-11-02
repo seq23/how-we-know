@@ -389,8 +389,10 @@ L._ask = lambda m: (f"OPENING:\n{NEW_OPEN}\nTAIL:\n{TAIL}\nSOURCES:\n",  # noqa:
                     "fixture/free", "stop")
 r = L.stage_script(eslug, cloud=True, check_urls=False)
 check(r["status"] == "scripted" and r.get("kind") == "extend"
-      and "What the evidence does not settle" in (L.SCRIPTS / f"{eslug}.md").read_text(),
-      f"a cloud extension did not write the hook and the tail: {r}")
+      and r.get("model") is None and r["budget"]["tail_words"] == 0
+      and L.words_now((L.SCRIPTS / f"{eslug}.md").read_text()) == L.words_now(SCRIPT)
+      and "**Picture target seconds:** 900" in (L.SCRIPTS / f"{eslug}.md").read_text(),
+      f"a cloud extension changed narration instead of requesting picture time: {r}")
 # V49 holds a cloud re-open to the script it wrote
 import validate as V                                          # noqa: E402
 (L.SCRIPTS / f"{eslug}.md").write_text(SCRIPT)

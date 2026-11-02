@@ -299,6 +299,12 @@ def beat_durations(slug: str, plan: list[dict]):
         source = "recorded"
     else:
         source = "audio"
+    if plan and plan[0].get("picture_target_s"):
+        sys.path.insert(0, str(ROOT / "loop"))
+        import picture_time
+        durs, holds = picture_time.apply(plan, durs)
+        for b, h in zip(plan, holds):
+            b["imagery_only_s"] = h
     return durs, source, measured
 
 
@@ -396,15 +402,16 @@ def build_cues(plan, durs):
     cues, t = [], 0.0
     for i, (b, d) in enumerate(zip(plan, durs)):
         text = re.sub(r"\s+", " ", b["narration"]).strip()
-        parts = chunk_beat(text, d) if text else []
+        speech = max(0.0, d - float(b.get("imagery_only_s") or 0))
+        parts = chunk_beat(text, speech) if text else []
         if not parts:
             t += d
             continue
         total = sum(len(p) for p in parts) or 1
         start = t
         for k, p in enumerate(parts):
-            share = d * len(p) / total
-            end = t + d if k == len(parts) - 1 else start + share
+            share = speech * len(p) / total
+            end = t + speech if k == len(parts) - 1 else start + share
             cues.append({"start": start, "end": end, "text": p, "beat": i})
             start = end
         t += d
@@ -683,7 +690,7 @@ def process(slug: str, write_script=True, check=None, verbose=True) -> dict:
     # writing the measured durations into the manifest is the whole difference
     # between "this episode can only ever be captioned here" and "any lane can
     # rebuild this caption track from the repository".
-    recorded_now = record_durations(slug, durs, wav_indices(slug, plan))
+    recorded_now = record_durations(slug, [d - float(b.get("imagery_only_s") or 0) for b, d in zip(plan, durs)], wav_indices(slug, plan))
     checks = verify_text(slug, plan)
     cues = build_cues(plan, durs)
     total = sum(durs)

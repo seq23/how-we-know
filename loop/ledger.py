@@ -33,11 +33,11 @@ def save(d: dict) -> None:
 
 
 def published_slugs() -> set[str]:
-    return {r["slug"] for r in load()["published"]}
+    return {r["slug"] for r in load()["published"] if not r.get("withdrawn_at")}
 
 
 def published_questions() -> set[str]:
-    return {normalise(r.get("question", "")) for r in load()["published"]}
+    return {normalise(r.get("question", "")) for r in load()["published"] if not r.get("withdrawn_at")}
 
 
 def normalise(q: str) -> str:
@@ -78,7 +78,7 @@ def inventory() -> list[dict]:
 def record_published(slug: str, question: str, video_id: str,
                      receipt: str) -> None:
     d = load()
-    if slug in {r["slug"] for r in d["published"]}:
+    if slug in {r["slug"] for r in d["published"] if not r.get("withdrawn_at")}:
         return
     d["published"].append({"slug": slug, "question": question,
                            "video_id": video_id, "receipt": receipt,

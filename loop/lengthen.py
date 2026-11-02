@@ -1,85 +1,12 @@
-"""The ten-minute extension, as a SPLICE: new hook + the untouched body + a real tail.
+"""Repair queued episodes with picture time toward 15 minutes (10-minute floor).
 
-    .venv/bin/python loop/lengthen.py plan   --slugs a b        # budget only, no model
-    .venv/bin/python loop/lengthen.py script --slugs a b [--dry-run]
-    .venv/bin/python loop/lengthen.py splice [--slugs a b] [--dry-run]
-    .venv/bin/python loop/lengthen.py status
-    .venv/bin/python loop/lengthen.py bind                      # the Mac, in the batch
-    .venv/bin/python loop/queue_reopen.py [--limit N] [--dry-run]  # the cloud lane
+Runtime-only repairs preserve every narration word and request a visual timeline.
+An opening that breaks the hook rule can still be replaced, without a new tail.
+The cloud records pending_bind; the Mac retires the stale cut and binds the plan.
+Published episodes are forward-only; withdrawn audit rows are eligible again.
 
-Owner decisions, 12-13 Oct 2026 (repackage job 1 of 3). Every long-form
-QUEUED episode under 10:00 of narration (scripts/ and loop/drafts/, not yet
-uploaded) is brought to
-10:30-11:30 (TARGET_MIN..TARGET_MAX minutes; at the measured 144.58 wpm that is
->= 1,520 narrated words, loop/durations.py). Her question: "do u have to
-re-render the entire videos, can't u just add something on the end". The
-answer is this splice:
-
-    (a) a NEW OPENING, freshly narrated and rendered under the stake-then-payoff
-        hook rule (loop/opening.py), replacing the old `### Cold open`;
-    (b) the EXISTING renders/<slug>-final.mp4 from the `### Title card` beat
-        onward, UNTOUCHED - cut with `-c copy` at a keyframe (every beat is its
-        own libx264 encode, concatenated by visuals/assemble.py, so each beat
-        starts on one) and verified packet-for-packet with ffmpeg framemd5;
-    (c) a NEW TAIL of real, sourced "how we know" evidence - what the evidence
-        does not settle, a surprising leftover fact, the open question - and a
-        pointer to the next episode, which is where the episode ends (the
-        pipeline has no separate end-card beat; the tail's last line is it).
-
-THE BOUNDARY comes from the measured timeline, not from a guess:
-audio/<slug>/beats.json holds each beat's measured wav seconds (the same
-durations assemble.py allocated frames from), plans/<slug>.json holds each
-beat's `heading`. The title-card beat is the first whose heading is "Title
-card"; its first frame is round(sum(seconds before it) * FPS) - exactly the
-frame assemble.py's whole-episode allocation emitted there. The sidecar
-renders/<slug>-final.mp4.render.json must agree (same beat count, audio_s
-within SIDECAR_TOLERANCE_S of the summed beats) or the splice is refused and
-the episode falls back to a FULL re-render (the nightly batch's normal path).
-
-THE TAIL IS WRITTEN WITH WARMTH (owner instruction, 13 Oct 2026). A house rule
-in TAIL_RULES, not a suggestion: real evidence, sourced like everything else,
-written like the last three minutes of a good science YouTuber who likes their
-audience. Examples of the register the prompt asks for (shape only):
-
-  * "Here is the part nobody puts on the poster: we have measured the pressure
-    down there to three significant figures, and we still cannot keep a
-    snailfish alive long enough to ask it how it feels about that."
-  * "So the honest answer is 'mostly'. Science is very comfortable with
-    'mostly'. Science would like a word with anyone who is not."
-  * "Next time: the fish that makes its own light, and why it might be the
-    worst-kept secret in the ocean. Stay curious - it's cheaper than a
-    submarine."
-
-The humour is a prompt rule. What is CHECKED, mechanically (tail_problems):
-the tail is not bare restatement - under TAIL_OVERLAP_MAX (30%) of its content
-words come from the Direct-answer lock, and no single tail sentence is mostly
-lock words; it ends with a next-episode pointer; it lands inside the word
-budget; and the merged script still passes every gate the original did: the
-hook (opening.problems, stake-then-payoff), the title truth guard
-(longform_title), directive truth and parse (author), the exclusion gate, and
-every new source URL fetched for real (author.dead_urls).
-
-STATE, in loop/state/lengthen.json, per slug:
-    scripted        new script written, plan re-derived, old body wavs moved
-                    to their new indices; the nightly narrator voices only the
-                    new opening and tail beats
-    full_rerender   the splice was impossible (no usable sidecar / body beats
-                    differ); the old render was moved aside and the batch
-                    re-renders the whole episode
-    spliced         the stitched render passed the 10-minute floor; the old
-                    cut is recorded in loop/state/superseded_renders.json, the
-                    slug is cleared from loop/state/render_hold.json and the
-                    render ships through the normal upload lane
-
-FORWARD ONLY (owner decision, 13 Oct 2026, later the same day). A PUBLISHED
-episode is never re-rendered, re-uploaded, extended or privated: stage_script
-refuses any slug in loop/state/ledger.json (`published_refused`), and nothing
-in this repo uploads a second cut of a live video.
-
-Model route: loop/llm_router.py via author.call_openrouter - her Claude
-subscription when the lane carries it, the Gemini free tier, the $0 OpenRouter
-list; never a paid model. Guarded by validator V49 and
-loop/tests/test_lengthen.py (no live model call, no ffmpeg in the tests).
+Legacy tail and splice helpers remain to verify and finish existing receipts.
+New runtime repairs never call them to manufacture narration for a word budget.
 """
 from __future__ import annotations
 
@@ -702,7 +629,7 @@ def _measured_s(slug: str) -> float | None:
 def published_slugs() -> set[str]:
     import ledger                                          # noqa: PLC0415
     return {r["slug"] for r in ledger.load().get("published") or []
-            if r.get("slug") and r.get("video_id")}
+            if r.get("slug") and r.get("video_id") and not r.get("withdrawn_at")}
 
 
 def renderable_slugs() -> set[str]:
@@ -772,17 +699,22 @@ def script_cloud(slug: str, dry_run: bool = False, doc: dict | None = None,
     if kind is None:
         return {"slug": slug, "status": "not_short",
                 "why": f"at the floor and the opening passes {HOOK_VARIANT}"}
-    est_body_s = (measured or minutes_of_words(words_now(text)) * 60) \
-        - minutes_of_words(len(cold_open(text).split())) * 60
     if dry_run:
-        return {"slug": slug, "status": "dry_run", "kind": kind,
-                "mode": "pending_bind"}
-    r = draft(slug, text, est_body_s, check_urls=check_urls,
-              tail=kind == "extend")
+        return {"slug": slug, "status": "dry_run", "kind": kind, "mode": "pending_bind"}
+    if kind == "extend" and not needs_reopen(text):
+        r = {"applied": True, "merged": text, "budget": {"tail_words": 0},
+             "model": None, "attempts": 0}
+    else:
+        est_body_s = (measured or minutes_of_words(words_now(text)) * 60) \
+            - minutes_of_words(len(cold_open(text).split())) * 60
+        r = draft(slug, text, est_body_s, check_urls=check_urls, tail=False)
     if not r["applied"]:
         return {"slug": slug, "status": "rejected", "kind": kind,
                 "problems": r["problems"], "mode": "pending_bind"}
     merged = r["merged"]
+    if kind == "extend":
+        import picture_time
+        merged = picture_time.mark(merged)
     rec = {"status": "scripted", "mode": "pending_bind", "kind": kind,
            "why_full": None, "words_before": words_now(text),
            "words_after": words_now(merged),
@@ -833,24 +765,37 @@ def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
         return {"slug": slug, "status": "not_short",
                 "why": f"{(measured or 0) / 60 or minutes_of_words(words_now(text)):.2f} "
                        f"min and the opening passes {HOOK_VARIANT}"}
-    est_body_s = (measured or minutes_of_words(words_now(text)) * 60) \
-        - minutes_of_words(len(cold_open(text).split())) * 60
     if cloud:
         return script_cloud(slug, dry_run, doc, check_urls)
+    if kind == "extend" and not needs_reopen(text):
+        if not dry_run and not cloud:
+            import extend
+            from common import Stage, week_id
+            with Stage("extend", week_id()) as st:
+                extend.extend_one({"slug": slug, "words_now": words_now(text)}, st)
+        return {"slug": slug, "status": "picture_time", "kind": kind,
+                "target_seconds": 900, "speech_unchanged": True}
+    est_body_s = (measured or minutes_of_words(words_now(text)) * 60) \
+        - minutes_of_words(len(cold_open(text).split())) * 60
     plan_p = PLANS / f"{slug}.json"
     old_plan = (_read_json(plan_p, None) if plan_p.exists() else None) \
         or _plan_for(sp)
     mode, why, bd = _decide_mode(slug, old_plan)
+    if kind == "extend":
+        mode, why, bd = "full", "picture time requires the full visual timeline", None
     body_s = bd["body_s"] if bd else est_body_s
     if dry_run:
         b = budget(body_s, max(30, min(90, len(cold_open(text).split()))))
         return {"slug": slug, "status": "dry_run", "mode": mode, "why": why,
                 "kind": kind, "budget": b}
-    r = draft(slug, text, body_s, check_urls=check_urls, tail=kind == "extend")
+    r = draft(slug, text, body_s, check_urls=check_urls, tail=False)
     if not r["applied"]:
         return {"slug": slug, "status": "rejected", "problems": r["problems"],
                 "mode": mode, "kind": kind}
     merged = r["merged"]
+    if kind == "extend":
+        import picture_time
+        merged = picture_time.mark(merged)
     render = RENDERS / f"{slug}-final.mp4"
     rec = {"status": "scripted", "mode": mode, "kind": kind,
            "why_full": why or None,
@@ -955,6 +900,8 @@ def bind(slug: str, doc: dict) -> dict:
     plan_p = PLANS / f"{slug}.json"
     old_plan = _read_json(plan_p, None) if plan_p.exists() else None
     mode, why, bd = _decide_mode(slug, old_plan)
+    if rec.get("kind") == "extend":
+        mode, why, bd = "full", "picture time requires the full visual timeline", None
     if mode == "full":
         rec["why_full"] = why
     rec = _bind_local(slug, sp, old_plan, mode, bd, rec)

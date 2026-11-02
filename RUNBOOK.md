@@ -907,3 +907,19 @@ ever changed during an active test.
   is not the fix; the drafts that clear the 1,446-word floor fail on dead citations and unparseable
   directives. Closest is `gemini-2.5-flash` (~19 s, two dead URLs from a pass); six of eleven models
   never returned a script, mostly because hidden reasoning ate the whole 16,000-token budget.
+
+### Hostile-review repairs (2 Nov 2026)
+
+Withdrawn cuts remain in the audit ledger but return to the upload queue. Runtime
+repairs preserve narration and add quiet picture time toward 15 minutes; the
+rendered 10-minute floor still applies. Food Shorts wait for their combined
+long episode's active publish date, and rendered but undated food episodes
+still occupy the two-episode authoring limit.
+
+The launchd installer now prepares `~/GitHub/.hwk-runner` with clone or
+fast-forward pull and points all six jobs there. Run the installer only when
+ready to change the Mac jobs; this PR does not install or reload them. The
+installer links existing `.venv`, `.venv-tts` and `.secrets` directories from
+`~/GitHub/how-we-know` (override with `HWK_RUNTIME_SOURCE`); these local runtimes
+and credentials are never committed. Preview with
+`bin/loop-install-launchd.sh --plist batch`.
