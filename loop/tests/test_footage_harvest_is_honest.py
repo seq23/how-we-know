@@ -383,11 +383,9 @@ def main() -> int:
         check("with no Mac stamp the ci lane takes DELEGATED_HARVEST_STALE",
               rec.get("code") == "DELEGATED_HARVEST_STALE",
               f"rc={r2.returncode} code={rec.get('code')} tail={r2.stdout[-400:]!r}")
-        # Since 2026-11-02 (finding 4): an agent's to fix, not hers - loud
-        # (exit 3, an agent-fix issue), never "a secret only she holds".
-        check("which is needs_human (agent-fix): loud, recorded, never framed as hers",
-              r2.returncode == 3 and rec.get("disposition") == "needs_human"
-              and "NEEDS A SECRET ONLY SHE HOLDS" not in r2.stdout,
+        check("which is owner_action: green, recorded, at the top of the digest",
+              r2.returncode == 0 and rec.get("disposition") == "owner_action"
+              and "NEEDS A SECRET ONLY SHE HOLDS" in r2.stdout,
               f"rc={r2.returncode} disposition={rec.get('disposition')}")
         check("the stop says how to start the host, not which binary is missing",
               "bin/batch-session.sh" in (rec.get("unblock") or "")
@@ -438,14 +436,10 @@ def main() -> int:
           "HARVESTER_TOOLING_ABSENT" in policy.get("needs_human", {})
           and "HARVESTER_TOOLING_ABSENT" not in policy.get("self_resolving", {})
           and "HARVESTER_TOOLING_ABSENT" not in policy.get("owner_action", {}))
-    # Since 2026-11-02 (finding 4) only her credentials and accounts are hers:
-    # a Mac that has not run the harvester is an agent's to fix (agent-fix),
-    # and the digest told her to "add the missing key" while it was fine.
-    check("DELEGATED_HARVEST_STALE is needs_human (agent-fix, not hers) with a cap and an escalation",
-          "DELEGATED_HARVEST_STALE" not in policy.get("owner_action", {}) and
-          isinstance(policy.get("needs_human", {}).get("DELEGATED_HARVEST_STALE", {})
+    check("DELEGATED_HARVEST_STALE is owner_action with a cap and an escalation",
+          isinstance(policy.get("owner_action", {}).get("DELEGATED_HARVEST_STALE", {})
                      .get("max_consecutive"), int)
-          and bool(policy["needs_human"]["DELEGATED_HARVEST_STALE"].get("escalation")))
+          and bool(policy["owner_action"]["DELEGATED_HARVEST_STALE"].get("escalation")))
     check("DELEGATED_HARVEST_FAILING is needs_human (the host ran it and it broke)",
           "DELEGATED_HARVEST_FAILING" in policy.get("needs_human", {})
           and "DELEGATED_HARVEST_FAILING" not in policy.get("owner_action", {})

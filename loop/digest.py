@@ -331,6 +331,9 @@ def action_for(stop: dict) -> str | None:
             return "sign in to YouTube again"
         if code == "UPLOADS_LOCKED_PRIVATE":
             return "clear the lock in YouTube Studio"
+        if code == "DELEGATED_HARVEST_STALE":
+            # her Mac, asleep - not a key (it said "add the missing key" once)
+            return "wake the Mac for its night run"
         return "add the missing key or login"
     return None
 

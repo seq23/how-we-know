@@ -24,6 +24,8 @@ import common  # noqa: E402
 import digest  # noqa: E402
 
 CREDENTIAL = re.compile(r"KEY|OAUTH|CREDENTIAL|SCOPE|CHANNEL|LOCKED|ARMED|ACCOUNT")
+# Her hardware, not a key: the Mac that runs the night batch must be awake.
+HER_HARDWARE = {"DELEGATED_HARVEST_STALE"}
 
 
 def rc_of(code: str, message: str, unblock: str = "") -> int:
@@ -37,15 +39,18 @@ def rc_of(code: str, message: str, unblock: str = "") -> int:
 
 def main() -> int:
     fails = []
-    if rc_of("ZZ_UNLISTED_TEST", "Nothing to run: the runway is full.") != 0:
+    if rc_of("ZZ_UNLISTED_TEST", "the runway is full.", unblock="Nothing to run.") != 0:
         fails.append("a stop that says 'Nothing to run' still paged")
+    if rc_of("ZZ_UNLISTED_TEST4", "Nothing is on the shelf because a lane broke.",
+             unblock="Find the lane and fix it.") != 3:
+        fails.append("a defect whose MESSAGE starts 'Nothing' stopped paging")
     if rc_of("ZZ_UNLISTED_TEST2", "the runway is short.", unblock="Nothing to do; it refills itself.") != 0:
         fails.append("a stop whose instruction says 'Nothing to do' still paged")
     if rc_of("ZZ_UNLISTED_TEST3", "the upload failed with HTTP 500.") != 3:
         fails.append("negative: an unlisted defect no longer pages at all")
     pol = json.load(open(os.path.join(LOOP, "stop_policy.json")))
     bad = [c for c in pol.get("owner_action", {}) if not c.startswith("_")
-           and not CREDENTIAL.search(c)]
+           and not CREDENTIAL.search(c) and c not in HER_HARDWARE]
     if bad:
         fails.append(f"owner_action codes that are not her key or account: {bad}")
     if not [c for c in pol.get("owner_action", {}) if not c.startswith("_")]:
@@ -63,3 +68,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

@@ -446,9 +446,10 @@ def _match_rule(section, code: str):
 # sixteen codes it names; every other human-clearable stop falls through to the
 # hold, which is open to all of them. Nothing is classified in both.
 def nothing_to_do(message: str, unblock: str = "") -> bool:
-    """True when the stop's message or its instruction starts with "Nothing"."""
-    return any(str(t or "").lstrip().lower().startswith("nothing")
-               for t in (message, unblock))
+    """True when the stop's INSTRUCTION to a person starts with "Nothing" ("Nothing
+    to run", "Nothing for a person"). The message is not read: "Nothing is on
+    the shelf because ..." describes a defect (AUTHORED_NOT_QUEUED)."""
+    return str(unblock or "").lstrip().lower().startswith("nothing")
 
 
 def disposition(stage: str, code: str, detail, streak: int,

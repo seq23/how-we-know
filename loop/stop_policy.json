@@ -463,6 +463,16 @@
     }
   },
   "owner_action": {
+    "DELEGATED_HARVEST_STALE": {
+      "why": "research/imagery_video.py runs on the Mac's nightly batch (the only host with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows it has not run inside harvest.delegated_max_age_days. The batch runs it every night the Mac is awake with its lid open; the next run's stamp clears this. The Mac is the one external host she alone holds.",
+      "max_consecutive": 2,
+      "escalation": "Two consecutive Saturdays with no stamp from the Mac is nearly a month with no video harvest, on a pool the channel's format depends on. Go red - and if the Mac's batch IS running nightly, the harvest step in bin/batch-session.sh is not reaching loop/footage_lane.py --host mac-batch, which is a defect.",
+      "holds": {
+        "kind": "external_service",
+        "what": "the Mac, the only host with ffmpeg and Apple Vision"
+      },
+      "plain": "the Mac has not collected new footage recently"
+    },
     "_why": [
       "CLASS (b): A SECRET OR AN ACCOUNT ONLY SHE HOLDS. Owner's rule, 2026-09-25,",
       "verbatim: 'Nothing is supposed to wait on the owner.' Nothing here is a",
@@ -643,16 +653,6 @@
     "OWNER_HOLD_NOT_APPLIED": {
       "why": "loop/owner_hold.py asked YouTube to clear a withdrawn video's publishAt and keep it private, and after a second round trip and a delayed read it still carries a date or is not private: it may go public on that date. A real defect.",
       "plain": "a video taken off the schedule still shows a publish date on YouTube"
-    },
-    "DELEGATED_HARVEST_STALE": {
-      "why": "research/imagery_video.py runs on the Mac's nightly batch (the only host with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows it has not run inside harvest.delegated_max_age_days. The batch runs it every night the Mac is awake with its lid open; the next run's stamp clears this. The Mac is the one external host she alone holds.",
-      "max_consecutive": 2,
-      "escalation": "Two consecutive Saturdays with no stamp from the Mac is nearly a month with no video harvest, on a pool the channel's format depends on. Go red - and if the Mac's batch IS running nightly, the harvest step in bin/batch-session.sh is not reaching loop/footage_lane.py --host mac-batch, which is a defect.",
-      "holds": {
-        "kind": "external_service",
-        "what": "the Mac, the only host with ffmpeg and Apple Vision"
-      },
-      "plain": "the Mac has not collected new footage recently"
     },
     "ZERO_WORK": {
       "why": "Rule 0. A stage that did nothing is indistinguishable from a stage that is broken, so this one always reaches a person.",

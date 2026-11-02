@@ -1811,12 +1811,13 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   - A stop whose message or instruction starts "Nothing" never pages, except Rule 0 (ZERO_WORK)
     and quota stops.
   - The digest names an action only for owner_action stops.
-  - DELEGATED_HARVEST_STALE moves to needs_human, which now means agent-fix.
+  - DELEGATED_HARVEST_STALE stays hers (her Mac must be awake) but the digest now says "wake the
+    Mac for its night run", not "add the missing key or login".
   - draft.py holds exactly the episodes a validator failure names (loop/state/validator_hold.json,
     read by backfill.library_pending). The breaker trips only on a failure that names no episode.
   - publish_days now equals the rotation, and validate_plan fails if they ever differ.
 - **Tests rewritten to the new truth (never loosened):** test_held_stops (agent-fix label, no
   mention, clean-run close), test_digest_queue_and_health (no "needs you" for agent stops; her
-  sign-in still does), test_footage_harvest_is_honest (STALE is loud and an agent's).
+  sign-in still does).
 - Guards: test_only_her_keys_page_her.py, test_validator_holds_the_episode.py; negative proofs
   run (each break red, restored green).
