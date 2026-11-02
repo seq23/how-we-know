@@ -344,22 +344,212 @@
       "queued": "2026-10-13"
     },
     {
-      "slug": "what-is-inside-chocolate-steak-bread",
+      "slug": "why-does-chocolate-taste-so-good",
       "domain": "food-science",
-      "title": "Why does chocolate taste so good, steak taste better seared and my bread not rising?",
-      "query": "why does chocolate taste so good steak taste better seared and my bread not rising",
+      "title": "Why does chocolate taste so good?",
+      "query": "why does chocolate taste so good",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "an episode of three gated food rows, each of which passed: why-does-chocolate-taste-so-good: demand 0.431 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling.; why-does-steak-taste-better-seared: demand 0.468 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling.; why-is-my-bread-not-rising: demand 0.390 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.431 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
       },
-      "first_video_parts": [
-        "why does chocolate taste so good",
-        "why does steak taste better seared",
-        "why is my bread not rising"
-      ],
-      "made_by": "loop/food_author.py + bin/food-session.sh (scripts/food/, rendered as pieces and stitched)",
-      "queued": "2026-11-02"
+      "demand": {
+        "demand_index": 0.4309,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "good",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does chocolate taste so good"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:04.646462+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.659,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.433,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 426763.5,
+        "p90_views": 5994715,
+        "median_subscribers": 343500.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 692,
+        "published_last_365d": 5,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.209,
+          "view_ceiling": 0.196,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:39.307943+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5329,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.43) -- uncontested because few ask it."
+    },
+    {
+      "slug": "why-does-steak-taste-better-seared",
+      "domain": "food-science",
+      "title": "Why does steak taste better seared?",
+      "query": "why does steak taste better seared",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.468 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.468,
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "better",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:16.248281+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.602,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.35,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 4402967.0,
+        "p90_views": 14772742,
+        "median_subscribers": 2020000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 908,
+        "published_last_365d": 0,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.099,
+          "view_ceiling": 0.051,
+          "staleness": 1.0
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:54.527923+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5308,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 4,402,967 views and 2,020,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "why-is-my-bread-not-rising",
+      "domain": "food-science",
+      "title": "Why is my bread not rising?",
+      "query": "why is my bread not rising",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.390 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3895,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 2,
+        "key_term": "rising",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 3,
+        "sample_completions": [
+          "why is my bread not rising",
+          "why is my sourdough bread not rising",
+          "why my bread dough isn't rising",
+          "why does my bread not rise"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:17.148959+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.689,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.267,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 95571.0,
+        "p90_views": 892351,
+        "median_subscribers": 75350.0,
+        "channels_under_100k_subs": 12,
+        "median_age_days": 1489,
+        "published_last_365d": 2,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.303,
+          "view_ceiling": 0.289,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:55.642284+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.518,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
     },
     {
       "slug": "what-is-inside-butter-rice-meat",
@@ -1602,217 +1792,6 @@
       "episode": "why-bread-rises-steak-browns-chocolate-snaps"
     },
     {
-      "slug": "why-does-chocolate-taste-so-good",
-      "domain": "food-science",
-      "title": "Why does chocolate taste so good?",
-      "query": "why does chocolate taste so good",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.431 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4309,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "good",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does chocolate taste so good"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:04.646462+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.659,
-        "title_gap": 0.95,
-        "title_coverage_mean": 0.433,
-        "strong_match_count": 1,
-        "results_examined": 20,
-        "median_views": 426763.5,
-        "p90_views": 5994715,
-        "median_subscribers": 343500.0,
-        "channels_under_100k_subs": 6,
-        "median_age_days": 692,
-        "published_last_365d": 5,
-        "interpretation": "1 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.95,
-          "incumbent_subs": 0.209,
-          "view_ceiling": 0.196,
-          "staleness": 0.75
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:39.307943+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5329,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.43) -- uncontested because few ask it.",
-      "episode": "what-is-inside-chocolate-steak-bread"
-    },
-    {
-      "slug": "why-does-steak-taste-better-seared",
-      "domain": "food-science",
-      "title": "Why does steak taste better seared?",
-      "query": "why does steak taste better seared",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.468 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.468,
-        "autocomplete_completions": 0,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "better",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:16.248281+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.602,
-        "title_gap": 0.85,
-        "title_coverage_mean": 0.35,
-        "strong_match_count": 3,
-        "results_examined": 20,
-        "median_views": 4402967.0,
-        "p90_views": 14772742,
-        "median_subscribers": 2020000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 908,
-        "published_last_365d": 0,
-        "interpretation": "3 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.85,
-          "incumbent_subs": 0.099,
-          "view_ceiling": 0.051,
-          "staleness": 1.0
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:54.527923+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5308,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 4,402,967 views and 2,020,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
-      "episode": "what-is-inside-chocolate-steak-bread"
-    },
-    {
-      "slug": "why-is-my-bread-not-rising",
-      "domain": "food-science",
-      "title": "Why is my bread not rising?",
-      "query": "why is my bread not rising",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.390 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3895,
-        "autocomplete_completions": 4,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 2,
-        "key_term": "rising",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 3,
-        "sample_completions": [
-          "why is my bread not rising",
-          "why is my sourdough bread not rising",
-          "why my bread dough isn't rising",
-          "why does my bread not rise"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:17.148959+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.689,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.267,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 95571.0,
-        "p90_views": 892351,
-        "median_subscribers": 75350.0,
-        "channels_under_100k_subs": 12,
-        "median_age_days": 1489,
-        "published_last_365d": 2,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.303,
-          "view_ceiling": 0.289,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:55.642284+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.518,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it.",
-      "episode": "what-is-inside-chocolate-steak-bread"
-    },
-    {
       "slug": "how-does-butter-get-made-from-cream",
       "domain": "food-science",
       "title": "How does butter get made from cream?",
@@ -2038,5 +2017,5 @@
     "why does popcorn pop",
     "why does salt make food taste better"
   ],
-  "queue_length": 10
+  "queue_length": 12
 }

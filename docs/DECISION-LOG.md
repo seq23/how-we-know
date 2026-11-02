@@ -1684,3 +1684,25 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   "happen"/"to"; restoring the batch-made exclusion fails "not offered as a part"; alphabetical
   `in_flight` fails "not oldest-first"; restored, green. `test_every_lane_has_a_runner.py` now
   holds the food agent to Sun/Mon/Wed/Thu 22:58.
+
+## 2026-11-02 — The food author never makes the same video twice
+
+- **Found (CONFIRMED):** the 13 Oct episode "Bread, Steak, Chocolate: What's Inside?"
+  (`why-bread-rises-steak-browns-chocolate-snaps`, 8bVPoTWAfFQ, uploaded 15 Oct, scheduled public
+  17 Oct 15:00 UTC; owner confirms it is live) recorded its parts by their 13 Oct queries only,
+  so `next_parts()` saw "why does chocolate taste so good", "why does steak taste better seared"
+  and "why is my bread not rising" as unmade and authored `what-is-inside-chocolate-steak-bread`
+  - the same video again - due to render on the Mac that night.
+- **Undone (owner "Go", 2 Nov):** `food_author.py --unmake what-is-inside-chocolate-steak-bread`
+  (unrendered, no spec, no upload; parts back in the queue).
+- **Rule (owner, 2 Nov):** "The repeat checker should only check if the same video is being made
+  - a new video with another meat in it but a different trio is fine. That was so petty." A
+  repeat is the same trio of foods (order-insensitive) or the same slug; no synonyms, no
+  single-food overlap. `what-is-inside-butter-rice-meat` stays and renders next.
+- **Fix:** `food_author.made_sets()` reads every made episode's trio and slug from every record -
+  episode rows (`first_video_parts` and slug), food episode specs (segment subjects, superseded
+  included) and the upload ledger (slug, title). `next_parts()` skips the row that would complete
+  a made trio and takes the next one.
+- **Guard:** `loop/tests/test_food_no_repeats.py`. Negative proof: disabling the `repeats()` check
+  in `next_parts()` fails 2 cases (the constructed and the real queue both rebuild
+  chocolate/steak/bread); restored, green.
