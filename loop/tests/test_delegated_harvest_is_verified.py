@@ -168,9 +168,17 @@ def main() -> int:
     # The real video harvester is delegated to the Mac. Give it a fresh stamp
     # in every planted stamps file below so its verdict never leaks into the
     # probe's: this file is about the CLASS, and the probe is the instance.
-    VIDEO_FRESH = {"research/imagery_video.py": {
-        "host": "mac-batch", "last_run_at": iso(1), "last_success_at": iso(1),
-        "ok": True, "exit": 0, "records": 113, "tail": []}}
+    # EVERY real delegated harvester, not one named file: a second one
+    # (research/imagery_stock_video.py, 2026-11-02) with no planted stamp would
+    # read as stale and leak its stop into every case below.
+    VIDEO_FRESH = {h["rel"]: {
+        "host": FL.host_of(h), "last_run_at": iso(1), "last_success_at": iso(1),
+        "ok": True, "exit": 0, "records": 113, "tail": []}
+        for h in FL.declared_harvesters()
+        if h.get("scheduled", True) and FL.host_of(h) != "ci"}
+    if "research/imagery_video.py" not in VIDEO_FRESH:
+        print("FAIL: research/imagery_video.py is no longer a delegated harvester")
+        return 1
 
     try:
         # ---------------------------------------------------- 1. fresh
@@ -294,9 +302,11 @@ def main() -> int:
         # its own stamp (case 10), so a stamp claiming records the disk does
         # not hold would send the REAL video harvester to NOAA from a test.
         # Stamp what is actually on disk: absent on a runner, the pool on the Mac.
-        VIDEO_OWNED = {"research/imagery_video.py": dict(
-            VIDEO_FRESH["research/imagery_video.py"],
-            records=FL._count(FL.ROOT / "channel/imagery/video_rights.json"))}
+        # Every real Mac harvester, so none is spawned for real (the stock
+        # harvester would reach Pixabay and rewrite video_rights.json).
+        VIDEO_OWNED = {rel: dict(st, records=FL._count(FL.ROOT / h["manifest"]))
+                       for h in FL.declared_harvesters()
+                       for rel, st in VIDEO_FRESH.items() if h["rel"] == rel}
         json.dump(dict(VIDEO_OWNED, **ci_fresh), open(stamps_p, "w"))
         os.environ["LOOP_STOPS_DIR"] = stops
         os.environ["LOOP_HARVEST_STAMPS"] = stamps_p
