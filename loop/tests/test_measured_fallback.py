@@ -6,7 +6,7 @@ walked config/llm_routing.json in its written order: the first model
 lane ~5 minutes before the router moved on; the second answered every time
 with drafts that never passed; the rest were never reached. loop/llm_router.py
 now writes every free-model outcome and every structural verdict to
-loop/state/llm_route_ledger.json and walks standing() order. This pins:
+loop/state/llm_route_ledger.json and ranks within provider tiers. Gemini stays first (owner 2 Nov). This pins:
 
   a. an empty ledger -> exactly the config order;
   b. model 2 GOOD, model 1 BAD, model 3 UNMEASURED -> [2, 3, 1]; buckets
@@ -21,7 +21,7 @@ loop/state/llm_route_ledger.json and walks standing() order. This pins:
      and loop/author.py calls it right after record_spend;
   f. the ledger never holds a key ("sk-"), a prompt or a draft body, and
      never the subscription tier;
-  g. config: Ultra is last and `_why` cites run 38235183608 and standing();
+  g. config retains the $0 constraints and subscription route;
   h. the ledger is in mon-draft's static write set and a stage pathspec
      covers it, and its union merge driver is registered and merges;
   i. a seeded ledger (if committed) reproduces the bench ranking it was
@@ -247,9 +247,6 @@ def check() -> tuple[list[str], int]:
         bench = cfg.get("seeded_from_bench")
         if not bench and ids[-1] != ULTRA:
             fails.append(f"(g) {ULTRA} is not last in config models: {ids}")
-        why = " ".join(cfg.get("_why") or [])
-        if "38235183608" not in why or "standing()" not in why:
-            fails.append("(g) config _why does not cite run 38235183608 and standing()")
         if R.config_problems(cfg):
             fails.append(f"(g) config problems: {R.config_problems(cfg)}")
         if cfg.get("max_cost_usd") != 0 or cfg.get("paid_fallback") is not False \
@@ -371,29 +368,36 @@ def check() -> tuple[list[str], int]:
                     or [e["outcome"] for e in led["models"].get(gem_ids[1], [])] != ["answered"]:
                 fails.append(f"(j) Gemini ledger outcomes: {led['models']}")
 
-            n += 1
-            R.LEDGER = tmp / "gem-allfail.json"
-            gsent.clear(); osent.clear()
-            R._gemini_post = gpost([404, 403, 429, 500, _ok("")])
-            with contextlib.redirect_stdout(io.StringIO()) as buf:
-                resp = R.complete([{"role": "user", "content": "x"}], KEY)
-            if len(gsent) != len(gem_ids) or resp.get("model_used") != cfg_models[0]:
-                fails.append(f"(j) all Gemini failing: {len(gsent)} Gemini calls, "
-                             f"answered by {resp.get('model_used')}")
-            led = json.loads(R.LEDGER.read_text())
-            outs = [led["models"][g][0]["outcome"] for g in gem_ids]
-            if outs != ["error", "error", "rate_limited", "error", "empty"]:
-                fails.append(f"(j) all-fail Gemini outcomes: {outs}")
-            if GKEY in R.LEDGER.read_text() or "AIza" in R.LEDGER.read_text():
-                fails.append("(j) the Gemini key reached the ledger")
+            # Every failure shape exhausts the entire configured Gemini tier.
+            for failure, outcome in ((404, "error"), (403, "error"),
+                                     (429, "rate_limited"), (500, "error"),
+                                     (_ok(""), "empty")):
+                n += 1
+                R.LEDGER = tmp / f"gem-allfail-{outcome}-{n}.json"
+                gsent.clear(); osent.clear()
+                R._gemini_post = gpost([failure] * len(gem_ids))
+                with contextlib.redirect_stdout(io.StringIO()):
+                    resp = R.complete([{"role": "user", "content": "x"}], KEY)
+                if len(gsent) != len(gem_ids) or resp.get("model_used") != cfg_models[0]:
+                    fails.append(f"(j) all Gemini {outcome}: {len(gsent)} calls, "
+                                 f"answered by {resp.get('model_used')}")
+                led = json.loads(R.LEDGER.read_text())
+                outs = [led["models"][g][0]["outcome"] for g in gem_ids]
+                if outs != [outcome] * len(gem_ids):
+                    fails.append(f"(j) all-fail Gemini outcomes: {outs}")
+                if GKEY in R.LEDGER.read_text() or "AIza" in R.LEDGER.read_text():
+                    fails.append("(j) the Gemini key reached the ledger")
 
-            # a rate-limited Gemini day drops it below a good OpenRouter model
+            # A rate-limited Gemini falls behind other Gemini models,
+            # but even a GOOD OpenRouter model stays in the second tier.
             n += 1
             led = {"models": {gem_ids[0]: [_ev("rate_limited")] * 4,
                               cfg_models[1]: [_ev("passed")] * 4}}
-            got = [r["model"] for r in R.standing(R.roster(), led)]
-            if got[0] != cfg_models[1] or got[-1] != gem_ids[0]:
-                fails.append(f"(j) rate-limited Gemini not demoted: {got}")
+            got = R.route_order(rows=R.standing(R.roster(), led))
+            want = (gem_ids[1:] + gem_ids[:1] + cfg_models[1:2]
+                    + cfg_models[:1] + cfg_models[2:])
+            if got != want:
+                fails.append(f"(j) measured order crossed tiers: {got} != {want}")
             # a retry naming a Gemini model while the key is set is honoured
             n += 1
             R.LEDGER = tmp / "gem-pref.json"

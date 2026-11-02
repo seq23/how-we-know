@@ -629,29 +629,24 @@ Monday authoring budget ends well before the 09:00 upload lane.
 
 The order, decided in code (`loop/llm_router.py`, `config/llm_routing.json`):
 
-1. **Your Claude subscription first**, through the headless Claude Code CLI
-   (`claude -p --model opus`, never `--bare`: `--bare` ignores the OAuth
-   token), whenever the lane carries `CLAUDE_CODE_OAUTH_TOKEN`. Prepaid; no
-   per-call bill.
-2. **Your Google AI Studio key, free tier only, second** (`gemini_route` in
-   `config/llm_routing.json`), whenever the lane carries `GEMINI_API_KEY`.
-   Models are tried in the listed order through Google's OpenAI-compatible
-   endpoint; a 403/404/429, timeout or empty answer skips to the next with one
-   `[gemini-route] skipped …` line, and the tier never stops a lane.
-   **Data rule:** free-tier Gemini prompts may be used by Google to improve its
-   products, so this tier is fine for channel scripts and **never for anything
-   confidential (LP names, deal terms)**. The router is the only door to a
-   model here, and this repo holds nothing confidential.
-3. **The $0 OpenRouter list third** (`config/llm_routing.json` `models`), if
-   the tiers above are missing or fail for any reason. Gemini and OpenRouter
-   models are ranked together by the measured standing below, so a
-   rate-limited Gemini day drops Gemini under a good OpenRouter model on its
-   own.
-4. **Never an API key, never a paid model.** `max_cost_usd` is 0 and
-   `paid_fallback` is false; a reported cost above 0 is a named stop.
+1. **Gemini free tier first**, with your AI Studio key (`GEMINI_API_KEY`).
+   Strongest current free models seed the order in `gemini_route.models`.
+   Failures move to the next model. Never enable billing on this project.
+   **Data rule:** free-tier prompts may improve Google's products: channel
+   scripts only, never confidential data (LP names, deal terms).
+2. **Curated $0 OpenRouter models second**, from `config/llm_routing.json`.
+   The dated `why` fields explain the benchmark evidence for each selection.
+   Standing ranks models within each tier; Gemini always precedes OpenRouter.
+3. **Claude subscription last**, via `CLAUDE_CODE_OAUTH_TOKEN` and the
+   headless CLI (`claude -p --model opus`, never `--bare`). Asked only after
+   the available free models fail or their drafts fail validation. Prepaid,
+   no per-call bill. Failed drafts are excluded from subsequent draft calls.
+4. **No paid fallback.** `max_cost_usd: 0`, `paid_fallback: false`, OpenRouter
+   max price 0 and its $0 key limit remain enforced. Named stops remain.
 
-**Why:** your decisions of 11 Oct 2026 ("nothing should be paid") and 12 Oct
-2026 ("use my claude subscription usage in advance of the $0 openrouter").
+**Why:** owner 2026-11-02: "free models first, claude last -- but let's be
+picky about which free models, like gemini and good ones." Supersedes the
+12 Oct subscription-first ruling.
 
 **Request shape (PR #171):** every OpenRouter request caps hidden reasoning at
 2,000 tokens (`reasoning_max_tokens`) inside `max_tokens` 24,000, so reasoning
@@ -766,7 +761,7 @@ default) sends the month to date. Four sections: what was published, by
 format and domain with titles; what the data says; every keep/change/pivot
 rule with its numbers, triggered or not; what needs you. Subject:
 `Monthly: N episodes + M Shorts published in <Month>; <rule clause>`. The one
-advisory paragraph comes through the router (subscription first) and is
+advisory paragraph comes through the router (free models first, subscription last) and is
 refused if it carries a number the email did not print. The pivot research
 reaches you through this email. First one, 12 Oct 2026: issue #179, "Monthly:
 7 episodes + 4 Shorts published in October so far (to 12 Oct); no pivot rule
@@ -849,7 +844,7 @@ ever changed during an active test.
 ## Things that are true and easy to forget
 
 - **Claude is not part of the running system's decisions.** A model (your
-  Claude subscription first — see *Model route*) writes and translates scripts,
+  free models first, Claude last — see *Model route*) writes and translates scripts,
   but nothing calls a model to decide whether to publish. Close the terminal and the channel keeps going.
 - **"Agent" here means a macOS timer**, not an AI. Three were removed on
   2026-09-01; one remains.

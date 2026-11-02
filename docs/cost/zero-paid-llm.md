@@ -27,11 +27,11 @@ site loops, not this repo.
 
 - **`config/llm_routing.json`** — the only models any lane may call: an ordered
   list of `:free` models priced $0/$0 with ≥32k context, a `snapshot_date`,
-  `max_cost_usd: 0`, `paid_fallback: false`. Snapshot 2026-10-11:
-  1. `nvidia/nemotron-3-ultra-550b-a55b:free`
-  2. `nvidia/nemotron-3-super-120b-a12b:free`
-  3. `google/gemma-4-31b-it:free`
-  4. `google/gemma-4-26b-a4b-it:free`
+  `max_cost_usd: 0`, `paid_fallback: false`. The dated config roster and
+  each model's `why` record the current selection and measured evidence.
+  Owner 2026-11-02: "free models first, claude last -- but let's be picky
+  about which free models, like gemini and good ones." Gemini free tier
+  first, curated OpenRouter second, Claude subscription last.
 
   (`thinkingmachines/inkling:free` is listed at $0 but answers 403 "only
   available on agentic harnesses" to this key, so it is excluded.)

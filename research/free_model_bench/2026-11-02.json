@@ -1,0 +1,705 @@
+{
+  "date": "2026-11-02",
+  "roster": [
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "nvidia/nemotron-3.5-super-vl:free",
+    "dots-studio/dots-3-note-preview:free",
+    "google/gemma-4-31b-it:free",
+    "gemini-3.8-flash",
+    "gemini-3.6-flash",
+    "gemini-2.5-pro",
+    "gemini-2.5-flash",
+    "gemini-3.5-flash-lite"
+  ],
+  "config_roster": [
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "nvidia/nemotron-3.5-super-vl:free",
+    "dots-studio/dots-3-note-preview:free",
+    "google/gemma-4-31b-it:free"
+  ],
+  "floor_words": 1446,
+  "wpm": 144.58,
+  "cap": 16,
+  "prior_aborted_requests": 6,
+  "prior_rows": [],
+  "reasoning": "default",
+  "topics": [
+    {
+      "slug": "how-does-3d-printing-metal-work",
+      "question": "how does 3d printing metal work",
+      "domain": "materials-and-manufacturing",
+      "pov_id": "pov-122"
+    },
+    {
+      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+      "question": "why does bread rise steak brown and chocolate snap",
+      "domain": "food-science",
+      "pov_id": "pov-082"
+    }
+  ],
+  "rows": [
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 64.7,
+      "words": 819,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 819 words; at the measured 144.58 wpm that is ~5.7 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 10 of the 30 content words of the Direct-answer lock's first sentence are spoken there (need 15). Move the payoff - 'Metal 3D printing builds parts by melting or binding metal powder layer by layer using a focused energy source such as a' - into the cold open, before the evidence chain."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 3761,
+      "reasoning_tokens": 1999,
+      "category": "structure",
+      "head": "# How does 3D printing metal work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1800\n**Estimated narration:** 12m 26s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 36.6,
+      "words": 1021,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1021 words; at the measured 144.58 wpm that is ~7.1 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "uncertain directive's RANGE '300-800' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: Residual stress | MPa | 300-800 | medium | As\u2011built Ti\u20116Al\u20114V'",
+        "directive draws name 'Ti\u20116Al\u20114V' the narration never speaks: '{{uncertain: Residual stress | MPa | 300-800 | medium | As\u2011built Ti\u20116Al\u20114V'",
+        "the directive '{{uncertain: Residual stress | MPa | 300-800 | medium | As\u2011built Ti\u20116Al\u20114V}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 3420,
+      "reasoning_tokens": 1276,
+      "category": "structure",
+      "head": "# How does 3D printing metal work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1850\n**Estimated narration:** 12m 48s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "correction"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 55.8,
+      "words": 1232,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1232 words; at the measured 144.58 wpm that is ~8.5 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws number '140' the narration never speaks: '{{uncertain: 140 | to | 165 | degrees Celsius | Onset range for Maillard i'",
+        "directive draws number '165' the narration never speaks: '{{uncertain: 140 | to | 165 | degrees Celsius | Onset range for Maillard i'",
+        "directive draws number '0.6' the narration never speaks: '{{checklist: WATER ACTIVITY GATES | +Bread: aw ~0.95 enables yeast metabol'",
+        "uncertain directive has no RANGE field; visuals/CONTRACT.md rule 7 requires a stated \u00b1 half-width: '{{uncertain: Variable | | | | Maillard product distribution in real steak '",
+        "the directive '{{uncertain: Variable | | | | Maillard product distribution in real steak vs model systems' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "YouTube title 'Why Does Bread Rise Steak Brown and Chocolate Snap?': title is 51 characters, over the 40 a phone shows"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 3512,
+      "reasoning_tokens": 671,
+      "category": "structure",
+      "head": "# Why Does Bread Rise Steak Brown and Chocolate Snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** food-science\n**Word count:** 1780\n**Estimated narration:** 12m 19s a",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 34.8,
+      "words": 1251,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1251 words; at the measured 144.58 wpm that is ~8.7 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws number '140' the narration never speaks: '{{uncertain: 140 | to | 165 | degrees Celsius | Onset range for Maillard i'",
+        "directive draws number '165' the narration never speaks: '{{uncertain: 140 | to | 165 | degrees Celsius | Onset range for Maillard i'",
+        "directive draws number '0.95' the narration never speaks: '{{checklist: WATER ACTIVITY GATES | +Bread: aw ~0.95 enables yeast metabol'",
+        "directive draws number '0.6' the narration never speaks: '{{checklist: WATER ACTIVITY GATES | +Bread: aw ~0.95 enables yeast metabol'",
+        "directive draws number '0.5' the narration never speaks: '{{uncertain: 1 | +/- | 0.5 | log CFU per gram | Microbial growth threshold'",
+        "directive draws name 'CFU' the narration never speaks: '{{uncertain: 1 | +/- | 0.5 | log CFU per gram | Microbial growth threshold'",
+        "YouTube title 'Why Do Bread Rise Steak Brown Chocolate Snap?': title is 45 characters, over the 40 a phone shows"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 3094,
+      "reasoning_tokens": 241,
+      "category": "structure",
+      "head": "# Why Do Bread Rise Steak Brown Chocolate Snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** food-science\n**Word count:** 1790\n**Estimated narration:** 12m 23s at 144.",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "correction"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "latency_s": 14.1,
+      "words": 782,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 782 words; at the measured 144.58 wpm that is ~5.4 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'International' the narration never speaks: '{{define: powder bed fusion | a process that spreads a thin layer of metal'",
+        "directive draws name 'Department' the narration never speaks: '{{define: feedstock | the material supplied to the printer | in metal prin'",
+        "directive draws name 'Science' the narration never speaks: '{{define: feedstock | the material supplied to the printer | in metal prin'",
+        "directive draws name 'Engineering' the narration never speaks: '{{define: feedstock | the material supplied to the printer | in metal prin'",
+        "the directive '{{magnitude: cooling rate | degrees per second | laser=high | furnace=low}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 6 of the 19 content words of the Direct-answer lock's first sentence are spoken there (need 10). Move the payoff - 'Metal 3D printing builds a solid part by melting metal powder or wire in a precise path, one thin layer at a time, until' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first narrated sentence is 21 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A metal part can be built without a mold, without a cutting tool, and without a single block of starting stock.'",
+        "source URL is unreachable (TimeoutError): https://www.astm.org/"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3.5-super-vl:free",
+      "completion_tokens": 3699,
+      "reasoning_tokens": 1999,
+      "category": "dead_url",
+      "head": "# How does 3D printing metal work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1620\n**Estimated narration:** 11m 13s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "latency_s": 12.9,
+      "words": 957,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 957 words; at the measured 144.58 wpm that is ~6.6 minutes, under the 10.0-minute hard floor (1446 words minimum)"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3.5-super-vl:free",
+      "completion_tokens": 3877,
+      "reasoning_tokens": 1999,
+      "category": "length_only",
+      "head": "# How does 3D printing metal work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1684\n**Estimated narration:** 11m 39s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "correction"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "latency_s": 19.2,
+      "words": 893,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 893 words; at the measured 144.58 wpm that is ~6.2 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "uncertain directive's RANGE 'varies by food composition and moisture' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: exact browning threshold | temperature | varies by food compo'",
+        "the directive '{{uncertain: exact browning threshold | temperature | varies by food composition and moist' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 2 of the 9 content words of the Direct-answer lock's first sentence are spoken there (need 5). Move the payoff - 'Bread rises because yeast releases gas that gets trapped in the dough.' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first narrated sentence is 40 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A loaf of bread can leave the oven many times larger than the dough that went in, while a piece of chocolate holds a cle'"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3.5-super-vl:free",
+      "completion_tokens": 3991,
+      "reasoning_tokens": 1999,
+      "category": "structure",
+      "head": "# Why does bread rise, steak brown, and chocolate snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED  \n**Domain:** food-science  \n**Word count:** approximately 1735  \n**Estimated ",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "latency_s": 18.8,
+      "words": 940,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 940 words; at the measured 144.58 wpm that is ~6.5 minutes, under the 10.0-minute hard floor (1446 words minimum)"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3.5-super-vl:free",
+      "completion_tokens": 4012,
+      "reasoning_tokens": 1999,
+      "category": "length_only",
+      "head": "# Why does bread rise, steak brown, and chocolate snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED  \n**Domain:** food-science  \n**Word count:** approximately 1735  \n**Estimated ",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "correction"
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "latency_s": 226.4,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "dots-studio/dots-3-note-preview:free",
+      "completion_tokens": 24000,
+      "reasoning_tokens": 29273,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=29273",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "latency_s": 228.2,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "dots-studio/dots-3-note-preview:free",
+      "completion_tokens": 24000,
+      "reasoning_tokens": 28505,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=28505",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "latency_s": 0.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "{\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortl",
+      "category": "empty_or_error",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "latency_s": 0.3,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "{\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortl",
+      "category": "empty_or_error",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "latency_s": 4.3,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_503",
+      "error": "[{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again late",
+      "category": "empty_or_error",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "latency_s": 300.0,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "error",
+      "error": "TimeoutError: The read operation timed out",
+      "category": "empty_or_error",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "latency_s": 145.3,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_503",
+      "error": "[{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again late",
+      "category": "empty_or_error",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "latency_s": 80.5,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_503",
+      "error": "[{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again late",
+      "category": "empty_or_error",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "latency_s": 0.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_404",
+      "error": "[{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"This model models/gemini-2.5-pro is no longer available to new users. Please update your code to use models/gem",
+      "category": "empty_or_error",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "latency_s": 0.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_404",
+      "error": "[{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"This model models/gemini-2.5-pro is no longer available to new users. Please update your code to use models/gem",
+      "category": "empty_or_error",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 25.6,
+      "words": 2047,
+      "finish_reason": "stop",
+      "problems": [
+        "directive draws name 'CONTENT' the narration never speaks: '{{checklist: METAL POWDER REQUIREMENTS | +SPHERICAL PARTICLE SHAPE | +UNIF'",
+        "directive draws number '15' the narration never speaks: '{{magnitude: POWDER PARTICLE SIZE | MICROMETERS | TYPICAL RANGE=15 | TO=45'",
+        "directive draws number '45' the narration never speaks: '{{magnitude: POWDER PARTICLE SIZE | MICROMETERS | TYPICAL RANGE=15 | TO=45'",
+        "directive draws name 'DEVELOPMENT' the narration never speaks: '{{sources: METAL POWDER COMPOSITION | ASM International=ALLOY DEVELOPMENT '",
+        "directive draws name 'DEPOSITION' the narration never speaks: '{{steps: LAYER-BY-LAYER CONSTRUCTION | POWDER DEPOSITION | ENERGY SCANNING'",
+        "directive draws name 'POTENTIAL' the narration never speaks: '{{contrast: RAPID SOLIDIFICATION | is=FINE GRAIN STRUCTURE, POTENTIAL FOR '",
+        "directive draws name 'NDT' the narration never speaks: '{{checklist: QUALITY ASSURANCE METHODS | +NON-DESTRUCTIVE TESTING (NDT) | '",
+        "directive draws name 'INSPECTION' the narration never speaks: '{{checklist: QUALITY ASSURANCE METHODS | +NON-DESTRUCTIVE TESTING (NDT) | '",
+        "directive draws number '100' the narration never speaks: '{{uncertain: 100 | PERCENT | FULL DENSITY | VARYING MATERIAL AND PROCESS P'",
+        "uncertain directive's RANGE 'FULL DENSITY' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 100 | PERCENT | FULL DENSITY | VARYING MATERIAL AND PROCESS P'",
+        "the directive '{{contrast: L-PBF VS E-PBF | L-PBF=USES LASER, CAN OPERATE IN INERT GAS | E-PBF=USES ELECT' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{uncertain: 100 | PERCENT | FULL DENSITY | VARYING MATERIAL AND PROCESS PARAMETERS | Frau' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 8 of the 17 content words of the Direct-answer lock's first sentence are spoken there (need 9). Move the payoff - 'Metal 3D printing works by selectively melting and fusing metal powder, layer by layer, using a high-energy source like ' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first narrated sentence is 23 words; the hook must be at most 15 - one concrete stake, contradiction or figure: \"Metal parts can be built from powder, layer by layer, with precision, even when the material's melting point exceeds one\"",
+        "source URL returns HTTP 404 and does not exist: https://www.nist.gov/programs-projects/additive-manufacturing-program - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.nist.gov/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.fraunhofer.de/en/research/key-technologies/additive-manufacturing.html - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.fraunhofer.de/en/research/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://dmse.mit.edu/research - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://dmse.mit.edu/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.nature.com/natmat/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.nature.com/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-2.5-flash",
+      "completion_tokens": 3770,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# How does 3D printing metal work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1738\n**Estimated narration:** 12m 00s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 0.3,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "[{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error",
+      "category": "empty_or_error",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "correction"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 15.3,
+      "words": 1357,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1357 words; at the measured 144.58 wpm that is ~9.4 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'II' the narration never speaks: '{{magnitude: Cocoa Butter Crystal Forms | Melting Point (\u00b0C) | Form I=17 |'",
+        "directive draws number '23' the narration never speaks: '{{magnitude: Cocoa Butter Crystal Forms | Melting Point (\u00b0C) | Form I=17 |'",
+        "directive draws name 'III' the narration never speaks: '{{magnitude: Cocoa Butter Crystal Forms | Melting Point (\u00b0C) | Form I=17 |'",
+        "directive draws number '100' the narration never speaks: '{{uncertain: 100 | PERCENT | Not all Maillard reaction products are fully '",
+        "uncertain directive's RANGE 'Not all Maillard reaction products are fully identified' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 100 | PERCENT | Not all Maillard reaction products are fully '",
+        "the directive '{{uncertain: 100 | PERCENT | Not all Maillard reaction products are fully identified | LOW' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule stake-then-payoff: the first narrated sentence is 19 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Food science explains every kitchen transformation, from the soft crumb of bread to the crisp crust of a steak.'",
+        "YouTube title 'Why does bread rise, steak brown, and chocolate snap?': title is 53 characters, over the 40 a phone shows",
+        "YouTube title 'Why does bread rise, steak brown, and chocolate snap?': title carries more than one idea - one plain question or one short claim",
+        "source URL returns HTTP 404 and does not exist: https://www.ift.org/news-and-publications/food-technology-magazine/issues/2021/september/features/what-is-food-science - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.ift.org/news-and-publications/food-technology-magazine/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.ars.usda.gov/northeast-area/wyndmoor-pa/eastern-regional-research-center/docs/wheat-gluten-research/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.ars.usda.gov/northeast-area/wyndmoor-pa/eastern-regional-research-center/docs/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-2.5-flash",
+      "completion_tokens": 2680,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# Why does bread rise, steak brown, and chocolate snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** food-science\n**Word count:** 1735\n**Estimated narration:** 12m 0s ",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 12.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_503",
+      "error": "[{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again late",
+      "category": "empty_or_error",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "correction"
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "latency_s": 8.5,
+      "words": 1230,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1230 words; at the measured 144.58 wpm that is ~8.5 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws number '15' the narration never speaks: '{{uncertain: 15 to 45 | micrometers | typical particle size distribution f'",
+        "directive draws number '45' the narration never speaks: '{{uncertain: 15 to 45 | micrometers | typical particle size distribution f'",
+        "uncertain directive's RANGE 'typical particle size distribution for laser powder bed fusion' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 15 to 45 | micrometers | typical particle size distribution f'",
+        "the directive '{{uncertain: 15 to 45 | micrometers | typical particle size distribution for laser powder ' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 8 of the 22 content words of the Direct-answer lock's first sentence are spoken there (need 11). Move the payoff - 'Metal 3D printing builds parts layer by layer using a high-powered energy source, such as a laser or an electron beam, t' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first narrated sentence is 28 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A single laser pass can heat microscopic metal powder to a liquid state in microseconds, creating thermal stresses that '"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-3.5-flash-lite",
+      "completion_tokens": 2035,
+      "reasoning_tokens": null,
+      "category": "structure",
+      "head": "# How does 3D printing metal work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1754\n**Estimated narration:** 12m 08s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "latency_s": 5.2,
+      "words": 1344,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1344 words; at the measured 144.58 wpm that is ~9.3 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "opening rule stake-then-payoff: the first narrated sentence is 30 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Metal 3D printing builds parts layer by layer using a high-powered energy source, such as a laser or an electron beam, t'"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-3.5-flash-lite",
+      "completion_tokens": 2163,
+      "reasoning_tokens": null,
+      "category": "structure",
+      "head": "# How does metal 3D printing work?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1462\n**Estimated narration:** 10m 06s at 14",
+      "topic": "how-does-3d-printing-metal-work",
+      "phase": "correction"
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "latency_s": 7.0,
+      "words": 926,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 926 words; at the measured 144.58 wpm that is ~6.4 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws number '33.8' the narration never speaks: '{{uncertain: 33.8 | degrees Celsius | Melting point range of form five coc'",
+        "uncertain directive's RANGE 'Melting point range of form five cocoa butter crystals is 33.5 to 34.2' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 33.8 | degrees Celsius | Melting point range of form five coc'",
+        "directive draws number '33.5' the narration never speaks: '{{uncertain: 33.8 | degrees Celsius | Melting point range of form five coc'",
+        "directive draws number '34.2' the narration never speaks: '{{uncertain: 33.8 | degrees Celsius | Melting point range of form five coc'",
+        "directive draws name 'STABILITY' the narration never speaks: '{{checklist: KITCHEN PHYSICS | +PROTEIN NETWORK | +AMINO ACID REACTION | ?'",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 8 of the 27 content words of the Direct-answer lock's first sentence are spoken there (need 14). Move the payoff - 'Bread rises because trapped gas expands inside a gluten network, steak browns because amino acids and sugars react under' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first narrated sentence is 28 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'At forty degrees Celsius, yeast accelerates carbon dioxide production inside dough, while thirty-five percent moisture c'",
+        "YouTube title 'Why does food change?': title does not name the subject in its first 4 words that count, in a stranger's word (one of: bread, brown, chocolate, rise, snap, steak) - never a metaphor or riddle"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-3.5-flash-lite",
+      "completion_tokens": 1770,
+      "reasoning_tokens": null,
+      "category": "structure",
+      "head": "# Why does bread rise steak brown and chocolate snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** food-science\n**Word count:** 1754\n**Estimated narration:** 12m 08s a",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "latency_s": 5.9,
+      "words": 1253,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1253 words; at the measured 144.58 wpm that is ~8.7 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws number '33.8' the narration never speaks: '{{uncertain: 33.8 | degrees Celsius | 33.8 | high | Royal Society of Chemi'",
+        "directive draws number '33.8' the narration never speaks: '{{uncertain: 33.8 | degrees Celsius | 33.8 | high | Royal Society of Chemi'",
+        "directive draws name 'LATTIRE' the narration never speaks: '{{checklist: KITCHEN PHYSICS | +PROTEIN NETWORK | +AMINO ACID REACTION | ?'",
+        "opening rule stake-then-payoff: the first narrated sentence is 34 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Bread rises because trapped gas expands inside a gluten network, steak browns because amino acids and sugars react under'"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-3.5-flash-lite",
+      "completion_tokens": 2137,
+      "reasoning_tokens": null,
+      "category": "structure",
+      "head": "# Why does bread rise steak brown and chocolate snap?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** food-science\n**Word count:** 1462\n**Estimated narration:** 10m 06s a",
+      "topic": "why-bread-rises-steak-browns-chocolate-snaps",
+      "phase": "correction"
+    }
+  ],
+  "expansions": [],
+  "skipped": {
+    "recursive/flint-v1.0:free": "too small, code-only, safety-only, or failed prior script bench",
+    "xingchen-agi/xing4.0-29b-a4b:free": "too small, code-only, safety-only, or failed prior script bench",
+    "liquid/lfm-2.5-2.6b:free": "too small, code-only, safety-only, or failed prior script bench",
+    "nvidia/nemotron-3.5-lightning:free": "too small, code-only, safety-only, or failed prior script bench",
+    "thinkingmachines/inkling-small:free": "too small, code-only, safety-only, or failed prior script bench",
+    "thinkingmachines/inkling:free": "too small, code-only, safety-only, or failed prior script bench",
+    "cohere/north-mini-code:free": "too small, code-only, safety-only, or failed prior script bench",
+    "nvidia/nemotron-3.5-content-safety:free": "too small, code-only, safety-only, or failed prior script bench",
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": "too small, code-only, safety-only, or failed prior script bench",
+    "google/gemma-4-26b-a4b-it:free": "too small, code-only, safety-only, or failed prior script bench"
+  },
+  "bench_status": "ran",
+  "not_run_reason": null,
+  "account": {
+    "is_free_tier": false,
+    "limit": 0,
+    "limit_remaining": 0,
+    "usage": 98.835783896,
+    "rate_limit": {
+      "requests": -1,
+      "interval": "10s",
+      "note": "This field is deprecated and safe to ignore."
+    }
+  },
+  "method": "Production request body including reasoning.max_tokens=2000; two current queued topics, one draft and one correction on validation failure; four independent candidate workers. Prior low-effort run aborted after 4 requests because effort override did not match the production reasoning budget. No expansion: selection measures initial and corrected draft quality.",
+  "requests_used": 12,
+  "gemini_requests_used": 14,
+  "ranking": [
+    {
+      "model": "gemini-2.5-flash",
+      "passes": 0,
+      "attempts": 4,
+      "median_words": 1702.0,
+      "best_floor_ratio": 1.0,
+      "fewest_problems": 12,
+      "nearest_miss": [
+        "narration is only 1357 words; at the measured 144.58 wpm that is ~9.4 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'II' the narration never speaks: '{{magnitude: Cocoa Butter Crystal Forms | Melting Point (\u00b0C) | Form I=17 |'",
+        "directive draws number '23' the narration never speaks: '{{magnitude: Cocoa Butter Crystal Forms | Melting Point (\u00b0C) | Form I=17 |'",
+        "directive draws name 'III' the narration never speaks: '{{magnitude: Cocoa Butter Crystal Forms | Melting Point (\u00b0C) | Form I=17 |'",
+        "directive draws number '100' the narration never speaks: '{{uncertain: 100 | PERCENT | Not all Maillard reaction products are fully '",
+        "uncertain directive's RANGE 'Not all Maillard reaction products are fully identified' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 100 | PERCENT | Not all Maillard reaction products are fully '",
+        "the directive '{{uncertain: 100 | PERCENT | Not all Maillard reaction products are fully identified | LOW' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule stake-then-payoff: the first narrated sentence is 19 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Food science explains every kitchen transformation, from the soft crumb of bread to the crisp crust of a steak.'",
+        "YouTube title 'Why does bread rise, steak brown, and chocolate snap?': title is 53 characters, over the 40 a phone shows",
+        "YouTube title 'Why does bread rise, steak brown, and chocolate snap?': title carries more than one idea - one plain question or one short claim",
+        "source URL returns HTTP 404 and does not exist: https://www.ift.org/news-and-publications/food-technology-magazine/issues/2021/september/features/what-is-food-science - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.ift.org/news-and-publications/food-technology-magazine/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.ars.usda.gov/northeast-area/wyndmoor-pa/eastern-regional-research-center/docs/wheat-gluten-research/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.ars.usda.gov/northeast-area/wyndmoor-pa/eastern-regional-research-center/docs/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "median_latency_s": 20.5,
+      "categories": {
+        "dead_url": 2,
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "passes": 0,
+      "attempts": 4,
+      "median_words": 1241.5,
+      "best_floor_ratio": 0.929,
+      "fewest_problems": 2,
+      "nearest_miss": [
+        "narration is only 1344 words; at the measured 144.58 wpm that is ~9.3 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "opening rule stake-then-payoff: the first narrated sentence is 30 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Metal 3D printing builds parts layer by layer using a high-powered energy source, such as a laser or an electron beam, t'"
+      ],
+      "median_latency_s": 6.5,
+      "categories": {
+        "structure": 4
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "passes": 0,
+      "attempts": 4,
+      "median_words": 1126.5,
+      "best_floor_ratio": 0.865,
+      "fewest_problems": 2,
+      "nearest_miss": [
+        "narration is only 819 words; at the measured 144.58 wpm that is ~5.7 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 10 of the 30 content words of the Direct-answer lock's first sentence are spoken there (need 15). Move the payoff - 'Metal 3D printing builds parts by melting or binding metal powder layer by layer using a focused energy source such as a' - into the cold open, before the evidence chain."
+      ],
+      "median_latency_s": 46.2,
+      "categories": {
+        "structure": 4
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "passes": 0,
+      "attempts": 4,
+      "median_words": 916.5,
+      "best_floor_ratio": 0.662,
+      "fewest_problems": 1,
+      "nearest_miss": [
+        "narration is only 957 words; at the measured 144.58 wpm that is ~6.6 minutes, under the 10.0-minute hard floor (1446 words minimum)"
+      ],
+      "median_latency_s": 16.4,
+      "categories": {
+        "dead_url": 1,
+        "length_only": 2,
+        "structure": 1
+      }
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "gemini-2.5-pro",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    }
+  ],
+  "verdict": "No tested model passed the full script validators. Gemini 2.5 Flash was closest on the existing benchmark ranking (2047 and 1357 words, with source/directive failures); Ultra was the best OpenRouter candidate by complete-script length (819-1251 words). Super-VL answered all four attempts but its corrections still needed length (940 and 957 words). Gemma 31B was rate-limited on both topics, so quality remains unmeasured. Dots returned two empty answers and is excluded. Gemini 2.5 Pro returned two 404 responses and is excluded. Newer Flash models returned service errors/timeouts; no claim of a measured win. Expansion passes were not run in this selection comparison."
+}

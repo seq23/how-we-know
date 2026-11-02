@@ -30,7 +30,7 @@ too. The convention is `runbook <project>` -> that repo's `RUNBOOK.md`.
 | Document | What it is |
 |---|---|
 | [`RUNBOOK.md`](RUNBOOK.md) | What SHE does — as of 2026-09-23, nothing routine. Start here. |
-| [`RUNBOOK.md` § Model route](RUNBOOK.md#model-route) | The model order: her Claude subscription (`CLAUDE_CODE_OAUTH_TOKEN`) first, the $0 OpenRouter list second, never paid. `config/llm_routing.json` and the tests decide. |
+| [`RUNBOOK.md` § Model route](RUNBOOK.md#model-route) | The model order: Gemini free tier first, curated $0 OpenRouter second, Claude subscription last (owner 2 Nov 2026), never paid. `config/llm_routing.json` and the tests decide. |
 | [`docs/cost/zero-paid-llm.md`](docs/cost/zero-paid-llm.md) | **Nothing paid** — every model call, every probe, every lane. The free route, what it replaced, and its named stops. Guarded by V74 and `loop/tests/test_nothing_paid_rule.py`. |
 | [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md) | How it works, and why the numbers are what they are. |
 | [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md) | Locked strategy. Guarded by `loop/validate_plan.py`. Drift means the pipeline is wrong, not the plan. |
@@ -77,8 +77,8 @@ and say what you chose and why.
   clearly an illustration and credited as one. No owner picker; the weekly
   digest lists every auto-pick so she can ask for a change.
 - **Nothing paid.** No model call, probe or lane in this repo may cost money.
-  Her Claude subscription answers first, then her free-tier Gemini key, then the
-  $0 OpenRouter list — and nothing else, ever: `max_cost_usd: 0`,
+  Her free-tier Gemini key answers first, then the curated $0 OpenRouter list,
+  then her Claude subscription last (owner 2026-11-02) — and nothing else, ever: `max_cost_usd: 0`,
   `paid_fallback: false`, a per-request max price of 0, and a reported cost above
   $0 fails loudly. A free route that cannot answer is a named stop, never a paid
   retry. The rule, what it replaced and its stops are

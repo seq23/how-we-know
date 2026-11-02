@@ -3,32 +3,26 @@
 Repo copy of the research page https://claude.ai/artifact/V3mv9fNxg8DmsB3tLpxmLG (v1.6, 12 Oct 2026, final for the day).
 The page is the living version; this copy is refreshed when it changes. The code decides, this explains.
 
-## 1. The route, in order
+## 1. The route, in order (updated 2 Nov 2026)
 
-1. **Her Claude subscription, through Claude Code's headless CLI.** Prepaid, no per-call bill. A
-   long-lived OAuth token from `claude setup-token` (valid one year; created 12 Oct 2026, expires
-   12 Oct 2027) sits in the repo secret `CLAUDE_CODE_OAUTH_TOKEN`. The call:
-   `claude -p --output-format json --model opus --max-turns 1 --tools "" --no-session-persistence --system-prompt "…"`
-   with the user content on stdin, run from an empty temp directory. About 650 input tokens, seconds
-   to answer. Do not pass `--bare`: on CLI 2.1.296 it ignores the OAuth token. Lanes with a short job
-   ceiling keep their own shorter call timeout.
-2. **Gemini free tier, her own AI Studio key** (`GEMINI_API_KEY`, the pitch-lab project's). Google's
-   OpenAI-compatible endpoint; models tried in order 3.5 Flash, 3.5 Flash-Lite, 3 Flash preview,
-   2.5 Flash, 2.5 Flash-Lite; falls through on a rate limit or error. Ahead of OpenRouter because
-   Gemini Flash writes long-form far better than any `:free` model there. Free-tier prompts may be
-   used by Google to improve its products: channel scripts only, never anything confidential.
-3. **The $0 OpenRouter list, in measured order** (`config/llm_routing.json` is the roster;
-   `loop/state/llm_route_ledger.json` reorders it by pass rate and latency; `python3 loop/llm_router.py standing`).
-   Gemini and OpenRouter models are ranked together; the config's first model is not a preference
-   (`effective_preference()`, #167). Every OpenRouter request carries a reasoning cap of 2,000 tokens
-   inside `max_tokens` 24,000, and a draft whose only problems are dead links gets a citation-repair
-   turn instead of a rewrite (#171).
-4. **Never**: an API key billed per call, a paid model, an OpenAI subscription (no API access, Codex
-   sign-in does not run headless), or any route that trains on confidential input.
+Owner ruling: "free models first, claude last -- but let's be picky about
+which free models, like gemini and good ones." This supersedes 12 Oct's
+subscription-first ruling.
 
-Decisions: 11 Oct 2026 "nothing should be paid, cut the probes and make them free"; 12 Oct 2026 "use my
-claude subscription usage in advance of the $0 openrouter"; 12 Oct 2026 "make it much longer so this
-doesn't happen again" (the Monday authoring budget, `loop/draft.py` `AUTHORING_BUDGET_MIN`).
+1. Gemini free tier, with her AI Studio key; strongest current free models
+   first. Prompts may improve Google's products: channel scripts only,
+   never confidential data. Never enable billing.
+2. Curated `:free` OpenRouter roster. Config `why` fields cite measured
+   quality and limitations. Every request caps price at zero and reasoning
+   at 2,000 tokens inside 24,000 total tokens. Ledger quality ranks within
+   each tier; it never moves OpenRouter ahead of Gemini.
+3. Claude subscription (`CLAUDE_CODE_OAUTH_TOKEN`, headless `claude` CLI)
+   last, only after available free routes fail or their drafts fail validation.
+   No paid API fallback; the $0 OpenRouter key rule stays in force.
+
+Current models and dated evidence live in `config/llm_routing.json` and
+`research/free_model_bench/`; `RUNBOOK.md` describes the operating route.
+The following sections retain the 12 Oct measurements as historical evidence.
 
 ## 2. OpenRouter free-tier limits
 
