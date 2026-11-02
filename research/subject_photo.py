@@ -415,11 +415,9 @@ def find(slug: str, attempts: int = 3, replace: str | None = None) -> dict:
             (Path(M.ASSETS).parent / old["local_file"]).unlink(missing_ok=True)
         return {"pinned": rec, "queries": sub["queries"], "replaced": replace}
     sub["skip_titles"] = (["File:" + old["title"]] if old and not old.get("source") else [])
-    try:                                    # one picture, one episode (Commons too)
+    if MANIFEST.exists():                   # one picture, one episode (Commons too)
         sub["skip_titles"] += ["File:" + r["title"] for r in json.loads(MANIFEST.read_text())["index"]
                                if r.get("subject") != sub["key"] and not r.get("source")]
-    except (OSError, ValueError):
-        pass
     for _ in range(attempts):
         man = M.harvest(only=[sub["key"]], subjects=[sub], manifest=str(MANIFEST),
                         domain="any", prefix="auto", unillustratable={})

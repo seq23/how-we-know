@@ -9,13 +9,18 @@ read failure into a quiet, wrong answer:
   2. research/subject_photo.py held() swallowed ANY error from
      question_card.photos(), so a broken photo manifest listed the episode as
      having no photo and sent the finder to pin another one over it.
+  3. research/subject_photo.py find() swallowed an unreadable photo manifest
+     when building its one-picture-one-episode skip list, so a Commons search
+     could pin a picture another episode already shows. A MISSING manifest
+     still means an empty skip list (nothing pinned yet); an unreadable one
+     raises.
 
 Both now let the error through. This test fakes each read failing and requires
 the call to raise it; a call that returns instead is a failure. It examines a
 fixed list of cases and hard-fails if it examined none.
 
-NEGATIVE PROOF (by hand, 2 Nov 2026): restoring either `except Exception: pass`
-makes its case fail ("returned ... instead of raising"); restored, green.
+NEGATIVE PROOF (by hand, 2 Nov 2026): restoring any of the three `pass`
+handlers makes its case fail ("returned ... instead of raising"); restored, green.
 """
 from __future__ import annotations
 
@@ -37,7 +42,7 @@ import subject_photo as SP                                      # noqa: E402
 import titles                                                   # noqa: E402
 
 
-class Unreadable(RuntimeError):
+class Unreadable(OSError):
     """The fault each case injects; only this exact error counts as surfaced."""
 
 
@@ -54,6 +59,27 @@ def surfaced(call) -> str | None:
     return f"returned {got!r} instead of raising"
 
 
+class UnreadableManifest:
+    """A photo manifest that exists but cannot be read."""
+    def exists(self):
+        return True
+
+    def read_text(self, *_a, **_k):
+        boom()
+
+
+def find_with_unreadable_manifest():
+    import imagery_materials as M                                # noqa: PLC0415
+    real_find, real_man, real_harvest = SP.pixabay_find, SP.MANIFEST, M.harvest
+    SP.pixabay_find = lambda *_a, **_k: (None, [])        # no free-library hit
+    M.harvest = lambda *_a, **_k: {"index": [], "rejected": []}   # never Commons
+    SP.MANIFEST = UnreadableManifest()
+    try:
+        return SP.find("how-deep-can-a-sperm-whale-go", attempts=1)
+    finally:
+        SP.pixabay_find, SP.MANIFEST, M.harvest = real_find, real_man, real_harvest
+
+
 CASES = [
     ("titles.strongest_questions with an unreadable publish queue",
      batch_queue, "queued_entries",
@@ -62,17 +88,21 @@ CASES = [
     ("subject_photo.held with an unreadable photo manifest",
      QC, "photos",
      lambda: SP.held(["how-deep-can-a-sperm-whale-go"])),
+    ("subject_photo.find with an unreadable photo manifest",
+     None, None, find_with_unreadable_manifest),       # it injects its own fault
 ]
 
 fails: list[str] = []
 examined = 0
 for label, mod, attr, call in CASES:
-    real = getattr(mod, attr)
-    setattr(mod, attr, boom)
+    real = getattr(mod, attr) if mod else None
+    if mod:
+        setattr(mod, attr, boom)
     try:
         why = surfaced(call)
     finally:
-        setattr(mod, attr, real)
+        if mod:
+            setattr(mod, attr, real)
     examined += 1
     print(("  ok  " if why is None else "  ✗  ") + label + ("" if why is None else f": {why}"))
     if why is not None:
