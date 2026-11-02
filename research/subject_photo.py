@@ -29,11 +29,10 @@ night, for every held episode:
      thumb_contract.candidates reads, and RELEASE the episode: the same run
      builds its thumbnail if it is rendered (visuals/thumbs_for.py), and the
      batch's shelve step right after re-cuts its Shorts with the opener.
-  4. A slug that finds nothing is retried on the next night, up to MAX_TRIES
-     nights; the two NO_SUBJECT_PHOTO stops stay self_resolving meanwhile
-     (loop/stop_policy.json, capped at the same count). After MAX_TRIES the
-     slug gets a DRAWN CARD (visuals/drawn_card.py, owner ruling 2 Nov 2026)
-     and is released: never held for a person.
+  4. A slug with zero licence-checked candidates gets a DRAWN CARD
+     (visuals/drawn_card.py) the SAME night and is released: never held, no
+     picker (owner, 2 Nov 2026: "it's best to pick one and i ask to change it
+     than wait"). The weekly digest lists every auto-pick (loop/digest.py).
 
 State: loop/state/subject_photo.json {slug: {tries, last_tried, status, ...}}.
 Guarded by loop/tests/test_subject_photo.py.
@@ -58,7 +57,6 @@ sys.path.insert(0, str(ROOT / "loop"))     # loop/domains.py, not visuals/domain
 
 MANIFEST = ROOT / "channel" / "imagery" / "subject_photos.json"
 STATE = ROOT / "loop" / "state" / "subject_photo.json"
-MAX_TRIES = 5            # nights; matches stop_policy max_consecutive for the two stops
 MIN_WIDTH = 1000
 PER_RUN = 20             # slugs searched per night (Commons is rate-limited)
 # Words that name the channel's domain or a quantity, not a subject: "deep"
@@ -459,9 +457,9 @@ def pin_drawn_card(slug: str) -> dict:
     rec = DC.write(slug, terms, str(Path(M.ASSETS) / fname))
     rec.update(subject=key, label=" ".join(terms[:3]).upper(), local_file=f"assets/{fname}",
                title=f"Drawn card ({rec['motif']})", fetched_at=_now(),
-               subject_basis=(f"No licence-passing photo of {slug}'s subject in "
-                              f"{MAX_TRIES} nightly searches; a plain drawn schematic "
-                              f"(owner ruling 2 Nov 2026)."))
+               subject_basis=(f"No licence-checked photo of {slug}'s subject was "
+                              f"found; a plain drawn schematic, pinned at once "
+                              f"(owner rulings 2 Nov 2026)."))
     _pin(rec)
     return rec
 
@@ -493,9 +491,14 @@ def run(slugs: list[str] | None = None, limit: int = PER_RUN, today: str | None 
             st.named_stop("SUBJECT_PHOTOS_COMPLETE",
                           "no episode is held for want of a subject photo",
                           unblock="Nothing to do.")
-        exhausted = [s for s in todo if (state.get(s) or {}).get("tries", 0) >= MAX_TRIES]
-        due = [s for s in todo if s not in exhausted
-               and (force or (state.get(s) or {}).get("last_tried") != today)][:limit]
+        # OWNER RULING, 2 Nov 2026: "In the future it should just pick a photo
+        # and move on it's best to pick one and i ask to change it than wait".
+        # Every held episode is resolved the SAME night: the top-ranked
+        # licence-checked photo is pinned at once; with zero candidates the
+        # drawn card (visuals/drawn_card.py) is pinned at once. Nothing waits
+        # for more nights and no picker is ever needed; the weekly digest
+        # lists every auto-pick so she can ask for a change.
+        due = todo[:limit]
         for s in due:
             r = find(s)
             row = state.setdefault(s, {"tries": 0})
@@ -504,36 +507,21 @@ def run(slugs: list[str] | None = None, limit: int = PER_RUN, today: str | None 
             row["queries"] = r.get("queries")
             if r["pinned"]:
                 row.update(status="found", file=r["pinned"]["local_file"],
-                           licence=r["pinned"].get("licence"),
+                           licence=r["pinned"].get("licence"), chosen_by="auto",
                            item_url=r["pinned"].get("item_url"), found_at=_now())
                 st.work(f"{s}: pinned {r['pinned']['title']!r} "
                         f"({r['pinned'].get('licence')}) - {release(s)}")
-            else:
-                row.update(status="exhausted" if row["tries"] >= MAX_TRIES else "searching",
-                           why=r.get("why"))
-                st.note(f"{s}: no PD/CC0 photo yet (try {row['tries']}/{MAX_TRIES}): "
-                        f"{(r.get('why') or '')[:160]}")
-                if row["tries"] >= MAX_TRIES:
-                    exhausted.append(s)
-        # OWNER RULING, 2 Nov 2026 ("Yes, drawn card"): after MAX_TRIES nights
-        # with no licence-passing photo, the episode gets a DRAWN CARD
-        # (visuals/drawn_card.py) and is released - never held for a person.
-        for s in sorted(set(exhausted)):
+                continue
             rec = pin_drawn_card(s)
-            row = state.setdefault(s, {"tries": MAX_TRIES})
-            row.update(status="drawn card", file=rec["local_file"],
-                       licence=rec["licence"], found_at=_now())
-            st.work(f"{s}: no photo in {MAX_TRIES} nights - drawn card "
-                    f"({rec['motif']}) pinned - {release(s)}")
+            row.update(status="drawn card", file=rec["local_file"], chosen_by="auto",
+                       licence=rec["licence"], why=r.get("why"), found_at=_now())
+            st.work(f"{s}: no licence-checked photo ({(r.get('why') or '')[:80]}) - "
+                    f"drawn card ({rec['motif']}) pinned - {release(s)}")
         save_state(state)
-        if not st.units:
-            st.named_stop(
-                "SUBJECT_PHOTO_SEARCHING",
-                f"{len(todo)} episode(s) held for a subject photo; none found tonight "
-                f"({len(due)} searched); retried tomorrow",
-                held_items=sorted(todo),
-                unblock="Nothing to type: the nightly search retries each one up to "
-                        f"{MAX_TRIES} nights.")
+        rest = todo[limit:]
+        if rest:
+            st.note(f"{len(rest)} more episode(s) beyond tonight's limit of {limit}: "
+                    f"{', '.join(rest[:8])} - resolved on the next run")
     return 0
 
 

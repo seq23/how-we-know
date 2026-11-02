@@ -128,9 +128,12 @@ with tempfile.TemporaryDirectory() as td:
 # 5
 import thumbs_for                                              # noqa: E402
 import question_card as QC                                     # noqa: E402
-nophoto = next((s for s in ("how-do-scientists-know-about-other-galaxies",
-                            "why-does-meat-need-to-rest-after-cooking")
-                if (ROOT / "scripts" / f"{s}.md").exists() and not QC.photos(s)), None)
+# Every real episode now has a picture (the finder resolves each the same
+# night, 2 Nov 2026), so the no-photo state is constructed: a real slug whose
+# photo list is emptied must still be refused, never given the old text card.
+nophoto = "how-do-scientists-know-about-other-galaxies"
+_real_photos = QC.photos
+QC.photos = lambda slug, sp=None: []                           # noqa: ARG005
 check(nophoto is not None, f"5 an episode with no PD/CC0 photo exists ({nophoto})")
 if nophoto:
     with tempfile.TemporaryDirectory() as td:
@@ -140,6 +143,7 @@ if nophoto:
         except TC.ContractRefused as e:
             check("NO_SUBJECT_PHOTO" in str(e), "5 no photo -> ContractRefused NO_SUBJECT_PHOTO")
         check(not (Path(td) / f"{nophoto}.jpg").exists(), "5 no text-card fallback written")
+QC.photos = _real_photos
 
 # 6
 import shorts_lane as SL                                       # noqa: E402

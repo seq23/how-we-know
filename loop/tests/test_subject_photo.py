@@ -11,7 +11,9 @@ LOOP_DRY_RUN=1, every path a scratch copy):
   2. a CC-BY hit is REFUSED (not pinned, still held);
   3. a CC0 logo, a CC0 file under 1000 px, and a CC0 file whose title names
      none of the subject words are refused;
-  4. run(): a slug still without a photo after MAX_TRIES nights escalates as
+  4. run(): an episode with candidates gets the top one pinned the same night
+     (never held); with zero candidates the drawn card is pinned the same
+     night (owner, 2 Nov 2026). Formerly: a slug still without a photo after MAX_TRIES nights escalated as
      a DRAWN CARD (visuals/drawn_card.py) and the episode is released; before that
      the night ends SUBJECT_PHOTO_SEARCHING
      (self_resolving), and the two NO_SUBJECT_PHOTO stops are self_resolving
@@ -210,10 +212,12 @@ check("PEXELS_KEY_MISSING" in SP.sources_status()["pexels"],
       "5 Pexels without a key is a named, skipped source - never paid")
 SP.MANIFEST.unlink()
 
-# 4 - escalation after MAX_TRIES, self_resolving before
-search_returns()
+# 4 - OWNER RULING 2 Nov 2026: "it's best to pick one and i ask to change it
+# than wait". An episode WITH candidates is never held: the top-ranked photo is
+# pinned the same night. One with ZERO candidates gets the drawn card the same
+# night. No second night, no picker.
 OTHER = "how-deep-can-whales-dive"
-SP.save_state({OTHER: {"tries": SP.MAX_TRIES - 1, "last_tried": "2026-01-01"}})
+SP.save_state({})
 
 
 def run_code(slugs, today):
@@ -226,27 +230,45 @@ def run_code(slugs, today):
         return doc.get("code") or doc.get("stop", {}).get("code") or json.dumps(doc)[:120]
 
 
-# OWNER RULING 2 Nov 2026 ("Yes, drawn card"): the 5th empty night pins a
-# drawn card and RELEASES the episode - never held for a person.
+def pinned_of(slug):
+    if not SP.MANIFEST.exists():
+        return {}
+    return next((r for r in json.loads(SP.MANIFEST.read_text())["index"]
+                 if r["subject"] == f"auto-{slug}"), {})
+
+
+hit("File:Humpback whales diving.jpg", "CC0", "True", desc="A humpback whale dives at sea.")
+search_returns("File:Humpback whales diving.jpg")
 check(OTHER in SP.held([OTHER]), f"4 {OTHER} starts held")
 got = run_code([OTHER], "2026-11-02")
-drawn = next((r for r in json.loads(SP.MANIFEST.read_text())["index"]
-              if r["subject"] == f"auto-{OTHER}"), {}) if SP.MANIFEST.exists() else {}
+p1 = pinned_of(OTHER)
+check(got == "OK" and p1.get("title") == "Humpback whales diving.jpg"
+      and OTHER not in SP.held([OTHER]),
+      f"4 with a candidate, the top photo is pinned the same night, never held: {got} {p1.get('title')}")
+SP.MANIFEST.unlink()
+for f_ in (TMP / "assets").glob("*"):
+    f_.unlink()
+search_returns()
+SP.save_state({})
+check(OTHER in SP.held([OTHER]), f"4 {OTHER} is held again with no photo")
+got = run_code([OTHER], "2026-11-03")
+drawn = pinned_of(OTHER)
 check(got == "OK" and drawn.get("source") == "drawn card"
       and (TMP / drawn.get("local_file", "x")).exists() and not QC.licence_problems(drawn),
-      f"4 the {SP.MAX_TRIES}th empty night pins a drawn card: {got} {drawn.get('title')}")
-check(OTHER not in SP.held([OTHER]) and SP.load_state()[OTHER]["status"] == "drawn card",
-      "4 and the episode is released, not held")
+      f"4 with ZERO candidates the drawn card is pinned the SAME night: {got} {drawn.get('title')}")
+check(OTHER not in SP.held([OTHER]) and SP.load_state()[OTHER]["status"] == "drawn card"
+      and SP.load_state()[OTHER]["chosen_by"] == "auto",
+      "4 and the episode is released, recorded as an auto-pick")
 check(bool(QC.licence_problems(dict(drawn, licence="CC BY 4.0"))),
       "4 NEGATIVE: a drawn card without its own-work licence is refused")
 SP.MANIFEST.unlink()
-SP.save_state({})
-got = run_code([OTHER], "2026-11-03")
-check("SUBJECT_PHOTO_SEARCHING" in got, f"4 an empty first night is SEARCHING: {got}")
 pol = json.loads((ROOT / "loop" / "stop_policy.json").read_text())
-for code in ("THUMB_NO_SUBJECT_PHOTO", "SHORT_NO_SUBJECT_PHOTO", "SUBJECT_PHOTO_SEARCHING"):
-    check(pol["self_resolving"].get(code, {}).get("max_consecutive") == SP.MAX_TRIES,
-          f"4 {code} is self_resolving, capped at {SP.MAX_TRIES}")
+for code in ("THUMB_NO_SUBJECT_PHOTO", "SHORT_NO_SUBJECT_PHOTO"):
+    check(pol["self_resolving"].get(code, {}).get("max_consecutive") == 2,
+          f"4 {code} clears the next night (capped at 2)")
+check("SUBJECT_PHOTO_SEARCHING" not in json.dumps(pol)
+      and "SUBJECT_PHOTO_SEARCHING" not in (ROOT / "research" / "subject_photo.py").read_text(),
+      "4 no episode waits a night searching")
 check("SUBJECT_PHOTO_EXHAUSTED" not in json.dumps(pol)
       and "SUBJECT_PHOTO_EXHAUSTED" not in (ROOT / "research" / "subject_photo.py").read_text(),
       "4 no stop routes an exhausted episode to a person any more")
