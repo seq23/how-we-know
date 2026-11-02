@@ -153,9 +153,17 @@ def run(dry_run: bool = False, verify_only: bool = False, yt=None) -> int:
                 snippet = ytmeta.merge_snippet(live["snippet"], title=it["title"])
                 yt.update_snippet(vid, snippet)
                 quota.spend(quota.VIDEO_UPDATE, LANE)
-                back = yt.video(vid)
-                quota.spend(quota.VIDEO_READ, LANE)
-                got = ((back or {}).get("snippet") or {}).get("title")
+                # videos.list lags a videos.update by seconds (CONFIRMED 2 Nov
+                # 2026: 15 of 19 read back the OLD title at once and the new one
+                # minutes later), so the read-back is retried before it fails.
+                import time                                        # noqa: PLC0415
+                for wait in (0, 5, 15, 30):
+                    time.sleep(wait if not getattr(yt, "no_wait", False) else 0)
+                    back = yt.video(vid)
+                    quota.spend(quota.VIDEO_READ, LANE)
+                    got = ((back or {}).get("snippet") or {}).get("title")
+                    if got == it["title"]:
+                        break
                 desc_same = ((back or {}).get("snippet") or {}).get("description") == \
                     live["snippet"].get("description")
             else:
