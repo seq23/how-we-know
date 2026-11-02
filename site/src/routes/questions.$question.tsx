@@ -1,4 +1,5 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
+import { redirects } from '~/lib/search-rescue.mjs'
+import { createFileRoute, notFound, redirect } from '@tanstack/react-router'
 import { getQuestionBySlug } from '~/lib/questions-data'
 import { QuestionPage } from '~/components/QuestionPage'
 import { pageMeta } from '~/lib/seo'
@@ -6,6 +7,8 @@ import { articleSchema, faqSchema, jsonLdScript, videoSchema } from '~/lib/schem
 
 export const Route = createFileRoute('/questions/$question')({
   loader: ({ params }) => {
+    const target = redirects[`/questions/${params.question}`]
+    if (target) throw redirect({ href: target, statusCode: 301 })
     const record = getQuestionBySlug(params.question)
     if (!record) throw notFound()
     return record

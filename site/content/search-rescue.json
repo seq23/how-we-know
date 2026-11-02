@@ -1,0 +1,13 @@
+{
+  "reviewedAt": "2026-11-02",
+  "redirects": {
+    "/questions/why-deep-sea-creatures-are-so-scary": "/questions/why-deep-sea-creatures-look-so-weird/",
+    "/questions/why-deep-sea-creatures-get-creepier-deeper": "/questions/why-deep-sea-creatures-look-so-weird/",
+    "/questions/what-is-the-scariest-deep-sea-creature": "/questions/why-deep-sea-creatures-look-so-weird/",
+    "/creatures/dumbo-octopus": "/questions/what-is-a-dumbo-octopus/",
+    "/creatures/frilled-shark": "/questions/what-is-a-frilled-shark/",
+    "/creatures/colossal-squid": "/questions/how-big-is-a-colossal-squid/",
+    "/creatures/yeti-crab": "/questions/what-is-a-yeti-crab/"
+  },
+  "reason": "Consolidate overlapping intents; retain source records for video production. This map controls rendering, navigation, sitemap and HTTP redirects."
+}

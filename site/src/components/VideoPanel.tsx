@@ -8,11 +8,9 @@ export function VideoPanel({ record }: { record: QuestionPageRecord }) {
         <p className="eyebrow">Companion video</p>
         <h2>Video not published yet</h2>
         <p>
-          This article is complete without a video. When the matching episode is public, the player,
-          transcript, chapters, Watch listing, video sitemap entry, and VideoObject metadata activate from the
-          same canonical record.
+          Read the sourced answer below. The companion episode will appear here when it is published.
         </p>
-        <a href="/watch">See the production slate</a>
+
       </aside>
     )
   }

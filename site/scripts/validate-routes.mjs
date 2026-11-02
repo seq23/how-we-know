@@ -1,9 +1,10 @@
+import { keptQuestions, keptCreatures } from '../src/lib/search-rescue.mjs'
 import fs from 'node:fs'
 import { assert, readJson } from './validation-helpers.mjs'
 
-const questions = readJson('content/questions.json')
+const questions = keptQuestions(readJson('content/questions.json'))
 const zones = readJson('content/zones.json')
-const creatures = readJson('content/creatures.json')
+const creatures = keptCreatures(readJson('content/creatures.json'))
 
 const requiredFiles = [
   'src/routes/__root.tsx',

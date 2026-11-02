@@ -3,3 +3,18 @@
 # Cloudflare Pages matches these by path and never by host, so a rule whose
 # source is an absolute URL does nothing. Host canonicalisation
 # (anything that is not howweknowdeep.com) lives in functions/_middleware.js.
+
+/questions/why-deep-sea-creatures-are-so-scary /questions/why-deep-sea-creatures-look-so-weird/ 301
+/questions/why-deep-sea-creatures-are-so-scary/ /questions/why-deep-sea-creatures-look-so-weird/ 301
+/questions/why-deep-sea-creatures-get-creepier-deeper /questions/why-deep-sea-creatures-look-so-weird/ 301
+/questions/why-deep-sea-creatures-get-creepier-deeper/ /questions/why-deep-sea-creatures-look-so-weird/ 301
+/questions/what-is-the-scariest-deep-sea-creature /questions/why-deep-sea-creatures-look-so-weird/ 301
+/questions/what-is-the-scariest-deep-sea-creature/ /questions/why-deep-sea-creatures-look-so-weird/ 301
+/creatures/dumbo-octopus /questions/what-is-a-dumbo-octopus/ 301
+/creatures/dumbo-octopus/ /questions/what-is-a-dumbo-octopus/ 301
+/creatures/frilled-shark /questions/what-is-a-frilled-shark/ 301
+/creatures/frilled-shark/ /questions/what-is-a-frilled-shark/ 301
+/creatures/colossal-squid /questions/how-big-is-a-colossal-squid/ 301
+/creatures/colossal-squid/ /questions/how-big-is-a-colossal-squid/ 301
+/creatures/yeti-crab /questions/what-is-a-yeti-crab/ 301
+/creatures/yeti-crab/ /questions/what-is-a-yeti-crab/ 301

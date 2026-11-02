@@ -1,3 +1,4 @@
+import { canonicalPath } from '~/lib/search-rescue.mjs'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import {
@@ -144,7 +145,7 @@ export function DepthExplorer() {
             {explorerCreatures.map((creature) => (
               <a
                 className={`explorer-creature explorer-creature-${creature.side}`}
-                href={`/creatures/${creature.slug}`}
+                href={canonicalPath(`/creatures/${creature.slug}`)}
                 key={creature.slug}
                 style={{ '--marker-depth': `calc(38vh + ${creature.markerDepthM}px)` } as DepthStyle}
               >

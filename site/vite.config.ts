@@ -2,9 +2,12 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import { defineConfig } from 'vite'
 import viteReact from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
-import questions from './content/questions.json'
+import rawQuestions from './content/questions.json'
+import { keptQuestions, keptCreatures } from './src/lib/search-rescue.mjs'
+const questions = keptQuestions(rawQuestions)
 import zones from './content/zones.json'
-import creatures from './content/creatures.json'
+import rawCreatures from './content/creatures.json'
+const creatures = keptCreatures(rawCreatures)
 
 const activeMethodIds = [...new Set(questions.map((item) => item.method))]
 
@@ -38,8 +41,8 @@ export default defineConfig({
       prerender: {
         enabled: true,
         autoSubfolderIndex: true,
-        autoStaticPathsDiscovery: true,
-        crawlLinks: true,
+        autoStaticPathsDiscovery: false,
+        crawlLinks: false,
         failOnError: true,
         retryCount: 2,
       },
