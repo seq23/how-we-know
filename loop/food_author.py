@@ -3,6 +3,7 @@
     python loop/food_author.py              # stage "food-author" (loop-food-author.yml)
     python loop/food_author.py --plan       # print the next episode's parts; write nothing
     python loop/food_author.py --unmake S   # undo an authored, unrendered episode
+    python loop/food_author.py --refit S    # re-assemble one at the current window/style
 
 WHY THIS EXISTS (2026-10-25). Food was an owner-approved niche (13 Oct: the
 round-2 sample and the first full video approved; one voice, normal pace, a
@@ -80,6 +81,28 @@ FOOD_WPM = 158.0
 # the one check_episode and V55 judge the stitched render by.
 from food_episode import EPISODE_MINUTES as MINUTES  # noqa: E402
 AIM_MINUTES = 30.5               # the aim at FOOD_WPM when nothing is measured yet
+# The calm style (config/food_style.json; owner, 2 Nov 2026: "we can aim for
+# 15 min videos"): NEW episodes are authored in it - its window and aim, and
+# its total-time rate estimate (longer pauses, imagery-only holds) until a calm
+# episode has been stitched and measured. An unstamped (older) script is still
+# judged in the old window at the old rates: length_of(None).
+import food_style as _style                                 # noqa: E402
+STYLE = _style.for_lane("food-science")
+LEGACY = (tuple(MINUTES), AIM_MINUTES, FOOD_WPM)
+_CURRENT = object()
+
+
+def length_of(style) -> tuple[tuple[float, float], float, float]:
+    """(window minutes, aim minutes, fallback wpm) for a style; None = the old one."""
+    if style is _CURRENT:
+        style = STYLE
+    if not style:
+        return LEGACY
+    L = style["length"]
+    return tuple(L["minutes"]), float(L["aim_minutes"]), float(L["wpm_estimate"])
+
+
+MINUTES, AIM_MINUTES, FOOD_WPM = length_of(STYLE)
 LANE_MARK = "**Made by:** loop/food_author.py"
 KEEP_SECTIONS = ("evidence limit", "closing")
 STOPWORDS = {"why", "how", "does", "do", "is", "are", "my", "the", "a", "an", "what", "can"}
@@ -327,7 +350,7 @@ def _script_words(text: str) -> int:
     return int(m.group(1)) if m else 0
 
 
-def measured_rates(specs_dir: Path | None = None) -> list[tuple[str, float]]:
+def measured_rates(specs_dir: Path | None = None, style=_CURRENT) -> list[tuple[str, float]]:
     """(episode, words a minute) for every STITCHED food episode: its script's
     word count over the render's real duration_s.
 
@@ -352,23 +375,28 @@ def measured_rates(specs_dir: Path | None = None) -> list[tuple[str, float]]:
             continue
         if spec.get("kind") != "food-episode" or not spec.get("duration_s"):
             continue
+        # a rate measured in another style does not predict this one's length:
+        # calm renders count for calm, the old talk-throughout ones for the old
+        st = STYLE if style is _CURRENT else style
+        if bool(_style.style_of_spec(spec)) != bool(st):
+            continue
         n = int((spec.get("voice") or {}).get("words") or 0)
         if n:
             out.append((sp.stem, n / (float(spec["duration_s"]) / 60)))
     return out
 
 
-def word_window(rates: list[float] | None = None) -> tuple[int, int, int]:
+def word_window(rates: list[float] | None = None, style=_CURRENT) -> tuple[int, int, int]:
     """(lowest, aim, highest) word count that lands inside the contract at
     EVERY measured rate: at least MINUTES[0] at the fastest, at most
     MINUTES[1] at the slowest; aim is the middle. With no stitched episode
     yet, FOOD_WPM alone."""
-    rates = rates if rates is not None else [r for _, r in measured_rates()]
+    minutes, aim_m, wpm = length_of(style)
+    rates = rates if rates is not None else [r for _, r in measured_rates(style=style)]
     if not rates:
-        return (math.ceil(MINUTES[0] * FOOD_WPM), round(AIM_MINUTES * FOOD_WPM),
-                math.floor(MINUTES[1] * FOOD_WPM))
-    lo = math.ceil(MINUTES[0] * max(rates))
-    hi = math.floor(MINUTES[1] * min(rates))
+        return (math.ceil(minutes[0] * wpm), round(aim_m * wpm), math.floor(minutes[1] * wpm))
+    lo = math.ceil(minutes[0] * max(rates))
+    hi = math.floor(minutes[1] * min(rates))
     return lo, (lo + hi) // 2, hi
 
 
@@ -478,8 +506,11 @@ def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | N
             "**Status:** AUTHORED BY THE FOOD LANE - format approved by the owner 13 Oct 2026 "
             "(round-2 sample, \"MUCH better\"); rendered and held to the food contract on the Mac",
             "**Domain:** food-science", f"**Episode:** {slug}",
+            *([_style.stamp()] if STYLE else []),
             f"**Parts:** {', '.join(r['slug'] for r in rows)} (segment order: {', '.join(foods)})",
-            "**Register:** one voice at normal explainer pace start to finish (voice/registers.json, V54)",
+            ("**Register:** one voice start to finish, " + (f"the calm food style {STYLE['id']} "
+             "(config/food_style.json: slower, softer, imagery-only holds)" if STYLE else
+             "at normal explainer pace") + " (voice/registers.json, V54)"),
             f"**Word count:** {total}", f"**Estimated narration:** {total / fast:.1f}-"
             f"{total / slow:.1f} minutes at the {fast:.1f}-{slow:.1f} words a minute the food "
             f"voice has measured on stitched episodes (food_author.measured_rates)", LANE_MARK, "",
@@ -494,11 +525,14 @@ def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | N
 
 
 def length_problems(script: str, rates: list[float] | None = None) -> list[str]:
-    """The word count must land inside the contract at every measured rate."""
+    """The word count must land inside the contract at every measured rate -
+    the contract of the script's own style (its **Style:** line; none = old)."""
     n = _script_words(script)
-    rates = rates if rates is not None else [r for _, r in measured_rates()]
-    rates = rates or [FOOD_WPM]
-    lo, _, hi = word_window(rates)
+    style = _style.style_of_text(script)
+    MINUTES, _, wpm = length_of(style)                     # noqa: N806
+    rates = rates if rates is not None else [r for _, r in measured_rates(style=style)]
+    rates = rates or [wpm]
+    lo, _, hi = word_window(rates, style=style)
     if lo > hi:
         return [f"the measured food voice rates {min(rates):.1f}-{max(rates):.1f} wpm "
                 f"spread wider than the {MINUTES[0]:.0f}-{MINUTES[1]:.0f} min window "
@@ -539,6 +573,9 @@ def build_kit(food: str) -> dict:
     q = [{"query": a.format(f=food), "uses": u, "take": t, "sound": ex.get("sound")}
          for a, u, t in GENERIC_QUERIES] + \
         [{"query": a, "uses": u, "take": t, "sound": ex.get("sound")} for a, u, t in ex.get("queries", [])]
+    # the calm style's mesmerising searches: pours, mixing, melting, gloss
+    q += [{"query": a.format(f=food), "uses": u, "take": t, "sound": ex.get("sound")}
+          for a, u, t in (STYLE or {}).get("picture", {}).get("extra_queries", [])]
     return {
         "_why": "visuals/food_kits.py; written by loop/food_author.py",
         "food": food, "label": food.upper(), "words": ex.get("words") or [food],
@@ -698,6 +735,39 @@ def unmake(slug: str) -> list[str]:
     return changed
 
 
+def refit(slug: str) -> list[str]:
+    """Re-assemble an authored, UNRENDERED episode from its parts' own drafts
+    (scripts/<part>.md) at the current length window and style, and rewrite
+    its kits. No model call. Refuses a rendered or uploaded episode - forward
+    only. Used once on 2 Nov 2026 for what-is-inside-butter-rice-meat, written
+    at 28-32 min that morning, when the owner moved food to ~15 min and the
+    calm style ("we can aim for 15 min videos")."""
+    import ledger                                          # noqa: PLC0415
+    if (SPECS / f"{slug}.json").exists() or slug in set(ledger.published_slugs()):
+        raise SystemExit(f"{slug}: rendered or uploaded - forward only, not refitted")
+    d = json.loads(ORDER.read_text())
+    rows = [r for r in d.get("parts_of_episodes") or [] if r.get("episode") == slug]
+    if len(rows) != PARTS_PER_EPISODE:
+        raise SystemExit(f"{slug}: {len(rows)} part(s) recorded, need {PARTS_PER_EPISODE}")
+    drafts = []
+    for r in rows:
+        f = ROOT / "scripts" / f"{r['slug']}.md"
+        if not f.exists():
+            raise SystemExit(f"{slug}: part draft {f.relative_to(ROOT)} is missing")
+        drafts.append(f.read_text())
+    foods = [food_of(r) for r in rows]
+    script = assemble(foods, rows, drafts, next_after(rows))
+    bad = length_problems(script)
+    if bad:
+        raise SystemExit(f"{slug}: {bad[0]}")
+    (FOOD_DIR / f"{slug}.md").write_text(script)
+    changed = [f"rewrote scripts/food/{slug}.md ({_script_words(script)} words)"]
+    for f in foods:
+        (KITS / f"{f}.json").write_text(json.dumps(build_kit(f), indent=1) + "\n")
+        changed.append(f"rewrote channel/food_kits/{f}.json")
+    return changed
+
+
 def next_after(rows: list[dict]) -> str | None:
     taken = {r["slug"] for r in rows}
     for r in next_parts_all():
@@ -716,6 +786,9 @@ def next_parts_all() -> list[dict]:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--refit":
+        print("\n".join(refit(sys.argv[2])))
+        raise SystemExit(0)
     if len(sys.argv) == 3 and sys.argv[1] == "--unmake":
         print("\n".join(unmake(sys.argv[2])))
         raise SystemExit(0)

@@ -68,6 +68,46 @@ PRESET = {
     "composites": (3, 5),
     "real_video_share_min": 0.60,
 }
+# THE CALM STYLE (owner, 2 Nov 2026: "hypnotizing imagery ... almost asmr"):
+# longer, slower holds and softer crossfades from config/food_style.json, for
+# an episode whose script carries its stamp (food_style.style_of_text). The
+# preset id names the style, so a spec is judged by the preset it was made in.
+import contextlib                                              # noqa: E402
+import food_style as _style                                   # noqa: E402
+BASE_PRESET = dict(PRESET)
+STYLE: dict | None = None
+
+
+def styled_preset(style: dict | None) -> dict:
+    if not style:
+        return dict(BASE_PRESET)
+    pic = style["picture"]
+    return {**BASE_PRESET, "id": f"{BASE_PRESET['id']}+{style['id']}",
+            **{k: tuple(pic[k]) if isinstance(pic[k], list) else pic[k]
+               for k in ("opening_cut_s", "body_hold_s", "still_zoom", "crossfade_s")}}
+
+
+def bed_db_for(style: dict | None) -> float:
+    import food_sound                                         # noqa: PLC0415
+    return float(style["sound"]["bed_db"]) if style else food_sound.BASE_BED_DB
+
+
+def use(style: dict | None) -> None:
+    """Render (or judge) in this style: PRESET, STYLE and the bed level."""
+    global PRESET, STYLE
+    PRESET, STYLE = styled_preset(style), style
+
+
+@contextlib.contextmanager
+def styled(style: dict | None):
+    keep = (PRESET, STYLE)
+    use(style)
+    try:
+        yield
+    finally:
+        globals()["PRESET"], globals()["STYLE"] = keep
+
+
 REAL_VIDEO_SHARE_MIN = PRESET["real_video_share_min"]
 COMPOSITES_PER_SAMPLE = PRESET["composites"]
 # A subject on screen: the salient box spans >= 30% of the frame's larger side
@@ -445,8 +485,10 @@ def pool_for(text: str, cat: dict, segment: str | None = None) -> list[str]:
             if word in low:
                 want += [u for u in uses if u not in want]
     clips = clips_of(cat, segment)
+    calm = set((STYLE or {}).get("picture", {}).get("prefer_uses") or [])
     scored = sorted(clips, key=lambda k: (min((want.index(u) for u in cat[k].get("uses") or []
                                                 if u in want), default=len(want) + 1),
+                                          not (set(cat[k].get("uses") or []) & calm),
                                           bool(cat[k].get("hands")),
                                           -float((cat[k].get("richness") or {}).get("score") or 0)))
     return scored
@@ -462,6 +504,8 @@ def treatment_for(rec: dict, phase: str) -> str:
         return "slowmo"
     if uses & PUSH_USES:
         return "pushin"
+    if STYLE and STYLE["picture"].get("body_treatment"):
+        return STYLE["picture"]["body_treatment"]           # calm: the body moves slowly
     return "play"
 
 
@@ -891,6 +935,7 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
            bed: Path | None = None, proof_every: int = 90) -> dict:
     import food_motion as FM                                  # noqa: PLC0415
     paras = parse(script)
+    use(_style.style_of_text(script.read_text(encoding="utf-8")))   # calm if stamped
     global EPISODE_SEGMENTS
     EPISODE_SEGMENTS = {p["segment"] for p in paras} - {"open", "tail"}
     if EPISODE_SEGMENTS <= set(_kits.BUILT_IN):
@@ -1051,6 +1096,7 @@ def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0",
                     "-i", str(lst), "-ar", "48000", "-ac", "1", str(voice)], check=True)
     import food_sound                                         # noqa: PLC0415
+    food_sound.BED_DB = bed_db_for(STYLE)
     bed_raw = bed or food_sound.build_bed(tl, work / "bed.wav", cat)
     mix = food_sound.duck_and_mix(voice, bed_raw, work)
     # The PICTURE sets the length: the mix is padded with silence to it (apad) and
@@ -1108,7 +1154,13 @@ CLIP_LICENCE_FIELDS = ("source", "item_url", "licence", "licence_url", "sha256",
 
 def check_spec(spec: dict) -> list[str]:
     """Cadence, one register, real-video share, composites, device count, licences
-    and honesty fields, from the episode spec."""
+    and honesty fields, from the episode spec - judged by the preset it was
+    made in (food_style.style_of_spec), never a later one."""
+    with styled(_style.style_of_spec(spec)):
+        return _check_spec(spec)
+
+
+def _check_spec(spec: dict) -> list[str]:
     p: list[str] = []
     shots = spec.get("shots") or []
     if not shots:
