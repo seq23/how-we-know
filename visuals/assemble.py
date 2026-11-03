@@ -248,7 +248,13 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
         import frame_check as FC                          # noqa: PLC0415
         try:
             checked = FC.check_render(out_path, slug)
-        except (FC.PictureCheckFailed, FC.FrameCheckUnavailable):
+        except (FC.PictureCheckFailed, FC.FrameCheckUnavailable) as e:
+            fails = [(t, w) for t, w in getattr(e, "failures", []) if t > 0]
+            if fails:
+                rec = json.load(open(out_path + ".footage.json"))["shots"]
+                n = LP.forget_failed(rec, fails, FC.subject_of(slug))
+                print(f"  {n} failing span(s) marked; the next render leaves them out",
+                      flush=True)
             for ext in ("", ".footage.json"):
                 if os.path.exists(out_path + ext):
                     os.replace(out_path + ext, out_path + ".picture-check-failed" + ext)
