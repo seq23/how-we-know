@@ -2,182 +2,218 @@
   {
     "i": 0,
     "segment": "ambient_drift",
-    "narration": "Air or glass would swallow the beam that prints a modern chip's smallest features."
+    "narration": "Air or glass would swallow the beam that prints a modern chip's smallest features.",
+    "seconds": 4.453333333333333
   },
   {
     "i": 1,
     "segment": "ambient_drift",
-    "narration": "Photolithography copies a circuit pattern onto a silicon wafer by shining light through a patterned mask onto a light-sensitive coating called photoresist, which changes its chemistry wherever the light lands."
+    "narration": "Photolithography copies a circuit pattern onto a silicon wafer by shining light through a patterned mask onto a light-sensitive coating called photoresist, which changes its chemistry wherever the light lands.",
+    "seconds": 12.592
   },
   {
     "i": 2,
     "segment": "ambient_drift",
-    "narration": "In the most advanced machines that light has a wavelength of 13.5 nanometres, as the engineering literature published through IEEE describes."
+    "narration": "In the most advanced machines that light has a wavelength of 13.5 nanometres, as the engineering literature published through IEEE describes.",
+    "seconds": 9.786666666666667
   },
   {
     "i": 3,
     "segment": "ambient_drift",
-    "narration": "People quote that figure. It sets a scale, and it explains a great deal about why these machines look the way they do."
+    "narration": "People quote that figure. It sets a scale, and it explains a great deal about why these machines look the way they do.",
+    "seconds": 6.832
   },
   {
     "i": 4,
     "segment": "ambient_drift",
-    "narration": "It does not explain how factories have spent decades printing lines far narrower than the light that drew them. That gap is the real story."
+    "narration": "It does not explain how factories have spent decades printing lines far narrower than the light that drew them. That gap is the real story.",
+    "seconds": 8.336
   },
   {
     "i": 5,
     "segment": "process_steps",
-    "narration": "Start with a polished silicon wafer. The first step is to coat it with a thin, even film of photoresist."
+    "narration": "Start with a polished silicon wafer. The first step is to coat it with a thin, even film of photoresist.",
+    "seconds": 7.1626666666666665
   },
   {
     "i": 6,
     "segment": "material_image",
-    "narration": "Usually liquid is dripped onto the wafer and the wafer is spun so the film spreads flat."
+    "narration": "Usually liquid is dripped onto the wafer and the wafer is spun so the film spreads flat.",
+    "seconds": 5.509333333333333
   },
   {
     "i": 7,
     "segment": "process_steps",
-    "narration": "A gentle bake drives off solvent. Before each exposure, the machine finds alignment marks left by earlier layers, so the new pattern sits on top of the old one."
+    "narration": "A gentle bake drives off solvent. Before each exposure, the machine finds alignment marks left by earlier layers, so the new pattern sits on top of the old one.",
+    "seconds": 9.328
   },
   {
     "i": 8,
     "segment": "ambient_drift",
-    "narration": "Then you expose the wafer. Light passes through a mask, which is a plate of glass carrying the circuit pattern in an opaque layer."
+    "narration": "Then you expose the wafer. Light passes through a mask, which is a plate of glass carrying the circuit pattern in an opaque layer.",
+    "seconds": 7.226666666666667
   },
   {
     "i": 9,
     "segment": "process_steps",
-    "narration": "An optical system projects a reduced image of that pattern onto the resist."
+    "narration": "An optical system projects a reduced image of that pattern onto the resist.",
+    "seconds": 5.1786666666666665
   },
   {
     "i": 10,
     "segment": "ambient_drift",
-    "narration": "Next you develop it, washing the wafer in a solution that dissolves either the exposed or the unexposed regions."
+    "narration": "Next you develop it, washing the wafer in a solution that dissolves either the exposed or the unexposed regions.",
+    "seconds": 6.810666666666667
   },
   {
     "i": 11,
     "segment": "process_steps",
-    "narration": "What remains is a stencil. Finally you etch, implant or deposit material through the openings, and then you strip the resist away."
+    "narration": "What remains is a stencil. Finally you etch, implant or deposit material through the openings, and then you strip the resist away.",
+    "seconds": 7.717333333333333
   },
   {
     "i": 12,
     "segment": "ambient_drift",
-    "narration": "That whole sequence is repeated layer after layer. A finished chip is the accumulated result."
+    "narration": "That whole sequence is repeated layer after layer. A finished chip is the accumulated result.",
+    "seconds": 6.586666666666667
   },
   {
     "i": 13,
     "segment": "contrast_pair",
-    "narration": "Nothing in that list is exotic in principle. University cleanrooms, including facilities at MIT, teach the sequence to students with simple contact printers, where the mask touches the resist directly."
+    "narration": "Nothing in that list is exotic in principle. University cleanrooms, including facilities at MIT, teach the sequence to students with simple contact printers, where the mask touches the resist directly.",
+    "seconds": 12.946666666666667
   },
   {
     "i": 14,
     "segment": "ambient_drift",
-    "narration": "The industrial version differs in scale and tolerance. The idea is the same."
+    "narration": "The industrial version differs in scale and tolerance. The idea is the same.",
+    "seconds": 4.549333333333333
   },
   {
     "i": 15,
     "segment": "contrast_pair",
-    "narration": "In a factory the mask is projected rather than pressed, and the lens shrinks the image."
+    "narration": "In a factory the mask is projected rather than pressed, and the lens shrinks the image.",
+    "seconds": 5.541333333333333
   },
   {
     "i": 16,
     "segment": "material_image",
-    "narration": "The wafer is stepped or scanned beneath the optics so the same pattern lands in many places across its surface."
+    "narration": "The wafer is stepped or scanned beneath the optics so the same pattern lands in many places across its surface.",
+    "seconds": 6.618666666666667
   },
   {
     "i": 17,
     "segment": "contrast_pair",
-    "narration": "The machine is enormous, but each exposure is still a shadow falling on a chemical film."
+    "narration": "The machine is enormous, but each exposure is still a shadow falling on a chemical film.",
+    "seconds": 5.914666666666666
   },
   {
     "i": 18,
     "segment": "definition_card",
-    "narration": "Photoresist is a coating whose solubility changes where light lands. It comes in positive or negative tone."
+    "narration": "Photoresist is a coating whose solubility changes where light lands. It comes in positive or negative tone.",
+    "seconds": 7.034666666666666
   },
   {
     "i": 19,
     "segment": "ambient_drift",
-    "narration": "In a positive resist, exposed regions become easier to dissolve, so the developer removes them."
+    "narration": "In a positive resist, exposed regions become easier to dissolve, so the developer removes them.",
+    "seconds": 6.394666666666667
   },
   {
     "i": 20,
     "segment": "definition_card",
-    "narration": "In a negative resist, exposure makes the material harder to dissolve, so the exposed regions stay behind."
+    "narration": "In a negative resist, exposure makes the material harder to dissolve, so the exposed regions stay behind.",
+    "seconds": 6.746666666666667
   },
   {
     "i": 21,
     "segment": "ambient_drift",
-    "narration": "In both cases the resist converts an optical image into a chemical one."
+    "narration": "In both cases the resist converts an optical image into a chemical one.",
+    "seconds": 5.765333333333333
   },
   {
     "i": 22,
     "segment": "definition_card",
-    "narration": "The rest of the process responds to the chemistry, not the light."
+    "narration": "The rest of the process responds to the chemistry, not the light.",
+    "seconds": 3.6213333333333333
   },
   {
     "i": 23,
     "segment": "evidence_chain",
-    "narration": "Most modern resists add a trick called chemical amplification. Inside the film sits a compound that releases acid when it absorbs light."
+    "narration": "Most modern resists add a trick called chemical amplification. Inside the film sits a compound that releases acid when it absorbs light.",
+    "seconds": 9.328
   },
   {
     "i": 24,
     "segment": "ambient_drift",
-    "narration": "A photon is absorbed, an acid is released, and then a bake spreads the reaction."
+    "narration": "A photon is absorbed, an acid is released, and then a bake spreads the reaction.",
+    "seconds": 5.210666666666667
   },
   {
     "i": 25,
     "segment": "evidence_chain",
-    "narration": "That acid molecule wanders a short distance and catalyses many chemical changes in the surrounding polymer before it is spent."
+    "narration": "That acid molecule wanders a short distance and catalyses many chemical changes in the surrounding polymer before it is spent.",
+    "seconds": 8.837333333333333
   },
   {
     "i": 26,
     "segment": "ambient_drift",
-    "narration": "Where enough of those changes accumulate, the pattern becomes soluble. Amplification means each exposure needs fewer photons, which matters because short-wavelength light is expensive to make."
+    "narration": "Where enough of those changes accumulate, the pattern becomes soluble. Amplification means each exposure needs fewer photons, which matters because short-wavelength light is expensive to make.",
+    "seconds": 11.28
   },
   {
     "i": 27,
     "segment": "evidence_chain",
-    "narration": "It also means the edge of every line depends partly on where acid molecules happened to drift."
+    "narration": "It also means the edge of every line depends partly on where acid molecules happened to drift.",
+    "seconds": 5.989333333333334
   },
   {
     "i": 28,
     "segment": "ambient_drift",
-    "narration": "That drift causes roughness at the edges of lines, and researchers publishing through IEEE continue to study it."
+    "narration": "That drift causes roughness at the edges of lines, and researchers publishing through IEEE continue to study it.",
+    "seconds": 6.938666666666666
   },
   {
     "i": 29,
     "segment": "quote_card",
-    "narration": "The footage is real. The documentary around it is constructed \u2014 lights, music, editing, narration all telling you what to feel."
+    "narration": "The footage is real. The documentary around it is constructed \u2014 lights, music, editing, narration all telling you what to feel.",
+    "seconds": 8.176
   },
   {
     "i": 30,
     "segment": "evidence_chain",
-    "narration": "Diffraction limits the sharpness of any projected image. Light passing through a fine opening spreads out, and a lens can only collect so much of that spread."
+    "narration": "Diffraction limits the sharpness of any projected image. Light passing through a fine opening spreads out, and a lens can only collect so much of that spread.",
+    "seconds": 9.2
   },
   {
     "i": 31,
     "segment": "ambient_drift",
-    "narration": "Engineers often describe the relationship with the Rayleigh criterion. The smallest printable feature scales with the wavelength of the light, divided by the numerical aperture of the lens, multiplied by a factor that captures everything else about the process."
+    "narration": "Engineers often describe the relationship with the Rayleigh criterion. The smallest printable feature scales with the wavelength of the light, divided by the numerical aperture of the lens, multiplied by a factor that captures everything else about the process.",
+    "seconds": 14.181333333333333
   },
   {
     "i": 32,
     "segment": "evidence_chain",
-    "narration": "A shorter wavelength gives smaller features. A wider collecting angle also gives smaller features. A cleverer process shrinks them further."
+    "narration": "A shorter wavelength gives smaller features. A wider collecting angle also gives smaller features. A cleverer process shrinks them further.",
+    "seconds": 9.138666666666667
   },
   {
     "i": 33,
     "segment": "magnitude_bar",
-    "narration": "For that reason, the history of the industry reads as a march down the spectrum."
+    "narration": "For that reason, the history of the industry reads as a march down the spectrum.",
+    "seconds": 4.56
   },
   {
     "i": 34,
     "segment": "ambient_drift",
-    "narration": "The IEEE literature traces it in steps. Mercury lamps emitted the i-line at 365 nanometres."
+    "narration": "The IEEE literature traces it in steps. Mercury lamps emitted the i-line at 365 nanometres.",
+    "seconds": 7.781333333333333
   },
   {
     "i": 35,
     "segment": "magnitude_bar",
-    "narration": "Krypton fluoride lasers, written KrF, followed at 248 nanometres, and argon fluoride lasers, written ArF, came next at 193 nanometres."
+    "narration": "Krypton fluoride lasers, written KrF, followed at 248 nanometres, and argon fluoride lasers, written ArF, came next at 193 nanometres.",
+    "seconds": 9.754666666666667
   },
   {
     "i": 36,

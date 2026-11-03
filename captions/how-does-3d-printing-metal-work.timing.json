@@ -1,0 +1,111 @@
+{
+  "episode": "how-does-3d-printing-metal-work",
+  "beats": 60,
+  "plan_source": "plans/how-does-3d-printing-metal-work.json",
+  "timing": "audio",
+  "beats_measured": 60,
+  "durations_recorded": 60,
+  "duration_s": 691.789,
+  "cues": 163,
+  "chapters_real": 12,
+  "chapters_published": 10,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (2.4s), Producer POV (6.5s)"
+  ],
+  "drift": {
+    "mean_abs_s": 48.4,
+    "worst_abs_s": 96.7,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Fusing metal from microscopic powder",
+        "hand": "01:15",
+        "real": "1:06",
+        "drift_s": -8.8
+      },
+      {
+        "title": "The thermal reality inside the melt pool",
+        "hand": "02:45",
+        "real": "2:27",
+        "drift_s": -17.9
+      },
+      {
+        "title": "Alternative approaches to additive metal forming",
+        "hand": "04:15",
+        "real": "3:43",
+        "drift_s": -31.1
+      },
+      {
+        "title": "Producer POV",
+        "hand": "05:30",
+        "real": "4:58",
+        "drift_s": -31.2
+      },
+      {
+        "title": "Microstructural evolution under rapid cooling",
+        "hand": "06:15",
+        "real": "5:05",
+        "drift_s": -69.8
+      },
+      {
+        "title": "Eliminating internal defects through hot isostatic pressing",
+        "hand": "07:45",
+        "real": "6:24",
+        "drift_s": -80.6
+      },
+      {
+        "title": "How advanced sensing validates printed metal parts",
+        "hand": "09:15",
+        "real": "7:38",
+        "drift_s": -96.7
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:30",
+        "real": "8:57",
+        "drift_s": -92.2
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:15",
+        "real": "10:04",
+        "drift_s": -70.8
+      },
+      {
+        "title": "Closing",
+        "hand": "11:45",
+        "real": "11:11",
+        "drift_s": -33.7
+      }
+    ]
+  },
+  "ffprobe": null,
+  "text_checks": {
+    "beats_json": {
+      "checked": 60,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 60,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-does-3d-printing-metal-work.vtt",
+    "captions/how-does-3d-printing-metal-work.srt",
+    "captions/how-does-3d-printing-metal-work.chapters.txt"
+  ]
+}

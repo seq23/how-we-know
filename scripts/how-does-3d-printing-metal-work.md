@@ -87,17 +87,16 @@ Metal 3D printing is not magic; it is precise thermal management of materials sc
 
 ## Chapters
 
-- 00:00 Cold open
-- 01:15 Fusing metal from microscopic powder
-- 02:45 The thermal reality inside the melt pool
-- 04:15 Alternative approaches to additive metal forming
-- 05:30 Producer POV
-- 06:15 Microstructural evolution under rapid cooling
-- 07:45 Eliminating internal defects through hot isostatic pressing
-- 09:15 How advanced sensing validates printed metal parts
-- 10:30 What to notice in the edit
-- 11:15 Evidence limit
-- 11:45 Closing
+- 0:00 Cold open
+- 1:06 Fusing metal from microscopic powder
+- 2:27 The thermal reality inside the melt pool
+- 3:43 Alternative approaches to additive metal forming
+- 5:05 Microstructural evolution under rapid cooling
+- 6:24 Eliminating internal defects through hot isostatic pressing
+- 7:38 How advanced sensing validates printed metal parts
+- 8:57 What to notice in the edit
+- 10:04 Evidence limit
+- 11:11 Closing
 
 ## Sources
 

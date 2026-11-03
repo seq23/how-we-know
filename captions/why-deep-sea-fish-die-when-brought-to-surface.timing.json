@@ -1,20 +1,20 @@
 {
   "episode": "why-deep-sea-fish-die-when-brought-to-surface",
-  "beats": 90,
+  "beats": 89,
   "plan_source": "plans/why-deep-sea-fish-die-when-brought-to-surface.json",
   "timing": "audio",
-  "beats_measured": 90,
+  "beats_measured": 89,
   "durations_recorded": 0,
-  "duration_s": 703.36,
-  "cues": 186,
+  "duration_s": 696.059,
+  "cues": 188,
   "chapters_real": 15,
   "chapters_published": 14,
   "chapter_notes": [
-    "merged 1 chapter(s) under 10s: Title card (3.3s)"
+    "merged 1 chapter(s) under 10s: Title card (7.7s)"
   ],
   "drift": {
-    "mean_abs_s": 35.7,
-    "worst_abs_s": 98.7,
+    "mean_abs_s": 42.2,
+    "worst_abs_s": 102.6,
     "rows": [
       {
         "title": "Cold open",
@@ -25,79 +25,73 @@
       {
         "title": "Title card",
         "hand": "00:35",
-        "real": "0:30",
-        "drift_s": -4.7
+        "real": "0:22",
+        "drift_s": -12.4
       },
       {
         "title": "Swim bladders are the first system to fail",
         "hand": "01:31",
-        "real": "1:33",
-        "drift_s": 2.7
+        "real": "1:24",
+        "drift_s": -6.3
       },
       {
         "title": "Dissolved gases come out of solution in tissues",
         "hand": "02:55",
-        "real": "2:45",
-        "drift_s": -9.9
+        "real": "2:39",
+        "drift_s": -15.4
       },
       {
         "title": "Eyes and other fluid-filled structures bulge outward",
         "hand": "04:16",
-        "real": "3:45",
-        "drift_s": -30.5
+        "real": "3:30",
+        "drift_s": -45.3
       },
       {
         "title": "Temperature shock is a secondary stressor",
         "hand": "05:32",
-        "real": "4:44",
-        "drift_s": -47.3
+        "real": "4:33",
+        "drift_s": -58.1
       },
       {
         "title": "Producer POV",
         "hand": "06:40",
-        "real": "5:45",
-        "drift_s": -54.2
+        "real": "5:36",
+        "drift_s": -63.9
       },
       {
         "title": "Some species tolerate a wider range than others",
         "hand": "07:00",
-        "real": "6:06",
-        "drift_s": -53.9
+        "real": "5:59",
+        "drift_s": -60.9
       },
       {
         "title": "What to notice in the edit",
         "hand": "09:45",
-        "real": "8:18",
-        "drift_s": -86.9
+        "real": "8:13",
+        "drift_s": -91.0
       },
       {
         "title": "Evidence limit",
         "hand": "10:37",
-        "real": "8:58",
-        "drift_s": -98.7
+        "real": "8:54",
+        "drift_s": -102.6
       },
       {
         "title": "Closing",
         "hand": "11:20",
-        "real": "11:23",
-        "drift_s": 3.6
+        "real": "11:11",
+        "drift_s": -8.1
       }
     ]
   },
-  "ffprobe": {
-    "file": "renders/why-deep-sea-fish-die-when-brought-to-surface-final.mp4",
-    "video_s": 703.36,
-    "last_cue_end_s": 703.36,
-    "delta_s": 0.0,
-    "ok": true
-  },
+  "ffprobe": null,
   "text_checks": {
     "beats_json": {
-      "checked": 90,
+      "checked": 89,
       "mismatched": []
     },
     "script_text": {
-      "checked": 90,
+      "checked": 89,
       "absent_from_narration": []
     }
   },

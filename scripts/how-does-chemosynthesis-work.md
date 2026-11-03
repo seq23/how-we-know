@@ -112,19 +112,17 @@ So chemosynthesis is not life without the sun. It is life that found a second wa
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:46 Title card
-- 00:48 Chemosynthesis runs on a chemical mismatch, not on light
-- 02:28 A vent is where two incompatible waters meet
-- 03:43 Producer POV
-- 03:49 The first clue was an ecosystem that broke the food budget
-- 05:15 A worm with no gut forced the mechanism into view
-- 06:48 Measurements, not the story, made the symbiosis stick
-- 08:15 The same trick runs on several fuels
-- 09:33 Most vent life still depends on sunlight
-- 10:48 What to notice in the edit
-- 11:18 Evidence limit
-- 11:48 Closing
+- 0:00 Cold open
+- 0:43 Chemosynthesis runs on a chemical mismatch, not on light
+- 2:25 A vent is where two incompatible waters meet
+- 3:42 The first clue was an ecosystem that broke the food budget
+- 4:59 A worm with no gut forced the mechanism into view
+- 6:32 Measurements, not the story, made the symbiosis stick
+- 7:54 The same trick runs on several fuels
+- 9:16 Most vent life still depends on sunlight
+- 10:28 What to notice in the edit
+- 11:04 Evidence limit
+- 11:43 Closing
 
 ## Sources
 

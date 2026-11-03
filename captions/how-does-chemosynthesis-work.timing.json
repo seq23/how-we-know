@@ -1,0 +1,118 @@
+{
+  "episode": "how-does-chemosynthesis-work",
+  "beats": 90,
+  "plan_source": "plans/how-does-chemosynthesis-work.json",
+  "timing": "audio",
+  "beats_measured": 90,
+  "durations_recorded": 26,
+  "duration_s": 721.235,
+  "cues": 191,
+  "chapters_real": 12,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Producer POV (5.5s)"
+  ],
+  "drift": {
+    "mean_abs_s": 10.5,
+    "worst_abs_s": 20.6,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Chemosynthesis runs on a chemical mismatch, not on light",
+        "hand": "00:48",
+        "real": "0:43",
+        "drift_s": -4.7
+      },
+      {
+        "title": "A vent is where two incompatible waters meet",
+        "hand": "02:28",
+        "real": "2:25",
+        "drift_s": -2.1
+      },
+      {
+        "title": "Producer POV",
+        "hand": "03:43",
+        "real": "3:36",
+        "drift_s": -6.4
+      },
+      {
+        "title": "The first clue was an ecosystem that broke the food budget",
+        "hand": "03:49",
+        "real": "3:42",
+        "drift_s": -6.9
+      },
+      {
+        "title": "A worm with no gut forced the mechanism into view",
+        "hand": "05:15",
+        "real": "4:59",
+        "drift_s": -15.0
+      },
+      {
+        "title": "Measurements, not the story, made the symbiosis stick",
+        "hand": "06:48",
+        "real": "6:32",
+        "drift_s": -15.3
+      },
+      {
+        "title": "The same trick runs on several fuels",
+        "hand": "08:15",
+        "real": "7:54",
+        "drift_s": -20.6
+      },
+      {
+        "title": "Most vent life still depends on sunlight",
+        "hand": "09:33",
+        "real": "9:16",
+        "drift_s": -16.6
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:48",
+        "real": "10:28",
+        "drift_s": -19.8
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:18",
+        "real": "11:04",
+        "drift_s": -13.8
+      },
+      {
+        "title": "Closing",
+        "hand": "11:48",
+        "real": "11:43",
+        "drift_s": -4.8
+      }
+    ]
+  },
+  "ffprobe": null,
+  "text_checks": {
+    "beats_json": {
+      "checked": 90,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 90,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-does-chemosynthesis-work.vtt",
+    "captions/how-does-chemosynthesis-work.srt",
+    "captions/how-does-chemosynthesis-work.chapters.txt"
+  ]
+}

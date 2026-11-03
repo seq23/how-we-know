@@ -1,0 +1,116 @@
+{
+  "slug": "why-is-my-bread-not-rising",
+  "title": "Why is my bread not rising?",
+  "layout": "question-photo-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/auto__auto-why-is-my-bread-not-rising__pixabay-5671124.jpg",
+      "manifest": "subject_photos.json",
+      "subject": "auto-why-is-my-bread-not-rising",
+      "sha256": "75a8c811ccd094acfd472782f5bcddb07a0a07d29172954a4dfa9e6fc8df6113",
+      "box": [
+        0,
+        49,
+        1280,
+        769
+      ],
+      "crop": null,
+      "text": "Why is my bread not rising?",
+      "credit": "PHOTOGRAPH, SOFI5T / PIXABAY",
+      "bboxes": {
+        "text": [
+          74,
+          585,
+          1082,
+          660
+        ],
+        "mark": [
+          75,
+          46,
+          257,
+          60
+        ],
+        "credit": [
+          991,
+          12,
+          1271,
+          31
+        ]
+      }
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/auto__auto-why-is-my-bread-not-rising__pixabay-5671124.jpg",
+      "manifest": "subject_photos.json",
+      "subject": "auto-why-is-my-bread-not-rising",
+      "sha256": "75a8c811ccd094acfd472782f5bcddb07a0a07d29172954a4dfa9e6fc8df6113",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "crop": null,
+      "text": "Why is my bread not rising?",
+      "credit": "PHOTOGRAPH, SOFI5T / PIXABAY",
+      "bboxes": {
+        "text": [
+          74,
+          585,
+          1082,
+          660
+        ],
+        "mark": [
+          75,
+          46,
+          257,
+          60
+        ],
+        "credit": [
+          991,
+          12,
+          1271,
+          31
+        ]
+      }
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/auto__auto-why-is-my-bread-not-rising__pixabay-5671124.jpg",
+      "manifest": "subject_photos.json",
+      "subject": "auto-why-is-my-bread-not-rising",
+      "sha256": "75a8c811ccd094acfd472782f5bcddb07a0a07d29172954a4dfa9e6fc8df6113",
+      "box": [
+        0,
+        49,
+        1195,
+        721
+      ],
+      "crop": null,
+      "text": "Why is my bread not rising?",
+      "credit": "PHOTOGRAPH, SOFI5T / PIXABAY",
+      "bboxes": {
+        "text": [
+          74,
+          585,
+          1082,
+          660
+        ],
+        "mark": [
+          75,
+          46,
+          257,
+          60
+        ],
+        "credit": [
+          991,
+          12,
+          1271,
+          31
+        ]
+      }
+    }
+  }
+}

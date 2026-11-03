@@ -1,0 +1,116 @@
+{
+  "slug": "why-does-steak-taste-better-seared",
+  "title": "Why does steak taste better seared?",
+  "layout": "question-photo-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/auto__auto-why-does-steak-taste-better-seared__pixabay-4342500.jpg",
+      "manifest": "subject_photos.json",
+      "subject": "auto-why-does-steak-taste-better-seared",
+      "sha256": "9e58bdef307f124645c298820fb4dd20a9788b8583977de0abf386f1f2765a74",
+      "box": [
+        0,
+        51,
+        1134,
+        689
+      ],
+      "crop": null,
+      "text": "Why does steak taste better seared?",
+      "credit": "PHOTOGRAPH, REINHARDTHRAINER / PIXABAY",
+      "bboxes": {
+        "text": [
+          74,
+          505,
+          1072,
+          645
+        ],
+        "mark": [
+          75,
+          46,
+          257,
+          60
+        ],
+        "credit": [
+          874,
+          12,
+          1270,
+          31
+        ]
+      }
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/auto__auto-why-does-steak-taste-better-seared__pixabay-4342500.jpg",
+      "manifest": "subject_photos.json",
+      "subject": "auto-why-does-steak-taste-better-seared",
+      "sha256": "9e58bdef307f124645c298820fb4dd20a9788b8583977de0abf386f1f2765a74",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "crop": null,
+      "text": "Why does steak taste better seared?",
+      "credit": "PHOTOGRAPH, REINHARDTHRAINER / PIXABAY",
+      "bboxes": {
+        "text": [
+          74,
+          505,
+          1072,
+          645
+        ],
+        "mark": [
+          75,
+          46,
+          257,
+          60
+        ],
+        "credit": [
+          874,
+          12,
+          1270,
+          31
+        ]
+      }
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/auto__auto-why-does-steak-taste-better-seared__pixabay-4342500.jpg",
+      "manifest": "subject_photos.json",
+      "subject": "auto-why-does-steak-taste-better-seared",
+      "sha256": "9e58bdef307f124645c298820fb4dd20a9788b8583977de0abf386f1f2765a74",
+      "box": [
+        0,
+        67,
+        1280,
+        787
+      ],
+      "crop": null,
+      "text": "Why does steak taste better seared?",
+      "credit": "PHOTOGRAPH, REINHARDTHRAINER / PIXABAY",
+      "bboxes": {
+        "text": [
+          74,
+          505,
+          1072,
+          645
+        ],
+        "mark": [
+          75,
+          46,
+          257,
+          60
+        ],
+        "credit": [
+          874,
+          12,
+          1270,
+          31
+        ]
+      }
+    }
+  }
+}
