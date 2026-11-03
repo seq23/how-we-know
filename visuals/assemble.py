@@ -101,6 +101,9 @@ def mix_bed(narration, out, duck_db=-32.0, seed=7):
     return out
 
 
+PRECHECK_ROUNDS = 6
+
+
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
              music=True, burn_captions=False, slug=None, frame_check=True):
     plan = json.load(open(plan_path))
@@ -191,6 +194,20 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
         print(f"  vetted: {len(allowed)} clip span(s) and {len(photos_)} photo(s) "
               f"show the subject", flush=True)
     shots = LP.build(emitted / FPS, clips_, photos_, allowed)
+    if frame_check:
+        # The frames the final check will sample are judged now, and the
+        # spans they come from are dropped and the reel rebuilt, until every
+        # planned sample passes (at most PRECHECK_ROUNDS).
+        for rnd in range(PRECHECK_ROUNDS):
+            fails = LP.precheck(shots, FC.subject_of(slug))
+            if not fails:
+                print(f"  pre-check: every planned sample passes (round {rnd + 1})", flush=True)
+                break
+            LP.forget_failed(shots, fails, FC.subject_of(slug))
+            allowed, photos_ = LP.vet(clips_, photos_, FC.subject_of(slug))
+            print(f"  pre-check round {rnd + 1}: {len(fails)} sample(s) failed; "
+                  f"spans dropped, reel rebuilt", flush=True)
+            shots = LP.build(emitted / FPS, clips_, photos_, allowed)
     shot_frames = LP.allocate(shots, emitted)
     used = LP.summarise(shots)
     print(f"  picture: {used['footage_shots']} footage shot(s) "
