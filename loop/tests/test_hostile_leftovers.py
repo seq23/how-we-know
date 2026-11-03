@@ -97,7 +97,7 @@ class Leftovers(unittest.TestCase):
 
     def test_assembly_inserts_silence_between_existing_wavs(self):
         sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'visuals'))
-        import assemble, plan_domain
+        import assemble, plan_domain, longform_picture as LP
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             plan = [{'narration': 'Same words', 'seconds': d, 'picture_target_s': 900}
@@ -109,11 +109,15 @@ class Leftovers(unittest.TestCase):
                 return [20, 400, 80][int(Path(path).stem)] if str(path).endswith('.wav') else 900
             with patch.object(assemble, 'probe', side_effect=probe), \
                  patch.object(plan_domain, 'foreign', return_value=[]), \
-                 patch.object(assemble, 'render_beat', side_effect=lambda b, i, w, d, *a, **kw: str(root / f'{i}.mp4')) as render, \
+                 patch.object(LP, 'subject_clips', return_value=[]), \
+                 patch.object(LP, 'subject_photos', return_value=[{'local_file': 'p.jpg', 'title': 'p'}]), \
+                 patch.object(LP, 'render_shot', side_effect=lambda s, out, n: out) as shots, \
+                 patch.object(assemble, 'write_picture_record'), \
                  patch.object(assemble.subprocess, 'run') as run:
                 result = assemble.assemble(str(plan_file), str(root / 'out.mp4'),
-                                           audio_dir=str(audio), music=False, footage=False)
-            self.assertEqual([c.args[3] for c in render.call_args_list], [20, 600, 280])
+                                           audio_dir=str(audio), music=False, frame_check=False)
+            # The picture covers the padded beats (20 + 600 + 280 s), every frame.
+            self.assertEqual(sum(c.args[2] for c in shots.call_args_list), 900 * assemble.FPS)
             pads = [c.args[0] for c in run.call_args_list if '-af' in c.args[0]]
             self.assertEqual([cmd[cmd.index('-af') + 1] for cmd in pads],
                              ['apad=pad_dur=0.0', 'apad=pad_dur=200.0', 'apad=pad_dur=200.0'])

@@ -20,7 +20,7 @@ subject is worse than none."
      no stock clip; a materials episode gets stock and no NOAA
   5. Pexels with no key is the NAMED STOP PEXELS_KEY_ABSENT, not an error
   6. the weekly lane finds the harvester for both domains, with its gate
-  7. visuals/assemble.py actually renders a footage beat, exact frame count
+  7. visuals/assemble.py actually renders the stock clip as footage, exact frame count
      (needs ffmpeg; on a host without it this one check is a NOTE)
 
 Hard-fails if it examines zero checks.
@@ -196,8 +196,9 @@ def main() -> int:
     # -- 3. the subject gate --------------------------------------------------
     want(SV.episode_phrases("what-does-a-goblin-shark-look-like") == ["goblin shark"],
          f"goblin shark episode asks for {SV.episode_phrases('what-does-a-goblin-shark-look-like')}")
-    want(SV.episode_phrases("why-deep-sea-fish-die-when-brought-to-surface") == [],
-         "an episode named only by generic ocean words still asks for stock footage")
+    want(SV.episode_phrases("why-deep-sea-creatures-are-surfacing") == [],
+         "an episode named only by generic ocean words (and no shot list) still asks "
+         "for stock footage")
     want(not SV.phrase_in("goblin shark", "shark, ocean, fish"),
          "a plain shark clip matched 'goblin shark'")
     want(not SV.phrase_in("sea pig", "pig, farm, sea"),
@@ -296,9 +297,10 @@ def main() -> int:
                 plan = os.path.join(tmp, f"{slug}.json")
                 json.dump(ambient(1, 2.5), open(plan, "w"))
                 out = os.path.join(tmp, "out.mp4")
-                r = ASM.assemble(plan, out, music=False)
-                want(r["footage"]["footage_beats"] == 1,
-                     f"assemble.py placed no footage beat: {r.get('footage')}")
+                os.environ["HWK_MIN_FREE_GB"] = "0"   # not the CI disk's business
+                r = ASM.assemble(plan, out, music=False, frame_check=False)
+                want(r["footage"]["footage_shots"] >= 1 and r["footage"]["photo_shots"] == 0,
+                     f"assemble.py put no stock footage on screen: {r.get('footage')}")
                 n = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
                                     "-count_packets", "-show_entries",
                                     "stream=nb_read_packets", "-of", "default=nw=1:nk=1",
@@ -306,8 +308,6 @@ def main() -> int:
                 import math
                 want(n == str(math.ceil(2.5 * FT.FPS)),
                      f"the footage render has {n} frames, wanted {math.ceil(2.5 * FT.FPS)}")
-                r = ASM.assemble(plan, out, music=False, footage=False)
-                want(r["footage"]["footage_beats"] == 0, "--no-footage still placed footage")
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 

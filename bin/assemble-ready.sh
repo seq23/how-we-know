@@ -37,12 +37,8 @@ while :; do
     # a short directory yields a SILENT video rather than an error.
     [ -z "$want" ] || [ "$have" -lt "$want" ] && continue
     echo "ASSEMBLING $slug ($have/$want)"
-    # --burn-captions is safe here BY CONSTRUCTION: this loop only reaches an
-    # episode whose wav count equals its beat count, and assemble.py refuses to
-    # burn anything whose cue timing is not measured. Passing it is what makes
-    # the burn live rather than a flag nobody invokes.
-    if $PY visuals/assemble.py "$plan" "$out" --audio-dir "audio/$slug" \
-         --burn-captions >"/tmp/claude-501/asm-$slug.log" 2>&1; then
+    # No captions burned (owner 2026-11-03): they go up as a soft track.
+    if $PY visuals/assemble.py "$plan" "$out" --audio-dir "audio/$slug" >"/tmp/claude-501/asm-$slug.log" 2>&1; then
       echo "OK $out"; n=$((n+1)); progressed=1
     else
       echo "FAIL $slug - see /tmp/claude-501/asm-$slug.log"

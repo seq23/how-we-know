@@ -49,24 +49,35 @@ def render_beat(beat, idx, workdir, seconds, burner=None, t0=0.0, frames=None):
     beat is cut to. It caches one pre-rendered panel per cue, so the per-frame
     cost is a bounding-box paste rather than a full-frame composite.
     """
+    import disk_guard                                     # noqa: PLC0415
+    disk_guard.preflight(workdir)        # LOW_DISK: stop before writing frames
     fn = seg_fn(beat["segment"])
     n = max(1, int(frames if frames is not None else round(seconds * FPS)))
     fdir = os.path.join(workdir, f"f{idx:04d}")
     os.makedirs(fdir, exist_ok=True)
-    args = beat.get("args") or {}
-    for i in range(n):
-        try:
-            img = fn(i / max(n - 1, 1), **args)
-        except TypeError:                       # arg mismatch -> never crash a batch
-            img = seg_fn("ambient_drift")(i / max(n - 1, 1), variant=idx % 5)
-        if burner is not None:
-            burner.draw(img, t0 + i / FPS)
-        img.save(f"{fdir}/{i:05d}.png")
     clip = os.path.join(workdir, f"c{idx:04d}.mp4")
-    subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-framerate",str(FPS),
-                    "-i",f"{fdir}/%05d.png","-c:v","libx264","-pix_fmt","yuv420p",
-                    "-crf","20",clip], check=True)
-    shutil.rmtree(fdir)
+    try:
+        args = beat.get("args") or {}
+        for i in range(n):
+            try:
+                img = fn(i / max(n - 1, 1), **args)
+            except TypeError:                   # arg mismatch -> never crash a batch
+                img = seg_fn("ambient_drift")(i / max(n - 1, 1), variant=idx % 5)
+            if burner is not None:
+                burner.draw(img, t0 + i / FPS)
+            img.save(f"{fdir}/{i:05d}.png")
+        subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-framerate",str(FPS),
+                        "-i",f"{fdir}/%05d.png","-c:v","libx264","-pix_fmt","yuv420p",
+                        "-crf","20",clip], check=True)
+        got = subprocess.run(["ffprobe","-v","error","-select_streams","v:0","-count_packets",
+                              "-show_entries","stream=nb_read_packets","-of",
+                              "default=nw=1:nk=1",clip], capture_output=True, text=True).stdout.strip()
+        if got != str(n):
+            raise RuntimeError(f"beat {idx}: encoded {got} frame(s), {n} drawn")
+    finally:
+        # The PNG folder goes the moment its clip is encoded and checked, or
+        # the moment it fails - never left to fill the disk.
+        shutil.rmtree(fdir, ignore_errors=True)
     return clip
 
 def mix_bed(narration, out, duck_db=-32.0, seed=7):
@@ -91,7 +102,7 @@ def mix_bed(narration, out, duck_db=-32.0, seed=7):
 
 
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
-             music=True, burn_captions=False, footage=True, slug=None):
+             music=True, burn_captions=False, slug=None, frame_check=True):
     plan = json.load(open(plan_path))
     # A DOMAIN'S GRAPHICS NEVER APPEAR IN ANOTHER DOMAIN'S VIDEO (2026-11-01:
     # the deep-sea depth gauge on the rice episode). The active domain is
@@ -132,14 +143,11 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
             padded.append(dest)
         audio_clips = padded
 
-    # CAPTIONS ARE BURNED FROM THE SAME MEASURED DURATIONS the beats are cut
-    # to, never from the plan's word-count estimate, so the words cannot drift
-    # away from the voice over an eight-minute video.
-    burner = None
     if burn_captions:
-        import captions as CAP                            # noqa: PLC0415
-        burner = CAP.Burner(CAP.build_cues(plan, durations))
-        print(f"  burning {len(burner.cues)} caption cues", flush=True)
+        # Owner 2026-11-03: nothing on a long-form picture but the subject.
+        # Captions go to YouTube as a soft track (loop/captions_lane.py).
+        raise ValueError("burned-in captions are refused on a long-form "
+                         "picture; the .srt goes up as a soft subtitle track")
 
     # FRAMES ARE ALLOCATED ACROSS THE WHOLE EPISODE, NOT PER BEAT. Rounding
     # each beat independently to a whole frame drops up to half a frame per
@@ -164,34 +172,36 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
         f"allocated {emitted} frame(s) = {emitted / FPS:.3f}s for {total_s:.3f}s "
         f"of narration; the mux would clip the last beat")
 
-    # REAL FOOTAGE on the beats visuals/footage.py may place it on (ambient
-    # drift; species beats with an exact NOAA match): NOAA first, licence-checked
-    # stock where NOAA has nothing that shows the episode's subject. Until
-    # 2026-11-02 nothing called footage.assign() at all - the placement module
-    # and its four validators existed, and every render since 4 Sep 2026 drew
-    # every beat (renders/*.render.json last showed footage that day).
-    import footage as FT                                  # noqa: PLC0415
+    # THE PICTURE IS ONLY MOVING IMAGERY OF THE SUBJECT (owner 2026-11-03:
+    # "just a video with moving imagery of large deep-sea creatures and thats
+    # it nothing else"). The plan's beats time the NARRATION; they no longer
+    # choose the picture. visuals/longform_picture.py builds the shots from
+    # the subject's footage (then slowed reuse, then moving photographs) and
+    # refuses any card, diagram, filler, plate, caption or credit overlay.
+    import longform_picture as LP                         # noqa: PLC0415
     slug = slug or os.path.splitext(os.path.basename(plan_path))[0]
-    cuts = FT.assign(plan, durations, slug) if footage else [None] * len(plan)
-    used = FT.summarise(cuts)
-    if used["footage_beats"]:
-        print(f"  footage: {used['footage_beats']} beat(s), "
-              f"{used['footage_seconds']}s from {len(used['clips'])} clip(s)", flush=True)
+    clips_, photos_ = LP.subject_clips(slug), LP.subject_photos(slug)
+    allowed = None
+    if frame_check:
+        # LOOK BEFORE PLACING: a span the vision check cannot see the subject
+        # in (ROV hardware, empty seafloor) never reaches the picture.
+        import frame_check as FC                          # noqa: PLC0415
+        allowed, photos_ = LP.vet(clips_, photos_, FC.subject_of(slug))
+        print(f"  vetted: {len(allowed)} clip span(s) and {len(photos_)} photo(s) "
+              f"show the subject", flush=True)
+    shots = LP.build(emitted / FPS, clips_, photos_, allowed)
+    shot_frames = LP.allocate(shots, emitted)
+    used = LP.summarise(shots)
+    print(f"  picture: {used['footage_shots']} footage shot(s) "
+          f"({used['footage_seconds']}s, {used['slowed_shots']} slowed), "
+          f"{used['photo_shots']} moving photo(s) ({used['photo_seconds']}s), "
+          f"{len(used['clips'])} clip(s)", flush=True)
 
-    clips, t0 = [], 0.0
-    for i, b in enumerate(plan):
-        if cuts[i]:
-            clip = os.path.join(workdir, f"c{i:04d}.mp4")
-            clips.append(FT.render_cut(cuts[i], clip, frames[i] / FPS, workdir,
-                                       burner=burner, t0=t0, frames=frames[i]))
-        else:
-            clips.append(render_beat(b, i, workdir, durations[i], burner, t0,
-                                     frames=frames[i]))
-        # Captions are drawn at the frame times actually emitted, so the words
-        # cannot drift from the picture the drift correction just adjusted.
-        t0 += frames[i] / FPS
-        if (i+1) % 10 == 0 or i == len(plan)-1:
-            print(f"  rendered {i+1}/{len(plan)}", flush=True)
+    clips = []
+    for i, (shot, n) in enumerate(zip(shots, shot_frames)):
+        clips.append(LP.render_shot(shot, os.path.join(workdir, f"c{i:04d}.mp4"), n))
+        if (i+1) % 10 == 0 or i == len(shots)-1:
+            print(f"  rendered {i+1}/{len(shots)} shots", flush=True)
 
     # --- concat video ---------------------------------------------------------
     lst = os.path.join(workdir, "clips.txt")
@@ -229,9 +239,49 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
 
     total = probe(out_path)
     shutil.rmtree(workdir, ignore_errors=True)
+    write_picture_record(out_path, shots, shot_frames, frames, used)
+    checked = None
+    if frame_check:
+        # NOT DONE UNTIL THE FRAMES SAY SO (owner 2026-11-03). A failing render
+        # is moved aside (never deleted), so the batch makes it again.
+        import frame_check as FC                          # noqa: PLC0415
+        try:
+            checked = FC.check(out_path, FC.subject_of(slug))
+        except (FC.PictureCheckFailed, FC.FrameCheckUnavailable):
+            for ext in ("", ".footage.json"):
+                if os.path.exists(out_path + ext):
+                    os.replace(out_path + ext, out_path + ".picture-check-failed" + ext)
+            raise
+        print(f"  frame check: {checked['frames']} frame(s) passed", flush=True)
     return {"output": out_path, "beats": len(plan), "duration_s": round(total,1),
             "audio": bool(track), "timing": "audio" if audio_clips else "estimate",
-            "footage": used}
+            "picture": "footage-only", "frame_check": checked,
+            "footage": {"footage_beats": len(plan), **used}}
+
+
+def write_picture_record(out_path, shots, shot_frames, beat_frames, used):
+    """Beside the master: what it shows and who to credit. visuals/shorts.py
+    takes a Short's credits from it (no credit is burned into the master any
+    more), and loop/upload.py lists the credits in the description."""
+    import longform_picture as LP                         # noqa: PLC0415
+    st = os.stat(out_path)
+    rec = {"_why": "What this footage-only master shows, per shot, and the "
+                   "credit for every beat (visuals/assemble.py). The authority "
+                   "for a Short's footage credit and the description's credits.",
+           "master": {"bytes": st.st_size, "mtime": int(st.st_mtime)},
+           "picture": "footage-only",
+           "footage_beats_expected": len(beat_frames),
+           "credits": used["credits"],
+           "shots": [{"kind": s["kind"], "title": s["title"], "credit": s["credit"],
+                      "seconds": round(n / FPS, 3), "speed": s.get("speed", 1.0),
+                      "source": s["asset"].get("source") or s["asset"].get("source_org"),
+                      "licence": s["asset"].get("licence") or s["asset"].get("rights_basis", "")[:80]}
+                     for s, n in zip(shots, shot_frames)],
+           "beats": {str(k): v for k, v in
+                     LP.beat_credits(shots, shot_frames, beat_frames).items()}}
+    with open(out_path + ".footage.json", "w") as fh:
+        json.dump(rec, fh, indent=2)
+        fh.write("\n")
 
 if __name__ == "__main__":
     import argparse
@@ -239,12 +289,15 @@ if __name__ == "__main__":
     ap.add_argument("plan"); ap.add_argument("out")
     ap.add_argument("--audio-dir"); ap.add_argument("--master-audio")
     ap.add_argument("--no-music", action="store_true")
-    ap.add_argument("--burn-captions", action="store_true",
-                    help="draw the measured caption track into the frames")
-    ap.add_argument("--no-footage", action="store_true",
-                    help="draw every beat; place no real footage")
+    ap.add_argument("--slug", help="the episode (default: the plan's file name)")
     a = ap.parse_args()
-    r = assemble(a.plan, a.out, a.audio_dir, a.master_audio,
-                 music=not a.no_music, burn_captions=a.burn_captions,
-                 footage=not a.no_footage)
+    try:
+        r = assemble(a.plan, a.out, a.audio_dir, a.master_audio,
+                     music=not a.no_music, slug=a.slug)
+    except Exception as e:                                # noqa: BLE001
+        code = getattr(e, "code", None)
+        if code:                                          # LOW_DISK, PICTURE_CHECK_FAILED ...
+            print(f"NAMED STOP [{code}] {e}", flush=True)
+            raise SystemExit(3)
+        raise
     print(json.dumps(r, indent=2))

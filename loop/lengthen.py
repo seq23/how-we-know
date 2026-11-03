@@ -918,12 +918,13 @@ def _run(cmd: list[str]) -> subprocess.CompletedProcess:
 def _assemble(plan_path: str, out: str, audio_dir: str) -> dict:
     sys.path.insert(0, str(ROOT / "visuals"))
     import assemble                                        # noqa: PLC0415
-    # footage=False: a splice segment is a slice of a plan, so assemble.py
-    # cannot know the episode it belongs to (its subject words, its NOAA
-    # pattern) or where the rotation stood; the new opening and tail are drawn
-    # and the kept body keeps whatever footage the original render placed.
-    return assemble.assemble(plan_path, out, audio_dir, burn_captions=True,
-                             footage=False)
+    # A splice segment is a slice of a plan; its picture is the episode's own
+    # subject footage like the rest of the master (owner 2026-11-03: footage
+    # only, no captions burned). The slice's work folder is named
+    # <slug>.<part>.plan.json, so the slug is the stem's first part.
+    slug = Path(plan_path).name.split(".")[0]
+    # A slice is checked as part of the spliced master, not on its own.
+    return assemble.assemble(plan_path, out, audio_dir, slug=slug, frame_check=False)
 
 
 def _ffprobe_s(path: Path) -> float:
@@ -942,7 +943,7 @@ def _video_md5s(path: Path) -> list[str]:
 def _segment(slug: str, plan: list[dict], first: int, n: int, out: Path,
              work: Path) -> Path:
     """Render plan[first:first+n] with its own wavs via visuals/assemble.py."""
-    sub = work / f"{out.stem}.plan.json"
+    sub = work / f"{slug}.{out.stem}.plan.json"
     sub.write_text(json.dumps(plan[first:first + n]))
     adir = work / f"{out.stem}.audio"
     adir.mkdir()

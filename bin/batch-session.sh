@@ -554,6 +554,11 @@ harvest_footage() {
   # nice: a weekly ~2.3 h OCR pass (measured 2026-09-19: 16 clips in 5m44s,
   # 8 workers, ~190% CPU) that on a busy night lands after 07:00, when the
   # Mac is hers. It yields to anything she is doing rather than competing.
+  # PICTURE FIRST (owner 2026-11-03): every episode waiting for a render gets
+  # its shot list (the filmable subjects of its title, free model route) BEFORE
+  # the harvest, so the harvest looks for those subjects. Made once, kept.
+  $PY visuals/shot_list.py make --pending 2>&1 | grep -v "^\[gemini-route\]" | tail -20 \
+    || echo "  shot list step exited $? - an episode without one is filled from its title words"
   nice -n 10 $PY loop/footage_lane.py --host mac-batch
   local rc=$?
   case $rc in
@@ -633,7 +638,7 @@ import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science
   # EXACTLY the call the two-phase version made. No duration, no frame count,
   # no timing override: the audio is the authority and assemble.py owns that.
   HWK_DOMAIN="$dom" $PY visuals/assemble.py "plans/$slug.json" "renders/${slug}-final.mp4" \
-      --audio-dir "audio/$slug" --burn-captions \
+      --audio-dir "audio/$slug" \
       > "/tmp/asm-$slug.log" 2>&1 \
     && { echo "    ok"; RENDERED=$((RENDERED+1)); BP unit render "$slug"; thumb_one "$slug" "$dom"; } \
     || { echo "    FAILED"; tail -8 "/tmp/asm-$slug.log"; }
