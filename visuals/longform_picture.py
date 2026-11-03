@@ -582,6 +582,54 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
     return allowed, good_photos
 
 
+def precheck(shots: list[dict], subject: str, judge=None, every: float = 20.0
+             ) -> list[tuple[float, str]]:
+    """Look, BEFORE rendering, at the very frames the final check will sample:
+    the source frame each 20 s sample lands on (start + offset x speed, with
+    the clip's crop). Returns [(t, why)] for every sample the judge fails.
+    One render then passes the check it will meet, instead of failing a new
+    frame on each attempt (measured 2026-11-03: three renders in a row each
+    failed one different frame)."""
+    import tempfile, shutil                             # noqa: PLC0415, E401
+    import frame_check as FC                            # noqa: PLC0415
+    import footage as FT                                # noqa: PLC0415
+    judge = judge or FC.gemini_judge
+    edges, t = [], 0.0
+    for sh in shots:
+        edges.append((t, t + float(sh["seconds"]), sh))
+        t += float(sh["seconds"])
+    work = tempfile.mkdtemp(prefix="hwk-pre-")
+    frames = []
+    try:
+        x = 1.0
+        while x < t:
+            a, b, sh = next(e for e in edges if e[0] <= x < e[1] or e is edges[-1])
+            jpg = os.path.join(work, f"{int(x):05d}.jpg")
+            asset = sh["asset"]
+            if sh["kind"] == "footage":
+                src_t = float(sh["start"]) + (x - a) * float(sh.get("speed") or 1)
+                cmd = ["-ss", f"{src_t:.2f}", "-i", FT.verify(asset), "-frames:v", "1",
+                       "-vf", f"{FT.crop_filter(asset)}scale=512:-2"]
+            else:
+                cmd = ["-i", os.path.join(IMAGERY_DIR, asset["local_file"]), "-frames:v", "1",
+                       "-vf", "scale=512:-2"]
+            subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel", "error",
+                            "-y", *cmd, "-q:v", "4", jpg], check=True)
+            frames.append((x, jpg))
+            x += every
+        fails = []
+        for i in range(0, len(frames), FC.BATCH):
+            chunk = frames[i:i + FC.BATCH]
+            verdicts = judge([j for _, j in chunk], subject)
+            if verdicts is None:
+                raise FC.FrameCheckUnavailable("FRAME_CHECK_UNAVAILABLE: no free vision "
+                                               "model answered the pre-render check")
+            fails += [(x, why) for (x, _), (ok, why) in zip(chunk, verdicts) if not ok]
+        return fails
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
 def forget_failed(record_shots: list[dict], failures: list[tuple[float, str]],
                   subject: str, store: str | None = None) -> int:
     """A frame the final check failed marks the span it came from as failing
