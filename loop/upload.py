@@ -461,11 +461,9 @@ def footage_credits(slug: str) -> str:
     attribution is the one thing this pipeline may not do - credited on screen
     AND here, even where the licence does not require it). '' for anything else."""
     p = SPECS / f"{slug}.json"
-    if not p.exists():
-        return ""
-    spec = json.loads(p.read_text())
+    spec = json.loads(p.read_text()) if p.exists() else {}
     if spec.get("kind") != "food-episode":
-        return ""
+        return picture_credits(slug)
     by: dict[str, set] = {}
     for pm in spec.get("pieces") or []:
         for rec in (pm.get("clip_licences") or {}).values():
@@ -482,6 +480,20 @@ def footage_credits(slug: str) -> str:
         lines.append("• The glowing cross-section diagrams are drawn over AI-generated images, "
                      "labelled on screen.")
     return "\n".join(lines)
+
+
+def picture_credits(slug: str) -> str:
+    """The credits block for a footage-only long-form master (owner 2026-11-03:
+    nothing burned into the picture, credits go in the description), read from
+    the record visuals/assemble.py writes beside the render. '' when absent."""
+    p = ROOT / "renders" / f"{slug}-final.mp4.footage.json"
+    if not p.exists():
+        return ""
+    rec = json.loads(p.read_text())
+    if rec.get("picture") != "footage-only" or not rec.get("credits"):
+        return ""
+    return "\n".join(["Footage and photographs:"]
+                     + [f"• {c}" for c in rec["credits"]])
 
 
 def altered_content(slug: str) -> bool:

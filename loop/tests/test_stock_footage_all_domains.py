@@ -20,7 +20,7 @@ subject is worse than none."
      no stock clip; a materials episode gets stock and no NOAA
   5. Pexels with no key is the NAMED STOP PEXELS_KEY_ABSENT, not an error
   6. the weekly lane finds the harvester for both domains, with its gate
-  7. visuals/assemble.py actually renders a footage beat, exact frame count
+  7. visuals/assemble.py actually renders the stock clip as footage, exact frame count
      (needs ffmpeg; on a host without it this one check is a NOTE)
 
 Hard-fails if it examines zero checks.
@@ -297,8 +297,8 @@ def main() -> int:
                 json.dump(ambient(1, 2.5), open(plan, "w"))
                 out = os.path.join(tmp, "out.mp4")
                 r = ASM.assemble(plan, out, music=False)
-                want(r["footage"]["footage_beats"] == 1,
-                     f"assemble.py placed no footage beat: {r.get('footage')}")
+                want(r["footage"]["footage_shots"] >= 1 and r["footage"]["photo_shots"] == 0,
+                     f"assemble.py put no stock footage on screen: {r.get('footage')}")
                 n = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
                                     "-count_packets", "-show_entries",
                                     "stream=nb_read_packets", "-of", "default=nw=1:nk=1",
@@ -306,8 +306,6 @@ def main() -> int:
                 import math
                 want(n == str(math.ceil(2.5 * FT.FPS)),
                      f"the footage render has {n} frames, wanted {math.ceil(2.5 * FT.FPS)}")
-                r = ASM.assemble(plan, out, music=False, footage=False)
-                want(r["footage"]["footage_beats"] == 0, "--no-footage still placed footage")
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
 

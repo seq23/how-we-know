@@ -310,7 +310,8 @@ def harvest(terms: dict[str, list[str]], per_term: int = 8, want: int = 3) -> li
     # thumbnail build time. So merge on `local_file` and keep what we did not
     # produce.
     accepted = _merge_assets(_load_manifest_assets(), accepted, keep_source=SOURCE_NOAA_OE)
-    _write_manifest(accepted, rejected, gate="noaa-ocean-exploration")
+    _write_manifest(accepted, rejected, gate="noaa-ocean-exploration",
+                    only_slots=None if terms is TERMS else set(terms))
     return accepted
 
 
@@ -404,7 +405,8 @@ def _record_still_verifies(rec: dict) -> bool:
     return h.hexdigest() == want
 
 
-def _write_manifest(assets: list[dict], rejected: list[dict], gate: str) -> None:
+def _write_manifest(assets: list[dict], rejected: list[dict], gate: str,
+                    only_slots: set | None = None) -> None:
     """Rewrite the manifest, replacing only THIS gate's rejections."""
     old = {}
     if os.path.exists(MANIFEST):
@@ -414,8 +416,10 @@ def _write_manifest(assets: list[dict], rejected: list[dict], gate: str) -> None
             old = {}
     for r in rejected:
         r.setdefault("gate", gate)
+    # A one-slot run (--slot) replaces only that slot's rejections.
     prev_rej = [r for r in old.get("rejected", [])
-                if r.get("gate", "noaa-ocean-exploration") != gate]
+                if r.get("gate", "noaa-ocean-exploration") != gate
+                or (only_slots is not None and r.get("slot") not in only_slots)]
     manifest = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "policy": MANIFEST_POLICY,
@@ -730,6 +734,10 @@ TERMS = {
     "transparent":   ["transparent sea cucumber", "translucent deep sea"],
     "red_animal":    ["red deep sea shrimp", "red jellyfish deep"],
     "column":        ["midwater water column", "midnight zone"],
+    # Large deep-sea creatures: the moving-photo tier of the footage-only
+    # long-form picture (visuals/longform_picture.py, owner 2026-11-03).
+    "giants":        ["giant isopod", "sixgill shark", "king crab", "giant grenadier",
+                      "sea spider", "siphonophore", "spider crab", "sleeper shark"],
 }
 
 if __name__ == "__main__":
@@ -741,7 +749,11 @@ if __name__ == "__main__":
         print(f"manifest -> {MANIFEST}")
         raise SystemExit(0)
 
-    got = harvest(TERMS)
+    if "--slot" in sys.argv:                # one slot: python imagery.py --slot giants
+        slot = sys.argv[sys.argv.index("--slot") + 1]
+        got = harvest({slot: TERMS[slot]}, want=int(os.environ.get("HWK_STILLS_WANT", "3")))
+    else:
+        got = harvest(TERMS)
     with open(MANIFEST) as f:
         man = json.load(f)
     print(f"accepted {man['accepted_count']} / rejected {man['rejected_count']}")

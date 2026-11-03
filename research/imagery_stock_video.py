@@ -184,12 +184,27 @@ def _words(text: str) -> list[str]:
     return [_sing(w) for w in re.findall(r"[a-z0-9]+", text.lower())]
 
 
+# An episode whose title names its subject only in generic words ("deep-sea
+# creatures ... big") names it here instead: the animals the picture may show.
+SUBJECT_PHRASES = {
+    "why-are-deep-sea-creatures-so-big": [
+        "japanese spider crab", "giant isopod", "giant squid", "sixgill shark",
+        "greenland shark", "sleeper shark", "oarfish", "siphonophore",
+        "spider crab", "king crab", "sea spider"],
+}
+# Such an episode is filled from footage alone (owner 2026-11-03), so it may
+# take more clips than an episode whose picture is part drawn.
+MAX_FOR = {slug: 24 for slug in SUBJECT_PHRASES}
+
+
 def episode_phrases(slug: str) -> list[str]:
     """The subject phrases an episode's footage must show, longest first.
 
     Runs of content words in the slug; a run of several words yields only its
     sub-phrases of two or more words (a "goblin shark" episode never takes a
     "shark" clip); a phrase made only of GENERIC words is never one."""
+    if slug in SUBJECT_PHRASES:
+        return sorted(SUBJECT_PHRASES[slug], key=lambda s: -len(s.split()))
     words = re.sub(r"^\d+-", "", slug).split("-")
     runs, cur = [], []
     for w in words:
@@ -399,12 +414,13 @@ def harvest(slugs: list[str] | None = None) -> dict:
     new, fetched, misses = [], 0, []
     for slug in eps:
         phrases = episode_phrases(slug)
+        cap = MAX_FOR.get(slug, MAX_PER_EPISODE)
         n_have = sum(1 for a in have + new if a.get("subject") in phrases)
-        if n_have >= MAX_PER_EPISODE or not phrases:
+        if n_have >= cap or not phrases:
             continue
         for phrase in phrases:
             for name in live:
-                if n_have >= MAX_PER_EPISODE or fetched >= MAX_PER_RUN:
+                if n_have >= cap or fetched >= MAX_PER_RUN:
                     break
                 a = FF.BY_NAME[name]
                 try:
@@ -414,7 +430,7 @@ def harvest(slugs: list[str] | None = None) -> dict:
                     continue
                 for c in candidates_for(phrase, cands, FF):
                     uid = f"{name}:{c['id']}"
-                    if uid in used or n_have >= MAX_PER_EPISODE or fetched >= MAX_PER_RUN:
+                    if uid in used or n_have >= cap or fetched >= MAX_PER_RUN:
                         continue
                     if c.get("duration") and float(c["duration"]) < MIN_SECONDS:
                         continue

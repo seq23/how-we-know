@@ -103,7 +103,7 @@ def main() -> int:
     src = open(os.path.join(ROOT, "visuals", "assemble.py"),
                encoding="utf-8").read()
     check("assemble.py allocates frames across the episode",
-          "frames=frames[i]" in src and "math.ceil(due * FPS)" in src,
+          "LP.allocate(shots, emitted)" in src and "math.ceil(due * FPS)" in src,
           "the drift-corrected allocation is not in visuals/assemble.py")
     check("assemble.py asserts the allocation covers the narration",
           "the mux would clip the last beat" in src)
