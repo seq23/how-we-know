@@ -130,6 +130,7 @@ export function articleSchema(record: QuestionPageRecord) {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: record.question,
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.definition', '#faq'] },
     description: record.description,
     datePublished: record.publishedAt,
     dateModified: record.reviewedAt,

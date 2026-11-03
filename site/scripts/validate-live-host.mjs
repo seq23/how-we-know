@@ -1,3 +1,4 @@
+import { redirects } from '../src/lib/search-rescue.mjs'
 /**
  * The deployed site, checked from outside, after the deploy.
  *
@@ -215,6 +216,17 @@ for (const file of ['/sitemap.xml', '/llms.txt']) {
     checks += 1
     const { status, location } = await get(url, 'manual')
     if (status !== 200) failures.push(`sitemap URL ${url} answered ${status}${location ? ` -> ${location}` : ''}`)
+  }
+}
+
+// Removed search URLs must remain real permanent redirects after deployment.
+for (const [from, to] of Object.entries(redirects)) {
+  for (const path of [from, `${from}/`]) {
+    checks += 1
+    const { status, location } = await get(new URL(path, origin), 'manual')
+    if (status !== 301 || !location || new URL(location, origin).pathname !== to) {
+      failures.push(`${path} must 301 to ${to}; got ${status} -> ${location}`)
+    }
   }
 }
 

@@ -1,11 +1,12 @@
+import { keptQuestions, keptCreatures } from '../src/lib/search-rescue.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 
 const read = (p) => JSON.parse(fs.readFileSync(p, 'utf8'))
-const questions = read('content/questions.json')
+const questions = keptQuestions(read('content/questions.json'))
 const zones = read('content/zones.json')
-const creatures = read('content/creatures.json')
+const creatures = keptCreatures(read('content/creatures.json'))
 const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8')
 
 // Fixed pages that exist regardless of content.

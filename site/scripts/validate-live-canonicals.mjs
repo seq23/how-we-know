@@ -1,3 +1,4 @@
+import { keptQuestions, redirects } from '../src/lib/search-rescue.mjs'
 /**
  * Fetches the DEPLOYED site and asserts that what is actually served is correct.
  *
@@ -24,7 +25,7 @@
 import { assert, readJson } from './validation-helpers.mjs'
 
 const flags = readJson('site-flags.json')
-const questions = readJson('content/questions.json')
+const questions = keptQuestions(readJson('content/questions.json'))
 
 const origin = process.env.LIVE_ORIGIN || flags.canonicalOrigin
 
@@ -134,3 +135,11 @@ console.log(
   `Live-canonical validation passed against ${origin} ` +
     `(${results.length} routes distinct and self-canonical, ${unknownChecked} unknown paths return a clean 404).`,
 )
+
+for (const [from, to] of Object.entries(redirects)) {
+  for (const path of [from, `${from}/`]) {
+    const response = await fetch(new URL(path, origin), { redirect: 'manual' })
+    assert(response.status === 301, `${path} must return HTTP 301, got ${response.status}`)
+    assert(new URL(response.headers.get('location'), origin).pathname === to, `${path} redirects to the wrong hub`)
+  }
+}

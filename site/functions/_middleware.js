@@ -1,3 +1,4 @@
+import policy from '../content/search-rescue.json' with { type: 'json' }
 /**
  * Host canonicalisation, for the one host that is allowed to serve this site.
  *
@@ -50,6 +51,10 @@ export const onRequest = (context) => {
   const url = new URL(request.url)
   const hostname = url.hostname.toLowerCase()
 
+  const target = policy.redirects[url.pathname.replace(/\/$/, '')]
+  if (target && (request.method === 'GET' || request.method === 'HEAD')) {
+    return Response.redirect(new URL(target + url.search, isDevelopmentHost(hostname) ? url.origin : `https://${CANONICAL_HOST}`), 301)
+  }
   if (hostname === CANONICAL_HOST || isDevelopmentHost(hostname)) return next()
 
   // Redirecting a POST turns it into a GET, which would silently break anything

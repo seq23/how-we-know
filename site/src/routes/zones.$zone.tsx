@@ -1,3 +1,8 @@
+import { referencePage } from '~/lib/reference-page'
+import { jsonLdScript } from '~/lib/schema'
+import { PublisherLine } from '~/components/PublisherLine'
+import { ReferenceDetails } from '~/components/ReferenceDetails'
+import { canonicalPath } from '~/lib/search-rescue.mjs'
 import { createFileRoute, notFound } from '@tanstack/react-router'
 import { getZoneBySlug, formatDepth } from '~/lib/ocean-data'
 import { creatures } from '~/lib/creatures-data'
@@ -13,11 +18,12 @@ export const Route = createFileRoute('/zones/$zone')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    return pageMeta(
+    const meta = pageMeta(
       `${loaderData.name} (${loaderData.scientificName})`,
       loaderData.summary,
       `/zones/${loaderData.slug}`,
     )
+    return { ...meta, scripts: [...meta.scripts, ...referencePage(loaderData, 'zone').schemas.map(jsonLdScript)] }
   },
   component: ZonePage,
 })
@@ -29,11 +35,13 @@ function ZonePage() {
     <main className="shell prose-page">
       <p className="eyebrow">Ocean zone</p>
       <h1>{zone.name}</h1>
+      <p className="definition">{referencePage(zone, 'zone').definition}</p>
+      <PublisherLine publishedAt="2026-08-31" updatedAt="2026-11-02" />
       <p className="dek">
         {zone.scientificName} · {formatDepth(zone.minDepthM, zone.maxDepthM)}
       </p>
       <section className="direct-answer">
-        <p className="answer-label">Reference answer</p>
+        <h2>Quick answer</h2>
         <p>{zone.summary}</p>
       </section>
       <div className="metrics-grid">
@@ -51,7 +59,7 @@ function ZonePage() {
         </div>
       </div>
       <section>
-        <h2>Defining conditions</h2>
+        <h2>What conditions define this zone?</h2>
         <ul>
           {zone.conditions.map((item) => (
             <li key={item}>{item}</li>
@@ -59,11 +67,11 @@ function ZonePage() {
         </ul>
       </section>
       <section>
-        <h2>Representative creatures</h2>
+        <h2>Which animals live in this zone?</h2>
         <div className="mini-grid">
           {residents.length ? (
             residents.map((item) => (
-              <a key={item.slug} href={`/creatures/${item.slug}`}>
+              <a key={item.slug} href={canonicalPath(`/creatures/${item.slug}`)}>
                 <strong>{item.name}</strong>
                 <span>{item.summary}</span>
               </a>
@@ -73,6 +81,7 @@ function ZonePage() {
           )}
         </div>
       </section>
+      <ReferenceDetails record={zone} kind="zone" />
       <SourcesList sources={getSources(zone.sourceIds)} />
     </main>
   )
