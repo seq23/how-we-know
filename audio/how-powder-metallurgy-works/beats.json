@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "thermal_ascent",
+    "segment": "ambient_drift",
     "narration": "Tungsten melts at about 3422 degrees Celsius, yet early lamp wire was shaped from it."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That figure, the highest melting point of any metal, comes from standard property data of the kind ASM International publishes."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That answer is correct, and it raises a harder question straight away."
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "i": 6,
-    "segment": "process_steps",
+    "segment": "ambient_drift",
     "narration": "Start with making the powder, because almost everything later depends on it."
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "i": 9,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Gas tends to give rounder particles; water tends to give irregular, ragged ones."
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "i": 11,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In electrolysis, metal is deposited from a solution and then broken up."
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "i": 13,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Irregular particles interlock when pressed, which helps a part hold together before heating."
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Fine particles carry more surface per gram, and surface, as you will see, drives the whole process."
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "ASTM International publishes the standard test methods, so two labs measuring the same powder can compare results."
   },
   {
@@ -96,7 +96,7 @@
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Particles slide, rearrange, and then deform where they touch, flattening against one another."
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It holds its shape but can crumble if you drop it. Its strength comes mostly from particles locked together mechanically, not from metallic bonds across them."
   },
   {
@@ -116,7 +116,7 @@
   },
   {
     "i": 23,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Pressing has a known weakness. Friction against the die walls means pressure does not spread evenly, so a tall part can end up denser near the punches than in its middle, and uneven density shrinks unevenly later."
   },
   {
@@ -126,7 +126,7 @@
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The point to hold on to is simple. After pressing, you have the shape. You do not yet have the metal."
   },
   {
@@ -151,7 +151,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "To see why it happens at all, consider the surface. An atom at a surface has fewer neighbors than one inside the metal, so it sits in a higher energy state."
   },
   {
@@ -161,7 +161,7 @@
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At high temperature, atoms vibrate hard enough to hop from site to site."
   },
   {
@@ -171,7 +171,7 @@
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Where two particles touch, atoms gather at the contact and build a bridge called a neck."
   },
   {
@@ -181,7 +181,7 @@
   },
   {
     "i": 36,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is the driving force: not pressure, not melting, but the steady loss of surface."
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Atoms that move from the boundaries between particles into the necks do pull centers together, and the part shrinks."
   },
   {
@@ -201,12 +201,12 @@
   },
   {
     "i": 40,
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "narration": "No one watches those atoms directly in a production furnace, so the account rests on several independent measurements that have to agree."
   },
   {
     "i": 41,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The first is a dilatometer, an instrument that heats a small sample while tracking its length precisely."
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "i": 43,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Researchers compare such curves with models of each diffusion path; a model that predicts the wrong dependence on particle size or temperature can be ruled out."
   },
   {
@@ -226,7 +226,7 @@
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Surface pores are sealed first, often with oil, so water does not seep in and falsify the result."
   },
   {
@@ -236,7 +236,7 @@
   },
   {
     "i": 47,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A part is cut, mounted, ground and polished to a mirror, then examined under an optical or electron microscope."
   },
   {
@@ -246,7 +246,7 @@
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Later the necks have merged, and the old spaces survive as isolated, rounded pores."
   },
   {
@@ -261,7 +261,7 @@
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In a gear or structural part, porosity lowers strength, especially under repeated loading, because a pore concentrates stress and a crack can start there."
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In other parts, the pore is the product. A self-lubricating bronze bearing is left porous on purpose and soaked in oil; connected porosity holds oil in bearings, and as the shaft warms, oil seeps to the surface."
   },
   {
@@ -281,7 +281,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This is where a single density figure becomes treacherous. Two parts can report the same overall density and behave differently, because one has small, rounded, isolated pores and the other has large, connected, jagged ones."
   },
   {
@@ -291,12 +291,12 @@
   },
   {
     "i": 58,
-    "segment": "source_compare",
+    "segment": "material_image",
     "narration": "Some materials are sintered with liquid present on purpose. The classic case is the cemented carbide in cutting tools and drill bits."
   },
   {
     "i": 59,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Hard tungsten carbide powder is mixed with a smaller amount of cobalt powder."
   },
   {
@@ -316,7 +316,7 @@
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And here the cold open returns. Pure tungsten is the other classic case."
   },
   {
@@ -326,7 +326,7 @@
   },
   {
     "i": 65,
-    "segment": "material_image",
+    "segment": "ambient_drift",
     "narration": "Instead, tungsten powder was pressed into bars, sintered, then hammered and drawn into fine filament wire."
   },
   {
@@ -336,12 +336,12 @@
   },
   {
     "i": 67,
-    "segment": "process_steps",
+    "segment": "ambient_drift",
     "narration": "The same physics runs through newer routes. In metal injection molding, very fine powder is mixed with a polymer binder and injected into a mold like plastic; the binder is removed, and the part shrinks markedly as it sinters, so the mold is made oversize."
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In hot isostatic pressing, powder sealed in a container is heated while gas squeezes it from every side, closing pores ordinary sintering leaves behind."
   },
   {
@@ -351,7 +351,7 @@
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Only one of them melts the powder, and it brings its own defects, such as pores from trapped gas."
   },
   {
@@ -361,12 +361,12 @@
   },
   {
     "i": 72,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Notice that each explanation in this episode came paired with a measurement."
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Shrinkage came with a dilatometer curve. Density came with two weighings. Necks and pores came with a polished cross-section."
   },
   {
@@ -376,12 +376,12 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Notice too where the episode used a figure and where it declined to."
   },
   {
     "i": 76,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Sintering temperatures depend on the metal, the powder and the furnace, so no single number would have been honest."
   },
   {
@@ -391,7 +391,7 @@
   },
   {
     "i": 78,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not let you predict, from first principles alone, exactly how a new powder will behave in a particular furnace."
   },
   {
@@ -401,7 +401,7 @@
   },
   {
     "i": 80,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And a density figure is an average over the whole part, not a map of where the pores sit."
   },
   {
@@ -411,7 +411,7 @@
   },
   {
     "i": 82,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Fatigue life, the property that most often limits a sintered structural part, has to be tested directly, because no single snapshot of the microstructure settles it."
   },
   {
@@ -426,7 +426,7 @@
   },
   {
     "i": 85,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Powder metal parts that never melt still become one piece. Nothing poured."
   },
   {

@@ -1,13 +1,13 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "In 1977, scientists found dense animal life where no sunlight has ever reached.",
     "seconds": 6.064
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That year, the submersible Alvin, operated by Woods Hole Oceanographic Institution, dove to hot springs on the Gal\u00e1pagos Rift and found clams, mussels and tubeworms crowded around them.",
     "seconds": 11.098666666666666
   },
@@ -19,7 +19,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That answer is correct, and it hides an assumption worth breaking. The animals on that rift were not living without the sun.",
     "seconds": 7.013333333333334
   },
@@ -31,25 +31,25 @@
   },
   {
     "i": 5,
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "narration": "Start with what any living cell needs. It needs carbon to build its body, and it needs energy to do the building.",
     "seconds": 8.082666666666666
   },
   {
     "i": 6,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A plant gets its energy from light and its carbon from carbon dioxide.",
     "seconds": 4.656
   },
   {
     "i": 7,
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "narration": "A chemosynthetic microbe takes the same carbon dioxide, but it gets its energy somewhere else.",
     "seconds": 6.32
   },
   {
     "i": 8,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "NOAA describes the process in exactly these terms: microbes harvest energy from chemical reactions and use it to turn carbon into organic matter.",
     "seconds": 9.061333333333334
   },
@@ -61,13 +61,13 @@
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It carries electrons it will readily give up to oxygen, and when that hand-off happens, energy is released.",
     "seconds": 7.1626666666666665
   },
   {
     "i": 11,
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "narration": "The microbe captures some of that energy before it escapes as heat. That is the whole trick: chemosynthesis makes food without light.",
     "seconds": 8.272
   },
@@ -79,19 +79,19 @@
   },
   {
     "i": 13,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Photosynthesis captures energy from sunlight. Chemosynthesis captures energy from chemical reactions. After that first step the two converge more than you might expect.",
     "seconds": 11.250666666666667
   },
   {
     "i": 14,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Many chemosynthetic bacteria fix carbon with the same cycle plants use, the Calvin cycle, driven by the same carbon-grabbing enzyme, called RuBisCO.",
     "seconds": 9.637333333333334
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Others use different carbon-fixing pathways. Either way, the microbe ends up with sugars and other organic molecules, and anything that eats the microbe, or houses it, inherits that carbon.",
     "seconds": 12.293333333333333
   },
@@ -103,13 +103,13 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A sulfide-oxidizing microbe can leave behind elemental sulfur, sometimes stored as visible granules inside the cell.",
     "seconds": 7.418666666666667
   },
   {
     "i": 18,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Hold on to that detail. It turns out to be a clue.",
     "seconds": 3.1226666666666665
   },
@@ -121,7 +121,7 @@
   },
   {
     "i": 20,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At ocean ridges, seawater seeps into the crust through cracks. Deep down, near hot rock and magma, heated rock strips out oxygen from that water and lets it dissolve metals and sulfur compounds.",
     "seconds": 12.794666666666666
   },
@@ -133,7 +133,7 @@
   },
   {
     "i": 22,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At the vent opening, hot fluid meets cold oxygenated seawater. Neither water alone is much use.",
     "seconds": 7.344
   },
@@ -145,25 +145,25 @@
   },
   {
     "i": 24,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Where they mix, in a narrow and constantly shifting zone, microbes sit in the gap and run the reaction.",
     "seconds": 5.925333333333334
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The hottest vent fluid reaches hundreds of degrees Celsius, and the published figures vary widely from site to site, so no single number tells the story.",
     "seconds": 8.912
   },
   {
     "i": 26,
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "narration": "The microbes do not live in the hottest fluid anyway. They live where it has cooled enough to mix.",
     "seconds": 6.330666666666667
   },
   {
     "i": 27,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That detail matters, because it tells you where to look for the evidence: not in the plume itself, but on the surfaces, mats and animal tissues bathed in the mixture.",
     "seconds": 9.936
   },
@@ -181,7 +181,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Food arrived from above as a slow fall of dead plankton and waste, often called marine snow, and life thinned out accordingly.",
     "seconds": 8.112
   },
@@ -193,7 +193,7 @@
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The expedition was led largely by geologists, who had come to find hot springs, not to study animals.",
     "seconds": 7.077333333333334
   },
@@ -205,7 +205,7 @@
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It meant there had to be a local food source. It did not yet say which organisms made the food, or how the animals got it.",
     "seconds": 8.026666666666667
   },
@@ -223,7 +223,7 @@
   },
   {
     "i": 37,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "What was new was the suggestion that a whole animal community, on the sea floor, could rest on it.",
     "seconds": 6.458666666666667
   },
@@ -241,7 +241,7 @@
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Its body sits inside a white tube, topped by a bright red plume.",
     "seconds": 4.157333333333334
   },
@@ -253,7 +253,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "An animal that large cannot live on nothing. Inside, though, was a spongy organ, later called the trophosome, and it held crystals of elemental sulfur.",
     "seconds": 10.48
   },
@@ -265,7 +265,7 @@
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Notice the reasoning. The sulfur crystals matched the expected waste of sulfide-oxidizing microbes.",
     "seconds": 6.096
   },
@@ -277,13 +277,13 @@
   },
   {
     "i": 46,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "The plume completes the picture. It is red because it is full of hemoglobin, but a specialised form that carries oxygen and sulfide together, binding the sulfide so it does not poison the worm's own cells.",
     "seconds": 12.176
   },
   {
     "i": 47,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The worm, in other words, is a delivery system. It reaches into the mixing zone, loads both ingredients from the water, and its blood carries them down to the bacteria inside.",
     "seconds": 11.045333333333334
   },
@@ -295,7 +295,7 @@
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The bacteria do the chemistry. The worm handles logistics. Evidence also indicates that young worms pick up their bacteria from the surrounding water rather than inheriting them, so each generation has to recruit its partners anew.",
     "seconds": 14.074666666666667
   },
@@ -307,7 +307,7 @@
   },
   {
     "i": 51,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "First, microscopy. Thin sections of trophosome tissue showed it densely packed with bacterial cells.",
     "seconds": 7.674666666666667
   },
@@ -319,7 +319,7 @@
   },
   {
     "i": 53,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That showed the machinery was present and working, not just the cells.",
     "seconds": 4.570666666666667
   },
@@ -331,7 +331,7 @@
   },
   {
     "i": 55,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That leaves a fingerprint, measured as a ratio of heavy to light carbon.",
     "seconds": 4.0906666666666665
   },
@@ -343,7 +343,7 @@
   },
   {
     "i": 57,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is how you can say the carbon was fixed locally rather than imported.",
     "seconds": 4.730666666666667
   },
@@ -355,7 +355,7 @@
   },
   {
     "i": 59,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "No single one of these independent lines of evidence proves the case. Together they leave very little room for another explanation.",
     "seconds": 7.76
   },
@@ -367,7 +367,7 @@
   },
   {
     "i": 61,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At cold seeps, fluids rich in methane and sulfide leak from sediments along continental margins.",
     "seconds": 6.16
   },
@@ -379,7 +379,7 @@
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Some seep mussels host bacteria that use methane itself. Strictly, that is a slightly different metabolism, because the carbon comes from methane rather than carbon dioxide, but it is usually counted under the chemosynthetic umbrella.",
     "seconds": 15.269333333333334
   },
@@ -390,7 +390,7 @@
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Elsewhere, microbes draw energy from hydrogen, from reduced iron, and from ammonia."
   },
   {
@@ -400,7 +400,7 @@
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "How much carbon chemosynthesis fixes in the open ocean, as a share of the global total, is still being measured, and estimates vary."
   },
   {
@@ -410,12 +410,12 @@
   },
   {
     "i": 69,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Now return to the assumption from the opening. Vent communities are often described as living entirely without the sun."
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is half right. They are independent of sunlight as an energy source, because no light reaches them."
   },
   {
@@ -425,7 +425,7 @@
   },
   {
     "i": 72,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Take away the sun, and over time the deep ocean's oxygen supply would run down, and with it most of these communities."
   },
   {
@@ -435,12 +435,12 @@
   },
   {
     "i": 74,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "There are exceptions, and they are where the research gets most interesting."
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Some microbes make methane from hydrogen and carbon dioxide with no oxygen involved, and some vent systems release enough hydrogen to support them."
   },
   {
@@ -450,7 +450,7 @@
   },
   {
     "i": 77,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "If life can run on rock and water chemistry here, the same might hold on ocean worlds elsewhere. That is a reason to look, not a finding."
   },
   {
@@ -460,7 +460,7 @@
   },
   {
     "i": 79,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That black cloud is mineral particles, forming as hot fluid hits cold water."
   },
   {
@@ -470,7 +470,7 @@
   },
   {
     "i": 81,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "When an animation shows a sulfide molecule drifting straight into a worm, it compresses a lot."
   },
   {
@@ -480,7 +480,7 @@
   },
   {
     "i": 83,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And when a graphic says a vent ecosystem runs without the sun, you now know which caveat it dropped."
   },
   {
@@ -490,7 +490,7 @@
   },
   {
     "i": 85,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not tell you how much carbon chemosynthesis fixes in the open ocean, where the microbes are diffuse and hard to measure."
   },
   {
@@ -500,7 +500,7 @@
   },
   {
     "i": 87,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Many symbionts have never been grown in the lab, so much of what is known about their metabolism is read from genes rather than watched in action."
   },
   {

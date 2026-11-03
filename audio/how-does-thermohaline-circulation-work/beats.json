@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "Water sinking in the North Atlantic may not see sunlight for about 1,000 years."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is NOAA's estimate for how long a single parcel of seawater takes to finish one lap of the deep current often called the global conveyor belt."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That part is textbook. What the textbook picture tends to hide is the harder half of the problem."
   },
   {
@@ -31,12 +31,12 @@
   },
   {
     "i": 6,
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "narration": "The word itself is the first clue. Thermo means heat and haline means salt, so thermohaline circulation is circulation driven by heat and salt, not by wind."
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Both change how dense seawater is. Colder water is denser than warmer water."
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "i": 9,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is the whole engine in a sentence, and it is worth noticing how it is known."
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "i": 11,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Feed temperature, salinity and pressure into the equation of state for seawater, and density comes out."
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "i": 13,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The circulation was inferred from that layering long before anyone measured a deep current directly."
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not. Deep water forms in a few polar regions, and the reasons are specific."
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It keeps its salt, so it becomes both cold and salty, and heavy enough to sink."
   },
   {
@@ -96,7 +96,7 @@
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Around Antarctica, a second process does the work. When seawater freezes, the ice that forms is mostly fresh."
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That leftover water is extremely cold and extra salty, and it becomes Antarctic Bottom Water, the densest water in the open ocean, which hugs the seafloor as it spreads north."
   },
   {
@@ -116,12 +116,12 @@
   },
   {
     "i": 23,
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "narration": "The evidence for where sinking happens comes from looking in winter, exactly when ships least want to be there."
   },
   {
     "i": 24,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Research ships measure winter columns of water in the Labrador Sea and the seas around Greenland, and they have found the surface layer stirred down deep, with temperature and salinity nearly uniform from top to bottom."
   },
   {
@@ -131,7 +131,7 @@
   },
   {
     "i": 26,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A tongue of slightly saltier, oxygen-rich water extends south through the deep Atlantic, visible in density sections taken across the basin decade after decade."
   },
   {
@@ -141,27 +141,27 @@
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Here is the problem that took oceanographers decades to state clearly. If water only ever sank, the deep ocean would slowly fill with the coldest, densest water available and then stop moving."
   },
   {
     "i": 29,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not stop. So something must be lifting deep water back toward the surface, against its own weight, and that takes energy."
   },
   {
     "i": 30,
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "narration": "Heat and salt alone cannot supply it. The oceanographer Walter Munk worked through the arithmetic and argued that slow turbulent mixing, stirred by tides and by internal waves breaking deep inside the ocean, could gradually blend cold deep water with warmer water above and let it rise."
   },
   {
     "i": 31,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It was a careful argument, and it set up a test. When researchers later released a harmless tracer into the open ocean interior and watched it spread, the mixing they measured was weaker than his calculation required."
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Mixing turned out to be patchy: weak in the quiet interior, much stronger over rough seafloor such as mid-ocean ridges and seamounts."
   },
   {
@@ -171,7 +171,7 @@
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Water from below rises to replace it, climbing along density layers that slope upward toward the surface in the Southern Ocean."
   },
   {
@@ -181,7 +181,7 @@
   },
   {
     "i": 36,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So the full route runs like this: water sinks near the poles, spreads through the deep basins, rises in the Southern Ocean and elsewhere, and is warmed and freshened again at the surface."
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It describes what the water does without claiming that heat and salt alone are doing it."
   },
   {
@@ -206,7 +206,7 @@
   },
   {
     "i": 41,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Surface water takes up carbon-14 from the atmosphere, the same radioactive form of carbon used to date wood and bone."
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "i": 43,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So less carbon-14 means older water. When survey ships sampled the world's oceans basin by basin, the pattern lined up with the conveyor picture: younger deep water in the North Atlantic, progressively older water along the route, and the oldest water lies in the deep North Pacific, at the far end of the path."
   },
   {
@@ -226,7 +226,7 @@
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Dissolved oxygen falls steadily along the route too, used up by living things with no way to replenish it."
   },
   {
@@ -236,7 +236,7 @@
   },
   {
     "i": 47,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Measuring it directly is hard, because the flow is slow and the ocean is enormous."
   },
   {
@@ -246,7 +246,7 @@
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Woods Hole Oceanographic Institution is among the groups that have run deep moorings in the Atlantic."
   },
   {
@@ -256,7 +256,7 @@
   },
   {
     "i": 51,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Lines of moorings strung across the Atlantic now give continuous estimates of how much water is overturning."
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But it varies from year to year, and even from month to month, by more than anyone expected from the smooth conveyor diagram."
   },
   {
@@ -281,7 +281,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A record that swings widely needs to run for a long time before a slow change can be separated from noise."
   },
   {
@@ -291,7 +291,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Deep-capable floats are being added, but the abyss is still the least sampled part of the system."
   },
   {
@@ -301,7 +301,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Henry Stommel represented the ocean as two connected boxes of water, one warm and one cold, and let heat and salt compete to drive flow between them."
   },
   {
@@ -311,7 +311,7 @@
   },
   {
     "i": 62,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The striking result was that the model could settle into two stable states: strong overturning or weak overturning under the same conditions."
   },
   {
@@ -321,12 +321,12 @@
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But it suggested that adding enough fresh water at high latitudes, from rain, rivers or melting ice, could make surface water too light to sink and push the system toward its weaker state."
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Evidence from the past suggests this is more than a thought experiment."
   },
   {
@@ -336,12 +336,12 @@
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Many researchers interpret those episodes as times when the Atlantic overturning weakened sharply."
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Climate models generally project weakening this century as the high latitudes warm and freshen."
   },
   {
@@ -356,7 +356,7 @@
   },
   {
     "i": 71,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Real deep flow is slow and broad, more like a whole basin creeping than a river in a channel."
   },
   {
@@ -366,12 +366,12 @@
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And watch where the arrows rise. If deep water rises with no wind or mixing shown to lift it, the drawing is simpler than the evidence."
   },
   {
     "i": 74,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Here is what all of this does not establish. The figure of about 1,000 years is an estimate for a typical circuit, not a clock carried by any real parcel of water; some water returns far sooner, and some lingers far longer."
   },
   {
@@ -381,12 +381,12 @@
   },
   {
     "i": 76,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The relative share of lift supplied by Southern Ocean winds versus deep mixing is still argued over."
   },
   {
     "i": 77,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And the instrument record of the overturning is only a couple of decades long, too short to say with confidence how it is changing."
   },
   {

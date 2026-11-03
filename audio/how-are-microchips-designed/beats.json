@@ -1,19 +1,19 @@
 [
   {
     "i": 0,
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "narration": "Chipmakers publish lists of bugs in chips they have already shipped. Those lists exist because of how the work is done.",
     "seconds": 6.330666666666667
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Microchips are designed mostly as text: engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors.",
     "seconds": 16.325333333333333
   },
   {
     "i": 2,
-    "segment": "depth_descent",
+    "segment": "process_column",
     "narration": "Both languages are IEEE standards. Most effort goes into proving the design before manufacture, through simulation, formal proofs and the foundry's rules.",
     "seconds": 11.514666666666667
   },
@@ -31,7 +31,7 @@
   },
   {
     "i": 5,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A hardware description language looks like code, and engineers type it in an editor like any programmer.",
     "seconds": 5.914666666666666
   },
@@ -43,7 +43,7 @@
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It describes structure and behaviour that exist all at once: these signals connect here, this value updates on every tick of the clock, this block waits for that one.",
     "seconds": 10.501333333333333
   },
@@ -55,7 +55,7 @@
   },
   {
     "i": 9,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is how every tool vendor and every design team can agree on what a given line of text means.",
     "seconds": 6.1386666666666665
   },
@@ -67,13 +67,13 @@
   },
   {
     "i": 11,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Most designs are written at what engineers call the register-transfer level. A register is a small store that holds a value.",
     "seconds": 8.037333333333333
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The description says how values move between registers, and what logic transforms them on the way, at each edge of the clock.",
     "seconds": 7.602666666666667
   },
@@ -85,7 +85,7 @@
   },
   {
     "i": 14,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That separation is deliberate. It lets a team reason about what the chip should compute before anyone decides what it physically looks like, and it lets the same description be rebuilt for a different factory later.",
     "seconds": 11.674666666666667
   },
@@ -97,7 +97,7 @@
   },
   {
     "i": 16,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The synthesis tool reads the register-transfer description and maps it onto a library of standard cells.",
     "seconds": 6.181333333333333
   },
@@ -109,7 +109,7 @@
   },
   {
     "i": 18,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The factory, usually called a foundry, or a library vendor working with it, has measured how fast each cell switches and how much power it draws under different conditions of voltage and temperature.",
     "seconds": 11.834666666666667
   },
@@ -121,13 +121,13 @@
   },
   {
     "i": 20,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Here is the first place the \"how we know\" question bites. Synthesis does not simply translate; it optimises, rewriting logic to be smaller or faster.",
     "seconds": 10.32
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So the netlist is not a line-by-line copy of what the engineer wrote.",
     "seconds": 4.026666666666666
   },
@@ -139,7 +139,7 @@
   },
   {
     "i": 23,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is not a test that tries examples. It is a proof for every input, and that difference matters for everything that follows.",
     "seconds": 7.397333333333333
   },
@@ -157,7 +157,7 @@
   },
   {
     "i": 26,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A modern processor has far more possible internal states than any simulation could ever visit.",
     "seconds": 5.456
   },
@@ -169,7 +169,7 @@
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "On many teams verification takes more effort than writing the design itself, though published estimates of the split vary and this script will not quote one.",
     "seconds": 9.637333333333334
   },
@@ -181,7 +181,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Then they measure coverage: which lines executed, which states were reached, which scenarios the plan said must occur.",
     "seconds": 7.461333333333333
   },
@@ -193,7 +193,7 @@
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Where simulation cannot reach, formal verification steps in. A tool is given a property \u2014 this buffer never overflows, these two requests are never granted at once \u2014 and searches for any sequence of inputs that breaks it.",
     "seconds": 14.672
   },
@@ -205,7 +205,7 @@
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For large designs, teams also load the description onto emulation hardware, or onto reconfigurable chips called FPGAs, which run the logic far faster than simulation and let real software boot on a design that does not physically exist yet. Each method covers a gap the others leave.",
     "seconds": 17.984
   },
@@ -217,7 +217,7 @@
   },
   {
     "i": 36,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Placement software then positions every standard cell from the netlist. Clock tree synthesis builds the network that delivers the clock signal so that it arrives at every flip-flop at nearly the same moment.",
     "seconds": 13.114666666666666
   },
@@ -229,7 +229,7 @@
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "All of this is automated, because the number of cells is far too large for hands, but engineers steer it constantly, adjusting constraints and re-running when results fall short.",
     "seconds": 10.224
   },
@@ -241,7 +241,7 @@
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Instead of simulating signals, the tool adds up the delay along every path between registers, using the characterised cell data and estimates of wire delay, and checks that each signal arrives before the next clock edge.",
     "seconds": 13.744
   },
@@ -253,7 +253,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Its boundary is that it is only as good as the delay models it is fed, which is why the careful measurement work done by the foundry matters so much.",
     "seconds": 8.432
   },
@@ -265,7 +265,7 @@
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Those rules encode what the manufacturing process can reliably print. Layout versus schematic checking extracts the circuit that the geometry actually forms and confirms it matches the netlist.",
     "seconds": 11.674666666666667
   },
@@ -277,7 +277,7 @@
   },
   {
     "i": 46,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A design that passes all of this is handed off in a step still called tape-out, a name commonly traced to the era when layouts were shipped on magnetic tape.",
     "seconds": 9.189333333333334
   },
@@ -289,7 +289,7 @@
   },
   {
     "i": 48,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Here the design world meets the public standards bodies. SEMI, the industry association for semiconductor manufacturing, publishes the SEMI International Standards used across equipment, materials and masks, so that a design from one company can be built with tools from many others.",
     "seconds": 17.904
   },
@@ -301,7 +301,7 @@
   },
   {
     "i": 50,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "These bodies do not design chips. They supply the shared definitions and measurements that let a design be trusted outside the room it was made in.",
     "seconds": 9.338666666666667
   },
@@ -313,7 +313,7 @@
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Engineers run bring-up: they power the first chips, check that clocks start, load test software, and compare behaviour against the models.",
     "seconds": 8.837333333333333
   },
@@ -325,7 +325,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Scan chains link the flip-flops so their contents can be shifted out and read, which lets automated test equipment check each manufactured chip for physical defects.",
     "seconds": 10.461333333333334
   },
@@ -343,7 +343,7 @@
   },
   {
     "i": 57,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Some bugs can be worked around in software or firmware. Others require a respin: corrected masks and another trip through the factory, which costs time and money.",
     "seconds": 10.778666666666666
   },
@@ -355,13 +355,13 @@
   },
   {
     "i": 59,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Those documents are some of the most candid public evidence about chip design, because they show directly that verification reduces risk without removing it.",
     "seconds": 8.965333333333334
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the edit, watch for the shift between two kinds of evidence.",
     "seconds": 4.197333333333333
   },
@@ -373,13 +373,13 @@
   },
   {
     "i": 62,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Others, like simulation and bring-up, are samples. The animation draws those differently.",
     "seconds": 5.392
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A proven claim is drawn solid; a sampled one is drawn as scattered points with gaps between them.",
     "seconds": 6.021333333333334
   },
@@ -397,7 +397,7 @@
   },
   {
     "i": 66,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not establish how any particular company runs its flow. Those details, including the tools chosen, the size of teams and the cost of a design, are mostly proprietary, and published estimates vary so widely that this script states none of them.",
     "seconds": 16.773333333333333
   },
@@ -409,7 +409,7 @@
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Verification proves properties inside models, and the models themselves are assumptions about how silicon behaves. The published errata are the reminder of where that gap shows.",
     "seconds": 11.546666666666667
   },
@@ -427,7 +427,7 @@
   },
   {
     "i": 71,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The evidence that it works is not one test, but the agreement of all of them.",
     "seconds": 4.752
   }

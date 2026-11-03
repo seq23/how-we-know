@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "Its name promises a monster from hell, but the animal is about a foot long."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The vampire squid is a small, soft deep-sea cephalopod, about 30 centimetres long, dark reddish-brown to black, with eight arms joined by a web of skin, a pair of fins that stick out like ears, and eyes that, relative to its body, are often described as the largest of any animal."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "It does not explain why the picture took so long to get right."
   },
   {
@@ -26,12 +26,12 @@
   },
   {
     "i": 5,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Its adult length is the easy part. Its shape, its colour and even what it eats were first read from damaged evidence and corrected later."
   },
   {
     "i": 6,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "What does a vampire squid look like?"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "i": 8,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The vampire squid is closer to a small umbrella. Its body, called the mantle, is short and rounded, and eight arms hang from it."
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "A sheet of skin, the web, runs between them almost to their tips."
   },
   {
@@ -61,7 +61,7 @@
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The vampire part of the name comes from that cape. Two fins sit on the mantle, one on each side, and from the front they look like ears. The animal flaps them to swim, and it swims slowly."
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "i": 14,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "They look like fangs, and footage is often edited to make them seem like fangs."
   },
   {
@@ -81,7 +81,7 @@
   },
   {
     "i": 16,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "They do not bite and they do not grip. This is the first place where what the animal looks like and what it actually is come apart."
   },
   {
@@ -91,12 +91,12 @@
   },
   {
     "i": 18,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Their likely role is sensory. The word likely matters. That role is an inference from structure and behaviour. Nobody has measured it as a function."
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Then there are the eyes. The animal is roughly a foot long, and its eyes are large enough to dominate its head."
   },
   {
@@ -106,12 +106,12 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Their colour on film depends on the lighting. Under the white lamps of an underwater camera they can look blue or red."
   },
   {
     "i": 22,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The skin behaves the same way. The animal is usually described as black to reddish-brown, but the colour you see in any image partly depends on the lamp."
   },
   {
@@ -121,12 +121,12 @@
   },
   {
     "i": 24,
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "narration": "Here is how the animal was first known. For a long time, deep-sea animals were brought up in trawl nets towed behind ships."
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "A net is a good way to learn that something exists. It is a poor way to learn what that thing looks like."
   },
   {
@@ -136,7 +136,7 @@
   },
   {
     "i": 27,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Each specimen was then preserved in a jar, drawn and described, and every step added distance from the living animal."
   },
   {
@@ -151,7 +151,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "MBARI, working off the coast of California, has spent decades sending remotely operated vehicles into the deep water column."
   },
   {
@@ -161,7 +161,7 @@
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "A camera records the animal undamaged and in its own posture. It records minutes of movement instead of a single frozen moment."
   },
   {
@@ -176,7 +176,7 @@
   },
   {
     "i": 35,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Preserved specimens in natural history collections let anatomists dissect and measure the parts that video cannot reach."
   },
   {
@@ -186,7 +186,7 @@
   },
   {
     "i": 37,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Each kind of evidence covers a weakness in another. Video cannot show stomach contents."
   },
   {
@@ -201,12 +201,12 @@
   },
   {
     "i": 40,
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "narration": "Despite the name, it is not a squid. It is not an octopus either."
   },
   {
     "i": 41,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Its common name calls it a squid, but the first scientific description placed it among the octopuses, and later work moved it again."
   },
   {
@@ -216,7 +216,7 @@
   },
   {
     "i": 43,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Unlike an octopus, it also carries two extra filaments tucked into pockets."
   },
   {
@@ -226,7 +226,7 @@
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Its formal name, Vampyroteuthis infernalis, translates roughly as vampire squid from hell. A name records first impressions. It is not a description."
   },
   {
@@ -236,17 +236,17 @@
   },
   {
     "i": 47,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Several were described under different names before researchers recognised them as a single species."
   },
   {
     "i": 48,
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "narration": "The fins show why this happened. Young vampire squid pass through a stage with two pairs of fins, and adults have one pair."
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A biologist working from a few jars could reasonably conclude that a juvenile and an adult were different animals."
   },
   {
@@ -256,12 +256,12 @@
   },
   {
     "i": 51,
-    "segment": "anatomy_callout",
+    "segment": "ambient_drift",
     "narration": "The feeding filaments are easy to miss in a photograph, because the animal can pull them back into pockets between its arms."
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Extended, they can reach much farther than the length of its body."
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Together, these showed that the vampire squid uses its filaments for collecting marine snow."
   },
   {
@@ -281,7 +281,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The animal gathers this material in mucus and passes it to its mouth with its arms."
   },
   {
@@ -291,7 +291,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Judged by what is in its stomach and what it is seen doing, the vampire squid is a collector."
   },
   {
@@ -301,7 +301,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The cape, the cirri and the dark colour look like a hunter's equipment."
   },
   {
@@ -316,7 +316,7 @@
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At the depths this animal prefers, only a faint trace of blue remains."
   },
   {
@@ -326,7 +326,7 @@
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In that blue gloom, a dark red or black body is effectively invisible."
   },
   {
@@ -336,12 +336,12 @@
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The vampire squid is covered in light organs called photophores, and the tips of its arms can glow."
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "When it is disturbed, it can do something unusual. Other cephalopods release a cloud of dark ink."
   },
   {
@@ -351,12 +351,12 @@
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The cloud lingers in the water while the animal moves away. In another defensive display, it pulls its webbed arms up and back over its body and turns itself inside out, so that the cirri face outward."
   },
   {
     "i": 71,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Researchers sometimes call this the pineapple posture. In that position the animal looks like a spiny ball, and the dark cape disappears entirely."
   },
   {
@@ -366,7 +366,7 @@
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is in the twilight zone, in a layer called the oxygen minimum zone, where the water holds very little oxygen."
   },
   {
@@ -376,7 +376,7 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Its tissues are soft and watery, its muscles are weak compared with a squid's, and its metabolism is slow."
   },
   {
@@ -386,7 +386,7 @@
   },
   {
     "i": 77,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That physical logic explains its appearance. A soft, slow, drifting body is the shape of a life lived on a tight budget."
   },
   {
@@ -401,7 +401,7 @@
   },
   {
     "i": 80,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Those are different shapes of the same body. Third, look at the scale."
   },
   {
@@ -416,7 +416,7 @@
   },
   {
     "i": 83,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "But most video of living vampire squid comes from a few regions where research vehicles dive regularly, and many observations come from off California."
   },
   {
@@ -426,7 +426,7 @@
   },
   {
     "i": 85,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Every image is artificially lit, so its colour under natural light is inferred, not observed."
   },
   {
@@ -436,12 +436,12 @@
   },
   {
     "i": 87,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "So the vampire squid is a small, dark, soft animal with a webbed cape, ear-like fins and very large eyes."
   },
   {
     "i": 88,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The more interesting part is how scientists earned that picture: first from wrecked bodies in jars, then from cameras that went down to meet the animal where it lives."
   }
 ]

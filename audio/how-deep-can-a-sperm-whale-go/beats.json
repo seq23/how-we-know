@@ -1,13 +1,13 @@
 [
   {
     "i": 0,
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "narration": "A telegraph cable hauled up in 1955 held a dead whale from 1,133 meters.",
     "seconds": 6.650666666666667
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Today the number is far larger. A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Life.",
     "seconds": 12.101333333333333
   },
@@ -37,7 +37,7 @@
   },
   {
     "i": 6,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For most of the twentieth century, our understanding of whale depth was based on indirect evidence from whaling or accidental encounters.",
     "seconds": 7.346666666666667
   },
@@ -49,7 +49,7 @@
   },
   {
     "i": 8,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A DTAG is a compact device equipped with a suite of sensors, including pressure gauges, accelerometers, and magnetometers.",
     "seconds": 8.570666666666666
   },
@@ -61,7 +61,7 @@
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Using a 12-meter carbon fiber POLE DEPLOYMENT, the team achieves a SUCTION ATTACHMENT of the tag onto the whale\u2019s back.",
     "seconds": 8.965333333333334
   },
@@ -79,7 +79,7 @@
   },
   {
     "i": 13,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "As the whale descends, the increasing weight of the water column exerts force on a silicon diaphragm within the sensor.",
     "seconds": 7.408
   },
@@ -91,7 +91,7 @@
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Because the tag records data multiple times per second, researchers can reconstruct a high-resolution profile of the entire dive.",
     "seconds": 7.6
   },
@@ -103,7 +103,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This method has transformed marine biology from a science of surface observations into a science of deep-sea tracking, allowing us to map the three-dimensional path of a whale as it navigates the dark.",
     "seconds": 11.944
   },
@@ -115,7 +115,7 @@
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is important to note that we have only tagged a small fraction of the global population.",
     "seconds": 5.232
   },
@@ -127,7 +127,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The variation in these figures often depends on the local bathymetry and the depth at which their prey is located.",
     "seconds": 5.904
   },
@@ -139,7 +139,7 @@
   },
   {
     "i": 23,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "We must view the 2,992 meter record as a verified minimum for the species' potential, rather than an absolute ceiling.",
     "seconds": 8.389333333333333
   },
@@ -151,13 +151,13 @@
   },
   {
     "i": 25,
-    "segment": "pressure_gauge",
+    "segment": "ambient_drift",
     "narration": "At a depth of 2,992 meters, the pressure is approximately 300 times greater than at the surface.",
     "seconds": 7.557333333333333
   },
   {
     "i": 26,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For a human, or any unpressurized vessel, this would be catastrophic. To survive this, the sperm whale has evolved a suite of biological adaptations.",
     "seconds": 9.914666666666667
   },
@@ -169,7 +169,7 @@
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Unlike humans, whose rigid chests would crack under the weight of the deep ocean, a sperm whale\u2019s ribs are connected by flexible cartilage.",
     "seconds": 8.656
   },
@@ -181,7 +181,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "By eliminating the air space, the whale becomes essentially incompressible, its internal tissues matching the pressure of the surrounding sea.",
     "seconds": 8.250666666666667
   },
@@ -193,7 +193,7 @@
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The SPERM WHALE has a high concentration of hemoglobin in its blood and an even higher concentration of myoglobin in its muscle tissue.",
     "seconds": 7.973333333333334
   },
@@ -205,7 +205,7 @@
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This allows them to remain submerged for 90 minutes or more, even though their COLLAPSIBLE LUNGS are non-functional for the duration of the deep dive.",
     "seconds": 7.8773333333333335
   },
@@ -217,7 +217,7 @@
   },
   {
     "i": 36,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "During the dive, the whale can shunt blood away from its extremities, prioritizing the oxygen supply for the brain and heart, ensuring that critical functions remain active even as the body endures extreme cold and pressure.",
     "seconds": 13.210666666666667
   },
@@ -229,7 +229,7 @@
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "By managing their oxygen stores carefully, they can stay below the surface for long periods without building up excessive lactic acid.",
     "seconds": 7.848
   },
@@ -241,7 +241,7 @@
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Data from WHOI suggests that most sperm whale dives stay within this AEROBIC limit, ensuring they can dive again shortly after a brief interval of breathing at the surface.",
     "seconds": 11.066666666666666
   },
@@ -253,7 +253,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The whale is not just surviving the dive; it is maintaining a high level of athletic performance in an environment that would be lethal to almost any other mammal.",
     "seconds": 9.146666666666667
   },
@@ -265,7 +265,7 @@
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For decades, scientists have debated the function of this organ. One leading hypothesis, supported by the Monterey Bay Aquarium Research Institute, or MBARI, is that it acts as a buoyancy regulator.",
     "seconds": 13.104
   },
@@ -277,7 +277,7 @@
   },
   {
     "i": 46,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This cooling process is facilitated by a complex heat exchange system involving the right and left nasal passages, which can selectively expose the oil to the ambient temperature of the deep.",
     "seconds": 10.373333333333333
   },
@@ -289,7 +289,7 @@
   },
   {
     "i": 48,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "When the whale is ready to return to the surface, increased blood flow to the organ could warm the wax, melting it and making the whale more buoyant.",
     "seconds": 8.410666666666666
   },
@@ -301,7 +301,7 @@
   },
   {
     "i": 50,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "However, the sheer size of the organ\u2014occupying nearly one-third of the whale's body length\u2014suggests it plays a fundamental role in its deep-sea lifestyle alongside its COLLAPSIBLE LUNGS and high MYOGLOBIN levels.",
     "seconds": 14.234666666666667
   },
@@ -325,7 +325,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This energy conservation is what makes the sperm whale one of the most successful predators in the ocean's interior, allowing it to spend the majority of its life in a realm where food is scarce and the environment is unforgiving.",
     "seconds": 12.741333333333333
   },
@@ -337,7 +337,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the total darkness of the deep ocean, eyes are of limited use.",
     "seconds": 4.037333333333334
   },
@@ -349,7 +349,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "By forcing air through specialized structures in its nasal passage known as phonic lips, the whale produces loud clicks.",
     "seconds": 7.333333333333333
   },
@@ -361,7 +361,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "When the sound hits an object, like a giant squid, it creates a TARGET REFLECTION that echoes back to the whale.",
     "seconds": 6.522666666666667
   },
@@ -373,13 +373,13 @@
   },
   {
     "i": 62,
-    "segment": "magnitude_bar",
+    "segment": "ambient_drift",
     "narration": "The interval between the click and the echo tells the whale exactly how far away the prey is.",
     "seconds": 5.541333333333333
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "As the whale closes in on its target, the rate of clicking increases, creating a sound known as a \"terminal buzz.\" By syncing this audio data with the depth data from the pressure sensor, researchers can confirm that sperm whales are actively foraging at the bottom of their dives.",
     "seconds": 15.072
   },
@@ -391,7 +391,7 @@
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This depth far exceeds the 1,133 meter CABLE record from the mid-twentieth century and the 2,250 meter COMMON foraging depth compared to the 2,992 meter RECORD.",
     "seconds": 13.744
   },
@@ -409,7 +409,7 @@
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "While we rarely see these battles directly, the evidence is written on the whales themselves.",
     "seconds": 4.8693333333333335
   },
@@ -421,7 +421,7 @@
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Furthermore, the stomach contents of stranded whales often contain thousands of indigestible squid beaks.",
     "seconds": 7.0986666666666665
   },
@@ -433,7 +433,7 @@
   },
   {
     "i": 72,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The DATA SOURCES from WHOI and NOAA consistently point to 2,992 and 2,250 meters respectively for these deep-sea predators, confirming that their entire life cycle is tethered to the abyss.",
     "seconds": 14.394666666666666
   },
@@ -451,7 +451,7 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the mid-twentieth century, as global communication networks expanded across the ocean floor, repair crews began finding whales entangled in the lines.",
     "seconds": 9.349333333333334
   },
@@ -469,7 +469,7 @@
   },
   {
     "i": 78,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Later, in 1991, SONAR observations began to provide more dynamic data, leading eventually to the first DTAG deployments in 2000 by researchers Mark Johnson and Peter Tyack.",
     "seconds": 13.2
   },
@@ -487,7 +487,7 @@
   },
   {
     "i": 81,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "However, these incidents established the sperm whale\u2019s reputation as a deep diver long before we had the sensors to prove it.",
     "seconds": 7.312
   },
@@ -505,25 +505,25 @@
   },
   {
     "i": 84,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The transition from cable entanglements to acoustic tagging represents a shift in how we know the ocean.",
     "seconds": 6.330666666666667
   },
   {
     "i": 85,
-    "segment": "text_beat",
+    "segment": "pressure_gauge",
     "narration": "We moved from accidental, often fatal encounters to precise, non-invasive observation. This has allowed us to see that the 1,133 meter cable record was actually a conservative estimate of the whale's true range.",
     "seconds": 14.405333333333333
   },
   {
     "i": 86,
-    "segment": "pressure_gauge",
+    "segment": "ambient_drift",
     "narration": "Modern data shows they regularly double that depth as part of their daily routine, a feat that was once thought impossible for a mammal.",
     "seconds": 7.802666666666667
   },
   {
     "i": 87,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This evolution of evidence highlights the importance of technological advancement in our quest to understand the planet's least accessible environments.",
     "seconds": 8.784
   },
@@ -535,7 +535,7 @@
   },
   {
     "i": 89,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Most scientific literature, including publications from NOAA, focuses on the 2,250 meter range because that is where the majority of the population spends its time.",
     "seconds": 10.8
   },
@@ -547,7 +547,7 @@
   },
   {
     "i": 91,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the edit, you will see that the depth profile of a sperm whale dive is often shaped like a \"U,\" with a rapid descent, a long period of foraging at a consistent depth, and a steady ascent. This \"U\" shape is the hallmark of a focused, energy-efficient hunter.",
     "seconds": 17.984
   },
@@ -559,7 +559,7 @@
   },
   {
     "i": 93,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "While 2,992 METERS is the highest figure currently recorded by a DTAG, it does not necessarily represent the absolute physiological limit of the species.",
     "seconds": 10.928
   },
@@ -571,7 +571,7 @@
   },
   {
     "i": 95,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Our knowledge of \"the deepest\" is always a moving target, defined by the latest successful tag recovery.",
     "seconds": 6.021333333333334
   },
@@ -583,13 +583,13 @@
   },
   {
     "i": 97,
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "narration": "We know the sperm whale can reach 2,992 meters because we have measured the pressure on its back and heard the sound of its hunt in the dark.",
     "seconds": 8.218666666666667
   },
   {
     "i": 98,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This figure is not a guess, but a data point captured by sensors that survive where we cannot.",
     "seconds": 6.2026666666666666
   },
@@ -601,7 +601,7 @@
   },
   {
     "i": 100,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The sperm whale remains a sentinel of the abyss, a bridge between the world of air and the world of crushing pressure.",
     "seconds": 6.928
   }

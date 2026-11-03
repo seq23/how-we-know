@@ -1,13 +1,13 @@
 [
   {
     "i": 0,
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "narration": "In 1960, Jacques Piccard reported a flatfish where fish appear unable to survive.",
     "seconds": 5.7973333333333334
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-celled xenophyophores and dense microbial communities.",
     "seconds": 13.605333333333334
   },
@@ -25,13 +25,13 @@
   },
   {
     "i": 4,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "They show what came to the bait, not a census of the floor.",
     "seconds": 3.344
   },
   {
     "i": 5,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "What lives in the Mariana Trench?",
     "seconds": 1.84
   },
@@ -43,7 +43,7 @@
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is found almost entirely in trenches, which are long cracks where one tectonic plate dives beneath another.",
     "seconds": 7.429333333333333
   },
@@ -55,13 +55,13 @@
   },
   {
     "i": 9,
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "narration": "The animals you would meet first at the bottom are amphipods. They are scavenging crustaceans, not shrimp, though at first glance they look a little like pale, curled shrimp.",
     "seconds": 9.829333333333333
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the trench they gather in swarms around anything edible that reaches the floor.",
     "seconds": 4.421333333333333
   },
@@ -73,7 +73,7 @@
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "One of them, Hirondellea gigas, has been collected from the Challenger Deep itself, the deepest known point of the trench.",
     "seconds": 7.301333333333333
   },
@@ -85,13 +85,13 @@
   },
   {
     "i": 14,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "They live under more than 1,000 times the pressure at the surface, a figure NOAA uses to describe the trench floor.",
     "seconds": 6.277333333333333
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That number sounds as if it should crush anything soft. It does not, and the reason matters for the rest of this story.",
     "seconds": 7.013333333333334
   },
@@ -103,7 +103,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The damage pressure does is subtler. It distorts proteins and cell membranes, the molecular machinery that has to fold and flex in order to work.",
     "seconds": 8.890666666666666
   },
@@ -127,13 +127,13 @@
   },
   {
     "i": 21,
-    "segment": "evidence_chain",
+    "segment": "species_image",
     "narration": "Here is how most of this is known. Very few people have ever been to the bottom of the Mariana Trench, and a crewed dive covers a tiny patch of seabed for a few hours.",
     "seconds": 9.701333333333332
   },
   {
     "i": 22,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The workhorse is the lander, an unpowered frame dropped from a ship.",
     "seconds": 3.8986666666666667
   },
@@ -145,7 +145,7 @@
   },
   {
     "i": 24,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Then it releases its ballast weights and floats back up. The haul is hours of footage, a trap of animals, and sometimes a water sample.",
     "seconds": 7.568
   },
@@ -163,7 +163,7 @@
   },
   {
     "i": 27,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is poor at revealing what avoided the bait, or what was never interested in it, such as animals that filter food from the water or graze the sediment.",
     "seconds": 8.890666666666666
   },
@@ -175,31 +175,31 @@
   },
   {
     "i": 29,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So the trench's best-known residents are partly a portrait of who answers a dinner bell.",
     "seconds": 4.72
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Fish are the clearest case of a limit. The Mariana Trench does have fish.",
     "seconds": 5.381333333333333
   },
   {
     "i": 31,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "The best known is the Mariana snailfish, a small, pale, almost translucent animal with a soft, gelatinous body.",
     "seconds": 8.178666666666667
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It has been filmed and collected in the trench's upper hadal reaches.",
     "seconds": 4.058666666666666
   },
   {
     "i": 33,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Snailfish are the dominant fish at these depths in trenches around the Pacific.",
     "seconds": 4.826666666666667
   },
@@ -217,7 +217,7 @@
   },
   {
     "i": 36,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Many deep-sea fish carry a molecule in their tissues called TMAO, which helps proteins hold their shape under pressure.",
     "seconds": 8.058666666666667
   },
@@ -229,7 +229,7 @@
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That trend cannot continue forever. Past a certain point, the dissolved molecules inside the fish would outnumber those in the surrounding seawater, and water would flow into its tissues faster than it could cope.",
     "seconds": 12.093333333333334
   },
@@ -241,13 +241,13 @@
   },
   {
     "i": 40,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Notice the shape of that argument. It is a prediction that fits the observations, not a proven law.",
     "seconds": 6.565333333333333
   },
   {
     "i": 41,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It rests on a trend measured in a limited number of species, extended beyond the depths where it was measured, and then checked against where fish have actually been seen.",
     "seconds": 9.296
   },
@@ -259,7 +259,7 @@
   },
   {
     "i": 43,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A lack of sightings is weaker evidence than a sighting. Still, many drops that all come back the same way add up to something you can lean on.",
     "seconds": 8.101333333333333
   },
@@ -271,13 +271,13 @@
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A single xenophyophore can grow to the size of your palm or larger, building a fragile, sponge-like case out of sediment grains and debris.",
     "seconds": 8.56
   },
   {
     "i": 46,
-    "segment": "definition_card",
+    "segment": "species_image",
     "narration": "It is one cell, not an animal. In 2011, an expedition led by researchers from Scripps, working with National Geographic, used free-falling cameras to film xenophyophores deep in the Mariana Trench, below the depths where they had previously been recorded.",
     "seconds": 16.666666666666668
   },
@@ -295,7 +295,7 @@
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Whether they play that same role at the deepest points of the trench is not well established.",
     "seconds": 4.997333333333334
   },
@@ -313,7 +313,7 @@
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Nothing at the bottom can grow its food from sunlight. Almost everything the trench eats arrives from above.",
     "seconds": 6.618666666666667
   },
@@ -325,7 +325,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Occasionally there is a larger windfall, such as a dead fish sinking from shallower water.",
     "seconds": 5.082666666666666
   },
@@ -337,7 +337,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Material that settles on the trench walls does not stay put, because sediment slides carry it downslope, and the axis of the trench gathers organic matter from a much wider area than the patch of sea directly above it.",
     "seconds": 12.986666666666666
   },
@@ -349,13 +349,13 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "They found more activity than on the shallower abyssal plain nearby. The simplest reading is that the trench works as a funnel, so food collects at the bottom.",
     "seconds": 9.253333333333334
   },
   {
     "i": 59,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is why the microbes may be the trench's most important residents, even though they are the least visible.",
     "seconds": 6.768
   },
@@ -367,19 +367,19 @@
   },
   {
     "i": 61,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "You will never see them on a lander's camera. They are known from sediment cores and water samples, which are read in the laboratory through their genes and their chemistry.",
     "seconds": 9.658666666666667
   },
   {
     "i": 62,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "Not everything at the bottom chases bait. Sea cucumbers, soft-bodied relatives of starfish, plough slowly across the sediment, swallowing it and digesting the organic matter it holds.",
     "seconds": 11.397333333333334
   },
   {
     "i": 63,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "They are among the commonest large animals on soft deep-sea floors, and cameras have recorded them deep in the Mariana Trench.",
     "seconds": 7.984
   },
@@ -403,7 +403,7 @@
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In 1960, Jacques Piccard and Don Walsh descended into the Challenger Deep in the bathyscaphe Trieste.",
     "seconds": 7.088
   },
@@ -415,7 +415,7 @@
   },
   {
     "i": 69,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "He described a pale, featureless floor with small amphipods moving across it.",
     "seconds": 5.2
   },
@@ -427,19 +427,19 @@
   },
   {
     "i": 71,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "There is no photograph. It also conflicts with everything since: the chemical argument for a fish depth limit, and years of camera drops that have never shown a fish at that depth.",
     "seconds": 11.122666666666667
   },
   {
     "i": 72,
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "narration": "Most deep-sea biologists now think Piccard saw something else, perhaps a sea cucumber, though we cannot know for certain what was really seen.",
     "seconds": 7.824
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The report is not dismissed because it is inconvenient. It is outweighed.",
     "seconds": 4.784
   },
@@ -451,7 +451,7 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The depth of the floor is a survey measurement, and NOAA is the source for the figure in this episode.",
     "seconds": 5.968
   },
@@ -463,7 +463,7 @@
   },
   {
     "i": 77,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The fish limit is an argument from chemistry, checked against footage. The flatfish is a single eyewitness report.",
     "seconds": 6.608
   },
@@ -475,13 +475,13 @@
   },
   {
     "i": 79,
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "narration": "This evidence establishes that life reaches the bottom of the Mariana Trench, and it names some of what lives there.",
     "seconds": 7.077333333333334
   },
   {
     "i": 80,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not provide a full species list. The trench is long, and only a small fraction of its floor has ever been sampled or filmed.",
     "seconds": 8.506666666666666
   },
@@ -493,7 +493,7 @@
   },
   {
     "i": 82,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Microbial diversity is known mainly through genetic surveys, which detect far more than has been named.",
     "seconds": 6.096
   },
@@ -505,7 +505,7 @@
   },
   {
     "i": 84,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "What we have is a sketch drawn through a handful of windows, not a census.",
     "seconds": 5.242666666666667
   },
@@ -523,7 +523,7 @@
   },
   {
     "i": 87,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The trench is not empty. It is simply very hard to see.",
     "seconds": 4.1866666666666665
   }

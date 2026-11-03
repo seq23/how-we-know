@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "The world's most famous ugly fish was photographed after it had been ruined."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "In its own habitat, a blobfish looks like a fairly ordinary deep-sea fish: a large head, a tapering body and visible fins, its soft flesh held in shape by the water around it."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Near 1000 metres, a depth within the range reported for blobfish, NOAA's rule gives about 100 atmospheres pressing in from every side."
   },
   {
@@ -26,12 +26,12 @@
   },
   {
     "i": 5,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Mostly, it does not. The face sagged because something far more ordinary was taken away."
   },
   {
     "i": 6,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "What does a blobfish actually look like?"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "i": 8,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "It is resting, not swimming. That detail matters, because it tells you the famous image is of a dead specimen out of water."
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "It was photographed on deck and later preserved. Years afterwards it won a public vote as the world's ugliest animal, and the picture travelled everywhere."
   },
   {
@@ -61,7 +61,7 @@
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The animal had been hauled from depth, handled, and set down in air."
   },
   {
@@ -71,27 +71,27 @@
   },
   {
     "i": 14,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "So the first task is to separate the nickname from the animal."
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The name blobfish is usually applied to Psychrolutes marcidus, one of a group often called fathead sculpins."
   },
   {
     "i": 16,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "It lives over the continental slopes off southeastern Australia and New Zealand, in cold, dark water near the seafloor."
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Very few people have ever seen one alive. Most of the images in circulation show specimens on decks, in trays and in jars."
   },
   {
     "i": 18,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "That is not unusual for deep-sea fish. It does mean that the public picture of this species was built from the condition it ends up in, not the condition it lives in. The rest of this story is about closing that gap."
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "There is something to that, but it skips a step. Many fish that suffer badly when brought up quickly have a swim bladder, a gas-filled organ used to control buoyancy."
   },
   {
@@ -116,7 +116,7 @@
   },
   {
     "i": 23,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Fathead sculpins like the blobfish are generally described as having no swim bladder."
   },
   {
@@ -126,7 +126,7 @@
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Water and watery tissue barely compress, so the pressure change alone does relatively little to them."
   },
   {
@@ -136,12 +136,12 @@
   },
   {
     "i": 27,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Think about what holds a body's shape. In you, muscle and bone do that work against gravity all day."
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "In a blobfish, the water does much of it. A body close to neutral buoyancy is supported evenly from every side, so loose skin and gelatinous flesh hold their form without much internal structure."
   },
   {
@@ -151,7 +151,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "That is why the body in the famous image spreads out, and why the skin over the snout hangs forward into that nose-like flap."
   },
   {
@@ -166,7 +166,7 @@
   },
   {
     "i": 33,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "First, the fish is caught in a trawl net and pressed against other animals, rocks and mesh as the net is towed."
   },
   {
@@ -176,7 +176,7 @@
   },
   {
     "i": 35,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For a body without gas, this is less dramatic than it is for a fish with a swim bladder, but it is not harmless."
   },
   {
@@ -186,7 +186,7 @@
   },
   {
     "i": 37,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Finally, it is laid on a flat surface and photographed. Each step distorts the body, and the camera only sees the last one."
   },
   {
@@ -196,12 +196,12 @@
   },
   {
     "i": 39,
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "narration": "The specific injuries to the famous specimen are a separate question. Nobody documented them in enough detail to list them one by one."
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "What can be said is that the photograph is consistent with a fragile body that has lost its support and taken some damage along the way."
   },
   {
@@ -211,7 +211,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The strongest evidence comes from relatives filmed in place. Remotely operated vehicles are robot submersibles, tethered to a ship and carrying cameras and lights."
   },
   {
@@ -221,7 +221,7 @@
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The Monterey Bay Aquarium Research Institute, known as MBARI, has filmed related fathead sculpins alive in the deep northeast Pacific."
   },
   {
@@ -231,7 +231,7 @@
   },
   {
     "i": 46,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In that footage, these fish have a recognisable fish outline. They have a broad head, a body that narrows toward the tail, and fins that are spread and working."
   },
   {
@@ -241,7 +241,7 @@
   },
   {
     "i": 48,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The living animal has a broad head and a tapering body. Its skin sits smoothly over the head instead of hanging forward."
   },
   {
@@ -251,7 +251,7 @@
   },
   {
     "i": 50,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The overall effect is closer to an oversized tadpole than a melted face."
   },
   {
@@ -261,17 +261,17 @@
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But it does not look like a drooping pink mass. That impression belongs almost entirely to the specimen on the deck."
   },
   {
     "i": 53,
-    "segment": "checklist_reveal",
+    "segment": "species_image",
     "narration": "There is a reason the blobfish is built this way, and it has nothing to do with appearance."
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This is what the body design explains. Deep water offers little food, so a body that costs little to build and run has an advantage."
   },
   {
@@ -281,7 +281,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A body near neutral buoyancy can stay just above the seafloor without spending energy on swimming."
   },
   {
@@ -291,7 +291,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is thought to feed largely on small invertebrates that come within reach."
   },
   {
@@ -301,12 +301,12 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Notice what that does to the famous image. Every feature that makes the specimen look grotesque also makes the living fish efficient."
   },
   {
     "i": 61,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The loose skin, the soft flesh and the lack of rigid structure add up to a quiet, economical animal in water."
   },
   {
@@ -316,12 +316,12 @@
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It revealed what happens to a body designed for one environment when it is dropped into another."
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is a real and interesting fact. It is just not the fact most people took from the picture."
   },
   {
@@ -331,7 +331,7 @@
   },
   {
     "i": 66,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The chain starts with footage of related fathead sculpins, not necessarily Psychrolutes marcidus itself."
   },
   {
@@ -341,7 +341,7 @@
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "When filmed alive, they hold a normal fish shape. For the blobfish, there are few observations of the species itself in its habitat."
   },
   {
@@ -351,7 +351,7 @@
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is a careful inference. It is a strong one, because the physics and anatomy behind it are well understood."
   },
   {
@@ -366,7 +366,7 @@
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A fish on a deck, in a tray or against a white background has already made the journey from seabed to surface."
   },
   {
@@ -376,37 +376,37 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Neither image is false. A photograph is a record of a condition, not a portrait of a species."
   },
   {
     "i": 76,
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "narration": "Some of the footage shows a relative instead of the blobfish itself."
   },
   {
     "i": 77,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Those are the clearest living images available, so the comparison is made openly, and you should weigh it that way."
   },
   {
     "i": 78,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "This evidence settles the main point. The famous image shows a damaged specimen out of water, and a living blobfish keeps a recognisable fish shape."
   },
   {
     "i": 79,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "It does not settle every detail of how a living Psychrolutes marcidus looks, from the exact set of its fins to its colour in natural conditions, because direct footage of this species alive is scarce."
   },
   {
     "i": 80,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Colour in deep-sea footage also depends on the lights the vehicle carries, since almost no sunlight reaches these depths."
   },
   {
     "i": 81,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Nor does any of this tell you how blobfish behave, how long they live, or whether their numbers are changing."
   },
   {
@@ -416,12 +416,12 @@
   },
   {
     "i": 83,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "The blobfish became famous for a face it never wore while alive."
   },
   {
     "i": 84,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "What it actually looks like is quieter: a soft, broad-headed fish resting in cold water, held together by the same ocean that holds it up."
   },
   {

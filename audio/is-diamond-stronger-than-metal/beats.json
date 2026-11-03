@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "A gem no file can scratch can still chip against a doorframe."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Diamond is harder than any metal, but it is not tougher. The Smithsonian, which holds one of the best-known gem collections anywhere, describes diamond as the hardest natural mineral, the 10 at the top of the Mohs scale."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A 10 tells you what diamond can scratch. It says nothing about what happens when you drop it, bend it, or hit it."
   },
   {
@@ -36,7 +36,7 @@
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is at least three. ASM International, the professional society for materials engineers, treats them as separate properties for good reason."
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "i": 9,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It says nothing about impact. Strength is the stress a material can carry before it permanently deforms or breaks."
   },
   {
@@ -56,12 +56,12 @@
   },
   {
     "i": 11,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Those three can point in opposite directions. Window glass resists scratching well, and you know what happens when you drop a glass."
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A rubber band is barely hard at all, yet it survives being stretched again and again."
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "i": 14,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "On toughness, ordinary steel wins outright. Strength sits in between, and it depends on whether you push, pull or bend."
   },
   {
@@ -81,7 +81,7 @@
   },
   {
     "i": 16,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the early nineteenth century, the German mineralogist Friedrich Mohs arranged ten reference minerals in order, each able to scratch the ones below it."
   },
   {
@@ -91,42 +91,42 @@
   },
   {
     "i": 18,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The harder mineral leaves the mark. Talc sits at 1. Corundum, the mineral behind ruby and sapphire, sits at 9. Diamond sits at 10, and nothing natural scratches it."
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But the scale is a ranking, not a ruler. It tells you order, not distance."
   },
   {
     "i": 20,
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "narration": "The step from 9 to 10 looks the same on paper as the step from 1 to 2, and it is not."
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "On instrumented hardness tests, the jump from corundum to diamond is far larger than any other step on the scale."
   },
   {
     "i": 22,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Published comparisons put the size of that gap in different places, but none of them make it small."
   },
   {
     "i": 23,
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "narration": "Steels, meanwhile, land somewhere in the middle of the ranking. Where exactly depends on the alloy and how it was heat treated. That spread is itself a clue: metal is not one material."
   },
   {
     "i": 24,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Why is diamond at the top at all? Each carbon atom shares electrons with four neighbours, building a rigid three-dimensional network of short, strong bonds."
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "To scratch diamond, you have to break them. Graphite is also pure carbon, but its atoms sit in flat sheets that slide past each other, which is why pencil lead is soft."
   },
   {
@@ -141,7 +141,7 @@
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the Vickers and Knoop tests, a tiny diamond pyramid is driven into the sample under a known load, held, then lifted away."
   },
   {
@@ -151,7 +151,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Divide the load by the area of the mark and you have a hardness number."
   },
   {
@@ -161,12 +161,12 @@
   },
   {
     "i": 32,
-    "segment": "checklist_reveal",
+    "segment": "ambient_drift",
     "narration": "Notice the problem. The indenter is diamond. The method works for steel, because the tool is far harder than the sample, so only the sample deforms."
   },
   {
     "i": 33,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For diamond, the indenter is as hard as the sample. It can blunt or crack during the test."
   },
   {
@@ -176,7 +176,7 @@
   },
   {
     "i": 35,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So diamond's hardness is measured with real care and real disagreement. The ranking is certain."
   },
   {
@@ -196,7 +196,7 @@
   },
   {
     "i": 39,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In a fracture toughness test, engineers cut or grow a sharp crack into a sample, load the sample, and record when the crack runs."
   },
   {
@@ -206,7 +206,7 @@
   },
   {
     "i": 41,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The height the pendulum loses tells you how much energy the bar absorbed."
   },
   {
@@ -216,12 +216,12 @@
   },
   {
     "i": 43,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Here steel and diamond swap places. In a metal, the bonding lets whole planes of atoms slip past one another along defects called dislocations."
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "When a crack tip pushes forward, the metal around it flows, the tip blunts, and energy is soaked up as bending rather than breaking."
   },
   {
@@ -231,7 +231,7 @@
   },
   {
     "i": 46,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At room temperature there is almost no slip available. The energy has nowhere to go except into the crack, so the crack runs, and the stone shatters."
   },
   {
@@ -246,7 +246,7 @@
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "Diamond cutters exploited this for centuries, marking a rough stone and cleaving it with a single strike of a blade."
   },
   {
@@ -256,12 +256,12 @@
   },
   {
     "i": 51,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is why a diamond ring can chip. A knock against a doorframe at the wrong angle, on a thin edge, can take a flake off a stone that no file could ever scratch."
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Gemologists inspect the thin outer edge of a cut diamond for exactly this kind of damage."
   },
   {
@@ -276,7 +276,7 @@
   },
   {
     "i": 55,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Plenty of tools are tipped with diamond, but not for steel. Diamond tooling excels at cutting stone, glass, ceramics and non-ferrous metals such as aluminium."
   },
   {
@@ -286,7 +286,7 @@
   },
   {
     "i": 57,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The tool wears away chemically, not mechanically. The hardness contest is never even decided."
   },
   {
@@ -296,7 +296,7 @@
   },
   {
     "i": 59,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is used because hot iron attacks diamond. Heat matters in open air too."
   },
   {
@@ -306,7 +306,7 @@
   },
   {
     "i": 61,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Jewellers repairing a setting with a torch take this seriously. So even the claim that diamond beats steel at hardness carries a condition: room temperature, a scratch, no chemistry involved. Change the temperature or the chemistry, and the contest changes."
   },
   {
@@ -316,7 +316,7 @@
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Physicists build diamond anvil cells, two gem-quality diamonds pressed tip to tip, to crush tiny samples to pressures found deep inside planets."
   },
   {
@@ -326,7 +326,7 @@
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Diamond's behaviour under compression is not the same as under tension, and a single word cannot hold both."
   },
   {
@@ -336,7 +336,7 @@
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The likely reason is flaws. A large crystal almost always contains some defect where a crack can start."
   },
   {
@@ -346,7 +346,7 @@
   },
   {
     "i": 69,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A flawless sliver of diamond and a gem with a hidden inclusion are the same substance with very different breaking points."
   },
   {
@@ -356,7 +356,7 @@
   },
   {
     "i": 71,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A sentence will open with hardness and close with toughness, as if they were one quantity."
   },
   {
@@ -366,7 +366,7 @@
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Ask which test, because a scratch ranking and an indentation number are different kinds of evidence."
   },
   {
@@ -376,12 +376,12 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This comparison does not produce a single verdict, and the evidence does not support one."
   },
   {
     "i": 76,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "There is no agreed single hardness figure for diamond. The measurement uses diamond to test diamond, and the result shifts with crystal direction."
   },
   {
@@ -391,12 +391,12 @@
   },
   {
     "i": 78,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Results for one do not transfer cleanly to another. The nanoscale bending results describe needles far smaller than any gem, not rings or drill bits."
   },
   {
     "i": 79,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And metal is a category, not a material: a soft pure metal and a hardened tool steel sit far apart on every one of these tests."
   },
   {

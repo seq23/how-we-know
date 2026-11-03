@@ -1,13 +1,13 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "species_image",
     "narration": "In 1979, a temperature probe lowered into a black smoker partly melted.",
     "seconds": 5.786666666666667
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals.",
     "seconds": 8.805333333333333
   },
@@ -19,7 +19,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The evidence comes from instruments sent down by submersibles, fluid samples missing their magnesium, and a 1977 dive that found animals nobody expected.",
     "seconds": 11.109333333333334
   },
@@ -31,7 +31,7 @@
   },
   {
     "i": 5,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "What is a hydrothermal vent?",
     "seconds": 2.3946666666666667
   },
@@ -43,7 +43,7 @@
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "If that was right, cold ocean water should be seeping into the young, cracked rock, warming up, and escaping somewhere.",
     "seconds": 7.045333333333334
   },
@@ -55,7 +55,7 @@
   },
   {
     "i": 9,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So in 1977, scientists dove in the submersible Alvin, operated by the Woods Hole Oceanographic Institution, to find the source.",
     "seconds": 8.496
   },
@@ -67,13 +67,13 @@
   },
   {
     "i": 11,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The team was made up mostly of geologists and geochemists, and the biology arrived as a surprise.",
     "seconds": 5.8293333333333335
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Two years later, in 1979, Alvin dives on the East Pacific Rise found something hotter.",
     "seconds": 6.0
   },
@@ -85,13 +85,13 @@
   },
   {
     "i": 14,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The temperature probe the team carried was not built for it; by WHOI's account, part of it melted.",
     "seconds": 6.1706666666666665
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Those first black smokers turned a predicted phenomenon into one of the most closely studied features of the deep ocean.",
     "seconds": 6.362666666666667
   },
@@ -103,7 +103,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Deeper in, that water is heated by magma sitting below the seafloor.",
     "seconds": 4.282666666666667
   },
@@ -115,7 +115,7 @@
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Hot fluid is buoyant, so it rises and exits through the seafloor, often along the same fractures that let it in.",
     "seconds": 7.322666666666667
   },
@@ -127,7 +127,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is what the black smoke is. NOAA describes it as a cloud of mineral particles, mostly metal sulfides, not smoke in any burning sense.",
     "seconds": 8.858666666666666
   },
@@ -139,7 +139,7 @@
   },
   {
     "i": 23,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Chimneys grow, crack, topple and regrow. Where hot fluid has already mixed with seawater underground, the vent runs cooler, carries lighter-colored minerals, and is called a white smoker.",
     "seconds": 11.12
   },
@@ -151,13 +151,13 @@
   },
   {
     "i": 25,
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "narration": "No one has watched seawater travel down through the crust, so that leg of the loop is inferred.",
     "seconds": 5.1786666666666665
   },
   {
     "i": 26,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The strongest evidence is chemical. Vent fluid collected by submersibles and robotic vehicles comes up almost stripped of magnesium, an element seawater normally carries in abundance.",
     "seconds": 11.792
   },
@@ -169,7 +169,7 @@
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Seismic surveys that image magma beneath ridges, and laboratory experiments that heat seawater with crushed basalt, point to the same loop.",
     "seconds": 8.421333333333333
   },
@@ -181,7 +181,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is a property of water under the weight of one atmosphere of air.",
     "seconds": 3.6
   },
@@ -193,7 +193,7 @@
   },
   {
     "i": 32,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The boiling point is set by pressure, and it climbs with it.",
     "seconds": 3.3973333333333335
   },
@@ -205,13 +205,13 @@
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Pressure raises the bar, but it does not remove it. Under some combinations of temperature and depth, vent fluid does boil underground, or separates into a lighter, vapor-like phase and a dense, salty brine.",
     "seconds": 12.293333333333333
   },
   {
     "i": 35,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Scientists detect this after the fact, in the saltiness of what comes out.",
     "seconds": 4.453333333333333
   },
@@ -223,7 +223,7 @@
   },
   {
     "i": 37,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "At the hottest and deepest extremes, the distinction between liquid and gas stops being meaningful at all.",
     "seconds": 6.416
   },
@@ -235,7 +235,7 @@
   },
   {
     "i": 39,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Life there runs instead on chemosynthesis. Microbes capture energy from chemical reactions, most famously by oxidizing the hydrogen sulfide in vent fluid, and use that energy to build sugars from carbon dioxide.",
     "seconds": 14.544
   },
@@ -247,7 +247,7 @@
   },
   {
     "i": 41,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Either way, these microbes are the base of the vent food web.",
     "seconds": 3.973333333333333
   },
@@ -259,7 +259,7 @@
   },
   {
     "i": 43,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Adults have no mouth and no gut. Their red plume, colored by hemoglobin, takes up oxygen, carbon dioxide and hydrogen sulfide from the surrounding water.",
     "seconds": 10.725333333333333
   },
@@ -271,7 +271,7 @@
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The animal itself lives inside a tough white tube anchored to the rock.",
     "seconds": 4.208
   },
@@ -283,7 +283,7 @@
   },
   {
     "i": 47,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Dissection showed there is no mouth and no gut. Microscopy showed bacteria inside the trophosome, densely packed in its cells.",
     "seconds": 8.816
   },
@@ -295,7 +295,7 @@
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And carbon signatures in the worm's tissue match carbon fixed by those bacteria, not carbon from food sinking down from the surface.",
     "seconds": 8.741333333333333
   },
@@ -307,13 +307,13 @@
   },
   {
     "i": 51,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Vent communities also differ from ocean to ocean. Giant tube worms dominate many Pacific sites.",
     "seconds": 6.928
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "On the Mid-Atlantic Ridge, swarming shrimp crowd the chimneys instead. In the Indian Ocean, the scaly-foot snail grows a shell layered with iron sulfide.",
     "seconds": 9.477333333333334
   },
@@ -325,7 +325,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "How exactly animals colonize a newly formed vent remains an active question.",
     "seconds": 5.104
   },
@@ -337,7 +337,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "NOAA Ocean Exploration has documented the site with remotely operated vehicles. Its chimneys are made of carbonate minerals, not metal sulfides, and its fluid is far cooler than a black smoker's and strongly alkaline rather than acidic.",
     "seconds": 16.304
   },
@@ -349,7 +349,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "When seawater reacts with that rock, in a process called serpentinization, the reaction itself releases heat, along with hydrogen and methane.",
     "seconds": 9.317333333333334
   },
@@ -361,7 +361,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That matters because it means vents can exist away from active volcanic centers, and it gives microbes a different menu of chemical energy to live on.",
     "seconds": 9.402666666666667
   },
@@ -373,7 +373,7 @@
   },
   {
     "i": 62,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Plumes of dissolved iron from vents have been traced far from their source.",
     "seconds": 4.282666666666667
   },
@@ -385,31 +385,31 @@
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Much of this work is published by public bodies: NOAA reports on vent temperatures and expeditions, WHOI on Alvin and the 1977 dives, and the Smithsonian on deep-sea life.",
     "seconds": 12.933333333333334
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Vents also sit at the center of one of science's open questions.",
     "seconds": 4.24
   },
   {
     "i": 66,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "Some researchers propose that life on Earth began at hydrothermal vents, where chemical energy and mineral surfaces were both available, and alkaline systems like Lost City feature heavily in that argument.",
     "seconds": 11.749333333333333
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Others favor shallow pools on land, where repeated drying and wetting can concentrate molecules.",
     "seconds": 5.8933333333333335
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Laboratory experiments support pieces of both ideas. Neither has been demonstrated, and you should treat any confident claim either way as ahead of the evidence.",
     "seconds": 9.445333333333334
   },
@@ -433,7 +433,7 @@
   },
   {
     "i": 72,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The black smoke looks slow and soft, but it is fluid hot enough to damage instruments not built for it.",
     "seconds": 5.914666666666666
   },
@@ -451,7 +451,7 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Second, tube worms are fed by symbionts, shown by several independent lines of evidence.",
     "seconds": 6.021333333333334
   },
@@ -463,7 +463,7 @@
   },
   {
     "i": 77,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The mid-ocean ridge system is enormous, only a small fraction has been surveyed closely, and estimates vary widely.",
     "seconds": 7.248
   },
@@ -475,13 +475,13 @@
   },
   {
     "i": 79,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And where life began is not settled by anything in this video.",
     "seconds": 3.8773333333333335
   },
   {
     "i": 80,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "A hydrothermal vent is seawater returning from a journey through hot rock, carrying the crust's chemistry back into the ocean.",
     "seconds": 6.8213333333333335
   },
@@ -493,7 +493,7 @@
   },
   {
     "i": 82,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Much of the seafloor where such vents could exist has still never been seen.",
     "seconds": 4.4
   }

@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "A magnet grabs a razor-hard file and a soft nail exactly the same."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "High-carbon steel is plain carbon steel holding roughly 0.6 percent carbon or more by weight, and the only certain way to confirm it is a laboratory chemical analysis."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "What the figure does not tell you is how to see it."
   },
   {
@@ -31,12 +31,12 @@
   },
   {
     "i": 6,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Start with the test most people try first. Plain carbon steel is overwhelmingly iron, and iron at room temperature is strongly magnetic."
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Adding a fraction of a percent of carbon does not switch that off."
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "i": 9,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A magnet can't tell them apart. What a magnet can sometimes do is separate certain stainless steels, whose crystal structure makes them weakly magnetic or not magnetic at all, from ordinary carbon steels."
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "i": 11,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Two bars of mild steel and high-carbon steel have nearly identical density and look the same when freshly cut."
   },
   {
@@ -66,7 +66,7 @@
   },
   {
     "i": 13,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is in how a small amount of carbon arranges itself inside that iron."
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Low-carbon steel, often called mild steel, sits below roughly 0.3 percent carbon."
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Go far enough, past roughly 2 percent carbon, and the material is usually called cast iron rather than steel."
   },
   {
@@ -96,7 +96,7 @@
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The word \"plain\" matters too. Alloy steels deliberately add other elements, and those additions change how the metal sparks, hardens and looks, which complicates every workshop test that follows."
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Carbon atoms are small enough to tuck into the gaps between iron atoms."
   },
   {
@@ -126,7 +126,7 @@
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "This is one way metallurgists estimate carbon by eye: they cut a sample, polish it, etch it and judge how much of the surface is pearlite."
   },
   {
@@ -136,12 +136,12 @@
   },
   {
     "i": 27,
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "narration": "Cool the steel quickly instead, by plunging it into water or oil, and the carbon has no time to escape."
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It stays trapped in the iron, forcing the crystal lattice into a strained, distorted form called martensite."
   },
   {
@@ -151,7 +151,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Low-carbon steel has too little carbon to harden much this way. High-carbon steel hardens dramatically."
   },
   {
@@ -166,12 +166,12 @@
   },
   {
     "i": 33,
-    "segment": "process_steps",
+    "segment": "ambient_drift",
     "narration": "The oldest workshop method is the spark test. You touch the steel to a grinding wheel and watch the stream of hot particles that flies off."
   },
   {
     "i": 34,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Each particle is a tiny fragment of metal heated as it tears away."
   },
   {
@@ -181,7 +181,7 @@
   },
   {
     "i": 36,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "When enough gas builds inside a glowing particle, it bursts, splitting the spark into forks and stars."
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "An experienced eye reads that density of bursts as a rough carbon gauge."
   },
   {
@@ -201,7 +201,7 @@
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It can reliably separate low-carbon steel from high-carbon steel in plain steels."
   },
   {
@@ -211,7 +211,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Alloyed steels remain an open problem: some alloying elements suppress the bursts or change the colour of the stream, so an alloy steel can masquerade as a lower or higher carbon grade."
   },
   {
@@ -226,7 +226,7 @@
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Here the magnet finally earns its place, not as a carbon detector but as a thermometer: steel loses its magnetism close to the temperature where it is ready to harden."
   },
   {
@@ -236,27 +236,27 @@
   },
   {
     "i": 47,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Read the result carefully. A skating file tells you the steel had enough carbon to harden."
   },
   {
     "i": 48,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It does not tell you how much. Medium-carbon steel also hardens noticeably, and many alloy steels harden more deeply than plain high-carbon steel at all."
   },
   {
     "i": 49,
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "narration": "The test also changes the sample, so it is unsuitable for anything you need to keep."
   },
   {
     "i": 50,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Laboratories measure hardness with indentation instruments that press a shaped tip into the surface and record the mark, which turns \"the file skated\" into a value."
   },
   {
     "i": 51,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Even then, hardness depends on carbon, heat treatment and alloying together, so it can only point toward carbon, never isolate it."
   },
   {
@@ -266,7 +266,7 @@
   },
   {
     "i": 53,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The standard approach is combustion analysis. A small sample is cut, often as chips or a pin, and burned in a stream of pure oxygen inside a furnace."
   },
   {
@@ -276,7 +276,7 @@
   },
   {
     "i": 55,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The step that makes this trustworthy is calibration. The instrument is checked against certified reference steels whose carbon content has been established with great care."
   },
   {
@@ -286,12 +286,12 @@
   },
   {
     "i": 57,
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "narration": "A second laboratory technique is spark emission spectrometry. The sample's surface is struck with an electrical spark under a protective gas, and the light given off is split into its wavelengths."
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Each element emits at characteristic wavelengths, so the strength of the carbon lines indicates the carbon content."
   },
   {
@@ -301,7 +301,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Notice the chain of trust. NIST certifies the reference, ASTM International describes the method, ASM International publishes the classification ranges you compare the result against. Each link is a public body whose work you can inspect."
   },
   {
@@ -311,7 +311,7 @@
   },
   {
     "i": 62,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But carbon is a very light element, and its signal is too weak for these instruments to measure reliably."
   },
   {
@@ -321,12 +321,12 @@
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Portable instruments that use a laser or a spark to make the metal emit light can measure carbon in the field, but they need careful surface preparation and calibration."
   },
   {
     "i": 65,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Often the simplest route is paperwork. In the four-digit grade system widely used in North America, plain carbon steels are numbered beginning with 10, and the last two digits indicate the approximate carbon content in hundredths of a percent."
   },
   {
@@ -336,12 +336,12 @@
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A grade of 1080 means roughly 0.80 percent carbon, a high-carbon steel."
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Steel bought from a mill usually comes with a certificate listing its measured chemistry."
   },
   {
@@ -351,7 +351,7 @@
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Unmarked or reused steel has no such trail, and assumptions about what an old part \"must\" be made from are guesses until tested."
   },
   {
@@ -366,7 +366,7 @@
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The combustion analysis and the spectrometer are measurements, anchored to certified references."
   },
   {
@@ -376,12 +376,12 @@
   },
   {
     "i": 75,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "None of this makes the category sharper than it is. The line at roughly 0.6 percent carbon is a convention, and a steel just either side of it is not meaningfully different in use."
   },
   {
     "i": 76,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Workshop tests rank steels; they do not measure them, and alloying elements can mislead both sparks and files."
   },
   {
@@ -391,7 +391,7 @@
   },
   {
     "i": 78,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Where the sample is taken from matters as much as how it is analysed."
   },
   {

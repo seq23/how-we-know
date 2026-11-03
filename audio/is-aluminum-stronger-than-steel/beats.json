@@ -1,12 +1,12 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
+    "segment": "ambient_drift",
     "narration": "An aluminum bar can match mild steel's strength and still bend nearly three times further."
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Piece for piece, steel is usually stronger than aluminum and nearly three times stiffer, but it is also nearly three times as dense."
   },
   {
@@ -16,7 +16,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That one ratio is where the simple question starts to come apart."
   },
   {
@@ -26,7 +26,7 @@
   },
   {
     "i": 5,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And the word stronger is doing more work than it looks, because engineers mean at least three different things by it."
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "i": 8,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A tensile test, described in standard methods published by ASTM International, takes a specimen shaped a little like a dog bone, grips both ends, and stretches it while recording force and extension."
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The steep straight section at the start gives stiffness, the elastic modulus: how hard the material resists stretching before it springs back."
   },
   {
@@ -61,7 +61,7 @@
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The peak of the curve gives ultimate tensile strength, the most stress it carries before it narrows and tears."
   },
   {
@@ -76,7 +76,7 @@
   },
   {
     "i": 15,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In the United States, the chain of calibration for testing machines traces back to measurement standards maintained by NIST, the National Institute of Standards and Technology."
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is also why you should be wary of any comparison that quotes one number for aluminum and one for steel."
   },
   {
@@ -96,12 +96,12 @@
   },
   {
     "i": 19,
-    "segment": "magnitude_bar",
+    "segment": "ambient_drift",
     "narration": "Start with the property that is least ambiguous. Stiffness barely changes with alloying or heat treatment, which makes it the cleanest comparison."
   },
   {
     "i": 20,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "ASM International reference data put the elastic modulus of steel at about 200 gigapascals and aluminum at about 70."
   },
   {
@@ -121,7 +121,7 @@
   },
   {
     "i": 24,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "An aluminum ladder flexes in a way a steel one of the same profile would not."
   },
   {
@@ -131,12 +131,12 @@
   },
   {
     "i": 26,
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "narration": "Now divide each stiffness by its density. At equal size, steel is nearly three times stiffer, but it is also nearly three times as dense, so the two ratios land almost on top of each other."
   },
   {
     "i": 27,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Steel is not meaningfully stiffer per kilogram. Where aluminum pulls ahead is in bending."
   },
   {
@@ -146,7 +146,7 @@
   },
   {
     "i": 29,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Bending stiffness grows far faster than thickness does, so a thicker aluminum panel of equal weight can be considerably stiffer than the thin steel one it replaces."
   },
   {
@@ -166,7 +166,7 @@
   },
   {
     "i": 33,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A thin strip bends easily in your fingers, and the pure metal is used where conductivity or corrosion resistance matters more than load."
   },
   {
@@ -176,7 +176,7 @@
   },
   {
     "i": 35,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The everyday structural steel used in buildings, specified under the ASTM A36 standard, must have a yield strength of at least 250 megapascals."
   },
   {
@@ -186,12 +186,12 @@
   },
   {
     "i": 37,
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "narration": "Metallurgists know what causes that jump because they can see it. Electron microscopes resolve particles far too small for any optical instrument, and comparisons between the same alloy in different heat-treated states link particle size and spacing to measured strength."
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The process is called precipitation hardening: strengthening by tiny particles that form inside the grains during heat treatment."
   },
   {
@@ -201,7 +201,7 @@
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The mechanism has an edge. Heat the alloy too much, or for too long, and the particles grow and coarsen, spacing out until dislocations slip between them and the strength falls away."
   },
   {
@@ -211,7 +211,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Steel can be quenched and tempered, and specialized grades are alloyed with nickel, chromium, molybdenum and other elements."
   },
   {
@@ -221,7 +221,7 @@
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So the honest scorecard reads like this. Heat-treated alloys can exceed the A36 minimum."
   },
   {
@@ -231,7 +231,7 @@
   },
   {
     "i": 46,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But steel stays nearly three times stiffer at equal size, and high-strength steels remain far stronger outright, by any measure that ignores weight."
   },
   {
@@ -241,12 +241,12 @@
   },
   {
     "i": 48,
-    "segment": "source_compare",
+    "segment": "material_image",
     "narration": "Strength alone also does not decide which metal gets used. The USGS, which tracks mineral commodities, documents the production of aluminum from bauxite, a chain that ends in smelting with very large amounts of electricity."
   },
   {
     "i": 49,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Steel comes from abundant iron ore through an older and generally cheaper industry."
   },
   {
@@ -256,7 +256,7 @@
   },
   {
     "i": 51,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "ASM International compiles reference data on density, stiffness and strength. ASTM International publishes the A36 standard and tensile test methods."
   },
   {
@@ -271,7 +271,7 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Many steels show what is called an endurance limit: below a certain stress, they survive an effectively unlimited number of cycles in testing."
   },
   {
@@ -281,7 +281,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "ASM International's fatigue literature treats this as a central design difference, and it is why aluminum aircraft structures are inspected on schedules rather than assumed to last indefinitely."
   },
   {
@@ -291,7 +291,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Steel keeps useful strength to higher temperatures, which is one reason it remains the default for many structures that must survive heat."
   },
   {
@@ -301,7 +301,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Freshly cut aluminum reacts with oxygen almost immediately, forming a thin film of aluminum oxide that clings to the surface and slows further attack."
   },
   {
@@ -311,7 +311,7 @@
   },
   {
     "i": 62,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That is why an unpainted aluminum window frame can last for decades, while unprotected mild steel needs paint, galvanizing, or a different alloy such as stainless steel."
   },
   {
@@ -321,7 +321,7 @@
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Aluminum is not immune either. Some high-strength alloys, especially those containing copper, corrode more readily and are often clad with a layer of purer aluminum for that reason."
   },
   {
@@ -331,7 +331,7 @@
   },
   {
     "i": 66,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A chart that puts aluminum and steel side by side has already made choices: which alloy, which property, and whether it compares at equal size or equal weight."
   },
   {
@@ -341,7 +341,7 @@
   },
   {
     "i": 68,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The same alloy set beside a quenched and tempered high-strength steel tells the opposite one."
   },
   {
@@ -351,12 +351,12 @@
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "These figures describe test specimens under controlled conditions, not finished parts. A handbook value for an alloy is a typical or minimum figure drawn from many tests, and an individual batch can sit above or below it."
   },
   {
     "i": 71,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "Real components carry welds, holes, scratches and stresses locked in during manufacturing, and welding in particular can soften heat-treated aluminum near the joint."
   },
   {
@@ -366,7 +366,7 @@
   },
   {
     "i": 73,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That ranking comes from design calculation, safety margins and testing of the actual part, which is a separate body of evidence from the material data."
   },
   {
@@ -381,7 +381,7 @@
   },
   {
     "i": 76,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The metal does not answer the question. The question you ask it does."
   }
 ]

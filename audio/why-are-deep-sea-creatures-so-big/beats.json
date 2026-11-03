@@ -1,13 +1,13 @@
 [
   {
     "i": 0,
-    "segment": "depth_descent",
+    "segment": "ambient_drift",
     "narration": "A giant isopod is only giant beside the woodlice under a garden stone.",
     "seconds": 4.656
   },
   {
     "i": 1,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid.",
     "seconds": 12.421333333333333
   },
@@ -25,7 +25,7 @@
   },
   {
     "i": 4,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "On its own, it does not show why they grow, or whether depth has anything to do with it.",
     "seconds": 6.042666666666666
   },
@@ -37,13 +37,13 @@
   },
   {
     "i": 6,
-    "segment": "contrast_pair",
+    "segment": "species_image",
     "narration": "Start with the part the popular image leaves out. Watch footage from a remotely operated vehicle descending through the deep water column, and you will see that most of what drifts past its lights is small: jellies, shrimp, copepods, worms, and the larvae of animals that live somewhere else.",
     "seconds": 16.192
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "On the seafloor, much of the life is buried in the mud, and a lot of it is too small to see without a microscope.",
     "seconds": 6.32
   },
@@ -55,13 +55,13 @@
   },
   {
     "i": 9,
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "narration": "So the honest version of the question is narrower. Why do some deep-sea animals grow much larger than their shallow-water relatives?",
     "seconds": 7.8773333333333335
   },
   {
     "i": 10,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Biologists call that pattern deep-sea gigantism, or sometimes abyssal gigantism. You will find the term in explainers published by NOAA Ocean Exploration and Smithsonian Ocean.",
     "seconds": 11.856
   },
@@ -73,7 +73,7 @@
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It is always a comparison within a group, not across the whole ocean.",
     "seconds": 4.101333333333334
   },
@@ -85,7 +85,7 @@
   },
   {
     "i": 14,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The giant isopod, Bathynomus giganteus, scavenges on the deep seafloor. Alicella gigantea is a giant amphipod, a relative of the small sandhoppers on a beach, and it has been hauled up in baited traps from great depth.",
     "seconds": 14.394666666666666
   },
@@ -97,7 +97,7 @@
   },
   {
     "i": 16,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The giant squid, Architeuthis, is among the longest invertebrates known. Fish, as a group, do not show the same consistent pattern.",
     "seconds": 9.029333333333334
   },
@@ -109,13 +109,13 @@
   },
   {
     "i": 18,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Look at what the giants share. They are ectotherms, animals whose body temperature follows the water around them.",
     "seconds": 6.074666666666666
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Most are crustaceans or molluscs. The same groups also produce giants in the shallow, cold seas around Antarctica, where great depth plays no part.",
     "seconds": 8.965333333333334
   },
@@ -127,7 +127,7 @@
   },
   {
     "i": 21,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Cold may be. On this reading, depth matters mostly because the deep is where the cold water is.",
     "seconds": 6.021333333333334
   },
@@ -145,25 +145,25 @@
   },
   {
     "i": 24,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Biologists have long observed a pattern called Bergmann's rule: within related groups, larger forms tend to be found in colder places.",
     "seconds": 7.898666666666666
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It was first described for warm-blooded animals. A related pattern holds for ectotherms, and it is usually called the temperature-size rule.",
     "seconds": 8.176
   },
   {
     "i": 26,
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "narration": "Raise the same species in colder water in a laboratory and, very often, it grows more slowly but reaches maturity at a larger body size.",
     "seconds": 9.434666666666667
   },
   {
     "i": 27,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "In many of these animals, the cells themselves also tend to be larger at low temperature.",
     "seconds": 6.234666666666667
   },
@@ -175,7 +175,7 @@
   },
   {
     "i": 29,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "No warm season speeds things up. So the chain runs like this: cold water, slower growth, later maturity, larger adult body.",
     "seconds": 8.912
   },
@@ -187,7 +187,7 @@
   },
   {
     "i": 31,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "You can test it in tanks, changing one variable at a time and holding the rest steady, and the result repeats across many species.",
     "seconds": 8.496
   },
@@ -199,7 +199,7 @@
   },
   {
     "i": 33,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Oxygen might. As an animal grows, its volume rises faster than its surface.",
     "seconds": 5.157333333333334
   },
@@ -211,7 +211,7 @@
   },
   {
     "i": 35,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Cold water helps in two separate ways. First, cold water holds more dissolved oxygen than warm water does.",
     "seconds": 6.770666666666667
   },
@@ -223,13 +223,13 @@
   },
   {
     "i": 37,
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "narration": "In 1999, Gauthier Chapelle and Lloyd Peck, the latter of the British Antarctic Survey, published the amphipod oxygen study in Nature.",
     "seconds": 9.136
   },
   {
     "i": 38,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Amphipods were a good choice. They live almost everywhere, in warm water and in cold, and the largest known sizes of many species had already been recorded.",
     "seconds": 9.256
   },
@@ -241,7 +241,7 @@
   },
   {
     "i": 40,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Temperature on its own was not the best predictor. The amount of oxygen the water could carry was. Where oxygen was plentiful, the biggest amphipods appeared.",
     "seconds": 9.893333333333333
   },
@@ -253,7 +253,7 @@
   },
   {
     "i": 42,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "That water sank and spread along the ocean floor, carrying its oxygen with it.",
     "seconds": 4.965333333333334
   },
@@ -265,31 +265,31 @@
   },
   {
     "i": 44,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "There is a useful exception. In many regions, layers at middle depths run low on oxygen, and those layers are not known for giants. That fits the idea. It does not prove it.",
     "seconds": 11.28
   },
   {
     "i": 45,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The second family of explanations is about food. Below the sunlit layer, nothing photosynthesises in open water.",
     "seconds": 7.226666666666667
   },
   {
     "i": 46,
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "narration": "Most deep-sea life therefore depends on what sinks from above: dead plankton, faecal pellets, flakes of drifting debris, and now and then the carcass of a fish or a whale. Food arrives rarely, and it lands in places nobody can predict.",
     "seconds": 14.330666666666668
   },
   {
     "i": 47,
-    "segment": "process_steps",
+    "segment": "ambient_drift",
     "narration": "A larger body changes the arithmetic. It stores more. And under a relationship known as Kleiber's law, bigger animals burn energy more slowly per gram of tissue than small ones do.",
     "seconds": 10.330666666666668
   },
   {
     "i": 48,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Put those together. Food arrives rarely, a larger body stores more, it burns energy more slowly per gram, and so a big scavenger can travel and wait.",
     "seconds": 10.117333333333333
   },
@@ -301,7 +301,7 @@
   },
   {
     "i": 50,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A large amphipod can cover more seafloor and reach a fallen fish before smaller competitors do.",
     "seconds": 6.341333333333333
   },
@@ -313,7 +313,7 @@
   },
   {
     "i": 52,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Less food can just as easily mean smaller bodies. In many deep-sea groups, typical size falls with depth, while in some it rises.",
     "seconds": 8.026666666666667
   },
@@ -325,13 +325,13 @@
   },
   {
     "i": 54,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Scarce food is not a push toward large size everywhere. The same pressure produces different outcomes depending on how an animal makes its living.",
     "seconds": 8.592
   },
   {
     "i": 55,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "There is also a quieter problem underneath all the explanations so far: how the animals were found in the first place.",
     "seconds": 6.896
   },
@@ -343,13 +343,13 @@
   },
   {
     "i": 57,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A baited trap attracts mobile scavengers, which are exactly the animals the food argument predicts will be large.",
     "seconds": 6.864
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "A coarse net keeps big animals and lets small ones slip through the mesh.",
     "seconds": 4.1546666666666665
   },
@@ -367,7 +367,7 @@
   },
   {
     "i": 61,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "But the impression of a deep sea full of large animals partly reflects what the trap caught, not what lives there.",
     "seconds": 6.554666666666667
   },
@@ -379,13 +379,13 @@
   },
   {
     "i": 63,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Studies built like that are slow and expensive, and there are still relatively few of them.",
     "seconds": 5.306666666666667
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "For most of history, the largest deep-sea animals were known only from dead or dying specimens, washed ashore or brought up tangled in nets.",
     "seconds": 8.090666666666667
   },
@@ -397,13 +397,13 @@
   },
   {
     "i": 66,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "You cannot see how it hunts, how fast it moves, or how much energy it spends doing so.",
     "seconds": 5.285333333333333
   },
   {
     "i": 67,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "In 2004, Tsunemi Kubodera and a colleague took the first photographs of a live giant squid in the wild, off Japan.",
     "seconds": 7.856
   },
@@ -415,13 +415,13 @@
   },
   {
     "i": 69,
-    "segment": "timeline",
+    "segment": "ambient_drift",
     "narration": "In 2025, an expedition run by the Schmidt Ocean Institute with the Ocean Census filmed a colossal squid alive in its natural habitat for the first time, near the South Sandwich Islands.",
     "seconds": 12.229333333333333
   },
   {
     "i": 70,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "It was a juvenile, and it was small. That is a useful correction.",
     "seconds": 3.952
   },
@@ -433,7 +433,7 @@
   },
   {
     "i": 72,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "How it becomes enormous is a question about growth in cold, dark water over a long time, and live observation can begin to answer that kind of question.",
     "seconds": 8.954666666666666
   },
@@ -445,7 +445,7 @@
   },
   {
     "i": 74,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Without a scale bar or laser dots, size on video is a guess from the frame.",
     "seconds": 5.338666666666667
   },
@@ -457,7 +457,7 @@
   },
   {
     "i": 76,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "And notice what is not on screen: the small animals all around it.",
     "seconds": 4.688
   },
@@ -469,7 +469,7 @@
   },
   {
     "i": 78,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "Cold, oxygen and food all change with depth, and they are hard to separate in the field.",
     "seconds": 5.8293333333333335
   },
@@ -481,7 +481,7 @@
   },
   {
     "i": 80,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "So whether oxygen sets the ceiling remains open. Which cause matters most probably differs from one group to another, and in many groups it has never been measured.",
     "seconds": 9.146666666666667
   },
