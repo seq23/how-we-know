@@ -82,8 +82,9 @@ check("consecutive shots are distinct (another clip, or >10 s apart in it)", not
 # ---- 1b. VARIETY (owner 2026-11-03: "a new image every 30 sec at least or 20")
 def vclip(i, subj, clean):
     return {**clip(i, clean), "title": f"{subj} {i}", "_subject": subj}
-pool = [vclip(0, "giant isopod", 60), vclip(1, "giant isopod", 40), vclip(2, "sixgill shark", 70),
-        vclip(3, "sea spider", 90), vclip(4, "giant grenadier", 50), vclip(5, "king crab", 45)]
+subs = ["isopod", "sixgill shark", "sea spider", "grenadier", "king crab", "oarfish",
+        "greenland shark", "siphonophore", "dumbo octopus", "tube worm"]
+pool = [vclip(i, subj, 40 + 5 * i) for i, subj in enumerate(subs)]
 reel = LP.build(636.0, pool, [])
 moments = {(s["key"], s["start"]) for s in reel}
 check("a new distinct shot at least every 20 s (no shot over 18 s)",
@@ -91,6 +92,14 @@ check("a new distinct shot at least every 20 s (no shot over 18 s)",
 check("a 10.6-min reel has at least 32 distinct moments", len(moments) >= 32, str(len(moments)))
 check("the reel passes the variety check (samples, 3-min reuse, 25% share)",
       not LP.variety_problems(reel), str(LP.variety_problems(reel)[:3]))
+few = [vclip(0, "great grenadier", 90), vclip(1, "giant grenadier", 90),
+       vclip(2, "sea spider", 90), vclip(3, "isopod", 90)]
+probs = LP.variety_problems(LP.build(636.0, few, []))
+check("great and giant grenadier count as ONE animal; 3 animals fail the 9-subject floor",
+      any("only 3 distinct" in p for p in probs), str(probs))
+thin = [vclip(i, subj, 9.0) for i, subj in enumerate(subs)]       # 10 subjects, 10 moments
+check("under 32 distinct source moments in 10.6 min fails",
+      any("distinct source moment" in p for p in LP.variety_problems(LP.build(636.0, thin, []))))
 one = [{"kind": "footage", "key": "a", "start": 0.0, "speed": 1.0, "subject": "giant isopod",
         "seconds": 45.0, "title": "a"},
        {"kind": "footage", "key": "b", "start": 0.0, "speed": 1.0, "subject": "sea spider",

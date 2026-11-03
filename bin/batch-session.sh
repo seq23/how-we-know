@@ -559,6 +559,10 @@ harvest_footage() {
   # the harvest, so the harvest looks for those subjects. Made once, kept.
   $PY visuals/shot_list.py make --pending 2>&1 | grep -v "^\[gemini-route\]" | tail -20 \
     || echo "  shot list step exited $? - an episode without one is filled from its title words"
+  # WIDER HARVEST (owner 2026-11-03, variety): NOAA OER highlight video at
+  # NCEI and Commons PD/CC0 video for the same shot-list subjects.
+  nice -n 10 $PY research/wide_footage.py --pending 2>&1 | grep -E "CLIP|wide footage|Traceback" | tail -20 \
+    || echo "  wide footage step exited $? - the episode renders from what is on record"
   nice -n 10 $PY loop/footage_lane.py --host mac-batch
   local rc=$?
   case $rc in
