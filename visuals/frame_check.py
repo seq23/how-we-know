@@ -186,6 +186,33 @@ def check(video: str, subject: str, judge=None, reader=None,
         shutil.rmtree(work, ignore_errors=True)
 
 
+def check_variety(video: str) -> dict:
+    """The variety rule (owner 2026-11-03: "a new image every 30 sec at least or
+    20"), read from the shot record assemble.py keeps beside the render: a new
+    distinct shot at every 20 s sample, no source moment again inside 3 min,
+    no subject over ~25% while another had material. NAMED STOP
+    PICTURE_CHECK_FAILED with every finding."""
+    sys.path.insert(0, HERE)
+    import longform_picture as LP                       # noqa: PLC0415
+    rec_p = video + ".footage.json"
+    try:
+        shots = json.load(open(rec_p))["shots"]
+    except (OSError, ValueError, KeyError) as e:
+        raise PictureCheckFailed(f"PICTURE_CHECK_FAILED: no shot record beside "
+                                 f"{video} ({e}) - variety cannot be proven", [])
+    probs = LP.variety_problems(shots, SAMPLE_EVERY)
+    if probs:
+        raise PictureCheckFailed("PICTURE_CHECK_FAILED (variety): " + "; ".join(probs[:12]),
+                                 [(0.0, p) for p in probs])
+    return {"shots": len(shots), "variety": "ok"}
+
+
+def check_render(video: str, slug: str) -> dict:
+    """Variety from the record first (free, exact), then every 20 s frame."""
+    v = check_variety(video)
+    return {**check(video, subject_of(slug)), **v}
+
+
 def subject_of(slug: str) -> str:
     sys.path.insert(0, HERE)
     import shot_list                                    # noqa: PLC0415
@@ -201,7 +228,8 @@ if __name__ == "__main__":
     if "--restore" in sys.argv and vid.endswith(".picture-check-failed"):
         final = vid[: -len(".picture-check-failed")]
         try:
-            r = check(vid, subject_of(slug))
+            v = check_variety(vid) if os.path.exists(vid + ".footage.json") else {}
+            r = {**check(vid, subject_of(slug)), **v}
         except (PictureCheckFailed, FrameCheckUnavailable) as e:
             print(f"NAMED STOP {e}")
             raise SystemExit(3)
@@ -211,7 +239,7 @@ if __name__ == "__main__":
         print(json.dumps({**r, "restored": final}))
         raise SystemExit(0)
     try:
-        print(json.dumps(check(vid, subject_of(slug))))
+        print(json.dumps(check_render(vid, slug)))
     except (PictureCheckFailed, FrameCheckUnavailable) as e:
         print(f"NAMED STOP {e}")
         raise SystemExit(3)
