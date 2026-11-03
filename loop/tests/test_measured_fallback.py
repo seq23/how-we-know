@@ -250,7 +250,7 @@ def check() -> tuple[list[str], int]:
         if R.config_problems(cfg):
             fails.append(f"(g) config problems: {R.config_problems(cfg)}")
         if cfg.get("max_cost_usd") != 0 or cfg.get("paid_fallback") is not False \
-                or not cfg.get("subscription_route") or not cfg.get("min_context_length"):
+                or cfg.get("subscription_route") or not cfg.get("min_context_length"):
             fails.append("(g) a config pin was lost")
 
         # (h) write set + merge driver
