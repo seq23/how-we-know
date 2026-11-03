@@ -143,6 +143,9 @@ def question(subject: str) -> str:
 
 
 _LAST_OK = [""]
+# Free OpenRouter models that read images (config/llm_routing.json roster;
+# is_free() re-checked on every call).
+VISION_FREE = ["nvidia/nemotron-3.5-super-vl:free", "google/gemma-4-31b-it:free"]
 
 
 def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | None:
@@ -150,7 +153,7 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     sys.path.insert(0, HERE)
     import shot_list                                    # noqa: PLC0415
-    shot_list._keys()                                   # GEMINI_API_KEY from .secrets
+    or_key = shot_list._keys()                          # GEMINI_API_KEY from .secrets
     import llm_router as R                              # noqa: PLC0415
     content = [{"type": "text", "text": question(subject).replace("{n}", str(len(frames)))}]
     for p in frames:
@@ -161,7 +164,10 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
     # The model that answered last goes first (measured 2026-11-03: the free
     # tier's flash models hit a 20-a-day cap and every call then spent its
     # time on three 429s before the lite model answered).
-    models = R.gemini_models()
+    # Then the $0 OpenRouter vision models (measured 2026-11-03: Gemini's free
+    # tier ran out at 500 a day; nemotron-3.5-super-vl answered 3 frames in
+    # 14 s and failed the text card and the ROV-dominated frame correctly).
+    models = R.gemini_models() + [m for m in VISION_FREE if R.is_free(m)]
     if _LAST_OK[0] in models:
         models = [_LAST_OK[0]] + [m for m in models if m != _LAST_OK[0]]
     tries = [(m, wait) for wait in (0, 60, 120) for m in models]
@@ -170,7 +176,18 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
         # FRAME_CHECK_UNAVAILABLE (measured 2026-11-03: a retry 90 s later passed).
         if wait and model == models[0]:
             time.sleep(wait)
-        resp, why = R._gemini_try(model, [{"role": "user", "content": content}], 120, 0.0)
+        if model.startswith(R.GEMINI_PREFIX):
+            resp, why = R._gemini_try(model, [{"role": "user", "content": content}], 120, 0.0)
+        else:
+            try:
+                resp = R._post(json.dumps(R.openrouter_body(
+                    model, [{"role": "user", "content": content}], 0.0)).encode(), or_key, 120)
+                cost = R.reported_cost(resp)
+                if cost:                                # never paid: refuse the answer
+                    raise RuntimeError(f"{model} reported cost {cost}")
+            except Exception as e:                      # noqa: BLE001
+                print(f"[vision-route] skipped {model}: {str(e)[:100]}", flush=True)
+                resp = None
         if not resp:
             continue
         text = resp["choices"][0]["message"]["content"]
