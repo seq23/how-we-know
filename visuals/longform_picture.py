@@ -579,6 +579,36 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
     return allowed, good_photos
 
 
+def forget_failed(record_shots: list[dict], failures: list[tuple[float, str]],
+                  subject: str, store: str | None = None) -> int:
+    """A frame the final check failed marks the span it came from as failing
+    in the vet store, so the next render does not place it again (the render
+    heals itself instead of failing the same way twice). Returns spans marked."""
+    store = store or VERDICTS
+    try:
+        kept = json.load(open(store))
+    except (OSError, ValueError):
+        kept = {}
+    mine = kept.setdefault(subject, {})
+    marked, t, edges = 0, 0.0, []
+    for s in record_shots:
+        edges.append((t, t + float(s["seconds"]), s))
+        t += float(s["seconds"])
+    for ft, why in failures:
+        for a, b, s in edges:
+            if a <= ft < b and s.get("kind") == "footage":
+                for j in range(3):
+                    mine[f"{s['key']}@{s.get('start')}#{j}"] = {"pass": False,
+                                                              "why": f"final frame check: {why}"[:160]}
+                marked += 1
+            elif a <= ft < b and s.get("kind") == "photo":
+                mine[f"photo:{s['key']}"] = {"pass": False, "why": f"final frame check: {why}"[:160]}
+                marked += 1
+    os.makedirs(os.path.dirname(store), exist_ok=True)
+    json.dump(kept, open(store, "w"), indent=1, sort_keys=True)
+    return marked
+
+
 def summarise(shots: list[dict]) -> dict:
     foot = [s for s in shots if s["kind"] == "footage"]
     return {"shots": len(shots), "footage_shots": len(foot),
