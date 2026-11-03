@@ -923,7 +923,8 @@ def _assemble(plan_path: str, out: str, audio_dir: str) -> dict:
     # only, no captions burned). The slice's work folder is named
     # <slug>.<part>.plan.json, so the slug is the stem's first part.
     slug = Path(plan_path).name.split(".")[0]
-    return assemble.assemble(plan_path, out, audio_dir, slug=slug)
+    # A slice is checked as part of the spliced master, not on its own.
+    return assemble.assemble(plan_path, out, audio_dir, slug=slug, frame_check=False)
 
 
 def _ffprobe_s(path: Path) -> float:

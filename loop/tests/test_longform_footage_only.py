@@ -66,10 +66,10 @@ check("only footage and photographs", set(kinds) <= {"footage", "photo"}, str(ki
 check("covers the narration exactly",
       abs(sum(s["seconds"] for s in shots) - total) < 0.05,
       f"{sum(s['seconds'] for s in shots)} of {total}")
-order = [s["kind"] for s in shots]
-check("footage comes before photographs",
-      "photo" not in order or "footage" not in order[order.index("photo"):], str(order))
 showings = Counter((s["key"], s["start"]) for s in shots if s["kind"] == "footage")
+check("photographs are used only after the clips' slowed reuse",
+      "photo" not in kinds or (showings and max(showings.values()) == 3
+                               and sum(showings.values()) >= 2 * len(showings)), str(showings))
 check("a span is on screen at most 3 times", max(showings.values()) <= 3, str(showings))
 slowed = [s for s in shots if s["kind"] == "footage" and s["speed"] < 1]
 check("reuse is slowed to 0.5-0.75x", slowed and all(0.5 <= s["speed"] <= 0.75 for s in slowed),
@@ -131,7 +131,7 @@ try:
     LP.subject_photos = lambda slug, stills=None: [photo(0)]
     out = os.path.join(tmp, "out.mp4")
     try:
-        r = assemble.assemble(pp, out, music=False)
+        r = assemble.assemble(pp, out, music=False, frame_check=False)
         rec = json.load(open(out + ".footage.json"))
         check("assemble draws no card, diagram or filler beat", not drawn, str(drawn))
         check("the master's record lists only footage and photos",

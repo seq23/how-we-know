@@ -296,7 +296,7 @@ def main() -> int:
                 plan = os.path.join(tmp, f"{slug}.json")
                 json.dump(ambient(1, 2.5), open(plan, "w"))
                 out = os.path.join(tmp, "out.mp4")
-                r = ASM.assemble(plan, out, music=False)
+                r = ASM.assemble(plan, out, music=False, frame_check=False)
                 want(r["footage"]["footage_shots"] >= 1 and r["footage"]["photo_shots"] == 0,
                      f"assemble.py put no stock footage on screen: {r.get('footage')}")
                 n = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",

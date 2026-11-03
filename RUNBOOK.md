@@ -400,6 +400,25 @@ Your rule of 2 November 2026, built as code (mock-up approved that day).
 - **The 19 videos of 25 Oct–2 Nov** were retitled to your approved list
   (`loop/state/one_question_backfill.json`); everything older is untouched.
 
+## Long-form picture: only footage of the subject — nothing for you to do
+
+Your ruling of 3 November 2026: a long video shows **only moving footage or
+photos of what its title names**, and nothing else — no text cards, diagrams,
+title cards, particle filler, engravings or burned-in captions. The narration
+plays over it.
+
+- **Picture first:** each episode gets a shot list once (the filmable subjects
+  of its title, free model route, `channel/imagery/shot_lists.json`); the
+  footage and photo harvests look for those subjects.
+- **Never held for a shortfall:** real clips first, then the same clips slowed
+  and re-framed (each at most 3 times), then photos of the subject with a slow
+  pan. Only zero footage AND zero photos stops it (`NO_SUBJECT_PICTURE`).
+- **Checked before it counts as done:** one frame every 20 s is read for text
+  (Apple Vision) and judged by a free vision model; any failing frame stops it
+  as `PICTURE_CHECK_FAILED` with the timestamps, and the file is set aside.
+- **Captions** go to YouTube as a subtitle track; **credits** go in the description.
+- **Low disk:** under 15 GB free the render stops as `LOW_DISK` before writing.
+
 ## Long-form repackage — nothing for you to do
 
 Your decisions of 12–13 October 2026, built as code. **Long-form only; Shorts are

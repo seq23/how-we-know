@@ -102,7 +102,7 @@ def mix_bed(narration, out, duck_db=-32.0, seed=7):
 
 
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
-             music=True, burn_captions=False, slug=None):
+             music=True, burn_captions=False, slug=None, frame_check=True):
     plan = json.load(open(plan_path))
     # A DOMAIN'S GRAPHICS NEVER APPEAR IN ANOTHER DOMAIN'S VIDEO (2026-11-01:
     # the deep-sea depth gauge on the rice episode). The active domain is
@@ -180,7 +180,16 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
     # refuses any card, diagram, filler, plate, caption or credit overlay.
     import longform_picture as LP                         # noqa: PLC0415
     slug = slug or os.path.splitext(os.path.basename(plan_path))[0]
-    shots = LP.build(emitted / FPS, LP.subject_clips(slug), LP.subject_photos(slug))
+    clips_, photos_ = LP.subject_clips(slug), LP.subject_photos(slug)
+    allowed = None
+    if frame_check:
+        # LOOK BEFORE PLACING: a span the vision check cannot see the subject
+        # in (ROV hardware, empty seafloor) never reaches the picture.
+        import frame_check as FC                          # noqa: PLC0415
+        allowed, photos_ = LP.vet(clips_, photos_, FC.subject_of(slug))
+        print(f"  vetted: {len(allowed)} clip span(s) and {len(photos_)} photo(s) "
+              f"show the subject", flush=True)
+    shots = LP.build(emitted / FPS, clips_, photos_, allowed)
     shot_frames = LP.allocate(shots, emitted)
     used = LP.summarise(shots)
     print(f"  picture: {used['footage_shots']} footage shot(s) "
@@ -231,9 +240,22 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
     total = probe(out_path)
     shutil.rmtree(workdir, ignore_errors=True)
     write_picture_record(out_path, shots, shot_frames, frames, used)
+    checked = None
+    if frame_check:
+        # NOT DONE UNTIL THE FRAMES SAY SO (owner 2026-11-03). A failing render
+        # is moved aside (never deleted), so the batch makes it again.
+        import frame_check as FC                          # noqa: PLC0415
+        try:
+            checked = FC.check(out_path, FC.subject_of(slug))
+        except (FC.PictureCheckFailed, FC.FrameCheckUnavailable):
+            for ext in ("", ".footage.json"):
+                if os.path.exists(out_path + ext):
+                    os.replace(out_path + ext, out_path + ".picture-check-failed" + ext)
+            raise
+        print(f"  frame check: {checked['frames']} frame(s) passed", flush=True)
     return {"output": out_path, "beats": len(plan), "duration_s": round(total,1),
             "audio": bool(track), "timing": "audio" if audio_clips else "estimate",
-            "picture": "footage-only",
+            "picture": "footage-only", "frame_check": checked,
             "footage": {"footage_beats": len(plan), **used}}
 
 
@@ -269,6 +291,13 @@ if __name__ == "__main__":
     ap.add_argument("--no-music", action="store_true")
     ap.add_argument("--slug", help="the episode (default: the plan's file name)")
     a = ap.parse_args()
-    r = assemble(a.plan, a.out, a.audio_dir, a.master_audio,
-                 music=not a.no_music, slug=a.slug)
+    try:
+        r = assemble(a.plan, a.out, a.audio_dir, a.master_audio,
+                     music=not a.no_music, slug=a.slug)
+    except Exception as e:                                # noqa: BLE001
+        code = getattr(e, "code", None)
+        if code:                                          # LOW_DISK, PICTURE_CHECK_FAILED ...
+            print(f"NAMED STOP [{code}] {e}", flush=True)
+            raise SystemExit(3)
+        raise
     print(json.dumps(r, indent=2))

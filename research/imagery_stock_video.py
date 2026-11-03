@@ -86,7 +86,8 @@ DOMAINS = tuple(HARVESTER["domains"])
 STOCK_SOURCES = ("pixabay", "pexels", "mixkit")
 MIN_SECONDS = 6.0           # same floor as a NOAA clean window
 MAX_PER_EPISODE = 4
-MAX_PER_RUN = 20            # downloads per night (Mixkit's terms: no mass download)
+MAX_PER_RUN = int(os.environ.get("HWK_STOCK_RUN_CAP", "20"))  # downloads per run
+                                                         # (Mixkit's terms: no mass download)
 
 # Per source: the licence name, the wording committed under channel/imagery/
 # licences/, and the phrases in that wording that grant commercial use with no
@@ -184,17 +185,16 @@ def _words(text: str) -> list[str]:
     return [_sing(w) for w in re.findall(r"[a-z0-9]+", text.lower())]
 
 
-# An episode whose title names its subject only in generic words ("deep-sea
-# creatures ... big") names it here instead: the animals the picture may show.
-SUBJECT_PHRASES = {
-    "why-are-deep-sea-creatures-so-big": [
-        "japanese spider crab", "giant isopod", "giant squid", "sixgill shark",
-        "greenland shark", "sleeper shark", "oarfish", "siphonophore",
-        "spider crab", "king crab", "sea spider"],
-}
-# Such an episode is filled from footage alone (owner 2026-11-03), so it may
-# take more clips than an episode whose picture is part drawn.
-MAX_FOR = {slug: 24 for slug in SUBJECT_PHRASES}
+# Picture first (owner 2026-11-03): an episode with a SHOT LIST
+# (visuals/shot_list.py, channel/imagery/shot_lists.json) is harvested for its
+# listed subjects, and - being filled from footage alone - may take more clips.
+SHOT_LIST_CAP = int(os.environ.get("HWK_STOCK_EPISODE_CAP", "24"))
+
+
+def _shot_list(slug: str) -> list[str]:
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import shot_list                                        # noqa: PLC0415
+    return shot_list.subjects(slug)
 
 
 def episode_phrases(slug: str) -> list[str]:
@@ -203,8 +203,21 @@ def episode_phrases(slug: str) -> list[str]:
     Runs of content words in the slug; a run of several words yields only its
     sub-phrases of two or more words (a "goblin shark" episode never takes a
     "shark" clip); a phrase made only of GENERIC words is never one."""
-    if slug in SUBJECT_PHRASES:
-        return sorted(SUBJECT_PHRASES[slug], key=lambda s: -len(s.split()))
+    listed = _shot_list(slug)
+    if listed:
+        if domain_of(slug) == "deep-sea-ocean-science":
+            # A one-word name ("isopod", "snailfish") finds shallow relatives
+            # in a stock library (woodlice for "isopod"); in the deep sea the
+            # stock search takes it only when the title itself names it.
+            words = {_sing(w) for w in slug.split("-")}
+            listed = [p for p in listed if " " in p or _sing(p) in words]
+        listed += [p for p in _title_phrases(slug) if p not in listed]
+        return sorted(listed, key=lambda s: -len(s.split()))
+    return _title_phrases(slug)
+
+
+def _title_phrases(slug: str) -> list[str]:
+    """Runs of content words in the slug (the pre-shot-list rule)."""
     words = re.sub(r"^\d+-", "", slug).split("-")
     runs, cur = [], []
     for w in words:
@@ -414,7 +427,7 @@ def harvest(slugs: list[str] | None = None) -> dict:
     new, fetched, misses = [], 0, []
     for slug in eps:
         phrases = episode_phrases(slug)
-        cap = MAX_FOR.get(slug, MAX_PER_EPISODE)
+        cap = SHOT_LIST_CAP if _shot_list(slug) else MAX_PER_EPISODE
         n_have = sum(1 for a in have + new if a.get("subject") in phrases)
         if n_have >= cap or not phrases:
             continue

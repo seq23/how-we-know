@@ -68,9 +68,18 @@ class NotSubjectPicture(ValueError):
 # ------------------------------------------------------------------ the pools
 
 def subject_pattern(slug: str) -> str | None:
-    """What the picture must show: the episode's hand-written NOAA subject
-    pattern, else its stock subject phrases."""
+    """What the picture must show: the episode's SHOT LIST (visuals/shot_list.py,
+    picture first), else its hand-written NOAA pattern, else its stock phrases.
+    A subject no honest footage exists for (footage.UNILLUSTRATABLE: giant and
+    colossal squid ...) is left out: anything matching it is a lookalike."""
     sys.path.insert(0, os.path.join(ROOT, "research"))
+    import shot_list as SL               # noqa: PLC0415
+    import footage as FT                 # noqa: PLC0415
+    subs = [x for x in SL.subjects(slug)
+            if x.replace(" ", "_") not in FT.UNILLUSTRATABLE]
+    if subs:
+        return "|".join(r"\b" + re.escape(x).replace(r"\ ", r"[\s-]+") + r"s?\b"
+                        for x in subs)
     import imagery_video as IV          # noqa: PLC0415
     import imagery_stock_video as STOCK  # noqa: PLC0415
     if IV.SUBJECTS.get(slug):
@@ -148,8 +157,10 @@ def _spans(asset: dict) -> list[tuple[float, float]]:
     return out
 
 
-def _interleave(clips: list[dict]) -> list[tuple[dict, tuple[float, float]]]:
-    per = [[(a, s) for s in _spans(a)] for a in clips]
+def _interleave(clips: list[dict], allowed: set | None = None
+                ) -> list[tuple[dict, tuple[float, float]]]:
+    per = [[(a, s) for s in _spans(a) if allowed is None or (_key(a), s[0]) in allowed]
+           for a in clips]
     out, k = [], 0
     while any(per):
         for lst in per:
@@ -170,8 +181,11 @@ def _credit(a: dict) -> str:
                or a.get("source_org") or "")
 
 
-def build(total_s: float, clips: list[dict], photos: list[dict]) -> list[dict]:
-    """Shots covering exactly `total_s` seconds, footage first. Deterministic."""
+def build(total_s: float, clips: list[dict], photos: list[dict],
+          allowed: set | None = None) -> list[dict]:
+    """Shots covering exactly `total_s` seconds, footage first. Deterministic.
+    `allowed` ({(clip key, span start)}, from vet()) limits footage to spans a
+    vision check has seen the subject in."""
     if not clips and not photos:
         raise NoSubjectPicture(
             "NO_SUBJECT_PICTURE: no rights-cleared footage and no photograph of "
@@ -180,7 +194,7 @@ def build(total_s: float, clips: list[dict], photos: list[dict]) -> list[dict]:
             "next batch renders it.")
     shots: list[dict] = []
     left = float(total_s)
-    spans = _interleave(clips)
+    spans = _interleave(clips, allowed)
 
     def fits(a_key: str, first: bool = False) -> bool:
         # At speed, a clip's spans may follow one another (it is one take);
@@ -259,8 +273,32 @@ def build(total_s: float, clips: list[dict], photos: list[dict]) -> list[dict]:
              "speed": SLOW[-1], "showing": MAX_SHOWINGS + 1 + extra // len(spans),
              "seconds": secs, "zoom": z, "pan": [x0, x1], "over_cap": True})
         extra += 1
+    shots = spread(shots)
     check(shots, total_s)
     return shots
+
+
+def spread(shots: list[dict]) -> list[dict]:
+    """Re-order for variety: the fill order decides WHICH shots are used (clips,
+    then slowed reuse, then photos); the screen order deals them out so one
+    long clip never fills a whole stretch. Greedy: the asset with the most
+    shots left goes next, never the same asset twice running; each asset's
+    shots keep their own order (a span at speed before its slowed reuse)."""
+    from collections import OrderedDict
+    queues: "OrderedDict[str, list[dict]]" = OrderedDict()
+    for sh in shots:
+        queues.setdefault(sh["key"], []).append(sh)
+    out: list[dict] = []
+    last = None
+    while queues:
+        keys = sorted(queues, key=lambda k: -len(queues[k]))
+        k = next((k for k in keys if k != last), keys[0])
+        out.append(queues[k].pop(0))
+        if not queues[k]:
+            del queues[k]
+        last = k
+    # the last shot carries the remainder; lengths are unchanged, only order
+    return out
 
 
 def check(shots: list[dict], total_s: float | None = None) -> None:
@@ -290,6 +328,73 @@ def check(shots: list[dict], total_s: float | None = None) -> None:
         got = sum(float(s["seconds"]) for s in shots)
         if abs(got - total_s) > 0.05:
             raise NotSubjectPicture(f"the shots cover {got:.2f}s of {total_s:.2f}s")
+
+
+VERDICTS = os.path.join(IMAGERY_DIR, "clips", ".span_verdicts.json")
+
+
+def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
+        store: str | None = None) -> tuple[set, list[dict]]:
+    """Look before placing: one frame from the middle of every clip span, and
+    every photo, judged by frame_check's vision reader ("is this real footage
+    of <subject>, no text or graphics?"). Returns (allowed spans, photos that
+    pass). Verdicts are kept per subject on this Mac, so a span is judged once.
+    No vision model answering raises FrameCheckUnavailable (never a pass)."""
+    import tempfile                                     # noqa: PLC0415
+    import frame_check as FC                            # noqa: PLC0415
+    import footage as FT                                # noqa: PLC0415
+    judge = judge or FC.gemini_judge
+    store = store or VERDICTS
+    try:
+        kept = json.load(open(store))
+    except (OSError, ValueError):
+        kept = {}
+    mine = kept.setdefault(subject, {})
+    work = tempfile.mkdtemp(prefix="hwk-vet-")
+    todo = []                                           # (id, jpg)
+    try:
+        for a in clips:
+            for s, e in _spans(a):
+                # Three looks per span (near each end and the middle): a span
+                # that wanders onto ROV hardware or empty seafloor fails.
+                for j, t in enumerate((s + 0.4, (s + e) / 2, e - 0.4)):
+                    vid = f"{_key(a)}@{s}#{j}"
+                    if vid in mine:
+                        continue
+                    jpg = os.path.join(work, f"{len(todo):04d}.jpg")
+                    subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel",
+                                    "error", "-y", "-ss", f"{t:.2f}", "-i", FT.verify(a),
+                                    "-frames:v", "1", "-vf", f"{FT.crop_filter(a)}scale=768:-2",
+                                    "-q:v", "4", jpg], check=True)
+                    todo.append((vid, jpg))
+        for p in photos:
+            vid = f"photo:{_key(p)}"
+            src = os.path.join(IMAGERY_DIR, p.get("local_file") or "")
+            if vid in mine or not os.path.exists(src):
+                continue
+            jpg = os.path.join(work, f"{len(todo):04d}.jpg")
+            subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel", "error",
+                            "-y", "-i", src, "-frames:v", "1", "-vf", "scale=768:-2",
+                            "-q:v", "4", jpg], check=True)
+            todo.append((vid, jpg))
+        for i in range(0, len(todo), FC.BATCH):
+            chunk = todo[i:i + FC.BATCH]
+            verdicts = judge([j for _, j in chunk], subject)
+            if verdicts is None:
+                raise FC.FrameCheckUnavailable(
+                    "FRAME_CHECK_UNAVAILABLE: no free vision model answered while "
+                    "vetting the clips; the next batch asks again")
+            for (vid, _), (ok, why) in zip(chunk, verdicts):
+                mine[vid] = {"pass": bool(ok), "why": why}
+            os.makedirs(os.path.dirname(store), exist_ok=True)
+            json.dump(kept, open(store, "w"), indent=1, sort_keys=True)
+    finally:
+        import shutil                                   # noqa: PLC0415
+        shutil.rmtree(work, ignore_errors=True)
+    allowed = {(_key(a), s) for a in clips for s, _ in _spans(a)
+               if all((mine.get(f"{_key(a)}@{s}#{j}") or {}).get("pass") for j in range(3))}
+    good_photos = [p for p in photos if (mine.get(f"photo:{_key(p)}") or {}).get("pass")]
+    return allowed, good_photos
 
 
 def summarise(shots: list[dict]) -> dict:

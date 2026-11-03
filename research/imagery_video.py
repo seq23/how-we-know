@@ -865,16 +865,6 @@ def verify() -> int:
 # narrow -- a loose pattern is how a giant squid ends up captioned as a
 # colossal squid.
 SUBJECTS = {
-    # Large deep-sea creatures (owner 2026-11-03: the picture is only moving
-    # footage of the subject named in the title). Giants only - not their
-    # small relatives (a munnopsid "water walker" isopod is not a giant one).
-    "why-are-deep-sea-creatures-so-big":
-        r"\bgiant isopod|\bbathynom|\bgiant grenadier|\bgreat grenadier|"
-        r"\balbatrossia|\bsixgill|\bhexanchus|\bsleeper shark|\bgreenland shark|"
-        r"\bsomniosus|\bsea spider|\bpycnogonid|\bsiphonophore|\bking crab|"
-        r"\bspider crab|\boarfish|\bregalecus|\bgiant amphipod|\balicella",
-    # No giant or colossal squid here: footage.UNILLUSTRATABLE - no public-
-    # domain footage of either exists, so a match is always a lookalike.
     "10-what-is-the-deepest-part-of-the-ocean":
         r"trench|challenger deep|hadal|mariana|deepest|two miles|abyss",
     "05-why-many-deep-sea-creatures-are-red":

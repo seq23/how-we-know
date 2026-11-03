@@ -115,7 +115,7 @@ class Leftovers(unittest.TestCase):
                  patch.object(assemble, 'write_picture_record'), \
                  patch.object(assemble.subprocess, 'run') as run:
                 result = assemble.assemble(str(plan_file), str(root / 'out.mp4'),
-                                           audio_dir=str(audio), music=False)
+                                           audio_dir=str(audio), music=False, frame_check=False)
             # The picture covers the padded beats (20 + 600 + 280 s), every frame.
             self.assertEqual(sum(c.args[2] for c in shots.call_args_list), 900 * assemble.FPS)
             pads = [c.args[0] for c in run.call_args_list if '-af' in c.args[0]]
