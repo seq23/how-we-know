@@ -539,7 +539,7 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
                     jpg = os.path.join(work, f"{len(todo):04d}.jpg")
                     subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel",
                                     "error", "-y", "-ss", f"{t:.2f}", "-i", FT.verify(a),
-                                    "-frames:v", "1", "-vf", f"{FT.crop_filter(a)}scale=768:-2",
+                                    "-frames:v", "1", "-vf", f"{FT.crop_filter(a)}scale=512:-2",
                                     "-q:v", "4", jpg], check=True)
                     todo.append((vid, jpg))
         for p in photos:
@@ -549,20 +549,27 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
                 continue
             jpg = os.path.join(work, f"{len(todo):04d}.jpg")
             subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel", "error",
-                            "-y", "-i", src, "-frames:v", "1", "-vf", "scale=768:-2",
+                            "-y", "-i", src, "-frames:v", "1", "-vf", "scale=512:-2",
                             "-q:v", "4", jpg], check=True)
             todo.append((vid, jpg))
-        for i in range(0, len(todo), FC.BATCH):
-            chunk = todo[i:i + FC.BATCH]
-            verdicts = judge([j for _, j in chunk], subject)
-            if verdicts is None:
-                raise FC.FrameCheckUnavailable(
-                    "FRAME_CHECK_UNAVAILABLE: no free vision model answered while "
-                    "vetting the clips; the next batch asks again")
-            for (vid, _), (ok, why) in zip(chunk, verdicts):
-                mine[vid] = {"pass": bool(ok), "why": why}
-            os.makedirs(os.path.dirname(store), exist_ok=True)
-            json.dump(kept, open(store, "w"), indent=1, sort_keys=True)
+        # Three requests in flight, small frames: one free-tier vision call
+        # takes ~50 s for 8 frames (measured 2026-11-03), so a 450-frame vet
+        # run serially would take most of an hour.
+        from concurrent.futures import ThreadPoolExecutor   # noqa: PLC0415
+        chunks = [todo[i:i + FC.BATCH] for i in range(0, len(todo), FC.BATCH)]
+
+        def ask(chunk):
+            return chunk, judge([j for _, j in chunk], subject)
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            for chunk, verdicts in pool.map(ask, chunks):
+                if verdicts is None:
+                    raise FC.FrameCheckUnavailable(
+                        "FRAME_CHECK_UNAVAILABLE: no free vision model answered while "
+                        "vetting the clips; the next batch asks again")
+                for (vid, _), (ok, why) in zip(chunk, verdicts):
+                    mine[vid] = {"pass": bool(ok), "why": why}
+                os.makedirs(os.path.dirname(store), exist_ok=True)
+                json.dump(kept, open(store, "w"), indent=1, sort_keys=True)
     finally:
         import shutil                                   # noqa: PLC0415
         shutil.rmtree(work, ignore_errors=True)
