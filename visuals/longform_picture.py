@@ -197,7 +197,7 @@ def animal(phrase: str) -> str:
     words = [w for w in p.split() if w not in SIZE_WORDS] or p.split()
     p = " ".join(words)
     p = ALIASES.get(p, p)
-    return re.sub(r"s$", "", p) if not p.endswith("ss") else p
+    return p if p.endswith(("ss", "us", "is")) else re.sub(r"s$", "", p)
 
 
 SUBJECTS_PER_10_MIN = 8
