@@ -1,16 +1,27 @@
 {
   "stage": "repackage-apply",
   "week": "2026-W45",
-  "at": "2026-11-02T00:59:33+00:00",
-  "code": "REPACKAGE_UP_TO_DATE",
-  "message": "every passing title in loop/state/titles.json is already on its live video",
-  "detail": null,
-  "unblock": "Nothing to do. loop/longform_title.py propose writes new rows; this lane applies them on its next run.",
+  "at": "2026-11-03T01:23:08+00:00",
+  "code": "QUOTA_EXHAUSTED",
+  "message": "5 title(s) ready to apply and the day's usable allowance after the upload and Shorts reserves (3400 units) does not fit one",
+  "detail": {
+    "resets_at": "2026-11-03T00:00:00-08:00",
+    "waiting": [
+      "05-why-many-deep-sea-creatures-are-red",
+      "08-what-creatures-live-in-the-deep-sea",
+      "10-what-is-the-deepest-part-of-the-ocean",
+      "how-hot-does-a-welding-arc-get",
+      "how-is-damascus-steel-made"
+    ]
+  },
+  "unblock": "Nothing to do: tomorrow's run resumes where this one stopped.",
   "disposition": "self_resolving",
-  "disposition_why": "Every passing title in loop/state/titles.json is already on its live video. The apply step does real work again the run after loop/longform_title.py proposes a new one. (run 10 of at most 400 before this escalates to a human.)",
-  "consecutive": 10,
+  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
-  "notes": []
+  "notes": [
+    "quota fits 0 of 5 today; the rest wait, in order. quota day 2026-11-02 (PT): spent 9137 of 10000, 463 usable after 400 headroom; lanes: backfill 3400, captions 1051, demand 1, handoff 416, localize 102, owner-hold 2326, repackage 1076, tags-backfill 765"
+  ]
 }
