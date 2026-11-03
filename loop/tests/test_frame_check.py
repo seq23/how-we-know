@@ -46,20 +46,15 @@ try:
     d.text((160, 380), "WHY OXYGEN LIMITS SIZE", font=f, fill=(235, 240, 245))
     d.text((160, 560), "THE TEMPERATURE CLUE", font=f, fill=(150, 200, 220))
     img.save(card)
-    video = os.path.join(tmp, "card.mp4")
-    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-loop", "1",
-                    "-framerate", "5", "-i", card, "-frames:v", "125", "-vf",
-                    "format=yuv420p", "-c:v", "libx264", "-preset", "ultrafast", video],
-                   check=True)                                    # 25 s: frames at 0:01, 0:21
-
     passing_judge = lambda frames, subject: [(True, "footage")] * len(frames)   # noqa: E731
     failing_judge = lambda frames, subject: [(False, "a text card")] * len(frames)  # noqa: E731
     no_text = lambda paths: {}                                                   # noqa: E731
+    frames = [(1.0, card), (21.0, card)]          # the card, sampled at 0:01 and 0:21
 
     # 1. OCR alone (the Mac) fails the text card, whatever the model says.
     if FC.ocr_available():
         try:
-            FC.check(video, "giant isopod", judge=passing_judge)
+            FC.check_frames(frames, "giant isopod", judge=passing_judge)
             check("OCR fails a text card", False, "passed")
         except FC.PictureCheckFailed as e:
             check("OCR fails a text card", "text on screen" in str(e) and len(e.failures) == 2,
@@ -69,7 +64,7 @@ try:
 
     # 2. A failing verdict fails the render and names every timestamp.
     try:
-        FC.check(video, "giant isopod", judge=failing_judge, reader=no_text)
+        FC.check_frames(frames, "giant isopod", judge=failing_judge, reader=no_text)
         check("a text card fails the frame check", False, "passed")
     except FC.PictureCheckFailed as e:
         check("a text card fails the frame check",
@@ -78,22 +73,35 @@ try:
 
     # 3. No vision model answering is a NAMED STOP, never a pass.
     try:
-        FC.check(video, "giant isopod", judge=lambda f, s: None, reader=no_text)
+        FC.check_frames(frames, "giant isopod", judge=lambda f, s: None, reader=no_text)
         check("no vision model is a NAMED STOP", False, "passed")
     except FC.FrameCheckUnavailable as e:
         check("no vision model is a NAMED STOP", e.code == "FRAME_CHECK_UNAVAILABLE", str(e))
 
-    # 4. Footage the judge passes, with no text on it, passes.
-    foot = os.path.join(tmp, "foot.mp4")
-    subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi",
-                    "-i", "mandelbrot=size=640x360:rate=5", "-frames:v", "50",
-                    "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", foot],
-                   check=True)
-    try:
-        r = FC.check(foot, "giant isopod", judge=passing_judge, reader=no_text)
-        check("passing footage passes", r["failed"] == 0 and r["judged"] == 1, str(r))
-    except Exception as e:                                        # noqa: BLE001
-        check("passing footage passes", False, repr(e))
+    # 4. A footage frame the judge passes, with no text on it, passes.
+    import random
+    rnd = random.Random(7)
+    foot = os.path.join(tmp, "foot.png")
+    Image.frombytes("RGB", (320, 180), bytes(rnd.randrange(256) for _ in range(320 * 180 * 3))).save(foot)
+    r = FC.check_frames([(1.0, foot)], "giant isopod", judge=passing_judge, reader=no_text)
+    check("passing footage passes", r["failed"] == 0 and r["judged"] == 1, str(r))
+
+    # 5. On a host with ffmpeg: the same card as a 25 s VIDEO is sampled at
+    #    0:01 and 0:21 and fails - the gate reads the finished file.
+    if shutil.which("ffmpeg"):
+        video = os.path.join(tmp, "card.mp4")
+        subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-loop", "1",
+                        "-framerate", "5", "-i", card, "-frames:v", "125", "-vf",
+                        "format=yuv420p", "-c:v", "libx264", "-preset", "ultrafast", video],
+                       check=True)
+        try:
+            FC.check(video, "giant isopod", judge=failing_judge, reader=no_text)
+            check("a text-card video fails at 0:01 and 0:21", False, "passed")
+        except FC.PictureCheckFailed as e:
+            check("a text-card video fails at 0:01 and 0:21",
+                  [round(t) for t, _ in e.failures] == [1, 21], str(e))
+    else:
+        print("  NOTE  no ffmpeg on this host; the video sampling runs on the Mac")
 finally:
     shutil.rmtree(tmp, ignore_errors=True)
 

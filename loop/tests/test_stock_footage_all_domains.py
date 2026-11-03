@@ -196,8 +196,9 @@ def main() -> int:
     # -- 3. the subject gate --------------------------------------------------
     want(SV.episode_phrases("what-does-a-goblin-shark-look-like") == ["goblin shark"],
          f"goblin shark episode asks for {SV.episode_phrases('what-does-a-goblin-shark-look-like')}")
-    want(SV.episode_phrases("why-deep-sea-fish-die-when-brought-to-surface") == [],
-         "an episode named only by generic ocean words still asks for stock footage")
+    want(SV.episode_phrases("why-deep-sea-creatures-are-surfacing") == [],
+         "an episode named only by generic ocean words (and no shot list) still asks "
+         "for stock footage")
     want(not SV.phrase_in("goblin shark", "shark, ocean, fish"),
          "a plain shark clip matched 'goblin shark'")
     want(not SV.phrase_in("sea pig", "pig, farm, sea"),
@@ -296,6 +297,7 @@ def main() -> int:
                 plan = os.path.join(tmp, f"{slug}.json")
                 json.dump(ambient(1, 2.5), open(plan, "w"))
                 out = os.path.join(tmp, "out.mp4")
+                os.environ["HWK_MIN_FREE_GB"] = "0"   # not the CI disk's business
                 r = ASM.assemble(plan, out, music=False, frame_check=False)
                 want(r["footage"]["footage_shots"] >= 1 and r["footage"]["photo_shots"] == 0,
                      f"assemble.py put no stock footage on screen: {r.get('footage')}")

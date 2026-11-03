@@ -29,7 +29,10 @@ def free_bytes(path: str | None = None) -> int:
     return shutil.disk_usage(target or "/").free
 
 
-def preflight(path: str | None = None, min_free_gb: float = MIN_FREE_GB) -> None:
+def preflight(path: str | None = None, min_free_gb: float | None = None) -> None:
+    if min_free_gb is None:
+        # HWK_MIN_FREE_GB lets a test render on a small CI disk; the Mac never sets it.
+        min_free_gb = float(os.environ.get("HWK_MIN_FREE_GB", MIN_FREE_GB))
     free = free_bytes(path)
     if free < min_free_gb * 1024 ** 3:
         raise LowDisk(

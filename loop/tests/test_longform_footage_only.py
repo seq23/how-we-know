@@ -130,6 +130,7 @@ try:
     LP.subject_clips = lambda slug, assets=None: []
     LP.subject_photos = lambda slug, stills=None: [photo(0)]
     out = os.path.join(tmp, "out.mp4")
+    os.environ["HWK_MIN_FREE_GB"] = "0"          # this render must not depend on the host's disk
     try:
         r = assemble.assemble(pp, out, music=False, frame_check=False)
         rec = json.load(open(out + ".footage.json"))
@@ -146,6 +147,7 @@ try:
     except (ValueError, TypeError):
         check("burned-in captions are refused", True)
     assemble.render_beat = real_rb
+    os.environ.pop("HWK_MIN_FREE_GB", None)
 
     # ---- 5. LOW_DISK stops before anything is written --------------------
     real_free = disk_guard.free_bytes
