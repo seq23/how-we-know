@@ -422,6 +422,10 @@ done
 pending_plan=""
 
 echo; echo "--- a domain's graphics never appear in another domain's video ---"
+# At most ONE superseded copy of each render stays in renders/ (2026-11-03:
+# four 550 MB aside copies of one episode while the Mac ran out of disk); the
+# older ones go to the Trash (recoverable), never deleted outright.
+$PY loop/render_prune.py || echo "  render prune exited $? - superseded copies left in place"
 # visuals/plan_domain.py (2026-11-01): re-plans any not-yet-uploaded plan that
 # draws another domain's graphics (the depth gauge on the rice episode) and
 # retires its render, plus any render already recorded as superseded, so the
