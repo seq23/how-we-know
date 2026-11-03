@@ -85,5 +85,22 @@
       "rights verified: 10 assets, sha256 matched on every file"
     ],
     "last_success_at": "2026-10-31T10:23:15+00:00"
+  },
+  "research/imagery_stock_video.py": {
+    "host": "mac-batch",
+    "last_run_at": "2026-11-03T21:33:50+00:00",
+    "ok": true,
+    "exit": 0,
+    "week": "2026-W45",
+    "records": 252,
+    "tail": [
+      "  CLIP why-is-glass-clear                           'glass bottle'           mixkit:5071",
+      "  CLIP why-is-glass-clear                           'glass bottle'           mixkit:4920",
+      "  CLIP why-is-glass-clear                           'limestone'              pixabay:364188",
+      "  CLIP why-is-glass-clear                           'glass'                  pixabay:79872",
+      "stock footage: 20 new clip(s), 34 on record, 20 episode(s) with no clip that shows the subject (drawn / NOAA treatment stands): 03-why-deep-sea-creatures-are-surfacing, 11-what-is-a-dumbo-octopus, 12-what-is-a-frilled-shark, 17-what-is-a-yeti-crab, are-sea-pigs-real, how-deep-mariana-trench, how-does-photolithography-work, how-does-thermohaline-circulation-work, is-giant-isopod-edible, what-blobfish-actually-looks-like, what-does-a-goblin-shark-look-like, what-does-a-greenland-shark-look-like",
+      "verified 34 stock clip(s): licence wording re-checked, sha256 matches"
+    ],
+    "last_success_at": "2026-11-03T21:33:50+00:00"
   }
 }
