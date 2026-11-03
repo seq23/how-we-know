@@ -156,6 +156,53 @@ def _probe(path: str) -> dict:
             "seconds": float((d.get("format") or {}).get("duration") or 0)}
 
 
+def side_bars(path: str, seconds: float) -> float:
+    """Fraction of the width each side that is black (a 4:3 picture pillarboxed
+    inside a 16:9 file, as NCEI's SD highlights are). Read with cropdetect at
+    three points; only symmetric left/right bars count - a dark sea at the top
+    or bottom of a frame is not a bar."""
+    from collections import Counter                     # noqa: PLC0415
+    seen = Counter()
+    for t in (seconds * 0.2, seconds * 0.5, seconds * 0.8):
+        r = subprocess.run(["ffmpeg", "-hide_banner", "-ss", f"{t:.2f}", "-i", path, "-t", "2",
+                            "-vf", "cropdetect=24:2:0", "-f", "null", "-"],
+                           capture_output=True, text=True)
+        for m in re.finditer(r"crop=(\d+):(\d+):(\d+):(\d+)", r.stderr):
+            seen[(int(m.group(1)), int(m.group(3)))] += 1
+    if not seen:
+        return 0.0
+    (cw, x), _ = seen.most_common(1)[0]
+    w = _probe(path)["width"] or 1
+    if x > 0 and abs((w - cw - x) - x) <= 4 and x / w >= 0.04:
+        return round(x / w, 4)
+    return 0.0
+
+
+def apply_bars(rec: dict, path: str) -> dict:
+    f = side_bars(path, float(rec.get("seconds") or 10))
+    if f:
+        rec["treatment"] = "cropped"
+        rec["crop"] = {"left": f, "right": f, "top": 0.0, "bottom": 0.0,
+                       "why": "black pillarbox bars baked into the file"}
+    return rec
+
+
+def fix_bars() -> int:
+    """Backfill: crop the bars off every wide clip already on record."""
+    man = json.load(open(MANIFEST))
+    n = 0
+    for a in man.get("assets", []):
+        if str(a.get("post_id", "")).split(":")[0] in ("noaa-ncei-oer", "commons") \
+                and a.get("treatment") != "cropped":
+            apply_bars(a, os.path.join(IMAGERY, a["local_file"]))
+            n += a.get("treatment") == "cropped"
+    tmp = MANIFEST + ".tmp"
+    json.dump(man, open(tmp, "w"), indent=2)
+    os.replace(tmp, os.path.realpath(MANIFEST))
+    print(f"wide footage: pillarbox crop recorded on {n} clip(s)")
+    return n
+
+
 def screen_file(path: str, seconds: float) -> tuple[bool, str, list[dict]]:
     """OCR the clip; (ok, why, clean windows)."""
     import imagery_video as IV                          # noqa: PLC0415
@@ -226,6 +273,7 @@ def harvest(slugs: list[str], per_subject: int = 4) -> dict:
                            "attribution_required": False, "commercial_use_permitted": True,
                            "date_checked": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
                            "sha256": hashlib.sha256(blob).hexdigest(), "bytes": len(blob)}
+                    apply_bars(rec, path)
                     new.append(rec)
                     have.add(pid)
                     print(f"  CLIP {slug[:34]:<34} {subject!r:<22} {pid[:60]}")
@@ -243,6 +291,9 @@ def harvest(slugs: list[str], per_subject: int = 4) -> dict:
 
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--fix-bars" in sys.argv:
+        fix_bars()
+        raise SystemExit(0)
     if "--pending" in sys.argv:                 # every episode waiting for a render
         import imagery_stock_video as STOCK     # noqa: PLC0415
         args = [s for s in STOCK.targets() if STOCK.domain_of(s) == "deep-sea-ocean-science"]
