@@ -506,6 +506,9 @@ def variety_problems(shots: list[dict], every: float = 20.0) -> list[str]:
 
 
 VERDICTS = os.path.join(IMAGERY_DIR, "clips", ".span_verdicts.json")
+# Verdicts are kept per question: the 2026-11-03 "subject clearly in frame"
+# wording asks something stricter, so old verdicts do not answer it.
+QUESTION_VERSION = " |q2-in-frame"
 
 
 def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
@@ -524,7 +527,7 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
         kept = json.load(open(store))
     except (OSError, ValueError):
         kept = {}
-    mine = kept.setdefault(subject, {})
+    mine = kept.setdefault(subject + QUESTION_VERSION, {})
     work = tempfile.mkdtemp(prefix="hwk-vet-")
     todo = []                                           # (id, jpg)
     try:
@@ -589,7 +592,7 @@ def forget_failed(record_shots: list[dict], failures: list[tuple[float, str]],
         kept = json.load(open(store))
     except (OSError, ValueError):
         kept = {}
-    mine = kept.setdefault(subject, {})
+    mine = kept.setdefault(subject + QUESTION_VERSION, {})
     marked, t, edges = 0, 0.0, []
     for s in record_shots:
         edges.append((t, t + float(s["seconds"]), s))
