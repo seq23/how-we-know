@@ -3376,10 +3376,76 @@
       "completion_tokens": 5423,
       "total_tokens": 19565,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-11-03T01:25:01+00:00",
+      "slug": "how-does-3d-printing-metal-work",
+      "model": "gemini/gemini-3.6-flash",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2170,
+      "completion_tokens": 2822,
+      "total_tokens": 19597,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-03T01:30:11+00:00",
+      "slug": "how-does-3d-printing-metal-work",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5254,
+      "completion_tokens": 2820,
+      "total_tokens": 8074,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-03T01:32:18+00:00",
+      "slug": "how-strong-is-3d-printed-metal",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2290,
+      "completion_tokens": 3801,
+      "total_tokens": 6091,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-03T01:33:04+00:00",
+      "slug": "how-strong-is-3d-printed-metal",
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5158,
+      "completion_tokens": 4022,
+      "total_tokens": 9180,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-03T01:33:14+00:00",
+      "slug": "how-strong-is-3d-printed-metal",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 7664,
+      "completion_tokens": 2796,
+      "total_tokens": 10460,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-03T01:36:52+00:00",
+      "slug": "how-strong-is-3d-printed-metal",
+      "model": "claude-subscription/opus",
+      "attempt": 4,
+      "accepted": true,
+      "prompt_tokens": 16315,
+      "completion_tokens": 25713,
+      "total_tokens": 42028,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 135,
-  "average_usd_per_accepted_draft": 0.075377,
-  "updated": "2026-11-02T06:35:12+00:00"
+  "drafts_written": 137,
+  "average_usd_per_accepted_draft": 0.074277,
+  "updated": "2026-11-03T01:36:52+00:00"
 }

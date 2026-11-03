@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T06:36:51Z",
+  "generated": "2026-11-03T01:37:55Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -661,6 +661,20 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "The footage is real. The documentary around it is constructed \u2014 lights, music, editing, narration all telling you what to feel."
+    },
+    {
+      "video": "how-does-3d-printing-metal-work",
+      "pov_id": "pov-097",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it."
+    },
+    {
+      "video": "how-strong-is-3d-printed-metal",
+      "pov_id": "pov-061",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "'We don't know yet' is a good answer when someone can tell you what we do know, what's missing, and what evidence would settle it."
     }
   ]
 }
