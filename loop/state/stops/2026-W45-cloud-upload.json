@@ -1,23 +1,21 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W45",
-  "at": "2026-11-02T18:49:45+00:00",
-  "code": "QUOTA_EXHAUSTED",
-  "message": "no quota left today for a whole video (1700 units). Already spent today by: backfill 3400, captions 1051, demand 1, handoff 406, localize 102, repackage 1076, tags-backfill 765. quota day 2026-11-02 (PT): spent 6801 of 10000, 2799 usable after 400 headroom; lanes: backfill 3400, captions 1051, demand 1, handoff 406, localize 102, repackage 1076, tags-backfill 765",
+  "at": "2026-11-03T15:04:56+00:00",
+  "code": "OWNER_HOLD_LONGFORM",
+  "message": "long-form publishing is held on purpose since 2026-11-02: owner hold 2 Nov: until hostile-review fixes land. Shorts keep going; rendering continues.",
   "detail": {
-    "pending": [
-      "what-is-inside-chili-coffee-honey"
-    ],
-    "resets_at": "2026-11-03T00:00:00-08:00"
+    "on": true,
+    "since": "2026-11-02T20:29:17+00:00",
+    "detail": "owner hold 2 Nov: until hostile-review fixes land",
+    "by": "owner"
   },
-  "unblock": "Usually nothing to do \u2014 the allowance resets at midnight Pacific and this lane runs daily, so tomorrow's run picks up exactly where this one stopped. If the spending lane above is 'backfill', the Mac's launchd agent com.howweknow.backfill is still uploading the same library from the other side. Two lanes on one 10,000-unit allowance is the documented transition state, not a fault: unload the Mac agent once this lane has uploaded once, watched.",
+  "unblock": "Lifted by `python loop/breaker.py lift-longform --note ...` once the work it waits for is on main.",
   "disposition": "self_resolving",
-  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
+  "disposition_why": "Her own decision (2026-11-02): long-form uploads, dating and publishing are held until the hostile-review fixes land; Shorts keep going and rendering continues. loop/breaker.py longform_hold; lifted by `breaker.py lift-longform` when the work is on main. (run 1 of at most 60 before this escalates to a human.)",
   "consecutive": 1,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
-  "notes": [
-    "shelf: r2://how-we-know-renders"
-  ]
+  "notes": []
 }
