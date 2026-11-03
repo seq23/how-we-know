@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-25T21:11:10+00:00",
+  "generated": "2026-11-03T05:28:32+00:00",
   "domain": "food-science",
   "module": "research/food_footage.py",
   "policy": "Real video only, through the free fallback chain (Pixabay, Pexels, Mixkit, [Coverr disabled by its terms], Commons PD/CC0, Internet Archive PD collections, NASA). Licences allow commercial reuse without attribution; every clip is still credited on screen.",
@@ -16,7 +16,7 @@
     "depicts",
     "subject_basis"
   ],
-  "asset_count": 90,
+  "asset_count": 126,
   "chain": [
     "pixabay",
     "pexels",
@@ -36,79 +36,159 @@
     "nasa": "usable"
   },
   "resolved_by_source": {
-    "pixabay": 38,
-    "mixkit": 10,
-    "commons": 1
+    "pixabay": 28,
+    "mixkit": 15
   },
   "rejected": [
     {
-      "subject": "chili-chili-kitchen-2",
+      "subject": "butter-butter-3",
       "source": "mixkit",
       "reason": "item page marks it Stock Video Restricted License"
     },
     {
-      "subject": "chili-red-chili-pepper-2",
+      "subject": "meat-meat-close-up-1",
       "source": "mixkit",
       "reason": "item page marks it Stock Video Restricted License"
     },
     {
-      "subject": "chili-hot-pepper-1",
+      "subject": "meat-meat-close-up-2",
       "source": "mixkit",
       "reason": "item page marks it Stock Video Restricted License"
     },
     {
-      "subject": "honey-honey-dripping-1",
+      "subject": "meat-meat-close-up-3",
       "source": "mixkit",
       "reason": "item page marks it Stock Video Restricted License"
     },
     {
-      "subject": "honey-honeycomb-1",
+      "subject": "meat-meat-slow-motion-1",
       "source": "mixkit",
       "reason": "item page marks it Stock Video Restricted License"
     },
     {
-      "subject": "honey-honeycomb-2",
+      "subject": "meat-meat-food-2",
       "source": "mixkit",
       "reason": "item page marks it Stock Video Restricted License"
     },
     {
-      "subject": "chili-chili-slow-motion-1",
+      "subject": "rice-rice-slow-motion-1",
+      "source": "mixkit",
+      "reason": "item page marks it Stock Video Restricted License"
+    },
+    {
+      "subject": "butter-butter-slow-motion-3",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "chili-chili-slow-motion-2",
+      "subject": "butter-butter-macro-2",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "chili-chili-slow-motion-3",
+      "subject": "butter-butter-pouring-slow-motion-1",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "chili-chili-macro-1",
+      "subject": "butter-butter-pouring-slow-motion-2",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "chili-chili-macro-2",
+      "subject": "butter-butter-pouring-slow-motion-3",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "honey-honey-slow-motion-1",
+      "subject": "butter-butter-mixing-close-up-1",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "honey-honey-slow-motion-2",
+      "subject": "butter-butter-mixing-close-up-2",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "honey-honey-slow-motion-3",
+      "subject": "butter-butter-melting-close-up-1",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "honey-honey-dripping-2",
+      "subject": "butter-butter-melting-close-up-2",
       "reason": "no adapter in the chain had a matching clip"
     },
     {
-      "subject": "honey-honey-dripping-3",
+      "subject": "butter-butter-glossy-macro-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "butter-butter-glossy-macro-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-slow-motion-3",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-pouring-slow-motion-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-pouring-slow-motion-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-pouring-slow-motion-3",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-mixing-close-up-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-mixing-close-up-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-melting-close-up-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-melting-close-up-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-glossy-macro-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "meat-meat-glossy-macro-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-slow-motion-3",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-pouring-slow-motion-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-pouring-slow-motion-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-pouring-slow-motion-3",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-mixing-close-up-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-mixing-close-up-2",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-melting-close-up-1",
+      "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "rice-rice-melting-close-up-2",
       "reason": "no adapter in the chain had a matching clip"
     }
   ],
@@ -1079,6 +1159,700 @@
         "spans": [],
         "sha256": "ab74ee791fbd91484e6cd509fd3476ab6a3a1267169175697f7d4c667e65edb7"
       }
+    },
+    {
+      "subject": "butter-butter-1",
+      "key": "butter-butter-1",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "209423",
+      "title": "buttermilk, condensed milk, sweet, food, processing, preparation, mix butter and milk",
+      "item_url": "https://pixabay.com/videos/id-209423/",
+      "download_url": "https://cdn.pixabay.com/video/2024/04/25/209423_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:14+00:00",
+      "sha256": "c1a413e89980df50d7e3e99a7e268d2b6825f8761636d47828c5bbabf62eb09b",
+      "local_file": "clips/food_clip__butter-butter-1__pixabay-209423__buttermilk-condensed-milk-sweet-food-processing-.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "NGUYENTHONG7997",
+      "depicts": "video",
+      "subject_basis": "butter (kit butter, search take 1)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 12.913,
+      "richness": {
+        "score": 0.317,
+        "saturation": 0.199,
+        "contrast": 0.65,
+        "gloss": 0.0,
+        "detail": 0.34,
+        "frames": 5,
+        "sha256": "c1a413e89980df50d7e3e99a7e268d2b6825f8761636d47828c5bbabf62eb09b"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "c1a413e89980df50d7e3e99a7e268d2b6825f8761636d47828c5bbabf62eb09b"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "c1a413e89980df50d7e3e99a7e268d2b6825f8761636d47828c5bbabf62eb09b"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-2",
+      "key": "butter-butter-2",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "209417",
+      "title": "butter, buttermilk, mix butter, preparation, cooking, grilled, milk, food",
+      "item_url": "https://pixabay.com/videos/id-209417/",
+      "download_url": "https://cdn.pixabay.com/video/2024/04/25/209417_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:15+00:00",
+      "sha256": "9ebcf111fbc87b3087f901436346833e8b85239c5c092ac97ebfbd26151cb6e7",
+      "local_file": "clips/food_clip__butter-butter-2__pixabay-209417__butter-buttermilk-mix-butter-preparation-cooking.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "NGUYENTHONG7997",
+      "depicts": "video",
+      "subject_basis": "butter (kit butter, search take 2)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 14.381,
+      "richness": {
+        "score": 0.272,
+        "saturation": 0.143,
+        "contrast": 0.502,
+        "gloss": 0.0,
+        "detail": 0.386,
+        "frames": 5,
+        "sha256": "9ebcf111fbc87b3087f901436346833e8b85239c5c092ac97ebfbd26151cb6e7"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "9ebcf111fbc87b3087f901436346833e8b85239c5c092ac97ebfbd26151cb6e7"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "9ebcf111fbc87b3087f901436346833e8b85239c5c092ac97ebfbd26151cb6e7"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-close-up-1",
+      "key": "butter-butter-close-up-1",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "122877",
+      "title": "butterfly, insect, close up, brambles",
+      "item_url": "https://pixabay.com/videos/id-122877/",
+      "download_url": "https://cdn.pixabay.com/video/2022/07/02/122877-726391994_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:16+00:00",
+      "sha256": "4802450e48e22f18e43a6c5b156b97675a5ce6d4b4d9213426926188b6d6f40d",
+      "local_file": "clips/food_clip__butter-butter-close-up-1__pixabay-122877__butterfly-insect-close-up-brambles.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "adege",
+      "depicts": "video",
+      "subject_basis": "butter close up (kit butter, search take 1)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 41.77,
+      "richness": {
+        "score": 0.622,
+        "saturation": 0.405,
+        "contrast": 0.88,
+        "gloss": 0.064,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "4802450e48e22f18e43a6c5b156b97675a5ce6d4b4d9213426926188b6d6f40d"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "4802450e48e22f18e43a6c5b156b97675a5ce6d4b4d9213426926188b6d6f40d"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "4802450e48e22f18e43a6c5b156b97675a5ce6d4b4d9213426926188b6d6f40d"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-close-up-2",
+      "key": "butter-butter-close-up-2",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "10679",
+      "title": "butterfly, summer, insect, close up, flower, blossom, bloom",
+      "item_url": "https://pixabay.com/videos/id-10679/",
+      "download_url": "https://cdn.pixabay.com/video/2017/07/15/10679-226156910_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:17+00:00",
+      "sha256": "e2d72a52d6b43e114340bff2d214756dca1b611f37ec0d11cf276a6481d01f8d",
+      "local_file": "clips/food_clip__butter-butter-close-up-2__pixabay-10679__butterfly-summer-insect-close-up-flower-blossom-.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Zenbunny",
+      "depicts": "video",
+      "subject_basis": "butter close up (kit butter, search take 2)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 19.007,
+      "richness": {
+        "score": 0.592,
+        "saturation": 0.559,
+        "contrast": 0.838,
+        "gloss": 0.009,
+        "detail": 0.743,
+        "frames": 5,
+        "sha256": "e2d72a52d6b43e114340bff2d214756dca1b611f37ec0d11cf276a6481d01f8d"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "e2d72a52d6b43e114340bff2d214756dca1b611f37ec0d11cf276a6481d01f8d"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "e2d72a52d6b43e114340bff2d214756dca1b611f37ec0d11cf276a6481d01f8d"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-close-up-3",
+      "key": "butter-butter-close-up-3",
+      "label": "BUTTER",
+      "source": "mixkit",
+      "source_id": "40836",
+      "title": "slowly rotating peanut butter and peanut donut",
+      "item_url": "https://mixkit.co/free-stock-video/slowly-rotating-peanut-butter-and-peanut-donut-40836/",
+      "download_url": "https://assets.mixkit.co/videos/40836/40836-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:20+00:00",
+      "sha256": "2f6baec8f7164437b2b970b544d2e09a4799dfe6ecb8222b27a222c2a081266b",
+      "local_file": "clips/food_clip__butter-butter-close-up-3__mixkit-40836__slowly-rotating-peanut-butter-and-peanut-donut.mp4",
+      "credit_line": "BUTTER - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "butter close up (kit butter, search take 3)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1080,
+      "height": 1920,
+      "fps": 23.976,
+      "duration_s": 9.259,
+      "richness": {
+        "score": 0.557,
+        "saturation": 0.61,
+        "contrast": 0.566,
+        "gloss": 0.001,
+        "detail": 0.809,
+        "frames": 5,
+        "sha256": "2f6baec8f7164437b2b970b544d2e09a4799dfe6ecb8222b27a222c2a081266b"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "2f6baec8f7164437b2b970b544d2e09a4799dfe6ecb8222b27a222c2a081266b"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "2f6baec8f7164437b2b970b544d2e09a4799dfe6ecb8222b27a222c2a081266b"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-food-1",
+      "key": "butter-butter-food-1",
+      "label": "BUTTER",
+      "source": "mixkit",
+      "source_id": "2687",
+      "title": "preparing a chocolate peanut butter dessert",
+      "item_url": "https://mixkit.co/free-stock-video/preparing-a-chocolate-peanut-butter-dessert-2687/",
+      "download_url": "https://assets.mixkit.co/videos/2687/2687-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:35+00:00",
+      "sha256": "63bf8c7030d7f27bfd6ccd18c515dea801c8bb36c584734833fbdf0a2b34d593",
+      "local_file": "clips/food_clip__butter-butter-food-1__mixkit-2687__preparing-a-chocolate-peanut-butter-dessert.mp4",
+      "credit_line": "BUTTER - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "butter food (kit butter, search take 1)",
+      "uses": [
+        "subject"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 15.849,
+      "richness": {
+        "score": 0.471,
+        "saturation": 0.245,
+        "contrast": 0.821,
+        "gloss": 0.013,
+        "detail": 0.713,
+        "frames": 5,
+        "sha256": "63bf8c7030d7f27bfd6ccd18c515dea801c8bb36c584734833fbdf0a2b34d593"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "63bf8c7030d7f27bfd6ccd18c515dea801c8bb36c584734833fbdf0a2b34d593"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 1,
+        "basis": "Apple Vision hand pose: 1/5 frames show a hand",
+        "sha256": "63bf8c7030d7f27bfd6ccd18c515dea801c8bb36c584734833fbdf0a2b34d593"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 1/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-food-2",
+      "key": "butter-butter-food-2",
+      "label": "BUTTER",
+      "source": "mixkit",
+      "source_id": "50039",
+      "title": "interior of a mixer that mixes butter and eggs",
+      "item_url": "https://mixkit.co/free-stock-video/interior-of-a-mixer-that-mixes-butter-and-eggs-50039/",
+      "download_url": "https://assets.mixkit.co/videos/50039/50039-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:38+00:00",
+      "sha256": "633d47c06f0691ca3517c9653bfaeaabf4cc88d9381e719ae1c43569ef72a7f8",
+      "local_file": "clips/food_clip__butter-butter-food-2__mixkit-50039__interior-of-a-mixer-that-mixes-butter-and-eggs.mp4",
+      "credit_line": "BUTTER - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "butter food (kit butter, search take 2)",
+      "uses": [
+        "subject"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 11.428,
+      "richness": {
+        "score": 0.371,
+        "saturation": 0.589,
+        "contrast": 0.44,
+        "gloss": 0.0,
+        "detail": 0.221,
+        "frames": 5,
+        "sha256": "633d47c06f0691ca3517c9653bfaeaabf4cc88d9381e719ae1c43569ef72a7f8"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "633d47c06f0691ca3517c9653bfaeaabf4cc88d9381e719ae1c43569ef72a7f8"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "633d47c06f0691ca3517c9653bfaeaabf4cc88d9381e719ae1c43569ef72a7f8"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-kitchen-1",
+      "key": "butter-butter-kitchen-1",
+      "label": "BUTTER",
+      "source": "mixkit",
+      "source_id": "50030",
+      "title": "professional pastry chef adding butter for a mixture",
+      "item_url": "https://mixkit.co/free-stock-video/professional-pastry-chef-adding-butter-for-a-mixture-50030/",
+      "download_url": "https://assets.mixkit.co/videos/50030/50030-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:27+00:00",
+      "sha256": "a42418f17a0bcf5a817f05d0a4eb3ad44ec8b8a8c1e2ce2a4442d9520c6325a3",
+      "local_file": "clips/food_clip__butter-butter-kitchen-1__mixkit-50030__professional-pastry-chef-adding-butter-for-a-mix.mp4",
+      "credit_line": "BUTTER - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "butter kitchen (kit butter, search take 1)",
+      "uses": [
+        "subject",
+        "process"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 23.941,
+      "richness": {
+        "score": 0.453,
+        "saturation": 0.266,
+        "contrast": 0.903,
+        "gloss": 0.002,
+        "detail": 0.537,
+        "frames": 5,
+        "sha256": "a42418f17a0bcf5a817f05d0a4eb3ad44ec8b8a8c1e2ce2a4442d9520c6325a3"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "a42418f17a0bcf5a817f05d0a4eb3ad44ec8b8a8c1e2ce2a4442d9520c6325a3"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 5,
+        "basis": "Apple Vision hand pose: 5/5 frames show a hand",
+        "sha256": "a42418f17a0bcf5a817f05d0a4eb3ad44ec8b8a8c1e2ce2a4442d9520c6325a3"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 5/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-kitchen-2",
+      "key": "butter-butter-kitchen-2",
+      "label": "BUTTER",
+      "source": "mixkit",
+      "source_id": "43030",
+      "title": "frying bread with butter for a dessert",
+      "item_url": "https://mixkit.co/free-stock-video/frying-bread-with-butter-for-a-dessert-43030/",
+      "download_url": "https://assets.mixkit.co/videos/43030/43030-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:30+00:00",
+      "sha256": "2a3abd98dfff35529d601ee76c08bbbe14963a5d5cf3941a15ba8867ef96b421",
+      "local_file": "clips/food_clip__butter-butter-kitchen-2__mixkit-43030__frying-bread-with-butter-for-a-dessert.mp4",
+      "credit_line": "BUTTER - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "butter kitchen (kit butter, search take 2)",
+      "uses": [
+        "subject",
+        "process"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 13.013,
+      "richness": {
+        "score": 0.364,
+        "saturation": 0.281,
+        "contrast": 0.533,
+        "gloss": 0.0,
+        "detail": 0.529,
+        "frames": 5,
+        "sha256": "2a3abd98dfff35529d601ee76c08bbbe14963a5d5cf3941a15ba8867ef96b421"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "2a3abd98dfff35529d601ee76c08bbbe14963a5d5cf3941a15ba8867ef96b421"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 5,
+        "basis": "Apple Vision hand pose: 5/5 frames show a hand",
+        "sha256": "2a3abd98dfff35529d601ee76c08bbbe14963a5d5cf3941a15ba8867ef96b421"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 5/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-macro-1",
+      "key": "butter-butter-macro-1",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "108372",
+      "title": "butterfly, flower, nectar, collect, nature, macro, spring",
+      "item_url": "https://pixabay.com/videos/id-108372/",
+      "download_url": "https://cdn.pixabay.com/video/2022/02/20/108372-680178229_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:25+00:00",
+      "sha256": "a264f8d31c85f2f199b613b305ba03b886aaed2641f2facfa5f96ba26b783649",
+      "local_file": "clips/food_clip__butter-butter-macro-1__pixabay-108372__butterfly-flower-nectar-collect-nature-macro-spr.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "RoyBuri",
+      "depicts": "video",
+      "subject_basis": "butter macro (kit butter, search take 1)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 53.268,
+      "richness": {
+        "score": 0.526,
+        "saturation": 0.519,
+        "contrast": 0.612,
+        "gloss": 0.036,
+        "detail": 0.743,
+        "frames": 5,
+        "sha256": "a264f8d31c85f2f199b613b305ba03b886aaed2641f2facfa5f96ba26b783649"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "a264f8d31c85f2f199b613b305ba03b886aaed2641f2facfa5f96ba26b783649"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "a264f8d31c85f2f199b613b305ba03b886aaed2641f2facfa5f96ba26b783649"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-slow-motion-1",
+      "key": "butter-butter-slow-motion-1",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "211327",
+      "title": "butterfly, white butterfly, insect, flower, wings, pollination, slow motion",
+      "item_url": "https://pixabay.com/videos/id-211327/",
+      "download_url": "https://cdn.pixabay.com/video/2024/05/09/211327_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:21+00:00",
+      "sha256": "bb5a4c7288db7510164815188b607cd491a1746ed9569cb516d85628ec9feef5",
+      "local_file": "clips/food_clip__butter-butter-slow-motion-1__pixabay-211327__butterfly-white-butterfly-insect-flower-wings-po.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "NickyPe",
+      "depicts": "video",
+      "subject_basis": "butter slow motion (kit butter, search take 1)",
+      "uses": [
+        "subject",
+        "pour"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 19.228,
+      "richness": {
+        "score": 0.68,
+        "saturation": 0.669,
+        "contrast": 0.817,
+        "gloss": 0.049,
+        "detail": 0.937,
+        "frames": 5,
+        "sha256": "bb5a4c7288db7510164815188b607cd491a1746ed9569cb516d85628ec9feef5"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "bb5a4c7288db7510164815188b607cd491a1746ed9569cb516d85628ec9feef5"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "bb5a4c7288db7510164815188b607cd491a1746ed9569cb516d85628ec9feef5"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "butter-butter-slow-motion-2",
+      "key": "butter-butter-slow-motion-2",
+      "label": "BUTTER",
+      "source": "pixabay",
+      "source_id": "162628",
+      "title": "butterfly, wing, insect, pollinate, flower, flower meadow, wildlife, slow motion",
+      "item_url": "https://pixabay.com/videos/id-162628/",
+      "download_url": "https://cdn.pixabay.com/video/2023/05/11/162628-825914539_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:22+00:00",
+      "sha256": "5e3d2137128cf037dd01e2fe5090295400be913a12cab0c582acb070183b8fad",
+      "local_file": "clips/food_clip__butter-butter-slow-motion-2__pixabay-162628__butterfly-wing-insect-pollinate-flower-flower-me.mp4",
+      "credit_line": "BUTTER - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "NickyPe",
+      "depicts": "video",
+      "subject_basis": "butter slow motion (kit butter, search take 2)",
+      "uses": [
+        "subject",
+        "pour"
+      ],
+      "sound": null,
+      "segment": "butter",
+      "kit": "butter",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 30.42,
+      "richness": {
+        "score": 0.61,
+        "saturation": 0.762,
+        "contrast": 0.754,
+        "gloss": 0.048,
+        "detail": 0.589,
+        "frames": 5,
+        "sha256": "5e3d2137128cf037dd01e2fe5090295400be913a12cab0c582acb070183b8fad"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "5e3d2137128cf037dd01e2fe5090295400be913a12cab0c582acb070183b8fad"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "5e3d2137128cf037dd01e2fe5090295400be913a12cab0c582acb070183b8fad"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
     },
     {
       "subject": "cacao",
@@ -4030,6 +4804,537 @@
       "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
     },
     {
+      "subject": "meat-meat-1",
+      "key": "meat-meat-1",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "14419",
+      "title": "meat, cook, kitchen, food, beef, a restaurant, nutrition, meats",
+      "item_url": "https://pixabay.com/videos/id-14419/",
+      "download_url": "https://cdn.pixabay.com/video/2018/02/21/14419-257068804_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:40+00:00",
+      "sha256": "541a11505acb9493b4192d709ea7ec10d339cc99c03ad2bc972a830640ea9e23",
+      "local_file": "clips/food_clip__meat-meat-1__pixabay-14419__meat-cook-kitchen-food-beef-a-restaurant-nutriti.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "AlekseiyPovar",
+      "depicts": "video",
+      "subject_basis": "meat (kit meat, search take 1)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 74.2,
+      "richness": {
+        "score": 0.655,
+        "saturation": 0.481,
+        "contrast": 0.916,
+        "gloss": 0.359,
+        "detail": 0.817,
+        "frames": 5,
+        "sha256": "541a11505acb9493b4192d709ea7ec10d339cc99c03ad2bc972a830640ea9e23"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "541a11505acb9493b4192d709ea7ec10d339cc99c03ad2bc972a830640ea9e23"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 4,
+        "basis": "Apple Vision hand pose: 4/5 frames show a hand",
+        "sha256": "541a11505acb9493b4192d709ea7ec10d339cc99c03ad2bc972a830640ea9e23"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 4/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-2",
+      "key": "meat-meat-2",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "14241",
+      "title": "meat, steak, grilled meat, beef, nutrition, marble, frying, dinner, cook, cutting meat, beef steak, meat dish, kitchen, board",
+      "item_url": "https://pixabay.com/videos/id-14241/",
+      "download_url": "https://cdn.pixabay.com/video/2018/02/10/14241-255658088_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:41+00:00",
+      "sha256": "bc70b0e106f424c3462685b26381350c9ba46a3f4096425fbbfcd9ba6d45d14a",
+      "local_file": "clips/food_clip__meat-meat-2__pixabay-14241__meat-steak-grilled-meat-beef-nutrition-marble-fr.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "AlekseiyPovar",
+      "depicts": "video",
+      "subject_basis": "meat (kit meat, search take 2)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 32.48,
+      "richness": {
+        "score": 0.571,
+        "saturation": 0.447,
+        "contrast": 0.932,
+        "gloss": 0.23,
+        "detail": 0.589,
+        "frames": 5,
+        "sha256": "bc70b0e106f424c3462685b26381350c9ba46a3f4096425fbbfcd9ba6d45d14a"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "bc70b0e106f424c3462685b26381350c9ba46a3f4096425fbbfcd9ba6d45d14a"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 3,
+        "basis": "Apple Vision hand pose: 3/5 frames show a hand",
+        "sha256": "bc70b0e106f424c3462685b26381350c9ba46a3f4096425fbbfcd9ba6d45d14a"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 3/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-3",
+      "key": "meat-meat-3",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "15735",
+      "title": "meat, kazan, food, frying, nutrition, cooking, roast, kitchen, grilled meat, dish, delicious",
+      "item_url": "https://pixabay.com/videos/id-15735/",
+      "download_url": "https://cdn.pixabay.com/video/2018/04/22/15735-266043619_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:41+00:00",
+      "sha256": "437f7f1ef925a37251139d6b428b37df79c1d8b47589fb28e14a5f201de0e7e4",
+      "local_file": "clips/food_clip__meat-meat-3__pixabay-15735__meat-kazan-food-frying-nutrition-cooking-roast-k.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "AlekseiyPovar",
+      "depicts": "video",
+      "subject_basis": "meat (kit meat, search take 3)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 17.76,
+      "richness": {
+        "score": 0.554,
+        "saturation": 0.142,
+        "contrast": 0.988,
+        "gloss": 0.05,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "437f7f1ef925a37251139d6b428b37df79c1d8b47589fb28e14a5f201de0e7e4"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "437f7f1ef925a37251139d6b428b37df79c1d8b47589fb28e14a5f201de0e7e4"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 2,
+        "basis": "Apple Vision hand pose: 2/5 frames show a hand",
+        "sha256": "437f7f1ef925a37251139d6b428b37df79c1d8b47589fb28e14a5f201de0e7e4"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 2/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-food-1",
+      "key": "meat-meat-food-1",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "127306",
+      "title": "meat, barbecue, coal, stone wall, mangal, roasting, coating, food",
+      "item_url": "https://pixabay.com/videos/id-127306/",
+      "download_url": "https://cdn.pixabay.com/video/2022/08/09/127306-738105482_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:26+00:00",
+      "sha256": "abf003a07b92736450c77febbaef25b802a35b7e65cfa2676fb179ead9f7171d",
+      "local_file": "clips/food_clip__meat-meat-food-1__pixabay-127306__meat-barbecue-coal-stone-wall-mangal-roasting-co.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Reynard_Kelly",
+      "depicts": "video",
+      "subject_basis": "meat food (kit meat, search take 1)",
+      "uses": [
+        "subject"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 23.722,
+      "richness": {
+        "score": 0.559,
+        "saturation": 0.421,
+        "contrast": 0.644,
+        "gloss": 0.009,
+        "detail": 0.995,
+        "frames": 5,
+        "sha256": "abf003a07b92736450c77febbaef25b802a35b7e65cfa2676fb179ead9f7171d"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "abf003a07b92736450c77febbaef25b802a35b7e65cfa2676fb179ead9f7171d"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "abf003a07b92736450c77febbaef25b802a35b7e65cfa2676fb179ead9f7171d"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-kitchen-1",
+      "key": "meat-meat-kitchen-1",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "237866",
+      "title": "cutting chicken meat, cutting meat in kitchen, cutting meat, cooking chicken, cooking ingredients, cooking recipe, salad, chicken breast",
+      "item_url": "https://pixabay.com/videos/id-237866/",
+      "download_url": "https://cdn.pixabay.com/video/2024/10/23/237866_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:25:02+00:00",
+      "sha256": "c4e22ad91aa669dd9627960b4371111f0a307f1f24569251d9ac9274e224e624",
+      "local_file": "clips/food_clip__meat-meat-kitchen-1__pixabay-237866__cutting-chicken-meat-cutting-meat-in-kitchen-cut.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "DELUSMOS",
+      "depicts": "video",
+      "subject_basis": "meat kitchen (kit meat, search take 1)",
+      "uses": [
+        "subject",
+        "process"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 29.429,
+      "richness": {
+        "score": 0.457,
+        "saturation": 0.499,
+        "contrast": 0.614,
+        "gloss": 0.001,
+        "detail": 0.514,
+        "frames": 5,
+        "sha256": "c4e22ad91aa669dd9627960b4371111f0a307f1f24569251d9ac9274e224e624"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "c4e22ad91aa669dd9627960b4371111f0a307f1f24569251d9ac9274e224e624"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 4,
+        "basis": "Apple Vision hand pose: 4/5 frames show a hand",
+        "sha256": "c4e22ad91aa669dd9627960b4371111f0a307f1f24569251d9ac9274e224e624"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 4/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-kitchen-2",
+      "key": "meat-meat-kitchen-2",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "12763",
+      "title": "meat, sausage, home cooking, polish food, eat, sausage swojska, country sausage, traditional food, regional products, sausages, food, tasty sausage, country kitchen, healthy cuisine, healthy meat, healthy food, kitchen, products smoked, healthy eating, nutrition, closeup",
+      "item_url": "https://pixabay.com/videos/id-12763/",
+      "download_url": "https://cdn.pixabay.com/video/2017/11/04/12763-241674265_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:25:03+00:00",
+      "sha256": "57908e0a6fe28cbfcdac378b645bdfd93b27c03c507d9e0ad3defb58b2dd853b",
+      "local_file": "clips/food_clip__meat-meat-kitchen-2__pixabay-12763__meat-sausage-home-cooking-polish-food-eat-sausag.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "krzys16",
+      "depicts": "video",
+      "subject_basis": "meat kitchen (kit meat, search take 2)",
+      "uses": [
+        "subject",
+        "process"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 17.748,
+      "richness": {
+        "score": 0.552,
+        "saturation": 0.284,
+        "contrast": 0.774,
+        "gloss": 0.234,
+        "detail": 0.897,
+        "frames": 5,
+        "sha256": "57908e0a6fe28cbfcdac378b645bdfd93b27c03c507d9e0ad3defb58b2dd853b"
+      },
+      "black": {
+        "spans": [
+          [
+            17.44,
+            17.64
+          ]
+        ],
+        "sha256": "57908e0a6fe28cbfcdac378b645bdfd93b27c03c507d9e0ad3defb58b2dd853b"
+      },
+      "hands_measured": {
+        "hands": true,
+        "frames": 5,
+        "frames_with_hands": 2,
+        "basis": "Apple Vision hand pose: 2/5 frames show a hand",
+        "sha256": "57908e0a6fe28cbfcdac378b645bdfd93b27c03c507d9e0ad3defb58b2dd853b"
+      },
+      "hands": true,
+      "hands_basis": "Apple Vision hand pose: 2/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-macro-1",
+      "key": "meat-meat-macro-1",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "137472",
+      "title": "meat, veggies, fajitas, pan, cook, hot, fire, sizzling",
+      "item_url": "https://pixabay.com/videos/id-137472/",
+      "download_url": "https://cdn.pixabay.com/video/2022/11/02/137472-766532530_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:25:00+00:00",
+      "sha256": "23056df681f34d3dbdd75ac431c6edb6448ec75e07e48adafb1b6d222a801eba",
+      "local_file": "clips/food_clip__meat-meat-macro-1__pixabay-137472__meat-veggies-fajitas-pan-cook-hot-fire-sizzling.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "u_ofui1fmwkp",
+      "depicts": "video",
+      "subject_basis": "meat macro (kit meat, search take 1)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_s": 26.033,
+      "richness": {
+        "score": 0.619,
+        "saturation": 0.315,
+        "contrast": 0.97,
+        "gloss": 0.112,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "23056df681f34d3dbdd75ac431c6edb6448ec75e07e48adafb1b6d222a801eba"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "23056df681f34d3dbdd75ac431c6edb6448ec75e07e48adafb1b6d222a801eba"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "23056df681f34d3dbdd75ac431c6edb6448ec75e07e48adafb1b6d222a801eba"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-macro-2",
+      "key": "meat-meat-macro-2",
+      "label": "MEAT",
+      "source": "pixabay",
+      "source_id": "2640",
+      "title": "meat, loin, food, frying, kitchen, dish, lunch, chops, cook, pan",
+      "item_url": "https://pixabay.com/videos/id-2640/",
+      "download_url": "https://cdn.pixabay.com/video/2016/04/02/2640-161442825_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:25:01+00:00",
+      "sha256": "8cf214b6c94ffedc7f315d92f2620c0bdd0bad801a724b2a857368522cf8b11d",
+      "local_file": "clips/food_clip__meat-meat-macro-2__pixabay-2640__meat-loin-food-frying-kitchen-dish-lunch-chops-c.mp4",
+      "credit_line": "MEAT - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "krzys16",
+      "depicts": "video",
+      "subject_basis": "meat macro (kit meat, search take 2)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 21.76,
+      "richness": {
+        "score": 0.517,
+        "saturation": 0.488,
+        "contrast": 0.729,
+        "gloss": 0.0,
+        "detail": 0.658,
+        "frames": 5,
+        "sha256": "8cf214b6c94ffedc7f315d92f2620c0bdd0bad801a724b2a857368522cf8b11d"
+      },
+      "black": {
+        "spans": [
+          [
+            21.48,
+            21.72
+          ]
+        ],
+        "sha256": "8cf214b6c94ffedc7f315d92f2620c0bdd0bad801a724b2a857368522cf8b11d"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "8cf214b6c94ffedc7f315d92f2620c0bdd0bad801a724b2a857368522cf8b11d"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "meat-meat-slow-motion-2",
+      "key": "meat-meat-slow-motion-2",
+      "label": "MEAT",
+      "source": "mixkit",
+      "source_id": "3802",
+      "title": "making breaded meat",
+      "item_url": "https://mixkit.co/free-stock-video/making-breaded-meat-3802/",
+      "download_url": "https://assets.mixkit.co/videos/3802/3802-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:24:59+00:00",
+      "sha256": "dfce49be020469da8da5dac78b66ef3fb29b81f2828223bab097a9b2f3a033f6",
+      "local_file": "clips/food_clip__meat-meat-slow-motion-2__mixkit-3802__making-breaded-meat.mp4",
+      "credit_line": "MEAT - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "meat slow motion (kit meat, search take 2)",
+      "uses": [
+        "subject",
+        "pour"
+      ],
+      "sound": null,
+      "segment": "meat",
+      "kit": "meat",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 24.0,
+      "duration_s": 10.0,
+      "richness": {
+        "score": 0.547,
+        "saturation": 0.336,
+        "contrast": 0.8,
+        "gloss": 0.0,
+        "detail": 0.917,
+        "frames": 5,
+        "sha256": "dfce49be020469da8da5dac78b66ef3fb29b81f2828223bab097a9b2f3a033f6"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "dfce49be020469da8da5dac78b66ef3fb29b81f2828223bab097a9b2f3a033f6"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "dfce49be020469da8da5dac78b66ef3fb29b81f2828223bab097a9b2f3a033f6"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
       "subject": "pile",
       "key": "pile",
       "label": "CHOCOLATE",
@@ -4129,6 +5434,874 @@
         "spans": [],
         "sha256": "0b6bdfa174bbc91a5cdec6394f6a6f22039031ae63e862d9f1b94ac61b383084"
       }
+    },
+    {
+      "subject": "rice-rice-1",
+      "key": "rice-rice-1",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "184808",
+      "title": "rice, field, agriculture, harvest, farm, autumn, fall",
+      "item_url": "https://pixabay.com/videos/id-184808/",
+      "download_url": "https://cdn.pixabay.com/video/2023/10/13/184808-874264370_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:30+00:00",
+      "sha256": "6d9466607c0ed889f259693a42e7790684dc575e3ebf2375ef2e8c63384c2287",
+      "local_file": "clips/food_clip__rice-rice-1__pixabay-184808__rice-field-agriculture-harvest-farm-autumn-fall.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Oliverstar",
+      "depicts": "video",
+      "subject_basis": "rice (kit rice, search take 1)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 31.13,
+      "richness": {
+        "score": 0.732,
+        "saturation": 0.668,
+        "contrast": 0.959,
+        "gloss": 0.059,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "6d9466607c0ed889f259693a42e7790684dc575e3ebf2375ef2e8c63384c2287"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "6d9466607c0ed889f259693a42e7790684dc575e3ebf2375ef2e8c63384c2287"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "6d9466607c0ed889f259693a42e7790684dc575e3ebf2375ef2e8c63384c2287"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-2",
+      "key": "rice-rice-2",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "184811",
+      "title": "rice, field, agriculture, harvest, farm, autumn, fall",
+      "item_url": "https://pixabay.com/videos/id-184811/",
+      "download_url": "https://cdn.pixabay.com/video/2023/10/13/184811-874264378_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:31+00:00",
+      "sha256": "f0ca3ecebecd33ab3ad482729e38908f1a2dab757a0aee65ca3c46c15541a78e",
+      "local_file": "clips/food_clip__rice-rice-2__pixabay-184811__rice-field-agriculture-harvest-farm-autumn-fall.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Oliverstar",
+      "depicts": "video",
+      "subject_basis": "rice (kit rice, search take 2)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 28.327,
+      "richness": {
+        "score": 0.733,
+        "saturation": 0.749,
+        "contrast": 0.784,
+        "gloss": 0.168,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "f0ca3ecebecd33ab3ad482729e38908f1a2dab757a0aee65ca3c46c15541a78e"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "f0ca3ecebecd33ab3ad482729e38908f1a2dab757a0aee65ca3c46c15541a78e"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "f0ca3ecebecd33ab3ad482729e38908f1a2dab757a0aee65ca3c46c15541a78e"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-3",
+      "key": "rice-rice-3",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "37664",
+      "title": "rice, farmer, rice field, indonesia, bali, farm, terrace, landscape, aerial, field, drone shot, nature, sky",
+      "item_url": "https://pixabay.com/videos/id-37664/",
+      "download_url": "https://cdn.pixabay.com/video/2020/04/30/37664-418005769_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:32+00:00",
+      "sha256": "dd9a5f206c7cdf4f1629b7b820cc8c51f9636fdc608ee3b0528d9b31ee9c9f63",
+      "local_file": "clips/food_clip__rice-rice-3__pixabay-37664__rice-farmer-rice-field-indonesia-bali-farm-terra.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Ronin_Studio_Munich",
+      "depicts": "video",
+      "subject_basis": "rice (kit rice, search take 3)",
+      "uses": [
+        "subject",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 20.562,
+      "richness": {
+        "score": 0.545,
+        "saturation": 0.274,
+        "contrast": 1.0,
+        "gloss": 0.103,
+        "detail": 0.733,
+        "frames": 5,
+        "sha256": "dd9a5f206c7cdf4f1629b7b820cc8c51f9636fdc608ee3b0528d9b31ee9c9f63"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "dd9a5f206c7cdf4f1629b7b820cc8c51f9636fdc608ee3b0528d9b31ee9c9f63"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "dd9a5f206c7cdf4f1629b7b820cc8c51f9636fdc608ee3b0528d9b31ee9c9f63"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-close-up-1",
+      "key": "rice-rice-close-up-1",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "87041",
+      "title": "rice fields, terraces, mountain, rice, soil, mu cang chai, vietnam",
+      "item_url": "https://pixabay.com/videos/id-87041/",
+      "download_url": "https://cdn.pixabay.com/video/2021/08/31/87041-601076215_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:33+00:00",
+      "sha256": "330f8a915db3b57bab7af381e2971fac544012ae1fed313445d9365afa5ce3da",
+      "local_file": "clips/food_clip__rice-rice-close-up-1__pixabay-87041__rice-fields-terraces-mountain-rice-soil-mu-cang-.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "trilemedia",
+      "depicts": "video",
+      "subject_basis": "rice close up (kit rice, search take 1)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 13.647,
+      "richness": {
+        "score": 0.454,
+        "saturation": 0.531,
+        "contrast": 0.349,
+        "gloss": 0.0,
+        "detail": 0.725,
+        "frames": 5,
+        "sha256": "330f8a915db3b57bab7af381e2971fac544012ae1fed313445d9365afa5ce3da"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "330f8a915db3b57bab7af381e2971fac544012ae1fed313445d9365afa5ce3da"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "330f8a915db3b57bab7af381e2971fac544012ae1fed313445d9365afa5ce3da"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-close-up-2",
+      "key": "rice-rice-close-up-2",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "37663",
+      "title": "rice, farmer, field, rice field, indonesia, bali, asia, agriculture, terraces, farm, landscape, travel, mountain, countryside",
+      "item_url": "https://pixabay.com/videos/id-37663/",
+      "download_url": "https://cdn.pixabay.com/video/2020/04/30/37663-418005775_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:34+00:00",
+      "sha256": "de553a0209d101e823774b10e2b0f18e3a7077e4bc16f70f678802a08ef34c1b",
+      "local_file": "clips/food_clip__rice-rice-close-up-2__pixabay-37663__rice-farmer-field-rice-field-indonesia-bali-asia.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Ronin_Studio_Munich",
+      "depicts": "video",
+      "subject_basis": "rice close up (kit rice, search take 2)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 11.72,
+      "richness": {
+        "score": 0.546,
+        "saturation": 0.446,
+        "contrast": 0.55,
+        "gloss": 0.03,
+        "detail": 0.99,
+        "frames": 5,
+        "sha256": "de553a0209d101e823774b10e2b0f18e3a7077e4bc16f70f678802a08ef34c1b"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "de553a0209d101e823774b10e2b0f18e3a7077e4bc16f70f678802a08ef34c1b"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "de553a0209d101e823774b10e2b0f18e3a7077e4bc16f70f678802a08ef34c1b"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-close-up-3",
+      "key": "rice-rice-close-up-3",
+      "label": "RICE",
+      "source": "mixkit",
+      "source_id": "3816",
+      "title": "rice grains in detail",
+      "item_url": "https://mixkit.co/free-stock-video/rice-grains-in-detail-3816/",
+      "download_url": "https://assets.mixkit.co/videos/3816/3816-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:36+00:00",
+      "sha256": "8bacaf10a8ec0a7db8d2c5c2c1a9748582f6cc97a05cf914b052e9f9f831d4c7",
+      "local_file": "clips/food_clip__rice-rice-close-up-3__mixkit-3816__rice-grains-in-detail.mp4",
+      "credit_line": "RICE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "rice close up (kit rice, search take 3)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 24.0,
+      "duration_s": 16.75,
+      "richness": {
+        "score": 0.261,
+        "saturation": 0.067,
+        "contrast": 0.313,
+        "gloss": 0.0,
+        "detail": 0.636,
+        "frames": 5,
+        "sha256": "8bacaf10a8ec0a7db8d2c5c2c1a9748582f6cc97a05cf914b052e9f9f831d4c7"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "8bacaf10a8ec0a7db8d2c5c2c1a9748582f6cc97a05cf914b052e9f9f831d4c7"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "8bacaf10a8ec0a7db8d2c5c2c1a9748582f6cc97a05cf914b052e9f9f831d4c7"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-food-1",
+      "key": "rice-rice-food-1",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "11626",
+      "title": "rice, plain, boiled, food, healthy, meal, dinner, lunch, cooked, white, dish, chinese, indian, cuisine, bowl, asian, steamed, nutrition, diet, basmati, grain, culture, carbohydrate, ingredient, plate, organic, thai, staple, cooking, cereal, long, eating, studio, cutout, jasmine",
+      "item_url": "https://pixabay.com/videos/id-11626/",
+      "download_url": "https://cdn.pixabay.com/video/2017/08/29/11626-231571949_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:51+00:00",
+      "sha256": "57450a706e0d597b9aa02611c69b6a5185ad0fbec5b62768da377f69da9bd3d2",
+      "local_file": "clips/food_clip__rice-rice-food-1__pixabay-11626__rice-plain-boiled-food-healthy-meal-dinner-lunch.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "XiaosKitchen",
+      "depicts": "video",
+      "subject_basis": "rice food (kit rice, search take 1)",
+      "uses": [
+        "subject"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_s": 19.3,
+      "richness": {
+        "score": 0.476,
+        "saturation": 0.243,
+        "contrast": 1.0,
+        "gloss": 0.002,
+        "detail": 0.563,
+        "frames": 5,
+        "sha256": "57450a706e0d597b9aa02611c69b6a5185ad0fbec5b62768da377f69da9bd3d2"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "57450a706e0d597b9aa02611c69b6a5185ad0fbec5b62768da377f69da9bd3d2"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "57450a706e0d597b9aa02611c69b6a5185ad0fbec5b62768da377f69da9bd3d2"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-food-2",
+      "key": "rice-rice-food-2",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "66421",
+      "title": "rice, fresh, cooked, sushi, sashimi, street food, food, japanese",
+      "item_url": "https://pixabay.com/videos/id-66421/",
+      "download_url": "https://cdn.pixabay.com/video/2021/02/27/66421-517408340_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:53+00:00",
+      "sha256": "4811653cd87223083e8e1345d64a4e9ad44f9144d61acf45d551301613368265",
+      "local_file": "clips/food_clip__rice-rice-food-2__pixabay-66421__rice-fresh-cooked-sushi-sashimi-street-food-food.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "\u9b54\u7406\u6c99\u306e\u30ba\u30dc\u30e9\u98ef",
+      "depicts": "video",
+      "subject_basis": "rice food (kit rice, search take 2)",
+      "uses": [
+        "subject"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_s": 29.867,
+      "richness": {
+        "score": 0.453,
+        "saturation": 0.213,
+        "contrast": 0.935,
+        "gloss": 0.0,
+        "detail": 0.579,
+        "frames": 5,
+        "sha256": "4811653cd87223083e8e1345d64a4e9ad44f9144d61acf45d551301613368265"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "4811653cd87223083e8e1345d64a4e9ad44f9144d61acf45d551301613368265"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "4811653cd87223083e8e1345d64a4e9ad44f9144d61acf45d551301613368265"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-glossy-macro-1",
+      "key": "rice-rice-glossy-macro-1",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "142737",
+      "title": "rice fields, river, village, rice, waterfall, vietnam, saigon, hanoi, asia, sapa, landscape, adventure, nature",
+      "item_url": "https://pixabay.com/videos/id-142737/",
+      "download_url": "https://cdn.pixabay.com/video/2022/12/12/142737-780599595_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:53+00:00",
+      "sha256": "82a1180edc0d83b8fda6e956c5ab45c9eff02e75fffd67d4f415fae040e5c940",
+      "local_file": "clips/food_clip__rice-rice-glossy-macro-1__pixabay-142737__rice-fields-river-village-rice-waterfall-vietnam.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Quankawa",
+      "depicts": "video",
+      "subject_basis": "rice glossy macro (kit rice, search take 1)",
+      "uses": [
+        "macro",
+        "coat"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 21.653,
+      "richness": {
+        "score": 0.534,
+        "saturation": 0.461,
+        "contrast": 0.415,
+        "gloss": 0.157,
+        "detail": 0.982,
+        "frames": 5,
+        "sha256": "82a1180edc0d83b8fda6e956c5ab45c9eff02e75fffd67d4f415fae040e5c940"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "82a1180edc0d83b8fda6e956c5ab45c9eff02e75fffd67d4f415fae040e5c940"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "82a1180edc0d83b8fda6e956c5ab45c9eff02e75fffd67d4f415fae040e5c940"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-glossy-macro-2",
+      "key": "rice-rice-glossy-macro-2",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "175364",
+      "title": "rice field, rice terrace, mountain, vietnam, saigon, hanoi, sapa, patio, landscape, nature, tourist, travel, asia, hiking",
+      "item_url": "https://pixabay.com/videos/id-175364/",
+      "download_url": "https://cdn.pixabay.com/video/2023/08/09/175364-853243461_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:54+00:00",
+      "sha256": "8a0fa1769d6855be297ea30d1b8da63a57c6214e4acdc0347aed660e5858fe6f",
+      "local_file": "clips/food_clip__rice-rice-glossy-macro-2__pixabay-175364__rice-field-rice-terrace-mountain-vietnam-saigon-.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Quankawa",
+      "depicts": "video",
+      "subject_basis": "rice glossy macro (kit rice, search take 2)",
+      "uses": [
+        "macro",
+        "coat"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 24.09,
+      "richness": {
+        "score": 0.511,
+        "saturation": 0.315,
+        "contrast": 0.65,
+        "gloss": 0.146,
+        "detail": 0.864,
+        "frames": 5,
+        "sha256": "8a0fa1769d6855be297ea30d1b8da63a57c6214e4acdc0347aed660e5858fe6f"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "8a0fa1769d6855be297ea30d1b8da63a57c6214e4acdc0347aed660e5858fe6f"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "8a0fa1769d6855be297ea30d1b8da63a57c6214e4acdc0347aed660e5858fe6f"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-kitchen-1",
+      "key": "rice-rice-kitchen-1",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "248448",
+      "title": "rice terraces, valley, plantation, travel, terrace, nature, mountain, landscape, hill, green, field, agriculture, rural, rice field, paddy, beautiful wallpaper, farmland, farming, vietnam, rice, plant, background, textures, asia",
+      "item_url": "https://pixabay.com/videos/id-248448/",
+      "download_url": "https://cdn.pixabay.com/video/2024/12/24/248448_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:49+00:00",
+      "sha256": "ae8f29be7787f30a6d3ae7dc0515b6ce04c4a95b12ba8ca0d11c7f19fb1f465d",
+      "local_file": "clips/food_clip__rice-rice-kitchen-1__pixabay-248448__rice-terraces-valley-plantation-travel-terrace-n.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "TungArt7",
+      "depicts": "video",
+      "subject_basis": "rice kitchen (kit rice, search take 1)",
+      "uses": [
+        "subject",
+        "process"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 50.0,
+      "duration_s": 10.0,
+      "richness": {
+        "score": 0.585,
+        "saturation": 0.585,
+        "contrast": 0.521,
+        "gloss": 0.002,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "ae8f29be7787f30a6d3ae7dc0515b6ce04c4a95b12ba8ca0d11c7f19fb1f465d"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "ae8f29be7787f30a6d3ae7dc0515b6ce04c4a95b12ba8ca0d11c7f19fb1f465d"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "ae8f29be7787f30a6d3ae7dc0515b6ce04c4a95b12ba8ca0d11c7f19fb1f465d"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-kitchen-2",
+      "key": "rice-rice-kitchen-2",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "11022",
+      "title": "rice field, agriculture, thailand, rice, asia, rural, food, land, country, countryside, tropical, grain, grow, crop, cultivate, farm, nature, green, thai",
+      "item_url": "https://pixabay.com/videos/id-11022/",
+      "download_url": "https://cdn.pixabay.com/video/2017/07/29/11022-227573553_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:50+00:00",
+      "sha256": "0b45a15bed96ee2877a68e8aa162394b4b42982dc40794fb78fbef938b7b7a84",
+      "local_file": "clips/food_clip__rice-rice-kitchen-2__pixabay-11022__rice-field-agriculture-thailand-rice-asia-rural-.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "waterlettuce",
+      "depicts": "video",
+      "subject_basis": "rice kitchen (kit rice, search take 2)",
+      "uses": [
+        "subject",
+        "process"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 23.59,
+      "richness": {
+        "score": 0.628,
+        "saturation": 0.732,
+        "contrast": 0.489,
+        "gloss": 0.002,
+        "detail": 1.0,
+        "frames": 5,
+        "sha256": "0b45a15bed96ee2877a68e8aa162394b4b42982dc40794fb78fbef938b7b7a84"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "0b45a15bed96ee2877a68e8aa162394b4b42982dc40794fb78fbef938b7b7a84"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "0b45a15bed96ee2877a68e8aa162394b4b42982dc40794fb78fbef938b7b7a84"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-macro-1",
+      "key": "rice-rice-macro-1",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "175365",
+      "title": "rice field, rice terrace, mountain, vietnam, saigon, hanoi, sapa, patio, landscape, nature, tourist, travel, asia, village",
+      "item_url": "https://pixabay.com/videos/id-175365/",
+      "download_url": "https://cdn.pixabay.com/video/2023/08/09/175365-853243465_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:46+00:00",
+      "sha256": "03e42e6fe6496e4ba007fc2b610ae9a65da8b16ab2bb28c935b7cce5e2691ce8",
+      "local_file": "clips/food_clip__rice-rice-macro-1__pixabay-175365__rice-field-rice-terrace-mountain-vietnam-saigon-.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Quankawa",
+      "depicts": "video",
+      "subject_basis": "rice macro (kit rice, search take 1)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 15.948,
+      "richness": {
+        "score": 0.46,
+        "saturation": 0.316,
+        "contrast": 0.578,
+        "gloss": 0.082,
+        "detail": 0.768,
+        "frames": 5,
+        "sha256": "03e42e6fe6496e4ba007fc2b610ae9a65da8b16ab2bb28c935b7cce5e2691ce8"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "03e42e6fe6496e4ba007fc2b610ae9a65da8b16ab2bb28c935b7cce5e2691ce8"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "03e42e6fe6496e4ba007fc2b610ae9a65da8b16ab2bb28c935b7cce5e2691ce8"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-macro-2",
+      "key": "rice-rice-macro-2",
+      "label": "RICE",
+      "source": "pixabay",
+      "source_id": "175360",
+      "title": "rice field, rice terrace, mountain road, mountain pass, vietnam, mapileng, hagiang, hagiang run, mountain, saigon, hanoi, asia, nature, landscape",
+      "item_url": "https://pixabay.com/videos/id-175360/",
+      "download_url": "https://cdn.pixabay.com/video/2023/08/09/175360-853243451_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:47+00:00",
+      "sha256": "2ca6711cfd85cf40aaa5c597cc5bffb3bbd853655bdcbda4da61e09960f413ec",
+      "local_file": "clips/food_clip__rice-rice-macro-2__pixabay-175360__rice-field-rice-terrace-mountain-road-mountain-p.mp4",
+      "credit_line": "RICE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Quankawa",
+      "depicts": "video",
+      "subject_basis": "rice macro (kit rice, search take 2)",
+      "uses": [
+        "subject",
+        "macro"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 16.95,
+      "richness": {
+        "score": 0.503,
+        "saturation": 0.266,
+        "contrast": 0.851,
+        "gloss": 0.134,
+        "detail": 0.707,
+        "frames": 5,
+        "sha256": "2ca6711cfd85cf40aaa5c597cc5bffb3bbd853655bdcbda4da61e09960f413ec"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "2ca6711cfd85cf40aaa5c597cc5bffb3bbd853655bdcbda4da61e09960f413ec"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "2ca6711cfd85cf40aaa5c597cc5bffb3bbd853655bdcbda4da61e09960f413ec"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "rice-rice-slow-motion-2",
+      "key": "rice-rice-slow-motion-2",
+      "label": "RICE",
+      "source": "mixkit",
+      "source_id": "52228",
+      "title": "delicious puffed rice cereal falling in slow motion into a",
+      "item_url": "https://mixkit.co/free-stock-video/delicious-puffed-rice-cereal-falling-in-slow-motion-into-a-52228/",
+      "download_url": "https://assets.mixkit.co/videos/52228/52228-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-03T05:26:45+00:00",
+      "sha256": "8d844e360e6aecec1e4cf788992f351fb5b1a84199e2940a011cead60010c022",
+      "local_file": "clips/food_clip__rice-rice-slow-motion-2__mixkit-52228__delicious-puffed-rice-cereal-falling-in-slow-mot.mp4",
+      "credit_line": "RICE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "rice slow motion (kit rice, search take 2)",
+      "uses": [
+        "subject",
+        "pour"
+      ],
+      "sound": null,
+      "segment": "rice",
+      "kit": "rice",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 24.0,
+      "duration_s": 29.208,
+      "richness": {
+        "score": 0.503,
+        "saturation": 0.296,
+        "contrast": 0.822,
+        "gloss": 0.098,
+        "detail": 0.718,
+        "frames": 5,
+        "sha256": "8d844e360e6aecec1e4cf788992f351fb5b1a84199e2940a011cead60010c022"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "8d844e360e6aecec1e4cf788992f351fb5b1a84199e2940a011cead60010c022"
+      },
+      "hands_measured": {
+        "hands": false,
+        "frames": 5,
+        "frames_with_hands": 0,
+        "basis": "Apple Vision hand pose: 0/5 frames show a hand",
+        "sha256": "8d844e360e6aecec1e4cf788992f351fb5b1a84199e2940a011cead60010c022"
+      },
+      "hands": false,
+      "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
     },
     {
       "subject": "sheets",
