@@ -85,6 +85,16 @@
       "seconds": 485.232,
       "source": "ffprobe 20-what-is-the-midnight-zone-final.mp4"
     },
+    "are-sea-pigs-real": {
+      "narration_words_at_measurement": 1794,
+      "seconds": 626.005,
+      "source": "ffprobe are-sea-pigs-real-final.mp4"
+    },
+    "does-damascus-steel-rust": {
+      "narration_words_at_measurement": 1907,
+      "seconds": 699.552,
+      "source": "ffprobe does-damascus-steel-rust-final.mp4"
+    },
     "how-are-microchips-designed": {
       "narration_words_at_measurement": 1658,
       "seconds": 624.043,
@@ -266,5 +276,5 @@
       "source": "ffprobe why-is-steel-so-strong-final.mp4"
     }
   },
-  "updated": "2026-10-28T09:22:25+00:00"
+  "updated": "2026-11-03T05:29:12+00:00"
 }

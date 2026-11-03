@@ -84,6 +84,7 @@
     },
     "what-is-carbon-fiber-made-of": {
       "attempts": 1,
+      "bound_at": "2026-11-03T05:29:13+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -96,14 +97,14 @@
       "kind": "reopen",
       "minutes_after": 10.16,
       "minutes_before": 10.15,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "gemini/gemini-3.8-flash",
       "new_script_sha256": "2c1e2d1be044ecff4bf45468f8793596971dcb6f25129efd3a0855a95dc6cfc4",
       "old_render_sha256": null,
       "old_script_sha256": "82306d4a416b61c712bafcbe8425073dee3954faeff5eca61d702945fa60a936",
       "scripted_at": "2026-11-03T00:48:52+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no render on this machine",
       "words_after": 1469,
       "words_before": 1467
     },
@@ -222,6 +223,7 @@
     },
     "why-deep-sea-fish-die-when-brought-to-surface": {
       "attempts": 1,
+      "bound_at": "2026-11-03T05:29:13+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -233,17 +235,17 @@
       "kind": "reopen",
       "minutes_after": 12.46,
       "minutes_before": 12.45,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "gemini/gemini-3.8-flash",
       "new_script_sha256": "ee44da675ec6acf86e96652ce055fada2ad9d72a806f56a3e4caf5b8f80fe044",
       "old_render_sha256": null,
       "old_script_sha256": "4f280971b8d2ca8ad2b8742e829571a14f2a30a6d97e6d05ba4fd079e7cc4cd2",
       "scripted_at": "2026-11-03T00:51:38+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no render on this machine",
       "words_after": 1801,
       "words_before": 1800
     }
   },
-  "updated": "2026-11-03T00:51:38+00:00"
+  "updated": "2026-11-03T05:29:13+00:00"
 }
