@@ -66,19 +66,45 @@ check("only footage and photographs", set(kinds) <= {"footage", "photo"}, str(ki
 check("covers the narration exactly",
       abs(sum(s["seconds"] for s in shots) - total) < 0.05,
       f"{sum(s['seconds'] for s in shots)} of {total}")
-showings = Counter((s["key"], s["start"]) for s in shots if s["kind"] == "footage")
-check("photographs are used only after the clips' slowed reuse",
-      "photo" not in kinds or (showings and max(showings.values()) == 3
-                               and sum(showings.values()) >= 2 * len(showings)), str(showings))
-check("a span is on screen at most 3 times", max(showings.values()) <= 3, str(showings))
+showings = Counter((s["key"], s["start"]) for s in shots
+                   if s["kind"] == "footage" and not s.get("over_cap"))
+check("a span is on screen at most 3 times (before the last-resort round)",
+      max(showings.values()) <= 3, str(showings))
 slowed = [s for s in shots if s["kind"] == "footage" and s["speed"] < 1]
 check("reuse is slowed to 0.5-0.75x", slowed and all(0.5 <= s["speed"] <= 0.75 for s in slowed),
       str([s["speed"] for s in slowed]))
 check("a reuse has a different framing than the first showing",
       all((s["zoom"], tuple(s["pan"])) != (1.0, (0.5, 0.5)) for s in slowed))
 b2b = [i for i in range(1, len(shots)) if shots[i]["key"] == shots[i - 1]["key"]
-       and (shots[i].get("showing", 1) > 1 or shots[i]["kind"] == "photo")]
-check("a reuse never follows its own clip", not b2b, str(b2b))
+       and abs(shots[i]["start"] - shots[i - 1]["start"]) <= 10]
+check("consecutive shots are distinct (another clip, or >10 s apart in it)", not b2b, str(b2b))
+
+# ---- 1b. VARIETY (owner 2026-11-03: "a new image every 30 sec at least or 20")
+def vclip(i, subj, clean):
+    return {**clip(i, clean), "title": f"{subj} {i}", "_subject": subj}
+pool = [vclip(0, "giant isopod", 60), vclip(1, "giant isopod", 40), vclip(2, "sixgill shark", 70),
+        vclip(3, "sea spider", 90), vclip(4, "giant grenadier", 50), vclip(5, "king crab", 45)]
+reel = LP.build(636.0, pool, [])
+moments = {(s["key"], s["start"]) for s in reel}
+check("a new distinct shot at least every 20 s (no shot over 18 s)",
+      max(s["seconds"] for s in reel) <= LP.MAX_SHOT_S, str(max(s["seconds"] for s in reel)))
+check("a 10.6-min reel has at least 32 distinct moments", len(moments) >= 32, str(len(moments)))
+check("the reel passes the variety check (samples, 3-min reuse, 25% share)",
+      not LP.variety_problems(reel), str(LP.variety_problems(reel)[:3]))
+one = [{"kind": "footage", "key": "a", "start": 0.0, "speed": 1.0, "subject": "giant isopod",
+        "seconds": 45.0, "title": "a"},
+       {"kind": "footage", "key": "b", "start": 0.0, "speed": 1.0, "subject": "sea spider",
+        "seconds": 15.0, "title": "b"}]
+probs = LP.variety_problems(one)
+check("a 45 s shot fails: two 20 s samples land on it",
+      any("same shot" in p for p in probs), str(probs))
+check("one subject at 75% with another present fails the share cap",
+      any("holds" in p for p in probs), str(probs))
+again = [{"kind": "footage", "key": "a", "start": 0.0, "speed": 1.0, "subject": "x", "seconds": 8.0, "title": "a"},
+         {"kind": "footage", "key": "b", "start": 0.0, "speed": 1.0, "subject": "y", "seconds": 8.0, "title": "b"},
+         {"kind": "footage", "key": "a", "start": 0.0, "speed": 0.5, "subject": "x", "seconds": 8.0, "title": "a"}]
+check("a source moment again inside 3 minutes fails",
+      any("repeats a moment" in p for p in LP.variety_problems(again)), str(LP.variety_problems(again)))
 ph = [s["seconds"] for s in shots if s["kind"] == "photo"]
 check("photographs move for 8-15 s each", ph and all(8 <= x <= 15 for x in ph[:-1]), str(ph))
 

@@ -180,7 +180,8 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
     # refuses any card, diagram, filler, plate, caption or credit overlay.
     import longform_picture as LP                         # noqa: PLC0415
     slug = slug or os.path.splitext(os.path.basename(plan_path))[0]
-    clips_, photos_ = LP.subject_clips(slug), LP.subject_photos(slug)
+    clips_ = LP.tag_subjects(slug, LP.subject_clips(slug))
+    photos_ = LP.tag_subjects(slug, LP.subject_photos(slug))
     allowed = None
     if frame_check:
         # LOOK BEFORE PLACING: a span the vision check cannot see the subject
@@ -246,7 +247,7 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
         # is moved aside (never deleted), so the batch makes it again.
         import frame_check as FC                          # noqa: PLC0415
         try:
-            checked = FC.check(out_path, FC.subject_of(slug))
+            checked = FC.check_render(out_path, slug)
         except (FC.PictureCheckFailed, FC.FrameCheckUnavailable):
             for ext in ("", ".footage.json"):
                 if os.path.exists(out_path + ext):
@@ -273,6 +274,9 @@ def write_picture_record(out_path, shots, shot_frames, beat_frames, used):
            "footage_beats_expected": len(beat_frames),
            "credits": used["credits"],
            "shots": [{"kind": s["kind"], "title": s["title"], "credit": s["credit"],
+                      "key": s["key"], "start": s.get("start", 0.0),
+                      "subject": s.get("subject"), "over_cap": bool(s.get("over_cap")),
+                      "share_cap_waived": s.get("share_cap_waived") or [],
                       "seconds": round(n / FPS, 3), "speed": s.get("speed", 1.0),
                       "source": s["asset"].get("source") or s["asset"].get("source_org"),
                       "licence": s["asset"].get("licence") or s["asset"].get("rights_basis", "")[:80]}

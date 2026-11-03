@@ -157,21 +157,6 @@ def _spans(asset: dict) -> list[tuple[float, float]]:
     return out
 
 
-def _interleave(clips: list[dict], allowed: set | None = None
-                ) -> list[tuple[dict, tuple[float, float]]]:
-    per = [[(a, s) for s in _spans(a) if allowed is None or (_key(a), s[0]) in allowed]
-           for a in clips]
-    out, k = [], 0
-    while any(per):
-        for lst in per:
-            if k < len(lst):
-                out.append(lst[k])
-        k += 1
-        if all(k >= len(lst) for lst in per):
-            break
-    return out
-
-
 def _key(a: dict) -> str:
     return str(a.get("post_id") or a.get("local_file"))
 
@@ -181,10 +166,67 @@ def _credit(a: dict) -> str:
                or a.get("source_org") or "")
 
 
+# VARIETY (owner 2026-11-03: "We need like a new image every 30 sec at least
+# or 20"). A new distinct shot at least every NEW_SHOT_EVERY s (distinct = a
+# different clip, or the same clip more than DISTINCT_GAP_S apart in the
+# source); a source moment repeats only after REUSE_GAP_S of screen time; no
+# subject over SHARE_CAP of screen time while another subject has material.
+NEW_SHOT_EVERY = 20.0
+MAX_SHOT_S = 18.0          # under NEW_SHOT_EVERY, so no 20 s sample sees one shot twice
+DISTINCT_GAP_S = 10.0
+REUSE_GAP_S = 180.0
+SHARE_CAP = 0.25
+SHARE_TOLERANCE = 0.03     # "about 25%": the check fails above 28%
+
+
+def tag_subjects(slug: str, assets: list[dict]) -> list[dict]:
+    """Stamp each clip or photo with the shot-list subject it shows (`_subject`),
+    the unit the share cap is counted in."""
+    import shot_list as SL                              # noqa: PLC0415
+    subs = SL.subjects(slug)
+    for a in assets:
+        blob = f"{a.get('title', '')} {_lead(a.get('caption'))} {a.get('subject') or ''}"
+        hit = next((x for x in sorted(subs, key=len, reverse=True)
+                    if re.search(r"\b" + re.escape(x).replace(r"\ ", r"[\s-]+") + r"s?\b",
+                                 blob, re.I)), None)
+        a["_subject"] = hit or str(a.get("subject") or a.get("title") or "subject").lower()
+    return assets
+
+
+def _subject(a: dict) -> str:
+    return str(a.get("_subject") or a.get("subject") or _key(a))
+
+
+def _candidates(clips, photos, allowed):
+    """Every shot that may be used, in fill order: clip spans at speed, the
+    same spans slowed (0.75x, 0.5x), then moving photographs (up to 3 each)."""
+    spans = [(a, sp) for a in clips for sp in _spans(a)
+             if allowed is None or (_key(a), sp[0]) in allowed]
+    out = []
+    for showing in range(MAX_SHOWINGS):
+        speed = 1.0 if showing == 0 else SLOW[showing - 1]
+        for a, (s, e) in spans:
+            out.append({"kind": "footage", "key": _key(a), "asset": a, "title": a.get("title"),
+                        "credit": _credit(a), "subject": _subject(a), "start": s,
+                        "span": round(e - s, 3), "speed": speed, "showing": showing + 1,
+                        "seconds": round(min((e - s) / speed, MAX_SHOT_S), 3)})
+    for showing in range(MAX_SHOWINGS):
+        for p in photos:
+            out.append({"kind": "photo", "key": _key(p), "asset": p, "title": p.get("title"),
+                        "credit": _credit(p), "subject": _subject(p), "start": 0.0,
+                        "span": 0.0, "speed": 1.0, "showing": showing + 1,
+                        "seconds": PHOTO_TARGET_S})
+    return out
+
+
 def build(total_s: float, clips: list[dict], photos: list[dict],
           allowed: set | None = None) -> list[dict]:
-    """Shots covering exactly `total_s` seconds, footage first. Deterministic.
-    `allowed` ({(clip key, span start)}, from vet()) limits footage to spans a
+    """Shots covering exactly `total_s` seconds. Deterministic.
+
+    WHICH shots: fill order (footage, slowed reuse, photos), round-robin across
+    subjects, no subject past SHARE_CAP while another still has material.
+    WHERE they go: order() - a new distinct shot every <=20 s, no source moment
+    again inside 3 minutes. `allowed` (from vet()) limits footage to spans a
     vision check has seen the subject in."""
     if not clips and not photos:
         raise NoSubjectPicture(
@@ -192,112 +234,153 @@ def build(total_s: float, clips: list[dict], photos: list[dict],
             "this episode's subject; the footage lane widens the harvest "
             "(research/imagery_stock_video.py, research/imagery.py) and the "
             "next batch renders it.")
-    shots: list[dict] = []
+    cands = _candidates(clips, photos, allowed)
+    if not cands:
+        raise NoSubjectPicture("NO_SUBJECT_PICTURE: the subject's clips carry no "
+                               "usable span and there is no photograph")
+    cap = SHARE_CAP * total_s
+    chosen, used, per = [], set(), {}
     left = float(total_s)
-    spans = _interleave(clips, allowed)
 
-    def fits(a_key: str, first: bool = False) -> bool:
-        # At speed, a clip's spans may follow one another (it is one take);
-        # a reuse or a photo never follows the same clip.
-        return first or not shots or shots[-1]["key"] != a_key
-
-    def add(shot: dict) -> None:
+    def take(enforce_cap: bool) -> None:
         nonlocal left
-        shots.append(shot)
-        left = round(left - shot["seconds"], 6)
+        while left > 1e-6:
+            # The next tier still holding any candidate, then round-robin by
+            # the subject with the least screen time so far.
+            pick = None
+            for tier in sorted({(c["kind"] == "photo", c["showing"]) for c in cands}):
+                pool = [i for i, c in enumerate(cands) if i not in used
+                        and (c["kind"] == "photo", c["showing"]) == tier
+                        and (not enforce_cap or per.get(c["subject"], 0) + min(c["seconds"], left)
+                             <= cap + 1e-6)]
+                if pool:
+                    pick = min(pool, key=lambda i: (per.get(cands[i]["subject"], 0), i))
+                    break
+            if pick is None:
+                return
+            used.add(pick)
+            c = dict(cands[pick])
+            secs = min(c["seconds"], left)
+            if 0 < left - secs < MIN_SHOT_S:     # never leave a sliver
+                secs = max(MIN_SHOT_S, secs - MIN_SHOT_S)
+            c["seconds"] = round(secs, 6)
+            c["src_seconds"] = round(secs * c["speed"], 3)
+            chosen.append(c)
+            per[c["subject"]] = per.get(c["subject"], 0) + secs
+            left = round(left - secs, 6)
 
-    def take(want: float, lo: float) -> float:
-        """How much of `want` to use, never leaving a tail under `lo`."""
-        t = min(want, left)
-        if 0 < left - t < lo:
-            t = left if left <= want * 1.5 else left - lo
-        return round(t, 6)
-
-    # 1 + 2: footage, at speed and then slowed; a span at most MAX_SHOWINGS.
-    for showing in range(MAX_SHOWINGS):
-        speed = 1.0 if showing == 0 else SLOW[showing - 1]
-        queue = list(spans)
-        while queue and left > 1e-6:
-            i = next((j for j, (a, _) in enumerate(queue)
-                      if fits(_key(a), showing == 0 and (not shots or shots[-1]["showing"] == 1))), None)
-            if i is None:
-                break
-            a, (s, e) = queue.pop(i)
-            out_max = (e - s) / speed
-            secs = take(out_max, MIN_SHOT_S)
-            if secs > out_max + 1e-6:              # tail longer than the span
-                secs = round(out_max, 6)
-            z, x0, x1 = FRAMINGS[1 + (showing + len(shots)) % (len(FRAMINGS) - 1)] \
-                if showing else FRAMINGS[0]
-            add({"kind": "footage", "key": _key(a), "asset": a,
-                 "title": a.get("title"), "credit": _credit(a),
-                 "start": s, "src_seconds": round(secs * speed, 3),
-                 "speed": speed, "showing": showing + 1, "seconds": secs,
-                 "zoom": z, "pan": [x0, x1]})
-        if left <= 1e-6:
-            break
-
-    # 3: photographs of the subject, moving, 8-15 s each.
+    take(enforce_cap=len({c["subject"] for c in cands}) > 1)
+    waived = sorted(s for s, v in per.items() if v > cap + 1e-6)
+    if left > 1e-6:                        # nothing else is left: the cap gives way
+        before = dict(per)
+        take(enforce_cap=False)
+        waived = sorted(s for s, v in per.items() if v > cap + 1e-6 and v > before.get(s, 0))
     k = 0
-    while left > 1e-6 and photos:
-        p = photos[k % len(photos)]
-        if not fits(_key(p)) and len(photos) > 1:
-            k += 1
-            p = photos[k % len(photos)]
-        z, x0, x1 = FRAMINGS[1 + (k // max(1, len(photos))) % 2]
-        secs = take(PHOTO_TARGET_S, PHOTO_S[0])
-        if secs > PHOTO_S[1] and left > PHOTO_S[1]:
-            secs = PHOTO_S[1]
-        add({"kind": "photo", "key": _key(p), "asset": p, "title": p.get("title"),
-             "showing": 1 + k // len(photos),
-             "credit": _credit(p), "seconds": secs, "zoom": max(z, 1.15),
-             "pan": [x0, x1] if k % 2 == 0 else [x1, x0]})
+    while left > 1e-6:                     # every candidate used: round again, slowest
+        c = dict(cands[k % len(cands)])
+        if c["kind"] == "footage":
+            c["speed"] = SLOW[-1]
+        secs = round(min(left, MAX_SHOT_S, (c["span"] / c["speed"]) if c["span"] else PHOTO_TARGET_S), 6)
+        c.update(seconds=secs, src_seconds=round(secs * c["speed"], 3),
+                 showing=MAX_SHOWINGS + 1 + k // len(cands), over_cap=True)
+        chosen.append(c)
+        left = round(left - secs, 6)
         k += 1
-
-    # No photos and every span shown its three times: the clips go round
-    # again, slowest, rather than hold the episode (owner 2026-11-03).
-    extra = 0
-    while left > 1e-6:
-        if not spans:
-            raise NoSubjectPicture("NO_SUBJECT_PICTURE: the subject's clips "
-                                   "carry no usable clean span")
-        a, (s, e) = spans[extra % len(spans)]
-        if not fits(_key(a)) and len(spans) > 1:
-            extra += 1
-            a, (s, e) = spans[extra % len(spans)]
-        out_max = (e - s) / SLOW[-1]
-        secs = min(take(out_max, MIN_SHOT_S), round(out_max, 6))
-        z, x0, x1 = FRAMINGS[1 + extra % (len(FRAMINGS) - 1)]
-        add({"kind": "footage", "key": _key(a), "asset": a, "title": a.get("title"),
-             "credit": _credit(a), "start": s, "src_seconds": round(secs * SLOW[-1], 3),
-             "speed": SLOW[-1], "showing": MAX_SHOWINGS + 1 + extra // len(spans),
-             "seconds": secs, "zoom": z, "pan": [x0, x1], "over_cap": True})
-        extra += 1
-    shots = spread(shots)
+    shots = _polish(order(chosen))
+    for i, sh in enumerate(shots):
+        z, x0, x1 = FRAMINGS[0] if sh["showing"] == 1 and sh["kind"] == "footage" \
+            else FRAMINGS[1 + (i + sh["showing"]) % (len(FRAMINGS) - 1)]
+        sh.update(zoom=max(z, 1.15) if sh["kind"] == "photo" else z,
+                  pan=[x0, x1] if i % 2 == 0 else [x1, x0])
+        sh["share_cap_waived"] = waived
     check(shots, total_s)
     return shots
 
 
-def spread(shots: list[dict]) -> list[dict]:
-    """Re-order for variety: the fill order decides WHICH shots are used (clips,
-    then slowed reuse, then photos); the screen order deals them out so one
-    long clip never fills a whole stretch. Greedy: the asset with the most
-    shots left goes next, never the same asset twice running; each asset's
-    shots keep their own order (a span at speed before its slowed reuse)."""
-    from collections import OrderedDict
-    queues: "OrderedDict[str, list[dict]]" = OrderedDict()
-    for sh in shots:
-        queues.setdefault(sh["key"], []).append(sh)
+def _distinct(a: dict, b: dict) -> bool:
+    """Different clip, or the same clip more than DISTINCT_GAP_S apart."""
+    return a["key"] != b["key"] or abs(float(a["start"]) - float(b["start"])) > DISTINCT_GAP_S
+
+
+def order(shots: list[dict]) -> list[dict]:
+    """Screen order. Greedy in time: the next shot is distinct from the last,
+    does not repeat a source moment shown in the last REUSE_GAP_S, and comes
+    from the subject with the least screen time so far (then the earliest
+    fill order). Each constraint gives way only when nothing satisfies it."""
+    left = list(shots)
     out: list[dict] = []
-    last = None
-    while queues:
-        keys = sorted(queues, key=lambda k: -len(queues[k]))
-        k = next((k for k in keys if k != last), keys[0])
-        out.append(queues[k].pop(0))
-        if not queues[k]:
-            del queues[k]
-        last = k
-    # the last shot carries the remainder; lengths are unchanged, only order
+    t = 0.0
+    last_seen: dict[tuple, float] = {}
+    per: dict[str, float] = {}
+    while left:
+        def ok(c, strict_reuse=True):
+            # distinct from everything still on screen in the last 20+ s, so
+            # two 20 s samples never land on the same moment of one clip
+            back, k = 0.0, len(out) - 1
+            while k >= 0 and (back < NEW_SHOT_EVERY + DISTINCT_GAP_S or k == len(out) - 1):
+                if not _distinct(out[k], c):
+                    return False
+                back += float(out[k]["seconds"])
+                k -= 1
+            if strict_reuse:
+                seen = last_seen.get((c["key"], c["start"]))
+                if seen is not None and t - seen < REUSE_GAP_S:
+                    return False
+            return True
+        pool = [c for c in left if ok(c)] or [c for c in left if ok(c, False)] or left
+        c = min(pool, key=lambda c: (per.get(c["subject"], 0.0), c["showing"]))
+        left.remove(c)
+        out.append(c)
+        t += float(c["seconds"])
+        last_seen[(c["key"], c["start"])] = t
+        per[c["subject"]] = per.get(c["subject"], 0.0) + float(c["seconds"])
+    return _repair(out)
+
+
+def _polish(shots: list[dict], rounds: int = 300) -> list[dict]:
+    """Swap pairs while that lowers what variety_problems() finds (the greedy
+    order can still corner itself at the tail). Deterministic."""
+    best = len(variety_problems(shots))
+    n = len(shots)
+    for _ in range(rounds):
+        if not best:
+            break
+        improved = False
+        for i in range(n - 1, 0, -1):
+            for j in range(n):
+                if i == j:
+                    continue
+                shots[i], shots[j] = shots[j], shots[i]
+                got = len(variety_problems(shots))
+                if got < best and all(_distinct(shots[k - 1], shots[k]) for k in range(1, n)):
+                    best, improved = got, True
+                    break
+                shots[i], shots[j] = shots[j], shots[i]
+            if improved:
+                break
+        if not improved:
+            break
+    return shots
+
+
+def _repair(out: list[dict]) -> list[dict]:
+    """The greedy order can corner itself at the tail (the last shots all from
+    one clip). Move each such shot to the nearest earlier gap whose neighbours
+    it is distinct from."""
+    i = 1
+    while i < len(out):
+        if _distinct(out[i - 1], out[i]):
+            i += 1
+            continue
+        sh = out.pop(i)
+        for j in range(len(out) - 1, 0, -1):
+            if _distinct(out[j - 1], sh) and _distinct(sh, out[j]):
+                out.insert(j, sh)
+                break
+        else:
+            out.insert(i, sh)                   # nowhere better: one clip only
+            i += 1
+        i = max(1, min(i, len(out) - 1)) if i < len(out) else i
     return out
 
 
@@ -319,15 +402,66 @@ def check(shots: list[dict], total_s: float | None = None) -> None:
             raise NotSubjectPicture(f"shot {i} burns text into the picture")
         if float(sh.get("seconds") or 0) <= 0:
             raise NotSubjectPicture(f"shot {i} has no length")
-    for i in range(1, len(shots)):
-        reuse = shots[i].get("showing", 1) > 1 or shots[i - 1].get("showing", 1) > 1 \
-            or shots[i]["kind"] == "photo"
-        if reuse and shots[i]["key"] == shots[i - 1]["key"] and len({s["key"] for s in shots}) > 1:
-            raise NotSubjectPicture(f"shots {i - 1} and {i} show the same clip back to back")
+    if len({s["key"] for s in shots}) > 1:
+        for i in range(1, len(shots)):
+            if not _distinct(shots[i - 1], shots[i]):
+                raise NotSubjectPicture(f"shots {i - 1} and {i} are the same moment of the "
+                                        f"same clip back to back")
     if total_s is not None:
         got = sum(float(s["seconds"]) for s in shots)
         if abs(got - total_s) > 0.05:
             raise NotSubjectPicture(f"the shots cover {got:.2f}s of {total_s:.2f}s")
+
+
+def variety_problems(shots: list[dict], every: float = 20.0) -> list[str]:
+    """What the variety rule (owner 2026-11-03) finds wrong with a finished
+    picture, read from its shot record ({kind, key, start, speed, subject,
+    seconds} in screen order): two consecutive 20 s samples on the same shot or
+    the same source moment, a source moment again inside 3 minutes, or a
+    subject over its share while the record says another had material."""
+    probs: list[str] = []
+    edges, t = [], 0.0
+    for s in shots:
+        edges.append((t, t + float(s["seconds"]), s))
+        t += float(s["seconds"])
+    total = t
+
+    def at(x):
+        for i, (a, b, s) in enumerate(edges):
+            if a <= x < b:
+                return i, s, x - a
+        return len(edges) - 1, edges[-1][2], 0.0
+    prev = None
+    x = 1.0
+    while x < total:
+        i, s, off = at(x)
+        src = float(s.get("start") or 0) + off * float(s.get("speed") or 1)
+        if prev is not None:
+            pi, ps, psrc = prev
+            if pi == i:
+                probs.append(f"{int(x // 60)}:{int(x % 60):02d} same shot as 20 s earlier")
+            elif ps["key"] == s["key"] and s["kind"] == "footage" \
+                    and abs(psrc - src) <= DISTINCT_GAP_S:
+                probs.append(f"{int(x // 60)}:{int(x % 60):02d} same moment of "
+                             f"{s.get('title')!r} as 20 s earlier")
+        prev = (i, s, src)
+        x += every
+    seen: dict[tuple, float] = {}
+    for a, b, s in edges:
+        k = (s["key"], s.get("start"))
+        if k in seen and a - seen[k] < REUSE_GAP_S and not s.get("over_cap"):
+            probs.append(f"{int(a // 60)}:{int(a % 60):02d} repeats a moment of "
+                         f"{s.get('title')!r} after {a - seen[k]:.0f} s (< 3 min)")
+        seen[k] = b
+    share: dict[str, float] = {}
+    for s in shots:
+        share[s.get("subject") or s["key"]] = share.get(s.get("subject") or s["key"], 0) + float(s["seconds"])
+    waived = set((shots[0].get("share_cap_waived") or []) if shots else [])
+    if len(share) > 1:
+        for subj, secs in share.items():
+            if secs > (SHARE_CAP + SHARE_TOLERANCE) * total and subj not in waived:
+                probs.append(f"{subj!r} holds {secs / total:.0%} of the screen (cap ~25%)")
+    return probs
 
 
 VERDICTS = os.path.join(IMAGERY_DIR, "clips", ".span_verdicts.json")
