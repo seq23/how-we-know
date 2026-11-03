@@ -87,8 +87,9 @@ CASES = [
      lambda b: cfg(b, lambda d: d["models"].append("anthropic/claude-opus-4.5")),
      "claude-opus-4.5"),
     ("an API key on the subscription route",
-     lambda b: cfg(b, lambda d: d["subscription_route"].__setitem__(
-         "env", "ANTHROPIC_API_KEY")),
+     lambda b: cfg(b, lambda d: d.setdefault("subscription_route", {
+         "provider": "claude-code", "env": "CLAUDE_CODE_OAUTH_TOKEN",
+         "model": "opus"}).__setitem__("env", "ANTHROPIC_API_KEY")),
      "subscription_route"),
     ("gemini_route not free-tier",
      lambda b: cfg(b, lambda d: d["gemini_route"].__setitem__(

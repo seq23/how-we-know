@@ -21,12 +21,6 @@
     ],
     "why": "2026-11-02: existing seed_ledger() merged actual benchmark verdicts with genuine history; ranking records standing() for the selected OpenRouter roster at this seed. Per-model why fields explain selection using full benchmark quality, not answer count. Synthetic test events were removed. Gemini remains the first tier regardless of cross-provider standing."
   },
-  "subscription_route": {
-    "provider": "claude-code",
-    "env": "CLAUDE_CODE_OAUTH_TOKEN",
-    "model": "opus",
-    "why": "2026-11-02: Claude subscription LAST, only after all available free routes failed or their drafts failed validation. Existing prepaid subscription via CLAUDE_CODE_OAUTH_TOKEN + claude CLI; never a paid API fallback."
-  },
   "gemini_route": {
     "provider": "google-ai-studio",
     "env": "GEMINI_API_KEY",
@@ -89,5 +83,6 @@
     "google/gemma-4-31b-it:free": "HTTP 429 upstream rate limit (transient; kept as fallback)",
     "google/gemma-4-26b-a4b-it:free": "HTTP 429 upstream rate limit (transient; kept as fallback)",
     "anthropic/claude-haiku-4.5 (paid, control)": "HTTP 403 Key limit exceeded - the $0 credit limit refuses paid calls"
-  }
+  },
+  "_why_no_subscription": "2026-11-04 (owner, via the coordinator): no Claude in the loop lanes. Gemini free tier, then the $0 OpenRouter roster, then a NAMED STOP; never Claude, never a paid API."
 }

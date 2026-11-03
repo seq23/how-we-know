@@ -56,13 +56,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      # The second packaging asks loop/longform_title.py for a new title on
-      # the repo's route: her Claude subscription first, then $0 models.
-      - name: Install the Claude Code CLI (subscription tier, pinned)
-        run: npm install -g @anthropic-ai/claude-code@2.1.296
+      # 2026-11-04: no Claude CLI; loop/llm_router.py uses Gemini free tier then $0 OpenRouter only.
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
       - name: Refresh to the current main before any stage acts
@@ -77,7 +71,6 @@ jobs:
           YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
@@ -92,7 +85,6 @@ jobs:
         # so every step that runs it carries the route's keys (route test (f)).
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         if: always() && ((github.event_name == 'schedule' && startsWith(github.event.schedule, '30 8 ')) || inputs.step == 'email' || inputs.step == 'both')
         run: |
