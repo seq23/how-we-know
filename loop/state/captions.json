@@ -114,7 +114,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:07+00:00",
-      "verified_at": "2026-10-20T18:53:55+00:00",
+      "verified_at": "2026-11-03T16:03:15+00:00",
       "previous_sha256": "e22d53306e0fcd72a6393bb601f13774731665f5e2c0a90b95879eaadfeb51d5",
       "replaced_at": "2026-10-17T15:08:36+00:00"
     },
@@ -288,7 +288,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-08T15:10:51+00:00",
-      "verified_at": "2026-10-20T18:53:55+00:00"
+      "verified_at": "2026-11-03T16:03:16+00:00"
     },
     "debozzLtVRA": {
       "slug": "how-strong-is-graphene",
@@ -520,7 +520,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-10-16T15:09:31+00:00",
-      "verified_at": "2026-10-19T20:21:30+00:00"
+      "verified_at": "2026-11-03T16:03:15+00:00"
     },
     "xex6Bbzbdkg": {
       "slug": "why-deep-sea-creatures-are-creepers",
@@ -588,11 +588,11 @@
     }
   },
   "blocked": {},
-  "updated": "2026-11-02T16:02:20+00:00",
+  "updated": "2026-11-03T16:03:16+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-02T16:02:19+00:00",
+    "at": "2026-11-03T16:03:15+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
