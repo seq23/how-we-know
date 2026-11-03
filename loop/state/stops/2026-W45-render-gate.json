@@ -1,0 +1,28 @@
+{
+  "stage": "render-gate",
+  "week": "2026-W45",
+  "at": "2026-11-03T15:06:27+00:00",
+  "code": "RENDER_HELD",
+  "message": "1 finished render(s) held back; every other finished episode ships this run. Held: why-are-deep-sea-creatures-so-big",
+  "detail": {
+    "held": {
+      "why-are-deep-sea-creatures-so-big": [
+        "why-are-deep-sea-creatures-so-big: render could not be probed"
+      ]
+    },
+    "examined": 95
+  },
+  "unblock": "A render under the floor heals itself: extend.py has been asked for more sourced narration and the next bin/batch-session.sh re-voices and re-renders it. A clipped render needs re-rendering. The hold lifts on the run after the validators pass.",
+  "disposition": "needs_human",
+  "disposition_why": "'RENDER_HELD' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'RENDER_HELD' is holding on 1 item(s) that have never been reported. The first report is always loud.",
+  "consecutive": 1,
+  "held_items": [
+    "why-are-deep-sea-creatures-so-big - render could not be probed"
+  ],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "1 render(s) held, 94 pass and ship as normal",
+    "why-are-deep-sea-creatures-so-big: held for a clipped render, which extend.py cannot fix - it needs a re-render (delete renders/why-are-deep-sea-creatures-so-big-final.mp4 and run bin/batch-session.sh)"
+  ]
+}
