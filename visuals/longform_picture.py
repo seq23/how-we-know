@@ -552,8 +552,8 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
                             "-y", "-i", src, "-frames:v", "1", "-vf", "scale=768:-2",
                             "-q:v", "4", jpg], check=True)
             todo.append((vid, jpg))
-        for i in range(0, len(todo), 16):              # 16 frames a request: free-tier quota
-            chunk = todo[i:i + 16]
+        for i in range(0, len(todo), FC.BATCH):
+            chunk = todo[i:i + FC.BATCH]
             verdicts = judge([j for _, j in chunk], subject)
             if verdicts is None:
                 raise FC.FrameCheckUnavailable(

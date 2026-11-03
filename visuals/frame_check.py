@@ -109,6 +109,9 @@ def question(subject: str) -> str:
         '[{"frame": 1, "pass": true, "why": "short reason"}, ...] and nothing else.')
 
 
+_LAST_OK = [""]
+
+
 def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | None:
     """[(pass, why)] per frame from a free Gemini vision model, or None."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
@@ -122,11 +125,17 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
         content.append({"type": "image_url",
                         "image_url": {"url": f"data:image/jpeg;base64,{b64}"}})
     import time                                         # noqa: PLC0415
-    tries = [(m, wait) for wait in (0, 60, 120) for m in R.gemini_models()]
+    # The model that answered last goes first (measured 2026-11-03: the free
+    # tier's flash models hit a 20-a-day cap and every call then spent its
+    # time on three 429s before the lite model answered).
+    models = R.gemini_models()
+    if _LAST_OK[0] in models:
+        models = [_LAST_OK[0]] + [m for m in models if m != _LAST_OK[0]]
+    tries = [(m, wait) for wait in (0, 60, 120) for m in models]
     for k, (model, wait) in enumerate(tries):
         # The free tier answers 429/503 under load; two slower rounds before
         # FRAME_CHECK_UNAVAILABLE (measured 2026-11-03: a retry 90 s later passed).
-        if wait and model == R.gemini_models()[0]:
+        if wait and model == models[0]:
             time.sleep(wait)
         resp, why = R._gemini_try(model, [{"role": "user", "content": content}], 120, 0.0)
         if not resp:
@@ -138,6 +147,7 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
         except ValueError:
             rows = []
         if len(rows) == len(frames):
+            _LAST_OK[0] = model
             return [(bool(r.get("pass")), str(r.get("why") or "")[:120]) for r in rows]
     return None
 
