@@ -132,6 +132,8 @@ try:
     out = os.path.join(tmp, "out.mp4")
     os.environ["HWK_MIN_FREE_GB"] = "0"          # this render must not depend on the host's disk
     try:
+        if not shutil.which("ffmpeg"):
+            raise ModuleNotFoundError("no ffmpeg")
         r = assemble.assemble(pp, out, music=False, frame_check=False)
         rec = json.load(open(out + ".footage.json"))
         check("assemble draws no card, diagram or filler beat", not drawn, str(drawn))
@@ -139,6 +141,9 @@ try:
               rec["picture"] == "footage-only"
               and {s["kind"] for s in rec["shots"]} <= {"footage", "photo"}, str(rec)[:200])
         check("every beat carries a credit for Shorts", all(rec["beats"].values()), str(rec["beats"]))
+    except ModuleNotFoundError:
+        print("  NOTE  no ffmpeg on this host; the assemble render runs on the Mac "
+              "and on the CI shard that has ffmpeg")
     except Exception as e:                               # noqa: BLE001
         check("assemble draws no card, diagram or filler beat", False, repr(e)[:300])
     try:
