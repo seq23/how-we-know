@@ -10,15 +10,16 @@
     ],
     "pending": 10
   },
-  "renders_finished": 51,
-  "updated": "2026-11-03T15:06:33+00:00",
+  "renders_finished": 43,
+  "updated": "2026-11-03T21:34:00+00:00",
   "batch": {
-    "last_run_at": "2026-11-02T14:15:46+00:00",
+    "last_run_at": "2026-11-03T21:34:00+00:00",
     "week": "2026-W45",
     "ok": true,
-    "last_success_at": "2026-11-02T14:15:46+00:00",
+    "last_success_at": "2026-11-03T21:34:00+00:00",
     "held": [],
-    "pending": 2
+    "pending": 2,
+    "resumed_from": "narrate/-"
   },
   "food": {
     "last_run_at": "2026-11-03T05:28:32+00:00",
