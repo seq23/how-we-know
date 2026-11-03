@@ -25,25 +25,13 @@ API (separate quota; every call counted in the snapshot):
     (audienceWatchRatio by elapsedVideoTimeRatio, one call per video), read at
     30 s / runtime. When YouTube returns no rows (it withholds the curve on
     low-view videos) the value is the STRING "insufficient", never 0.
-Click-through and impressions are NOT in the Analytics API (measure.py:
-HTTP 400 for every shape); they arrive from Studio's CSV export through
-`ingest-studio`, and are "unknown" until one has.
+Click-through and impressions come from loop/reach.py using the YouTube
+Reporting API, with ingest-studio retained as a manual fallback.
 
-THE VERDICT judges the CURRENT packaging: metrics since the later of the
-video's public date, the packaging pass (titles.json applied_at) and this
-lane's last automatic round. Under MIN_VIEWS views in that window it is
-INSUFFICIENT; otherwise PASS (every available floor passes), FAIL (every
-available floor fails) or WATCH (mixed).
-
-MIN_VIEWS = 30, from the data. At the first pull (13 Oct 2026, 24 public
-long-form videos) the median video had 8 lifetime views, the best 87 and the
-second 45. The brief's example,
-50 views in 7 days, is a number no long-form video here has ever reached, so
-every verdict would read INSUFFICIENT forever and the second packaging could
-never fire - a lane that runs but is inert. Thirty is the smallest sample at
-which a mean of per-view percentages stops swinging by tens of points on one
-viewer (the standard-error rule of thumb), and two of the channel's videos
-had already crossed it lifetime - so the bar is reachable, not decorative. It is recorded in the snapshot.
+THE VERDICT uses 100 impressions for known click-through and compares it to
+public long-form peers: the same topic when at least five have enough
+impressions, otherwise the channel. Unknown click-through retains the
+30-view minimum. Retention and watch-percentage floors are unchanged.
 
 THE SECOND PACKAGING. A FAIL video whose current packaging is at least seven
 days old and that is public for seven days gets a NEW title from the
@@ -93,6 +81,8 @@ CHUNK = 50
 # The owner's floors (docs/CHANNEL-PLAN.md, 13 Oct 2026). Strictly above.
 FLOORS = {"ctr_pct": 4.0, "retention_30s_pct": 70.0, "avp_pct": 40.0}
 RETENTION_AT_S = 30
+MIN_IMPRESSIONS = 100     # ~4 clicks at 4%; a modest initial comparison sample
+TOPIC_MIN_VIDEOS = 5
 MIN_VIEWS = 30            # see the module docstring: picked from the data
 MIN_JUDGED = 3            # fewer judged videos than this -> "too early"
 RANK_MIN_VIEWS = 10       # best/worst by watch minutes per view
@@ -397,7 +387,7 @@ def pull(api, doc: dict | None = None, day: date | None = None) -> dict:
         v["measured_on"] = day.isoformat()
     doc["as_of"] = day.isoformat()
     doc["config"] = {"floors": FLOORS, "retention_at_s": RETENTION_AT_S,
-                     "min_views": MIN_VIEWS, "min_judged": MIN_JUDGED,
+                     "min_views": MIN_VIEWS, "min_impressions": MIN_IMPRESSIONS, "min_judged": MIN_JUDGED,
                      "rank_min_views": RANK_MIN_VIEWS,
                      "repackage_after_days": REPACKAGE_AFTER_DAYS,
                      "max_rounds": MAX_ROUNDS, "gate_days": GATE_DAYS}
@@ -432,15 +422,17 @@ def floor_state(value, floor: float) -> str:
     return "pass" if value > floor else "fail"
 
 
-def judge_video(v: dict) -> str:
+def judge_video(v: dict, baseline=None) -> str:
     c = v.get("current") or {}
     ctr = v.get("ctr")
     ctr_pct = ctr.get("pct") if isinstance(ctr, dict) else None
-    v["floors"] = {"ctr": floor_state(ctr_pct, FLOORS["ctr_pct"]),
+    v["floors"] = {"ctr": floor_state(ctr_pct, baseline if baseline is not None else FLOORS["ctr_pct"]),
                    "retention_30s": floor_state(c.get("retention_30s_pct"),
                                                 FLOORS["retention_30s_pct"]),
                    "avp": floor_state(c.get("avp_pct"), FLOORS["avp_pct"])}
-    if int(c.get("views") or 0) < MIN_VIEWS:
+    known = isinstance(ctr_pct, (int, float)) and not isinstance(ctr_pct, bool)
+    if (known and (ctr.get("impressions") or 0) < MIN_IMPRESSIONS) or (
+            not known and int(c.get("views") or 0) < MIN_VIEWS):
         return "INSUFFICIENT"
     avail = [s for s in v["floors"].values() if s != UNKNOWN]
     if not avail:
@@ -461,9 +453,18 @@ def judge(doc: dict, day: date | None = None) -> dict:
     """Verdict per public video and the channel summary, written INTO the
     snapshot - the Monday email reads nothing else."""
     day = day or today()
+    doc.setdefault("config", {})["min_impressions"] = MIN_IMPRESSIONS
     vids = [v for v in doc.get("videos", {}).values() if v.get("public")]
+    eligible = [v for v in vids if isinstance(v.get("ctr"), dict)
+                and isinstance(v["ctr"].get("pct"), (int, float))
+                and (v["ctr"].get("impressions") or 0) >= MIN_IMPRESSIONS]
     for v in vids:
-        v["verdict"] = judge_video(v)
+        topic = [x for x in eligible if x.get("domain") == v.get("domain")]
+        group = topic if v.get("domain") and len(topic) >= TOPIC_MIN_VIDEOS else eligible
+        baseline = statistics.median(x["ctr"]["pct"] for x in group) if group else None
+        v["ctr_baseline"] = {"pct": baseline, "group": v.get("domain") if group is topic else "channel",
+                             "n": len(group)}
+        v["verdict"] = judge_video(v, baseline)
         v["needs_review"] = bool(v.get("repackage_round", 0) >= MAX_ROUNDS
                                  and v["verdict"] == "FAIL"
                                  and (v.get("days_since_packaging") or 0)
@@ -789,7 +790,7 @@ def render_email(doc: dict) -> tuple[str, str]:
     jm = ch["judged_medians"]
     if ch["packaging_working"] == "too early":
         L += [f"Fewer than {_n(cfg['min_judged'])} videos have {_n(cfg['min_views'])} "
-              f"views since their new title went up, so the medians cannot be trusted yet.", ""]
+              f"views when click-through is unknown, or enough impressions for a click-through comparison.", ""]
     else:
         L += [f"Across the {_n(jm['n'])} videos with enough views: click-through "
               f"{_p(jm['ctr_pct'])}, 30-second hold {_p(jm['retention_30s_pct'])}, "
@@ -798,10 +799,10 @@ def render_email(doc: dict) -> tuple[str, str]:
           f"- **PASS** {_n(c['PASS'])} · **WATCH** {_n(c['WATCH'])} · "
           f"**FAIL** {_n(c['FAIL'])} · **too few views** {_n(c['INSUFFICIENT'])} "
           f"(of {_n(ch['public_longform'])} public long-form videos)",
-          f"- The bar: click-through above {_p(fl['ctr_pct'])}, "
+          f"- The bar: click-through above the channel’s own topic median (channel-wide for small groups), "
           f"{_n(cfg['retention_at_s'])}-second hold above {_p(fl['retention_30s_pct'])}, "
-          f"watched above {_p(fl['avp_pct'])}. Under {_n(cfg['min_views'])} views "
-          f"since the current title = too few to judge.", ""]
+          f"watched above {_p(fl['avp_pct'])}. Click-through needs {_n(cfg['min_impressions'])} impressions; "
+          f"unknown click-through needs {_n(cfg['min_views'])} views.", ""]
     L += ["## New titles this week", ""]
     if ch["repackaged_this_week"]:
         for r in ch["repackaged_this_week"]:
@@ -852,8 +853,8 @@ def render_email(doc: dict) -> tuple[str, str]:
             L.append(f"| {_q(r['title'])} | {_n(r['views'])} | "
                      f"{_n(r['watch_minutes_per_view'])} | {_p(r['ctr_pct'])} | "
                      f"{r['verdict']} |")
-    studio = doc.get("studio") or {}
-    L += ["", f"Click-through comes from YouTube Studio"
+    studio = doc.get("reach") or doc.get("studio") or {}
+    L += ["", f"Click-through comes from the YouTube Reporting API (Studio CSV is the manual fallback)"
           + (f" (as of {studio['as_of']})." if studio.get("as_of")
              else "; none read yet, so it shows as -.")]
     return subj, "\n".join(L).rstrip() + "\n"
@@ -1017,6 +1018,10 @@ def _api(st):
     if not creds or creds.get("unusable"):
         code, msg, unblock = up.credential_stop(creds, config())
         st.named_stop(code, msg, unblock=unblock)
+    import reach
+    if creds.get("source") == "secrets" and reach.SCOPE not in creds.get("scopes", []):
+        st.named_stop("OAUTH_REJECTED", "Reach requires yt-analytics.readonly consent.",
+                      unblock="Re-run auth/youtube_auth.py.")
     return Analytics(up.access_token(creds))
 
 
@@ -1030,7 +1035,11 @@ def cmd_pull(dry_run: bool, api=None, yt=None, propose=None) -> int:
                           unblock="Clears itself after the first upload.")
         try:
             api = api or _api(st)
-            doc = pull(api)
+            import reach
+            doc = load()
+            reach_rows = reach.ingest(reach.Reporting(api.token), doc, today(), st.note)
+            doc = pull(api, doc)
+            doc["_rows"].extend(reach_rows)
         except urllib.error.HTTPError as e:
             if e.code in (401, 403):
                 st.named_stop("OAUTH_REJECTED",
@@ -1043,6 +1052,9 @@ def cmd_pull(dry_run: bool, api=None, yt=None, propose=None) -> int:
                           f"unmeasured and tomorrow re-reads the same numbers",
                           unblock="Usually transient. Two weeks running means "
                                   "the project or quota needs looking at.")
+        except ValueError as e:
+            st.named_stop("DEMAND_PULL_INCOMPLETE", f"Reach reporting refused: {e}",
+                          unblock="Inspect reporting jobs and CSV schema; no malformed reach data was saved.")
         except urllib.error.URLError as e:
             if isinstance(e, urllib.error.HTTPError):
                 raise

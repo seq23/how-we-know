@@ -16,8 +16,8 @@ name: loop · daily demand + Mon 08:30 CT email
 #                    pull that just ran; delivered exactly like the Sunday digest: a NEW
 #                    issue that @-mentions the owner, titled by the .subject.
 #
-# Click-through and impressions are not in the Analytics API; they arrive by
-# `python loop/demand.py ingest-studio <csv>` (RUNBOOK.md, Monday Studio read).
+# demand.py pull ingests YouTube Reporting API reach reports before judge.
+# ingest-studio remains the manual CSV fallback.
 on:
   schedule:
     - cron: '30 8 * * *'  # America/Chicago, all year

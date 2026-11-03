@@ -779,8 +779,8 @@ Phase 4, 13 Oct 2026. `loop/demand.py`, run by `loop-demand` (daily 13:30 UTC =
   videos; that reads `insufficient`, never 0. Snapshot `loop/state/demand.json`,
   one row per video per day in `loop/state/demand_history.jsonl`.
 - **Verdict** on the CURRENT title and thumbnail (since they went up): PASS /
-  WATCH / FAIL against click-through > 4 %, 30-second hold > 70 %, watched > 40 %;
-  under 30 views since the current packaging = too few to judge.
+  WATCH / FAIL against the channel’s own click-through median, 30-second hold > 70 %,
+  watched > 40 %. Known click-through needs 100 impressions; unknown needs 30 views.
 - **Second packaging, automatic:** a video failing every bar it can be judged on,
   7+ days after its current packaging, gets a new title (the long-form proposer)
   and thumbnail B, later C. Two rounds at most, then it is listed as
@@ -792,10 +792,18 @@ Phase 4, 13 Oct 2026. `loop/demand.py`, run by `loop-demand` (daily 13:30 UTC =
   check. Refused, not sent, if any number in it is not in the snapshot
   (`DEMAND_EMAIL_UNTRACED`).
 
-### Monday Studio read (the coordinator, in Chrome; bounded to 10 minutes)
+### Reach reporting (automatic; Studio CSV fallback)
 
-Click-through and impressions exist only in YouTube Studio. Never scraped
-unattended. Each Monday, before 13:30 UTC:
+The daily demand pull lists reporting jobs, creates `channel_reach_basic_a1`
+only when absent, and ingests new reports before judging. It totals the last
+28 days with impression-weighted click-through. First reports can take 48h;
+no reports yet is a note. There is no weekly Studio chore.
+Missing scope: re-run `.venv/bin/python auth/youtube_auth.py`.
+Judging needs 100 impressions and compares click-through to the topic median
+when five videos qualify, otherwise the channel median. Unknown click-through
+keeps the 30-view fallback. Retention and watch-percentage floors remain.
+
+If API reports are unavailable, use this manual fallback:
 
 1. Chrome, signed in to the channel: `studio.youtube.com` → **Analytics** →
    **Advanced mode** → **Content** tab, Content type **Videos** (not Shorts),
