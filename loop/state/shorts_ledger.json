@@ -621,9 +621,13 @@
       "scheduled_publish_at": "2026-10-06T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS5DMkU4NTY1QUFGQTYwMDE3",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "Z-Z1FNVQXW0",
+      "handoff_at": "2026-11-03T15:05:03+00:00",
+      "handoff_comment_id": "UgwF3_v5HEQxuDYgtLB4AaABAg",
+      "handoff_comment_at": "2026-11-03T15:05:05+00:00"
     },
     {
       "slug": "why-deep-sea-fish-die-when-brought-to-surface",
@@ -1080,11 +1084,15 @@
       "title": "How do scientists know about other galaxies?",
       "chapter": "Gravitational lensing provides independent distance confirmation",
       "chapter_start_s": 565.133,
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS4wMTYxQzVBRDI1NEVDQUZE",
       "playlist": "PLOrZMDyoy1XM",
       "title_was": "How scientists know about other galaxies: gravitational lensing provides independent distance",
-      "retitled_at": "2026-11-02T14:29:57+00:00"
+      "retitled_at": "2026-11-02T14:29:57+00:00",
+      "handoff_episode": "Z-Z1FNVQXW0",
+      "handoff_at": "2026-11-03T15:05:04+00:00",
+      "handoff_comment_id": "UgxTV2z27C6PNoe8wmh4AaABAg",
+      "handoff_comment_at": "2026-11-03T15:05:06+00:00"
     },
     {
       "slug": "18-why-does-black-smoker-water-not-boil",
@@ -1336,8 +1344,10 @@
       "title": "Why does meat need to rest after cooking?",
       "handoff": "pending",
       "title_was": "Why does meat need to rest after cooking \u2014 and how we know",
-      "retitled_at": "2026-11-02T14:29:41+00:00"
+      "retitled_at": "2026-11-02T14:29:41+00:00",
+      "playlist_item_id": "UExYNXZfYW5keHdZRS41MzJCQjBCNDIyRkJDN0VD",
+      "playlist": "PLX5v_andxwYE"
     }
   ],
-  "updated": "2026-11-03T00:13:47+00:00"
+  "updated": "2026-11-03T15:05:06+00:00"
 }
