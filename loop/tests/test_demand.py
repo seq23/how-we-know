@@ -209,7 +209,7 @@ d2 = D.ingest_studio(csvp, "2026-10-27", doc=copy.deepcopy(doc))
 check(d2["videos"]["V1"]["ctr"] == {"pct": 2.5, "impressions": 1200.0,
                                     "as_of": "2026-10-27", "source": "studio"},
       f"Studio CTR merged: {d2['videos']['V1'].get('ctr')}")
-check(d2["videos"]["V1"]["floors"]["ctr"] == "fail", "2.5 % is under the 4 % floor")
+check(d2["videos"]["V1"]["floors"]["ctr"] == "fail", "2.5 % equals its single-video channel median, so it does not pass")
 check("S1" not in d2["videos"], "a Short in the Studio export is never merged")
 check(d2["studio"]["skipped"] == 1 and len(d2["_rows"]) == 1, f"{d2['studio']}")
 
