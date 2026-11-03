@@ -121,7 +121,13 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
         b64 = base64.b64encode(open(p, "rb").read()).decode()
         content.append({"type": "image_url",
                         "image_url": {"url": f"data:image/jpeg;base64,{b64}"}})
-    for model in R.gemini_models():
+    import time                                         # noqa: PLC0415
+    tries = [(m, wait) for wait in (0, 60, 120) for m in R.gemini_models()]
+    for k, (model, wait) in enumerate(tries):
+        # The free tier answers 429/503 under load; two slower rounds before
+        # FRAME_CHECK_UNAVAILABLE (measured 2026-11-03: a retry 90 s later passed).
+        if wait and model == R.gemini_models()[0]:
+            time.sleep(wait)
         resp, why = R._gemini_try(model, [{"role": "user", "content": content}], 120, 0.0)
         if not resp:
             continue
