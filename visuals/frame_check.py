@@ -92,6 +92,34 @@ def text_on_screen(paths: list[str]) -> dict[str, str]:
     return found
 
 
+# ------------------------------------------------------------------ reader 1b
+
+BAR_FRACTION = 0.06        # each side strip examined
+BAR_BLACK = 14             # mean luminance at or below this is a black bar
+BAR_PICTURE = 22           # ...when the middle of the frame is brighter than this
+
+
+def black_bars(paths: list[str]) -> dict[str, str]:
+    """{path: why} for every frame carrying black pillarbox bars (a 4:3 picture
+    inside the 16:9 frame). Both side strips must be near-black and uniform
+    while the middle carries a picture; a dark sea fills the whole frame and
+    is not a bar."""
+    from PIL import Image, ImageStat                     # noqa: PLC0415
+    found = {}
+    for p in paths:
+        im = Image.open(p).convert("L")
+        w, h = im.size
+        k = max(2, int(w * BAR_FRACTION))
+        left = ImageStat.Stat(im.crop((0, 0, k, h)))
+        right = ImageStat.Stat(im.crop((w - k, 0, w, h)))
+        mid = ImageStat.Stat(im.crop((k, 0, w - k, h)))
+        if (left.mean[0] <= BAR_BLACK and right.mean[0] <= BAR_BLACK
+                and left.stddev[0] < 6 and right.stddev[0] < 6
+                and mid.mean[0] > BAR_PICTURE):
+            found[p] = "black pillarbox bars at the sides"
+    return found
+
+
 # ------------------------------------------------------------------ reader 2
 
 def question(subject: str) -> str:
@@ -103,8 +131,13 @@ def question(subject: str) -> str:
         "caption, title, diagram, chart, graphic, illustration, engraving, or "
         "computer-generated particles/starfield/abstract filler? Natural marine "
         "snow, silt, bubbles or plankton in real underwater footage are NOT "
-        "filler and do not fail a frame. A frame passes only if it is real "
-        "footage/photo of the subject with none of the failing things.\n"
+        "filler and do not fail a frame. The subject must be CLEARLY IN FRAME "
+        "and the main thing in the picture: fail a frame of bare sediment, rock "
+        "or open water with no animal, a frame where ROV or camera hardware "
+        "dominates and the animal is small, an animal that is a tiny speck, "
+        "or one mostly cut off at the edge. A frame passes only if it is real "
+        "footage/photo with the subject clearly visible and none of the "
+        "failing things.\n"
         'Answer with a JSON array, one object per frame in order: '
         '[{"frame": 1, "pass": true, "why": "short reason"}, ...] and nothing else.')
 
@@ -163,9 +196,12 @@ def check_frames(frames: list[tuple[float, str]], subject: str, judge=None,
     reader = reader or text_on_screen
     texts = reader([p for _, p in frames])
     failures: list[tuple[float, str]] = []
+    bars = black_bars([p for _, p in frames])
     for t, p in frames:
         if p in texts:
             failures.append((t, f"text on screen: {texts[p]!r}"))
+        elif p in bars:
+            failures.append((t, bars[p]))
     judged = 0
     for i in range(0, len(frames), BATCH):
         chunk = frames[i:i + BATCH]

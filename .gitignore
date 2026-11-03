@@ -114,3 +114,8 @@ audio/*/pronunciation.json
 
 # Apple Vision OCR helper, compiled per machine by research/imagery_video.py
 research/.video_cache/
+
+# Render by-products kept beside a render, never committed (moved aside, never deleted)
+renders/*.below-picture-floor
+renders/*.pre-footage-only*
+renders/*.picture-check-failed*

@@ -86,6 +86,23 @@ try:
     r = FC.check_frames([(1.0, foot)], "giant isopod", judge=passing_judge, reader=no_text)
     check("passing footage passes", r["failed"] == 0 and r["judged"] == 1, str(r))
 
+    # 4b. A pillarboxed frame (a 4:3 picture in black side bars) fails on its
+    #     own, whatever the vision model says; a dark full-frame sea does not.
+    box = os.path.join(tmp, "pillarbox.png")
+    pic = Image.frombytes("RGB", (240, 180), bytes(rnd.randrange(60, 200) for _ in range(240 * 180 * 3)))
+    canvas = Image.new("RGB", (320, 180), (0, 0, 0))
+    canvas.paste(pic, (40, 0))
+    canvas.save(box)
+    try:
+        FC.check_frames([(41.0, box)], "giant isopod", judge=passing_judge, reader=no_text)
+        check("a pillarboxed frame fails", False, "passed")
+    except FC.PictureCheckFailed as e:
+        check("a pillarboxed frame fails", "pillarbox" in str(e) and "0:41" in str(e), str(e))
+    dark = os.path.join(tmp, "dark.png")
+    Image.new("RGB", (320, 180), (4, 10, 18)).save(dark)
+    r = FC.check_frames([(1.0, dark)], "giant isopod", judge=passing_judge, reader=no_text)
+    check("a dark full-frame sea is not a bar", r["failed"] == 0, str(r))
+
     # 5. On a host with ffmpeg: the same card as a 25 s VIDEO is sampled at
     #    0:01 and 0:21 and fails - the gate reads the finished file.
     if shutil.which("ffmpeg"):
