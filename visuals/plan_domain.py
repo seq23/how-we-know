@@ -125,6 +125,11 @@ def _retire_render(slug: str, why: str, sup: dict) -> str | None:
     cut = RENDERS / f"{slug}-final.mp4"
     if not cut.exists():
         return None
+    import sys as _sys                                         # noqa: PLC0415
+    _sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "loop"))
+    import approved_renders                                    # noqa: PLC0415
+    if approved_renders.protected(slug):
+        return None
     sha = _sha(cut)
     prev = sup.get(slug)
     if not (prev and prev.get("sha256") == sha):

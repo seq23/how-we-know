@@ -179,6 +179,10 @@ def picture_heal(slugs: list[str], st, renders: Path | None = None) -> list[str]
         f = renders / f"{slug}-final.mp4"
         if not f.exists():
             continue
+        import approved_renders                                # noqa: PLC0415
+        if approved_renders.protected(slug, renders):
+            st.note(f"{slug}: owner-approved cut - never moved aside")
+            continue
         h = hashlib.sha256()
         with f.open("rb") as fh:
             for chunk in iter(lambda: fh.read(1 << 20), b""):

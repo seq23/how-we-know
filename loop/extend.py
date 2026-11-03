@@ -117,6 +117,10 @@ def split_for_insert(text: str) -> tuple[str, str, str]:
 
 def extend_one(item: dict, st: Stage, dry_run: bool = False) -> dict:
     slug = item["slug"]
+    import approved_renders                                    # noqa: PLC0415
+    if approved_renders.protected(slug):
+        st.note(f"{slug}: owner-approved cut - not extended or re-rendered")
+        return {"slug": slug, "applied": False, "approved": True}
     # Assembly measures the existing wavs and inserts quiet picture time.
     # Never request more words merely to satisfy a runtime target.
     if dry_run:

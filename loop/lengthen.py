@@ -888,6 +888,9 @@ def bind(slug: str, doc: dict) -> dict:
     in bin/batch-session.sh BEFORE the batch plans or narrates, so a stale
     wav is never voiced into a new beat and a stale render never ships."""
     rec = dict(doc["episodes"].get(slug) or {})
+    import approved_renders                                    # noqa: PLC0415
+    if approved_renders.protected(slug):
+        return {"slug": slug, "status": "skip", "why": "owner-approved cut"}
     if pending_bind(slug, doc) is None:
         return {"slug": slug, "status": "skip",
                 "why": f"state is {rec.get('status')!r}/{rec.get('mode')!r}"}
