@@ -1851,3 +1851,78 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - Guards: `test_longform_title` (hard vs note, rewritten strictly), `test_thumb_contract` (trim
   proven by identical pixels), `site/tests/floors.test.mjs`, `test_shorts_recut_then_drop.py`;
   negative proofs run.
+
+---
+
+## 2026-11-03 — Google stopped showing the site on 23 September, and the site got thinner on 2 November
+
+Two Search Readiness briefs for howweknowdeep.com (`so-howweknowdeep.com-outcome`,
+item o1; `so-howweknowdeep.com-quality`, item q1). Both were read against Search
+Console as the `gsc-bot` service account in this pass, not from the briefs' own numbers.
+
+**What happened to the traffic.** The brief's headline — 80 impressions in the last
+28 days against 1,843 in the 28 before, 96% down — is real, and it is two separate
+events, not one:
+
+| Window | Impressions | Clicks |
+|---|---|---|
+| 2026-08-09..2026-09-05 | 771 | 0 |
+| 2026-09-06..2026-10-03 | 1,843 | 4 |
+| 2026-10-04..2026-10-31 | 80 | 1 |
+
+- **16–19 September: the duplicate URLs went.** Until then Google indexed both
+  `/zones/abyss` and `/zones/abyss/` and showed both. The no-slash forms carried 660
+  of the previous window's 1,843 impressions and fell 95 -> 14 -> 4 -> 4 -> 0 over four
+  days. `6dc543a` (2026-08-31, "Site: canonical URLs match what the server serves")
+  is what caused that, three weeks earlier, and it worked: the no-slash forms now 308
+  to the canonical ones, and the canonical ones are indexed. **Not a defect** — 36% of
+  the "loss" is one page being counted once instead of twice. The brief's evidence line
+  "3 of 5 top losing pages are not in Google's index now (Page with redirect)" names
+  those three no-slash duplicates; `/questions/how-deep-sea-creatures-survive-pressure/`,
+  `/zones/midnight/` and `/zones/abyss/` all read "Submitted and indexed" today.
+- **23 September: a one-day cliff on the canonical pages, with no deploy.** Canonical-URL
+  impressions ran 56–66 a day through 22 September, then 6 on the 23rd, and 1–9 a day
+  ever since. 442 distinct queries showed the site in the seventeen days before; 25 did
+  in the last 28 days. The 20 queries that survived moved from positions 25–59 to 57–92
+  ("hadal snailfish" 30 impressions at 45 -> 1 at 87; "barreleye fish" 52 at 59 -> 2 at 24).
+  **No commit touched `site/` between 2026-09-21 and 2026-10-25**, so nothing in this
+  repository shipped on or near that date.
+
+**What it is not.** 41 of the 45 sitemap URLs read "Submitted and indexed" and 0 read
+"crawled - currently not indexed" (`site/data/search-console/index_coverage.json`,
+collected 2026-11-03); Google crawled pages through late October; the sitemap reports 0
+errors and 0 warnings; `robots.txt` allows everything; and a full crawl of all 45 pages
+on 2026-11-03 found no broken link, no broken image, no redirect chain, no `noindex`, no
+canonical fault, no duplicate title or description and no slow page. So it is not an
+indexing, robots, canonical, host or redirect fault. Search Console's manual-actions API
+was withdrawn and cannot be read here; the readable evidence is all consistent with a
+site-wide ranking judgement on one day, on pages Google still crawls and still indexes.
+
+**What was in our hands, and had just got worse.** `6d9aa92` (2026-11-02, "Search rescue:
+consolidate overlapping URLs and rebuild answer templates") padded every FAQ answer on
+every one of the 20 question pages with sentences copied verbatim from the sections above
+it — 179 sentences across 20 pages — and added a `definition` field that concatenated
+`directAnswer` and `description`, both of which the page already rendered. Measured with
+the audit's own module, 13 of 45 live pages repeated an eight-word phrase four to six
+times. The generated reference prose was the same defect by construction: 222 of a
+creature page's 390 body words were sentences identical on all seven creature pages, and
+`/zones/hadal/` and `/creatures/hadal-snailfish/` measured 60% the same page.
+
+**Decided.** Undo the padding (the 80 restored FAQ answers are byte-identical to their
+pre-`6d9aa92` text, so nothing written was lost), rewrite the generated reference prose so
+every sentence names its own record, stop the cards and the related-answers list
+reprinting other pages' words, give every page a visible author in schema, and measure all
+three rules on the build so a template can never ship this again
+(`scripts/validate-built-html.mjs`, `site/docs/validation.md`). After: 0 pages with
+repeated slots, 0 near-duplicate pairs, 0 pages failing c6, and content pages grew
+slightly (a creature page 390 -> 410 body words) because record-specific wording is longer
+than the hedges it replaced.
+
+**Not decided here.** Whether the 23 September demotion lifts. That is Google's judgement
+on a site whose readable state is now sound and whose pages no longer repeat themselves;
+the next four weeks of `gsc_truth.json` are the measurement.
+
+**Verified:** `git log --oneline -- site/` shows no commit between `9b85d83`
+(2026-09-21) and `764c908` (2026-10-25); `git show b436c89:site/content/questions.json`
+has zero copied FAQ sentences and `6d9aa92` introduced all 179; Search Console read live
+in this pass for all three windows, by date, page and query.

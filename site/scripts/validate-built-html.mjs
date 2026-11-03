@@ -70,9 +70,78 @@ const ofType = (nodes, pattern) => nodes.filter((node) => typesOf(node).some((ty
 
 const OG = ['og:title', 'og:description', 'og:type', 'og:url', 'og:site_name', 'og:image', 'og:image:width', 'og:image:height']
 
+/**
+ * The page-quality rules, with the audit's own numbers.
+ *
+ * Checklist item q1 reads five live pages a week and fails a page that repeats an
+ * eight-word phrase more than three times in its body, or whose body is more than
+ * half identical to another page's. Both are measured here instead, on the build,
+ * because both arrived through a template and a template ships to every page at
+ * once. On 2026-11-03 the live site failed 13 of 45 pages on the first rule and
+ * 2 pairs on the second, and nothing in this repository could have said so.
+ *
+ * SLOT_WORDS / SLOT_MAX / SHINGLE / NEAR_DUPLICATE are
+ * boss-os src/shared/boss/searchReadiness/page-quality-sample.mjs QUALITY,
+ * and bodyText/wordsOf mirror the same module, so a page that passes here passes
+ * the Monday audit on the same arithmetic.
+ */
+const QUALITY = { SLOT_WORDS: 8, SLOT_MAX: 3, SHINGLE: 5, NEAR_DUPLICATE: 0.5 }
+
+const visibleText = (html) =>
+  decode(
+    String(html)
+      .replace(/<script\b[\s\S]*?<\/script>/giu, ' ')
+      .replace(/<style\b[\s\S]*?<\/style>/giu, ' ')
+      .replace(/<noscript\b[\s\S]*?<\/noscript>/giu, ' ')
+      .replace(/<!--[\s\S]*?-->/gu, ' ')
+      .replace(/<[^>]+>/gu, ' '),
+  )
+    .replace(/\s+/gu, ' ')
+    .trim()
+
+/** The page without its chrome: <main> if there is one, else the page minus nav, header and footer. */
+const bodyText = (html) => {
+  const main = /<main\b[\s\S]*?<\/main>/iu.exec(html)?.[0] ?? /<article\b[\s\S]*?<\/article>/iu.exec(html)?.[0]
+  return visibleText(main ?? html.replace(/<(nav|header|footer)\b[\s\S]*?<\/\1>/giu, ' '))
+}
+
+const wordsOf = (text) => String(text).toLowerCase().match(/[a-z0-9][\w'’-]*/gu) ?? []
+
+/** Phrases of SLOT_WORDS words that appear more than SLOT_MAX times in one body, worst first. */
+const repeatedSlots = (text) => {
+  const words = wordsOf(text)
+  const seen = new Map()
+  for (let index = 0; index + QUALITY.SLOT_WORDS <= words.length; index += 1) {
+    const phrase = words.slice(index, index + QUALITY.SLOT_WORDS).join(' ')
+    seen.set(phrase, (seen.get(phrase) ?? 0) + 1)
+  }
+  return [...seen]
+    .filter(([, count]) => count > QUALITY.SLOT_MAX)
+    .sort((a, b) => b[1] - a[1])
+    .map(([phrase, times]) => ({ phrase, times }))
+}
+
+const shingles = (text) => {
+  const words = wordsOf(text)
+  const set = new Set()
+  for (let index = 0; index + QUALITY.SHINGLE <= words.length; index += 1) {
+    set.add(words.slice(index, index + QUALITY.SHINGLE).join(' '))
+  }
+  return set
+}
+
+/** Jaccard similarity of two bodies' five-word shingles. */
+const similarity = (a, b) => {
+  if (!a.size || !b.size) return 0
+  let intersection = 0
+  for (const shingle of a) if (b.has(shingle)) intersection += 1
+  return intersection / (a.size + b.size - intersection)
+}
+
 const failures = []
 const titles = new Map()
 const descriptions = new Map()
+const bodies = []
 let offers = 0
 let examined = 0
 
@@ -133,6 +202,27 @@ for (const route of routes) {
     failures.push(`${where}: has no BreadcrumbList`)
   }
 
+  // c6: the audit reads the author NAMES out of the page's schema and requires one of
+  // them to be visible on the page. A name-less author reference passes neither.
+  const visible = visibleText(html)
+  const authors = deepNodes(nodes)
+    .flatMap((node) => [].concat(node.author ?? []))
+    .map((author) => (typeof author === 'string' ? author : author?.name))
+    .filter(Boolean)
+    .map(String)
+  if (!authors.length) failures.push(`${where}: no schema node names an author`)
+  else if (!authors.some((author) => visible.includes(author))) {
+    failures.push(`${where}: names ${authors.join(', ')} as author, and none of them is visible on the page`)
+  }
+
+  // q1, first rule: the same eight words more than three times in one body is template filler.
+  const body = bodyText(html)
+  const slots = repeatedSlots(body)
+  if (slots.length) {
+    failures.push(`${where}: repeats "${slots[0].phrase}" ${slots[0].times} times (${slots.length} repeated phrases)`)
+  }
+  bodies.push({ where, shingles: shingles(body) })
+
   offers += deepNodes(nodes).filter(
     (node) =>
       /^(SoftwareApplication|WebApplication|MobileApplication|Product|Service|Course|Book)$/u.test(typesOf(node)[0] ?? '') &&
@@ -142,6 +232,21 @@ for (const route of routes) {
 
 if (!offers) failures.push('no Product, Service or SoftwareApplication with a priced Offer on any page')
 
+// q1, second rule: two bodies more than half identical are near-duplicates of each other.
+let pairs = 0
+for (let a = 0; a < bodies.length; a += 1) {
+  for (let b = a + 1; b < bodies.length; b += 1) {
+    const score = similarity(bodies[a].shingles, bodies[b].shingles)
+    pairs += 1
+    if (score > QUALITY.NEAR_DUPLICATE) {
+      failures.push(`${bodies[a].where}: is ${Math.round(score * 100)}% identical to ${bodies[b].where}`)
+    }
+  }
+}
+
 assert(examined > 0, 'Built-HTML validation examined zero pages')
+assert(pairs > 0, 'Built-HTML validation compared zero page pairs for near-duplication')
 assert(failures.length === 0, `Built HTML is not search-ready:\n  ${failures.join('\n  ')}`)
-console.log(`Built-HTML validation passed (${examined} pages: titles, descriptions, social tags, Organization, WebPage, breadcrumbs, priced Offer).`)
+console.log(
+  `Built-HTML validation passed (${examined} pages, ${pairs} pairs: titles, descriptions, social tags, Organization, WebPage, breadcrumbs, priced Offer, visible author, repeated phrases, near-duplicates).`,
+)

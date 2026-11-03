@@ -73,7 +73,9 @@ function ZonePage() {
             residents.map((item) => (
               <a key={item.slug} href={canonicalPath(`/creatures/${item.slug}`)}>
                 <strong>{item.name}</strong>
-                <span>{item.summary}</span>
+                <span>
+                  {item.scientificName} · {formatDepth(item.minDepthM, item.maxDepthM)}
+                </span>
               </a>
             ))
           ) : (

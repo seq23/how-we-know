@@ -62,6 +62,14 @@ export const websiteSchema = {
  * on the homepage; on 2026-10-25 the site had the WebSite and no WebPage anywhere,
  * so no page declared which site it belonged to. No date goes on this node: a
  * date in schema that is not also visible on the page is its own defect.
+ *
+ * `author` is here and not only on Article because checklist item c6 reads the
+ * author NAMES out of a page's schema and requires one of them to appear in the
+ * visible text. Question pages passed on articleSchema's author; the four
+ * /methods/ pages emit no Article, so /methods/observed-once/ failed c6 on
+ * 2026-11-03 while showing "By How We Know" in its byline the whole time. Every
+ * page on this site is authored by the publisher and says so in its byline, so
+ * the node belongs on the page, not on one page type.
  */
 export function webPageSchema(page: {
   url: string
@@ -77,6 +85,7 @@ export function webPageSchema(page: {
     name: page.name,
     description: page.description,
     isPartOf: { '@id': websiteId },
+    author: publisherNode,
     publisher: { '@id': organizationId },
     primaryImageOfPage: { '@type': 'ImageObject', url: absoluteUrl('/og-default.png'), width: 1200, height: 630 },
     inLanguage: 'en-US',
