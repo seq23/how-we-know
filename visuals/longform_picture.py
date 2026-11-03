@@ -179,6 +179,38 @@ SHARE_CAP = 0.25
 SHARE_TOLERANCE = 0.03     # "about 25%": the check fails above 28%
 
 
+# One animal, one subject: size words and synonyms do not make a second one
+# (owner 2026-11-03: "grenadier = one"; splitting it gamed the share cap).
+SIZE_WORDS = {"giant", "great", "big", "colossal", "large", "huge", "japanese"}
+ALIASES = {"sleeper shark": "greenland shark", "somniosus": "greenland shark",
+           "bathynomus": "isopod", "albatrossia": "grenadier", "tubeworm": "tube worm",
+           "riftia": "tube worm", "pycnogonid": "sea spider", "scotoplanes": "sea pig",
+           "flapjack octopus": "dumbo octopus", "grimpoteuthis": "dumbo octopus",
+           "architeuthis": "squid", "regalecus": "oarfish", "haliphron": "seven-arm octopus"}
+
+
+def animal(phrase: str) -> str:
+    """The common animal a subject phrase names: 'great grenadier' and 'giant
+    grenadier' are one grenadier."""
+    p = re.sub(r"[^a-z0-9 \-']", "", str(phrase or "").lower()).strip()
+    p = ALIASES.get(p, p)
+    words = [w for w in p.split() if w not in SIZE_WORDS] or p.split()
+    p = " ".join(words)
+    p = ALIASES.get(p, p)
+    return re.sub(r"s$", "", p) if not p.endswith("ss") else p
+
+
+SUBJECTS_PER_10_MIN = 8
+
+
+def floors(total_s: float) -> tuple[int, int]:
+    """(distinct subjects, distinct source moments) a picture of this length
+    needs: 8 subjects per 10 minutes, one new moment per 20 s."""
+    import math                                         # noqa: PLC0415
+    return (max(1, math.ceil(SUBJECTS_PER_10_MIN * total_s / 600.0 - 1e-9)),
+            max(1, math.ceil(total_s / NEW_SHOT_EVERY - 1e-9)))
+
+
 def tag_subjects(slug: str, assets: list[dict]) -> list[dict]:
     """Stamp each clip or photo with the shot-list subject it shows (`_subject`),
     the unit the share cap is counted in."""
@@ -189,7 +221,7 @@ def tag_subjects(slug: str, assets: list[dict]) -> list[dict]:
         hit = next((x for x in sorted(subs, key=len, reverse=True)
                     if re.search(r"\b" + re.escape(x).replace(r"\ ", r"[\s-]+") + r"s?\b",
                                  blob, re.I)), None)
-        a["_subject"] = hit or str(a.get("subject") or a.get("title") or "subject").lower()
+        a["_subject"] = animal(hit or str(a.get("subject") or a.get("title") or "subject"))
     return assets
 
 
@@ -455,7 +487,16 @@ def variety_problems(shots: list[dict], every: float = 20.0) -> list[str]:
         seen[k] = b
     share: dict[str, float] = {}
     for s in shots:
-        share[s.get("subject") or s["key"]] = share.get(s.get("subject") or s["key"], 0) + float(s["seconds"])
+        k = animal(s.get("subject") or s["key"])
+        share[k] = share.get(k, 0) + float(s["seconds"])
+    need_subjects, need_moments = floors(total)
+    moments = {(s["key"], round(float(s.get("start") or 0), 1)) for s in shots}
+    if len(share) < need_subjects:
+        probs.append(f"only {len(share)} distinct animal(s)/subject(s) on screen; a "
+                     f"{total / 60:.1f}-min video needs at least {need_subjects}")
+    if len(moments) < need_moments:
+        probs.append(f"only {len(moments)} distinct source moment(s); a "
+                     f"{total / 60:.1f}-min video needs at least {need_moments}")
     waived = set((shots[0].get("share_cap_waived") or []) if shots else [])
     if len(share) > 1:
         for subj, secs in share.items():
@@ -511,8 +552,8 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
                             "-y", "-i", src, "-frames:v", "1", "-vf", "scale=768:-2",
                             "-q:v", "4", jpg], check=True)
             todo.append((vid, jpg))
-        for i in range(0, len(todo), FC.BATCH):
-            chunk = todo[i:i + FC.BATCH]
+        for i in range(0, len(todo), 16):              # 16 frames a request: free-tier quota
+            chunk = todo[i:i + 16]
             verdicts = judge([j for _, j in chunk], subject)
             if verdicts is None:
                 raise FC.FrameCheckUnavailable(

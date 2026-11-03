@@ -27,7 +27,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 STORE = ROOT / "channel" / "imagery" / "shot_lists.json"
 SCRIPTS = ROOT / "scripts"
-MIN_SUBJECTS, MAX_SUBJECTS = 4, 12
+MIN_SUBJECTS, MAX_SUBJECTS = 6, 16
 
 
 class ShotListStop(RuntimeError):
@@ -77,7 +77,7 @@ def prompt(title: str) -> str:
         "such footage with - one or two words, the subject itself, e.g. 'whale', "
         "'concrete', 'steel', 'microchip', 'jellyfish' - only ones that cannot "
         "mean something else.\n\n"
-        'Answer with JSON and nothing else: {"subjects": [4-10 phrases], '
+        'Answer with JSON and nothing else: {"subjects": [10-16 phrases], '
         '"library_words": [2-6 words]}, all lowercase.')
 
 
