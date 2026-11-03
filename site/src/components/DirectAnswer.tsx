@@ -6,7 +6,7 @@ export function DirectAnswer({ children }: { children: ReactNode }) {
       <p className="answer-label" id="direct-answer-title">
         Direct answer
       </p>
-      <p>{children}</p>
+      <p className="definition">{children}</p>
     </section>
   )
 }

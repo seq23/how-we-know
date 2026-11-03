@@ -31,7 +31,6 @@ export type QuestionPageRecord = {
   subject: SubjectId
   /** How the answer is known. This is the axis that links pages across subjects. */
   method: MethodId
-  definition: string
   directAnswer: string
   description: string
   publishedAt: string

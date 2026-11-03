@@ -57,7 +57,7 @@ function CreaturePage() {
             return zone ? (
               <a key={slug} href={`/zones/${slug}`}>
                 <strong>{zone.name}</strong>
-                <span>{zone.summary}</span>
+                <span>{formatDepth(zone.minDepthM, zone.maxDepthM)}</span>
               </a>
             ) : null
           })}

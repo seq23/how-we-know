@@ -21,7 +21,7 @@ export function QuestionPage({ record }: { record: QuestionPageRecord }) {
         <div>
           <p className="eyebrow">{subject?.name ?? 'Question'}</p>
           <h1>{record.question}</h1>
-          <p className="definition">{record.definition}</p>
+          <DirectAnswer>{record.directAnswer}</DirectAnswer>
           <PublisherLine publishedAt={record.publishedAt} updatedAt={record.reviewedAt} />
         </div>
         <div className="depth-orb" aria-hidden="true"><span>200 m</span><span>1,000 m</span><span>4,000 m</span><span>11,000 m</span></div>
@@ -29,9 +29,8 @@ export function QuestionPage({ record }: { record: QuestionPageRecord }) {
     </header>
     <div className="shell article-grid">
       <article className="article-body">
-        <h2>Quick answer</h2>
-        <DirectAnswer>{record.directAnswer}</DirectAnswer>
-        <p>What this guide is best for: {record.description}</p>
+        <h2>What does this guide cover?</h2>
+        <p>{record.description}</p>
         {statSource && <KeyStat value={record.keyStat.value} label={record.keyStat.label} sourceName={statSource.organization} sourceUrl={statSource.url} sourceCheckedAt={statSource.checkedAt} />}
         {record.sections.map(section => <section key={section.heading}>
           <h2>{section.heading}</h2>
