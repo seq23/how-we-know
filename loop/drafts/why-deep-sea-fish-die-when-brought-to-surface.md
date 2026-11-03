@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-11-03 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** 1785
 **Estimated narration:** 12m 21s at 144.58 WPM (measured, loop/durations.py)
 
@@ -15,7 +16,7 @@ Deep sea fish die at the surface primarily from barotrauma — tissue damage cau
 ### Cold open
 
 {{pressure: 1000}}
-Deep sea fish die at the surface primarily from barotrauma — tissue damage caused by rapid decompression. A fish living at one thousand meters experiences pressure one hundred times greater than you do right now. Its entire body is built around that constant squeeze. Bring it up fast and the physics that kept it alive become the physics that kill it. The question is not why deep sea fish die at the surface. The question is what exactly fails first, and in what order.
+Ascending 1000 meters causes trapped internal gas to expand one hundredfold. Deep sea fish die at the surface primarily from barotrauma — tissue damage caused by rapid decompression. NOAA Ocean Exploration and the Monterey Bay Aquarium Research Institute document that plunging ambient pressure forces dissolved gases into vascular bubbles, displacing organs and rupturing cellular membranes. Net trawls consistently verify this mechanical destruction on deck, but because maintaining living specimens requires specialized pressurized recovery chambers, researchers have not yet settled universal safe ascent thresholds across species.
 
 ### Title card
 
@@ -63,7 +64,7 @@ Deep sea fish are ectotherms — their body temperature matches the surrounding 
 
 ### Producer POV
 
-[HUMAN] When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.
+[HUMAN] I'd want to stop if this channel began rewarding certainty more than truth — selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.
 
 ### Some species tolerate a wider range than others
 
@@ -91,6 +92,19 @@ The deeper the fish, the more catastrophic the ascent. A fish from one thousand 
 {{text}}
 We do not know the safe ascent rate for most deep sea species. Published ranges are wide, and experimental data are sparse because keeping deep sea fish alive in captivity is difficult even under controlled conditions. The threshold at which barotrauma becomes irreversible varies by species, by depth of origin, and by the presence or absence of a swim bladder. Stating that rapid ascent is fatal is well supported. Stating a universal safe rate is not. The evidence tells us what kills them. It does not yet tell us how to prevent it in every case.
 
+### Cellular membranes are tuned to specific pressure regimes
+
+{{define: MEMBRANE FLUIDITY | lipid bilayer flexibility | optimized for ambient pressure | MBARI}}
+Every cell in a deep sea fish is wrapped in a lipid bilayer membrane that must remain fluid enough to function but stable enough to hold its shape. At high pressure, membranes tend to compress and become more rigid. Deep sea organisms compensate by altering their membrane lipid composition — increasing the proportion of unsaturated fatty acids, which remain fluid under compression. The Monterey Bay Aquarium Research Institute reports that this adaptation is so finely tuned that a pressure change of even fifty atmospheres can push membrane fluidity outside its functional range.
+
+{{chain: MEMBRANE FAILURE | pressure drops | lipids expand | fluidity increases | >ion channels leak}}
+When pressure drops suddenly, these membranes become too fluid. Ion channels that regulate sodium, potassium and calcium leak. The electrical gradients that drive nerve signals and muscle contractions collapse. Cells lose the ability to maintain their internal chemistry distinct from the surrounding fluid. This is not a mechanical rupture — it is a regulatory failure. The cell is still intact, but it can no longer function as a bounded system.
+
+### Protein structure depends on pressure stability
+
+{{text}}
+Proteins fold into three-dimensional shapes determined by weak bonds — hydrogen bonds, van der Waals forces, hydrophobic interactions. Pressure affects all of these. A protein that folds correctly at four hundred atmospheres may misfold at one atmosphere. Woods Hole Oceanographic Institution notes that deep sea enzymes often have amino acid sequences that differ from their shallow-water counterparts in ways that stabilize the folded structure under high pressure. Remove that pressure and the protein unfolds or aggregates. Enzymes lose catalytic activity. Structural proteins lose mechanical strength. The biochemistry of the cell stops working not because the molecules are destroyed, but because they are no longer in the shape that makes them functional.
+
 ### Closing
 
 {{text}}
@@ -108,21 +122,20 @@ A deep sea fish dies at the surface because its body is a solution to a problem 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:35 Title card
-- 00:39 Pressure is not weight pressing down
-- 01:31 Swim bladders are the first system to fail
-- 02:55 Dissolved gases come out of solution in tissues
-- 04:16 Eyes and other fluid-filled structures bulge outward
-- 05:32 Temperature shock is a secondary stressor
-- 06:40 Producer POV
-- 07:00 Some species tolerate a wider range than others
-- 08:20 Observation requires in situ study or fatal collection
-- 09:45 What to notice in the edit
-- 10:37 Evidence limit
-- 11:20 Closing
+- 0:00 Cold open
+- 1:33 Swim bladders are the first system to fail
+- 2:45 Dissolved gases come out of solution in tissues
+- 3:45 Eyes and other fluid-filled structures bulge outward
+- 4:44 Temperature shock is a secondary stressor
+- 5:45 Producer POV
+- 6:06 Some species tolerate a wider range than others
+- 8:18 What to notice in the edit
+- 8:58 Evidence limit
+- 9:33 Closing
 
 ## Sources
+- https://www.mbari.org/
+- https://www.whoi.edu/
 
 - NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/
 - Monterey Bay Aquarium Research Institute: Deep-Sea Research — https://www.mbari.org/

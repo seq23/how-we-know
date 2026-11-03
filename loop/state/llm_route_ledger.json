@@ -1,5 +1,5 @@
 {
-  "_why": "Measured free-route outcomes and script verdicts. Seeded from the 12 Oct and 2 Nov 2026 benchmark artifacts with loop/bench_free_models.py seed_ledger(). Pre-existing test_* lane events removed: synthetic unit-test answers are not quality evidence. Owner 2 Nov: Gemini first, curated OpenRouter second, Claude last; route_order() ranks within tiers.",
+  "_why": "Measured $0 fallback order (owner 2026-10-12). Written by loop/llm_router.py; ranked by `python3 loop/llm_router.py standing`. See RUNBOOK.md 'Fallback standing'.",
   "models": {
     "apodex/apodex-1.1-mini:free": [
       {
@@ -451,6 +451,18 @@
         "latency_s": 300.0,
         "outcome": "error",
         "ts": "2026-11-02T14:00:13Z"
+      },
+      {
+        "lane": "queue-reopen",
+        "latency_s": 179.7,
+        "outcome": "answered",
+        "ts": "2026-11-03T00:48:50Z"
+      },
+      {
+        "lane": "queue-reopen",
+        "latency_s": 164.1,
+        "outcome": "answered",
+        "ts": "2026-11-03T00:51:36Z"
       }
     ],
     "google/gemma-4-26b-a4b-it:free": [

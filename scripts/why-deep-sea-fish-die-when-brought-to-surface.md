@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-11-03 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** 1785
 **Estimated narration:** 12m 21s at 144.58 WPM (measured, loop/durations.py)
 
@@ -15,7 +16,7 @@ Deep sea fish die at the surface primarily from barotrauma — tissue damage cau
 ### Cold open
 
 {{pressure: 1000}}
-Deep sea fish die at the surface primarily from barotrauma — tissue damage caused by rapid decompression. A fish living at one thousand meters experiences pressure one hundred times greater than you do right now. Its entire body is built around that constant squeeze. Bring it up fast and the physics that kept it alive become the physics that kill it. The question is not why deep sea fish die at the surface. The question is what exactly fails first, and in what order.
+Ascending 1000 meters causes trapped internal gas to expand one hundredfold. Deep sea fish die at the surface primarily from barotrauma — tissue damage caused by rapid decompression. NOAA Ocean Exploration and the Monterey Bay Aquarium Research Institute document that plunging ambient pressure forces dissolved gases into vascular bubbles, displacing organs and rupturing cellular membranes. Net trawls consistently verify this mechanical destruction on deck, but because maintaining living specimens requires specialized pressurized recovery chambers, researchers have not yet settled universal safe ascent thresholds across species.
 
 ### Title card
 

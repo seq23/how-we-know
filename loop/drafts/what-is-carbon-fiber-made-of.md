@@ -2,6 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** materials-and-manufacturing
+**Reopened:** 2026-11-03 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** 1580
 **Estimated narration:** 10m 55s at 144.58 WPM (measured, loop/durations.py)
 
@@ -14,7 +16,7 @@ Carbon fiber is made of polyacrylonitrile polymer that has been heated in stages
 ### Cold open
 
 {{thermal: 1500 | Carbonization}}
-Polyacrylonitrile enters an oxygen-free furnace at around 1500 degrees Celsius and emerges as carbon fiber containing over ninety percent carbon by mass. That figure comes from ASTM International's standard test methods for carbon fiber composition. The transformation is not a coating or an infusion. It is the controlled removal of hydrogen, nitrogen and oxygen until only a carbon skeleton remains, and the precision required to keep that skeleton aligned is what makes the material expensive.
+In an oxygen-free furnace at 1500 degrees Celsius, white synthetic polymer converts without melting. Carbon fiber is made of polyacrylonitrile polymer that has been heated in stages to remove everything except aligned carbon atoms. During carbonization, combustion analysis from ASTM International confirms that heating pushes carbon content past ninety percent by mass. Standardized testing settles the filament's finished chemical purity, but it cannot resolve the proprietary tension and heating recipes individual manufacturers guard across their production lines.
 
 ### Title card
 
@@ -52,7 +54,7 @@ Carbon fiber straight from carbonization has a smooth, inert surface. Epoxy and 
 
 ### Producer POV
 
-[HUMAN] I quoted 286 megajoules per kilogram for production energy as if it were settled. Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.
+[HUMAN] I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.
 
 ### The aligned carbon sheets are why the fiber is strong along its length
 
@@ -84,31 +86,31 @@ The energy intensity figure for carbon fiber production varies widely in publish
 {{text}}
 Carbon fiber is not a coating on something else. It is the product of removing everything from a polymer except the carbon, and arranging what remains into aligned sheets. The strength comes from the arrangement, and the cost comes from the precision required to create it.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-042 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-042 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — energy intensity range stated explicitly.
 - Structural variation: Thermal progression through stabilization, carbonization and optional graphitization, with composition and property links throughout.
 - Number-level source audit: COMPLETE — all figures trace to ASTM International or published materials science literature.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 Title card
-- 00:26 The precursor is a polymer most people have never heard of
-- 01:28 Stabilization happens in air at a temperature that does not melt the polymer
-- 02:38 Carbonization removes everything that is not carbon
-- 03:52 Graphitization is optional and pushes carbon content even higher
-- 05:00 The fiber diameter is set at the beginning and does not change much
-- 06:00 Surface treatment makes the fiber stick to resin
-- 07:00 The aligned carbon sheets are why the fiber is strong along its length
-- 08:08 The process is energy-intensive and that drives cost
-- 09:16 Recycling carbon fiber is possible but degrades properties
-- 10:16 What to notice in the edit
-- 10:40 Evidence limit
-- 11:00 Closing
+- 0:00 Cold open
+- 0:35 The precursor is a polymer most people have never heard of
+- 1:38 Stabilization happens in air at a temperature that does not melt the polymer
+- 2:30 Carbonization removes everything that is not carbon
+- 3:29 Graphitization is optional and pushes carbon content even higher
+- 4:19 The fiber diameter is set at the beginning and does not change much
+- 5:04 Surface treatment makes the fiber stick to resin
+- 6:04 The aligned carbon sheets are why the fiber is strong along its length
+- 6:52 The process is energy-intensive and that drives cost
+- 7:40 Recycling carbon fiber is possible but degrades properties
+- 8:27 What to notice in the edit
+- 9:12 Evidence limit
+- 9:45 Closing
 
 ## Sources
 

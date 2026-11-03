@@ -2,6 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** materials-and-manufacturing
+**Reopened:** 2026-11-03 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** 1580
 **Estimated narration:** 10m 55s at 144.58 WPM (measured, loop/durations.py)
 
@@ -14,7 +16,7 @@ Carbon fiber is made of polyacrylonitrile polymer that has been heated in stages
 ### Cold open
 
 {{thermal: 1500 | Carbonization}}
-Polyacrylonitrile enters an oxygen-free furnace at around 1500 degrees Celsius and emerges as carbon fiber containing over ninety percent carbon by mass. That figure comes from ASTM International's standard test methods for carbon fiber composition. The transformation is not a coating or an infusion. It is the controlled removal of hydrogen, nitrogen and oxygen until only a carbon skeleton remains, and the precision required to keep that skeleton aligned is what makes the material expensive.
+In an oxygen-free furnace at 1500 degrees Celsius, white synthetic polymer converts without melting. Carbon fiber is made of polyacrylonitrile polymer that has been heated in stages to remove everything except aligned carbon atoms. During carbonization, combustion analysis from ASTM International confirms that heating pushes carbon content past ninety percent by mass. Standardized testing settles the filament's finished chemical purity, but it cannot resolve the proprietary tension and heating recipes individual manufacturers guard across their production lines.
 
 ### Title card
 
