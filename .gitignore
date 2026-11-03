@@ -111,3 +111,6 @@ channel/sound/*.ogg
 # to loop/state/pronunciation_learned.json, which the Mac pushes. Same class as
 # audio/narration_report.json above (ignored 2026-11-01: it sat untracked).
 audio/*/pronunciation.json
+
+# Apple Vision OCR helper, compiled per machine by research/imagery_video.py
+research/.video_cache/
