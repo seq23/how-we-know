@@ -1,0 +1,841 @@
+[
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "A titanium beam built from dust can crack under its own hidden stress.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Metal three dimensional printing works by joining microscopic powders or solid wire stock layer by layer using focused thermal energy or chemical binding agents.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "ASTM International categorizes the primary industrial technique as laser powder bed fusion, a process of melting metal powder layer by layer with a laser inside a build chamber that requires inert atmosphere conditions.",
+    "args": {
+      "term": "LASER POWDER BED FUSION",
+      "meaning": "Process of melting metal powder layer by layer with a laser",
+      "boundary": "Requires inert atmosphere conditions",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Research from the National Institute of Standards and Technology reveals that during laser powder bed fusion, high-intensity energy beams create a localized melt pool temperature exceeding 2000 degrees Celsius in fractions of a millisecond.",
+    "args": {
+      "subject": "3d-printed-metal",
+      "label": "POWDER BED",
+      "pick": 0
+    },
+    "from": "directive-rhythm+picture+material"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.45,
+    "heading": "Cold open",
+    "narration": "That concentrated heat turns loose powder into solid alloy, but it also introduces violent thermal expansion and contraction.",
+    "args": {
+      "term": "LASER POWDER BED FUSION",
+      "meaning": "Process of melting metal powder layer by layer with a laser",
+      "boundary": "Requires inert atmosphere conditions",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "If those rapid cooling rates and severe thermal gradients are not measured and controlled, the printed metal component can warp or crack before it ever leaves the build plate.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How does 3d printing metal work?",
+    "args": {
+      "lines": [
+        "How does 3d printing",
+        "metal work?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "To understand how additive manufacturing transforms loose metal dust into structural components, we must follow the physical sequence inside the machine platform.",
+    "args": {
+      "title": "LASER POWDER BED FUSION PROCESS",
+      "steps": [
+        [
+          "Powder recoating across build plate",
+          ""
+        ],
+        [
+          "Laser scanning of target geometry",
+          ""
+        ],
+        [
+          "Microscopic melt pool solidification",
+          ""
+        ],
+        [
+          "Lowering build platform by layer thickness",
+          ""
+        ]
+      ],
+      "note": "Repeat until geometry is complete"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "The standard laser powder bed fusion process operates as a repeating mechanical cycle inside a tightly controlled build environment.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "First, a mechanical re-coater arm performs powder recoating across build plate, spreading a uniform layer of metal powder between 20 and 100 micrometers thick across a rigid substrate plate.",
+    "args": {
+      "title": "LASER POWDER BED FUSION PROCESS",
+      "steps": [
+        [
+          "Powder recoating across build plate",
+          ""
+        ],
+        [
+          "Laser scanning of target geometry",
+          ""
+        ],
+        [
+          "Microscopic melt pool solidification",
+          ""
+        ],
+        [
+          "Lowering build platform by layer thickness",
+          ""
+        ]
+      ],
+      "note": "Repeat until geometry is complete"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "Next, an optical galvo scanner directs a high-intensity fiber laser to execute laser scanning of target geometry, tracing two-dimensional cross-sectional slices derived from a three-dimensional computer model.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "As the focused laser beam strikes the metallic particles, it induces microscopic melt pool solidification, welding the loose grains into a continuous solid metal trace and bonding them directly to the layer below.",
+    "args": {
+      "title": "LASER POWDER BED FUSION PROCESS",
+      "steps": [
+        [
+          "Powder recoating across build plate",
+          ""
+        ],
+        [
+          "Laser scanning of target geometry",
+          ""
+        ],
+        [
+          "Microscopic melt pool solidification",
+          ""
+        ],
+        [
+          "Lowering build platform by layer thickness",
+          ""
+        ]
+      ],
+      "note": "Repeat until geometry is complete"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "Once an individual cross-section is fully consolidated, the system executes lowering build platform by layer thickness, dropping the elevator mechanism down by the exact depth of a single slice.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Fusing metal from microscopic powder",
+    "narration": "The re-coater arm then sweeps another bed of powder across the build area, repeating this cycle tens of thousands of times until repeat until geometry is complete.",
+    "args": {
+      "title": "LASER POWDER BED FUSION PROCESS",
+      "steps": [
+        [
+          "Powder recoating across build plate",
+          ""
+        ],
+        [
+          "Laser scanning of target geometry",
+          ""
+        ],
+        [
+          "Microscopic melt pool solidification",
+          ""
+        ],
+        [
+          "Lowering build platform by layer thickness",
+          ""
+        ]
+      ],
+      "note": "Repeat until geometry is complete"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "The transition from fine powder to solid metal is not a gentle melting process; it is a violent hydrodynamic event occurring on microsecond timescales.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "Empirical data published by the Fraunhofer Institute demonstrates that the cooling rate inside a laser melt pool can reach 1000000 degrees Celsius per second.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "When a high-power laser strikes the powder bed, the alloy absorbs energy rapidly, generating a localized liquid pool governed by intense Marangoni convection.",
+    "args": {
+      "value": "1000000",
+      "unit": "DEGREES CELSIUS PER SECOND",
+      "caption": "COOLING RATE",
+      "source": "FRAUNHOFER INSTITUTE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "Surface tension variations across the melt surface pull liquid metal from the hot laser center toward the cooler outer boundaries at high velocities.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "At the same time, volatile alloy elements can evaporate under intense heat, exerting a downward recoil pressure that creates a deep vapor cavity called a keyhole.",
+    "args": {
+      "value": "1000000",
+      "unit": "DEGREES CELSIUS PER SECOND",
+      "caption": "COOLING RATE",
+      "source": "FRAUNHOFER INSTITUTE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "If the laser speed or energy density fluctuates, this keyhole cavity can collapse unexpectedly, trapping protective gas pockets inside the solidifying material.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The thermal reality inside the melt pool",
+    "narration": "Researchers at the National Institute of Standards and Technology have used high-speed synchrotron X-ray imaging to capture these dynamic keyhole events in real time, proving how subtle beam variations produce microscopic subsurface voids that compromise structural integrity.",
+    "args": {
+      "value": "1000000",
+      "unit": "DEGREES CELSIUS PER SECOND",
+      "caption": "COOLING RATE",
+      "source": "FRAUNHOFER INSTITUTE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "While laser powder bed fusion dominates precision engineering, technical standards from ASTM International classify two other primary process categories: directed energy deposition and binder jetting.",
+    "args": {
+      "subject": "3d-printed-metal",
+      "label": "POWDER BED",
+      "pick": 1
+    },
+    "from": "directive+picture+material"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "The fundamental distinction between these approaches lies in how thermal energy is delivered to shape the material.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "Directed energy deposition is melting metal wire or powder as it is deposited through a nozzle directly onto a substrate, not spreading a full bed of powder before laser scanning.",
+    "args": {
+      "term": "DIRECTED ENERGY DEPOSITION",
+      "includes": [
+        "Melting metal wire or powder as it is deposited through a nozzle"
+      ],
+      "excludes": [
+        "Spreading a full bed of powder before laser scanning"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "This approach allows large industrial machines to repair damaged turbine blades or fabricate multi-meter structural aerospace components, although at the cost of lower surface resolution and geometric detail.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "Conversely, binder jetting decouples the geometry formation phase from thermal melting entirely.",
+    "args": {
+      "term": "DIRECTED ENERGY DEPOSITION",
+      "includes": [
+        "Melting metal wire or powder as it is deposited through a nozzle"
+      ],
+      "excludes": [
+        "Spreading a full bed of powder before laser scanning"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "In binder jetting, a high-speed inkjet printhead deposits a liquid binder onto a metal powder bed at ambient temperature, gluing particles together into what metallurgists call a green part.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Alternative approaches to additive metal forming",
+    "narration": "This green part possesses minimal mechanical strength until it undergoes a secondary thermal treatment inside a high-temperature furnace, where heat burns away the organic binder and sinters the metal grains into a dense structural component.",
+    "args": {
+      "term": "DIRECTED ENERGY DEPOSITION",
+      "includes": [
+        "Melting metal wire or powder as it is deposited through a nozzle"
+      ],
+      "excludes": [
+        "Spreading a full bed of powder before laser scanning"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 8.69,
+    "heading": "Microstructural evolution under rapid cooling",
+    "narration": "When liquid alloy cools at traditional casting rates, metal atoms have sufficient time to organize into relatively large, uniform crystalline structures.",
+    "args": {
+      "title": "GRAIN SIZE REDUCTION",
+      "unit": "MICROMETERS",
+      "items": [
+        [
+          "CAST METAL",
+          "100"
+        ],
+        [
+          "PRINTED METAL",
+          "5"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Microstructural evolution under rapid cooling",
+    "narration": "But in metal additive manufacturing, extreme thermal gradients radically transform phase evolution and crystal growth.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "Microstructural evolution under rapid cooling",
+    "narration": "Metallurgical research published by ASM International documents that conventional cast metal grain size can average around 100 micrometers, whereas printed metal grain size often measures around 5 micrometers due to rapid solidification during grain size reduction in micrometers.",
+    "args": {
+      "title": "GRAIN SIZE REDUCTION",
+      "unit": "MICROMETERS",
+      "items": [
+        [
+          "CAST METAL",
+          "100"
+        ],
+        [
+          "PRINTED METAL",
+          "5"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Microstructural evolution under rapid cooling",
+    "narration": "Because heat dissipates directionally down through the build plate, metal crystals naturally grow in long, columnar formations aligned with the vertical build axis.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "Microstructural evolution under rapid cooling",
+    "narration": "This directional orientation makes the mechanical properties anisotropic, meaning the component exhibits different tensile yield strength and elongation depending on the direction of applied stress.",
+    "args": {
+      "title": "GRAIN SIZE REDUCTION",
+      "unit": "MICROMETERS",
+      "items": [
+        [
+          "CAST METAL",
+          "100"
+        ],
+        [
+          "PRINTED METAL",
+          "5"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Microstructural evolution under rapid cooling",
+    "narration": "Materials scientists at the Massachusetts Institute of Technology have demonstrated that by dynamically modulating laser pulse frequency and scan patterns, operators can disrupt columnar grain growth, encouraging the formation of fine, equiaxed microstructures that provide uniform, isotropic mechanical performance across all spatial axes.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "Even when laser parameters are highly optimized, micro-voids, un-fused powder pockets, and high internal thermal stresses remain locked within raw printed components.",
+    "args": {
+      "title": "DENSITY OPTIMIZATION",
+      "stages": [
+        "Internal porosity after laser fusion",
+        "Hot isostatic pressing in argon gas",
+        "High temperature and isotropic pressure"
+      ],
+      "conclusion": "Near theoretical maximum density"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "To satisfy safety criteria for flight-critical aerospace components, manufacturers rely on post-processing protocols focused on density optimization.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "The primary post-processing sequence begins by evaluating internal porosity after laser fusion within the as-built printed geometry.",
+    "args": {
+      "title": "DENSITY OPTIMIZATION",
+      "stages": [
+        "Internal porosity after laser fusion",
+        "Hot isostatic pressing in argon gas",
+        "High temperature and isotropic pressure"
+      ],
+      "conclusion": "Near theoretical maximum density"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "The part is then placed inside a high-pressure vessel for hot isostatic pressing in argon gas.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "Inside this specialized furnace, the system subjects the metal part simultaneously to high temperature and isotropic pressure exceeding 100 megapascals at temperatures above 1100 degrees Celsius.",
+    "args": {
+      "title": "DENSITY OPTIMIZATION",
+      "stages": [
+        "Internal porosity after laser fusion",
+        "Hot isostatic pressing in argon gas",
+        "High temperature and isotropic pressure"
+      ],
+      "conclusion": "Near theoretical maximum density"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "Under these extreme simultaneous forces, the solid alloy undergoes plastic deformation and atomic diffusion creep, collapsing internal gas pores and solid-state welding the cavity surfaces together.",
+    "args": {
+      "subject": "welding-arc",
+      "label": "WELDING",
+      "pick": 0
+    },
+    "from": "directive-rhythm+picture+material"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Eliminating internal defects through hot isostatic pressing",
+    "narration": "The resulting microstructure achieves near theoretical maximum density, removing internal stress concentration points that would otherwise initiate microcracks and cause premature fatigue failure during operation.",
+    "args": {
+      "title": "DENSITY OPTIMIZATION",
+      "stages": [
+        "Internal porosity after laser fusion",
+        "Hot isostatic pressing in argon gas",
+        "High temperature and isotropic pressure"
+      ],
+      "conclusion": "Near theoretical maximum density"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "How advanced sensing validates printed metal parts",
+    "narration": "Confirming that an additively manufactured metal component is structural and free of internal flaws requires analytical tools capable of probing deep below the surface.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "How advanced sensing validates printed metal parts",
+    "narration": "Quality assurance protocols established by ASTM International and the National Institute of Standards and Technology outline clear defect detection metrics for non-destructive evaluation.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "How advanced sensing validates printed metal parts",
+    "narration": "Flight hardware inspectors routinely employ X-ray computed tomography for internal voids to construct full three-dimensional volumetric maps of a part's internal geometry, pinpointing microscopic porosity and un-melted powder inclusions down to single-micrometer scales.",
+    "args": {
+      "title": "DEFECT DETECTION METRICS",
+      "items": [
+        "+X-ray computed tomography for internal voids",
+        "+X-ray diffraction for residual stress",
+        "?In-situ thermal imaging during build process"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "How advanced sensing validates printed metal parts",
+    "narration": "To quantify the invisible internal stress fields generated by rapid thermal cycles, laboratories use X-ray diffraction for residual stress analysis, measuring how atomic crystal lattice planes stretch or compress under residual stress.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "How advanced sensing validates printed metal parts",
+    "narration": "Furthermore, modern production machines are increasingly equipped with in-situ thermal imaging during build process execution, using ultra-fast thermal cameras to log the surface temperature of every melt pool in real time.",
+    "args": {
+      "title": "DEFECT DETECTION METRICS",
+      "items": [
+        "+X-ray computed tomography for internal voids",
+        "+X-ray diffraction for residual stress",
+        "?In-situ thermal imaging during build process"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "How advanced sensing validates printed metal parts",
+    "narration": "If a single layer exhibits an anomalous thermal signature, control software flags that exact location for secondary non-destructive testing before the component is cleared for deployment.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "As you evaluate visual depictions of additive metal production, pay close attention to how manufacturing systems balance extreme thermal energy against physical material limits across research institutions.",
+    "args": {
+      "title": "RESEARCH INSTITUTIONS",
+      "sources": [
+        [
+          "NIST",
+          "Melt pool keyhole imaging"
+        ],
+        [
+          "Fraunhofer Institute",
+          "High cooling rate dynamics"
+        ],
+        [
+          "ASM International",
+          "Microstructural grain size data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "High-speed melt pool keyhole imaging captured by NIST demonstrates that metal 3D printing is not merely depositing hot material like plastic filament; it is a rapid phase transformation governed by high cooling rate dynamics measured by the Fraunhofer Institute.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "When observing high-magnification micrographs of printed alloys, notice how microstructural grain size data documented by ASM International clarifies why raw printed parts require thermal post-processing.",
+    "args": {
+      "title": "RESEARCH INSTITUTIONS",
+      "sources": [
+        [
+          "NIST",
+          "Melt pool keyhole imaging"
+        ],
+        [
+          "Fraunhofer Institute",
+          "High cooling rate dynamics"
+        ],
+        [
+          "ASM International",
+          "Microstructural grain size data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The contrast between as-printed components and finished structural parts emphasizes that 3D printing is only one stage in a longer manufacturing chain.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Laser deposition creates the raw geometric shape, but thermal stress relief, hot pressing, and rigorous non-destructive verification are what transform synthesized metal powder into reliable, high-performance structural components.",
+    "args": {
+      "title": "RESEARCH INSTITUTIONS",
+      "sources": [
+        [
+          "NIST",
+          "Melt pool keyhole imaging"
+        ],
+        [
+          "Fraunhofer Institute",
+          "High cooling rate dynamics"
+        ],
+        [
+          "ASM International",
+          "Microstructural grain size data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "Despite extensive research and standardization across international laboratories, important empirical limits persist in metal additive manufacturing.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Technical reports from NIST and ASTM International emphasize that current in-situ sensing techniques cannot detect every microscopic defect or predict fatigue life with total precision.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "In standard production environments, baseline residual porosity in un-treated LPBF parts averages 0.2 percent by volume, spanning a measured range from 0.1 to 0.3 percent under high confidence testing conditions.",
+    "args": {
+      "value": "0.2",
+      "unit": "PERCENT",
+      "plus": "0.1",
+      "minus": "0.3",
+      "confidence": "HIGH",
+      "caption": "RESIDUAL POROSITY IN UN-TREATED LPBF PARTS"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "Even advanced thermal simulation models cannot fully account for batch-to-batch variations in powder particle size distribution or trace chemical impurities.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "While post-processing treatments like hot isostatic pressing eliminate the vast majority of internal voids, existing non-destructive inspection tools still encounter physical resolution limits when attempting to identify sub-micron microcracks embedded deep within thick, complex structural geometries.",
+    "args": {
+      "value": "0.2",
+      "unit": "PERCENT",
+      "plus": "0.1",
+      "minus": "0.3",
+      "confidence": "HIGH",
+      "caption": "RESIDUAL POROSITY IN UN-TREATED LPBF PARTS"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Closing",
+    "narration": "Metal 3D printing is not magic; it is precise thermal management of materials science at microsecond timescales.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "By controlling laser energy, powder quality, and thermal cooling gradients, additive manufacturing turns tiny metal grains into complex structural parts that push the boundaries of modern engineering.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  }
+]

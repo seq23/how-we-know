@@ -1,0 +1,983 @@
+[
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "A titanium part straight off a laser printer can match a forged bar in tension.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "Printed metal can be as strong as, and sometimes stronger than, the same alloy made by casting or forging.",
+    "args": {
+      "subject": "molten-steel",
+      "label": "CASTING",
+      "pick": 0
+    },
+    "from": "directive-rhythm+picture+material"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "For the titanium alloy called Ti-6Al-4V, the workhorse of printed aerospace and implant parts, published as-built tensile strengths commonly sit at or above roughly 1,000 megapascals, a level that runs through the additive manufacturing data compiled by NIST and ASM International.",
+    "args": {
+      "value": "1,000",
+      "unit": "megapascals",
+      "caption": "as-built tensile strength commonly reported for printed Ti-6Al-4V",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That number is real, but it settles less than it seems. It comes from a smooth, carefully made test bar pulled once, slowly, until it breaks.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "A real printed part has rough skin, hidden pores and a layered grain structure, and it is usually loaded thousands or millions of times, not once.",
+    "args": {
+      "value": "1,000",
+      "unit": "megapascals",
+      "caption": "as-built tensile strength commonly reported for printed Ti-6Al-4V",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "So the honest answer has two halves: how strong the printed metal is, and how strong a printed part turns out to be. They are not the same.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How strong is 3D printed metal?",
+    "args": {
+      "lines": [
+        "How strong is 3D",
+        "printed metal?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "A pull test measures one property very well",
+    "narration": "Here is how a strength figure is made. A machined test bar, shaped like a dog bone so it breaks in the narrow middle, is clamped in a testing machine.",
+    "args": {
+      "title": "how a strength figure is made",
+      "stages": [
+        "machined test bar",
+        "slow steady pull",
+        "load and stretch recorded"
+      ],
+      "conclusion": "ultimate tensile strength"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "A pull test measures one property very well",
+    "narration": "The machine applies a slow steady pull while sensors keep the load and stretch recorded at every instant.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "A pull test measures one property very well",
+    "narration": "Divide the highest load by the bar's original cross-section and you get the ultimate tensile strength, the peak stress the metal carried before it began to neck and fail.",
+    "args": {
+      "title": "how a strength figure is made",
+      "stages": [
+        "machined test bar",
+        "slow steady pull",
+        "load and stretch recorded"
+      ],
+      "conclusion": "ultimate tensile strength"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "A pull test measures one property very well",
+    "narration": "ASTM International publishes the standard methods laboratories follow, including a specification written specifically for powder bed fusion of Ti-6Al-4V, so that a bar tested in one lab can be compared fairly with a bar tested in another.",
+    "args": {
+      "subject": "3d-printed-metal",
+      "label": "POWDER BED",
+      "pick": 0
+    },
+    "from": "directive-rhythm+picture+material"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "A pull test measures one property very well",
+    "narration": "The same test also gives a second number that matters just as much: elongation, how far the bar stretches before it snaps.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "A pull test measures one property very well",
+    "narration": "Strength without stretch is a warning sign. A metal that carries a high load but breaks with almost no warning can crack suddenly in service, while one that bends and yields first gives engineers margin.",
+    "args": {
+      "title": "how a strength figure is made",
+      "stages": [
+        "machined test bar",
+        "slow steady pull",
+        "load and stretch recorded"
+      ],
+      "conclusion": "ultimate tensile strength"
+    },
+    "from": "directive+destagnate+relief"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "A pull test measures one property very well",
+    "narration": "When you read that printed metal is strong, the first thing to ask is how much it stretched on the way there.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "In laser powder bed fusion, a laser melts a thin layer of metal powder in a pool smaller than a grain of rice, and that pool freezes almost the moment the beam moves on.",
+    "args": {
+      "term": "martensite",
+      "meaning": "a hard, needle-like structure locked in by very fast cooling",
+      "boundary": "forms when the metal has no time to rearrange",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 8.28,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "In Ti-6Al-4V, cooling that fast traps the atoms in martensite, a hard, needle-like structure locked in by very fast cooling.",
+    "args": {
+      "subject": "micrograph-steel",
+      "label": "MARTENSITE",
+      "pick": 0
+    },
+    "from": "directive-rhythm+picture+material"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "It forms when the metal has no time to rearrange into its slower-cooled, softer arrangement.",
+    "args": {
+      "term": "martensite",
+      "meaning": "a hard, needle-like structure locked in by very fast cooling",
+      "boundary": "forms when the metal has no time to rearrange",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "Handbook data from ASM International describe this structure in conventional titanium processing too, where it appears after quenching.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "Its fine needles block the movement of defects inside the crystal, which is why as-built printed titanium often tests stronger than annealed wrought bar. The price is ductility: as-built bars usually stretch less before breaking.",
+    "args": {
+      "term": "martensite",
+      "meaning": "a hard, needle-like structure locked in by very fast cooling",
+      "boundary": "forms when the metal has no time to rearrange",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "That is why most printed titanium is heat treated before use. A stress-relief or annealing cycle lets the needles coarsen and relaxes the internal stresses left by repeated melting and cooling.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "Strength typically drops somewhat and ductility recovers. The exact amounts depend on temperature, time and starting structure, and the published range is wide, so this episode will not put a single figure on it.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Fast cooling makes printed titanium strong but less forgiving",
+    "narration": "The point to hold is the direction of the trade: as-built titanium means stronger needles, less stretch, and it is not a finished engineering state.",
+    "args": {
+      "term": "as-built titanium",
+      "includes": [
+        "stronger needles, less stretch"
+      ],
+      "excludes": [
+        "a finished engineering state"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "Stainless steel tells a different story. The grade most often printed is 316L, a corrosion-resistant steel used in pumps, valves and medical tools.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "Conventionally made and annealed, it is a soft, stretchy metal. Printed, it can be noticeably stronger.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "A study published in Nature Materials traced the reason to a network of microscopic cells inside each grain, formed as the melt pool froze, with walls enriched in alloying elements and tangled with defects.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "Those cell walls hinder deformation the way a fine mesh slows a crowd, raising strength, yet the steel still stretched substantially before breaking.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "Printing, in other words, does not just copy a conventional alloy. It builds a new internal structure out of the same chemistry.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "This is the key to reading any strength claim about printed metal.",
+    "args": {
+      "term": "printed 316L",
+      "includes": [
+        "a new internal structure"
+      ],
+      "excludes": [
+        "a copy of the conventional alloy"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "A printed bar of 316L is a new internal structure, not a copy of the conventional alloy, and it inherits its strength from how it was melted and cooled.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "Change the laser power, the scan pattern or the layer thickness, and that structure changes with it.",
+    "args": {
+      "term": "printed 316L",
+      "includes": [
+        "a new internal structure"
+      ],
+      "excludes": [
+        "a copy of the conventional alloy"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Printed stainless steel gets extra strength from tiny cells",
+    "narration": "That is why two published values for the same alloy can disagree without either laboratory being wrong.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "'We don't know yet' is a good answer when someone can tell you what we do know, what's missing, and what evidence would settle it.",
+    "args": {
+      "text": "'We don't know yet' is a good answer when someone can tell you what we do know, what's missing, and what evidence would settle it.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "Printed parts that fail early usually fail because of what is missing.",
+    "args": {
+      "title": "what is missing",
+      "steps": [
+        [
+          "powder fails to fully melt",
+          ""
+        ],
+        [
+          "a void is left behind",
+          ""
+        ],
+        [
+          "stress gathers at its edge",
+          ""
+        ],
+        [
+          "crack starts there",
+          ""
+        ]
+      ],
+      "note": "the part fails below what the metal could carry"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "When powder fails to fully melt, or the laser digs too deep and traps gas, a void is left behind.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.86,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "Under load, stress gathers at its edge, much as it does at the tip of a tear in paper.",
+    "args": {
+      "title": "what is missing",
+      "steps": [
+        [
+          "powder fails to fully melt",
+          ""
+        ],
+        [
+          "a void is left behind",
+          ""
+        ],
+        [
+          "stress gathers at its edge",
+          ""
+        ],
+        [
+          "crack starts there",
+          ""
+        ]
+      ],
+      "note": "the part fails below what the metal could carry"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "A crack starts there, grows with each loading cycle, and the part fails below what the metal could carry.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "Two defect families dominate. Lack-of-fusion flaws are irregular gaps between poorly bonded tracks or layers.",
+    "args": {
+      "title": "what is missing",
+      "steps": [
+        [
+          "powder fails to fully melt",
+          ""
+        ],
+        [
+          "a void is left behind",
+          ""
+        ],
+        [
+          "stress gathers at its edge",
+          ""
+        ],
+        [
+          "crack starts there",
+          ""
+        ]
+      ],
+      "note": "the part fails below what the metal could carry"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "Gas and keyhole pores are rounder, trapped bubbles. Irregular flaws with sharp edges are generally the more harmful of the two. Both are invisible from the outside of a finished part.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "Finding those voids is its own measurement problem, because they are inside the metal.",
+    "args": {
+      "title": "finding those voids",
+      "stages": [
+        "x-ray computed tomography",
+        "three-dimensional map of voids"
+      ],
+      "conclusion": "defects are located before the part is used"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "The main tool is x-ray computed tomography, the industrial cousin of a hospital scanner.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "Hundreds of x-ray images taken from different angles are rebuilt into a three-dimensional map of voids, so defects are located before the part is used.",
+    "args": {
+      "title": "finding those voids",
+      "stages": [
+        "x-ray computed tomography",
+        "three-dimensional map of voids"
+      ],
+      "conclusion": "defects are located before the part is used"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "NIST runs a benchmark program called AM Bench, in which carefully documented builds are measured and the data released so that researchers can test whether their models predict what the instruments actually see.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Pores, not the alloy, usually decide where a part breaks",
+    "narration": "The limit is resolution: the smaller the flaw you want to find, the smaller the part generally must be, so very fine pores in large parts can escape detection.",
+    "args": {
+      "title": "finding those voids",
+      "stages": [
+        "x-ray computed tomography",
+        "three-dimensional map of voids"
+      ],
+      "conclusion": "defects are located before the part is used"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Direction matters because the part is built in layers",
+    "narration": "A printed part is assembled one layer at a time, and that history stays in the metal.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Direction matters because the part is built in layers",
+    "narration": "In Ti-6Al-4V, grains tend to grow long and columnar, stretching upward through many layers as each new layer is melted on top.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Direction matters because the part is built in layers",
+    "narration": "Lack-of-fusion flaws, when they occur, tend to lie flat between layers. Pull a bar along the build direction and you are pulling across those layer boundaries; pull it sideways and you are pulling along them.",
+    "args": {
+      "term": "build direction",
+      "includes": [
+        "a possible weak axis to check"
+      ],
+      "excludes": [
+        "a property you can ignore"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Direction matters because the part is built in layers",
+    "narration": "Published tests often show different strength and, especially, different elongation depending on orientation.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Direction matters because the part is built in layers",
+    "narration": "For a designer, build direction is a possible weak axis to check, not a property you can ignore, and test bars are deliberately printed in several orientations for exactly this reason. The same logic applies to any alloy printed this way.",
+    "args": {
+      "term": "build direction",
+      "includes": [
+        "a possible weak axis to check"
+      ],
+      "excludes": [
+        "a property you can ignore"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Fatigue is where printed parts most often fall short",
+    "narration": "Most real parts are not pulled once. A bracket on an aircraft or a joint in a machine flexes back and forth, and failure under repeated loading is called fatigue.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Fatigue is where printed parts most often fall short",
+    "narration": "Here the pull test runs out. It tells you peak strength under one slow pull and how far the metal stretches, but not how many load cycles a part survives.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "Fatigue is where printed parts most often fall short",
+    "narration": "Fatigue is where as-built printed parts most often fall short of wrought metal.",
+    "args": {
+      "title": "here the pull test runs out",
+      "items": [
+        "+peak strength under one slow pull",
+        "+how far the metal stretches",
+        "-how many load cycles a part survives",
+        "?how rough surfaces and pores interact over time"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Fatigue is where printed parts most often fall short",
+    "narration": "The printed surface is rough, studded with half-melted powder particles, and every bump is a place for a crack to start.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Fatigue is where printed parts most often fall short",
+    "narration": "Internal pores act the same way from inside. Exactly how rough surfaces and pores interact over time, across different machines and alloys, is still being worked out, and fatigue results show far more scatter than tensile results.",
+    "args": {
+      "title": "here the pull test runs out",
+      "items": [
+        "+peak strength under one slow pull",
+        "+how far the metal stretches",
+        "-how many load cycles a part survives",
+        "?how rough surfaces and pores interact over time"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "Industry's answer is post-processing, and it follows a common finishing route. First comes stress relief, a heat treatment that relaxes the strains locked in during printing so the part does not warp or crack when it is cut from the build plate.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "Next, for demanding parts, comes hot isostatic pressing: the part is heated in a sealed vessel under high gas pressure, which squeezes internal pores shut and lets the metal bond across them.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "Pores open to the surface cannot be closed this way, because the gas simply enters them.",
+    "args": {
+      "title": "common finishing route",
+      "steps": [
+        [
+          "stress relief",
+          ""
+        ],
+        [
+          "hot isostatic pressing",
+          ""
+        ],
+        [
+          "machining the surface",
+          ""
+        ]
+      ],
+      "note": "fatigue testing on finished parts"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "Finally, machining the surface removes the rough printed skin. Each step costs time and money, and each should be checked with fatigue testing on finished parts rather than assumed.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "Done well, this route brings printed titanium much closer to wrought titanium in fatigue, and in some studies level with it.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "Skipped, it can leave a part that tests well in tension and still fails early in service.",
+    "args": {
+      "title": "common finishing route",
+      "steps": [
+        [
+          "stress relief",
+          ""
+        ],
+        [
+          "hot isostatic pressing",
+          ""
+        ],
+        [
+          "machining the surface",
+          ""
+        ]
+      ],
+      "note": "fatigue testing on finished parts"
+    },
+    "from": "directive+destagnate+relief"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Hot pressing and machining close much of the gap",
+    "narration": "So when someone quotes the strength of printed metal, the useful follow-up is not just which alloy, but which machine, which orientation, which heat treatment, and whether the surface was finished.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Notice which kind of evidence carries each claim in this episode. The strength figure rests on standardized pull tests, the kind ASTM International writes as standard test methods and specifications.",
+    "args": {
+      "title": "where the figures come from",
+      "sources": [
+        [
+          "ASTM International",
+          "standard test methods and specifications"
+        ],
+        [
+          "ASM International",
+          "handbook data on alloys and heat treatment"
+        ],
+        [
+          "Nature Materials",
+          "the cell structure in printed 316L"
+        ],
+        [
+          "NIST",
+          "benchmark measurements of printed builds"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "The explanation of titanium's needles rests on metallurgy long documented in ASM International handbook data on alloys and heat treatment.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "The stainless steel story rests on microscopy reported in Nature Materials, which showed the cell structure in printed 316L.",
+    "args": {
+      "title": "where the figures come from",
+      "sources": [
+        [
+          "ASTM International",
+          "standard test methods and specifications"
+        ],
+        [
+          "ASM International",
+          "handbook data on alloys and heat treatment"
+        ],
+        [
+          "Nature Materials",
+          "the cell structure in printed 316L"
+        ],
+        [
+          "NIST",
+          "benchmark measurements of printed builds"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "The defect story rests on NIST benchmark measurements of printed builds and on similar scanning work elsewhere.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Each is a different instrument answering a different part of the question, and none of them alone tells you how a specific part will behave.",
+    "args": {
+      "title": "where the figures come from",
+      "sources": [
+        [
+          "ASTM International",
+          "standard test methods and specifications"
+        ],
+        [
+          "ASM International",
+          "handbook data on alloys and heat treatment"
+        ],
+        [
+          "Nature Materials",
+          "the cell structure in printed 316L"
+        ],
+        [
+          "NIST",
+          "benchmark measurements of printed builds"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "The strength values in this episode describe test bars, not your part.",
+    "args": {
+      "term": "test-bar strength",
+      "includes": [
+        "evidence about the metal"
+      ],
+      "excludes": [
+        "a rating for any particular part"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "They are evidence about the metal, not a rating for any particular part, because a part brings its own geometry, surface, orientation and defect population.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "They also come largely from well-studied alloys like Ti-6Al-4V and 316L on well-tuned machines; newer alloys have far less data behind them.",
+    "args": {
+      "term": "test-bar strength",
+      "includes": [
+        "evidence about the metal"
+      ],
+      "excludes": [
+        "a rating for any particular part"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Long-term behaviour, such as fatigue over very many cycles or slow deformation at high temperature, is the thinnest part of the record, and the published spread is wide.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "What would settle it is more of the slow, expensive work: large numbers of finished parts, scanned, tested to failure, with their full process history recorded alongside the result.",
+    "args": {
+      "term": "test-bar strength",
+      "includes": [
+        "evidence about the metal"
+      ],
+      "excludes": [
+        "a rating for any particular part"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Printed metal is not weak, and it is not magic. In a pull test it can match or beat conventional metal, because fast melting and freezing build fine, strong structures.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "What decides a real part's strength is everything around that number: the pores it hides, the direction it was built, and how carefully it was finished.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  }
+]

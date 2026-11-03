@@ -1,0 +1,1127 @@
+[
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Ascending 1000 meters causes trapped internal gas to expand one hundredfold. Deep sea fish die at the surface primarily from barotrauma \u2014 tissue damage caused by rapid decompression.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "NOAA Ocean Exploration and the Monterey Bay Aquarium Research Institute document that plunging ambient pressure forces dissolved gases into vascular bubbles, displacing organs and rupturing cellular membranes.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Net trawls consistently verify this mechanical destruction on deck, but because maintaining living specimens requires specialized pressurized recovery chambers, researchers have not yet settled universal safe ascent thresholds across species.",
+    "args": {
+      "depth_m": 1000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.55,
+    "heading": "Title card",
+    "narration": "Why do deep sea fish die when brought to the surface?",
+    "args": {
+      "lines": [
+        "Why do deep sea",
+        "fish die when brought"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "Pressure at depth is not the ocean pushing on a fish from above.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "It is water molecules pressing equally from every side \u2014 top, bottom, left, right, forward, back.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "At sea level you experience one atmosphere of pressure. At ten meters depth you experience two atmospheres.",
+    "args": {
+      "term": "PRESSURE",
+      "meaning": "force per unit area",
+      "boundary": "measured in atmospheres or pascals",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "At one hundred meters, eleven atmospheres. The relationship is linear: every ten meters adds roughly one atmosphere.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "NOAA Ocean Exploration states that at the average ocean depth of three thousand seven hundred meters, pressure reaches three hundred seventy-one atmospheres.",
+    "args": {
+      "term": "PRESSURE",
+      "meaning": "force per unit area",
+      "boundary": "measured in atmospheres or pascals",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "Deep sea fish do not resist this pressure. They equilibrate with it.",
+    "args": {
+      "term": "ADAPTATION",
+      "includes": [
+        "equilibrium"
+      ],
+      "excludes": [
+        "resistance"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "Their tissues contain water, and water is nearly incompressible. The pressure outside matches the pressure inside.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "There is no net crushing force because there is no pressure difference.",
+    "args": {
+      "term": "ADAPTATION",
+      "includes": [
+        "equilibrium"
+      ],
+      "excludes": [
+        "resistance"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Pressure is not weight pressing down \u2014 it is force from all directions",
+    "narration": "A fish at depth is not being squeezed any more than you are being squeezed by the atmosphere right now. It simply lives in a different baseline.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.79,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "Most bony fish possess a swim bladder \u2014 a gas-filled sac that provides buoyancy.",
+    "args": {
+      "title": "SWIM BLADDER",
+      "parts": [
+        [
+          "bladder",
+          0.5,
+          0.4
+        ],
+        [
+          "esophagus",
+          0.5,
+          0.3
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "By adjusting the volume of gas inside, a fish can hover at a chosen depth without sinking or rising.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 8.28,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "Shallow-water fish inflate or deflate the bladder through a connection to the esophagus or through gas exchange with the blood.",
+    "args": {
+      "title": "SWIM BLADDER",
+      "parts": [
+        [
+          "bladder",
+          0.5,
+          0.4
+        ],
+        [
+          "esophagus",
+          0.5,
+          0.3
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "The Monterey Bay Aquarium Research Institute notes that many deep sea fish either lack swim bladders entirely or have bladders filled with lipids instead of gas, precisely because gas becomes lethally unstable under rapid decompression.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "When a fish with a gas-filled swim bladder ascends rapidly, the gas inside expands according to Boyle's law: pressure and volume are inversely related.",
+    "args": {
+      "title": "ASCENT FAILURE",
+      "stages": [
+        "pressure drops",
+        "gas expands",
+        "bladder ruptures"
+      ],
+      "conclusion": "organs displaced"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "If pressure drops by half, volume doubles. If pressure drops from one hundred atmospheres to one atmosphere \u2014 a rise from one thousand meters to the surface \u2014 the gas attempts to expand one hundredfold.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "The bladder cannot stretch that much. It ruptures, or it expands so violently that it pushes the stomach out through the mouth and compresses other organs.",
+    "args": {
+      "title": "ASCENT FAILURE",
+      "stages": [
+        "pressure drops",
+        "gas expands",
+        "bladder ruptures"
+      ],
+      "conclusion": "organs displaced"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Swim bladders are the first system to fail",
+    "narration": "NOAA documents this as the most visible sign of barotrauma in captured deep sea fish.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "Fish tissues, like human tissues, hold dissolved gases \u2014 primarily nitrogen and oxygen.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "At high pressure, more gas dissolves into the blood and tissue fluids.",
+    "args": {
+      "title": "BUBBLE FORMATION",
+      "steps": [
+        [
+          "pressure drops rapidly",
+          ""
+        ],
+        [
+          "gas solubility decreases",
+          ""
+        ],
+        [
+          "bubbles nucleate in tissue",
+          ""
+        ]
+      ],
+      "note": "circulation blocked"
+    },
+    "from": "directive+destagnate+relief"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "Deep sea fish can have significantly elevated dissolved gas concentrations compared to surface fish, though the exact percentage varies by species and depth.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "When pressure drops suddenly, those gases come out of solution, forming bubbles inside blood vessels, muscle and organs.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "This is decompression sickness, the same mechanism that affects human divers who ascend too quickly.",
+    "args": {
+      "title": "BUBBLE FORMATION",
+      "steps": [
+        [
+          "pressure drops rapidly",
+          ""
+        ],
+        [
+          "gas solubility decreases",
+          ""
+        ],
+        [
+          "bubbles nucleate in tissue",
+          ""
+        ]
+      ],
+      "note": "circulation blocked"
+    },
+    "from": "directive+destagnate+relief"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "The bubbles are not harmless. They block capillaries, interrupt oxygen delivery, and cause tissue death.",
+    "args": {
+      "title": "BUBBLE FORMATION",
+      "steps": [
+        [
+          "pressure drops rapidly",
+          ""
+        ],
+        [
+          "gas solubility decreases",
+          ""
+        ],
+        [
+          "bubbles nucleate in tissue",
+          ""
+        ]
+      ],
+      "note": "circulation blocked"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "In extreme cases they form large pockets that distort the shape of internal organs.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Dissolved gases come out of solution in tissues",
+    "narration": "The Smithsonian Ocean notes that even species without swim bladders suffer from this process, because every cell and every fluid space in the body is saturated with gas at depth. The damage is cumulative and often irreversible.",
+    "args": {
+      "title": "BUBBLE FORMATION",
+      "steps": [
+        [
+          "pressure drops rapidly",
+          ""
+        ],
+        [
+          "gas solubility decreases",
+          ""
+        ],
+        [
+          "bubbles nucleate in tissue",
+          ""
+        ]
+      ],
+      "note": "circulation blocked"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "A fish's eye contains vitreous humor \u2014 a gel-like fluid that fills the eyeball and maintains its shape.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "At depth, the pressure inside the eye equals the pressure outside. During rapid ascent, the pressure outside drops faster than the pressure inside can equalize.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.79,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "The fluid pushes outward against the sclera, the tough outer layer of the eye.",
+    "args": {
+      "title": "EYE STRUCTURE",
+      "parts": [
+        [
+          "vitreous humor",
+          0.5,
+          0.5
+        ],
+        [
+          "sclera",
+          0.6,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "In many deep sea fish brought to the surface, the eyes protrude grotesquely from the skull, sometimes rupturing entirely.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 8.28,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "This is not an adaptation failing \u2014 it is a structure designed for one pressure regime being forced into another.",
+    "args": {
+      "title": "EYE STRUCTURE",
+      "parts": [
+        [
+          "vitreous humor",
+          0.5,
+          0.5
+        ],
+        [
+          "sclera",
+          0.6,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "The eye does not need to be strong when pressure is equal on both sides.",
+    "args": {
+      "term": "EQUILIBRIUM",
+      "includes": [
+        "matched internal and external pressure"
+      ],
+      "excludes": [
+        "structural strength"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "It only needs to maintain its shape. Remove the external pressure and the internal pressure becomes a destructive force.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Eyes and other fluid-filled structures bulge outward",
+    "narration": "The same principle applies to other fluid-filled cavities \u2014 the gut, the cranial cavity, the lateral line system. All of them are built for equilibrium, not for imbalance.",
+    "args": {
+      "term": "EQUILIBRIUM",
+      "includes": [
+        "matched internal and external pressure"
+      ],
+      "excludes": [
+        "structural strength"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "The deep ocean is cold. Below one thousand meters, temperature hovers near four degrees Celsius year-round, according to NOAA.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "Surface water in temperate and tropical zones can exceed twenty degrees Celsius.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "comparison",
+    "seconds": 4.97,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "A fish adapted to four degrees experiences metabolic disruption at twenty degrees.",
+    "args": {
+      "a_label": "DEEP",
+      "a_m": 4,
+      "b_label": "SURFACE",
+      "b_m": 20
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "Enzymes that fold correctly in cold water may denature in warm water.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "comparison",
+    "seconds": 9.0,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "Oxygen solubility decreases as temperature rises, so even if the fish's gills still function, the water holds less of what it needs.",
+    "args": {
+      "a_label": "DEEP",
+      "a_m": 4,
+      "b_label": "SURFACE",
+      "b_m": 20
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "Deep sea fish are ectotherms \u2014 their body temperature matches the surrounding water.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "They have no mechanism to cool themselves. Enzyme systems are optimized for four degrees Celsius.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "comparison",
+    "seconds": 7.03,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "Membrane fluidity is tuned to four degrees Celsius. At twenty degrees Celsius, these systems cannot regulate properly.",
+    "args": {
+      "a_label": "DEEP",
+      "a_m": 4,
+      "b_label": "SURFACE",
+      "b_m": 20
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Temperature shock is a secondary stressor",
+    "narration": "The Monterey Bay Aquarium Research Institute states that temperature shock alone can be lethal, even if pressure change is controlled. The two stressors compound each other.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories.",
+    "args": {
+      "text": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.69,
+    "heading": "Producer POV",
+    "narration": "The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+    "args": {
+      "text": "The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Some species tolerate a wider range than others",
+    "narration": "Not all deep sea fish are equally fragile. Species that migrate vertically \u2014 moving between deep and shallow water to feed \u2014 have adaptations that allow controlled pressure changes.",
+    "args": {
+      "items": [
+        [
+          "Greenland shark",
+          2200.0
+        ],
+        [
+          "Cusk eel",
+          8370.0
+        ],
+        [
+          "Snailfish",
+          8178.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 6.21,
+    "heading": "Some species tolerate a wider range than others",
+    "narration": "The Greenland shark, for example, ranges from the surface to depths exceeding twenty-two hundred meters.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 0,
+      "zoom": 1.0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Some species tolerate a wider range than others",
+    "narration": "The cusk eel has been recorded at eighty-three hundred seventy meters, and the Mariana snailfish holds the record at eighty-one seventy-eight meters, according to NOAA and the Guinness World Records.",
+    "args": {
+      "items": [
+        [
+          "Greenland shark",
+          2200.0
+        ],
+        [
+          "Cusk eel",
+          8370.0
+        ],
+        [
+          "Snailfish",
+          8178.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Some species tolerate a wider range than others",
+    "narration": "These extreme-depth species often lack swim bladders entirely and have gelatinous, watery tissues that compress and expand with less structural damage.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Some species tolerate a wider range than others",
+    "narration": "Even so, bringing them up slowly does not guarantee survival. A controlled ascent over hours reduces barotrauma but does not eliminate temperature shock or the metabolic stress of changing pressure.",
+    "args": {
+      "term": "CAPTURE METHOD",
+      "includes": [
+        "slow controlled ascent"
+      ],
+      "excludes": [
+        "rapid net haul"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Some species tolerate a wider range than others",
+    "narration": "Research vessels equipped with pressurized collection chambers have kept some deep sea specimens alive at the surface by maintaining them in cold, high-pressure water, but this requires specialized equipment and is not standard practice. The logistics are formidable and the success rate remains low.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "The paradox is that studying deep sea fish in their natural state requires leaving them there.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "NOAA Ocean Exploration and the Monterey Bay Aquarium Research Institute deploy remotely operated vehicles and crewed submersibles to observe, film and sample deep sea life without bringing it to the surface.",
+    "args": {
+      "title": "FATAL COLLECTION",
+      "stages": [
+        "net trawl",
+        "rapid ascent",
+        "specimen dies"
+      ],
+      "conclusion": "preserved for anatomy only"
+    },
+    "from": "directive+destagnate+relief"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "These platforms can spend hours at depth, recording behavior, anatomy and physiology in the environment where the animal is alive and functional.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "The footage is the only window into how these animals actually live.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.62,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "Traditional collection methods \u2014 trawl nets hauled to the surface \u2014 yield dead or dying specimens.",
+    "args": {
+      "title": "FATAL COLLECTION",
+      "stages": [
+        "net trawl",
+        "rapid ascent",
+        "specimen dies"
+      ],
+      "conclusion": "preserved for anatomy only"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "These are valuable for anatomical study, genetic analysis and species identification, but they reveal nothing about behavior, locomotion or ecological role.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "The fish that reaches the deck is not the fish that lived at depth.",
+    "args": {
+      "title": "FATAL COLLECTION",
+      "stages": [
+        "net trawl",
+        "rapid ascent",
+        "specimen dies"
+      ],
+      "conclusion": "preserved for anatomy only"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "Its tissues are distorted, its swim bladder may have ruptured, and its eyes may have burst.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Observation requires either in situ study or fatal collection",
+    "narration": "What you see is the wreckage of decompression, not the animal itself.",
+    "args": {
+      "title": "FATAL COLLECTION",
+      "stages": [
+        "net trawl",
+        "rapid ascent",
+        "specimen dies"
+      ],
+      "conclusion": "preserved for anatomy only"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The deeper the fish, the more catastrophic the ascent. A fish from one thousand meters experiences a pressure drop of one hundred atmospheres.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "A fish from four thousand meters \u2014 near the average ocean depth \u2014 experiences a drop of four hundred atmospheres.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "A fish from eight thousand meters, near the maximum depth of the abyssal plains, experiences a drop of eight hundred atmospheres.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "The violence scales linearly with depth, but the biological consequences are not linear.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "There is a threshold beyond which no tissue architecture can tolerate the change, no matter how slowly it occurs.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "We do not yet know where that threshold lies for most species.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "We do not know the safe ascent rate for most deep sea species.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Published ranges are wide, and experimental data are sparse because keeping deep sea fish alive in captivity is difficult even under controlled conditions.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The threshold at which barotrauma becomes irreversible varies by species, by depth of origin, and by the presence or absence of a swim bladder.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "Stating that rapid ascent is fatal is well supported. Stating a universal safe rate is not.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The evidence tells us what kills them. It does not yet tell us how to prevent it in every case.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "Every cell in a deep sea fish is wrapped in a lipid bilayer membrane that must remain fluid enough to function but stable enough to hold its shape.",
+    "args": {
+      "term": "MEMBRANE FLUIDITY",
+      "meaning": "lipid bilayer flexibility",
+      "boundary": "optimized for ambient pressure",
+      "source": "MBARI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "At high pressure, membranes tend to compress and become more rigid. Deep sea organisms compensate by altering their membrane lipid composition \u2014 increasing the proportion of unsaturated fatty acids, which remain fluid under compression.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "The Monterey Bay Aquarium Research Institute reports that this adaptation is so finely tuned that a pressure change of even fifty atmospheres can push membrane fluidity outside its functional range.",
+    "args": {
+      "term": "MEMBRANE FLUIDITY",
+      "meaning": "lipid bilayer flexibility",
+      "boundary": "optimized for ambient pressure",
+      "source": "MBARI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "When pressure drops suddenly, these membranes become too fluid. Ion channels that regulate sodium, potassium and calcium leak.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "The electrical gradients that drive nerve signals and muscle contractions collapse. Cells lose the ability to maintain their internal chemistry distinct from the surrounding fluid.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "This is not a mechanical rupture \u2014 it is a regulatory failure.",
+    "args": {
+      "title": "MEMBRANE FAILURE",
+      "stages": [
+        "pressure drops",
+        "lipids expand",
+        "fluidity increases"
+      ],
+      "conclusion": "ion channels leak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "The cell is still intact, but it can no longer function as a bounded system.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Proteins fold into three-dimensional shapes determined by weak bonds \u2014 hydrogen bonds, van der Waals forces, hydrophobic interactions.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Pressure affects all of these. A protein that folds correctly at four hundred atmospheres may misfold at one atmosphere.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Woods Hole Oceanographic Institution notes that deep sea enzymes often have amino acid sequences that differ from their shallow-water counterparts in ways that stabilize the folded structure under high pressure.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Remove that pressure and the protein unfolds or aggregates. Enzymes lose catalytic activity.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Structural proteins lose mechanical strength. The biochemistry of the cell stops working not because the molecules are destroyed, but because they are no longer in the shape that makes them functional.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Closing",
+    "narration": "A deep sea fish dies at the surface because its body is a solution to a problem that no longer exists.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The pressure that shaped every cell, every membrane, every gas-filled space is gone.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Closing",
+    "narration": "What remains is a structure without its context \u2014 an answer to a question the surface does not ask.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  }
+]
