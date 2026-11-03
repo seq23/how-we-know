@@ -32,19 +32,6 @@
     "reports": 1,
     "stage": "mon-draft"
   },
-  "render-gate::RENDER_HELD": {
-    "code": "RENDER_HELD",
-    "first_reported_at": "2026-11-03T15:06:27+00:00",
-    "issue": null,
-    "items": [
-      "why-are-deep-sea-creatures-so-big - render could not be probed"
-    ],
-    "last_reported_at": "2026-11-03T15:06:27+00:00",
-    "last_seen_at": "2026-11-03T15:06:27+00:00",
-    "reported_run": null,
-    "reports": 1,
-    "stage": "render-gate"
-  },
   "sun-rank::RUNWAY_CRITICAL": {
     "code": "RUNWAY_CRITICAL",
     "first_reported_at": "2026-11-01T11:06:02+00:00",

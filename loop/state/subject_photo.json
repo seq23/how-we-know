@@ -32,12 +32,16 @@
     "tries": 1
   },
   "are-sea-pigs-real": {
-    "last_tried": "2026-11-02",
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-are-sea-pigs-real__drawn-card.jpg",
+    "found_at": "2026-11-03T19:57:04+00:00",
+    "last_tried": "2026-11-03",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
     "queries": [
       "pigs"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "drawn card",
+    "tries": 2,
     "why": "s never place it in the episode's domain; pixabay 4973380: its tags never place it in the episode's domain; its page never places it in the episode's domain; item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
   },
   "does-damascus-steel-rust": {
@@ -91,27 +95,39 @@
     "tries": 1
   },
   "how-does-chemosynthesis-work": {
-    "last_tried": "2026-11-02",
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-how-does-chemosynthesis-work__drawn-card.jpg",
+    "found_at": "2026-11-03T19:57:06+00:00",
+    "last_tried": "2026-11-03",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
     "queries": [
       "chemosynthesis"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "drawn card",
+    "tries": 2,
     "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
   },
   "how-does-thermohaline-circulation-work": {
-    "last_tried": "2026-11-02",
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-how-does-thermohaline-circulation-work__drawn-card.jpg",
+    "found_at": "2026-11-03T19:58:08+00:00",
+    "last_tried": "2026-11-03",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
     "queries": [
       "thermohaline circulation",
       "thermohaline",
       "circulation"
     ],
-    "status": "searching",
-    "tries": 1,
-    "why": "pixabay: no photo whose tags name the subject; not a photograph (not a JPEG); no candidate passed both gates"
+    "status": "drawn card",
+    "tries": 2,
+    "why": "pixabay: no photo whose tags name the subject; imageinfo failed: HTTP Error 429: Too Many Requests; not a photograph (not a JPEG); not a photograph (not a JPEG); no candidate passed both gates"
   },
   "how-mid-oceanic-ridge-is-formed": {
-    "last_tried": "2026-11-02",
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-how-mid-oceanic-ridge-is-formed__drawn-card.jpg",
+    "found_at": "2026-11-03T20:00:23+00:00",
+    "last_tried": "2026-11-03",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
     "queries": [
       "mid oceanic ridge formed",
       "mid oceanic",
@@ -120,9 +136,9 @@
       "oceanic",
       "ridge"
     ],
-    "status": "searching",
-    "tries": 1,
-    "why": "a photograph (not a JPEG); imageinfo failed: HTTP Error 429: Too Many Requests; item page marks the work as copyrighted (cc by 4.0); item page marks the work as copyrighted (cc by-sa 4.0); not a photograph (not a JPEG); its page never places it in the episode's domain; no candidate passed both gates"
+    "status": "drawn card",
+    "tries": 2,
+    "why": "s copyrighted (cc by 4.0); imageinfo failed: HTTP Error 429: Too Many Requests; item page marks the work as copyrighted (cc by 4.0); item page marks the work as copyrighted (cc by-sa 4.0); not a photograph (not a JPEG); its page never places it in the episode's domain; no candidate passed both gates"
   },
   "how-powder-metallurgy-works": {
     "chosen_by": "auto",
@@ -135,6 +151,24 @@
       "powder metallurgy",
       "powder",
       "metallurgy"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "how-to-keep-steel-from-rusting": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-how-to-keep-steel-from-rusting__pixabay-7393224.jpg",
+    "found_at": "2026-11-03T20:00:28+00:00",
+    "item_url": "https://pixabay.com/photos/keep-castle-laurenburg-castle-tower-7393224/",
+    "last_tried": "2026-11-03",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "keep steel rusting",
+      "keep steel",
+      "steel rusting",
+      "keep",
+      "steel",
+      "rusting"
     ],
     "status": "found",
     "tries": 1
@@ -250,13 +284,75 @@
     "why": "pixabay: no photo whose tags name the subject; imageinfo failed: HTTP Error 429: Too Many Requests; no candidate passed both gates"
   },
   "what-blobfish-actually-looks-like": {
-    "last_tried": "2026-11-02",
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-blobfish-actually-looks-like__drawn-card.jpg",
+    "found_at": "2026-11-03T20:00:30+00:00",
+    "last_tried": "2026-11-03",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
     "queries": [
       "blobfish"
     ],
-    "status": "searching",
-    "tries": 1,
+    "status": "drawn card",
+    "tries": 2,
     "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
+  },
+  "what-does-a-goblin-shark-look-like": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-does-a-goblin-shark-look-like__goblin-shark-mitsukurina-owstoni-jpg.jpg",
+    "found_at": "2026-11-03T20:01:12+00:00",
+    "item_url": "https://commons.wikimedia.org/wiki/File:Goblin_shark_(Mitsukurina_owstoni).jpg",
+    "last_tried": "2026-11-03",
+    "licence": "Public domain",
+    "queries": [
+      "goblin shark",
+      "goblin",
+      "shark"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "what-does-a-greenland-shark-look-like": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-does-a-greenland-shark-look-like__pixabay-9129900.jpg",
+    "found_at": "2026-11-03T20:01:15+00:00",
+    "item_url": "https://pixabay.com/photos/greenland-winter-nature-cold-9129900/",
+    "last_tried": "2026-11-03",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "greenland shark",
+      "greenland",
+      "shark"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "what-does-a-sea-pig-look-like": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-does-a-sea-pig-look-like__pixabay-171908.jpg",
+    "found_at": "2026-11-03T20:01:18+00:00",
+    "item_url": "https://pixabay.com/photos/staniel-cay-swimming-pig-seagull-171908/",
+    "last_tried": "2026-11-03",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "pig"
+    ],
+    "status": "found",
+    "tries": 1
+  },
+  "what-is-inside-butter-rice-meat": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-is-inside-butter-rice-meat__pixabay-7317384.jpg",
+    "found_at": "2026-11-03T20:01:22+00:00",
+    "item_url": "https://pixabay.com/photos/butter-meal-hands-food-7317384/",
+    "last_tried": "2026-11-03",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "butter cream",
+      "butter",
+      "cream"
+    ],
+    "status": "found",
+    "tries": 1
   },
   "what-is-inside-chili-coffee-honey": {
     "chosen_by": "auto",
@@ -273,6 +369,39 @@
     "status": "found",
     "tries": 2,
     "why": "marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 3.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
+  },
+  "where-does-chemosynthesis-occur": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-where-does-chemosynthesis-occur__drawn-card.jpg",
+    "found_at": "2026-11-03T20:01:30+00:00",
+    "last_tried": "2026-11-03",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+    "queries": [
+      "chemosynthesis occur",
+      "chemosynthesis",
+      "occur"
+    ],
+    "status": "drawn card",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
+  },
+  "why-bread-rises-steak-browns-chocolate-snaps": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
+    "found_at": "2026-11-03T20:01:35+00:00",
+    "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
+    "last_tried": "2026-11-03",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "bread rise steak brown",
+      "bread rise",
+      "rise steak",
+      "steak brown",
+      "brown chocolate",
+      "chocolate snap"
+    ],
+    "status": "found",
+    "tries": 1
   },
   "why-deep-sea-creatures-are-creepers": {
     "chosen_by": "owner",
@@ -330,6 +459,21 @@
     "status": "found",
     "tries": 2,
     "why": "item page marks the work as copyrighted (cc by 2.0); item page marks the work as copyrighted (cc by 2.0); item page marks the work as copyrighted (cc by 2.0); no candidate passed both gates"
+  },
+  "why-is-glass-clear": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-why-is-glass-clear__pixabay-7777088.jpg",
+    "found_at": "2026-11-03T20:01:39+00:00",
+    "item_url": "https://pixabay.com/photos/glass-clear-circle-round-clean-7777088/",
+    "last_tried": "2026-11-03",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "glass clear",
+      "glass",
+      "clear"
+    ],
+    "status": "found",
+    "tries": 1
   },
   "why-is-my-bread-not-rising": {
     "chosen_by": "auto",
