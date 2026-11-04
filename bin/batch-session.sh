@@ -602,6 +602,8 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
     echo "episode is rendered. If the runway is still low the shortfall is SCRIPTS,"
     echo "not audio - the authoring lane writes those in the cloud on Mondays."
   fi
+  # Restored approved renders may still need captions and a fresh gate verdict.
+  step captions phase_captions
   # Idle for narration and render is NOT idle for Shorts. The cut-and-shelve
   # step runs here too, or an idle week starves the cloud Shorts lane (see
   # shelve_shorts above).
