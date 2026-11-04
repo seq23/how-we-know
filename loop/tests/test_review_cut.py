@@ -26,6 +26,17 @@ with tempfile.TemporaryDirectory() as td, patch.dict(os.environ, {}, clear=False
                     '-f', 'lavfi', '-i', 'anullsrc', '-t', '1', '-c:v', 'libx264', '-c:a', 'aac',
                     '-f', 'mp4', str(source)], check=True)
     Path(str(source) + '.footage.json').write_text(json.dumps({'shots': [{}]}))
+    # The frame gate stays active: natural blue ocean is not a black bar.
+    from PIL import Image, ImageDraw
+    sea = Image.new('RGB', (640, 360), (1, 3, 55))
+    ImageDraw.Draw(sea).ellipse((100, 30, 540, 330), fill=(70, 90, 130))
+    sea_path = root / 'sea.png'
+    sea.save(sea_path)
+    assert not FC.black_bars([str(sea_path)]), 'blue full-frame ocean rejected'
+    ImageDraw.Draw(sea).rectangle((0, 0, 70, 360), fill='black')
+    ImageDraw.Draw(sea).rectangle((570, 0, 640, 360), fill='black')
+    sea.save(sea_path)
+    assert FC.black_bars([str(sea_path)]), 'actual pillarbox accepted'
     dest = root / 'renders/review-test'
     dest.mkdir()
     with patch.object(LP, 'variety_problems', return_value=['too-soon repeat', 'distinct floor']), \

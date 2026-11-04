@@ -24,3 +24,7 @@ files in a `review-*` directory; R2 writes, upload and automated state pushes
 are refused. Review paths are also refused by R2/upload after the flag is
 unset. The one behavior test is `loop/tests/test_review_cut.py`, discovered
 by `loop/tests/run_all.py`.
+
+The bar detector checks that side strips are dark in every RGB channel.
+Natural deep blue water can have low luminance without being a black bar;
+the behavior test covers both a full-frame blue ocean and real black bars.

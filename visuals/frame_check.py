@@ -107,14 +107,16 @@ def black_bars(paths: list[str]) -> dict[str, str]:
     from PIL import Image, ImageStat                     # noqa: PLC0415
     found = {}
     for p in paths:
-        im = Image.open(p).convert("L")
+        im = Image.open(p).convert("RGB")
         w, h = im.size
         k = max(2, int(w * BAR_FRACTION))
         left = ImageStat.Stat(im.crop((0, 0, k, h)))
         right = ImageStat.Stat(im.crop((w - k, 0, w, h)))
-        mid = ImageStat.Stat(im.crop((k, 0, w - k, h)))
-        if (left.mean[0] <= BAR_BLACK and right.mean[0] <= BAR_BLACK
-                and left.stddev[0] < 6 and right.stddev[0] < 6
+        mid = ImageStat.Stat(im.crop((k, 0, w - k, h)).convert("L"))
+        # Black bars are dark in EVERY channel. Deep blue ocean can have
+        # very low luminance while its blue channel still carries a picture.
+        if (max(left.mean) <= BAR_BLACK and max(right.mean) <= BAR_BLACK
+                and max(left.stddev) < 6 and max(right.stddev) < 6
                 and mid.mean[0] > BAR_PICTURE):
             found[p] = "black pillarbox bars at the sides"
     return found
