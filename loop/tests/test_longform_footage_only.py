@@ -60,7 +60,7 @@ def photo(i, rel="p.jpg"):
 # ---- 1. footage first, then slowed reuse, then moving photographs --------
 clips = [clip(0, 20.5), clip(1, 16.5)]           # ~36 s of clean footage
 total = 300.0
-shots = LP.build(total, clips, [photo(0), photo(1)])
+shots = LP.build(total, clips, [photo(i) for i in range(20)])
 kinds = Counter(s["kind"] for s in shots)
 check("only footage and photographs", set(kinds) <= {"footage", "photo"}, str(kinds))
 check("covers the narration exactly",
@@ -94,12 +94,19 @@ check("the reel passes the variety check (samples, 3-min reuse, 25% share)",
       not LP.variety_problems(reel), str(LP.variety_problems(reel)[:3]))
 few = [vclip(0, "great grenadier", 90), vclip(1, "giant grenadier", 90),
        vclip(2, "sea spider", 90), vclip(3, "isopod", 90)]
-probs = LP.variety_problems(LP.build(636.0, few, []))
-check("great and giant grenadier count as ONE animal; 3 animals fail the 9-subject floor",
-      any("only 3 distinct" in p for p in probs), str(probs))
+try:
+    LP.build(636.0, few, [])
+    check("3 animals cannot bypass the 9-subject floor", False)
+except LP.NoSubjectPicture:
+    check("3 animals cannot bypass the 9-subject floor", True)
+
 thin = [vclip(i, subj, 9.0) for i, subj in enumerate(subs)]       # 10 subjects, 10 moments
-check("under 32 distinct source moments in 10.6 min fails",
-      any("distinct source moment" in p for p in LP.variety_problems(LP.build(636.0, thin, []))))
+try:
+    LP.build(636.0, thin, [])
+    check("insufficient safe moments stop instead of repeating early", False)
+except LP.NoSubjectPicture:
+    check("insufficient safe moments stop instead of repeating early", True)
+
 one = [{"kind": "footage", "key": "a", "start": 0.0, "speed": 1.0, "subject": "giant isopod",
         "seconds": 45.0, "title": "a"},
        {"kind": "footage", "key": "b", "start": 0.0, "speed": 1.0, "subject": "sea spider",
@@ -138,11 +145,10 @@ except LP.NoSubjectPicture as e:
           e.code == "NO_SUBJECT_PICTURE" and "NO_SUBJECT_PICTURE" in str(e), str(e))
 for name, cl, ph_ in (("photos only", [], [photo(0)]), ("one short clip only", [clip(0, 9.0)], [])):
     try:
-        s = LP.build(600.0, cl, ph_)
-        check(f"a shortfall still fills 10 min ({name})",
-              abs(sum(x["seconds"] for x in s) - 600) < 0.05)
-    except Exception as e:                               # noqa: BLE001
-        check(f"a shortfall still fills 10 min ({name})", False, repr(e))
+        LP.build(600.0, cl, ph_)
+        check(f"unsafe shortfall is a named stop ({name})", False)
+    except LP.NoSubjectPicture as e:
+        check(f"unsafe shortfall is a named stop ({name})", e.code == "NO_SUBJECT_PICTURE")
 
 # ---- 4. assemble.py draws none of the plan's cards, diagrams or filler ---
 import assemble  # noqa: E402

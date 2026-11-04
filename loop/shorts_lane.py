@@ -39,6 +39,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -588,8 +589,29 @@ def _recut_state(shorts_dir: Path | None = None) -> dict:
         return {}
 
 
+def _source_stamp(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    st = path.stat()
+    return {"bytes": st.st_size, "mtime_ns": st.st_mtime_ns}
+
+
 def dropped_cuts(shorts_dir: Path | None = None) -> set[str]:
-    return {n for n, r in _recut_state(shorts_dir).items() if r.get("dropped")}
+    retired = set()
+    for name, r in _recut_state(shorts_dir).items():
+        if not r.get("dropped"):
+            continue
+        source = r.get("source")
+        if not source:
+            # Pre-fix retirement records had no master identity. A currently
+            # restored master gets one fresh cut under the new validators.
+            slug = re.sub(r"-short[0-9]*\.mp4$", "", name)
+            if (ROOT / "renders" / f"{slug}-final.mp4").exists():
+                continue
+        if source and _source_stamp(Path(source)) != r.get("source_stamp"):
+            continue  # a restored/replaced master gets a fresh, fully gated cut
+        retired.add(name)
+    return retired
 
 
 def heal_held_cut(name: str, slug: str, shorts_dir: Path | None = None,
@@ -599,14 +621,18 @@ def heal_held_cut(name: str, slug: str, shorts_dir: Path | None = None,
     renders_dir = renders_dir or (ROOT / "renders")
     st = _recut_state(shorts_dir)
     rec = st.get(name) or {}
-    gone = not (renders_dir / f"{slug}-final.mp4").exists()
+    source = renders_dir / f"{slug}-final.mp4"
+    stamp = _source_stamp(source)
+    if stamp is not None and (not rec.get("source") or rec.get("source_stamp") != stamp):
+        rec = {}
+    gone = stamp is None
     verdict = "dropped" if (rec.get("attempts", 0) >= 1 or gone) else "recut"
     dest = shorts_dir / ("_dropped" if verdict == "dropped" else "_recut")
     dest.mkdir(parents=True, exist_ok=True)
     for f in (shorts_dir / name, shorts_dir / f"{name}.short.json"):
         if f.exists():
             f.replace(dest / f.name)
-    st[name] = {"attempts": rec.get("attempts", 0) + 1,
+    st[name] = {"source": str(source), "source_stamp": stamp, "attempts": rec.get("attempts", 0) + 1,
                 "dropped": verdict == "dropped",
                 "why": "render gone" if gone else "V14/V15 failed again" if verdict == "dropped"
                        else "V14/V15 failed; re-cut from the render",

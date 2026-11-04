@@ -35,6 +35,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from unittest.mock import patch
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOOP = os.path.abspath(os.path.join(HERE, ".."))
@@ -194,8 +195,11 @@ def main() -> int:
              "the restored clip is not placed again")
 
     # -- 3. the subject gate --------------------------------------------------
-    want(SV.episode_phrases("what-does-a-goblin-shark-look-like") == ["goblin shark"],
-         f"goblin shark episode asks for {SV.episode_phrases('what-does-a-goblin-shark-look-like')}")
+    # Exercise the slug fallback with no shot list; live batch lists now
+    # contain narrower shots and scientific names for this episode.
+    with patch.object(SV, "_shot_list", return_value=[]):
+        want(SV.episode_phrases("what-does-a-goblin-shark-look-like") == ["goblin shark"],
+             "the slug fallback lost the specific goblin shark subject")
     want(SV.episode_phrases("why-deep-sea-creatures-are-surfacing") == [],
          "an episode named only by generic ocean words (and no shot list) still asks "
          "for stock footage")

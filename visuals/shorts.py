@@ -302,6 +302,82 @@ def load_footage_record(src: str) -> dict[int, str | None] | None:
     return {int(k): v for k, v in d["beats"].items()}
 
 
+class PictureCredits(dict):
+    """Credits from strip-free shots, with no legacy beat overlays."""
+
+
+def picture_credits(src: str, timeline: list[dict] | None = None) -> dict[int, str | None] | None:
+    """Resolve strip-free masters from a hash-bound assembly record.
+
+    Recompute all beat credits from shot intervals, independently of the
+    cached beat map. Legacy masters continue through the OCR path.
+    """
+    path = _footage_record_path(src)
+    if not os.path.exists(src) or not os.path.exists(path):
+        if source_render_receipt(src).get("picture") == "footage-only":
+            raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_MISSING: restore matching assembly record")
+        return None
+    with open(path) as fh:
+        d = json.load(fh)
+    if d.get("picture") != "footage-only":
+        return None
+    import hashlib
+    import longform_picture as LP
+    with open(src, "rb") as master:
+        digest = hashlib.file_digest(master, "sha256").hexdigest()
+    approved_legacy = False
+    if d.get("master_sha256") != digest:
+        # Read-only migration for existing owner-pinned masters. The master
+        # is never rebuilt or modified to manufacture an on-screen strip.
+        pins_path = os.path.join(ROOT, "channel", "approved_renders.json")
+        pins = json.load(open(pins_path)) if os.path.exists(pins_path) else {}
+        slug = os.path.basename(src).removesuffix("-final.mp4")
+        pin = pins.get(slug) or {}
+        approved_legacy = (not d.get("master_sha256") and pin.get("sha256") == digest
+                           and pin.get("bytes") == os.path.getsize(src))
+        if not approved_legacy:
+            raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_UNBOUND: restore the matching "
+                                         "master and assembly record or rebuild an approved master")
+    if approved_legacy and not d.get("beat_frames"):
+        shots = d.get("shots") or []
+        if not shots or any(not s.get("credit") for s in shots) or not timeline:
+            raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_INVALID: need shot credits and cut intervals")
+        frames = [round(float(s["seconds"]) * FPS) for s in shots]
+        if any(n <= 0 for n in frames):
+            raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_INVALID: empty shot interval")
+        edges, cursor = [], 0
+        for shot, n in zip(shots, frames):
+            edges.append((cursor, cursor + n, shot["credit"]))
+            cursor += n
+        record = PictureCredits()
+        for b in timeline:
+            start = round(b["video_start"] * FPS)
+            end = start + round(b["video_s"] * FPS)
+            if start < 0 or end > cursor or start >= end:
+                raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_INVALID: cut exceeds master coverage")
+            lines = list(dict.fromkeys(c for lo, hi, c in edges if lo < end and hi > start))
+            credit = " / ".join(lines) or None
+            if credit != d.get("beats", {}).get(str(b["i"])):
+                raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_INVALID: cut intervals disagree with credits")
+            record[b["i"]] = credit
+        return record
+    shots, frames, beats = d.get("shots") or [], d.get("shot_frames") or [], d.get("beat_frames") or []
+    if (not shots or len(shots) != len(frames)
+            or any(n <= 0 for n in frames + beats) or sum(frames) != sum(beats)
+            or any(not s.get("credit") for s in shots)):
+        raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_INVALID: incomplete shot coverage or credits")
+    for b in timeline or []:
+        i = b["i"]
+        if (i < 0 or i >= len(beats)
+                or abs(b["video_s"] - beats[i] / FPS) > 1 / FPS + 1e-4
+                or abs(b["video_start"] - sum(beats[:i]) / FPS) > 1 / FPS + 1e-4):
+            raise RenderRecordUnreadable("MASTER_CREDIT_TIMELINE_CHANGED: re-cut from current master")
+    record = LP.beat_credits(shots, frames, beats)
+    if record != {int(k): v for k, v in d.get("beats", {}).items()}:
+        raise RenderRecordUnreadable("MASTER_CREDIT_RECORD_INVALID: shot and beat credits disagree")
+    return PictureCredits(record)
+
+
 def _read_strips(src: str, times: dict, workdir: str) -> dict:
     """{key: OCR text} of the footage credit strip at each time in `times`."""
     sys.path.insert(0, os.path.join(ROOT, "research"))
@@ -338,6 +414,9 @@ def render_footage_record(slug: str, plan: list, src: str,
     is known to match it against, or when the beats found do not add up to the
     render receipt's footage_beats.
     """
+    picture = picture_credits(src, timeline)
+    if picture is not None:
+        return picture
     kept = load_footage_record(src)
     if kept is not None and len(kept) == len(plan):
         return kept
@@ -401,6 +480,8 @@ def beat_credits(slug: str, plan: list, index: int,
     if index not in record:
         raise CreditUnresolved(f"{slug} beat {index}: not in the render's "
                                f"footage record")
+    if isinstance(record, PictureCredits):
+        return [c for c in str(record[index] or "").split(" / ") if c]
     b = plan[index]
     seg = b.get("segment")
     args = b.get("args") or {}
@@ -968,7 +1049,9 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     # draws another domain's graphic is dropped like an uncredited one;
     # losing the answer beat refuses the cut. visuals/plan_domain.py.
     import plan_domain as _pd                              # noqa: PLC0415
-    foreign = {i: w for i, _seg, w in _pd.foreign(plan, _pd.domain_of(slug))}
+    picture_record = picture_credits(src, beats)
+    foreign = {} if picture_record is not None else {
+        i: w for i, _seg, w in _pd.foreign(plan, _pd.domain_of(slug))}
     if foreign:
         if sel["anchor"] in foreign:
             raise ValueError(f"{slug}: the anchor beat {sel['anchor']} draws "

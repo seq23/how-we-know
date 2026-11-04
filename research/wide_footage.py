@@ -43,7 +43,7 @@ sys.path.insert(0, os.path.join(ROOT, "visuals"))
 
 HARVESTER = {
     "domain": "deep-sea-ocean-science",
-    "domains": ["deep-sea-ocean-science"],
+    "domains": ["deep-sea-ocean-science", "materials-and-manufacturing"],
     "manifest": "channel/imagery/video_rights.json",
     "what": "NOAA OER highlight video (NCEI) and Commons PD/CC0 video, by shot-list subject",
     "requires": ["ffmpeg", "swiftc"],
@@ -216,6 +216,51 @@ def screen_file(path: str, seconds: float) -> tuple[bool, str, list[dict]]:
     return True, why, wins
 
 
+# Discovery synonyms only: the original shot-list subject remains the label;
+# longform_picture.vet still has to see that subject clearly in each span.
+SEARCH_TERMS = {
+    "microchip": ["semiconductor", "integrated circuit", "silicon wafer", "wafer fabrication"],
+    "sea pig": ["Scotoplanes", "Elpidiidae", "deep sea holothurian"],
+    "chemosynthesis": ["hydrothermal vent", "cold seep", "Riftia", "vent mussels"],
+    "3d printing metal": ["metal additive manufacturing", "selective laser melting", "laser powder bed fusion"],
+    "laser melting": ["selective laser melting", "metal additive manufacturing"],
+    "powder bed": ["laser powder bed fusion", "metal 3D printing"],
+    "vent mussel": ["Bathymodiolus"],
+    "vent clam": ["Calyptogena"],
+    "vent shrimp": ["Rimicaris"],
+    "bacterial mat": ["Beggiatoa", "microbial mat"],
+    "anglerfish": ["Lophiiformes", "Ceratioidei"],
+    "goblin shark": ["Mitsukurina owstoni"],
+    "barreleye fish": ["Macropinna microstoma"],
+    "vampire squid": ["Vampyroteuthis infernalis"],
+    "blobfish": ["Psychrolutes"],
+    "dragonfish": ["Stomiidae"],
+    "hagfish": ["Myxini"],
+    "viperfish": ["Chauliodus"],
+    "chimaera fish": ["Chimaeriformes", "ghost shark"],
+    "frilled shark": ["Chlamydoselachus anguineus"],
+    "spider crab": ["Macrocheira", "Majoidea"],
+    "tube worm": ["Riftia", "tubeworm"],
+    "dumbo octopus": ["Grimpoteuthis"],
+    "grenadier": ["Coryphaenoides", "rattail fish"],
+    "sea spider": ["Pycnogonida"],
+    "isopod": ["Bathynomus"],
+    "amphipod": ["Hirondellea", "hadal amphipod"],
+    "snailfish": ["Pseudoliparis", "Liparidae"],
+    "brittle star": ["Ophiuroidea"],
+    "sea cucumber": ["Holothuroidea"],
+}
+
+
+def search_terms(subject: str) -> list[str]:
+    terms = [subject]
+    lower = subject.lower().replace("-", " ")
+    for name, aliases in SEARCH_TERMS.items():
+        if name in lower or lower in name:
+            terms.extend(aliases)
+    return list(dict.fromkeys(terms))
+
+
 def harvest(slugs: list[str], per_subject: int = 4) -> dict:
     import shot_list as SL                              # noqa: PLC0415
     man = json.load(open(MANIFEST)) if os.path.exists(MANIFEST) else {"assets": []}
@@ -225,9 +270,10 @@ def harvest(slugs: list[str], per_subject: int = 4) -> dict:
     os.makedirs(CLIPS, exist_ok=True)
     for slug in slugs:
         for subject in SL.subjects(slug):
-            for fetch in (oer_highlights, commons_videos):
+            for term, fetch in ((term, fetch) for term in search_terms(subject)
+                                for fetch in (oer_highlights, commons_videos)):
                 try:
-                    cands = fetch(subject, per_subject)
+                    cands = fetch(term, per_subject)
                 except Exception as e:                  # noqa: BLE001
                     print(f"  {fetch.__name__} {subject!r}: {str(e)[:80]}")
                     continue
@@ -296,9 +342,9 @@ if __name__ == "__main__":
         raise SystemExit(0)
     if "--pending" in sys.argv:                 # every episode waiting for a render
         import imagery_stock_video as STOCK     # noqa: PLC0415
-        args = [s for s in STOCK.targets() if STOCK.domain_of(s) == "deep-sea-ocean-science"]
+        args = [s for s in STOCK.targets() if STOCK.domain_of(s) in HARVESTER["domains"]]
         if not args:
-            print("wide footage: no deep-sea episode is waiting for a render")
+            print("wide footage: no ocean or materials episode is waiting for a render")
             raise SystemExit(0)
     per = int(sys.argv[sys.argv.index("--per-subject") + 1]) if "--per-subject" in sys.argv else 4
     if not args:

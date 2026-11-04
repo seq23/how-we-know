@@ -11,8 +11,8 @@ subject pool, and nothing else reaches the screen. In fill order:
 
   1. Real clips of the subject, at speed, each clean span once.
   2. The same clips again, slowed (0.75x then 0.5x), with a different crop or
-     pan each time. A span is on screen at most 3 times; the same clip is never
-     shown back to back.
+     pan each time. Reuse always waits 3 minutes of screen time; the next
+     shot must be a distinct moment.
   3. Licence-checked PHOTOGRAPHS of the subject, moving: a slow pan (Ken Burns),
      8-15 s each.
 
@@ -22,8 +22,8 @@ filler, engravings or plates, burned-in captions or burned-in credits
 the description - loop/upload.py:footage_credits). `check()` refuses any shot
 that is not footage or a photograph of the subject.
 
-The one stop: zero footage AND zero photos of the subject (NAMED STOP
-NO_SUBJECT_PICTURE). The narration stays exactly as it is.
+NAMED STOP NO_SUBJECT_PICTURE: no subject material, or no way to cover the
+narration under the unchanged variety rules. The narration stays as it is.
 """
 from __future__ import annotations
 
@@ -57,7 +57,7 @@ FRAMINGS = [(1.0, 0.5, 0.5), (1.12, 0.15, 0.85), (1.18, 0.85, 0.15),
 
 
 class NoSubjectPicture(RuntimeError):
-    """NAMED STOP NO_SUBJECT_PICTURE: no footage and no photo of the subject."""
+    """NAMED STOP NO_SUBJECT_PICTURE: insufficient safe subject material."""
     code = "NO_SUBJECT_PICTURE"
 
 
@@ -104,7 +104,14 @@ def subject_clips(slug: str, assets: list[dict] | None = None) -> list[dict]:
     if pat:
         pool = [a for a in assets if not FT.STOCK.is_stock(a) and re.search(
             pat, f"{a.get('title', '')} {_lead(a.get('caption'))}", re.I)]
+    # Wide discovery also searches scientific names. Keep those candidates
+    # attached to the original shot-list subject; vet() must still see it.
+    import shot_list as SL
+    wanted = set(SL.subjects(slug))
+    pool += [a for a in assets if a.get("source") in ("noaa-ncei-oer", "commons")
+             and a.get("subject") in wanted]
     pool += FT.stock_pool(slug, assets)
+    pool = list({_key(a): a for a in pool}.values())
     return [a for a in pool if FT.windows(a)]
 
 
@@ -257,7 +264,7 @@ def build(total_s: float, clips: list[dict], photos: list[dict],
 
     WHICH shots: fill order (footage, slowed reuse, photos), round-robin across
     subjects, no subject past SHARE_CAP while another still has material.
-    WHERE they go: order() - a new distinct shot every <=20 s, no source moment
+    WHERE they go: the screen clock - a new distinct shot every <=20 s, no source moment
     again inside 3 minutes. `allowed` (from vet()) limits footage to spans a
     vision check has seen the subject in."""
     if not clips and not photos:
@@ -270,55 +277,51 @@ def build(total_s: float, clips: list[dict], photos: list[dict],
     if not cands:
         raise NoSubjectPicture("NO_SUBJECT_PICTURE: the subject's clips carry no "
                                "usable span and there is no photograph")
-    cap = SHARE_CAP * total_s
-    chosen, used, per = [], set(), {}
-    left = float(total_s)
-
-    def take(enforce_cap: bool) -> None:
-        nonlocal left
-        while left > 1e-6:
-            # The next tier still holding any candidate, then round-robin by
-            # the subject with the least screen time so far.
-            pick = None
-            for tier in sorted({(c["kind"] == "photo", c["showing"]) for c in cands}):
-                pool = [i for i, c in enumerate(cands) if i not in used
-                        and (c["kind"] == "photo", c["showing"]) == tier
-                        and (not enforce_cap or per.get(c["subject"], 0) + min(c["seconds"], left)
-                             <= cap + 1e-6)]
-                if pool:
-                    pick = min(pool, key=lambda i: (per.get(cands[i]["subject"], 0), i))
-                    break
-            if pick is None:
-                return
-            used.add(pick)
-            c = dict(cands[pick])
-            secs = min(c["seconds"], left)
-            if 0 < left - secs < MIN_SHOT_S:     # never leave a sliver
-                secs = max(MIN_SHOT_S, secs - MIN_SHOT_S)
-            c["seconds"] = round(secs, 6)
-            c["src_seconds"] = round(secs * c["speed"], 3)
-            chosen.append(c)
-            per[c["subject"]] = per.get(c["subject"], 0) + secs
-            left = round(left - secs, 6)
-
-    take(enforce_cap=len({c["subject"] for c in cands}) > 1)
-    waived = sorted(s for s, v in per.items() if v > cap + 1e-6)
-    if left > 1e-6:                        # nothing else is left: the cap gives way
-        before = dict(per)
-        take(enforce_cap=False)
-        waived = sorted(s for s, v in per.items() if v > cap + 1e-6 and v > before.get(s, 0))
-    k = 0
-    while left > 1e-6:                     # every candidate used: round again, slowest
-        c = dict(cands[k % len(cands)])
-        if c["kind"] == "footage":
+    need_subjects, need_moments = floors(total_s)
+    if (len({animal(c["subject"]) for c in cands}) < need_subjects
+            or len({(c["key"], c["start"]) for c in cands}) < need_moments):
+        raise NoSubjectPicture(
+            f"NO_SUBJECT_PICTURE: need {need_subjects} distinct subjects and "
+            f"{need_moments} vetted source moments; widen the harvest")
+    # Schedule against the actual screen clock. Exhausting a tier never
+    # waives cooldown: try a different vetted span slowed, then photographs.
+    shots, per, showings = [], {}, {}
+    t = 0.0
+    while total_s - t > 1e-6:
+        missing = max(0, need_moments - len(showings))
+        reserve = missing * PHOTO_TARGET_S
+        eligible = [c for c in cands if _can_follow(shots, c)
+                    and (missing == 0 or not showings.get((c["key"], c["start"]))
+                         or total_s - t > reserve + MAX_SHOT_S)
+                    and (need_subjects == 1 or per.get(c["subject"], 0) < SHARE_CAP * total_s - 1e-6)]
+        if not eligible:
+            raise NoSubjectPicture(
+                f"NO_SUBJECT_PICTURE: pool exhausted at {t:.1f}s without a "
+                "distinct source moment outside the 3-minute cooldown; "
+                "harvest more vetted spans or subject photographs")
+        def rank(c):
+            moment = (c["key"], c["start"])
+            n = showings.get(moment, 0)
+            # A reused moment must be slowed, even after the normal tiers.
+            tier = 3 if c["kind"] == "photo" else (0 if n == 0 else 1)
+            return (tier, per.get(c["subject"], 0), n,
+                    c["showing"] if n == 0 else -c["showing"])
+        c = dict(min(eligible, key=rank))
+        moment = (c["key"], c["start"])
+        n = showings.get(moment, 0)
+        if n and c["kind"] == "footage":
             c["speed"] = SLOW[-1]
-        secs = round(min(left, MAX_SHOT_S, (c["span"] / c["speed"]) if c["span"] else PHOTO_TARGET_S), 6)
-        c.update(seconds=secs, src_seconds=round(secs * c["speed"], 3),
-                 showing=MAX_SHOWINGS + 1 + k // len(cands), over_cap=True)
-        chosen.append(c)
-        left = round(left - secs, 6)
-        k += 1
-    shots = _polish(order(chosen))
+        secs = min(total_s - t, MAX_SHOT_S,
+                   c["span"] / c["speed"] if c["span"] else PHOTO_TARGET_S)
+        if need_subjects > 1:
+            secs = min(secs, SHARE_CAP * total_s - per.get(c["subject"], 0))
+        c.update(seconds=round(secs, 6), src_seconds=round(secs * c["speed"], 3),
+                 showing=n + 1)
+        shots.append(c)
+        showings[moment] = n + 1
+        per[c["subject"]] = per.get(c["subject"], 0) + secs
+        t = round(t + secs, 6)
+    waived = []
     for i, sh in enumerate(shots):
         z, x0, x1 = FRAMINGS[0] if sh["showing"] == 1 and sh["kind"] == "footage" \
             else FRAMINGS[1 + (i + sh["showing"]) % (len(FRAMINGS) - 1)]
@@ -326,6 +329,9 @@ def build(total_s: float, clips: list[dict], photos: list[dict],
                   pan=[x0, x1] if i % 2 == 0 else [x1, x0])
         sh["share_cap_waived"] = waived
     check(shots, total_s)
+    problems = variety_problems(shots)
+    if problems:
+        raise NoSubjectPicture("NO_SUBJECT_PICTURE: " + "; ".join(problems[:3]))
     return shots
 
 
@@ -334,39 +340,31 @@ def _distinct(a: dict, b: dict) -> bool:
     return a["key"] != b["key"] or abs(float(a["start"]) - float(b["start"])) > DISTINCT_GAP_S
 
 
+def _can_follow(out: list[dict], c: dict) -> bool:
+    back = 0.0
+    for prev in reversed(out):
+        if back < NEW_SHOT_EVERY + DISTINCT_GAP_S and not _distinct(prev, c):
+            return False
+        if (prev["key"], prev["start"]) == (c["key"], c["start"]) and back < REUSE_GAP_S:
+            return False
+        back += float(prev["seconds"])
+        if back >= REUSE_GAP_S + MAX_SHOT_S:
+            break
+    return True
+
+
 def order(shots: list[dict]) -> list[dict]:
-    """Screen order. Greedy in time: the next shot is distinct from the last,
-    does not repeat a source moment shown in the last REUSE_GAP_S, and comes
-    from the subject with the least screen time so far (then the earliest
-    fill order). Each constraint gives way only when nothing satisfies it."""
-    left = list(shots)
-    out: list[dict] = []
-    t = 0.0
-    last_seen: dict[tuple, float] = {}
-    per: dict[str, float] = {}
+    """Order without ever waiving distinctness or the source cooldown."""
+    left, out, per = list(shots), [], {}
     while left:
-        def ok(c, strict_reuse=True):
-            # distinct from everything still on screen in the last 20+ s, so
-            # two 20 s samples never land on the same moment of one clip
-            back, k = 0.0, len(out) - 1
-            while k >= 0 and (back < NEW_SHOT_EVERY + DISTINCT_GAP_S or k == len(out) - 1):
-                if not _distinct(out[k], c):
-                    return False
-                back += float(out[k]["seconds"])
-                k -= 1
-            if strict_reuse:
-                seen = last_seen.get((c["key"], c["start"]))
-                if seen is not None and t - seen < REUSE_GAP_S:
-                    return False
-            return True
-        pool = [c for c in left if ok(c)] or [c for c in left if ok(c, False)] or left
-        c = min(pool, key=lambda c: (per.get(c["subject"], 0.0), c["showing"]))
+        pool = [c for c in left if _can_follow(out, c)]
+        if not pool:
+            raise NoSubjectPicture("NO_SUBJECT_PICTURE: no safe next shot; widen the pool")
+        c = min(pool, key=lambda c: (per.get(c["subject"], 0), c["showing"]))
         left.remove(c)
         out.append(c)
-        t += float(c["seconds"])
-        last_seen[(c["key"], c["start"])] = t
-        per[c["subject"]] = per.get(c["subject"], 0.0) + float(c["seconds"])
-    return _repair(out)
+        per[c["subject"]] = per.get(c["subject"], 0) + c["seconds"]
+    return out
 
 
 def _polish(shots: list[dict], rounds: int = 300) -> list[dict]:
@@ -481,7 +479,7 @@ def variety_problems(shots: list[dict], every: float = 20.0) -> list[str]:
     seen: dict[tuple, float] = {}
     for a, b, s in edges:
         k = (s["key"], s.get("start"))
-        if k in seen and a - seen[k] < REUSE_GAP_S and not s.get("over_cap"):
+        if k in seen and a - seen[k] < REUSE_GAP_S:
             probs.append(f"{int(a // 60)}:{int(a % 60):02d} repeats a moment of "
                          f"{s.get('title')!r} after {a - seen[k]:.0f} s (< 3 min)")
         seen[k] = b
