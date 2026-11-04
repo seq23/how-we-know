@@ -1,7 +1,7 @@
 {
   "stage": "backfill",
   "week": "2026-W45",
-  "at": "2026-11-03T15:06:28+00:00",
+  "at": "2026-11-04T15:02:10+00:00",
   "code": "OWNER_HOLD_LONGFORM",
   "message": "long-form publishing is held on purpose since 2026-11-02: owner hold 2 Nov: until hostile-review fixes land. Shorts keep going; rendering continues.",
   "detail": {
@@ -12,8 +12,8 @@
   },
   "unblock": "Lifted by `python loop/breaker.py lift-longform --note ...` once the work it waits for is on main.",
   "disposition": "self_resolving",
-  "disposition_why": "Her own decision (2026-11-02): long-form uploads, dating and publishing are held until the hostile-review fixes land; Shorts keep going and rendering continues. loop/breaker.py longform_hold; lifted by `breaker.py lift-longform` when the work is on main. (run 1 of at most 60 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "Her own decision (2026-11-02): long-form uploads, dating and publishing are held until the hostile-review fixes land; Shorts keep going and rendering continues. loop/breaker.py longform_hold; lifted by `breaker.py lift-longform` when the work is on main. (run 2 of at most 60 before this escalates to a human.)",
+  "consecutive": 2,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
