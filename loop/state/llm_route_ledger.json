@@ -478,12 +478,6 @@
         "lane": "shot_list.py",
         "latency_s": 0.2,
         "outcome": "rate_limited",
-        "ts": "2026-11-04T02:15:24Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
         "ts": "2026-11-04T02:15:48Z"
       },
       {
@@ -593,15 +587,15 @@
         "latency_s": 0.2,
         "outcome": "rate_limited",
         "ts": "2026-11-04T02:25:02Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 9.8,
+        "outcome": "answered",
+        "ts": "2026-11-04T14:49:20Z"
       }
     ],
     "gemini/gemini-3.8-flash": [
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:15:24Z"
-      },
       {
         "lane": "shot_list.py",
         "latency_s": 0.2,
@@ -715,6 +709,12 @@
         "latency_s": 0.2,
         "outcome": "rate_limited",
         "ts": "2026-11-04T02:25:02Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 240.2,
+        "outcome": "timeout",
+        "ts": "2026-11-04T14:49:10Z"
       }
     ],
     "google/gemma-4-26b-a4b-it:free": [

@@ -10,7 +10,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-01",
       "duration_s": 486.0,
-      "packaging_pass_at": "2026-10-14T23:41:35+00:00",
+      "packaging_pass_at": "2026-11-03T17:38:25+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -20,9 +20,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-14",
-      "days_public": 62,
-      "days_since_packaging": 19,
+      "packaging_since": "2026-11-03",
+      "days_public": 64,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -46,16 +46,21 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-14"
+        "since": "2026-11-03"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "mOP33elEfpU": {
       "video_id": "mOP33elEfpU",
@@ -67,7 +72,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-06",
       "duration_s": 479.0,
-      "packaging_pass_at": "2026-10-14T23:41:17+00:00",
+      "packaging_pass_at": "2026-11-03T17:38:22+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -75,9 +80,9 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-14",
-      "days_public": 57,
-      "days_since_packaging": 19,
+      "packaging_since": "2026-11-03",
+      "days_public": 59,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 6,
@@ -95,22 +100,27 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 2,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 35.0,
-        "avp_pct": 7.34,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-14"
+        "since": "2026-11-03"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "EY__zREBIUk": {
       "video_id": "EY__zREBIUk",
@@ -133,11 +143,11 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 55,
-      "days_since_packaging": 19,
+      "days_public": 57,
+      "days_since_packaging": 21,
       "public": true,
       "lifetime": {
-        "views": 8,
+        "views": 9,
         "watch_minutes": 13.0,
         "avd_s": 156.0,
         "avp_pct": 33.8,
@@ -145,14 +155,14 @@
         "traffic": {
           "browse": 1,
           "suggested": 2,
-          "search": 3,
+          "search": 4,
           "external": 1,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 1,
+        "views": 2,
         "watch_minutes": 0.0,
         "avd_s": 3.0,
         "avp_pct": 0.68,
@@ -160,14 +170,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "9FcDJniofMM": {
       "video_id": "9FcDJniofMM",
@@ -190,8 +205,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 50,
-      "days_since_packaging": 17,
+      "days_public": 52,
+      "days_since_packaging": 19,
       "public": true,
       "lifetime": {
         "views": 10,
@@ -217,14 +232,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "izdEaeOQBvI": {
       "video_id": "izdEaeOQBvI",
@@ -245,8 +265,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 48,
-      "days_since_packaging": 16,
+      "days_public": 50,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 13,
@@ -272,14 +292,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "MAV4PF056RA": {
       "video_id": "MAV4PF056RA",
@@ -302,8 +327,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 43,
-      "days_since_packaging": 17,
+      "days_public": 45,
+      "days_since_packaging": 19,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -329,14 +354,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "MozJZ-ChEZU": {
       "video_id": "MozJZ-ChEZU",
@@ -359,8 +389,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 41,
-      "days_since_packaging": 19,
+      "days_public": 43,
+      "days_since_packaging": 21,
       "public": true,
       "lifetime": {
         "views": 16,
@@ -386,14 +416,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "MWOUa3UEXSk": {
       "video_id": "MWOUa3UEXSk",
@@ -414,11 +449,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-16",
-      "days_public": 36,
-      "days_since_packaging": 17,
+      "days_public": 38,
+      "days_since_packaging": 19,
       "public": true,
       "lifetime": {
-        "views": 6,
+        "views": 7,
         "watch_minutes": 10.0,
         "avd_s": 161.0,
         "avp_pct": 33.54,
@@ -426,14 +461,14 @@
         "traffic": {
           "browse": 1,
           "suggested": 2,
-          "search": 2,
+          "search": 3,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 1,
+        "views": 2,
         "watch_minutes": 0.0,
         "avd_s": 0.0,
         "avp_pct": 0.0,
@@ -441,14 +476,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "jec80gk8rM0": {
       "video_id": "jec80gk8rM0",
@@ -460,7 +500,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-29",
       "duration_s": 526.0,
-      "packaging_pass_at": "2026-10-16T23:40:42+00:00",
+      "packaging_pass_at": "2026-11-03T17:38:23+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -470,9 +510,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-16",
-      "days_public": 34,
-      "days_since_packaging": 17,
+      "packaging_since": "2026-11-03",
+      "days_public": 36,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -496,16 +536,21 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-16"
+        "since": "2026-11-03"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "G1TqXmf36Qo": {
       "video_id": "G1TqXmf36Qo",
@@ -528,8 +573,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 29,
-      "days_since_packaging": 19,
+      "days_public": 31,
+      "days_since_packaging": 21,
       "public": true,
       "lifetime": {
         "views": 10,
@@ -555,14 +600,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "OdYunlbB73g": {
       "video_id": "OdYunlbB73g",
@@ -585,8 +635,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 27,
-      "days_since_packaging": 16,
+      "days_public": 29,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -612,14 +662,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "IbrSPKUK1IM": {
       "video_id": "IbrSPKUK1IM",
@@ -642,8 +697,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 22,
-      "days_since_packaging": 17,
+      "days_public": 24,
+      "days_since_packaging": 19,
       "public": true,
       "lifetime": {
         "views": 15,
@@ -669,14 +724,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "xyZ9xs7OF3g": {
       "video_id": "xyZ9xs7OF3g",
@@ -699,8 +759,8 @@
         "A"
       ],
       "packaging_since": "2026-10-15",
-      "days_public": 20,
-      "days_since_packaging": 18,
+      "days_public": 22,
+      "days_since_packaging": 20,
       "public": true,
       "lifetime": {
         "views": 37,
@@ -726,14 +786,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-15"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "YuZxDiNUw4w": {
       "video_id": "YuZxDiNUw4w",
@@ -756,8 +821,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 56,
-      "days_since_packaging": 16,
+      "days_public": 58,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 8,
@@ -783,14 +848,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "aKyOg7xbxC0": {
       "video_id": "aKyOg7xbxC0",
@@ -813,8 +883,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 52,
-      "days_since_packaging": 16,
+      "days_public": 54,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 46,
@@ -840,14 +910,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "eJSCm5sk5AA": {
       "video_id": "eJSCm5sk5AA",
@@ -870,11 +945,11 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 49,
-      "days_since_packaging": 16,
+      "days_public": 51,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
-        "views": 21,
+        "views": 22,
         "watch_minutes": 7.0,
         "avd_s": 57.0,
         "avp_pct": 11.08,
@@ -882,29 +957,34 @@
         "traffic": {
           "browse": 6,
           "suggested": 1,
-          "search": 11,
+          "search": 12,
           "external": 3,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "TjrpzJE3utU": {
       "video_id": "TjrpzJE3utU",
@@ -925,11 +1005,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 45,
-      "days_since_packaging": 16,
+      "days_public": 47,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
-        "views": 14,
+        "views": 15,
         "watch_minutes": 2.0,
         "avd_s": 18.0,
         "avp_pct": 3.11,
@@ -937,14 +1017,14 @@
         "traffic": {
           "browse": 0,
           "suggested": 0,
-          "search": 8,
+          "search": 9,
           "external": 6,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 3,
+        "views": 4,
         "watch_minutes": 1.0,
         "avd_s": 99.0,
         "avp_pct": 16.52,
@@ -952,14 +1032,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "RlbR0qGmU0s": {
       "video_id": "RlbR0qGmU0s",
@@ -980,8 +1065,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 42,
-      "days_since_packaging": 16,
+      "days_public": 44,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 20,
@@ -1007,14 +1092,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "2zQAc_ZSbMs": {
       "video_id": "2zQAc_ZSbMs",
@@ -1026,7 +1116,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-25",
       "duration_s": 614.0,
-      "packaging_pass_at": "2026-10-17T08:42:40+00:00",
+      "packaging_pass_at": "2026-11-03T17:38:29+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1034,9 +1124,9 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-17",
-      "days_public": 38,
-      "days_since_packaging": 16,
+      "packaging_since": "2026-11-03",
+      "days_public": 40,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -1054,22 +1144,27 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 1,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 0.0,
-        "avp_pct": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-17"
+        "since": "2026-11-03"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "xbmIX6n2OI8": {
       "video_id": "xbmIX6n2OI8",
@@ -1092,8 +1187,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 35,
-      "days_since_packaging": 16,
+      "days_public": 37,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 41,
@@ -1119,14 +1214,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "kTBlLeWdi4g": {
       "video_id": "kTBlLeWdi4g",
@@ -1149,8 +1249,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 31,
-      "days_since_packaging": 16,
+      "days_public": 33,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -1176,14 +1276,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "debozzLtVRA": {
       "video_id": "debozzLtVRA",
@@ -1204,11 +1309,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 28,
-      "days_since_packaging": 16,
+      "days_public": 30,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
-        "views": 17,
+        "views": 18,
         "watch_minutes": 35.0,
         "avd_s": 302.0,
         "avp_pct": 48.83,
@@ -1216,14 +1321,14 @@
         "traffic": {
           "browse": 0,
           "suggested": 5,
-          "search": 11,
+          "search": 12,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 3,
+        "views": 4,
         "watch_minutes": 0.0,
         "avd_s": 2.0,
         "avp_pct": 0.34,
@@ -1231,14 +1336,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "7tdvXATeeng": {
       "video_id": "7tdvXATeeng",
@@ -1259,8 +1369,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 24,
-      "days_since_packaging": 16,
+      "days_public": 26,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 159,
@@ -1286,14 +1396,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "VDFFur-xYUU": {
       "video_id": "VDFFur-xYUU",
@@ -1316,8 +1431,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 21,
-      "days_since_packaging": 16,
+      "days_public": 23,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -1343,14 +1458,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "l6HwRYGo-Nw": {
       "video_id": "l6HwRYGo-Nw",
@@ -1385,8 +1505,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-23",
-      "days_public": 18,
-      "days_since_packaging": 10,
+      "days_public": 20,
+      "days_since_packaging": 12,
       "public": true,
       "lifetime": {
         "views": 85,
@@ -1412,14 +1532,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-23"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "Eueb6oHEbMs": {
       "video_id": "Eueb6oHEbMs",
@@ -1442,26 +1567,26 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 17,
-      "days_since_packaging": 16,
+      "days_public": 19,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
-        "views": 6,
-        "watch_minutes": 0.0,
+        "views": 7,
+        "watch_minutes": 1.0,
         "avd_s": 25.0,
         "avp_pct": 3.95,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 1,
           "suggested": 0,
-          "search": 4,
+          "search": 5,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 5,
+        "views": 6,
         "watch_minutes": 0.0,
         "avd_s": 40.0,
         "avp_pct": 6.17,
@@ -1469,14 +1594,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "8bVPoTWAfFQ": {
       "video_id": "8bVPoTWAfFQ",
@@ -1497,8 +1627,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 16,
-      "days_since_packaging": 16,
+      "days_public": 18,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1524,14 +1654,19 @@
         "retention_30s_pct": 69.6,
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "fail",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "EFimztjj_j8": {
       "video_id": "EFimztjj_j8",
@@ -1569,41 +1704,46 @@
         "B"
       ],
       "packaging_since": "2026-10-26",
-      "days_public": 14,
-      "days_since_packaging": 7,
+      "days_public": 16,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
-        "views": 85,
+        "views": 86,
         "watch_minutes": 124.0,
-        "avd_s": 103.0,
-        "avp_pct": 21.2,
+        "avd_s": 102.0,
+        "avp_pct": 20.99,
         "subscribers_gained": 1,
         "traffic": {
           "browse": 12,
-          "suggested": 64,
+          "suggested": 65,
           "search": 3,
           "external": 1,
           "other": 5
         },
-        "retention_30s_pct": 51.4
+        "retention_30s_pct": 52.1
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 31.0,
+        "avp_pct": 6.38,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-26"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "98ejztJsQNY": {
       "video_id": "98ejztJsQNY",
@@ -1626,8 +1766,8 @@
         "A"
       ],
       "packaging_since": "2026-10-20",
-      "days_public": 13,
-      "days_since_packaging": 13,
+      "days_public": 15,
+      "days_since_packaging": 15,
       "public": true,
       "lifetime": {
         "views": 6,
@@ -1653,14 +1793,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-20"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "pass"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "nv-M6q8h-Lk": {
       "video_id": "nv-M6q8h-Lk",
@@ -1695,11 +1840,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-29",
-      "days_public": 11,
-      "days_since_packaging": 4,
+      "days_public": 13,
+      "days_since_packaging": 6,
       "public": true,
       "lifetime": {
-        "views": 72,
+        "views": 73,
         "watch_minutes": 86.0,
         "avd_s": 90.0,
         "avp_pct": 20.05,
@@ -1707,29 +1852,34 @@
         "traffic": {
           "browse": 12,
           "suggested": 56,
-          "search": 4,
+          "search": 5,
           "external": 0,
           "other": 0
         },
         "retention_30s_pct": 51.1
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-29"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "vrb83gWWaYw": {
       "video_id": "vrb83gWWaYw",
@@ -1767,8 +1917,8 @@
         "B"
       ],
       "packaging_since": "2026-10-30",
-      "days_public": 10,
-      "days_since_packaging": 3,
+      "days_public": 12,
+      "days_since_packaging": 5,
       "public": true,
       "lifetime": {
         "views": 228,
@@ -1794,14 +1944,19 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-30"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "zs-gueHeX8k": {
       "video_id": "zs-gueHeX8k",
@@ -1822,48 +1977,67 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-26",
-      "days_public": 7,
-      "days_since_packaging": 7,
+      "days_public": 9,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
-        "views": 16,
+        "views": 17,
         "watch_minutes": 13.0,
-        "avd_s": 88.0,
-        "avp_pct": 12.43,
+        "avd_s": 82.0,
+        "avp_pct": 11.56,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
           "suggested": 13,
           "search": 2,
           "external": 0,
-          "other": 1
+          "other": 2
         },
-        "retention_30s_pct": "insufficient"
+        "retention_30s_pct": 27.7
       },
       "current": {
-        "views": 16,
+        "views": 17,
         "watch_minutes": 13.0,
-        "avd_s": 88.0,
-        "avp_pct": 12.43,
+        "avd_s": 82.0,
+        "avp_pct": 11.56,
         "subscribers_gained": 0,
-        "retention_30s_pct": "insufficient",
+        "retention_30s_pct": 27.7,
         "since": "2026-10-26"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
-        "retention_30s": "unknown",
+        "retention_30s": "fail",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "rY7t_VDz9sk": {
       "video_id": "rY7t_VDz9sk",
-      "repackage_round": 0,
-      "repackages": [],
+      "repackage_round": 1,
+      "repackages": [
+        {
+          "round": 1,
+          "at": "2026-11-04T14:49:21+00:00",
+          "old_title": "Why Doesn't Kevlar Melt?",
+          "new_title": "How Is Kevlar Made?",
+          "thumbnail": null,
+          "title_only_reason": "no contract-holding variant B on disk",
+          "test_active_at_change": false,
+          "verdict_before": "FAIL",
+          "days_public": 8,
+          "days_since_packaging": 8,
+          "units": 51
+        }
+      ],
       "slug": "what-is-kevlar-made-of",
-      "title": "Why Doesn't Kevlar Melt?",
+      "title": "How Is Kevlar Made?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-10-27",
@@ -1876,42 +2050,47 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-27",
-      "days_public": 6,
-      "days_since_packaging": 6,
+      "packaging_since": "2026-11-04",
+      "days_public": 8,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 44,
         "watch_minutes": 63.0,
-        "avd_s": 162.0,
-        "avp_pct": 23.65,
+        "avd_s": 156.0,
+        "avp_pct": 22.68,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 17,
           "suggested": 19,
           "search": 7,
           "external": 0,
-          "other": 1
+          "other": 2
         },
-        "retention_30s_pct": 56.5
+        "retention_30s_pct": 54.2
       },
       "current": {
         "views": 44,
         "watch_minutes": 63.0,
-        "avd_s": 162.0,
-        "avp_pct": 23.65,
+        "avd_s": 156.0,
+        "avp_pct": 22.68,
         "subscribers_gained": 0,
-        "retention_30s_pct": 56.5,
+        "retention_30s_pct": 54.2,
         "since": "2026-10-27"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "fail",
         "avp": "fail"
       },
       "verdict": "FAIL",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "T6XeND2qM4k": {
       "video_id": "T6XeND2qM4k",
@@ -1932,18 +2111,18 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-29",
-      "days_public": 4,
-      "days_since_packaging": 4,
+      "days_public": 6,
+      "days_since_packaging": 6,
       "public": true,
       "lifetime": {
-        "views": 8,
-        "watch_minutes": 0.0,
-        "avd_s": 6.0,
-        "avp_pct": 0.84,
+        "views": 11,
+        "watch_minutes": 1.0,
+        "avd_s": 14.0,
+        "avp_pct": 1.88,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
-          "suggested": 8,
+          "suggested": 11,
           "search": 0,
           "external": 0,
           "other": 0
@@ -1951,22 +2130,27 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 8,
-        "watch_minutes": 0.0,
-        "avd_s": 6.0,
-        "avp_pct": 0.84,
+        "views": 11,
+        "watch_minutes": 1.0,
+        "avd_s": 14.0,
+        "avp_pct": 1.88,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-29"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "k4OOYUrar30": {
       "video_id": "k4OOYUrar30",
@@ -1978,7 +2162,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-10-30",
       "duration_s": 776.0,
-      "packaging_pass_at": "2026-10-17T08:42:32+00:00",
+      "packaging_pass_at": "2026-11-03T17:38:28+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1988,22 +2172,22 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-30",
-      "days_public": 3,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-11-03",
+      "days_public": 5,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "views": 6,
+        "watch_minutes": 16.0,
+        "avd_s": 196.0,
+        "avp_pct": 25.26,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
-          "suggested": 0,
+          "suggested": 4,
           "search": 0,
           "external": 0,
-          "other": 0
+          "other": 2
         },
         "retention_30s_pct": "insufficient"
       },
@@ -2014,16 +2198,21 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-30"
+        "since": "2026-11-03"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     },
     "Z-Z1FNVQXW0": {
       "video_id": "Z-Z1FNVQXW0",
@@ -2044,8 +2233,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-02",
-      "days_public": 0,
-      "days_since_packaging": 0,
+      "days_public": 2,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 0,
@@ -2071,17 +2260,22 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-02"
       },
-      "measured_on": "2026-11-02",
+      "measured_on": "2026-11-04",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr_baseline": {
+        "pct": null,
+        "group": "channel",
+        "n": 0
+      }
     }
   },
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-04",
   "config": {
     "floors": {
       "ctr_pct": 4.0,
@@ -2090,6 +2284,7 @@
     },
     "retention_at_s": 30,
     "min_views": 30,
+    "min_impressions": 100,
     "min_judged": 3,
     "rank_min_views": 10,
     "repackage_after_days": 7,
@@ -2098,7 +2293,7 @@
   },
   "channel": {
     "week": "2026-W45",
-    "date": "2026-11-02",
+    "date": "2026-11-04",
     "public_longform": 36,
     "packaging_working": "too early",
     "counts": {
@@ -2110,14 +2305,14 @@
     "judged_medians": {
       "n": 1,
       "ctr_pct": null,
-      "retention_30s_pct": 56.5,
-      "avp_pct": 23.6
+      "retention_30s_pct": 54.2,
+      "avp_pct": 22.7
     },
     "cohorts": {
       "pre-rule": {
         "n": 36,
         "ctr_pct": null,
-        "retention_30s_pct": 56.5,
+        "retention_30s_pct": 53.5,
         "avp_pct": 19.2
       }
     },
@@ -2149,28 +2344,19 @@
         "watch_minutes_per_view": 0.08
       },
       {
-        "video_id": "TjrpzJE3utU",
-        "title": "How Fast Does Glass Shatter?",
-        "views": 14,
-        "watch_minutes_per_view": 0.14
+        "video_id": "T6XeND2qM4k",
+        "title": "How Old Is a Deep Sea Shell?",
+        "views": 11,
+        "watch_minutes_per_view": 0.09
       },
       {
-        "video_id": "9FcDJniofMM",
-        "title": "How Long Is a Colossal Squid?",
-        "views": 10,
-        "watch_minutes_per_view": 0.2
+        "video_id": "TjrpzJE3utU",
+        "title": "How Fast Does Glass Shatter?",
+        "views": 15,
+        "watch_minutes_per_view": 0.13
       }
     ],
     "repackaged_this_week": [
-      {
-        "video_id": "EFimztjj_j8",
-        "round": 1,
-        "at": "2026-10-26",
-        "old_title": "Why Is Deep Sea Light Blue?",
-        "new_title": "Why Do Deep Sea Animals Glow?",
-        "thumbnail": "B",
-        "title_only_reason": null
-      },
       {
         "video_id": "nv-M6q8h-Lk",
         "round": 1,
@@ -2188,6 +2374,15 @@
         "new_title": "Is Aerogel Made of Glass?",
         "thumbnail": "B",
         "title_only_reason": null
+      },
+      {
+        "video_id": "rY7t_VDz9sk",
+        "round": 1,
+        "at": "2026-11-04",
+        "old_title": "Why Doesn't Kevlar Melt?",
+        "new_title": "How Is Kevlar Made?",
+        "thumbnail": null,
+        "title_only_reason": "no contract-holding variant B on disk"
       }
     ],
     "needs_review": [],
@@ -2195,7 +2390,7 @@
     "gate": {
       "first_repackaged": "2026-10-14",
       "gate_date": "2026-11-13",
-      "days_left": 11
+      "days_left": 9
     },
     "food": [
       {
@@ -2209,8 +2404,8 @@
     ]
   },
   "pull": {
-    "at": "2026-11-02T16:31:09+00:00",
-    "date": "2026-11-02",
+    "at": "2026-11-04T14:45:09+00:00",
+    "date": "2026-11-04",
     "public_ids": [
       "2zQAc_ZSbMs",
       "7tdvXATeeng",
@@ -2249,13 +2444,20 @@
       "xyZ9xs7OF3g",
       "zs-gueHeX8k"
     ],
-    "ledger_longform": 49,
-    "analytics_calls": 64,
+    "ledger_longform": 36,
+    "analytics_calls": 67,
     "data_api_units": 1,
     "retention": {
-      "returned": 13,
-      "insufficient": 23
+      "returned": 14,
+      "insufficient": 22
     }
   },
-  "updated": "2026-11-02T16:31:09+00:00"
+  "updated": "2026-11-04T14:49:21+00:00",
+  "reach": {
+    "reports": {},
+    "job_id": "afc2ca97-15e3-4d96-ba59-4654e73ecb56",
+    "as_of": "2026-11-04",
+    "window_start": "2026-10-08",
+    "merged": 0
+  }
 }
