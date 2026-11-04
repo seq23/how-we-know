@@ -8,7 +8,10 @@ def enabled():
 
 
 def refuse_publish(path=None):
-    if enabled() or (path and any('review' in p.lower() for p in Path(path).parts)):
+    p = Path(path) if path else None
+    is_review = p and (any(part.startswith('review-') for part in p.parts)
+                       or p.name.endswith(('-review.mp4', '-review-phone.mp4')))
+    if enabled() or is_review:
         raise RuntimeError('REVIEW_CUT_LOCAL_ONLY: refusing to shelve, push or upload')
 
 
