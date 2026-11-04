@@ -420,6 +420,7 @@ def bind_paths(state: Path | None = None) -> list[str]:
 # Mac checkout and the nightly housekeeping flagged it every night.
 # Guarded by loop/tests/test_mac_push_leaves_checkout_clean.py.
 MAC_OWNED_GLOBS = (
+    "channel/imagery/shot_lists.json",
     "loop/state/stops/*.json",
     "audio/*/beats.json",
     "renders/*-final.mp4.footage.json",

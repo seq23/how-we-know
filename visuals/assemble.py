@@ -294,12 +294,18 @@ def write_picture_record(out_path, shots, shot_frames, beat_frames, used):
     takes a Short's credits from it (no credit is burned into the master any
     more), and loop/upload.py lists the credits in the description."""
     import longform_picture as LP                         # noqa: PLC0415
+    import hashlib
+    with open(out_path, "rb") as master:
+        digest = hashlib.file_digest(master, "sha256").hexdigest()
     st = os.stat(out_path)
     rec = {"_why": "What this footage-only master shows, per shot, and the "
                    "credit for every beat (visuals/assemble.py). The authority "
                    "for a Short's footage credit and the description's credits.",
            "master": {"bytes": st.st_size, "mtime": int(st.st_mtime)},
            "picture": "footage-only",
+           "master_sha256": digest,
+           "beat_frames": beat_frames,
+           "shot_frames": shot_frames,
            "footage_beats_expected": len(beat_frames),
            "credits": used["credits"],
            "shots": [{"kind": s["kind"], "title": s["title"], "credit": s["credit"],

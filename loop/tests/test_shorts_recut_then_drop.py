@@ -37,6 +37,12 @@ def main() -> int:
     (shorts / "gone-short.mp4").write_text("cut")
     if SL.heal_held_cut("gone-short.mp4", "gone", shorts, renders) != "dropped":
         fails.append("a cut whose render is gone was not dropped at once")
+    (renders / "gone-final.mp4").write_bytes(b"restored")
+    if "gone-short.mp4" in SL.dropped_cuts(shorts):
+        fails.append("restored master did not release its retired cut for a fresh gated cut")
+    (shorts / "gone-short.mp4").write_text("fresh cut")
+    if SL.heal_held_cut("gone-short.mp4", "gone", shorts, renders) != "recut":
+        fails.append("restored master inherited failure attempts from missing source")
     for f in fails:
         print("FAIL:", f)
     print(f"{'FAIL' if fails else 'PASS'}: Shorts re-cut, then drop")

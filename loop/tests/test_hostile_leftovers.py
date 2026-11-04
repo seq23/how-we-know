@@ -110,7 +110,7 @@ class Leftovers(unittest.TestCase):
             with patch.object(assemble, 'probe', side_effect=probe), \
                  patch.object(plan_domain, 'foreign', return_value=[]), \
                  patch.object(LP, 'subject_clips', return_value=[]), \
-                 patch.object(LP, 'subject_photos', return_value=[{'local_file': 'p.jpg', 'title': 'p'}]), \
+                 patch.object(LP, 'subject_photos', return_value=[{'local_file': f'p{i}.jpg', 'title': f'subject {i}'} for i in range(60)]), \
                  patch.object(LP, 'render_shot', side_effect=lambda s, out, n: out) as shots, \
                  patch.object(assemble, 'write_picture_record'), \
                  patch.object(assemble.subprocess, 'run') as run:

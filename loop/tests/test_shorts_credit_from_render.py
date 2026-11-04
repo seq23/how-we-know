@@ -159,6 +159,99 @@ with tempfile.TemporaryDirectory() as td:
     finally:
         SH.footage_credit_lines, SH._read_strips = saved
 
+# Strip-free masters: credits survive absent legacy segments/manifests,
+# but mismatched bytes, timing or shot records must fail closed.
+with tempfile.TemporaryDirectory() as td:
+    import assemble as AS
+    import longform_picture as LP
+    master = str(Path(td) / "x.mp4")
+    Path(master).write_bytes(b"master pixels")
+    shots = [{"kind": "footage", "title": "isopod", "credit": "NOAA",
+              "key": "a", "start": 0, "subject": "isopod", "speed": 1,
+              "asset": {"source_org": "NOAA"}}]
+    AS.write_picture_record(master, shots, [60], [30, 30], {"credits": ["NOAA"]})
+    tl = [{"i": 0, "video_start": 0, "video_s": 1},
+          {"i": 1, "video_start": 1, "video_s": 1}]
+    record = SH.render_footage_record("x", [{}, {}], master, tl)
+    check("strip-free credits resolve without legacy species segments",
+          SH.beat_credits("x", [{"segment": "species_image", "args": {"source": "old"}}],
+                          0, record) == ["NOAA"])
+    import validate as V
+    rec = {"slug": "x", "source": master, "beats": [0, 1],
+           "segments": [{"beat": 0, "source_start": 0, "seconds": 1},
+                        {"beat": 1, "source_start": 1, "seconds": 1}]}
+    want, dropped, disagree = V._credits_the_master_burned(SH, None, rec, [{}, {}], Path(td))
+    check("V14 resolves strip-free credits independently of short receipt",
+          want == ["NOAA"] and not dropped and not disagree)
+    rec["segments"][0]["source_start"] = .5
+    check("V14 refuses cut timing from a different master",
+          bool(V._credits_the_master_burned(SH, None, rec, [{}, {}], Path(td))[1]))
+    # Existing approved masters get a read-only legacy migration by exact
+    # approved bytes, with credits re-derived from actual cut intervals.
+    rp = Path(master + SH.FOOTAGE_RECORD_SUFFIX)
+    original = json.loads(rp.read_text())
+    legacy = {k: v for k, v in original.items() if k not in
+              ("master_sha256", "beat_frames", "shot_frames")}
+    rp.write_text(json.dumps(legacy))
+    real_root = SH.ROOT
+    try:
+        SH.ROOT = td
+        pin = Path(td) / "channel" / "approved_renders.json"
+        pin.parent.mkdir()
+        pin.write_text(json.dumps({"x.mp4": {"sha256": original["master_sha256"],
+                                              "bytes": len(b"master pixels")}}))
+        check("approved legacy master resolves without changing master or sidecar",
+              SH.picture_credits(master, tl) == {0: "NOAA", 1: "NOAA"}
+              and rp.read_text() == json.dumps(legacy))
+        pin.write_text("{}")
+        try:
+            SH.picture_credits(master, tl)
+            check("unapproved unbound legacy record is refused", False)
+        except SH.RenderRecordUnreadable:
+            check("unapproved unbound legacy record is refused", True)
+    finally:
+        SH.ROOT = real_root
+        rp.write_text(json.dumps(original))
+    # V15 still measures the crop on strip-free masters. A receipt alone
+    # cannot make the uncropped picture pass.
+    from unittest.mock import patch
+    import numpy as np
+    from PIL import Image
+    rows = np.arange(SH.SRC_H, dtype=np.uint16)[:, None]
+    pixels = np.zeros((SH.SRC_H, SH.SRC_W, 3), dtype=np.uint8)
+    pixels[:, :, 0] = rows % 251
+    pixels[:, :, 1] = (rows // 3) % 251
+    full_image = Image.fromarray(pixels)
+    source_png, short_png = Path(td) / "source.png", Path(td) / "short.png"
+    full_image.save(source_png)
+    crop_h = SH.source_crop_height(2)
+    by, bh = SH.band_geometry(crop_h)
+    short_image = Image.new("RGB", (SH.OUT_W, SH.OUT_H))
+    short_image.paste(full_image.crop((0, 0, SH.SRC_W, crop_h))
+                      .resize((SH.OUT_W, bh), Image.BICUBIC), (0, by))
+    short_image.save(short_png)
+    receipt = {"slug": "x", "source": master, "source_crop_height": crop_h,
+               "band_y": by, "band_h": bh, "cap_lines": 2,
+               "segments": [{"beat": i, "source_start": i, "short_start": i,
+                             "seconds": 1} for i in range(2)]}
+    mp4 = Path(td) / "cut.mp4"
+    def frame(path, *args):
+        return str(source_png if str(path) == master else short_png)
+    with patch.object(V, "ROOT", Path(td)), patch.object(V, "_frame", side_effect=frame), \
+         patch.object(V, "_shorts_env", return_value=(SH, lambda paths: {}, [(mp4, receipt)])):
+        good = V.v15_shorts_caption_crop()
+        check("V15 proves strip-free crop on actual pixel bands", good.examined > 0 and not good.failures)
+        short_image.paste(full_image.resize((SH.OUT_W, bh), Image.BICUBIC), (0, by))
+        short_image.save(short_png)
+        bad = V.v15_shorts_caption_crop()
+        check("V15 refuses uncropped strip-free source pixels", bool(bad.failures))
+    Path(master).write_bytes(b"changed pixels")
+    try:
+        SH.picture_credits(master)
+        check("changed master bytes invalidate strip-free credits", False)
+    except SH.RenderRecordUnreadable:
+        check("changed master bytes invalidate strip-free credits", True)
+
 # ---- 4: the matcher --------------------------------------------------------
 known = ["NOAA Ocean Exploration, Seascape Alaska",
          "NOAA Ocean Exploration, Seascape Alaska 5",

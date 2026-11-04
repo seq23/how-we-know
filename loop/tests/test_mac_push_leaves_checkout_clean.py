@@ -81,6 +81,7 @@ sh(mac, "git", "config", "user.email", "t@t"); sh(mac, "git", "config", "user.na
 # ---- a normal night on the Mac: one file of every class the stages write.
 wk = MS.week_id()
 night = {
+    "channel/imagery/shot_lists.json": {"ep": {"subjects": ["snailfish"]}},
     f"loop/state/stops/{wk}-pov-repair.json": {"code": "POV_ALL_TRACED", "n": 63},
     "loop/state/stops/2026-W42-pov-repair.json": {"code": "POV_ALL_TRACED", "n": 64},
     "loop/state/stops/2026-W43-mac-batch.json": {"code": "PULL_FAILED"},

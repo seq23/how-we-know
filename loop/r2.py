@@ -853,6 +853,18 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
     slugs = list(slugs) if slugs else _publish_slugs()
     sent, skipped, absent, refused, held = [], [], [], [], []
     import shorts_lane                                    # noqa: PLC0415
+    # Validators inspect the whole local shelf, including episodes no longer
+    # in today's publish list. Heal those cuts too; never leave orphan receipts.
+    scheduled = {shorts_lane.short_file(slug, rank) for slug in slugs
+                 for rank in range(1, shorts_lane.cuts_for(slug) + 1)}
+    for name in sorted(held_files - scheduled):
+        receipt = shorts / f"{name}.short.json"
+        if receipt.exists():
+            slug = json.loads(receipt.read_text()).get("slug")
+            if slug and name not in shorts_lane.dropped_cuts(shorts):
+                how = shorts_lane.heal_held_cut(name, slug, shorts, ROOT / "renders")
+                held.append(name)
+                print(f"  held {name}: {how}; V14/V15 remain required")
     for slug, rank in ((s_, r_) for s_ in slugs
                        for r_ in range(1, shorts_lane.cuts_for(s_) + 1)):
         name = shorts_lane.short_file(slug, rank)

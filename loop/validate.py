@@ -962,6 +962,32 @@ def _credits_the_master_burned(SH, ocr, rec: dict, plan: list, tmp: Path):
     lines, seen, dropped, disagree = [], set(), {}, []
     segs = {int(s["beat"]): s for s in rec.get("segments") or []}
     src = ROOT / rec["source"]
+    # Strip-free masters use the assembly's hash-bound shot intervals. V14
+    # still reads every resulting credit off the finished Short below.
+    if src.exists():
+        cut_timeline = [{"i": i, "video_start": seg["source_start"], "video_s": seg["seconds"]}
+                        for i, seg in sorted(segs.items())]
+        try:
+            picture = SH.picture_credits(str(src), cut_timeline)
+        except SH.RenderRecordUnreadable as e:
+            return [], {int(i): str(e) for i in rec["beats"]}, []
+        if picture is not None:
+            dropped = {int(i): "no segment or credit in current master record"
+                       for i in rec["beats"] if int(i) not in segs or int(i) not in picture}
+            assembly = read_json(Path(str(src) + SH.FOOTAGE_RECORD_SUFFIX))
+            start = 0
+            for i, n in enumerate(assembly.get("beat_frames") or []):
+                if i in segs and (abs(segs[i]["source_start"] - start / SH.FPS) > 0.001
+                                  or abs(segs[i]["seconds"] - n / SH.FPS) > 0.001):
+                    dropped[i] = "cut timeline disagrees with current master; re-cut"
+                start += n
+            want = []
+            for i in rec["beats"]:
+                if int(i) not in dropped:
+                    for c in str(picture[int(i)] or "").split(" / "):
+                        if c and c not in want:
+                            want.append(c)
+            return want, dropped, []
     known = _footage_credit_lines(SH)
     if not known:
         raise RuntimeError("no footage credit lines known on this machine - "
@@ -1150,6 +1176,13 @@ def v15_shorts_caption_crop() -> Result:
         if not src.exists():
             r.fail_file(mp4.name, f"{mp4.name}: source {rec['source']} is gone")
             continue
+        try:
+            intervals = [{"i": int(seg["beat"]), "video_start": seg["source_start"],
+                          "video_s": seg["seconds"]} for seg in rec.get("segments") or []]
+            strip_free = SH.picture_credits(str(src), intervals) is not None
+        except SH.RenderRecordUnreadable as e:
+            r.fail_file(mp4.name, f"{mp4.name}: {e}")
+            continue
         ch, by, bh = rec["source_crop_height"], rec["band_y"], rec["band_h"]
         top = SH.plate_top(rec["cap_lines"])
         plate = f"crop={SH.SRC_W}:{SH.SRC_H - SH.CAP.CAP_BOTTOM - top}:0:{top}"
@@ -1159,8 +1192,14 @@ def v15_shorts_caption_crop() -> Result:
                    f"{ch - top} row(s) of burned caption reach the picture")
         for k, (t_short, t_src) in enumerate(_samples(rec)):
             removed = _frame(src, t_src, tmp / f"{mp4.stem}.{k}.cut.png", plate)
-            if not _ocr_words(ocr, removed).strip():
-                continue                 # master not captioning here; no evidence
+            removed_text = _ocr_words(ocr, removed).strip()
+            if strip_free and removed_text:
+                r.fail_file(mp4.name, f"{mp4.name}: unexpected burned text in strip-free master")
+                continue
+            if not strip_free and not removed_text:
+                continue                 # legacy master not captioning; no evidence
+            # Hash-bound strip-free masters must still pass the same pixel
+            # comparison below. No OCR-only or receipt-only exemption.
             r.examined += 1
             s = np.asarray(Image.open(
                 _frame(mp4, t_short, tmp / f"{mp4.stem}.{k}.short.png")
