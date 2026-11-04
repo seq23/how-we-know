@@ -429,6 +429,9 @@ def library_pending(verbose: bool = False,
     held |= set((read_json(Path(os.environ.get("LOOP_VALIDATOR_HOLD")
                                 or LOOP / "state" / "validator_hold.json"),
                            default={}).get("held") or {}).keys())
+    import approved_renders
+    approval_required = breaker.load().get("longform_owner_approval_required", False)
+    approvals = approved_renders.load() if approval_required else {}
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
@@ -451,6 +454,14 @@ def library_pending(verbose: bool = False,
         if why_hook:
             if verbose:
                 print(f"  HELD {slug}: {why_hook}")
+            continue
+        if approval_required and slug not in approvals:
+            if verbose:
+                print(f"  HELD {slug}: owner has not approved this long-form cut")
+            continue
+        if approval_required and assets is local_assets and not approved_renders.protected(slug):
+            if verbose:
+                print(f"  HELD {slug}: local bytes differ from the owner-approved cut")
             continue
         found = assets(slug)
         if not isinstance(found, tuple):

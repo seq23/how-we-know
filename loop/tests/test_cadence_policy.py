@@ -457,6 +457,17 @@ def check() -> list[str]:
     import ledger as _led                                    # noqa: PLC0415
     tail = cadence.scheduled_tail()
     import breaker as _br                                    # noqa: PLC0415
+    pending = _br.longform_dating_pending()
+    fixture = None
+    if not tail and pending:
+        print(f"STATE: {pending}: next daily upload assigns dates; proving occupied slots on fixture")
+        # Real dates in an isolated ledger: the allocation proof below still
+        # examines rows, including collision and mutation checks.
+        future = _bf.schedule_for({"published": []}, 3, live)
+        fixture = {"published": [
+            {"slug": f"dating-fixture-{i}", "scheduled_publish_at": w.strftime("%Y-%m-%dT%H:%M:%SZ")}
+            for i, w in enumerate(future)]}
+        tail = [dict(r, when=w) for r, w in zip(fixture["published"], future)]
     if not tail and _br.longform_hold(committed=True):
         # The owner's long-form hold (2026-11-02) empties the calendar on
         # purpose: nothing is dated, so nothing can move. Held to the new
@@ -475,7 +486,9 @@ def check() -> list[str]:
     else:
         taken = {t["scheduled_publish_at"] for t in tail}
         last = tail[-1]["when"]
-        led_now = _led.load()
+        led_now = fixture if fixture is not None else _led.load()
+        import copy
+        before_allocation = copy.deepcopy(led_now["published"])
         # PER DOMAIN. This loop used to allocate from the whole ladder and
         # require every slot to fall after the END of the existing run. That
         # was the right test while one domain held every publish day; it became
@@ -526,7 +539,8 @@ def check() -> list[str]:
                                      f"{_bf.rotation_days(cfg).get(wd)!r}")
         # And the ledger itself is untouched by asking.
         examined += 1
-        if _led.load()["published"] != led_now["published"]:
+        if led_now["published"] != before_allocation or (
+                fixture is None and _led.load()["published"] != before_allocation):
             fails.append("re-running the slot allocator MUTATED the ledger")
 
     # ---------------------------- NEGATIVE: the ladders refuse to wrap

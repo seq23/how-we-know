@@ -79,6 +79,11 @@ def shelf_lookup(shelf):
         meta = shelf.head(rk)
         if meta is None:
             return "not shelved in R2 (no render) — run bin/push-to-r2.sh"
+        if breaker.load().get("longform_owner_approval_required"):
+            import approved_renders
+            approval = approved_renders.load().get(slug) or {}
+            if not approval.get("sha256") or meta.get("sha256") != approval["sha256"]:
+                return "R2 bytes are not the owner-approved long-form cut"
         # THE SHELF CAN HOLD A CUT THIS REPO HAS ALREADY REPLACED.
         #
         # loop/pov_repair.py rewrites a script's [HUMAN] beat, records the
