@@ -119,3 +119,6 @@ research/.video_cache/
 renders/*.below-picture-floor
 renders/*.pre-footage-only*
 renders/*.picture-check-failed*
+
+# One-off local owner review cuts and their findings/audit records.
+renders/review-*/
