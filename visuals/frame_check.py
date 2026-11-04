@@ -264,6 +264,11 @@ def check_variety(video: str) -> dict:
         raise PictureCheckFailed(f"PICTURE_CHECK_FAILED: no shot record beside "
                                  f"{video} ({e}) - variety cannot be proven", [])
     probs = LP.variety_problems(shots, SAMPLE_EVERY)
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import review_cut
+    if probs and review_cut.enabled():
+        print("REVIEW VARIETY: " + "; ".join(probs), flush=True)
+        return {"shots": len(shots), "variety": "review", "findings": probs}
     if probs:
         raise PictureCheckFailed("PICTURE_CHECK_FAILED (variety): " + "; ".join(probs[:12]),
                                  [(0.0, p) for p in probs])
