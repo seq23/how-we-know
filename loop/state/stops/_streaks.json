@@ -37,9 +37,9 @@
   },
   "pov-repair": {
     "code": "POV_ALL_TRACED",
-    "count": 6,
+    "count": 7,
     "first_at": "2026-10-21T04:00:09+00:00",
-    "last_at": "2026-11-03T18:07:15+00:00"
+    "last_at": "2026-11-04T01:13:57+00:00"
   },
   "titles": {
     "code": "TITLES_UP_TO_DATE",
@@ -88,5 +88,11 @@
     "count": 1,
     "first_at": "2026-11-04T01:12:49+00:00",
     "last_at": "2026-11-04T01:12:49+00:00"
+  },
+  "captions-build": {
+    "code": "CAPTIONS_UNBUILDABLE",
+    "count": 1,
+    "first_at": "2026-11-04T01:16:36+00:00",
+    "last_at": "2026-11-04T01:16:36+00:00"
   }
 }
