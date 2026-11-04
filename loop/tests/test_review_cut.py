@@ -15,6 +15,7 @@ import longform_picture as LP
 import review_cut
 import review_batch
 import r2
+import mac_sync
 
 with tempfile.TemporaryDirectory() as td, patch.dict(os.environ, {}, clear=False):
     root = Path(td)
@@ -54,6 +55,8 @@ with tempfile.TemporaryDirectory() as td, patch.dict(os.environ, {}, clear=False
         assert (dest / 'fixture-review-phone.mp4').stat().st_size > 0
         frames.assert_called_once()
         for action in (lambda: r2.push(None),
+                       lambda: mac_sync.push([], "review"),
+                       lambda: __import__("assemble").assemble("missing-plan", str(root / "renders/fixture-final.mp4")),
                        lambda: review_cut.output_path(root / 'renders/fixture-final.mp4'),
                        lambda: review_cut.output_path(root / 'channel/approved_renders.json'),
                        lambda: review_cut.output_path(dest / 'fixture-review.mp4')):

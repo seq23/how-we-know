@@ -437,8 +437,8 @@ def mac_owned_touched() -> list[str]:
 
 def push(paths: list[str], message: str) -> tuple[bool, str]:
     """Commit exactly these paths (if changed) and push. Never `git add -A`."""
-    import review_cut
-    review_cut.refuse_publish()
+    if os.environ.get("HWK_REVIEW_CUT") == "1":
+        raise RuntimeError("REVIEW_CUT_LOCAL_ONLY: refusing automated state push")
     if off_main_reason():
         # Committing here and pushing `main` is exactly how four Mac-state
         # commits were stranded on a dead branch (2026-10-13). Commit nothing.

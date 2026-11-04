@@ -137,7 +137,6 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
             d = float(b["seconds"])                     # estimate only if no audio
         durations.append(max(0.4, d))
 
-    import sys
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "loop"))
     import picture_time
     spoken = list(durations)
