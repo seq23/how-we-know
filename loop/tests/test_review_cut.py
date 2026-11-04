@@ -62,6 +62,13 @@ with tempfile.TemporaryDirectory() as td, patch.dict(os.environ, {}, clear=False
                 raise AssertionError('review allowed publish or overwrite')
             except (RuntimeError, FileExistsError):
                 pass
+        import runpy
+        with patch.object(sys, 'argv', ['frame_check.py', str(source), slug, '--restore']):
+            try:
+                runpy.run_path(str(ROOT / 'visuals/frame_check.py'), run_name='__main__')
+                raise AssertionError('review promoted a failed cut into production')
+            except RuntimeError as e:
+                assert 'REVIEW_CUT_LOCAL_ONLY' in str(e)
         with patch.object(FC, 'check', side_effect=FC.PictureCheckFailed('bad frame', [(1, 'pillarbox')])):
             try:
                 FC.check_render(str(source), slug)

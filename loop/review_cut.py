@@ -20,6 +20,8 @@ def output_path(path):
     if enabled():
         if not any(part.startswith('review-') for part in p.parent.parts) or not p.name.endswith('-review.mp4'):
             raise RuntimeError('REVIEW_CUT_LOCAL_ONLY: use a review directory and -review.mp4')
-        if p.exists() or Path(str(p) + '.footage.json').exists():
+        companions = ('', '.footage.json', '.picture-check-failed',
+                      '.picture-check-failed.footage.json')
+        if any(Path(str(p) + suffix).exists() for suffix in companions):
             raise FileExistsError(f'REVIEW_CUT_NO_OVERWRITE: {p}')
     return p

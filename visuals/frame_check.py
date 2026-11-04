@@ -295,6 +295,10 @@ if __name__ == "__main__":
     # frame_check.py VIDEO SLUG [--restore]: --restore moves a render set aside
     # as .picture-check-failed back into place when it now passes.
     vid, slug = sys.argv[1], sys.argv[2]
+    if "--restore" in sys.argv:
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        import review_cut
+        review_cut.refuse_publish()
     if "--restore" in sys.argv and vid.endswith(".picture-check-failed"):
         final = vid[: -len(".picture-check-failed")]
         try:

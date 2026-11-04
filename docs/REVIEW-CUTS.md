@@ -21,7 +21,7 @@ approved cut. Only the worktree's free vision route is used.
 
 With the flag enabled, assembler output is restricted to new `-review.mp4`
 files in a `review-*` directory; R2 writes, upload and automated state pushes
-are refused. Review paths are also refused by R2/upload after the flag is
+are refused. The frame-check CLI also refuses `--restore` under the flag. Review paths are also refused by R2/upload after the flag is
 unset. The one behavior test is `loop/tests/test_review_cut.py`, discovered
 by `loop/tests/run_all.py`.
 
