@@ -110,18 +110,16 @@ Every layer of a chip began as a pattern of light on a chemical film, developed 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:48 Title card
-- 00:50 A stencil is made from light-sensitive chemistry
-- 02:30 The resist records light as a change in solubility
-- 03:55 Producer POV
-- 04:05 Wavelength sets the floor, and optics move it
-- 05:35 Extreme ultraviolet required mirrors, vacuum and molten tin
-- 07:20 Lines can be narrower than the light that drew them
-- 08:55 Measurement, not the picture, proves the pattern
-- 10:10 What to notice in the edit
-- 10:55 Evidence limit
-- 11:45 Closing
+- 0:00 Cold open
+- 0:42 A stencil is made from light-sensitive chemistry
+- 2:13 The resist records light as a change in solubility
+- 3:38 Wavelength sets the floor, and optics move it
+- 5:17 Extreme ultraviolet required mirrors, vacuum and molten tin
+- 7:05 Lines can be narrower than the light that drew them
+- 8:32 Measurement, not the picture, proves the pattern
+- 9:41 What to notice in the edit
+- 10:19 Evidence limit
+- 11:01 Closing
 
 ## Sources
 

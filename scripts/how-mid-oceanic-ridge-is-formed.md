@@ -115,19 +115,18 @@ So ocean ridges are not pushed up. The longest mountain range on Earth is not a 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:54 Title card
-- 00:57 The ridge is a crack being filled, not a fold being pushed up
-- 02:36 The mantle melts because pressure falls, not because it heats up
-- 04:04 Producer POV
-- 04:12 The ridge stands tall because its rock is young
-- 05:27 The first clue was a valley nobody expected
-- 06:38 The seafloor recorded its own age in magnetism
-- 08:05 Drilling and diving checked the prediction
-- 09:26 Spreading speed shapes the ridge
-- 10:42 What to notice in the edit
-- 11:09 Evidence limit
-- 11:55 Closing
+- 0:00 Cold open
+- 0:47 The ridge is a crack being filled, not a fold being pushed up
+- 2:20 The mantle melts because pressure falls, not because it heats up
+- 3:36 Producer POV
+- 3:47 The ridge stands tall because its rock is young
+- 4:52 The first clue was a valley nobody expected
+- 5:53 The seafloor recorded its own age in magnetism
+- 7:18 Drilling and diving checked the prediction
+- 8:30 Spreading speed shapes the ridge
+- 9:42 What to notice in the edit
+- 10:09 Evidence limit
+- 10:47 Closing
 
 ## Sources
 

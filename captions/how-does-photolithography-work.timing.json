@@ -1,0 +1,112 @@
+{
+  "episode": "how-does-photolithography-work",
+  "beats": 86,
+  "plan_source": "plans/how-does-photolithography-work.json",
+  "timing": "audio",
+  "beats_measured": 86,
+  "durations_recorded": 50,
+  "duration_s": 675.056,
+  "cues": 188,
+  "chapters_real": 11,
+  "chapters_published": 10,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Producer POV (8.2s)"
+  ],
+  "drift": {
+    "mean_abs_s": 21.7,
+    "worst_abs_s": 43.9,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "A stencil is made from light-sensitive chemistry",
+        "hand": "00:50",
+        "real": "0:42",
+        "drift_s": -8.0
+      },
+      {
+        "title": "The resist records light as a change in solubility",
+        "hand": "02:30",
+        "real": "2:13",
+        "drift_s": -16.9
+      },
+      {
+        "title": "Producer POV",
+        "hand": "03:55",
+        "real": "3:30",
+        "drift_s": -24.8
+      },
+      {
+        "title": "Wavelength sets the floor, and optics move it",
+        "hand": "04:05",
+        "real": "3:38",
+        "drift_s": -26.6
+      },
+      {
+        "title": "Extreme ultraviolet required mirrors, vacuum and molten tin",
+        "hand": "05:35",
+        "real": "5:17",
+        "drift_s": -17.7
+      },
+      {
+        "title": "Lines can be narrower than the light that drew them",
+        "hand": "07:20",
+        "real": "7:05",
+        "drift_s": -14.3
+      },
+      {
+        "title": "Measurement, not the picture, proves the pattern",
+        "hand": "08:55",
+        "real": "8:32",
+        "drift_s": -22.5
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:10",
+        "real": "9:41",
+        "drift_s": -28.5
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:55",
+        "real": "10:19",
+        "drift_s": -35.1
+      },
+      {
+        "title": "Closing",
+        "hand": "11:45",
+        "real": "11:01",
+        "drift_s": -43.9
+      }
+    ]
+  },
+  "ffprobe": null,
+  "text_checks": {
+    "beats_json": {
+      "checked": 86,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 86,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-does-photolithography-work.vtt",
+    "captions/how-does-photolithography-work.srt",
+    "captions/how-does-photolithography-work.chapters.txt"
+  ]
+}

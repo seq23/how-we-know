@@ -98,18 +98,17 @@ The ocean's deepest water is moving now, slowly, on a schedule longer than any r
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:47 Title card
-- 00:52 Density, not temperature alone, decides what sinks
-- 02:00 Deep water forms in only a few places
-- 03:50 Sinking is the easy half; rising is the puzzle
-- 05:55 Producer POV
-- 06:10 Chemistry inside the water records its age
-- 07:30 Direct measurement came late, and it is still thin
-- 09:25 A crude model showed the circulation might switch states
-- 10:55 What to notice in the edit
-- 11:35 Evidence limit
-- 12:05 Closing
+- 0:00 Cold open
+- 0:42 Density, not temperature alone, decides what sinks
+- 1:47 Deep water forms in only a few places
+- 3:26 Sinking is the easy half; rising is the puzzle
+- 5:10 Producer POV
+- 5:23 Chemistry inside the water records its age
+- 6:24 Direct measurement came late, and it is still thin
+- 7:57 A crude model showed the circulation might switch states
+- 9:19 What to notice in the edit
+- 9:57 Evidence limit
+- 10:31 Closing
 
 ## Sources
 
