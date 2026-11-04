@@ -72,6 +72,10 @@ jobs:
         run: pip install -r requirements-loop.txt
       - name: Install the one dependency the tests need
         run: pip install --quiet pyyaml
+      - name: Install FFmpeg for the review-cut behavior test
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
       - name: Loop tests
         run: python loop/tests/run_all.py --shard ${{ matrix.shard }}/2 --skip-slow
       - name: Conformance with the locked plan

@@ -516,6 +516,8 @@ def altered_content(slug: str) -> bool:
 # -------------------------------------------------------------------- upload
 
 def resumable_upload(token: str, payload: dict, video: Path) -> str:
+    import review_cut
+    review_cut.refuse_publish(video)
     body = json.dumps(payload).encode()
     req = urllib.request.Request(UPLOAD_URL, data=body, method="POST", headers={
         "Authorization": f"Bearer {token}",

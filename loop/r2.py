@@ -360,6 +360,8 @@ class LocalBackend(_Backend):
             return None
 
     def put(self, path, key: str) -> dict:
+        import review_cut
+        review_cut.refuse_publish(path)
         self._refuse_write(key)
         path = Path(path)
         dst = self._path(key)
@@ -392,6 +394,8 @@ class LocalBackend(_Backend):
         return {"key": key, "size": int(size), "sha256": m.get("sha256")}
 
     def delete(self, key: str) -> None:
+        import review_cut
+        review_cut.refuse_publish()
         self._refuse_write(key)
         for x in (self._meta(key) or {}).get("parts") or []:
             pp = self._path(x["key"])
@@ -547,6 +551,8 @@ class WranglerBackend(_Backend):
         return dest
 
     def put(self, path, key: str) -> dict:
+        import review_cut
+        review_cut.refuse_publish(path)
         self._refuse_write(key)
         path = Path(path)
         parts = None
@@ -579,6 +585,8 @@ class WranglerBackend(_Backend):
                 "sha256": sha256_file(path)}
 
     def delete(self, key: str) -> None:
+        import review_cut
+        review_cut.refuse_publish()
         self._refuse_write(key)
         for x in (self._meta(key) or {}).get("parts") or []:
             self._run(["r2", "object", "delete", self._obj(x["key"]), "--remote"],
@@ -685,6 +693,8 @@ def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
     Every skip prints its reason. A push that says nothing is indistinguishable
     from a push that did nothing.
     """
+    import review_cut
+    review_cut.refuse_publish()
     renders = ROOT / "renders"
     thumbs = ROOT / "channel" / "thumbnails"
     slugs = list(slugs) if slugs else _publish_slugs()
@@ -820,6 +830,8 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
     could not import, crashed, examined nothing) still refuses everything,
     because then no cut is proven.
     """
+    import review_cut
+    review_cut.refuse_publish()
     res = verify_shorts()
     ok, lines = res[0], res[1]
     held_files = set(res[2]) if len(res) > 2 else set()

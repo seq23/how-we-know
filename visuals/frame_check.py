@@ -107,14 +107,16 @@ def black_bars(paths: list[str]) -> dict[str, str]:
     from PIL import Image, ImageStat                     # noqa: PLC0415
     found = {}
     for p in paths:
-        im = Image.open(p).convert("L")
+        im = Image.open(p).convert("RGB")
         w, h = im.size
         k = max(2, int(w * BAR_FRACTION))
         left = ImageStat.Stat(im.crop((0, 0, k, h)))
         right = ImageStat.Stat(im.crop((w - k, 0, w, h)))
-        mid = ImageStat.Stat(im.crop((k, 0, w - k, h)))
-        if (left.mean[0] <= BAR_BLACK and right.mean[0] <= BAR_BLACK
-                and left.stddev[0] < 6 and right.stddev[0] < 6
+        mid = ImageStat.Stat(im.crop((k, 0, w - k, h)).convert("L"))
+        # Black bars are dark in EVERY channel. Deep blue ocean can have
+        # very low luminance while its blue channel still carries a picture.
+        if (max(left.mean) <= BAR_BLACK and max(right.mean) <= BAR_BLACK
+                and max(left.stddev) < 6 and max(right.stddev) < 6
                 and mid.mean[0] > BAR_PICTURE):
             found[p] = "black pillarbox bars at the sides"
     return found
@@ -264,6 +266,11 @@ def check_variety(video: str) -> dict:
         raise PictureCheckFailed(f"PICTURE_CHECK_FAILED: no shot record beside "
                                  f"{video} ({e}) - variety cannot be proven", [])
     probs = LP.variety_problems(shots, SAMPLE_EVERY)
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import review_cut
+    if probs and review_cut.enabled():
+        print("REVIEW VARIETY: " + "; ".join(probs), flush=True)
+        return {"shots": len(shots), "variety": "review", "findings": probs}
     if probs:
         raise PictureCheckFailed("PICTURE_CHECK_FAILED (variety): " + "; ".join(probs[:12]),
                                  [(0.0, p) for p in probs])
@@ -288,6 +295,10 @@ if __name__ == "__main__":
     # frame_check.py VIDEO SLUG [--restore]: --restore moves a render set aside
     # as .picture-check-failed back into place when it now passes.
     vid, slug = sys.argv[1], sys.argv[2]
+    if "--restore" in sys.argv:
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        import review_cut
+        review_cut.refuse_publish()
     if "--restore" in sys.argv and vid.endswith(".picture-check-failed"):
         final = vid[: -len(".picture-check-failed")]
         try:

@@ -106,6 +106,11 @@ PRECHECK_ROUNDS = 6
 
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
              music=True, burn_captions=False, slug=None, frame_check=True):
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "loop"))
+    import review_cut
+    review_cut.output_path(out_path)
+    if review_cut.enabled() and not frame_check:
+        raise RuntimeError("REVIEW_CUT_REQUIRES_FRAME_CHECK")
     plan = json.load(open(plan_path))
     # A DOMAIN'S GRAPHICS NEVER APPEAR IN ANOTHER DOMAIN'S VIDEO (2026-11-01:
     # the deep-sea depth gauge on the rice episode). The active domain is
@@ -118,6 +123,8 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
             f"domain's graphics ({_bad[0][2]}, beat {_bad[0][0]}); "
             f"visuals/plan_domain.py sweep re-plans it")
     workdir = workdir or out_path + ".work"
+    if review_cut.enabled() and os.path.exists(workdir):
+        raise FileExistsError(f"REVIEW_CUT_NO_OVERWRITE: {workdir}")
     os.makedirs(workdir, exist_ok=True)
 
     # --- decide each beat's duration -----------------------------------------
@@ -130,7 +137,6 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
             d = float(b["seconds"])                     # estimate only if no audio
         durations.append(max(0.4, d))
 
-    import sys
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "loop"))
     import picture_time
     spoken = list(durations)
