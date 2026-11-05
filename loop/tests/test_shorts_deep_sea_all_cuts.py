@@ -224,7 +224,11 @@ renders, shorts = tmp / "renders", tmp / "shorts"
 renders.mkdir()
 shorts.mkdir()
 for s in (d_pub, d_new, deep[2], m1):
-    (renders / f"{s}-final.mp4").write_bytes(b"")
+    master = renders / f"{s}-final.mp4"
+    master.write_bytes(b"moving footage fixture")
+    Path(f"{master}.footage.json").write_text(json.dumps({
+        "master": {"bytes": master.stat().st_size, "mtime": int(master.stat().st_mtime)},
+        "footage_beats_expected": 1, "beats": {"0": "NOAA"}}))
 # d_pub: rank 1 only, receipt says 3 eligible chapters -> needs ranks 2-3.
 # d_new: all three cut -> nothing.  deep[2]: one eligible chapter -> nothing.
 # m1: rank 1 cut -> nothing.  (no rank-1 cut at all would group it too)
@@ -233,7 +237,8 @@ for s, ranks, elig in ((d_pub, (1,), 3), (d_new, (1, 2, 3), 3),
     for r in ranks:
         (shorts / SL.short_file(s, r)).write_bytes(b"x")
         (shorts / f"{SL.short_file(s, r)}.short.json").write_text(
-            json.dumps({"eligible_chapters": elig, "opener": _OPENER}))
+            json.dumps({"eligible_chapters": elig, "opener": _OPENER,
+                        "master_footage": __import__("shorts_master").evidence(renders / f"{s}-final.mp4")}))
 groups = SL.cut_groups(renders, shorts, cfg)
 check("6 cut_groups", groups == {3: [d_pub]} or
       groups == {3: sorted([d_pub])}, str(groups))

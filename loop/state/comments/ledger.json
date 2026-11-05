@@ -4,7 +4,7 @@
     "GTvZFHQMMuQ": "2026-10-03T14:30:59Z",
     "MAV4PF056RA": "2026-09-20T20:01:33Z",
     "sfveDF88ZHo": "2026-09-14T13:56:55Z",
-    "Fkw7S2dU8QA": "2026-09-29T16:06:54Z",
+    "Fkw7S2dU8QA": "2026-10-23T18:07:22Z",
     "MWOUa3UEXSk": "2026-09-28T23:52:40Z",
     "n14-h_0f5DY": "2026-10-03T14:30:59Z",
     "nvggtLK6EZQ": "2026-10-05T23:09:52Z",
@@ -53,7 +53,15 @@
     "sICeM1lLrVE": "2026-10-23T18:07:23Z",
     "Kh2k6I4il3g": "2026-10-23T01:13:42Z",
     "ikWFDhaOgG4": "2026-10-16T23:10:58Z",
-    "5ulaiFE0JuY": "2026-10-27T23:08:54Z"
+    "5ulaiFE0JuY": "2026-10-27T23:08:54Z",
+    "rDJ0lUO1Yf0": "2026-10-29T14:10:35Z",
+    "Ky9Omx9nHr4": "2026-10-29T14:10:34Z",
+    "RPtB8FQhaA4": "2026-11-03T15:05:06Z",
+    "KJ6fDyFqLQ8": "2026-10-29T23:08:35Z",
+    "7QtJ_B2kggQ": "2026-11-03T15:05:05Z",
+    "5JErm9uFsFw": "2026-10-29T23:08:34Z",
+    "qPnBKYAR3ps": "2026-10-26T15:01:02Z",
+    "VBVTgilTsis": "2026-10-30T23:08:01Z"
   },
   "seen": {
     "UgwwhKbVrAMub0De6_d4AaABAg": {
@@ -2385,6 +2393,12 @@
       "units": 119,
       "cost_usd": 0.0,
       "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
+    },
+    {
+      "at": "2026-11-05T00:05:36+00:00",
+      "videos": 130,
+      "new": 0,
+      "units": 133
     }
   ],
   "channel_comments": {
@@ -2829,5 +2843,5 @@
       "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-11-03T15:05:06+00:00"
+  "updated": "2026-11-05T00:05:36+00:00"
 }

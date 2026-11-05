@@ -1,18 +1,18 @@
 {
   "stage": "handoff",
   "week": "2026-W45",
-  "at": "2026-11-04T15:05:14+00:00",
+  "at": "2026-11-05T00:13:14+00:00",
   "code": "HANDOFF_UP_TO_DATE",
-  "message": "every public Short links to its episode, every public episode lists its Shorts, every public video is in its playlist (78 Short(s), 36 episode(s) examined; 0 Short(s) newly pending on an episode not yet public)",
+  "message": "every public Short links to its episode, every public episode lists its Shorts, every public video is in its playlist (80 Short(s), 36 episode(s) examined; 0 Short(s) newly pending on an episode not yet public)",
   "detail": {
-    "shorts": 78,
+    "shorts": 80,
     "episodes": 36,
     "newest_input_at": null
   },
   "unblock": "Nothing to do; this lane runs after every Shorts and upload lane run and acts the first time something new is public.",
   "disposition": "self_resolving",
-  "disposition_why": "Every public Short already opens with the link to its episode, every public episode lists its Shorts, and every public video is in its domain playlist. The hand-off lane (loop/handoff.py) is FINISHED, not blocked: it does real work again the first run after a Short or an episode goes public. Nothing was written and a re-run costs a few read units. (run 1 of at most 14 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "Every public Short already opens with the link to its episode, every public episode lists its Shorts, and every public video is in its domain playlist. The hand-off lane (loop/handoff.py) is FINISHED, not blocked: it does real work again the first run after a Short or an episode goes public. Nothing was written and a re-run costs a few read units. (run 3 of at most 14 before this escalates to a human.)",
+  "consecutive": 3,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
@@ -38,6 +38,7 @@
     "why-deep-sea-creatures-are-creepers: no episode in the ledger for this Short (IEbq-U5_i5M); nothing to hand off to",
     "why-does-rice-get-sticky: no episode in the ledger for this Short (BPpmHWdQQ-w); nothing to hand off to",
     "why-does-meat-need-to-rest-after-cooking: no episode in the ledger for this Short (gzfS8409lV8); nothing to hand off to",
+    "does-damascus-steel-rust: no episode in the ledger for this Short (6GR-Ie3Sxm4); nothing to hand off to",
     "0 action(s), 0 write(s); 0 affordable today after the upload/Shorts reserve"
   ]
 }

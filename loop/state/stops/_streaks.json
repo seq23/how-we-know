@@ -19,15 +19,15 @@
   },
   "thumbs": {
     "code": "THUMBS_UP_TO_DATE",
-    "count": 2,
+    "count": 3,
     "first_at": "2026-11-03T00:51:40+00:00",
-    "last_at": "2026-11-04T00:45:16+00:00"
+    "last_at": "2026-11-05T00:45:23+00:00"
   },
   "cloud-upload": {
     "code": "OWNER_HOLD_LONGFORM",
-    "count": 2,
+    "count": 3,
     "first_at": "2026-11-03T15:04:56+00:00",
-    "last_at": "2026-11-04T15:05:08+00:00"
+    "last_at": "2026-11-04T22:58:54+00:00"
   },
   "sun-rank": {
     "code": "RUNWAY_CRITICAL",
@@ -43,9 +43,9 @@
   },
   "titles": {
     "code": "TITLES_UP_TO_DATE",
-    "count": 7,
+    "count": 8,
     "first_at": "2026-10-28T23:37:04+00:00",
-    "last_at": "2026-11-04T00:45:12+00:00"
+    "last_at": "2026-11-05T00:45:19+00:00"
   },
   "food-author": {
     "code": "FOOD_EPISODE_IN_FLIGHT",
@@ -67,26 +67,32 @@
   },
   "queue-reopen": {
     "code": "QUEUE_HOOK_CLEAN",
-    "count": 1,
+    "count": 2,
     "first_at": "2026-11-04T00:45:14+00:00",
-    "last_at": "2026-11-04T00:45:14+00:00"
+    "last_at": "2026-11-05T00:45:21+00:00"
   },
   "repackage-apply": {
     "code": "REPACKAGE_UP_TO_DATE",
-    "count": 2,
+    "count": 3,
     "first_at": "2026-11-04T00:55:07+00:00",
-    "last_at": "2026-11-04T17:37:29+00:00"
+    "last_at": "2026-11-05T01:01:42+00:00"
   },
   "daily-runway": {
     "code": "RUNWAY_FULL",
-    "count": 1,
+    "count": 2,
     "first_at": "2026-11-04T01:12:49+00:00",
-    "last_at": "2026-11-04T01:12:49+00:00"
+    "last_at": "2026-11-05T01:13:35+00:00"
   },
   "handoff": {
     "code": "HANDOFF_UP_TO_DATE",
-    "count": 1,
+    "count": 3,
     "first_at": "2026-11-04T15:05:14+00:00",
-    "last_at": "2026-11-04T15:05:14+00:00"
+    "last_at": "2026-11-05T00:13:14+00:00"
+  },
+  "comment-watch": {
+    "code": "NO_NEW_COMMENTS",
+    "count": 1,
+    "first_at": "2026-11-05T00:05:36+00:00",
+    "last_at": "2026-11-05T00:05:36+00:00"
   }
 }

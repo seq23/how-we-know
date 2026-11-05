@@ -192,6 +192,22 @@ def check_dating_transition():
     return fails, 7
 
 
+def check_pov_dating_transition():
+    from unittest.mock import patch
+    import validate as V, ledger
+    fails = []
+    with patch.object(ledger, "load", return_value={"published": []}), \
+         patch.object(breaker, "longform_hold", return_value=None):
+        for pending, want_failure in (("LONGFORM_DATING_PENDING", False), (None, True)):
+            with patch.object(breaker, "longform_dating_pending", return_value=pending):
+                result = V.v32_scheduled_pov_is_hers().as_dict()
+            if bool(result["failures"]) != want_failure:
+                fails.append(f"V32 empty calendar, transition={pending}: {result}")
+            if pending and not any(x['code'] == pending for x in result['stops']):
+                fails.append("V32 did not name the bounded dating transition")
+    return fails, 3
+
+
 def check_approved_selection():
     from unittest.mock import patch
     from pathlib import Path
@@ -225,7 +241,7 @@ def check_approved_selection():
 
 def main() -> int:
     fails, n = [], 0
-    for fn in (check_approved_selection, check_dating_transition, check_hold, check_candidates, check_requeue, check_digest,
+    for fn in (check_pov_dating_transition, check_approved_selection, check_dating_transition, check_hold, check_candidates, check_requeue, check_digest,
                check_cancel_readback):
         f, k = fn()
         fails += f

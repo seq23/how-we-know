@@ -1901,10 +1901,22 @@ def v20_cadence_schedule() -> Result:
         if _br.longform_hold(committed=True):
             r.note("no dated tail: the owner's long-form hold is on "
                    f"({_br.longform_hold(committed=True).get('detail')})")
-        elif any(row.get("scheduled_publish_at") for row in led["published"]):
-            r.fail("the ledger carries scheduled rows but none resolved as a "
-                   "future slot — the tail reader is not reaching what it "
-                   "governs")
+        else:
+            # Historical private rows retain their original dates. Only an
+            # active FUTURE row is evidence that the tail reader missed work.
+            for row in led["published"]:
+                stamp = row.get("scheduled_publish_at")
+                if not stamp or row.get("withdrawn_at") or row.get("retired_at") or row.get("privacy") == "public":
+                    continue
+                try:
+                    when = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+                    future = when > datetime.now(timezone.utc)
+                except (ValueError, TypeError):
+                    r.fail(f"{row.get('slug')}: unreadable schedule {stamp!r}")
+                    continue
+                if future:
+                    r.fail("the ledger carries a future scheduled row but none resolved "
+                           "as a future slot — the tail reader is not reaching what it governs")
         r.note("no episode is currently scheduled ahead")
 
     # ---- Shorts slots do not collide either ---------------------------
@@ -3169,6 +3181,13 @@ def v32_scheduled_pov_is_hers() -> Result:
         if hold:
             r.note(f"nothing dated ahead: the owner's long-form hold is on since "
                    f"{str(hold.get('since'))[:10]} ({hold.get('detail')})")
+            return r
+        transition = _br.longform_dating_pending()
+        if transition:
+            r.named_stop("LONGFORM_DATING_PENDING",
+                         "The hold was lifted within 48 hours; the next approved upload assigns dates. "
+                         "POV remains checked before every upload.",
+                         ["longform-calendar"])
             return r
         r.fail("no episode is scheduled ahead, so this examined nothing - "
                "either an empty calendar or a ledger it cannot read.")

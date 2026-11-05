@@ -45,8 +45,17 @@ def main() -> int:
         if alone != min(own, anyday):
             fails.append(f"a ready {mine} episode got {alone}, not the first empty day {min(own, anyday)}")
         both = B.schedule_slugs(led, ["a", "b"], per_week)
-        if both[0].astimezone(B.PUBLISH_TZ).weekday() not in split[mine]:
+        if both[0].astimezone(B.PUBLISH_TZ).weekday() in split[other]:
             fails.append(f"{mine} took {other}'s day although {other} had an episode ready")
+        if both[1].astimezone(B.PUBLISH_TZ).weekday() in split[mine]:
+            fails.append(f"{other} took {mine}'s day although {mine} had an episode ready")
+        # Also prove the fully ready rotation; no empty third topic to borrow.
+        D.domain_of_slug = lambda s: s
+        all_ready = sorted(split)
+        every = B.schedule_slugs(led, all_ready, per_week)
+        for dom, when in zip(all_ready, every):
+            if when.astimezone(B.PUBLISH_TZ).weekday() not in split[dom]:
+                fails.append(f"{dom} stole a ready topic's day in the full rotation")
         try:
             B.rotation_slots(B.datetime.now(B.timezone.utc), 1, split[mine], {"not-a-date"})
             fails.append("an unreadable publish time was skipped (its day could be double-booked)")
