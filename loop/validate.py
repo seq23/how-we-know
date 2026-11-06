@@ -4612,10 +4612,24 @@ def v47_longform_title(items) -> Result:
                      f"fails the formula; a passing replacement is queued in "
                      f"loop/state/titles.json and loop/repackage.py apply "
                      f"writes it as quota allows", retitle)
+    # The video each slug is live as now (the latest ledger row with a video).
+    live_vid = {row.get("slug"): row.get("video_id")
+                for row in _led.load().get("published") or []
+                if row.get("video_id") and not row.get("retired_at")}
     for slug, row in sorted(_lt.load()["titles"].items()):
         if not row.get("checks_passed"):
             continue
         r.examined += 1
+        # A row applied to an EARLIER upload of this slug is that video's history,
+        # not a title anything will ship: 6 Nov 2026 what-is-concrete-made-of was
+        # re-uploaded as -8gyi8oq3zU under its question, and the 17 Oct retitle of
+        # the old video (C-5IQ_E_P9k, "Concrete Does Not Dry") failed V47 on main.
+        # The live upload's own title is still held by the ledger loop above.
+        applied_to = row.get("applied_video_id")
+        if applied_to and live_vid.get(slug) and applied_to != live_vid[slug]:
+            r.note(f"{slug}: titles.json row was applied to {applied_to}, an earlier "
+                   f"upload; the live video is {live_vid[slug]}")
+            continue
         text = script_of(slug)
         if text is None:
             r.fail(f"{slug}: titles.json proposes a title for a missing script")

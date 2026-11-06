@@ -268,6 +268,30 @@ try:
 finally:
     ledger.LEDGER = saved
 
+# -- 5a''. a titles.json row applied to an EARLIER upload of the slug is history
+# (6 Nov 2026: what-is-concrete-made-of re-uploaded; its 17 Oct retitle of the old
+# video failed V47 on main). The same failing row on the LIVE video still fails.
+OLDROW = {"new_title": "Welding Arcs Are Hot", "checks_passed": True,
+          "applied_at": "2026-10-14T01:00:00+00:00", "applied_video_id": "OLD"}
+fake = TMP / "ledger_reupload.json"
+fake.write_text(json.dumps({"published": [{
+    "slug": SLUG, "question": Q, "video_id": "NEW", "uploaded_at": "2026-11-06T00:00:00+00:00",
+    "title": good}], "queued": []}))
+ledger.LEDGER = fake
+try:
+    LT.STATE.write_text(json.dumps({"titles": {SLUG: OLDROW}}))
+    res = V.v47_longform_title([]).as_dict()
+    check(not any("no longer passes" in f for f in res["failures"]),
+          f"V47 failed a titles.json row that belongs to an earlier upload: {res}")
+    LT.STATE.write_text(json.dumps({"titles": {SLUG: {**OLDROW, "applied_video_id": "NEW"}}}))
+    res = V.v47_longform_title([]).as_dict()
+    check(any("no longer passes" in f for f in res["failures"]),
+          f"V47 passed a failing titles.json row applied to the live video: {res}")
+finally:
+    ledger.LEDGER = saved
+    if LT.STATE.exists():
+        LT.STATE.unlink()
+
 # ------------------------------------------- 5b. a leading figure survives
 # 2026-10-13: "76 percent of ..." was parsed as list item 76 and proposed as
 # "percent of deep-sea pelagic animals produce light" - and it passed.

@@ -1,15 +1,4 @@
 {
-  "cloud-upload::SUPERSEDED_SWAP_NOT_SCHEDULED": {
-    "code": "SUPERSEDED_SWAP_NOT_SCHEDULED",
-    "first_reported_at": "2026-10-16T14:13:49+00:00",
-    "issue": 162,
-    "items": [],
-    "last_reported_at": "2026-10-16T14:13:49+00:00",
-    "last_seen_at": "2026-10-16T14:13:49+00:00",
-    "reported_run": null,
-    "reports": 1,
-    "stage": "cloud-upload"
-  },
   "mon-draft::AUTHOR_REQUIRED": {
     "code": "AUTHOR_REQUIRED",
     "first_reported_at": "2026-09-25T17:07:24+00:00",
@@ -42,5 +31,16 @@
     "reported_run": null,
     "reports": 1,
     "stage": "sun-rank"
+  },
+  "tags-backfill::TAGS_BACKFILL_INERT": {
+    "code": "TAGS_BACKFILL_INERT",
+    "first_reported_at": "2026-11-06T16:02:28+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-06T16:02:28+00:00",
+    "last_seen_at": "2026-11-06T16:02:28+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "tags-backfill"
   }
 }
