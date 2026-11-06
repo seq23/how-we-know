@@ -1,7 +1,7 @@
 """Google Drive, drive.file scope only: the free overflow shelf for renders.
 
-One folder, "How We Know + Whisper Almanac overflow", in cryptoclearr@gmail.com
-(the same account as both YouTube channels). The token comes from
+One folder, "How We Know + Whisper Almanac overflow", in the Google account
+that owns both YouTube channels. The token comes from
 auth/drive_auth.py (.secrets/drive_token.json on the Mac, GDRIVE_TOKEN_JSON in
 Actions). No token = `available()` is False, and loop/storage_cap.py treats
 the Drive step as a note. Never paid: free_bytes() reads the account's own

@@ -6,8 +6,8 @@
 Reuses the existing Google OAuth client (.secrets/client_secret.json, the
 same one YouTube uses) and asks for ONE scope: drive.file - the loop can see
 and change only the files it creates itself (the folder "How We Know +
-Whisper Almanac overflow"), never anything else in her Drive. Sign in as
-cryptoclearr@gmail.com, the same account as both YouTube channels.
+Whisper Almanac overflow"), never anything else in her Drive. Sign in with
+the Google account that owns both YouTube channels.
 
 Saves .secrets/drive_token.json (gitignored) and, when `gh` is signed in,
 the repo secret GDRIVE_TOKEN_JSON so the cloud upload lane can pull a render
@@ -29,7 +29,7 @@ import youtube_auth as Y                                    # noqa: E402
 
 DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.file"
 OUT = T.SECRETS / "drive_token.json"
-ACCOUNT = "cryptoclearr@gmail.com"
+ACCOUNT = "the Google account that owns both channels"
 
 
 def main() -> int:
