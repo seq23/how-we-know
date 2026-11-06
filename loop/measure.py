@@ -360,6 +360,27 @@ def _analytics_call(token: str, video_ids: list[str] | None, metrics: str,
         return json.loads(r.read())
 
 
+def _chunked_call(token: str, video_ids: list[str] | None, metrics: str) -> dict:
+    """One report for any number of videos, asked FILTER_CHUNK ids at a time.
+
+    The Analytics `video==` filter takes at most 50 ids; more is HTTP 400
+    `invalidFilters`. 2026-11-06 (run 42302022393): the channel reached 55
+    measured videos and the whole Friday went unmeasured on that 400, while
+    the Shorts path below had chunked all along. Rows are joined; the column
+    headers are the same for every chunk."""
+    if not video_ids:
+        return _analytics_call(token, video_ids, metrics)
+    out: dict | None = None
+    for chunk in _chunks(list(video_ids)):
+        part = _analytics_call(token, chunk, metrics)
+        if out is None:
+            out = part
+            out["rows"] = list(part.get("rows") or [])
+        else:
+            out["rows"] += list(part.get("rows") or [])
+    return out or {}
+
+
 def fetch_analytics(token: str, video_ids: list[str]) -> dict:
     """Watch-time metrics, with revenue added only if it is actually permitted.
 
@@ -380,9 +401,9 @@ def fetch_analytics(token: str, video_ids: list[str]) -> dict:
     auth/tokens.py SCOPES and re-consent; this function then picks revenue up
     with no other change.
     """
-    data = _analytics_call(token, video_ids, CORE_METRICS)
+    data = _chunked_call(token, video_ids, CORE_METRICS)
     try:
-        money = _analytics_call(token, video_ids, MONEY_METRICS)
+        money = _chunked_call(token, video_ids, MONEY_METRICS)
     except urllib.error.HTTPError as e:
         data["revenue_unavailable"] = (
             f"HTTP {e.code} - needs yt-analytics-monetary.readonly; "
