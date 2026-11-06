@@ -1,3 +1,4 @@
+import { canonicalPath } from '~/lib/search-rescue.mjs'
 import { createFileRoute } from '@tanstack/react-router'
 import { hasPublishedVideo } from '~/lib/schema'
 import { questions } from '~/lib/questions-data'
@@ -53,7 +54,7 @@ function WatchPage() {
                   <p className="eyebrow">Published {record.video.uploadDate}</p>
                   <h3>{record.video.title}</h3>
                   <p>{record.directAnswer}</p>
-                  <a href={`/questions/${record.slug}`}>Read the canonical sourced article →</a>
+                  <a href={`/questions/${record.slug}/`}>Read the canonical sourced article →</a>
                 </div>
               </article>
             ))}
@@ -81,7 +82,7 @@ function WatchPage() {
               <div>
                 <strong>{item.query}</strong>
                 <small>
-                  {item.articlePath ? <a href={item.articlePath}>Canonical article</a> : 'Article admission required'}
+                  {item.articlePath ? <a href={canonicalPath(item.articlePath)}>Canonical article</a> : 'Article admission required'}
                 </small>
               </div>
               <em>{item.videoId ? 'published' : item.status}</em>

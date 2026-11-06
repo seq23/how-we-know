@@ -55,7 +55,7 @@ function CreaturePage() {
           {creature.zones.map((slug) => {
             const zone = getZoneBySlug(slug)
             return zone ? (
-              <a key={slug} href={`/zones/${slug}`}>
+              <a key={slug} href={`/zones/${slug}/`}>
                 <strong>{zone.name}</strong>
                 <span>{formatDepth(zone.minDepthM, zone.maxDepthM)}</span>
               </a>

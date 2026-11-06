@@ -26,7 +26,7 @@ export function VideoPanel({ record }: { record: QuestionPageRecord }) {
         />
       </div>
       <h2>{record.video.title}</h2>
-      <a href={`/watch#${record.slug}`}>Open in the Watch library</a>
+      <a href={`/watch/#${record.slug}`}>Open in the Watch library</a>
       {record.video.chapters.length > 0 && (
         <details className="video-details">
           <summary>Video chapters</summary>

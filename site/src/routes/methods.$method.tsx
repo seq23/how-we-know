@@ -34,7 +34,7 @@ function MethodPage() {
         {entry.pages.map((item) => {
           const subject = getSubject(item.subject)
           return (
-            <a className="question-card" key={item.slug} href={`/questions/${item.slug}`}>
+            <a className="question-card" key={item.slug} href={`/questions/${item.slug}/`}>
               <span>{subject ? subject.name : item.subject}</span>
               <h2>{item.question}</h2>
               <p>{item.directAnswer}</p>
