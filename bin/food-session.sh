@@ -158,6 +158,18 @@ echo "--- stage 1/3: render the in-flight food episode (loop/food_lane.py) ---"
 # THE SUPPLY GATE (her 12 Oct rule, in code 6 Nov 2026): food is long-form, so
 # over 14 days of long-form made and waiting, no food episode is made tonight.
 # A note, never a red: the night is freed, and the gate reopens on its own.
+# WHOSE NIGHT IS IT (her ruling 6 Nov 2026, loop/night_split.py): food fires on
+# Sun, Mon, Wed and Thu; only Monday is a How We Know night under the 5:2 split.
+# On an Almanac night the food session steps aside (a note, exit 0) and the
+# 23:00 batch voices the Almanac under the same lock. While her whisper sample
+# is missing the split falls back to How We Know and food runs as before.
+if [ -z "$STUBS" ]; then
+  NIGHT_KIND=$("$PYP" loop/night_split.py tonight 2>/dev/null | head -1)
+  if [ "$NIGHT_KIND" = "whisper" ]; then
+    echo "  an Almanac night (5:2 split): the food session steps aside for the 23:00 batch"
+    exit 0
+  fi
+fi
 GATE_LINE=$([ -n "$STUBS" ] && echo "open: test stubs" || "$PYP" loop/supply_gate.py check longform 2>&1); GATE_RC=$?
 echo "  supply gate: $GATE_LINE"
 if [ "$GATE_RC" -eq 10 ]; then

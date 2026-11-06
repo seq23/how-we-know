@@ -51,6 +51,7 @@ phase_prepare(){ L prepare; }
 phase_idle(){ return 0; }
 hold_awake(){ :; }
 checkout_guard(){ :; }   # proved separately: loop/tests/test_mac_branch_guard.py
+phase_whisper(){ L whisper; }
 phase_narrate(){ L narrate; }
 phase_render(){ L render; }
 phase_lengthen(){ L lengthen; }
@@ -101,9 +102,9 @@ def check(cond: bool, msg: str) -> None:
 
 INCOMPLETE = {"night": "2026-10-12", "started_at": "2026-10-12T23:00:04",
               "last_completed_at": "2026-10-13T01:40:00", "phase": "render",
-              "episode": "slug-a", "phases_done": ["narrate", "render"],
+              "episode": "slug-a", "phases_done": ["whisper", "narrate", "render"],
               "units": [], "complete": False}
-ALL = ["selfheal", "survey", "prepare", "narrate", "render", "lengthen", "captions",
+ALL = ["selfheal", "survey", "prepare", "whisper", "narrate", "render", "lengthen", "captions",
        "shelve", "harvest"]
 
 # -- a. no progress file -> no-op (day, 22:30 and 07:00) ------------------
@@ -152,7 +153,7 @@ check(r2.returncode == 0 and log2 == log and "completed" in r2.stdout,
 
 # -- b'. a render killed mid-mux is set aside on resume -------------------
 cases += 1
-inflight = dict(INCOMPLETE, phases_done=["narrate"], phase="narrate",
+inflight = dict(INCOMPLETE, phases_done=["whisper", "narrate"], phase="narrate",
                 episode=None, rendering="slug-b")
 dd = TMP / "b_inflight" / "renders"
 dd.mkdir(parents=True)

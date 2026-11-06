@@ -549,6 +549,25 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
   clips are refused by the footage module (most of its bread clips are restricted); a Pexels key, when
   Pexels issues them again, goes in `pexels.key` beside it - no code change.
 
+## Whisper Almanac, the second channel — 1 step for you, once
+
+The sleep channel (@whisperalmanac) runs on this same machine: scripts in
+the cloud for $0, her own cloned whisper on the Mac at night, dim moving
+footage, and the same checks. How it works: [`docs/WHISPER-ALMANAC.md`](docs/WHISPER-ALMANAC.md).
+
+| You do, once | Where | Why only you |
+|---|---|---|
+| **Record 20–30 seconds of steady whispering** (iPhone Voice Memos is fine) and save it as `~/.boss-os/asmr-voice/whisper-sample.m4a` | her Mac | it is your voice; it never goes in a repo |
+| **Click Allow** for the channel: `.venv/bin/python auth/whisper_youtube_auth.py`, pick Whisper Almanac | her Mac | your Google sign-in |
+| **Click Allow** for the Drive overflow (safety net only): `.venv/bin/python auth/drive_auth.py` | her Mac | your Google sign-in |
+| **Turn on monetisation** when YouTube says the channel is eligible | YouTube Studio → Earn | your AdSense and tax details |
+
+- **Nights:** 5 Almanac, 2 How We Know (Mon, Fri); the supply gates decide
+  first; without your sample the Almanac nights go to How We Know. Re-check
+  6 Dec 2026 with both channels' real views.
+- **Until the sample exists** the digest shows `WHISPER_SAMPLE_MISSING`
+  (green) with the exact place to save the file. Nothing else waits on you.
+
 ## Monetisation, both gates
 
 There are two Partner Programme tiers, not one, and the loop now tracks both

@@ -122,3 +122,6 @@ renders/*.picture-check-failed*
 
 # One-off local owner review cuts and their findings/audit records.
 renders/review-*/
+
+# Whisper Almanac working files (audio beats, renders, segment cache): regenerable.
+renders/whisper/

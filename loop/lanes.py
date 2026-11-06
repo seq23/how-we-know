@@ -37,6 +37,8 @@ LANES: dict[str, dict] = {
                          "makes": "author", "domains": [DEEP, MATS]},
     "food-author":      {"runner": "workflow", "file": "loop-food-author.yml",
                          "entry": "loop/food_author.py", "makes": "author", "domains": [FOOD]},
+    "whisper-author":   {"runner": "workflow", "file": "loop-whisper-author.yml",
+                         "entry": "loop/whisper_author.py"},
     "demand":           {"runner": "workflow", "file": "loop-demand.yml", "entry": "loop/demand.py"},
     "fri-measure":      {"runner": "workflow", "file": "loop-fri-measure.yml", "entry": "loop/measure.py"},
     "fri-publish":      {"runner": "workflow", "file": "loop-fri-publish.yml", "entry": "loop/publish.py"},

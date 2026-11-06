@@ -627,6 +627,8 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   # Nor is it idle for footage: the only host with Vision is this one, and
   # the cloud lane is verifying that it harvests (see harvest_footage above).
   step harvest harvest_footage
+  # Idle for How We Know is the Almanac's whole window (the Mac never idles).
+  step whisper phase_whisper idle
   exit 0
 fi
 }
@@ -716,6 +718,10 @@ thumb_one() {
 }
 
 phase_narrate() {
+if [ -n "${WHISPER_NIGHT:-}" ] && [ -n "${pending_audio// }" ]; then
+  echo "  How We Know narration rests tonight: an Almanac night (5:2 split, loop/night_split.py)"
+  pending_audio=""
+fi
 # THE SUPPLY GATE (her 12 Oct rule, in code 6 Nov 2026): over 14 days of
 # long-form already made and waiting to upload, no new narration tonight; the
 # night is freed. A note, never a red; it reopens as uploads drain the shelf.
@@ -979,6 +985,42 @@ fi
 echo; echo "=== batch complete $(date '+%H:%M') ==="
 }
 
+# WHOSE NIGHT IS IT (her ruling 6 Nov 2026): the narrator nights split 5 to
+# Whisper Almanac and 2 to How We Know long-form (loop/night_split.py, which
+# applies the supply gates first and falls back to How We Know - a note - while
+# her whisper sample is missing). On an Almanac night the whisper step runs to
+# $NARRATION_UNTIL under THIS batch's lock (one narrator on the 8 GB Mac) and
+# How We Know narration rests; rendering, Shorts and the push still run.
+# `idle`: How We Know has nothing to narrate or render, so the Almanac may use
+# the night whatever the split says (the Mac never sits idle).
+phase_whisper() {
+  local mode="${1:-night}" kind
+  if ! narration_allowed; then
+    echo "  whisper: past $NARRATION_UNTIL - tonight's 23:00 batch continues it"; return 0
+  fi
+  if [ "$mode" = "night" ]; then
+    local plan
+    plan=$($PY loop/night_split.py tonight 2>&1)
+    kind=$(printf '%s\n' "$plan" | head -1)
+    printf '%s\n' "$plan" | sed -n '2,9p'
+    if [ "$kind" != "whisper" ]; then
+      echo "  whisper: a How We Know night - nothing voiced for the Almanac"
+      # still records the Almanac's state where it is seen: with no sample this
+      # is the green owner_action stop WHISPER_SAMPLE_MISSING naming the file
+      $PY loop/whisper_lane.py night --dry-run 2>&1 | grep -E "NAMED STOP|DRY|\[work\]" | sed 's/^/  /' || true
+      return 0
+    fi
+    WHISPER_NIGHT=1
+  else
+    $PY loop/night_split.py tonight 2>&1 | sed -n '2,9p'
+  fi
+  if [ ! -x "$PY_TTS" ]; then
+    echo "  whisper: no voice environment at $PY_TTS - see the narration stop below"; return 0
+  fi
+  echo; echo "--- whisper almanac: voice + footage render ($mode) ---"
+  $PY loop/whisper_lane.py night --until "$NARRATION_UNTIL" --py-tts "$PY_TTS" 2>&1 | sed 's/^/  /' || true
+}
+
 # ---------------------------------------------------------------------------
 # THE SEQUENCE. Everything above is a definition; this is the night.
 # loop/tests/test_batch_resume_on_wake.py sources BATCH_TEST_STUBS here to
@@ -1012,6 +1054,7 @@ phase_prepare
 phase_idle
 echo "  holding the Mac awake for the duration"
 hold_awake
+step whisper phase_whisper night
 step narrate phase_narrate
 step render phase_render
 step lengthen phase_lengthen
