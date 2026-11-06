@@ -35,7 +35,7 @@ function ExplorePage() {
           Challenger Deep is the deepest known part of the global ocean. Its modern published depth is about
           10,935 meters, with small differences among surveys because methods and uncertainty differ.
         </p>
-        <a className="button" href="/questions/what-is-the-deepest-part-of-the-ocean">
+        <a className="button" href="/questions/what-is-the-deepest-part-of-the-ocean/">
           Read the sourced answer
         </a>
       </section>

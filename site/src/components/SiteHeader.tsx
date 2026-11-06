@@ -36,12 +36,12 @@ export function SiteHeader() {
           <span>{site.name}</span>
         </a>
         <nav className="primary-nav" aria-label="Primary navigation">
-          <a href="/questions">Questions</a>
-          <a href="/methods">How we know it</a>
-          <a href="/explore">Explore</a>
-          <a href="/creatures">Creatures</a>
-          <a href="/zones">Zones</a>
-          <a href="/watch">Watch</a>
+          <a href="/questions/">Questions</a>
+          <a href="/methods/">How we know it</a>
+          <a href="/explore/">Explore</a>
+          <a href="/creatures/">Creatures</a>
+          <a href="/zones/">Zones</a>
+          <a href="/watch/">Watch</a>
         </nav>
       </div>
     </header>

@@ -26,7 +26,7 @@ function MethodsIndex() {
       </header>
       <div className="card-grid">
         {activeMethods.map((entry) => (
-          <a className="question-card" key={entry.id} href={`/methods/${entry.id}`}>
+          <a className="question-card" key={entry.id} href={`/methods/${entry.id}/`}>
             <span>
               {entry.pages.length} {entry.pages.length === 1 ? 'answer' : 'answers'}
             </span>

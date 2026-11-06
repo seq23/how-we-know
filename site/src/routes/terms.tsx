@@ -40,7 +40,7 @@ function Terms() {
           public science, published for general interest. They are not scientific, safety,
           navigational, medical, or professional advice, and they are provided without warranty of
           any kind. Corrections are handled under the{' '}
-          <a href="/editorial-policy">editorial policy</a>. Where a figure matters to a decision,
+          <a href="/editorial-policy/">editorial policy</a>. Where a figure matters to a decision,
           read the cited source.
         </p>
       </section>
@@ -133,7 +133,7 @@ function Terms() {
         )}
         <p>
           See also the <a href="/privacy">privacy policy</a> and the{' '}
-          <a href="/editorial-policy">editorial policy</a>.
+          <a href="/editorial-policy/">editorial policy</a>.
         </p>
       </section>
     </main>

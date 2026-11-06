@@ -144,6 +144,8 @@ const descriptions = new Map()
 const bodies = []
 let offers = 0
 let examined = 0
+let internalLinksChecked = 0
+const LEGAL_LITERAL_HREFS = new Set(['/privacy', '/terms'])
 
 for (const route of routes) {
   const file = fileFor(route)
@@ -156,6 +158,19 @@ for (const route of routes) {
   const where = route
 
   const title = decode((/<title[^>]*>([\s\S]*?)<\/title>/iu.exec(html)?.[1] ?? '').replace(/\s+/gu, ' ').trim())
+
+  // o1: an internal link to a route goes to the URL the server answers 200, not the
+  // slashless form Cloudflare Pages 308s. Search Console listed the site's top
+  // pages as "Page with redirect" while every page linked them without the slash
+  // (5 Nov 2026). /privacy and /terms stay literal: the YouTube API Services
+  // audit form matches those exact hrefs (validate-legal-policy.mjs).
+  for (const match of html.matchAll(/href="(\/[^"#?]*)/gu)) {
+    const href = match[1]
+    if (href.endsWith('/') || /\.[a-z0-9]+$/iu.test(href) || LEGAL_LITERAL_HREFS.has(href)) continue
+    internalLinksChecked += 1
+    failures.push(`${where}: links ${href}, which redirects to ${href}/`)
+  }
+  internalLinksChecked += 1
   { const v = lengthVerdict(title.length, 30, 65)
     if (v === 'fail') console.log(`note: ${where}: title is ${title.length} characters`)
     else if (v === 'note') console.log(`note: ${where}: title is ${title.length} characters`) }
@@ -246,6 +261,7 @@ for (let a = 0; a < bodies.length; a += 1) {
 
 assert(examined > 0, 'Built-HTML validation examined zero pages')
 assert(pairs > 0, 'Built-HTML validation compared zero page pairs for near-duplication')
+assert(internalLinksChecked > 0, 'Built-HTML validation read zero internal links')
 assert(failures.length === 0, `Built HTML is not search-ready:\n  ${failures.join('\n  ')}`)
 console.log(
   `Built-HTML validation passed (${examined} pages, ${pairs} pairs: titles, descriptions, social tags, Organization, WebPage, breadcrumbs, priced Offer, visible author, repeated phrases, near-duplicates).`,

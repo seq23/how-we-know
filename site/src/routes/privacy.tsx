@@ -190,7 +190,7 @@ function Privacy() {
         </p>
         <p>
           See also the <a href="/terms">Terms of Service</a> and the{' '}
-          <a href="/editorial-policy">editorial policy</a>.
+          <a href="/editorial-policy/">editorial policy</a>.
         </p>
       </section>
     </main>

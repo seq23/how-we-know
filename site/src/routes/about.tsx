@@ -50,7 +50,7 @@ function About() {
         <p>
           The {entity.parentOrganization.name} editorial team. Questions, sources and scripts are
           researched and drafted with AI assistance from named public research, then checked
-          against those sources under <a href="/methodology">the written methodology</a> before
+          against those sources under <a href="/methodology/">the written methodology</a> before
           anything is published: a figure that cannot be traced to a named public source does not
           go on screen or on the page. The narration is a synthetic voice, and any AI-generated
           image in a video is labelled as one on screen. No page claims review by an outside
@@ -72,9 +72,9 @@ function About() {
         <h2>How an answer is checked</h2>
         <p>
           Questions are admitted, sourced and reviewed under a written process, not an editor&rsquo;s
-          judgement on the day. <a href="/methodology">The methodology</a> sets out how a question
+          judgement on the day. <a href="/methodology/">The methodology</a> sets out how a question
           is admitted, how sources are selected and how uncertainty is handled.{' '}
-          <a href="/editorial-policy">The editorial policy</a> sets out the review and correction
+          <a href="/editorial-policy/">The editorial policy</a> sets out the review and correction
           rules: a corrected claim is changed in the canonical record, the article, the script, the
           transcript, the video description and the structured data together, because a correction
           that reaches only one surface has not happened.
@@ -86,7 +86,7 @@ function About() {
           It will not convert an unknown cause into a confident one, and it will not turn a single
           viral sighting into a trend. Unusual claims stay labelled as single observations until
           repeated evidence exists — which is also why answers are grouped by{' '}
-          <a href="/methods">how they are known</a> rather than only by subject. A figure measured
+          <a href="/methods/">how they are known</a> rather than only by subject. A figure measured
           by an instrument and a figure inferred from a proxy are different kinds of fact, and the
           site says which kind it is handing you.
         </p>
@@ -97,8 +97,8 @@ function About() {
           If a figure here is wrong, the page that carries it is the thing that changes, along with
           every other surface that repeats it. Review dates are carried on the pages themselves, and
           a page is re-reviewed when a material fact behind it moves. Start with{' '}
-          <a href="/questions">the questions</a> or{' '}
-          <a href="/explore">the depth explorer</a>, and the{' '}
+          <a href="/questions/">the questions</a> or{' '}
+          <a href="/explore/">the depth explorer</a>, and the{' '}
           <a href="/llms.txt">llms.txt</a> file lists every canonical answer in one machine-readable
           place.
         </p>

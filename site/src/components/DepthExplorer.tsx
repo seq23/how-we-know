@@ -120,7 +120,7 @@ export function DepthExplorer() {
                   className={`explorer-zone explorer-zone-${item.slug}`}
                   style={{ top: `calc(38vh + ${start}px)`, height: `${Math.max(0, end - start)}px` }}
                 >
-                  <a href={`/zones/${item.slug}`}>
+                  <a href={`/zones/${item.slug}/`}>
                     <span>{item.scientificName}</span>
                     <strong>{item.name}</strong>
                   </a>
