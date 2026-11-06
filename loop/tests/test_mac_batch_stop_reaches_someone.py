@@ -127,7 +127,10 @@ check("6 main() exits 0", M.main(["scan", str(f)]) == 0
 
 sh = (ROOT / "bin" / "batch-session.sh").read_text()
 check("7 batch-session tees the push and scans it",
-      'tee "$PUSH_OUT"' in sh and 'mac_batch_stop.py scan "$PUSH_OUT"' in sh)
+      'tee "$PUSH_OUT"' in sh
+      and 'cat "$PUSH_OUT" "$GUARD_OUT" 2>/dev/null > "$PUSH_OUT.scan"' in sh
+      and 'mac_batch_stop.py scan "$PUSH_OUT.scan"' in sh
+      and sh.find('> "$PUSH_OUT.scan"') < sh.find('mac_batch_stop.py scan "$PUSH_OUT.scan"'))
 check("7 the mac-batch stop file is committed with the batch's push",
       "-mac-batch.json" in sh[sh.find("mac_batch_stop.py scan"):])
 import digest  # noqa: E402

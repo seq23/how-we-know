@@ -242,6 +242,7 @@ renderable() {
 import json, glob, os, shutil, sys
 sys.path.insert(0, "loop")
 import batch_queue
+import render_prune
 # EVERY BEAT HAS A WAV -- not "the counts are equal".
 #
 # Counting conflated two different facts, and the difference is a permanent
@@ -272,7 +273,8 @@ for slug in batch_queue.queued_slugs():
                   file=sys.stderr)
         have -= set(orphans)
     if all(f"{i:04d}.wav" in have for i in range(n)) \
-       and not os.path.exists(f"renders/{slug}-final.mp4"):
+       and not os.path.exists(f"renders/{slug}-final.mp4") \
+       and not render_prune.pruned(slug):
         out.append(slug)
 print(" ".join(out))
 READYEOF
@@ -425,7 +427,12 @@ echo; echo "--- a domain's graphics never appear in another domain's video ---"
 # At most ONE superseded copy of each render stays in renders/ (2026-11-03:
 # four 550 MB aside copies of one episode while the Mac ran out of disk); the
 # older ones go to the Trash (recoverable), never deleted outright.
-$PY loop/render_prune.py || echo "  render prune exited $? - superseded copies left in place"
+# THE DISK GUARD (6 Nov 2026: the data disk hit 100%, renders/ at 13 GiB):
+# deletes a live render only once YouTube confirms the upload processed and R2
+# holds the identical file, then refuses to render below the floor with NAMED
+# STOP [DISK_LOW] (loop/render_prune.py). Its output joins the push's for the
+# end-of-night stop scan, so the stop is filed where someone sees it.
+$PY loop/render_prune.py guard 2>&1 | tee -a "$GUARD_OUT" | sed 's/^/  /' || true
 # visuals/plan_domain.py (2026-11-01): re-plans any not-yet-uploaded plan that
 # draws another domain's graphics (the depth gauge on the rice episode) and
 # retires its render, plus any render already recorded as superseded, so the
@@ -484,6 +491,7 @@ echo "  to render now : ${pending_render:-none}"
 # scans the push output its first half produced (an empty file would clear
 # the mac-batch stop record). A fresh night truncates it.
 PUSH_OUT="$(dirname "$BATCH_PROGRESS")/batch_push.out"
+GUARD_OUT="$(dirname "$BATCH_PROGRESS")/disk_guard.out"
 shelve_shorts() {
   # ONE QUESTION PER VIDEO: a Short opens on a PD/CC0 photo of its subject.
   # research/subject_photo.py finds one on Commons for every episode held for
@@ -625,6 +633,17 @@ RENDERED=0
 render_one() {
   local slug="$1"
   [ -e "renders/${slug}-final.mp4" ] && return 0
+  # pruned after a proven upload (YouTube + R2): never rendered again unless
+  # its plan changed (a remake), which is_pruned already accounts for
+  $PY loop/render_prune.py is-pruned "$slug" && return 0
+  # no render starts below the disk floor: a half-written video is worse
+  # than none, and the stop is scanned and filed at the end of the night
+  [ -n "${DISK_LOW:-}" ] && return 1
+  if ! $PY loop/render_prune.py guard >>"$GUARD_OUT" 2>&1; then
+    DISK_LOW=1
+    echo "    not rendered: $(grep -h 'NAMED STOP \[DISK_LOW\]' "$GUARD_OUT" | tail -1 | cut -c1-200)"
+    return 1
+  fi
   if [ "$MAX_EPISODES" -gt 0 ] && [ "$RENDERED" -ge "$MAX_EPISODES" ]; then
     return 1
   fi
@@ -932,7 +951,8 @@ $PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pe
 # Every named stop the push ended on reaches the repository (stop file,
 # committed just below) and, when it pages, ONE deduped GitHub issue. Never
 # blocks: what passed is already on the shelf. See loop/mac_batch_stop.py.
-$PY loop/mac_batch_stop.py scan "$PUSH_OUT" 2>&1 | grep -E "mac-batch" || true
+cat "$PUSH_OUT" "$GUARD_OUT" 2>/dev/null > "$PUSH_OUT.scan"
+$PY loop/mac_batch_stop.py scan "$PUSH_OUT.scan" 2>&1 | grep -E "mac-batch" || true
 $PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" 2>&1 | tail -1
 
 if [ "$batch_ok" -eq 0 ]; then
@@ -965,7 +985,8 @@ BP begin
 PROGRESS_BEGUN=1
 RESUMED_FROM=$(BP resumed-from)
 [ -n "$RESUMED_FROM" ] || : > "$PUSH_OUT"
-touch "$PUSH_OUT"
+[ -n "$RESUMED_FROM" ] || : > "$GUARD_OUT"
+touch "$PUSH_OUT" "$GUARD_OUT"
 CAPRC=$(BP get caprc 0)
 
 phase_selfheal
