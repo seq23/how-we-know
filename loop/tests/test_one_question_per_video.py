@@ -93,8 +93,12 @@ check(any("one question" in x for x in LT.title_problems(
 
 # 3
 import ledger                                                  # noqa: E402
-old = {r["slug"] for r in ledger.load()["published"]
-       if r.get("video_id") and (r.get("uploaded_at") or "")[:10] < T.QUESTION_START}
+# Judged by the slug's LIVE upload (the latest ledger row with a video): a slug
+# re-uploaded after the rule is a new video, not a pre-rule one (6 Nov 2026,
+# what-is-concrete-made-of went up again under its question).
+live_up = {r["slug"]: (r.get("uploaded_at") or "")[:10] for r in ledger.load()["published"]
+           if r.get("video_id") and not r.get("retired_at")}
+old = {slug for slug, day in live_up.items() if day < T.QUESTION_START}
 need = set(LT.published_needing())
 check(not (need & old), f"3 no pre-rule video is re-proposed ({sorted(need & old)[:3]})")
 import thumb_contract as TC                                    # noqa: E402
