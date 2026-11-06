@@ -509,6 +509,14 @@ shelve_shorts() {
   groups=$($PY -c "import sys; sys.path.insert(0,'loop'); import shorts_lane
 for n, s in sorted(shorts_lane.cut_groups().items()): print(n, ' '.join(s))") || {
     echo "  shorts_lane.uncut() refused - this machine holds no finished render"; return 0; }
+  # the supply gate for Shorts: over 14 days cut and waiting, cut none tonight
+  # (what is already cut is still shelved below)
+  local sgate
+  if ! sgate=$($PY loop/supply_gate.py check shorts 2>&1); then
+    echo "  supply gate: $sgate"; groups=""
+  else
+    echo "  supply gate: $sgate"
+  fi
   if [ -n "${groups// }" ]; then
     while read -r n slugs; do
       [ -n "$slugs" ] || continue
@@ -708,6 +716,15 @@ thumb_one() {
 }
 
 phase_narrate() {
+# THE SUPPLY GATE (her 12 Oct rule, in code 6 Nov 2026): over 14 days of
+# long-form already made and waiting to upload, no new narration tonight; the
+# night is freed. A note, never a red; it reopens as uploads drain the shelf.
+if [ -n "${pending_audio// }" ]; then
+  local gate grc
+  gate=$($PY loop/supply_gate.py check longform 2>&1); grc=$?
+  echo "  supply gate: $gate"
+  if [ "$grc" -eq 10 ]; then pending_audio=""; fi
+fi
 if [ -n "${pending_audio// }" ] && ! narration_allowed; then
   echo
   echo "  narration skipped: it is past $NARRATION_UNTIL on a resumed or scheduled"

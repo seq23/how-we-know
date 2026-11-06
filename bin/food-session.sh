@@ -155,6 +155,15 @@ fi
 caffeinate -dimsu -w $$ &
 
 echo "--- stage 1/3: render the in-flight food episode (loop/food_lane.py) ---"
+# THE SUPPLY GATE (her 12 Oct rule, in code 6 Nov 2026): food is long-form, so
+# over 14 days of long-form made and waiting, no food episode is made tonight.
+# A note, never a red: the night is freed, and the gate reopens on its own.
+GATE_LINE=$([ -n "$STUBS" ] && echo "open: test stubs" || "$PYP" loop/supply_gate.py check longform 2>&1); GATE_RC=$?
+echo "  supply gate: $GATE_LINE"
+if [ "$GATE_RC" -eq 10 ]; then
+  echo "  food night freed by the supply gate; nothing made"
+  exit 0
+fi
 $LANE_CMD
 RC=$?
 if [ "$RC" -gt 128 ]; then
