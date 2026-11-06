@@ -1,9 +1,9 @@
 {
   "stage": "demand-pull",
   "week": "2026-W45",
-  "at": "2026-11-05T14:38:40+00:00",
-  "code": "ANALYTICS_HTTP_503",
-  "message": "the YouTube API returned HTTP 503; today is unmeasured and tomorrow re-reads the same numbers",
+  "at": "2026-11-06T14:37:22+00:00",
+  "code": "ANALYTICS_HTTP_500",
+  "message": "the YouTube API returned HTTP 500; today is unmeasured and tomorrow re-reads the same numbers",
   "detail": null,
   "unblock": "Usually transient. Two weeks running means the project or quota needs looking at.",
   "disposition": "self_resolving",
