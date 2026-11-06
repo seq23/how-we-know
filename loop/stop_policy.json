@@ -653,6 +653,10 @@
       "or a validator that found what it was built to find. Red is the correct",
       "outcome for all three."
     ],
+    "DISK_LOW": {
+      "why": "loop/render_prune.py guard pruned every render it could prove was uploaded (YouTube says processed, R2 holds the identical file) and the Mac still has less free space than the floor (DISK_FLOOR_GIB, default 6). No render was started, so nothing is half-written; narration continues. Something outside the uploaded masters is filling the disk, and a person must look at it.",
+      "plain": "the Mac is nearly out of disk space, so tonight's videos were not rendered"
+    },
     "OWNER_HOLD_NOT_APPLIED": {
       "why": "loop/owner_hold.py asked YouTube to clear a withdrawn video's publishAt and keep it private, and after a second round trip and a delayed read it still carries a date or is not private: it may go public on that date. A real defect.",
       "plain": "a video taken off the schedule still shows a publish date on YouTube"
