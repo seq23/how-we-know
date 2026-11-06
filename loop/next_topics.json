@@ -1,109 +1,113 @@
 {
-  "week": "2026-W44",
-  "generated": "2026-11-01T11:06:02+00:00",
+  "week": "2026-W45",
+  "generated": "2026-11-06T23:12:17+00:00",
   "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
   "owner_involvement": "notified, not asked",
   "selected": [
     {
-      "slug": "why-does-chocolate-taste-so-good",
-      "question": "Why does chocolate taste so good?",
-      "script": "scripts/why-does-chocolate-taste-so-good.md",
+      "slug": "what-is-carbon-fiber-made-of",
+      "question": "What is carbon fiber made of?",
+      "script": "scripts/what-is-carbon-fiber-made-of.md",
       "source": "authored-inventory",
-      "publish_rank": 27,
+      "publish_rank": 17,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-095",
-      "pov_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
-      "pov_tag": "thesis",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "why-does-steak-taste-better-seared",
-      "question": "Why does steak taste better seared?",
-      "script": "scripts/why-does-steak-taste-better-seared.md",
-      "source": "authored-inventory",
-      "publish_rank": 28,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-081",
-      "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
-      "pov_tag": "adaptation",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "why-is-my-bread-not-rising",
-      "question": "Why is my bread not rising?",
-      "script": "scripts/why-is-my-bread-not-rising.md",
-      "source": "authored-inventory",
-      "publish_rank": 29,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-096",
-      "pov_line": "I like questions where the obvious answer starts falling apart once you look closely.",
-      "pov_tag": "thesis",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "how-does-butter-get-made-from-cream",
-      "question": "How does butter get made from cream?",
-      "script": "scripts/how-does-butter-get-made-from-cream.md",
-      "source": "authored-inventory",
-      "publish_rank": 30,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-112",
-      "pov_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
+      "pov_id": "pov-110",
+      "pov_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
       "pov_tag": "systems",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
-      "slug": "why-does-rice-get-sticky",
-      "question": "Why Does Rice Get Sticky?",
-      "script": "scripts/why-does-rice-get-sticky.md",
+      "slug": "what-is-hydrothermal-vents",
+      "question": "What is a hydrothermal vent?",
+      "script": "scripts/what-is-hydrothermal-vents.md",
       "source": "authored-inventory",
-      "publish_rank": 31,
+      "publish_rank": 21,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-097",
-      "pov_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
-      "pov_tag": "thesis",
+      "pov_id": "pov-077",
+      "pov_line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it.",
+      "pov_tag": "earth",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
-      "slug": "why-does-meat-need-to-rest-after-cooking",
-      "question": "Why does meat need to rest after cooking?",
-      "script": "scripts/why-does-meat-need-to-rest-after-cooking.md",
+      "slug": "how-are-microchips-designed",
+      "question": "How are microchips designed?",
+      "script": "scripts/how-are-microchips-designed.md",
       "source": "authored-inventory",
-      "publish_rank": 32,
+      "publish_rank": 22,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-098",
-      "pov_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
-      "pov_tag": "thesis",
+      "pov_id": "pov-041",
+      "pov_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "pov_tag": "evidence",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "how-deep-can-whales-dive",
+      "question": "How deep can whales dive?",
+      "script": "scripts/how-deep-can-whales-dive.md",
+      "source": "authored-inventory",
+      "publish_rank": 23,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-085",
+      "pov_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+      "pov_tag": "instruments",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "question": "Why Are Deep Sea Creatures Creepers?",
+      "script": "scripts/why-deep-sea-creatures-are-creepers.md",
+      "source": "authored-inventory",
+      "publish_rank": 24,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-002",
+      "pov_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+      "pov_tag": "scale",
+      "pov_tier": "specific",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "question": "Why are deep sea creatures so big?",
+      "script": "scripts/why-are-deep-sea-creatures-so-big.md",
+      "source": "authored-inventory",
+      "publish_rank": 25,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-021",
+      "pov_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
+      "pov_tag": "unknown",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     }
   ],
   "to_author": 0,
-  "inventory_remaining": 0,
+  "inventory_remaining": 28,
   "cadence": {
     "videos_per_week": 6,
     "why": "configured default (6/week)"
   },
   "publish_order": {
-    "ranked": 6,
-    "unranked": 3,
+    "ranked": 34,
+    "unranked": 7,
     "unranked_slugs": [
       "how-deep-mariana-trench",
+      "how-does-butter-get-made-from-cream",
       "what-lives-in-the-depths-of-the-ocean",
-      "what-lives-in-the-sea"
+      "what-lives-in-the-sea",
+      "why-blobfish-look-weird",
+      "why-does-meat-need-to-rest-after-cooking",
+      "why-does-rice-get-sticky"
     ],
     "killed_not_queued": [
       "03-why-deep-sea-creatures-are-surfacing",
@@ -112,9 +116,9 @@
       "17-what-is-a-yeti-crab"
     ],
     "queued_despite_kill": [],
-    "order_entries": 63,
+    "order_entries": 90,
     "source": "research/publish_order.json",
-    "generated_at": "2026-10-31T15:36:11.344162+00:00",
+    "generated_at": "2026-11-01T21:11:20.622229+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -122,47 +126,44 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 13,
-    "publishable": 6,
-    "scheduled_not_yet_aired": 12,
+    "unpublished_scripts": 45,
+    "publishable": 33,
+    "scheduled_not_yet_aired": 3,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 3.0,
+    "weeks_remaining": 6.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "critical",
+    "level": "ok",
     "by_domain": {
+      "deep-sea-ocean-science": {
+        "slots_per_week": 2,
+        "queued": 10,
+        "scheduled_ahead": 2,
+        "weeks": 6.0,
+        "level": "ok",
+        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (10 queued, 2 already dated)"
+      },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 4,
-        "scheduled_ahead": 4,
-        "weeks": 4.0,
-        "level": "warn",
-        "message": "materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated)"
+        "queued": 20,
+        "scheduled_ahead": 1,
+        "weeks": 10.5,
+        "level": "ok",
+        "message": "materials-and-manufacturing: 10.5 week(s) at 2/week (20 queued, 1 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
-        "queued": 13,
+        "queued": 11,
         "scheduled_ahead": 0,
-        "weeks": 6.5,
+        "weeks": 5.5,
         "level": "ok",
-        "message": "food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated)"
-      },
-      "space-astronomy": {
-        "slots_per_week": 2,
-        "queued": 0,
-        "scheduled_ahead": 0,
-        "weeks": 0.0,
-        "level": "critical",
-        "message": "space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)"
+        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
       }
     },
-    "short_domains": [
-      "materials-and-manufacturing",
-      "space-astronomy"
-    ],
+    "short_domains": [],
     "never_go_dark": true,
-    "message": "RUNWAY CRITICAL: 3.0 weeks left at 6/week - 6 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated); space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)."
+    "message": "6.0 weeks of queue at 6/week (33 publishable of 45 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (10 queued, 2 already dated); materials-and-manufacturing: 10.5 week(s) at 2/week (20 queued, 1 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -693,8 +694,8 @@
     }
   ],
   "candidate_skips": {
-    "already_published": 7,
-    "already_authored": 2,
+    "already_published": 5,
+    "already_authored": 3,
     "excluded": 15
   },
   "override": {
