@@ -189,6 +189,26 @@ for name, rows_, want in cases:
                       ("scheduled 2 times", "Sunday", "still carries")),
               f"V20 failed a clean superseded duplicate: {res['failures']}")
 
+# Historical stamps are not future work; a hidden future slot or an invalid
+# active stamp must still fail. This regression fails the pre-fix V20.
+saved_tail = __import__("cadence").scheduled_tail
+import cadence as C
+for label, stamp_, hidden, want in (
+    ("past", "2026-01-01T16:00:00Z", False, False),
+    ("hidden-future", _slot(3), True, True),
+    ("invalid", "not-a-date", True, True),
+):
+    fake.write_text(json.dumps({"published": [dict(row, video_id="TAIL", scheduled_publish_at=stamp_)], "queued": []}))
+    ledger.LEDGER = fake
+    if hidden:
+        C.scheduled_tail = lambda: []
+    try:
+        res = V.v20_cadence_schedule().as_dict()
+    finally:
+        ledger.LEDGER = saved
+        C.scheduled_tail = saved_tail
+    check(bool(res["failures"]) == want, f"V20 {label}: {res['failures']}")
+
 if examined == 0:
     fails.append("examined nothing")
 print(f"examined {examined} case(s)")

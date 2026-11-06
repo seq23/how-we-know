@@ -115,11 +115,39 @@ def hold_longform(detail: str, by: str = "owner") -> dict:
 def lift_longform(note: str) -> dict:
     b = load()
     was = b.pop("longform_hold", None)
+    b["longform_owner_approval_required"] = True
     b.setdefault("history", []).append(
         {"event": "longform_lift", "at": now(), "note": note,
          "held_since": (was or {}).get("since")})
     write_json(FLAG, b)
     return b
+
+
+def longform_dating_pending(record: dict | None = None, at=None) -> str | None:
+    """One daily upload opportunity after a genuine hold lift (48h maximum).
+
+    Dates are written by upload, not by lift. History is the transition record;
+    an ordinary reset, repeated lift, expired lift or active hold cannot excuse
+    an empty calendar. Callers must still prove allocation on dated fixtures.
+    """
+    from datetime import datetime, timezone, timedelta
+    b = record if record is not None else read_json(STATE / "breaker.json", default={})
+    if b.get("longform_hold", {}).get("on") or b.get("state") != "closed":
+        return None
+    events = [e for e in b.get("history", [])
+              if e.get("event") in ("longform_hold", "longform_lift")]
+    if len(events) < 2:
+        return None
+    hold, lift = events[-2:]
+    if (hold.get("event") != "longform_hold" or
+            lift.get("event") != "longform_lift" or
+            not lift.get("held_since") or lift["held_since"] != hold.get("at")):
+        return None
+    try:
+        age = (at or datetime.now(timezone.utc)) - datetime.fromisoformat(lift["at"])
+    except (ValueError, KeyError, TypeError):
+        return None
+    return "LONGFORM_DATING_PENDING" if timedelta(0) <= age < timedelta(hours=48) else None
 
 
 def load() -> dict:

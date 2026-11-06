@@ -77,6 +77,7 @@ import captions as CAP                            # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
+sys.path.insert(0, os.path.join(ROOT, "loop"))
 
 FPS = 30                      # must match visuals/design.py; asserted at runtime
 OUT_W, OUT_H = 1080, 1920
@@ -1033,6 +1034,8 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
         if not os.path.exists(p):
             raise FileNotFoundError(f"{slug}: required input missing: {p}")
 
+    from shorts_master import evidence                    # noqa: PLC0415
+    master_footage = evidence(src)
     info = probe_stream(src)
     if (info["width"], info["height"]) != (SRC_W, SRC_H):
         raise ValueError(f"{src} is {info['width']}x{info['height']}, "
@@ -1042,6 +1045,7 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     beats = beat_timeline(plan, audio_dir)
     by_index = {b["i"]: b for b in beats}
     sel = select_beats(beats, direct_answer(slug), max_seconds, target_seconds, rank)
+    sel["master_footage"] = master_footage
     picked = sel["beats"]
 
     # --- a domain's graphics never appear in another domain's Short ---------
@@ -1420,7 +1424,7 @@ def _published_files() -> set[str]:
                                           "shorts_ledger.json")))
     except (OSError, ValueError):
         return set()
-    return {r.get("file") for r in led.get("published", []) if r.get("file")}
+    return {r.get("file") for r in led.get("published", []) if r.get("file") and not r.get("withdrawn_at")}
 
 
 def stale_opening(mp4: str, rank: int, published: set[str] | None = None) -> bool:
@@ -1442,6 +1446,17 @@ def stale_opening(mp4: str, rank: int, published: set[str] | None = None) -> boo
     if (rec.get("opener") or {}).get("kind") != "question-photo-v1":
         return True
     return rank != 0 and rec.get("opening") != "chapter"
+
+
+def stale_master(mp4: str) -> bool:
+    from shorts_master import evidence, receipt_ok, NoMasterFootage
+    try:
+        rec = json.load(open(f"{mp4}.short.json"))
+        slug = os.path.basename(mp4).split("-short")[0]
+        current = evidence(os.path.join(ROOT, "renders", f"{slug}-final.mp4"))
+        return not receipt_ok(rec) or rec["master_footage"] != current
+    except (NoMasterFootage, OSError, ValueError):
+        return True
 
 
 def main(argv=None):
@@ -1476,14 +1491,15 @@ def main(argv=None):
         sys.exit("FAIL: empty input set - no finished -final.mp4 renders to cut from")
 
     os.makedirs(a.out, exist_ok=True)
-    results, failed, kept, no_photo = [], [], [], []
+    results, failed, kept, no_photo, no_footage = [], [], [], [], []
     for slug in slugs:
         for rank in range(a.count):
             stem = f"{slug}-short" if rank == 0 else f"{slug}-short{rank + 1}"
             mp4 = os.path.join(a.out, f"{stem}.mp4")
             if a.keep_existing and os.path.exists(mp4) \
                     and os.path.exists(f"{mp4}.short.json") \
-                    and not stale_opening(mp4, rank):
+                    and not stale_opening(mp4, rank) \
+                    and (os.path.basename(mp4) in _published_files() or not stale_master(mp4)):
                 print(f"keep {mp4} (already cut)")
                 kept.append(mp4)
                 continue
@@ -1491,6 +1507,10 @@ def main(argv=None):
                 r = make_short(slug, a.out, a.max_seconds, a.target_seconds,
                                a.dry_run, rank)
             except Exception as e:
+                if type(e).__name__ == "NoMasterFootage":
+                    no_footage.append(slug)
+                    print(str(e), file=sys.stderr)
+                    break
                 if type(e).__name__ == "NoSubjectPhoto":
                     no_photo.append(slug)
                     print(f"NO_SUBJECT_PHOTO {slug}: {e}", file=sys.stderr)
@@ -1539,7 +1559,17 @@ def main(argv=None):
                         "next batch cuts these.")
         except NamedStop as e:
             st._emit_stop(e)                               # noqa: SLF001
-    if not results and not kept:
+    if no_footage:
+        from common import NamedStop, Stage, week_id
+        st = Stage("shorts-master", week_id())
+        try:
+            st.named_stop("SHORT_MASTER_NO_FOOTAGE",
+                          "Masters without moving footage: " + ", ".join(sorted(set(no_footage))),
+                          held_items=sorted(set(no_footage)),
+                          unblock="The nightly batch retries and re-cuts after a new footage master exists.")
+        except NamedStop as e:
+            st._emit_stop(e)
+    if not results and not kept and not no_footage:
         sys.exit("FAIL: produced nothing")
     bad = [r for r in results if not a.dry_run and not r["ok"]]
     if bad or failed:

@@ -763,7 +763,7 @@ def shelve_short(shelf_dir: Path, slug: str, opener: bool = True) -> None:
     src = shelf_dir / "_src"
     src.mkdir(exist_ok=True)
     (src / "s.mp4").write_bytes(b"\x00" * 2048)
-    (src / "s.json").write_text(json.dumps({"slug": slug, "beats": [],
+    (src / "s.json").write_text(json.dumps({"slug": slug, "beats": [], "master_footage": {"master": {"bytes": 2048, "mtime": 1}, "footage_beats": 1},
                                             **({"opener": OPENER} if opener else {})}))
     b.put(src / "s.mp4", r2.short_key(slug))
     b.put(src / "s.json", r2.short_receipt_key(slug))

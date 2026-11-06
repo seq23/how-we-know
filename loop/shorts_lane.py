@@ -262,7 +262,7 @@ def published_trailing(led: dict, days: int = 7,
     n = 0
     for r in led.get("published", []):
         stamp = r.get("scheduled_publish_at") or r.get("uploaded_at")
-        if not stamp:
+        if not stamp or r.get("withdrawn_at"):
             continue
         t = datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
         if lo < t <= at:
@@ -398,6 +398,15 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     # The hand-off line goes in at upload when the episode is already public;
     # otherwise the row is `handoff: pending` and loop/handoff.py finishes it.
     import handoff                                         # noqa: PLC0415
+    from shorts_master import receipt_ok
+    rec_path = Path(f"{path}.short.json")
+    try:
+        proof = json.loads(rec_path.read_text())
+    except (OSError, ValueError):
+        proof = None
+    if not receipt_ok(proof):
+        st.note(f"SHORT_MASTER_NO_FOOTAGE: {slug}: re-cut from a footage master")
+        return ""
     chapter, at_s = cut_chapter(path, rank)
     try:
         rec = json.loads(Path(f"{path}.short.json").read_text(encoding="utf-8"))
@@ -445,7 +454,7 @@ HELD_BY_RENDER = "render_hold"
 
 
 def held_rows(led: dict) -> list[dict]:
-    return [r for r in led["published"] if r.get("held_by") == HELD_BY_RENDER]
+    return [r for r in led["published"] if r.get("held_by") == HELD_BY_RENDER and not r.get("withdrawn_at")]
 
 
 def releasable(led: dict) -> tuple[list[dict], list[dict]]:
@@ -521,6 +530,11 @@ def local_short(slug: str, rank: int = 1):
 
     Rank 1 is cut on demand from the render; a deeper rank publishes only
     when its cut is already on disk (bin/batch-session.sh cuts them)."""
+    from shorts_master import evidence, NoMasterFootage
+    try:
+        evidence(ROOT / "renders" / f"{slug}-final.mp4")
+    except (NoMasterFootage, OSError) as e:
+        return str(e)
     if rank > 1:
         if not (SHORTS_DIR / short_file(slug, rank)).exists():
             return f"no rank-{rank} cut on disk"
@@ -673,14 +687,14 @@ def cut_groups(renders_dir: Path | None = None, shorts_dir: Path | None = None,
             gone_ = dropped_cuts(shorts_dir)
             if all(short_file(slug, r) in gone_
                    or ((shorts_dir / short_file(slug, r)).exists()
-                       and not _needs_opener(shorts_dir / short_file(slug, r)))
+                       and not _needs_opener(shorts_dir / short_file(slug, r), f))
                    for r in range(1, want + 1)):
                 continue
         groups.setdefault(want, []).append(slug)
     return groups
 
 
-def _needs_opener(cut: Path) -> bool:
+def _needs_opener(cut: Path, master: Path | None = None) -> bool:
     """A cut on disk, not yet uploaded, without the one-question opening
     picture: the batch re-cuts it (shorts.py --keep-existing does)."""
     if cut.name in {r.get("file") for r in load_ledger()["published"] if not r.get("withdrawn_at")}:
@@ -689,7 +703,15 @@ def _needs_opener(cut: Path) -> bool:
         rec = json.loads(Path(f"{cut}.short.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return True
-    return opener_of(rec)[0] is None
+    from shorts_master import receipt_ok
+    if opener_of(rec)[0] is None or not receipt_ok(rec):
+        return True
+    from shorts_master import evidence, NoMasterFootage
+    slug = cut.name.split("-short")[0]
+    try:
+        return rec["master_footage"] != evidence(master or ROOT / "renders" / f"{slug}-final.mp4")
+    except (NoMasterFootage, OSError):
+        return True
 
 
 VOICE_BLOCKED = Path(__file__).resolve().parent / "state" / "shorts_voice_blocked.json"

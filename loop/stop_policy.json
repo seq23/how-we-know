@@ -111,6 +111,18 @@
     }
   },
   "self_resolving": {
+    "LONGFORM_DATING_PENDING": {
+      "why": "A genuine owner hold was lifted less than 48 hours ago; the next owner-approved long-form upload assigns dates. Empty calendars outside that bounded transition remain failures.",
+      "max_consecutive": 2,
+      "escalation": "Two daily opportunities without dates means the approved upload lane did not refill the calendar; investigate its named stop.",
+      "plain": "the next approved long-form upload assigns dates after the hold was lifted"
+    },
+    "SHORT_MASTER_NO_FOOTAGE": {
+      "why": "The master has no verified moving footage; no Short is cut or uploaded.",
+      "max_consecutive": 400,
+      "escalation": "The nightly batch retries when a new footage master and its matching record exist.",
+      "plain": "These Shorts wait for their replacement masters to contain moving footage; the next batch re-cuts them automatically."
+    },
     "OWNER_HOLD_LONGFORM": {"why": "Her own decision (2026-11-02): long-form uploads, dating and publishing are held until the hostile-review fixes land; Shorts keep going and rendering continues. loop/breaker.py longform_hold; lifted by `breaker.py lift-longform` when the work is on main.", "max_consecutive": 60, "escalation": "Sixty runs held means the hold outlived the work it waits for; check the hostile-review fixes landed and lift it.", "plain": "long-form episodes are held on purpose while the picture fixes land; Shorts keep going"},
     "RUNWAY_FULL": {"why": "The daily runway check (loop/draft.py --daily) found the runway at target and the Mac holding at least two nights of written scripts, so nothing needed authoring today. Finished, not blocked; it checks again tomorrow.", "max_consecutive": 400, "plain": "enough scripts are written; nothing needed today"},
     "EPISODES_HELD_BY_VALIDATOR": {"why": "loop/draft.py: every validator failure named an episode, so exactly those episodes are held from upload (loop/state/validator_hold.json) and the rest ship (hostile review 2026-11-02, finding 7). The next draft run re-authors or re-validates them and the hold lifts on a pass.", "max_consecutive": 3, "escalation": "Three runs held means the same episodes keep failing validation - an agent reads the failures in the stop record.", "plain": "a few episodes failed a check and wait; the rest ship"},

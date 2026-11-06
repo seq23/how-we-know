@@ -107,13 +107,19 @@ def shelf_lookup(shelf):
                 with tempfile.TemporaryDirectory() as td:
                     rp = Path(td) / "r.short.json"
                     getter(r2.short_receipt_key(slug, rank), rp)
-                    _q, why = SL.opener_of(json.loads(rp.read_text()))
+                    rec = json.loads(rp.read_text())
+                    from shorts_master import receipt_ok
+                    _q, why = SL.opener_of(rec)
+                    if not receipt_ok(rec):
+                        why = "SHORT_MASTER_NO_FOOTAGE: re-cut from a footage master"
+                        look.no_footage.append(SL.Pick(slug, rank).label)
             except Exception as e:                         # noqa: BLE001
                 why = f"its receipt could not be read ({e})"
             if why:
                 return why
         return True
     look.unverified = []
+    look.no_footage = []
     return look
 
 
@@ -151,6 +157,11 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # hold that has lifted is work for this run even when nothing new is
         # on the shelf; a hold still in force is a note, not a stop.
         to_release, still_held = SL.releasable(SL.load_ledger())
+        if not todo and not to_release and look.no_footage:
+            st.named_stop("SHORT_MASTER_NO_FOOTAGE",
+                          "Re-cut from new footage masters: " + ", ".join(look.no_footage),
+                          held_items=sorted(look.no_footage),
+                          unblock="The nightly batch re-cuts and shelves these after their new footage masters exist.")
         if not todo and not to_release and look.unverified:
             st.named_stop(
                 "SHORTS_SHELVED_BUT_UNVERIFIED",

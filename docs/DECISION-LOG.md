@@ -1926,3 +1926,39 @@ the next four weeks of `gsc_truth.json` are the measurement.
 (2026-09-21) and `764c908` (2026-10-25); `git show b436c89:site/content/questions.json`
 has zero copied FAQ sentences and `6d9aa92` introduced all 179; Search Console read live
 in this pass for all three windows, by date, page and query.
+
+## 2026-11-04 — Picture-less masters cannot produce Shorts; historical dates are not future slots
+
+Owner: Shorts inherit the master's moving footage. `visuals/shorts.py` now
+refuses absent, stale or all-null `.footage.json` records with
+`SHORT_MASTER_NO_FOOTAGE`, a self-resolving skip. Its receipt carries the
+master's footage evidence; both upload routes refuse receipts without it.
+Unpublished/withdrawn cuts are re-cut when a replacement master exists.
+The opening still continues through `question_card.tall_card` and the shared
+PD/CC0/free-library photo gate; no image or licence exception was added.
+
+Per the owner's report, Claude made EI0LmtXFM08 (Challenger Deep) and
+BVOtFheEtLA (deep-ocean evidence) private with no publishAt at about 20:05 CT.
+Their Shorts ledger rows are retained, withdrawn/retired, with `schedule_was`.
+This repair makes no YouTube request. Withdrawn rows do not count as throughput
+or held releases. Long-form owner approval and the four unreviewed rebuild
+holds remain in force.
+
+The calendar-fill proof assumed only two domains: with a third domain's empty
+day available it mislabeled a legal loan as stealing a ready topic's day.
+It now checks both ready topics' reserved days and the fully ready rotation.
+V20 similarly mistook historical private schedule stamps for missed future
+slots. It now independently requires an active future row (or an invalid
+active stamp) before failing an empty tail; planted hidden future rows still
+fail. No historical live record is rewritten to manufacture a future slot.
+The logged `median_subscribers` traceback is the deliberate fixture in
+`test_score_traceback_outranks_quota_text.py`, not a corrupt production row;
+the producer and measured queue records already include that field.
+
+Proofs: `test_shorts_master_footage.py` exercises refusal, successful cut
+selection/upload, cloud eligibility, withdrawal counting and re-cutting;
+its no-footage case fails against the old cutter. `test_rotation.py` adds
+past/hidden-future/invalid schedule cases. V32 also recognises only the same
+bounded `LONGFORM_DATING_PENDING` transition (otherwise an empty calendar
+still fails); the owner-hold test proves both branches. Existing competition
+record, calendar and cloud-upload proofs remain active.

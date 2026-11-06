@@ -173,9 +173,75 @@ def check_cancel_readback() -> tuple[list[str], int]:
     return fails, 1
 
 
+def check_dating_transition():
+    t = datetime.now(timezone.utc)
+    hold = {"event": "longform_hold", "at": (t - timedelta(hours=1)).isoformat()}
+    lift = {"event": "longform_lift", "at": t.isoformat(), "held_since": hold["at"]}
+    b = {"state": "closed", "history": [hold, lift]}
+    fails = []
+    fn = getattr(breaker, "longform_dating_pending", lambda **kw: None)
+    if fn(record=b, at=t) != "LONGFORM_DATING_PENDING":
+        fails.append("genuine lift must name LONGFORM_DATING_PENDING before upload dates rows")
+    for rec, at in [({"state": "closed", "history": []}, t),
+                    (b, t + timedelta(hours=48)), (b, t - timedelta(seconds=1)),
+                    (dict(b, history=[hold, lift, lift]), t),
+                    (dict(b, longform_hold={"on": True}), t),
+                    (dict(b, history=[hold, dict(lift, held_since=None)]), t)]:
+        if fn(record=rec, at=at):
+            fails.append("real zero calendar incorrectly excused as a dating transition")
+    return fails, 7
+
+
+def check_pov_dating_transition():
+    from unittest.mock import patch
+    import validate as V, ledger
+    fails = []
+    with patch.object(ledger, "load", return_value={"published": []}), \
+         patch.object(breaker, "longform_hold", return_value=None):
+        for pending, want_failure in (("LONGFORM_DATING_PENDING", False), (None, True)):
+            with patch.object(breaker, "longform_dating_pending", return_value=pending):
+                result = V.v32_scheduled_pov_is_hers().as_dict()
+            if bool(result["failures"]) != want_failure:
+                fails.append(f"V32 empty calendar, transition={pending}: {result}")
+            if pending and not any(x['code'] == pending for x in result['stops']):
+                fails.append("V32 did not name the bounded dating transition")
+    return fails, 3
+
+
+def check_approved_selection():
+    from unittest.mock import patch
+    from pathlib import Path
+    import backfill, batch_queue, render_gate, lengthen, approved_renders, ledger, cloud_upload
+    rows = [{"slug": "approved-ready"}, {"slug": "unapproved-rebuild"}]
+    approvals = {"approved-ready": {"sha256": "approved-hash"}}
+    with patch.object(breaker, "load", return_value={"longform_owner_approval_required": True}), \
+         patch.object(approved_renders, "load", return_value=approvals), \
+         patch.object(batch_queue, "queued_entries", return_value=rows), \
+         patch.object(ledger, "published_slugs", return_value=set()), \
+         patch.object(render_gate, "held_slugs", return_value=set()), \
+         patch.object(backfill, "food_hold", return_value=None), \
+         patch.object(lengthen, "upload_hold", return_value=None):
+        selected = backfill.library_pending(assets=lambda s: (Path(s), Path("thumb")))
+        fails = [] if [s for s, _, _ in selected] == ["approved-ready"] else ["unapproved rebuild admitted to upload"]
+        class Shelf:
+            sha = "approved-hash"
+            def head(self, key):
+                return {"sha256": self.sha}
+        shelf = Shelf()
+        lookup = cloud_upload.shelf_lookup(shelf)
+        if not isinstance(lookup("approved-ready"), tuple):
+            fails.append("approved R2 bytes refused")
+        shelf.sha = "rebuilt-hash"
+        if isinstance(lookup("approved-ready"), tuple):
+            fails.append("unapproved R2 replacement admitted")
+        if isinstance(lookup("unapproved-rebuild"), tuple):
+            fails.append("unapproved R2 slug admitted")
+    return fails, 4
+
+
 def main() -> int:
     fails, n = [], 0
-    for fn in (check_hold, check_candidates, check_requeue, check_digest,
+    for fn in (check_pov_dating_transition, check_approved_selection, check_dating_transition, check_hold, check_candidates, check_requeue, check_digest,
                check_cancel_readback):
         f, k = fn()
         fails += f
