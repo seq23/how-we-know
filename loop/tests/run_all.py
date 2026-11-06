@@ -157,6 +157,11 @@ def main() -> int:
     # No test makes a live model call: the Gemini tier (loop/llm_router.py)
     # must never reach the network from a test, whatever the shell exports.
     env.pop("GEMINI_API_KEY", None)
+    # Tests prove behaviour, never this Mac's live launchd state (6 Nov 2026:
+    # the agents were paused on purpose and three tests went red on a correct
+    # diff). V73's "is it loaded" half is proven with an injected `loaded` set
+    # (test_every_lane_has_a_runner); the live read stays on for real runs.
+    env["HWK_V73_LOADED"] = "0"
 
     failed = []
     for f in files:
