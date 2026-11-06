@@ -1,0 +1,26 @@
+{
+  "stage": "fri-measure",
+  "week": "2026-W45",
+  "at": "2026-11-06T22:06:14+00:00",
+  "code": "ANALYTICS_HTTP_400",
+  "message": "the YouTube API returned HTTP 400. This week is unmeasured; nothing is lost, the next run re-reads the same window.",
+  "detail": {
+    "code": 400,
+    "body": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request specifies an invalid filter parameter.\",\n    \"errors\": [\n      {\n        \"message\": \"The request specifies an invalid filter parameter.\",\n        \"domain\": \"youtube.parameter\",\n        \"reason\": \"invalidFilters\",\n        \"location\": \"parameters.\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}\n"
+  },
+  "unblock": "Usually transient (5xx or quota). If it repeats for more than two weeks the quota or the project needs looking at.",
+  "disposition": "needs_human",
+  "disposition_why": "'ANALYTICS_HTTP_400' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'ANALYTICS_HTTP_400' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "recomputed retention streak from 33 measured video(s): 3 consecutive below 146.0s average view duration",
+    "per-domain duration streaks: {'materials-and-manufacturing': 2, 'deep-sea-ocean-science': 1, 'food-science': 0}",
+    "judgeable domains (>= 8 measured): {'materials-and-manufacturing': 15, 'deep-sea-ocean-science': 17}",
+    "wrote loop/state/channel_verdict.json: 28-day views 3056 (long-form 927, Shorts 2129); AVD 69.1s vs 146.0s floor; 20.0 of 3000.0 watch hours",
+    "recorded the channel's subscriber count for the monetisation gates",
+    "recorded an unmeasured week in loop/state/measurement.json"
+  ],
+  "notes": []
+}

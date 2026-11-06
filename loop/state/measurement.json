@@ -737,9 +737,16 @@
         "mean_pct_of_actual_runtime": 22.2,
         "pct_basis": "each video's own measured duration (31 of 32 measured)"
       }
+    },
+    {
+      "week": "2026-W45",
+      "at": "2026-11-06T22:06:14+00:00",
+      "measured": false,
+      "reason": "HTTP_400",
+      "known_videos": 55
     }
   ],
-  "updated": "2026-10-31T00:34:42+00:00",
+  "updated": "2026-11-06T22:06:14+00:00",
   "retention_checkpoint": {
     "status": "measured",
     "measured": 32,
