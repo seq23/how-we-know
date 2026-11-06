@@ -70,6 +70,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import os
 import shutil
 import subprocess
@@ -252,6 +253,51 @@ class _Backend:
         raise NotImplementedError
 
     # -- shared ------------------------------------------------------------
+    def meta(self, key: str) -> dict | None:
+        return self._meta(key)
+
+    def usage_bytes(self) -> int:
+        raise NotImplementedError
+
+    def _cap(self, path, key: str) -> None:
+        """THE FREE-STORAGE CAP (loop/storage_cap.py): no write past the 9.5 GB
+        floor under R2's free 10 GB; room is made the safe way first, and a
+        write that still does not fit is NAMED STOP [STORAGE_FREE_CAP], never
+        a bill. The local stub is capped only when a test sets the floor."""
+        floor = os.environ.get("R2_FREE_FLOOR_BYTES")
+        if self.kind == "local" and not floor:
+            return
+        import storage_cap as SC                            # noqa: PLC0415
+        try:
+            SC.ensure_room(self, key, Path(path).stat().st_size + 4096,
+                           floor=int(float(floor)) if floor else SC.R2_FLOOR, **SC.DEPS)
+        except SC.CapStop as e:
+            raise R2Unavailable("STORAGE_FREE_CAP", str(e).split("] ", 1)[-1],
+                                unblock="Nothing to pay: confirmed uploads are cleared and "
+                                        "queued renders overflow to Drive automatically; "
+                                        "this clears as uploads drain the shelf.") from None
+
+    def _pull_back(self, meta: dict, dest: Path) -> Path | None:
+        """A render moved to Drive by the cap comes back here, sha-checked."""
+        import storage_cap as SC                            # noqa: PLC0415
+        if not (meta or {}).get(SC.MARK):
+            return None
+        drive = SC.DEPS.get("drive")
+        if drive is None:
+            import gdrive                                   # noqa: PLC0415
+            if not gdrive.available():
+                raise R2Unavailable("DRIVE_TOKEN_MISSING", "a render sits in Drive overflow and "
+                                    "this environment has no Drive token",
+                                    unblock="Set GDRIVE_TOKEN_JSON (auth/drive_auth.py does it).")
+            drive = gdrive.Drive()
+        dest = Path(dest)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        drive.download(meta[SC.MARK], dest)
+        if sha256_file(dest) != meta.get("sha256"):
+            dest.unlink(missing_ok=True)
+            raise R2Unavailable("DRIVE_COPY_CORRUPT", f"the Drive copy of {dest.name} fails its sha256")
+        return dest
+
     def same_as(self, path, key: str) -> tuple[bool, str]:
         """Is `key` already this exact file? Returns (verdict, why).
 
@@ -338,11 +384,24 @@ class LocalBackend(_Backend):
             raise R2Unavailable("BAD_KEY", f"key escapes the stub root: {key}")
         return p
 
+    def usage_bytes(self) -> int:
+        return sum(f.stat().st_size for f in self.root.rglob("*") if f.is_file())
+
+    def replace_with_marker(self, key: str, marker: dict) -> None:
+        self._refuse_write(key)
+        for x in (self._meta(key) or {}).get("parts") or []:
+            self._path(x["key"]).unlink(missing_ok=True)
+        self._path(key).write_text(json.dumps(marker))
+        self._path(key + META_SUFFIX).write_text(json.dumps(marker, indent=2) + "\n")
+
     def get(self, key: str, dest) -> Path:
         src = self._path(key)
         if not src.exists():
             raise R2Unavailable("OBJECT_MISSING",
                                 f"{key} is not in {self.label}")
+        back = self._pull_back(self._meta(key), Path(dest))
+        if back:
+            return back
         dest = Path(dest)
         dest.parent.mkdir(parents=True, exist_ok=True)
         meta = self._meta(key)
@@ -363,6 +422,7 @@ class LocalBackend(_Backend):
         import review_cut
         review_cut.refuse_publish(path)
         self._refuse_write(key)
+        self._cap(path, key)
         path = Path(path)
         dst = self._path(key)
         dst.parent.mkdir(parents=True, exist_ok=True)
@@ -525,10 +585,32 @@ class WranglerBackend(_Backend):
             except json.JSONDecodeError:
                 return None
 
+    def usage_bytes(self) -> int:
+        """`wrangler r2 bucket info` -> bucket_size (decimal units, as R2 bills)."""
+        r = self._run(["r2", "bucket", "info", self.bucket])
+        m = re.search(r"bucket_size:\s*([\d.]+)\s*([KMGT]?B)", (r.stdout or "") + (r.stderr or ""))
+        if not m:
+            raise R2Unavailable("R2_USAGE_UNREADABLE", "wrangler r2 bucket info printed no bucket_size",
+                                unblock="Upgrade wrangler; nothing is written while the size is unknown.")
+        return int(float(m.group(1)) * {"B": 1, "KB": 1e3, "MB": 1e6, "GB": 1e9, "TB": 1e12}[m.group(2)])
+
+    def replace_with_marker(self, key: str, marker: dict) -> None:
+        self._refuse_write(key)
+        with tempfile.TemporaryDirectory() as td:
+            f = Path(td) / "marker.json"
+            f.write_text(json.dumps(marker))
+            for x in (self._meta(key) or {}).get("parts") or []:
+                self._run(["r2", "object", "delete", self._obj(x["key"]), "--remote"], ok_missing=True)
+            self._run(["r2", "object", "put", self._obj(key), "--file", str(f), "--remote"])
+            self._run(["r2", "object", "put", self._obj(key + META_SUFFIX), "--file", str(f), "--remote"])
+
     def get(self, key: str, dest) -> Path:
         dest = Path(dest)
         dest.parent.mkdir(parents=True, exist_ok=True)
         meta = self._meta(key)
+        back = self._pull_back(meta, dest)
+        if back:
+            return back
         if meta and meta.get("parts"):
             with tempfile.TemporaryDirectory(dir=dest.parent) as td:
                 got = []
@@ -554,6 +636,7 @@ class WranglerBackend(_Backend):
         import review_cut
         review_cut.refuse_publish(path)
         self._refuse_write(key)
+        self._cap(path, key)
         path = Path(path)
         parts = None
         if path.stat().st_size > self.part_bytes:
