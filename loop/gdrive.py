@@ -116,4 +116,8 @@ class Drive:
         return dest
 
     def delete(self, file_id: str) -> None:
-        self._req(f"{API}/files/{file_id}", method="DELETE", raw=True)
+        """Move an overflow copy to Drive's trash (recoverable for 30 days).
+        Never an HTTP DELETE: this repo holds no delete path of any kind
+        (loop/tests/test_supersede_swap.py, rule 7)."""
+        self._req(f"{API}/files/{file_id}", json.dumps({"trashed": True}).encode(), "PATCH",
+                  {"Content-Type": "application/json"}, raw=True)
