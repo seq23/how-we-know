@@ -32,6 +32,38 @@ if got != set(ids):
     fails.append(f"{len(got)} of 55 videos measured")
 if max(calls) > 50:
     fails.append(f"a call carried {max(calls)} ids (limit 50)")
+# videos.list (the strike check) has the same 50-id limit: the call that
+# really failed W45 (reproduced 6 Nov 2026 on the Mac: 55 ids -> HTTP 400).
+import json as _json  # noqa: E402
+seen = []
+
+
+class _Resp(io.BytesIO):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+def fake_open(req, timeout=60):
+    q = urllib.parse.parse_qs(urllib.parse.urlparse(req.full_url).query)
+    got_ids = q["id"][0].split(",")
+    seen.append(len(got_ids))
+    if len(got_ids) > 50:
+        raise urllib.error.HTTPError(req.full_url, 400, "invalidFilters", {}, io.BytesIO(b"{}"))
+    items = [{"id": i, "status": {"uploadStatus": "rejected" if i == "v54" else "processed"}} for i in got_ids]
+    return _Resp(_json.dumps({"items": items}).encode())
+
+
+import urllib.parse  # noqa: E402
+M.urllib.request.urlopen = fake_open
+strikes = M.check_strikes("t", ids)
+if [s["video_id"] for s in strikes] != ["v54"]:
+    fails.append(f"strike check over 55 ids found {strikes} (wanted the one rejected video, v54)")
+if max(seen) > 50:
+    fails.append(f"the strike check sent {max(seen)} ids in one videos.list call (limit 50)")
+
 if fails:
     print("FAIL test_measure_filter_chunks: " + "; ".join(fails))
     sys.exit(1)
