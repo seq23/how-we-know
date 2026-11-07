@@ -128,7 +128,9 @@ def run(limit: int = 200, dry_run: bool = False) -> int:
         token = up.access_token(creds)
 
         touched, skipped, no_domain, spent = 0, 0, [], 0
-        for kind, slug, vid in rows[:limit]:
+        deferred: list[str] = []
+        todo = rows[:limit]
+        for i, (kind, slug, vid) in enumerate(todo):
             wanted = (wanted_for_short(slug) if kind == "short"
                      else wanted_for_episode(slug))
             if wanted is None:
@@ -149,6 +151,10 @@ def run(limit: int = 200, dry_run: bool = False) -> int:
                 st.note(f"quota: stopped before {slug}, keeping "
                         f"{quota.deferrable_reserve()} units for today's uploads; "
                         f"the rest run tomorrow")
+                # Name what is held, so a quota hold can never be read as
+                # "did nothing for no reason" (2026-11-06/07: it was, and main
+                # went red on TAGS_BACKFILL_INERT two days running).
+                deferred = [r[1] for r in todo[i:]]
                 break
             current = ytmeta.get_video(token, vid)
             spent += quota.VIDEO_READ
@@ -204,6 +210,20 @@ def run(limit: int = 200, dry_run: bool = False) -> int:
         if no_domain:
             st.note(f"{len(no_domain)} video(s) had no script on disk or no "
                     f"known domain and were left alone: {no_domain}")
+        if touched == 0 and skipped == 0 and deferred and not dry_run:
+            # A DELIBERATE HOLD, not inert: every unit left today is reserved
+            # for the uploads, and tomorrow's scheduled run takes these. That
+            # is self-resolving (QUOTA_DEFERRED in loop/stop_policy.json, exit
+            # 0, loud again after max_consecutive days without progress).
+            st.named_stop(
+                "QUOTA_DEFERRED",
+                f"{len(deferred)} video(s) held for quota: today's remaining "
+                f"units are kept for the uploads ({quota.report()})",
+                detail={"deferred": deferred,
+                        "resets_at": quota.next_reset()},
+                unblock="Nothing to do; the allowance resets at midnight "
+                        "Pacific and this lane runs daily.",
+                held_items=deferred)
         if touched == 0 and skipped == 0 and not dry_run:
             st.named_stop(
                 "TAGS_BACKFILL_INERT",
