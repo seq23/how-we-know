@@ -52,6 +52,7 @@ phase_idle(){ return 0; }
 hold_awake(){ :; }
 checkout_guard(){ :; }   # proved separately: loop/tests/test_mac_branch_guard.py
 phase_whisper(){ L whisper; }
+phase_whisper_upload(){ L whisper-upload; }
 phase_narrate(){ L narrate; }
 phase_render(){ L render; }
 phase_lengthen(){ L lengthen; }
@@ -102,9 +103,9 @@ def check(cond: bool, msg: str) -> None:
 
 INCOMPLETE = {"night": "2026-10-12", "started_at": "2026-10-12T23:00:04",
               "last_completed_at": "2026-10-13T01:40:00", "phase": "render",
-              "episode": "slug-a", "phases_done": ["whisper", "narrate", "render"],
+              "episode": "slug-a", "phases_done": ["whisper", "whisper-upload", "narrate", "render"],
               "units": [], "complete": False}
-ALL = ["selfheal", "survey", "prepare", "whisper", "narrate", "render", "lengthen", "captions",
+ALL = ["selfheal", "survey", "prepare", "whisper", "whisper-upload", "narrate", "render", "lengthen", "captions",
        "shelve", "harvest"]
 
 # -- a. no progress file -> no-op (day, 22:30 and 07:00) ------------------

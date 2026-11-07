@@ -565,6 +565,10 @@ footage, and the same checks. How it works: [`docs/WHISPER_ALMANAC.md`](docs/WHI
 - **Nights:** 5 Almanac, 2 How We Know (Mon, Fri); the supply gates decide
   first; without your sample the Almanac nights go to How We Know. Re-check
   6 Dec 2026 with both channels' real views.
+- **Uploads:** every night the Mac uploads a finished, checked episode as
+  private with a 20:00 Central publish date (sleep Tue and Fri, affirmations
+  Sun). If the sign-in ever stops working you get one morning line; the fix is
+  `.venv/bin/python auth/whisper_youtube_auth.py`, pick Whisper Almanac.
 - **Until the sample exists** the digest shows `WHISPER_SAMPLE_MISSING`
   (green) with the exact place to save the file. Nothing else waits on you.
 

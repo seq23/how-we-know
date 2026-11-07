@@ -29,7 +29,7 @@ import youtube_auth as Y                                    # noqa: E402
 
 DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.file"
 OUT = T.SECRETS / "drive_token.json"
-ACCOUNT = "the Google account that owns both channels"
+ACCOUNT = "both channels (How We Know Deep and Whisper Almanac)"
 
 
 def main() -> int:
@@ -44,7 +44,8 @@ def main() -> int:
         print(f"NAMED STOP [DRIVE_CONSENT_FAILED] {got.get('error') or 'no refresh token came back'}")
         return 3
     tok = {"client_id": client["client_id"], "client_secret": client["client_secret"],
-           "refresh_token": got["refresh_token"], "scope": DRIVE_SCOPE, "account": ACCOUNT}
+           "refresh_token": got["refresh_token"], "scope": DRIVE_SCOPE,
+           "account": f"the Google account that owns {ACCOUNT}"}
     T.safe_write(OUT, tok)
     print(f"saved {OUT.relative_to(ROOT)} (drive.file only)")
     r = subprocess.run(["gh", "secret", "set", "GDRIVE_TOKEN_JSON", "-R", "seq23/how-we-know"],

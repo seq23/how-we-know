@@ -30,7 +30,7 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 | Dim moving footage under the How We Know footage rules | her Mac | New, built | none |
 | Title, description (AI line in the first 3), thumbnail, altered-content flag | code | New, built | none |
 | Shelve to R2 under the free cap (Drive overflow) | her Mac | Built (shared with How We Know) | once: Drive Allow (safety net) |
-| Upload and schedule from R2 | GitHub Actions, daily | Runs for How We Know; Almanac lane is the next build | once: Allow for @whisperalmanac |
+| Upload and schedule, straight from the Mac (`loop/whisper_upload.py`) | her Mac, nightly batch step `whisper-upload` | Built 7 Nov 2026 | none (Allow clicked 7 Nov) |
 | Measure, scorecard, weekly digest | GitHub Actions + Boss OS | Runs for How We Know; Almanac row added | none |
 | Turn on monetisation when eligible | YouTube Studio | her account | once |
 
@@ -77,7 +77,7 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 
 - **At the cap:** delete R2 copies YouTube confirms are uploaded; then move the renders last in line to Drive (md5-verified, pulled back when next); then NAMED STOP [STORAGE_FREE_CAP]. Never billed.
 
-- **Whisper masters never sit in R2 as-is:** they go from the Mac straight to YouTube in the Almanac upload step (the next build, after her Allow click), so they never take R2 space.
+- **Whisper masters never sit in R2 as-is:** they go from the Mac straight to YouTube in the Almanac upload step (`loop/whisper_upload.py`), so they never take R2 space. The render and its voice wavs are deleted only once YouTube reports the upload `processed`.
 
 - **Local copies:** deleted only once YouTube confirms the upload and R2 holds the identical file; below a 6 GB floor no render starts (NAMED STOP [DISK_LOW]).
 
@@ -93,7 +93,16 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 
 - **Altered content:** every upload body sets `status.containsSyntheticMedia = true`; the kit check fails without it, and without the AI-voice line in the first 3 description lines.
 
-- **Publish time:** 20:00 Central, so it is live before bedtime in every US zone (21:00 Eastern, 18:00 Pacific); uploaded private with a publish date, as How We Know does.
+- **Publish time:** 20:00 Central, so it is live before bedtime in every US zone (21:00 Eastern, 18:00 Pacific); uploaded private with a publish date, as How We Know does. Sleep episodes on Tuesday and Friday, the affirmation on Sunday (`config/whisper_almanac.json` `upload`).
+
+### The upload step (`loop/whisper_upload.py`, built 7 Nov 2026)
+
+- **Where:** her Mac, every night in the batch (step `whisper-upload`, after the whisper step). It uses no narrator, so the 5:2 night split is unchanged.
+- **Only a checked episode:** every lane check again (script rules, kit rules, a measured length), then the final frame check on the finished file (`visuals/frame_check.py`, one frame every 20 s). No credit is burned into the picture (the frame check fails any word on screen); every footage source is credited in the description.
+- **Private with a publish date:** the publishAt rides in the upload body itself, with altered content = yes and made for kids = no, so no second status write can reset them. The kit's title, description, chapters and tags go up unchanged.
+- **Supply gate:** no new upload of a format while 14+ days of it already wait on YouTube (a green HOLD; the render waits on the Mac).
+- **Confirmed before anything is deleted:** the upload is recorded once YouTube lists the id with processing started; the local files go on a later night, once it reads `processed`.
+- **Named stops:** WHISPER_YT_TOKEN_INVALID (owner action: her sign-in), UPLOAD_QUOTA (resets by itself), FRAME_CHECK_FAILED (red; the file is set aside, never deleted). Each is in loop/state/stops (the Sunday digest) and puts one line in her morning email's Notices.
 
 ## Plan · 5. Videos per week
 

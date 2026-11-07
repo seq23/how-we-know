@@ -6,8 +6,9 @@
 The picture is DIM, MOVING footage of each segment's own subject, under the
 How We Know long-form footage rules (visuals/whisper_reel.py; her ruling
 6 Nov 2026: the Sep 2026 demonetisation wave hit dark-screen sleep
-compilations). No flashes, no captions burned in (brand do-not list); every
-clip carries its on-screen credit.
+compilations). No flashes, no captions or credits burned in (brand do-not
+list; the frame check fails any word on screen); every footage source is
+credited in the description.
 
 The audio is the authority: every beat wav in order (loop/whisper_lane
 beats()), measured, and the kit (channel/whisper/<slug>/kit.json) is rewritten
@@ -65,7 +66,6 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
             seen.add(m["segment"])
             seg_starts.append(t)
         t += m["duration"]
-    kit = WL.kit(slug, measured_s=total, seg_starts=seg_starts, c=c)
     dur = min(total, proof_seconds) if proof_seconds else total
     out = WL.video_path(slug) if not proof_seconds else WL.WORK / slug / f"{slug}-proof.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -93,6 +93,8 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     probs = R.reel_problems(shots, sum(x for _, x in segs))
     if probs:
         raise SystemExit(f"NAMED STOP [WHISPER_REEL_REFUSED] {slug}: {len(probs)} footage rule(s) broken: {probs[:3]}")
+    kit = WL.kit(slug, measured_s=total, seg_starts=seg_starts, c=c,
+                 footage_credits=None if proof_seconds else R.credits(shots))
     with tempfile.TemporaryDirectory(dir=out.parent) as td:
         lst = Path(td) / "beats.txt"
         lst.write_text("".join(f"file '{w}'\n" for w in wavs))

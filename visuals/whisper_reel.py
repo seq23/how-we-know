@@ -15,8 +15,10 @@ compilations. Reuse the HWK long-form footage rules." Those rules (spry brain,
 Each segment's pool is the footage of the How We Know episode it was rewritten
 from (visuals/footage.episode_pool: NOAA first, licence-checked stock second),
 so the picture shows the named subject. Every cut sits inside a clean window,
-is sha256-verified and carries its on-screen credit (visuals/footage.render_cut).
-The reel is dimmed and desaturated in one pass for sleep.
+is sha256-verified (visuals/footage.render_cut). No credit is burned into the
+picture: the final frame check fails any word on screen (as How We Know's
+long-form, owner 2026-11-03); every source is credited in the description
+(credits()). The reel is dimmed and desaturated in one pass for sleep.
 """
 from __future__ import annotations
 
@@ -135,6 +137,12 @@ def reel_problems(shots: list[dict], total_s: float) -> list[str]:
     return out
 
 
+def credits(shots: list[dict]) -> list[str]:
+    """One description line per footage source the reel shows."""
+    import longform_picture as LP                          # noqa: PLC0415
+    return sorted({LP._credit(s["asset"]) for s in shots} - {"", None})
+
+
 def render_reel(shots: list[dict], out: Path, audio: Path, workdir: Path) -> Path:
     """Render segment by segment (small temp files on an 8 GB Mac), dim it,
     and mux the voice. The audio is the authority for length. 720p at most
@@ -147,7 +155,7 @@ def render_reel(shots: list[dict], out: Path, audio: Path, workdir: Path) -> Pat
             parts = []
             for k, s in enumerate(x for x in shots if x["segment"] == si):
                 p = os.path.join(td, f"{k:04d}.mp4")
-                F.render_cut({**s["cut"], "asset": s["asset"]}, p, s["seconds"], td)
+                F.render_cut({**s["cut"], "asset": s["asset"]}, p, s["seconds"], td, credit=False)
                 parts.append(p)
             lst = Path(td) / "parts.txt"
             lst.write_text("".join(f"file '{p}'\n" for p in parts))

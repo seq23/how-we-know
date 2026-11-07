@@ -25,7 +25,8 @@ lane of this repo, like food: the same $0 machine as How We Know Deep.
     (visuals/whisper_render.py), resuming night to night from disk.
 
 Nothing here uploads or publishes. An upload kit is written for each episode
-(channel/whisper/<slug>/kit.json) with the altered-content flag set.
+(channel/whisper/<slug>/kit.json) with the altered-content flag set;
+loop/whisper_upload.py uploads it, scheduled, from the Mac.
 """
 from __future__ import annotations
 
@@ -446,17 +447,26 @@ def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None) -> Path
     return out
 
 
+UPLOAD_KEYS = ("uploaded", "video_id", "uploaded_at", "privacy", "scheduled_publish_at",
+               "publish_at_ct", "youtube_confirmed", "frame_check", "pruned")
+
+
 def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | None = None,
-        c: dict | None = None) -> dict:
+        c: dict | None = None, footage_credits: list[str] | None = None) -> dict:
     """channel/whisper/<slug>/kit.json + thumbnail.png. Before voicing the
-    length is the ESTIMATE (marked); after voicing, the measured length."""
+    length is the ESTIMATE (marked); after voicing, the measured length.
+    `footage_credits`: one line per footage source the render shows (no
+    credit is burned into the picture: the frame check fails any word on
+    screen, as How We Know's long-form). What loop/whisper_upload.py recorded
+    (the video id, the schedule) is kept: a rewritten kit never forgets an
+    upload."""
     c = c or cfg()
     path = SCRIPTS / f"{slug}.md"
     p = parse(path)
     e = episode_cfg(p, c)
     secs = measured_s if measured_s else estimate_seconds(p, c)
     st = stills(e.get("still_slots") or [], 1)
-    credits = [credit_line(a) for a in st]
+    credits = [credit_line(a) for a in st] + list(footage_credits or [])
     t = title(p, secs, c)
     dsc = description(p, secs, c, seg_starts, credits)
     meta = {"slug": slug, "kind": p["kind"], "title": t, "description": dsc,
@@ -465,6 +475,14 @@ def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | No
             "body": upload_body(t, dsc, c), "uploaded": False}
     probs = meta_problems(meta, secs, c)
     meta["problems"] = probs
+    old = KITS / slug / "kit.json"
+    if old.exists():
+        prev = json.loads(old.read_text())
+        if prev.get("video_id"):
+            # the published words stay the published words (forward-only)
+            meta = {**prev, "problems": prev.get("problems", probs)}
+        else:
+            meta.update({k: prev[k] for k in UPLOAD_KEYS if k in prev})
     d = KITS / slug
     d.mkdir(parents=True, exist_ok=True)
     thumbnail(p, secs, d / "thumbnail.png", c)
@@ -565,10 +583,22 @@ def queue() -> list[str]:
         p = parse(f)
         if p["status"] != READY or video_path(p["slug"]).exists() or p["slug"] in waits:
             continue
+        if handed_on(p["slug"]):           # uploaded, or set aside by the frame check
+            continue
         if footage_gaps(p):                # never voiced without its own footage
             continue
         rows.append((0 if p["kind"] == "sleep" else 1, p["meta"].get("written", ""), p["slug"]))
     return [s for *_, s in sorted(rows)]
+
+
+def handed_on(slug: str) -> bool:
+    """Uploaded (its render may since be deleted), or its render set aside by
+    the frame check: never voiced or rendered again."""
+    k = KITS / slug / "kit.json"
+    if k.exists() and json.loads(k.read_text()).get("video_id"):
+        return True
+    v = video_path(slug)
+    return v.with_name(v.name + ".frame-check-failed").exists()
 
 
 def footage_gaps(p: dict) -> list[str]:
@@ -589,7 +619,10 @@ def status_lines() -> list[str]:
     for f in all_scripts():
         p = parse(f)
         done, n = voiced(p["slug"])
-        state = ("rendered" if video_path(p["slug"]).exists() else
+        k = KITS / p["slug"] / "kit.json"
+        up = json.loads(k.read_text()) if k.exists() else {}
+        state = (f"uploaded {up['video_id']}, public {up.get('publish_at_ct')}" if up.get("video_id") else
+                 "rendered" if video_path(p["slug"]).exists() else
                  f"voiced {done}/{n} beats" if done else "ready for voice")
         out.append(f"{p['slug']}: {p['kind']}, {fmt_len(estimate_seconds(p))} estimated, {state}")
     return out
