@@ -199,7 +199,34 @@ prepare_runner(){
         ln -s "$runtime_source/$name" "$ROOT/$name"
       fi
     done
+    carry_media "$runtime_source"
+}
 
+# THE MEDIA COMES WITH THE JOBS (2026-11-07). A fresh clone holds no wavs, no
+# renders, no footage pool: every one of them is gitignored. From 4 Nov the
+# jobs ran in a clone that had none, so the batch queued all 81 episodes for
+# re-narration, narrate_all dropped the measured `seconds` from all 60
+# manifests and the backfill pushed them (c69c59d); the render gate saw zero
+# renders. Every ignored file of the old checkout that the runner lacks is
+# brought over as an APFS clone (`cp -c`: no extra disk, ~26 GB would not fit
+# a full copy). Never overwrites, never copies secrets or runtimes (linked
+# above) or logs. A clone that cannot be made is a named stop, never a full
+# copy that could fill the disk.
+carry_media(){
+    local src="$1" n=0 f
+    [ -d "$src/.git" ] && [ "$src" != "$ROOT" ] || return 0
+    while IFS= read -r f; do
+      case "$f" in
+        .venv/*|.venv-tts/*|.secrets/*|.wrangler/*|*/__pycache__/*|__pycache__/*|*.pyc|*.log|.env|*.key|*.pem|credentials*|*/credentials*|client_secret*|*token*.json|*_api_key*|service-account*) continue ;;
+      esac
+      [ -e "$ROOT/$f" ] && continue
+      mkdir -p "$ROOT/$(dirname "$f")"
+      cp -c -p "$src/$f" "$ROOT/$f" 2>/dev/null || {
+        echo "NAMED STOP [RUNNER_MEDIA_NOT_CLONED] could not clone $f into $ROOT (cp -c needs APFS on one volume); $n file(s) carried so far." >&2
+        exit 4; }
+      n=$((n + 1))
+    done < <(git -C "$src" ls-files --others --ignored --exclude-standard)
+    echo "runner media: $n file(s) cloned from $src"
 }
 
 case "${1:-}" in

@@ -69,7 +69,7 @@ from synth import (  # noqa: E402
 # Until 2026-10-03 this file wrote `indent=1` with no newline, so every batch
 # night re-formatted every tracked audio/<slug>/beats.json without changing a
 # value, and the batch's own `git pull --rebase` then refused the dirty tree.
-from captions import write_beats_manifest  # noqa: E402
+from captions import measured_audio_absent, write_beats_manifest  # noqa: E402
 
 SR = 24000
 
@@ -300,6 +300,18 @@ def main() -> int:
 
 
 def run(args, plans, total_beats) -> int:
+    # A CHECKOUT WITHOUT ITS MEDIA IS NOT A NIGHT OF NARRATION (2026-11-07).
+    # Measured, unchanged manifests with no wav at all mean the audio lives on
+    # another checkout; going on would strip every measured duration below and
+    # queue days of re-narration. Refuse before writing anything.
+    absent = measured_audio_absent(plans, AUDIO)
+    if absent:
+        print(f"error: AUDIO_MEDIA_ABSENT - {len(absent)} measured episode(s) "
+              f"have no wav on this checkout ({', '.join(absent[:5])}"
+              f"{', ...' if len(absent) > 5 else ''}); refusing to narrate or "
+              f"rewrite any beats.json. Carry the media in: "
+              f"bin/loop-install-launchd.sh --prepare-runner", file=sys.stderr)
+        return 3
     # Which beats still need work? Decide BEFORE loading a 3 GB model.
     todo = []
     for slug, plan in plans.items():

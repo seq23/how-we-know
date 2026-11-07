@@ -2,431 +2,517 @@
   {
     "i": 0,
     "segment": "ambient_drift",
-    "narration": "Air or glass would swallow the beam that prints a modern chip's smallest features."
+    "narration": "Air or glass would swallow the beam that prints a modern chip's smallest features.",
+    "seconds": 4.453333333333333
   },
   {
     "i": 1,
     "segment": "ambient_drift",
-    "narration": "Photolithography copies a circuit pattern onto a silicon wafer by shining light through a patterned mask onto a light-sensitive coating called photoresist, which changes its chemistry wherever the light lands."
+    "narration": "Photolithography copies a circuit pattern onto a silicon wafer by shining light through a patterned mask onto a light-sensitive coating called photoresist, which changes its chemistry wherever the light lands.",
+    "seconds": 12.592
   },
   {
     "i": 2,
     "segment": "ambient_drift",
-    "narration": "In the most advanced machines that light has a wavelength of 13.5 nanometres, as the engineering literature published through IEEE describes."
+    "narration": "In the most advanced machines that light has a wavelength of 13.5 nanometres, as the engineering literature published through IEEE describes.",
+    "seconds": 9.786666666666667
   },
   {
     "i": 3,
     "segment": "ambient_drift",
-    "narration": "People quote that figure. It sets a scale, and it explains a great deal about why these machines look the way they do."
+    "narration": "People quote that figure. It sets a scale, and it explains a great deal about why these machines look the way they do.",
+    "seconds": 6.832
   },
   {
     "i": 4,
     "segment": "ambient_drift",
-    "narration": "It does not explain how factories have spent decades printing lines far narrower than the light that drew them. That gap is the real story."
+    "narration": "It does not explain how factories have spent decades printing lines far narrower than the light that drew them. That gap is the real story.",
+    "seconds": 8.336
   },
   {
     "i": 5,
     "segment": "process_steps",
-    "narration": "Start with a polished silicon wafer. The first step is to coat it with a thin, even film of photoresist."
+    "narration": "Start with a polished silicon wafer. The first step is to coat it with a thin, even film of photoresist.",
+    "seconds": 7.1626666666666665
   },
   {
     "i": 6,
     "segment": "material_image",
-    "narration": "Usually liquid is dripped onto the wafer and the wafer is spun so the film spreads flat."
+    "narration": "Usually liquid is dripped onto the wafer and the wafer is spun so the film spreads flat.",
+    "seconds": 5.509333333333333
   },
   {
     "i": 7,
     "segment": "process_steps",
-    "narration": "A gentle bake drives off solvent. Before each exposure, the machine finds alignment marks left by earlier layers, so the new pattern sits on top of the old one."
+    "narration": "A gentle bake drives off solvent. Before each exposure, the machine finds alignment marks left by earlier layers, so the new pattern sits on top of the old one.",
+    "seconds": 9.328
   },
   {
     "i": 8,
     "segment": "ambient_drift",
-    "narration": "Then you expose the wafer. Light passes through a mask, which is a plate of glass carrying the circuit pattern in an opaque layer."
+    "narration": "Then you expose the wafer. Light passes through a mask, which is a plate of glass carrying the circuit pattern in an opaque layer.",
+    "seconds": 7.226666666666667
   },
   {
     "i": 9,
     "segment": "process_steps",
-    "narration": "An optical system projects a reduced image of that pattern onto the resist."
+    "narration": "An optical system projects a reduced image of that pattern onto the resist.",
+    "seconds": 5.1786666666666665
   },
   {
     "i": 10,
     "segment": "ambient_drift",
-    "narration": "Next you develop it, washing the wafer in a solution that dissolves either the exposed or the unexposed regions."
+    "narration": "Next you develop it, washing the wafer in a solution that dissolves either the exposed or the unexposed regions.",
+    "seconds": 6.810666666666667
   },
   {
     "i": 11,
     "segment": "process_steps",
-    "narration": "What remains is a stencil. Finally you etch, implant or deposit material through the openings, and then you strip the resist away."
+    "narration": "What remains is a stencil. Finally you etch, implant or deposit material through the openings, and then you strip the resist away.",
+    "seconds": 7.717333333333333
   },
   {
     "i": 12,
     "segment": "ambient_drift",
-    "narration": "That whole sequence is repeated layer after layer. A finished chip is the accumulated result."
+    "narration": "That whole sequence is repeated layer after layer. A finished chip is the accumulated result.",
+    "seconds": 6.586666666666667
   },
   {
     "i": 13,
     "segment": "contrast_pair",
-    "narration": "Nothing in that list is exotic in principle. University cleanrooms, including facilities at MIT, teach the sequence to students with simple contact printers, where the mask touches the resist directly."
+    "narration": "Nothing in that list is exotic in principle. University cleanrooms, including facilities at MIT, teach the sequence to students with simple contact printers, where the mask touches the resist directly.",
+    "seconds": 12.946666666666667
   },
   {
     "i": 14,
     "segment": "ambient_drift",
-    "narration": "The industrial version differs in scale and tolerance. The idea is the same."
+    "narration": "The industrial version differs in scale and tolerance. The idea is the same.",
+    "seconds": 4.549333333333333
   },
   {
     "i": 15,
     "segment": "contrast_pair",
-    "narration": "In a factory the mask is projected rather than pressed, and the lens shrinks the image."
+    "narration": "In a factory the mask is projected rather than pressed, and the lens shrinks the image.",
+    "seconds": 5.541333333333333
   },
   {
     "i": 16,
     "segment": "material_image",
-    "narration": "The wafer is stepped or scanned beneath the optics so the same pattern lands in many places across its surface."
+    "narration": "The wafer is stepped or scanned beneath the optics so the same pattern lands in many places across its surface.",
+    "seconds": 6.618666666666667
   },
   {
     "i": 17,
     "segment": "contrast_pair",
-    "narration": "The machine is enormous, but each exposure is still a shadow falling on a chemical film."
+    "narration": "The machine is enormous, but each exposure is still a shadow falling on a chemical film.",
+    "seconds": 5.914666666666666
   },
   {
     "i": 18,
     "segment": "definition_card",
-    "narration": "Photoresist is a coating whose solubility changes where light lands. It comes in positive or negative tone."
+    "narration": "Photoresist is a coating whose solubility changes where light lands. It comes in positive or negative tone.",
+    "seconds": 7.034666666666666
   },
   {
     "i": 19,
     "segment": "ambient_drift",
-    "narration": "In a positive resist, exposed regions become easier to dissolve, so the developer removes them."
+    "narration": "In a positive resist, exposed regions become easier to dissolve, so the developer removes them.",
+    "seconds": 6.394666666666667
   },
   {
     "i": 20,
     "segment": "definition_card",
-    "narration": "In a negative resist, exposure makes the material harder to dissolve, so the exposed regions stay behind."
+    "narration": "In a negative resist, exposure makes the material harder to dissolve, so the exposed regions stay behind.",
+    "seconds": 6.746666666666667
   },
   {
     "i": 21,
     "segment": "ambient_drift",
-    "narration": "In both cases the resist converts an optical image into a chemical one."
+    "narration": "In both cases the resist converts an optical image into a chemical one.",
+    "seconds": 5.765333333333333
   },
   {
     "i": 22,
     "segment": "definition_card",
-    "narration": "The rest of the process responds to the chemistry, not the light."
+    "narration": "The rest of the process responds to the chemistry, not the light.",
+    "seconds": 3.6213333333333333
   },
   {
     "i": 23,
     "segment": "evidence_chain",
-    "narration": "Most modern resists add a trick called chemical amplification. Inside the film sits a compound that releases acid when it absorbs light."
+    "narration": "Most modern resists add a trick called chemical amplification. Inside the film sits a compound that releases acid when it absorbs light.",
+    "seconds": 9.328
   },
   {
     "i": 24,
     "segment": "ambient_drift",
-    "narration": "A photon is absorbed, an acid is released, and then a bake spreads the reaction."
+    "narration": "A photon is absorbed, an acid is released, and then a bake spreads the reaction.",
+    "seconds": 5.210666666666667
   },
   {
     "i": 25,
     "segment": "evidence_chain",
-    "narration": "That acid molecule wanders a short distance and catalyses many chemical changes in the surrounding polymer before it is spent."
+    "narration": "That acid molecule wanders a short distance and catalyses many chemical changes in the surrounding polymer before it is spent.",
+    "seconds": 8.837333333333333
   },
   {
     "i": 26,
     "segment": "ambient_drift",
-    "narration": "Where enough of those changes accumulate, the pattern becomes soluble. Amplification means each exposure needs fewer photons, which matters because short-wavelength light is expensive to make."
+    "narration": "Where enough of those changes accumulate, the pattern becomes soluble. Amplification means each exposure needs fewer photons, which matters because short-wavelength light is expensive to make.",
+    "seconds": 11.28
   },
   {
     "i": 27,
     "segment": "evidence_chain",
-    "narration": "It also means the edge of every line depends partly on where acid molecules happened to drift."
+    "narration": "It also means the edge of every line depends partly on where acid molecules happened to drift.",
+    "seconds": 5.989333333333334
   },
   {
     "i": 28,
     "segment": "ambient_drift",
-    "narration": "That drift causes roughness at the edges of lines, and researchers publishing through IEEE continue to study it."
+    "narration": "That drift causes roughness at the edges of lines, and researchers publishing through IEEE continue to study it.",
+    "seconds": 6.938666666666666
   },
   {
     "i": 29,
     "segment": "quote_card",
-    "narration": "The footage is real. The documentary around it is constructed \u2014 lights, music, editing, narration all telling you what to feel."
+    "narration": "The footage is real. The documentary around it is constructed \u2014 lights, music, editing, narration all telling you what to feel.",
+    "seconds": 8.176
   },
   {
     "i": 30,
     "segment": "evidence_chain",
-    "narration": "Diffraction limits the sharpness of any projected image. Light passing through a fine opening spreads out, and a lens can only collect so much of that spread."
+    "narration": "Diffraction limits the sharpness of any projected image. Light passing through a fine opening spreads out, and a lens can only collect so much of that spread.",
+    "seconds": 9.2
   },
   {
     "i": 31,
     "segment": "ambient_drift",
-    "narration": "Engineers often describe the relationship with the Rayleigh criterion. The smallest printable feature scales with the wavelength of the light, divided by the numerical aperture of the lens, multiplied by a factor that captures everything else about the process."
+    "narration": "Engineers often describe the relationship with the Rayleigh criterion. The smallest printable feature scales with the wavelength of the light, divided by the numerical aperture of the lens, multiplied by a factor that captures everything else about the process.",
+    "seconds": 14.181333333333333
   },
   {
     "i": 32,
     "segment": "evidence_chain",
-    "narration": "A shorter wavelength gives smaller features. A wider collecting angle also gives smaller features. A cleverer process shrinks them further."
+    "narration": "A shorter wavelength gives smaller features. A wider collecting angle also gives smaller features. A cleverer process shrinks them further.",
+    "seconds": 9.138666666666667
   },
   {
     "i": 33,
     "segment": "magnitude_bar",
-    "narration": "For that reason, the history of the industry reads as a march down the spectrum."
+    "narration": "For that reason, the history of the industry reads as a march down the spectrum.",
+    "seconds": 4.56
   },
   {
     "i": 34,
     "segment": "ambient_drift",
-    "narration": "The IEEE literature traces it in steps. Mercury lamps emitted the i-line at 365 nanometres."
+    "narration": "The IEEE literature traces it in steps. Mercury lamps emitted the i-line at 365 nanometres.",
+    "seconds": 7.781333333333333
   },
   {
     "i": 35,
     "segment": "magnitude_bar",
-    "narration": "Krypton fluoride lasers, written KrF, followed at 248 nanometres, and argon fluoride lasers, written ArF, came next at 193 nanometres."
+    "narration": "Krypton fluoride lasers, written KrF, followed at 248 nanometres, and argon fluoride lasers, written ArF, came next at 193 nanometres.",
+    "seconds": 9.754666666666667
   },
   {
     "i": 36,
     "segment": "ambient_drift",
-    "narration": "After that the industry paused for a long time. Going shorter than 193 proved so difficult that manufacturers squeezed more out of the same light for years before extreme ultraviolet, or EUV, was ready."
+    "narration": "After that the industry paused for a long time. Going shorter than 193 proved so difficult that manufacturers squeezed more out of the same light for years before extreme ultraviolet, or EUV, was ready.",
+    "seconds": 14.746666666666666
   },
   {
     "i": 37,
     "segment": "contrast_pair",
-    "narration": "One way to do that was immersion. A thin layer of water is placed between lens and wafer."
+    "narration": "One way to do that was immersion. A thin layer of water is placed between lens and wafer.",
+    "seconds": 5.765333333333333
   },
   {
     "i": 38,
     "segment": "ambient_drift",
-    "narration": "Water bends light more strongly than air, so the lens can accept a wider cone of light, which effectively raises the numerical aperture."
+    "narration": "Water bends light more strongly than air, so the lens can accept a wider cone of light, which effectively raises the numerical aperture.",
+    "seconds": 7.781333333333333
   },
   {
     "i": 39,
     "segment": "contrast_pair",
-    "narration": "Immersion is not a new wavelength. IEEE papers on immersion describe it as the same 193 nanometre light, focused more tightly."
+    "narration": "Immersion is not a new wavelength. IEEE papers on immersion describe it as the same 193 nanometre light, focused more tightly.",
+    "seconds": 10.981333333333334
   },
   {
     "i": 40,
     "segment": "ambient_drift",
-    "narration": "Immersion moves the second term of the equation and leaves the first unchanged."
+    "narration": "Immersion moves the second term of the equation and leaves the first unchanged.",
+    "seconds": 4.954666666666666
   },
   {
     "i": 41,
     "segment": "stat_card",
-    "narration": "Extreme ultraviolet light at 13.5 nanometres, the exposure wavelength documented across IEEE venues, is absorbed by almost everything."
+    "narration": "Extreme ultraviolet light at 13.5 nanometres, the exposure wavelength documented across IEEE venues, is absorbed by almost everything.",
+    "seconds": 10.490666666666666
   },
   {
     "i": 42,
     "segment": "ambient_drift",
-    "narration": "That includes air and every glass that could form a lens. So an EUV scanner works without glass lenses."
+    "narration": "That includes air and every glass that could form a lens. So an EUV scanner works without glass lenses.",
+    "seconds": 7.184
   },
   {
     "i": 43,
     "segment": "stat_card",
-    "narration": "The whole light path runs in vacuum, and curved mirrors form the image."
+    "narration": "The whole light path runs in vacuum, and curved mirrors form the image.",
+    "seconds": 4.357333333333333
   },
   {
     "i": 44,
     "segment": "ambient_drift",
-    "narration": "Even the mask is a mirror instead of a transparent plate. Each mirror is a stack of many alternating ultrathin layers, classically molybdenum and silicon."
+    "narration": "Even the mask is a mirror instead of a transparent plate. Each mirror is a stack of many alternating ultrathin layers, classically molybdenum and silicon.",
+    "seconds": 9.808
   },
   {
     "i": 45,
     "segment": "stat_card",
-    "narration": "The layers are tuned so that weak reflections from every interface add together."
+    "narration": "The layers are tuned so that weak reflections from every interface add together.",
+    "seconds": 4.912
   },
   {
     "i": 46,
     "segment": "ambient_drift",
-    "narration": "No single surface reflects this light well. The stack reflects it collectively, and it still loses a substantial share of the light at every bounce."
+    "narration": "No single surface reflects this light well. The stack reflects it collectively, and it still loses a substantial share of the light at every bounce.",
+    "seconds": 8.794666666666666
   },
   {
     "i": 47,
     "segment": "stat_card",
-    "narration": "NIST has worked on measuring how these optics reflect and how they degrade under exposure."
+    "narration": "NIST has worked on measuring how these optics reflect and how they degrade under exposure.",
+    "seconds": 5.84
   },
   {
     "i": 48,
     "segment": "process_column",
-    "narration": "Making 13.5 nanometre light at all requires a plasma. The IEEE literature describes how production sources work."
+    "narration": "Making 13.5 nanometre light at all requires a plasma. The IEEE literature describes how production sources work.",
+    "seconds": 8.698666666666666
   },
   {
     "i": 49,
     "segment": "ambient_drift",
-    "narration": "Small droplets of molten tin are struck by a pulsed laser, which heats them into a plasma that emits in the extreme ultraviolet."
+    "narration": "Small droplets of molten tin are struck by a pulsed laser, which heats them into a plasma that emits in the extreme ultraviolet.",
+    "seconds": 7.8133333333333335
   },
   {
     "i": 50,
     "segment": "process_column",
-    "narration": "The machine then has to keep tin debris off the collecting mirror."
+    "narration": "The machine then has to keep tin debris off the collecting mirror.",
+    "seconds": 3.578666666666667
   },
   {
     "i": 51,
     "segment": "ambient_drift",
-    "narration": "Only a small fraction of the light the plasma produces ever reaches the wafer. That loss is one reason amplified resists matter so much."
+    "narration": "Only a small fraction of the light the plasma produces ever reaches the wafer. That loss is one reason amplified resists matter so much.",
+    "seconds": 8.794666666666666
   },
   {
     "i": 52,
     "segment": "magnitude_bar",
-    "narration": "Mirror systems have their own numerical aperture, a dimensionless number. IEEE publications describe current EUV tools with a numerical aperture of 0.33."
+    "narration": "Mirror systems have their own numerical aperture, a dimensionless number. IEEE publications describe current EUV tools with a numerical aperture of 0.33.",
+    "seconds": 12.336
   },
   {
     "i": 53,
     "segment": "ambient_drift",
-    "narration": "Newer high numerical aperture designs raise it to 0.55, at the cost of more complex optics."
+    "narration": "Newer high numerical aperture designs raise it to 0.55, at the cost of more complex optics.",
+    "seconds": 6.928
   },
   {
     "i": 54,
     "segment": "magnitude_bar",
-    "narration": "Those two numbers show that the Rayleigh logic still holds. When the wavelength cannot easily shrink further, the collecting angle becomes the next lever."
+    "narration": "Those two numbers show that the Rayleigh logic still holds. When the wavelength cannot easily shrink further, the collecting angle becomes the next lever.",
+    "seconds": 8.890666666666666
   },
   {
     "i": 55,
     "segment": "ambient_drift",
-    "narration": "The answer to the cold open's puzzle lies in the third term, the process factor."
+    "narration": "The answer to the cold open's puzzle lies in the third term, the process factor.",
+    "seconds": 4.698666666666667
   },
   {
     "i": 56,
     "segment": "ambient_drift",
-    "narration": "Wavelength and numerical aperture are hardware. The process factor covers everything engineers can do with the mask, the light and the chemistry."
+    "narration": "Wavelength and numerical aperture are hardware. The process factor covers everything engineers can do with the mask, the light and the chemistry.",
+    "seconds": 8.634666666666666
   },
   {
     "i": 57,
     "segment": "checklist_reveal",
-    "narration": "Engineers have pushed it down by refusing to treat the mask as a literal picture of the circuit."
+    "narration": "Engineers have pushed it down by refusing to treat the mask as a literal picture of the circuit.",
+    "seconds": 5.541333333333333
   },
   {
     "i": 58,
     "segment": "ambient_drift",
-    "narration": "One technique is optical proximity correction. Diffraction rounds corners and shortens line ends, so the mask is drawn deliberately wrong, with small extra tabs and bars, and the blurred image prints the intended shape."
+    "narration": "One technique is optical proximity correction. Diffraction rounds corners and shortens line ends, so the mask is drawn deliberately wrong, with small extra tabs and bars, and the blurred image prints the intended shape.",
+    "seconds": 14.064
   },
   {
     "i": 59,
     "segment": "checklist_reveal",
-    "narration": "Another technique is the phase-shift mask. It delays the light through some openings relative to their neighbours, so the two waves cancel at the boundary between them and the edge prints sharper."
+    "narration": "Another technique is the phase-shift mask. It delays the light through some openings relative to their neighbours, so the two waves cancel at the boundary between them and the edge prints sharper.",
+    "seconds": 10.405333333333333
   },
   {
     "i": 60,
     "segment": "ambient_drift",
-    "narration": "A third is multiple patterning. A pattern too dense for one exposure is split across two or more masks, and each is printed and etched in turn."
+    "narration": "A third is multiple patterning. A pattern too dense for one exposure is split across two or more masks, and each is printed and etched in turn.",
+    "seconds": 8.848
   },
   {
     "i": 61,
     "segment": "checklist_reveal",
-    "narration": "The combined result is finer than any single exposure could reach. Nobody yet knows how far the process factor can fall before physics or cost stops it."
+    "narration": "The combined result is finer than any single exposure could reach. Nobody yet knows how far the process factor can fall before physics or cost stops it.",
+    "seconds": 9.936
   },
   {
     "i": 62,
     "segment": "ambient_drift",
-    "narration": "None of this breaks the diffraction limit. These techniques work within the limit by shaping the light so the blur lands in the right places."
+    "narration": "None of this breaks the diffraction limit. These techniques work within the limit by shaping the light so the blur lands in the right places.",
+    "seconds": 7.205333333333333
   },
   {
     "i": 63,
     "segment": "ambient_drift",
-    "narration": "That is how factories printed lines far narrower than 193 nanometres with the 193 nanometre light described in IEEE papers."
+    "narration": "That is how factories printed lines far narrower than 193 nanometres with the 193 nanometre light described in IEEE papers.",
+    "seconds": 8.858666666666666
   },
   {
     "i": 64,
     "segment": "ambient_drift",
-    "narration": "It is also why the 13.5 nanometre figure, impressive as it is, describes the starting point of the problem rather than its solution."
+    "narration": "It is also why the 13.5 nanometre figure, impressive as it is, describes the starting point of the problem rather than its solution.",
+    "seconds": 8.602666666666666
   },
   {
     "i": 65,
     "segment": "source_compare",
-    "narration": "Checking that the printed lines have the right width is its own discipline."
+    "narration": "Checking that the printed lines have the right width is its own discipline.",
+    "seconds": 4.08
   },
   {
     "i": 66,
     "segment": "ambient_drift",
-    "narration": "Factories measure critical dimensions, the widths of the most important features. One tool is the scanning electron microscope, which images the resist from above."
+    "narration": "Factories measure critical dimensions, the widths of the most important features. One tool is the scanning electron microscope, which images the resist from above.",
+    "seconds": 10.0
   },
   {
     "i": 67,
     "segment": "source_compare",
-    "narration": "Another is scatterometry, which infers the shape of a repeating pattern from how it diffracts light."
+    "narration": "Another is scatterometry, which infers the shape of a repeating pattern from how it diffracts light.",
+    "seconds": 6.501333333333333
   },
   {
     "i": 68,
     "segment": "ambient_drift",
-    "narration": "Factories also measure overlay, which tells them whether each layer landed on top of the previous one where it should."
+    "narration": "Factories also measure overlay, which tells them whether each layer landed on top of the previous one where it should.",
+    "seconds": 6.949333333333334
   },
   {
     "i": 69,
     "segment": "source_compare",
-    "narration": "NIST works on reference measurements of critical dimensions, so that a width measured in one tool means the same thing in another."
+    "narration": "NIST works on reference measurements of critical dimensions, so that a width measured in one tool means the same thing in another.",
+    "seconds": 8.357333333333333
   },
   {
     "i": 70,
     "segment": "ambient_drift",
-    "narration": "SEMI, the industry association, publishes standards for wafers and masks. Those shared definitions let equipment from different suppliers work together."
+    "narration": "SEMI, the industry association, publishes standards for wafers and masks. Those shared definitions let equipment from different suppliers work together.",
+    "seconds": 9.669333333333332
   },
   {
     "i": 71,
     "segment": "evidence_chain",
-    "narration": "The confirmation that photolithography works at a given scale comes mostly after the fact."
+    "narration": "The confirmation that photolithography works at a given scale comes mostly after the fact.",
+    "seconds": 5.818666666666667
   },
   {
     "i": 72,
     "segment": "ambient_drift",
-    "narration": "Engineers measure with the electron microscope, with scatterometry and with overlay checks."
+    "narration": "Engineers measure with the electron microscope, with scatterometry and with overlay checks.",
+    "seconds": 5.36
   },
   {
     "i": 73,
     "segment": "evidence_chain",
-    "narration": "They cut finished devices open and image the cross-sections. The final test is whether the transistors behave electrically as designed. The physics predicts the result, and the measurements check it."
+    "narration": "They cut finished devices open and image the cross-sections. The final test is whether the transistors behave electrically as designed. The physics predicts the result, and the measurements check it.",
+    "seconds": 12.293333333333333
   },
   {
     "i": 74,
     "segment": "ambient_drift",
-    "narration": "Renderings of lithography usually show a beam of glowing violet light falling onto a wafer."
+    "narration": "Renderings of lithography usually show a beam of glowing violet light falling onto a wafer.",
+    "seconds": 5.658666666666667
   },
   {
     "i": 75,
     "segment": "ambient_drift",
-    "narration": "Extreme ultraviolet is invisible, and it travels in vacuum inside a closed machine, so any glow you see was the artist's choice."
+    "narration": "Extreme ultraviolet is invisible, and it travels in vacuum inside a closed machine, so any glow you see was the artist's choice.",
+    "seconds": 8.069333333333333
   },
   {
     "i": 76,
     "segment": "ambient_drift",
-    "narration": "Animations often show a crisp, finished circuit appearing in one flash. In reality, one exposure makes one hidden image in one layer of resist."
+    "narration": "Animations often show a crisp, finished circuit appearing in one flash. In reality, one exposure makes one hidden image in one layer of resist.",
+    "seconds": 10.576
   },
   {
     "i": 77,
     "segment": "ambient_drift",
-    "narration": "Nothing shows until development, and even then you may need a microscope to see it."
+    "narration": "Nothing shows until development, and even then you may need a microscope to see it.",
+    "seconds": 4.9013333333333335
   },
   {
     "i": 78,
     "segment": "material_image",
-    "narration": "The yellow light in cleanroom footage, by contrast, is real. That lighting filters out the short wavelengths that would expose the resist by accident."
+    "narration": "The yellow light in cleanroom footage, by contrast, is real. That lighting filters out the short wavelengths that would expose the resist by accident.",
+    "seconds": 9.221333333333334
   },
   {
     "i": 79,
     "segment": "checklist_reveal",
-    "narration": "The optical principle is settled physics, and the wavelengths used are published and stable."
+    "narration": "The optical principle is settled physics, and the wavelengths used are published and stable.",
+    "seconds": 5.296
   },
   {
     "i": 80,
     "segment": "ambient_drift",
-    "narration": "Public sources do not give you the exact process recipes inside any particular factory."
+    "narration": "Public sources do not give you the exact process recipes inside any particular factory.",
+    "seconds": 5.957333333333334
   },
   {
     "i": 81,
     "segment": "checklist_reveal",
-    "narration": "Resist formulations, bake conditions, mask corrections and dose settings are proprietary. Outside accounts can describe the method in general, but they give specific numbers only where a manufacturer chooses to share them."
+    "narration": "Resist formulations, bake conditions, mask corrections and dose settings are proprietary. Outside accounts can describe the method in general, but they give specific numbers only where a manufacturer chooses to share them.",
+    "seconds": 14.170666666666667
   },
   {
     "i": 82,
     "segment": "ambient_drift",
-    "narration": "The marketing names for chip generations sound like measurements, but they no longer correspond to any single physical width, so treat them as labels."
+    "narration": "The marketing names for chip generations sound like measurements, but they no longer correspond to any single physical width, so treat them as labels.",
+    "seconds": 8.112
   },
   {
     "i": 83,
     "segment": "checklist_reveal",
-    "narration": "Claims about how far the process factor can fall, or when a shorter wavelength might arrive, are forecasts, not findings."
+    "narration": "Claims about how far the process factor can fall, or when a shorter wavelength might arrive, are forecasts, not findings.",
+    "seconds": 7.6
   },
   {
     "i": 84,
     "segment": "ambient_drift",
-    "narration": "Every layer of a chip began as a pattern of light on a chemical film, developed into a stencil and then made permanent."
+    "narration": "Every layer of a chip began as a pattern of light on a chemical film, developed into a stencil and then made permanent.",
+    "seconds": 6.938666666666666
   },
   {
     "i": 85,
     "segment": "ambient_drift",
-    "narration": "The wavelength sets the scale. The clever work happens in the gap between that scale and the lines a factory actually prints."
+    "narration": "The wavelength sets the scale. The clever work happens in the gap between that scale and the lines a factory actually prints.",
+    "seconds": 7.045333333333334
   }
 ]
