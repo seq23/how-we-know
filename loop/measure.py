@@ -719,14 +719,21 @@ def fetch_channel_stats(token: str) -> dict | None:
 
 
 def check_strikes(token: str, video_ids: list[str]) -> list[dict]:
-    """A copyright or community strike shows up as a rejected/failed status."""
-    q = urllib.parse.urlencode({"part": "status", "id": ",".join(video_ids)})
-    req = urllib.request.Request(f"{STATUS_API}?{q}",
-                                 headers={"Authorization": f"Bearer {token}"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        data = json.loads(r.read())
+    """A copyright or community strike shows up as a rejected/failed status.
+
+    videos.list takes at most 50 ids; 55 is HTTP 400 invalidFilters, which is
+    what left W45 unmeasured (runs 42302022393 and 42324575118, 6 Nov 2026 -
+    reproduced on the Mac: 50 ids answer, 55 do not). Asked FILTER_CHUNK at
+    a time, like every other id list in this file."""
+    items = []
+    for chunk in _chunks(list(video_ids)):
+        q = urllib.parse.urlencode({"part": "status", "id": ",".join(chunk)})
+        req = urllib.request.Request(f"{STATUS_API}?{q}",
+                                     headers={"Authorization": f"Bearer {token}"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            items += json.loads(r.read()).get("items", [])
     bad = []
-    for item in data.get("items", []):
+    for item in items:
         s = item.get("status", {})
         if s.get("uploadStatus") == "rejected" or s.get("rejectionReason"):
             bad.append({"video_id": item["id"],
