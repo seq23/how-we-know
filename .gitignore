@@ -125,3 +125,5 @@ renders/review-*/
 
 # Whisper Almanac working files (audio beats, renders, segment cache): regenerable.
 renders/whisper/
+# The disk guard's proof that a pruned render was uploaded and is in R2 (Mac-local).
+renders/*.pruned.json
