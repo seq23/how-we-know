@@ -84,6 +84,7 @@ const normalise = (value) => value.replace(/\s+/gu, ' ')
 
 const failures = []
 let checked = 0
+let expectedExtra = 0
 
 if (!live) {
   for (const target of SOURCE_TARGETS) {
@@ -115,6 +116,22 @@ if (!live) {
     }
     const html = normalise(await response.text())
     assert(target.requirements.length > 0, `Legal-page validation resolved zero requirements for ${target.name}`)
+    // The published contact address must really be on the deployed page, not
+    // just in the flag. Cloudflare Email Obfuscation rewrites it into
+    // data-cfemail (hex, XOR-keyed by its first byte), so decode those too.
+    if (flags.privacyContactEmail && target.requirements !== HOMEPAGE_LINK_REQUIREMENTS) {
+      checked += 1
+      expectedExtra += 1
+      const decoded = [...html.matchAll(/data-cfemail="([0-9a-f]+)"/gu)].map(([, hex]) => {
+        const key = parseInt(hex.slice(0, 2), 16)
+        let out = ''
+        for (let i = 2; i < hex.length; i += 2) out += String.fromCharCode(parseInt(hex.slice(i, i + 2), 16) ^ key)
+        return out
+      })
+      if (!html.includes(flags.privacyContactEmail) && !decoded.includes(flags.privacyContactEmail)) {
+        failures.push(`${target.name} does not show the contact address ${flags.privacyContactEmail} [policy clause III.A.2.i]`)
+      }
+    }
     for (const requirement of target.requirements) {
       checked += 1
       if (!html.includes(requirement.needle)) {
@@ -134,7 +151,7 @@ assert(
 
 // Rule 0. A validator that examined nothing — or only part of the set — must
 // never report success.
-const expected = SOURCE_TARGETS.reduce((total, target) => total + target.requirements.length, 0)
+const expected = SOURCE_TARGETS.reduce((total, target) => total + target.requirements.length, 0) + expectedExtra
 assert(checked > 0, 'Legal-page validation examined zero elements')
 assert(
   checked === expected,
