@@ -1,6 +1,6 @@
 {
   "week": "2026-W45",
-  "at": "2026-11-06T16:02:20+00:00",
+  "at": "2026-11-07T16:01:54+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -333,7 +333,7 @@
       "cues": 160,
       "sha256": "a7b8894918a81f7707a70002a78c3376b9ce5a2b68832357fd44c8b7085f73d1",
       "order": 36,
-      "already": false
+      "already": true
     },
     {
       "slug": "why-deep-sea-fish-die-when-brought-to-surface",
@@ -342,7 +342,7 @@
       "cues": 188,
       "sha256": "db961d4f5591c954a8f81fe6ea46869308dbc92892969d94ed87e6eb41e5bd74",
       "order": 37,
-      "already": false
+      "already": true
     },
     {
       "slug": "what-lives-in-mariana-trench",
@@ -351,6 +351,33 @@
       "cues": 188,
       "sha256": "0a84762a8a74f8b08adff6bb591357c638636bf3802ed7df00851465bd2d5ec3",
       "order": 38,
+      "already": false
+    },
+    {
+      "slug": "what-is-hydrothermal-vents",
+      "video_id": "TN0MquikEPM",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-is-hydrothermal-vents.srt",
+      "cues": 168,
+      "sha256": "e4c1312f8cff6415c7a4da5104bf2115a02753a836ee34ec3315818ce4dcc16f",
+      "order": 39,
+      "already": false
+    },
+    {
+      "slug": "how-deep-can-whales-dive",
+      "video_id": "bjSlVIIDPsE",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-whales-dive.srt",
+      "cues": 160,
+      "sha256": "f89d476bef9f85d4de7f96a7c21900ca881e3bf450eafe44dd84a00ec78de0b5",
+      "order": 40,
+      "already": false
+    },
+    {
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "video_id": "N1mpUttSNd8",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-deep-sea-creatures-are-creepers.srt",
+      "cues": 172,
+      "sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509",
+      "order": 41,
       "already": false
     }
   ],
