@@ -79,6 +79,62 @@ def _slug(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:60]
 
 
+def clip_name(source: str, cid: str, url: str) -> str:
+    """A file name that is UNIQUE per clip and carries the real extension.
+
+    2026-11-06: names were `_slug(id)[:60]` + the text after the URL's last
+    dot. Commons URLs end in a query (`...wikimedia.org&utm_content=...`), so
+    26 clips were saved as `.org&`, and two Kiska orca clips whose ids share
+    their first 60 characters were saved to ONE file: the second download
+    overwrote the first, its sha256 no longer matched its rights record, and
+    visuals/footage.usable_assets() refused the whole pool - every render on
+    the Mac stopped. Now: a short hash of the full post id keeps names
+    unique, and the extension comes from the URL PATH."""
+    ext = os.path.splitext(urllib.parse.urlparse(url).path)[1].lstrip(".").lower()[:5] or "bin"
+    h = hashlib.sha1(f"{source}:{cid}".encode()).hexdigest()[:8]
+    return f"wide__{source}__{_slug(cid)[:48]}-{h}.{ext}"
+
+
+def repair(man: dict, download=None, clips: str | None = None) -> dict:
+    """Re-home every wide clip whose file is shared, missing or not its own
+    bytes. The clip is fetched again from its direct_url under a unique name
+    and KEPT only when its sha256 equals the one the rights check recorded;
+    otherwise it is dropped from the manifest (never used unverified) and
+    listed in wide_refused for the next harvest to judge afresh."""
+    clips = clips or CLIPS
+    download = download or (lambda url: urllib.request.urlopen(
+        urllib.request.Request(url, headers=UA), timeout=300).read())
+    from collections import Counter
+    shared = Counter(a.get("local_file") for a in man.get("assets", []))
+    kept, fixed, dropped = [], 0, []
+    for a in man.get("assets", []):
+        lf = a.get("local_file") or ""
+        path = os.path.join(os.path.dirname(clips), lf)
+        wide = os.path.basename(lf).startswith("wide__")
+        ok = (wide and shared[lf] == 1 and os.path.exists(path)
+              and os.path.getsize(path) == a.get("bytes"))
+        if not wide or ok:
+            kept.append(a)
+            continue
+        src, _, cid = (a.get("post_id") or ":").partition(":")
+        try:
+            blob = download(a["direct_url"])
+        except Exception as e:                              # noqa: BLE001
+            blob, why = None, f"download failed: {str(e)[:80]}"
+        if blob is not None and hashlib.sha256(blob).hexdigest() == a.get("sha256"):
+            fname = clip_name(src, cid, a["direct_url"])
+            open(os.path.join(clips, fname), "wb").write(blob)
+            kept.append({**a, "local_file": f"clips/{fname}"})
+            fixed += 1
+            continue
+        why = why if blob is None else "the bytes differ from the ones the rights check was made on"
+        dropped.append({"post_id": a.get("post_id"), "reason": f"repair: {why}"})
+    man["assets"] = kept
+    man["accepted_count"] = len(kept)
+    man["wide_refused"] = man.get("wide_refused", []) + dropped
+    return {"fixed": fixed, "dropped": len(dropped)}
+
+
 # ----------------------------------------------------------------- the sources
 
 def oer_highlights(subject: str, n: int = 6) -> list[dict]:
@@ -281,7 +337,7 @@ def harvest(slugs: list[str], per_subject: int = 4) -> dict:
                     pid = f"{c['source']}:{c['id']}"
                     if pid in have or pid in refused:
                         continue
-                    fname = f"wide__{c['source']}__{_slug(c['id'])}.{c['url'].rsplit('.', 1)[-1][:4]}"
+                    fname = clip_name(c["source"], c["id"], c["url"])
                     path = os.path.join(CLIPS, fname)
                     try:
                         req = urllib.request.Request(c["url"], headers=UA)
@@ -337,6 +393,14 @@ def harvest(slugs: list[str], per_subject: int = 4) -> dict:
 
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--repair" in sys.argv:
+        man = json.load(open(MANIFEST))
+        r = repair(man)
+        tmp = MANIFEST + ".tmp"
+        json.dump(man, open(tmp, "w"), indent=2)
+        os.replace(tmp, os.path.realpath(MANIFEST))
+        print(f"OUTPUT {r['fixed']} wide clip(s) re-homed, {r['dropped']} dropped")
+        raise SystemExit(0)
     if "--fix-bars" in sys.argv:
         fix_bars()
         raise SystemExit(0)
