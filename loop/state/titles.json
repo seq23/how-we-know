@@ -878,27 +878,21 @@
       "thumbnail_sha256": "c24e2c1ac9b00533991af3f9ad2f48a125e617a34d3298deec489de5a5ba315f"
     },
     "what-is-concrete-made-of": {
-      "applied_at": "2026-10-17T08:43:09+00:00",
-      "applied_video_id": "C-5IQ_E_P9k",
+      "applied_at": null,
       "attempts": 1,
       "checks_passed": true,
-      "description_applied_at": "2026-10-17T08:43:09+00:00",
-      "description_sha256": "52717ec30849778a29b5be5f5d09a8b946b313551749ea89336adb844b46ebf1",
-      "model": "claude-subscription/opus",
-      "new_title": "Concrete Does Not Dry",
-      "old_title": "The water in concrete is not a solvent, it is a reagent",
+      "model": "gemini/gemini-3.6-flash",
+      "new_title": "What Is Concrete Made Of?",
+      "old_title": "Concrete Does Not Dry",
       "old_title_source": "ledger",
       "previous": {
-        "applied_at": "2026-10-13T13:56:45+00:00",
-        "new_title": "The water in concrete is not a solvent, it is a reagent"
+        "applied_at": "2026-10-17T08:43:09+00:00",
+        "new_title": "Concrete Does Not Dry"
       },
       "problems": [],
-      "proposed_at": "2026-10-13T16:08:25+00:00",
+      "proposed_at": "2026-11-07T00:44:05+00:00",
       "question": "what is concrete made of",
-      "slug": "what-is-concrete-made-of",
-      "thumbnail_applied": true,
-      "thumbnail_applied_at": "2026-10-17T08:43:09+00:00",
-      "thumbnail_sha256": "c8b0d21808e101633e5f7b89b9ece3e8aacd2a2dd78dba7b1111a332f29eeab7"
+      "slug": "what-is-concrete-made-of"
     },
     "what-is-hydrothermal-vents": {
       "applied_at": "2026-10-17T08:43:16+00:00",
@@ -1130,5 +1124,5 @@
       "thumbnail_sha256": "5612dfe6532a5fd9a0c1dbfae4466204d0c16e16143b24ba80ac0c805384af52"
     }
   },
-  "updated": "2026-11-03T17:38:29+00:00"
+  "updated": "2026-11-07T00:44:05+00:00"
 }
