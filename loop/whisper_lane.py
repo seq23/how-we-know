@@ -660,7 +660,8 @@ def night(until: str, budget_min: int | None, py_tts: str, dry: bool = False) ->
                               unblock="Read ~/Library/Logs/how-we-know/batch.log for the traceback.")
         after, _ = voiced(slug)
         if after == n:
-            r = subprocess.run([str(ROOT / ".venv" / "bin" / "python"),
+            venv = ROOT / ".venv" / "bin" / "python"
+            r = subprocess.run([str(venv) if venv.exists() else sys.executable,
                                 str(ROOT / "visuals" / "whisper_render.py"), slug])
             if r.returncode == 0 and video_path(slug).exists():
                 st.work(f"rendered {video_path(slug).relative_to(ROOT)}")

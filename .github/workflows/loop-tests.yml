@@ -19,6 +19,7 @@ on:
   # every committing workflow.
   workflow_run:
     workflows:
+      - 'loop · Wed 14:00 CT · whisper almanac author (sleep scripts + weekly affirmations, $0)'
       - 'loop · daily demand + Mon 08:30 CT email'
       - 'loop · Fri 17:00 · measure'
       - 'loop · Fri 09:00 · flip to public'

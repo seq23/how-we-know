@@ -41,7 +41,7 @@ import whisper_words as W                                   # noqa: E402
 
 ATTEMPTS = 4
 RUNWAY = 2
-CACHE = WL.WORK / "_segments"
+CACHE_FILE = WL.WORK / "_segments.json"   # gitignored; one file, keyed by episode and part
 STAGE = "whisper-author"
 
 STYLE = """You rewrite a short, fact-checked science or history script into a WHISPERED SLEEP STORY segment.
@@ -110,11 +110,14 @@ def segment_problems(paras: list[str], source: str, named: list[str], want: int,
 
 def write_segment(source: str, named: list[str], want: int, c: dict,
                   episode: str, idx: int) -> tuple[list[str], str]:
-    cache = CACHE / episode / f"{idx:02d}-{source}.json"
-    if cache.exists():
-        rec = json.loads(cache.read_text())
-        if not segment_problems(rec["paragraphs"], source, named, want, c):
-            return rec["paragraphs"], rec["model"]
+    key = f"{episode}/{idx:02d}-{source}"
+    cache = json.loads(CACHE_FILE.read_text()) if CACHE_FILE.exists() else {}
+    rec = cache.get(key)
+    if rec is None:                      # the per-file cache of 6 Nov 2026
+        old = WL.WORK / "_segments" / episode / f"{idx:02d}-{source}.json"
+        rec = json.loads(old.read_text()) if old.exists() else None
+    if rec and not segment_problems(rec["paragraphs"], source, named, want, c):
+        return rec["paragraphs"], rec["model"]
     src = WL.source_narration(source)
     keep = ", ".join(named) or "none"
     base = [{"role": "system", "content": STYLE},
@@ -135,8 +138,9 @@ def write_segment(source: str, named: list[str], want: int, c: dict,
         paras = clean(text)
         last = segment_problems(paras, source, named, want, c) if paras else ["EMPTY answer"]
         if not last:
-            cache.parent.mkdir(parents=True, exist_ok=True)
-            cache.write_text(json.dumps({"paragraphs": paras, "model": model}, indent=1))
+            cache[key] = {"paragraphs": paras, "model": model}
+            CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+            CACHE_FILE.write_text(json.dumps(cache, indent=1))
             return paras, model
         # the router never asks a model that failed this segment again
         # (llm_router.complete `rejected`): a rate-limited day otherwise
