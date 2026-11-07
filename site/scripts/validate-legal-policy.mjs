@@ -57,14 +57,14 @@ const TERMS_REQUIREMENTS = [
   { id: 'youtube-tos-link', clause: 'III.A.1', needle: 'https://www.youtube.com/t/terms', label: 'link to the YouTube Terms of Service' },
   { id: 'agree-to-be-bound', clause: 'III.A.1', needle: 'agree to be bound by the', label: "the 'agree to be bound by the YouTube Terms of Service' statement" },
   { id: 'google-privacy-link', clause: 'III.A.2.c', needle: 'https://policies.google.com/privacy', label: "link to Google's Privacy Policy" },
-  { id: 'privacy-cross-link', clause: 'audit form', needle: 'href="/privacy"', label: 'a link from the terms to the privacy policy' },
+  { id: 'privacy-cross-link', clause: 'audit form', needle: 'href="/privacy/"', label: 'a link from the terms to the privacy policy' },
 ]
 
 // The audit form requires a homepage screenshot showing the policy link, so the
 // links must be on the homepage itself. Both live in the shared footer.
 const HOMEPAGE_LINK_REQUIREMENTS = [
-  { id: 'footer-privacy', clause: 'audit form', needle: 'href="/privacy"', label: 'a privacy policy link on every page including the homepage' },
-  { id: 'footer-terms', clause: 'audit form', needle: 'href="/terms"', label: 'a Terms of Service link on every page including the homepage' },
+  { id: 'footer-privacy', clause: 'audit form', needle: 'href="/privacy/"', label: 'a privacy policy link on every page including the homepage' },
+  { id: 'footer-terms', clause: 'audit form', needle: 'href="/terms/"', label: 'a Terms of Service link on every page including the homepage' },
 ]
 
 const SOURCE_TARGETS = [
