@@ -189,7 +189,7 @@ function Privacy() {
           data is handled will be reflected here at the same time as the change itself.
         </p>
         <p>
-          See also the <a href="/terms">Terms of Service</a> and the{' '}
+          See also the <a href="/terms/">Terms of Service</a> and the{' '}
           <a href="/editorial-policy/">editorial policy</a>.
         </p>
       </section>

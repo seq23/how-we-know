@@ -21,8 +21,8 @@ export function SiteFooter() {
           <a href="/methods/">How we know it</a>
           <a href="/methodology/">Methodology</a>
           <a href="/editorial-policy/">Editorial policy</a>
-          <a href="/privacy">Privacy policy</a>
-          <a href="/terms">Terms of Service</a>
+          <a href="/privacy/">Privacy policy</a>
+          <a href="/terms/">Terms of Service</a>
         </div>
         <div>
           <strong>Machine-readable</strong>

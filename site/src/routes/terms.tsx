@@ -132,7 +132,7 @@ function Terms() {
           </p>
         )}
         <p>
-          See also the <a href="/privacy">privacy policy</a> and the{' '}
+          See also the <a href="/privacy/">privacy policy</a> and the{' '}
           <a href="/editorial-policy/">editorial policy</a>.
         </p>
       </section>
