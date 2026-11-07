@@ -21,6 +21,17 @@
     "reports": 1,
     "stage": "mon-draft"
   },
+  "render-gate::RENDER_GATE_EMPTY": {
+    "code": "RENDER_GATE_EMPTY",
+    "first_reported_at": "2026-11-07T04:01:11+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-07T14:00:18+00:00",
+    "last_seen_at": "2026-11-07T14:00:18+00:00",
+    "reported_run": null,
+    "reports": 2,
+    "stage": "render-gate"
+  },
   "tags-backfill::TAGS_BACKFILL_INERT": {
     "code": "TAGS_BACKFILL_INERT",
     "first_reported_at": "2026-11-06T16:02:28+00:00",
