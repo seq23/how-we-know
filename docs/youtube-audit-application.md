@@ -2,7 +2,7 @@
 
 **Form:** <https://support.google.com/youtube/contact/yt_api_form>
 **Prepared:** 2026-08-30
-**Purpose of this document:** every field of the live form, in order, with the answer already written. Work down it linearly and paste. Name and address are filled in. **Two items are marked `[OWNER DECISION]`** — the contact email and the demo-account credentials. Nothing else needs thought.
+**Purpose of this document:** every field of the live form, in order, with the answer already written. Work down it linearly and paste. Name and address are filled in. **One item is marked `[OWNER DECISION]`** — the demo-account credentials (the contact email was decided 2026-11-07). Nothing else needs thought.
 
 **Before you start, two blockers:**
 
@@ -71,7 +71,7 @@ United States
 | Field | Answer |
 |---|---|
 | **Name** (required) | `Sequoia L. Taylor` |
-| **Email** (required) | `[OWNER DECISION]` — see below |
+| **Email** (required) | `hello@howweknowdeep.com` (decided 2026-11-07) |
 
 **Email — needs her decision.** The candidate is **the channel's own Google account (the one that owns @howweknowdeep)**, the account that owns the `@howweknowdeep` channel and the `how-we-know` Google Cloud project. Arguments for using it: the reviewer will cross-check that the applicant controls the channel and the project, and an address that matches both is the cleanest possible signal. Argument against: it is a personal-looking address, though for a sole proprietor that is unremarkable and the form expects it.
 
@@ -413,7 +413,7 @@ Name and address are now supplied and filled in above. **Two decisions remain:**
 
 | # | Field | What is needed |
 |---|---|---|
-| 1 | **Contact Email** | Decision: the channel's own Google account (the one that owns @howweknowdeep) (owns the channel and the Cloud project) is the candidate, or a `@howweknowdeep.com` alias set up and receiving before filing. **Never** an address tied to any of her other businesses. |
+| 1 | **Contact Email** | Decided 2026-11-07: `hello@howweknowdeep.com`, a Cloudflare Email Routing alias forwarding to the channel's own Google account (delivery tested). **Never** an address tied to any of her other businesses. |
 | 2 | **Demo account credentials** | Decision: recommended blank, with the drafted Special Instructions text instead. Do not hand over the account that owns the channel. |
 
 Plus one field to check only if the form shows it:
