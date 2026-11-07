@@ -215,7 +215,9 @@ prepare_runner(){
 carry_media(){
     local src="$1" n=0 f
     [ -d "$src/.git" ] && [ "$src" != "$ROOT" ] || return 0
-    while IFS= read -r f; do
+    # -z: without it git C-quotes any non-ASCII path ("\360...") and the
+    # exclusions below never match it (a .venv symlink target, 2026-11-07).
+    while IFS= read -r -d '' f; do
       case "$f" in
         .venv/*|.venv-tts/*|.secrets/*|.wrangler/*|*/__pycache__/*|__pycache__/*|*.pyc|*.log|.env|*.key|*.pem|credentials*|*/credentials*|client_secret*|*token*.json|*_api_key*|service-account*) continue ;;
       esac
@@ -225,7 +227,7 @@ carry_media(){
         echo "NAMED STOP [RUNNER_MEDIA_NOT_CLONED] could not clone $f into $ROOT (cp -c needs APFS on one volume); $n file(s) carried so far." >&2
         exit 4; }
       n=$((n + 1))
-    done < <(git -C "$src" ls-files --others --ignored --exclude-standard)
+    done < <(git -C "$src" ls-files -z --others --ignored --exclude-standard)
     echo "runner media: $n file(s) cloned from $src"
 }
 
