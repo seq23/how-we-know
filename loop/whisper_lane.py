@@ -147,19 +147,47 @@ def sentences(text: str) -> list[str]:
     return [s for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s]
 
 
-def estimate_seconds(p: dict, c: dict | None = None) -> float:
-    """Speech at the configured words per minute, plus every pause the voice
-    step adds in code (sentence, paragraph, segment, opening)."""
+def pause_scale(p: dict) -> float:
+    try:
+        return float(p.get("meta", {}).get("pause scale") or 1.0)
+    except ValueError:
+        return 1.0
+
+
+def speech_and_pauses(p: dict, c: dict | None = None) -> tuple[float, float]:
+    """(speech seconds, pause seconds at scale 1.0) for a parsed script."""
     c = c or cfg()
     v, wpm = c["voice"], float(c["pacing"]["speech_wpm"])
     paras = [x for s in p["segments"] for x in s["paragraphs"]]
     words = sum(len(W.WORD.findall(x)) for x in paras)
     sents = sum(max(0, len(sentences(x)) - 1) for x in paras)
     pause = (sents * v["pause_sentence_s"] + len(paras) * v["pause_paragraph_s"]
-             + len(p["segments"]) * v["pause_segment_s"] + v["opening_silence_s"])
+             + len(p["segments"]) * v["pause_segment_s"])
     if p.get("kind") == "affirmations":
         pause += len(paras) * (c["affirmations"]["pause_after_line_s"] - v["pause_paragraph_s"])
-    return words / wpm * 60 + pause
+    return words / wpm * 60, pause
+
+
+def estimate_seconds(p: dict, c: dict | None = None) -> float:
+    """Speech at the configured (measured) words per minute, plus every pause
+    the voice step adds in code, times the script's pause scale: a rewrite is
+    about its source's length, and a sleep episode reaches its length with
+    longer silences (free on the Mac), never with padding."""
+    c = c or cfg()
+    speech, pause = speech_and_pauses(p, c)
+    return speech + pause * pause_scale(p) + c["voice"]["opening_silence_s"]
+
+
+MAX_PAUSE_SCALE = 2.2
+
+
+def fit_pause_scale(p: dict, c: dict | None = None, goal_s: float = 7500.0) -> float:
+    """The pause scale (1.0 to 2.2) that brings a script to about goal_s."""
+    c = c or cfg()
+    speech, pause = speech_and_pauses(p, c)
+    if pause <= 0:
+        return 1.0
+    return round(min(MAX_PAUSE_SCALE, max(1.0, (goal_s - speech) / pause)), 2)
 
 
 def fmt_len(sec: float) -> str:
@@ -516,7 +544,8 @@ def beats(p: dict) -> list[dict]:
                 after = c["affirmations"]["pause_after_line_s"]
             if pi == len(s["paragraphs"]) - 1:
                 after = v["pause_segment_s"]
-            out.append({"text": para, "segment": si, "pause_after_s": after})
+            out.append({"text": para, "segment": si, "pause_after_s": round(after * pause_scale(p), 2),
+                        "pause_sentence_s": round(v["pause_sentence_s"] * pause_scale(p), 2)})
     return out
 
 

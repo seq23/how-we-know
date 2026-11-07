@@ -86,8 +86,10 @@ def target_words(n_segments: int, c: dict, source_words: int | None = None) -> i
     v, wpm = c["voice"], float(c["pacing"]["speech_wpm"])
     per_word = 60 / wpm + v["pause_sentence_s"] / 11 + v["pause_paragraph_s"] / 50
     seg = n_segments * v["pause_segment_s"]
-    lo, hi = (7500.0 - seg) / per_word, (10200.0 - seg) / per_word
-    total = min(max(float(source_words or lo), lo), hi)
+    hi = (10200.0 - seg) / per_word
+    # about the source's own length: a rewrite, never an expansion; the
+    # episode reaches its length with its pause scale (whisper_lane)
+    total = min(float(source_words or hi), hi)
     return int(total / n_segments)
 
 
@@ -120,7 +122,15 @@ def write_segment(source: str, named: list[str], want: int, c: dict,
              f"Write about {want} words.\n\nSOURCE SCRIPT (fact-checked):\n\n{src}"}]
     msgs, rejected, last = list(base), set(), []
     for _ in range(ATTEMPTS):
-        text, model = _complete(msgs, rejected)
+        try:
+            text, model = _complete(msgs, rejected)
+        except Exception as e:                              # noqa: BLE001
+            # every free model already failed THIS segment once: the roster is
+            # small, so start again with all of them rather than stopping
+            if not rejected or getattr(e, "code", "") != "OPENROUTER_NO_FREE_MODEL":
+                raise
+            rejected.clear()
+            text, model = _complete(msgs, rejected)
         paras = clean(text)
         last = segment_problems(paras, source, named, want, c) if paras else ["EMPTY answer"]
         if not last:
@@ -166,6 +176,11 @@ def _commit(out: Path, text: str) -> Path:
     """Write only a script that passes every rule; a refused one is not kept."""
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".md.tmp")
+    tmp.write_text(text)
+    scale = WL.fit_pause_scale(WL.parse(tmp))
+    text = text.replace("**Written:**", f"**Pause scale:** {scale}\n**Written:**", 1)
+    est = WL.estimate_seconds(WL.parse(tmp) | {"meta": {**WL.parse(tmp)["meta"], "pause scale": str(scale)}})
+    text = re.sub(r"\*\*Estimated length:\*\* [^(]*", f"**Estimated length:** {WL.fmt_len(est)} ", text, 1)
     tmp.write_text(text)
     others = [p for p in WL.all_scripts() if p.resolve() != out.resolve()]
     probs = WL.script_problems(tmp, others=others)

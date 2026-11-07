@@ -5,7 +5,7 @@
 
 Reuses the How We Know OAuth client (.secrets/client_secret.json; its
 scheduled uploads go public, measured 6 Nov 2026) with the same YouTube
-scopes. Sign in as cryptoclearr@gmail.com and, when Google asks which
+scopes. Sign in with the Google account that owns both channels and, when Google asks which
 channel, pick Whisper Almanac (@whisperalmanac) - NOT How We Know Deep.
 
 Saves .secrets/whisper_youtube_token.json (gitignored) and, when `gh` is

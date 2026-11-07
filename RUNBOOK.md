@@ -553,7 +553,7 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
 
 The sleep channel (@whisperalmanac) runs on this same machine: scripts in
 the cloud for $0, her own cloned whisper on the Mac at night, dim moving
-footage, and the same checks. How it works: [`docs/WHISPER-ALMANAC.md`](docs/WHISPER-ALMANAC.md).
+footage, and the same checks. How it works: [`docs/WHISPER_ALMANAC.md`](docs/WHISPER_ALMANAC.md).
 
 | You do, once | Where | Why only you |
 |---|---|---|

@@ -111,8 +111,9 @@ def main() -> int:
             pieces.append(x)
             cur += d
             if ci < len(chunks) - 1:
-                pieces.append(np.zeros(int(v["pause_sentence_s"] * SR), np.float32))
-                cur += v["pause_sentence_s"]
+                gap = float(b.get("pause_sentence_s", v["pause_sentence_s"]))
+                pieces.append(np.zeros(int(gap * SR), np.float32))
+                cur += gap
         pieces.append(np.zeros(int(b["pause_after_s"] * SR), np.float32))
         audio = np.concatenate(pieces)
         audio = audio * min(1.0, 0.9 / max(1e-6, float(np.abs(audio).max())))

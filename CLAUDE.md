@@ -35,6 +35,7 @@ too. The convention is `runbook <project>` -> that repo's `RUNBOOK.md`.
 | [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md) | How it works, and why the numbers are what they are. |
 | [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md) | Locked strategy. Guarded by `loop/validate_plan.py`. Drift means the pipeline is wrong, not the plan. |
 | [`docs/DECISION-LOG.md`](docs/DECISION-LOG.md) | Dated decisions, near misses, research with its evidential quality, and rejected figures. Append-only. |
+| [`docs/WHISPER_ALMANAC.md`](docs/WHISPER_ALMANAC.md) | Whisper Almanac (@whisperalmanac), the second channel on this machine: the master plan (Mac time, storage, uploads, cadence, risks) and how its lane works. |
 
 ## How she wants to be answered
 
