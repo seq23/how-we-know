@@ -1,7 +1,7 @@
 {
   "slug": "why-deep-sea-fish-die-when-brought-to-surface",
   "title": "Why Do Deep Sea Fish Eyes Bulge?",
-  "grade": "hwk-split-navy-amber-v1",
+  "layout": "question-photo-v1",
   "chosen": "A",
   "variants": {
     "A": {
@@ -11,29 +11,34 @@
       "subject": "fish",
       "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
       "box": [
-        475,
-        499,
-        1354,
-        993
+        408,
+        467,
+        1421,
+        1037
       ],
       "crop": null,
-      "text": "NOT SQUEEZED",
-      "words": 2,
+      "text": "Why Do Deep Sea Fish Eyes Bulge?",
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
-      "text_bbox": [
-        44,
-        342,
-        1074,
-        686
-      ],
-      "credit_bbox": [
-        876,
-        13,
-        1266,
-        35
-      ],
-      "fill": 0.6168,
-      "energy": 0.3584
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          1029,
+          662
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          901,
+          11,
+          1270,
+          32
+        ]
+      }
     },
     "B": {
       "file": "B.jpg",
@@ -42,29 +47,34 @@
       "subject": "fish",
       "sha256": "b220e83aa82a87dec6ebc290d83bcae0b12586174739aedadd50bc8cd602aa83",
       "box": [
-        403,
-        329,
-        1315,
-        842
+        658,
+        273,
+        1680,
+        848
       ],
       "crop": null,
-      "text": "DEEP SEA",
-      "words": 2,
+      "text": "Why Do Deep Sea Fish Eyes Bulge?",
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
-      "text_bbox": [
-        44,
-        515,
-        658,
-        678
-      ],
-      "credit_bbox": [
-        890,
-        14,
-        1266,
-        35
-      ],
-      "fill": 0.6449,
-      "energy": 0.4044
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          1029,
+          662
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          901,
+          11,
+          1270,
+          32
+        ]
+      }
     },
     "C": {
       "file": "C.jpg",
@@ -73,29 +83,34 @@
       "subject": "fish",
       "sha256": "b58127fbaa0a04edccc46e6a13ec4e1f99728938a615e99b8a813aa480387af0",
       "box": [
-        202,
+        0,
         491,
-        1249,
+        1048,
         1080
       ],
       "crop": null,
-      "text": "100 TIMES",
-      "words": 2,
+      "text": "Why Do Deep Sea Fish Eyes Bulge?",
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
-      "text_bbox": [
-        535,
-        515,
-        1236,
-        678
-      ],
-      "credit_bbox": [
-        14,
-        14,
-        390,
-        35
-      ],
-      "fill": 0.9058,
-      "energy": 0.7282
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          1029,
+          662
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          901,
+          11,
+          1270,
+          32
+        ]
+      }
     }
   }
 }

@@ -1,101 +1,116 @@
 {
   "slug": "what-lives-in-mariana-trench",
   "title": "Is the Mariana Trench Empty?",
-  "grade": "hwk-split-navy-amber-v1",
+  "layout": "question-photo-v1",
   "chosen": "A",
   "variants": {
     "A": {
       "file": "A.jpg",
-      "source": "assets/trench__9714__ex1605l1-seastar-walking-poster-1280x720-1.jpg",
+      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
       "manifest": "rights.json",
-      "subject": "trench",
-      "sha256": "deda793a1dc9c55a8eada805a0b39c599e617a7d2e0d9c39339f843928cd2d6b",
+      "subject": "snailfish",
+      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
       "box": [
-        327,
-        241,
-        886,
-        556
+        484,
+        236,
+        1920,
+        1044
       ],
       "crop": null,
-      "text": "MARIANA TRENCH EMPTY",
-      "words": 3,
-      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
-      "text_bbox": [
-        46,
-        248,
-        587,
-        674
-      ],
-      "credit_bbox": [
-        658,
-        14,
-        1266,
-        35
-      ],
-      "fill": 0.7801,
-      "energy": 0.8911
+      "text": "Is the Mariana Trench Empty?",
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          994,
+          662
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          901,
+          11,
+          1270,
+          32
+        ]
+      }
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/trench__9714__ex1605l1-seastar-walking-poster-1280x720-1.jpg",
+      "source": "assets/snailfish__11416__dive12-eggs-on-coral-hires.jpg",
       "manifest": "rights.json",
-      "subject": "trench",
-      "sha256": "deda793a1dc9c55a8eada805a0b39c599e617a7d2e0d9c39339f843928cd2d6b",
+      "subject": "snailfish",
+      "sha256": "fab59425f73ca001953677ee0cbdd1132ed4c87d354c4dc5050529bf656e876e",
       "box": [
-        170,
-        206,
-        831,
-        578
+        0,
+        0,
+        1920,
+        1080
       ],
       "crop": null,
-      "text": "MARIANA TRENCH",
-      "words": 2,
-      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
-      "text_bbox": [
-        44,
-        347,
-        676,
-        678
-      ],
-      "credit_bbox": [
-        658,
-        14,
-        1266,
-        35
-      ],
-      "fill": 0.623,
-      "energy": 0.6018
+      "text": "Is the Mariana Trench Empty?",
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          994,
+          662
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          901,
+          11,
+          1270,
+          32
+        ]
+      }
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/trench__15030__20211123-hires.jpg",
+      "source": "assets/snailfish__14304__dive07-snailfish-hires.jpg",
       "manifest": "rights.json",
-      "subject": "trench",
-      "sha256": "226ba4a9b7ce8ba541137d21af00dfea0d96ea56436b3585594b32d0252701b4",
+      "subject": "snailfish",
+      "sha256": "80f100828f25d8cfec21e5360996895e0f11f9150bb9c9066e556e230b951912",
       "box": [
-        82,
-        41,
-        1255,
-        700
+        535,
+        220,
+        1857,
+        964
       ],
       "crop": null,
-      "text": "MARIANA TRENCH EMPTY",
-      "words": 3,
-      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
-      "text_bbox": [
-        46,
-        248,
-        587,
-        674
-      ],
-      "credit_bbox": [
-        658,
-        14,
-        1266,
-        35
-      ],
-      "fill": 0.6178,
-      "energy": 0.3153
+      "text": "Is the Mariana Trench Empty?",
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          994,
+          662
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          901,
+          11,
+          1270,
+          32
+        ]
+      }
     }
   }
 }

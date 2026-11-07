@@ -1,7 +1,7 @@
 {
   "slug": "what-is-concrete-made-of",
-  "title": "Concrete Does Not Dry",
-  "grade": "hwk-split-navy-amber-v1",
+  "title": "What Is Concrete Made Of?",
+  "layout": "question-photo-v1",
   "chosen": "A",
   "variants": {
     "A": {
@@ -17,23 +17,28 @@
         1726
       ],
       "crop": null,
-      "text": "NOT THE ROCK",
-      "words": 3,
+      "text": "What Is Concrete Made Of?",
       "credit": "PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
-      "text_bbox": [
-        46,
-        243,
-        521,
-        664
-      ],
-      "credit_bbox": [
-        432,
-        13,
-        1266,
-        33
-      ],
-      "fill": 0.8691,
-      "energy": 0.8421
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          1060,
+          647
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          481,
+          11,
+          1269,
+          30
+        ]
+      }
     },
     "B": {
       "file": "B.jpg",
@@ -43,28 +48,33 @@
       "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
       "box": [
         0,
-        48,
+        0,
         3000,
-        1736
+        1688
       ],
       "crop": null,
-      "text": "CONCRETE",
-      "words": 1,
+      "text": "What Is Concrete Made Of?",
       "credit": "PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
-      "text_bbox": [
-        44,
-        515,
-        742,
-        678
-      ],
-      "credit_bbox": [
-        428,
-        14,
-        1266,
-        35
-      ],
-      "fill": 0.8429,
-      "energy": 0.8461
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          1060,
+          647
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          481,
+          11,
+          1269,
+          30
+        ]
+      }
     },
     "C": {
       "file": "C.jpg",
@@ -73,29 +83,34 @@
       "subject": "concrete",
       "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
       "box": [
-        482,
-        99,
-        3000,
-        1516
+        160,
+        170,
+        2678,
+        1587
       ],
       "crop": null,
-      "text": "NOT LEAVING",
-      "words": 2,
+      "text": "What Is Concrete Made Of?",
       "credit": "PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
-      "text_bbox": [
-        386,
-        515,
-        1235,
-        678
-      ],
-      "credit_bbox": [
-        14,
-        14,
-        852,
-        35
-      ],
-      "fill": 0.8901,
-      "energy": 0.8732
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          1060,
+          647
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          481,
+          11,
+          1269,
+          30
+        ]
+      }
     }
   }
 }
