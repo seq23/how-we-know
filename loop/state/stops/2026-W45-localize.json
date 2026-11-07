@@ -1,21 +1,21 @@
 {
   "stage": "localize",
   "week": "2026-W45",
-  "at": "2026-11-06T16:02:26+00:00",
+  "at": "2026-11-07T16:01:59+00:00",
   "code": "QUOTA_EXHAUSTED",
-  "message": "3 video(s) need localizing but today's allowance cannot fund one at 51 units while keeping 1700 back for the upload lane. They are recorded as QUOTA_DEFERRED and tomorrow's run takes them. quota day 2026-11-06 (PT): spent 6154 of 10000, 3446 usable after 400 headroom; lanes: captions 1051, cloud-upload 5100, handoff 3",
+  "message": "6 video(s) need localizing but today's allowance cannot fund one at 51 units while keeping 1700 back for the upload lane. They are recorded as QUOTA_DEFERRED and tomorrow's run takes them. quota day 2026-11-07 (PT): spent 6155 of 10000, 3445 usable after 400 headroom; lanes: captions 1001, cloud-upload 5100, handoff 54",
   "detail": {
-    "deferred": 3,
-    "resets_at": "2026-11-07T00:00:00-08:00"
+    "deferred": 6,
+    "resets_at": "2026-11-08T00:00:00-08:00"
   },
   "unblock": "Nothing to do; the allowance resets at midnight Pacific and this lane runs daily.",
   "disposition": "self_resolving",
-  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 2 of at most 3 before this escalates to a human.)",
+  "consecutive": 2,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
-    "39 live video(s); 3 need work; languages es, pt-BR, hi, id, de"
+    "42 live video(s); 6 need work; languages es, pt-BR, hi, id, de"
   ]
 }
