@@ -230,5 +230,23 @@
     "since": "2026-11-06",
     "recheck_on": "2026-12-06",
     "why": "Her ruling 6 Nov 2026: the Mac's narration nights split 5 to Whisper Almanac and 2 to How We Know long-form; How We Know Shorts keep going; re-check at day 30 (6 Dec 2026) with real views from both channels. Read by loop/night_split.py; the supply gates (loop/supply_gate.py) decide first. Monday is the food session's night and Friday the batch's deep sea and materials night."
+  },
+  "upload": {
+    "publish_time_ct": "20:00",
+    "days": {
+      "sleep": [
+        "tue",
+        "fri"
+      ],
+      "affirmations": [
+        "sun"
+      ]
+    },
+    "max_days_waiting": 14,
+    "min_lead_hours": 12,
+    "max_per_run": 2,
+    "token_file": ".secrets/whisper_youtube_token.json",
+    "token_env": "WHISPER_YT_TOKEN_JSON",
+    "why": "Read by loop/whisper_upload.py (the Mac, nightly batch step whisper-upload). Every episode is uploaded PRIVATE with a publish date, as How We Know does: 20:00 Central so it is live before bedtime in every US zone (master plan, 6 Nov 2026). 2 sleep episodes (Tue, Fri) and 1 affirmation (Sun) a week, the plan's starting cadence. The supply gate (her 12 Oct rule): no new upload of a format while 14+ days of it already wait on YouTube. min_lead_hours: a 2-hour video's processing time before its publish moment."
   }
 }

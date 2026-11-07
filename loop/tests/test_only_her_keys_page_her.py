@@ -23,7 +23,7 @@ os.environ["LOOP_STOPS_DIR"] = tempfile.mkdtemp(prefix="herkeys-")
 import common  # noqa: E402
 import digest  # noqa: E402
 
-CREDENTIAL = re.compile(r"KEY|OAUTH|CREDENTIAL|SCOPE|CHANNEL|LOCKED|ARMED|ACCOUNT")
+CREDENTIAL = re.compile(r"KEY|OAUTH|TOKEN|CREDENTIAL|SCOPE|CHANNEL|LOCKED|ARMED|ACCOUNT")
 # Her hardware, not a key: the Mac that runs the night batch must be awake.
 # And her own voice (6 Nov 2026): the Whisper Almanac sample only she can record.
 HER_HARDWARE = {"DELEGATED_HARVEST_STALE", "WHISPER_SAMPLE_MISSING", "WHISPER_SAMPLE_UNUSABLE"}

@@ -1032,6 +1032,20 @@ phase_whisper() {
   $PY loop/whisper_lane.py night --until "$NARRATION_UNTIL" --py-tts "$PY_TTS" 2>&1 | sed 's/^/  /' || true
 }
 
+# THE WHISPER ALMANAC UPLOAD, every night whoever's night it is: it uses no
+# narrator, so the 5:2 split is untouched. loop/whisper_upload.py uploads a
+# finished episode that passes every lane check and the frame check, PRIVATE
+# with a 20:00 Central publish date, confirms it with YouTube, and deletes a
+# local render only once YouTube reports it processed. Its stops are written
+# to loop/state/stops/ (the Sunday digest) and the red ones put one line in
+# her morning email; the push below carries them, the kits and the quota.
+phase_whisper_upload() {
+  echo; echo "--- whisper almanac: upload, scheduled ---"
+  $PY loop/whisper_upload.py run 2>&1 | sed 's/^/  /' || true
+  $PY loop/mac_sync.py push --lane whisper-upload loop/state/quota.json \
+    $(ls channel/whisper/*/kit.json 2>/dev/null) 2>&1 | tail -1 | sed 's/^/  /' || true
+}
+
 # ---------------------------------------------------------------------------
 # THE SEQUENCE. Everything above is a definition; this is the night.
 # loop/tests/test_batch_resume_on_wake.py sources BATCH_TEST_STUBS here to
@@ -1066,6 +1080,7 @@ phase_idle
 echo "  holding the Mac awake for the duration"
 hold_awake
 step whisper phase_whisper night
+step whisper-upload phase_whisper_upload
 step narrate phase_narrate
 step render phase_render
 step lengthen phase_lengthen

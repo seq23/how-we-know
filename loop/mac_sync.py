@@ -424,6 +424,10 @@ MAC_OWNED_GLOBS = (
     "loop/state/stops/*.json",
     "audio/*/beats.json",
     "renders/*-final.mp4.footage.json",
+    # Whisper Almanac kits: rewritten by the render (measured length,
+    # chapters, credits) and by loop/whisper_upload.py (video id, schedule).
+    "channel/whisper/*/kit.json",
+    "channel/whisper/*/thumbnail.png",
 )
 
 
