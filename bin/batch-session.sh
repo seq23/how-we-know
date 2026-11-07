@@ -581,6 +581,17 @@ harvest_footage() {
     || echo "  shot list step exited $? - an episode without one is filled from its title words"
   # WIDER HARVEST (owner 2026-11-03, variety): NOAA OER highlight video at
   # NCEI and Commons PD/CC0 video for the same shot-list subjects.
+  # THE FOOTAGE POOL CAP (6 Nov 2026, loop/footage_pool.py): orphan clips go,
+  # a referenced clip never does; at the cap, or near the disk floor, nothing
+  # new is downloaded tonight (a note, re-judged nightly).
+  local pool_line
+  if ! pool_line=$($PY loop/footage_pool.py guard 2>&1); then
+    echo "  $pool_line"
+    $PY loop/mac_sync.py push --lane imagery-harvest-mac \
+        loop/state/harvest_runs.json loop/state/stops/owner_action.json 2>&1 | tail -1
+    return 0
+  fi
+  echo "  $pool_line"
   nice -n 10 $PY research/wide_footage.py --pending 2>&1 | grep -E "CLIP|wide footage|Traceback" | tail -20 \
     || echo "  wide footage step exited $? - the episode renders from what is on record"
   nice -n 10 $PY loop/footage_lane.py --host mac-batch
