@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T04:51:06.073305+00:00",
+  "generated": "2026-11-07T05:15:06.363861+00:00",
   "domain": "food-science",
   "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
   "rights_fields_required": [
@@ -10,7 +10,7 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 11,
+  "asset_count": 12,
   "subjects_total": 15,
   "subjects_covered": [
     "bread-loaf",
@@ -23,7 +23,8 @@
     "pasteur",
     "seared-steak",
     "wheat-field",
-    "xray-diffraction"
+    "xray-diffraction",
+    "yeast-micrograph"
   ],
   "subjects_unillustratable": {
     "cocoa-butter-form-v": {
@@ -42,7 +43,7 @@
     },
     {
       "subject": "calorimeter",
-      "title": "File:Differential scanning calorimetry ARABIC.PNG",
+      "title": "File:Differential scanning calorimetric curve.PNG",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -50,11 +51,6 @@
       "title": "File:Perkin-Elmer Model DSC-1 Differential Scanning Calorimeter - DPLA - 7208a05b70eb0b8d44f063dc24dca370.jpg",
       "item_url": "https://commons.wikimedia.org/wiki/File:Perkin-Elmer_Model_DSC-1_Differential_Scanning_Calorimeter_-_DPLA_-_7208a05b70eb0b8d44f063dc24dca370.jpg",
       "reason": "item page marks the work as copyrighted (no restrictions)"
-    },
-    {
-      "subject": "calorimeter",
-      "title": "File:Ice-calorimeter.jpg",
-      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
       "subject": "calorimeter",
@@ -277,6 +273,25 @@
       "width": 3312,
       "height": 2755,
       "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "yeast-micrograph",
+      "label": "BAKER'S YEAST",
+      "title": "Bakers yeast membrane 5.jpg",
+      "depicts": "micrograph",
+      "subject_basis": "Saccharomyces cerevisiae cells under a microscope. Credited as a micrograph.",
+      "credit_line": "BAKER'S YEAST \u2014 MICROGRAPH, TGRU001 (CC0)",
+      "treatment": "photo",
+      "source_org": "Tgru001",
+      "licence": "CC0",
+      "matched_query": "yeast cells microscope",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bakers_yeast_membrane_5.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/Bakers_yeast_membrane_5.jpg",
+      "local_file": "assets/food__yeast-micrograph__bakers-yeast-membrane-5-jpg.jpg",
+      "sha256": "2328071c44af9d94a5a072a0c1e7f2fe76b5644e834026d63ccdc563b1d32d62",
+      "width": 1917,
+      "height": 1867,
+      "licence_basis": "Commons item page asserts CC0 (CC0 dedication)"
     }
   ],
   "sources_unavailable": [
