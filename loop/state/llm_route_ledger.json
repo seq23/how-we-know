@@ -70,72 +70,6 @@
         "lane": "shot_list.py",
         "latency_s": 0.2,
         "outcome": "rate_limited",
-        "ts": "2026-11-04T02:19:15Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:19:32Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:20:07Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:20:22Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:20:39Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:21:06Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:22:01Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:22:20Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:22:51Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:23:09Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:23:24Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
         "ts": "2026-11-04T02:23:47Z"
       },
       {
@@ -185,6 +119,72 @@
         "latency_s": 9.9,
         "outcome": "answered",
         "ts": "2026-11-06T00:46:16Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 9.4,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:44:51Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 1.0,
+        "outcome": "error",
+        "ts": "2026-11-07T00:47:49Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:50:11Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 8.6,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:52:47Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 9.3,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:52:59Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 11.1,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:53:53Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:54:14Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:54:51Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:56:42Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:57:07Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:57:30Z"
       }
     ],
     "gemini/gemini-2.5-flash-lite": [
@@ -356,36 +356,6 @@
         "lane": "shot_list.py",
         "latency_s": 0.2,
         "outcome": "rate_limited",
-        "ts": "2026-11-04T02:15:25Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:15:49Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:16:23Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:16:42Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:18:29Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
         "ts": "2026-11-04T02:19:15Z"
       },
       {
@@ -471,75 +441,39 @@
         "latency_s": 0.3,
         "outcome": "rate_limited",
         "ts": "2026-11-04T02:25:03Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 1.1,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:47:50Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 5.5,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:50:17Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 4.0,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:56:46Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 1.5,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:57:09Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.8,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:57:31Z"
       }
     ],
     "gemini/gemini-3.6-flash": [
-      {
-        "lane": "describe",
-        "latency_s": 14.6,
-        "outcome": "answered",
-        "ts": "2026-11-05T00:50:04Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 16.9,
-        "outcome": "answered",
-        "ts": "2026-11-05T00:50:43Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 19.9,
-        "outcome": "answered",
-        "ts": "2026-11-05T00:51:35Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 6.3,
-        "outcome": "error",
-        "ts": "2026-11-05T00:54:03Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 19.9,
-        "outcome": "answered",
-        "ts": "2026-11-05T00:57:02Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 9.3,
-        "outcome": "answered",
-        "ts": "2026-11-05T00:58:14Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 12.6,
-        "outcome": "answered",
-        "ts": "2026-11-05T00:58:51Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 15.1,
-        "outcome": "answered",
-        "ts": "2026-11-05T01:01:27Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 1.0,
-        "outcome": "error",
-        "ts": "2026-11-06T00:45:25Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 2.2,
-        "outcome": "error",
-        "ts": "2026-11-06T00:46:06Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 13.4,
-        "outcome": "answered",
-        "ts": "2026-11-06T00:47:40Z"
-      },
       {
         "lane": "describe",
         "latency_s": 11.9,
@@ -593,75 +527,75 @@
         "latency_s": 12.8,
         "outcome": "answered",
         "ts": "2026-11-07T00:44:05Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:44:38Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 14.6,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:45:27Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:45:48Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:48:11Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:50:38Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:52:50Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 21.9,
+        "outcome": "error",
+        "ts": "2026-11-07T00:53:42Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 15.5,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:54:30Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:56:42Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:57:07Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:57:30Z"
       }
     ],
     "gemini/gemini-3.8-flash": [
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:24:00Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:24:34Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 0.2,
-        "outcome": "rate_limited",
-        "ts": "2026-11-04T02:25:02Z"
-      },
-      {
-        "lane": "demand-pull",
-        "latency_s": 240.2,
-        "outcome": "timeout",
-        "ts": "2026-11-04T14:49:10Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 7.2,
-        "outcome": "error",
-        "ts": "2026-11-05T00:45:57Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 120.1,
-        "outcome": "timeout",
-        "ts": "2026-11-05T00:48:36Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 1.9,
-        "outcome": "error",
-        "ts": "2026-11-05T00:49:13Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 0.3,
-        "outcome": "error",
-        "ts": "2026-11-05T00:49:49Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 1.2,
-        "outcome": "error",
-        "ts": "2026-11-05T00:50:26Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 10.8,
-        "outcome": "error",
-        "ts": "2026-11-05T00:51:16Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 120.1,
-        "outcome": "timeout",
-        "ts": "2026-11-05T00:53:57Z"
-      },
       {
         "lane": "describe",
         "latency_s": 92.7,
@@ -715,6 +649,72 @@
         "latency_s": 18.1,
         "outcome": "error",
         "ts": "2026-11-06T00:48:23Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 3.9,
+        "outcome": "error",
+        "ts": "2026-11-07T00:44:42Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.0,
+        "outcome": "timeout",
+        "ts": "2026-11-07T00:47:48Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.1,
+        "outcome": "timeout",
+        "ts": "2026-11-07T00:50:11Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.1,
+        "outcome": "timeout",
+        "ts": "2026-11-07T00:52:38Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:52:50Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:53:20Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:54:15Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 88.9,
+        "outcome": "answered",
+        "ts": "2026-11-07T00:56:20Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:56:41Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:57:07Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-11-07T00:57:29Z"
       }
     ],
     "google/gemma-4-26b-a4b-it:free": [
