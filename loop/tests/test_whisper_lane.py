@@ -145,6 +145,26 @@ with tempfile.TemporaryDirectory() as td:
     else:
         fails.append("(e) no whisper script is ready for voice, so the night was not exercised")
 
+# -- f. footage of the subject named, part by part ---------------------------
+sys.path.insert(0, str(ROOT / "visuals"))
+import whisper_reel as REEL  # noqa: E402
+
+
+def clip(name):
+    return {"local_file": f"clips/{name}.mp4", "title": name, "clean_windows": [{"start": 0, "end": 600}]}
+
+
+rich = [clip(f"vent-{i}") for i in range(20)]
+pools = {"vents": rich, "galaxies": []}
+try:
+    REEL.plan_reel([("vents", 600.0), ("galaxies", 600.0)], rich, pool_of=lambda s: pools[s])
+    fails.append("(f) a part with no footage of its own subject borrowed another part's footage")
+except REEL.FootageThin:
+    pass
+shots = REEL.plan_reel([("vents", 600.0)], rich, pool_of=lambda s: pools[s])
+check(not REEL.reel_problems(shots, 600.0), f"(f) a well-pictured part breaks the footage rules: {REEL.reel_problems(shots, 600.0)[:2]}")
+check(all(s["asset"] in rich for s in shots), "(f) a part showed footage that is not its own")
+
 # -- every committed script passes -------------------------------------------
 scripts = WL.all_scripts()
 check(scripts, "no committed whisper script examined")

@@ -178,11 +178,11 @@ def estimate_seconds(p: dict, c: dict | None = None) -> float:
     return speech + pause * pause_scale(p) + c["voice"]["opening_silence_s"]
 
 
-MAX_PAUSE_SCALE = 2.2
+MAX_PAUSE_SCALE = 2.5
 
 
 def fit_pause_scale(p: dict, c: dict | None = None, goal_s: float = 7500.0) -> float:
-    """The pause scale (1.0 to 2.2) that brings a script to about goal_s."""
+    """The pause scale (1.0 to 2.5) that brings a script to about goal_s."""
     c = c or cfg()
     speech, pause = speech_and_pauses(p, c)
     if pause <= 0:
@@ -565,8 +565,23 @@ def queue() -> list[str]:
         p = parse(f)
         if p["status"] != READY or video_path(p["slug"]).exists() or p["slug"] in waits:
             continue
+        if footage_gaps(p):                # never voiced without its own footage
+            continue
         rows.append((0 if p["kind"] == "sleep" else 1, p["meta"].get("written", ""), p["slug"]))
     return [s for *_, s in sorted(rows)]
+
+
+def footage_gaps(p: dict) -> list[str]:
+    """Parts with too little footage of their own subject (her call 6 Nov
+    2026: no part is voiced or rendered without it). Needs this Mac's footage
+    manifest; where it is absent (the cloud) nothing is judged here."""
+    man = ROOT / "channel" / "imagery" / "video_rights.json"
+    if p["kind"] != "sleep" or not man.exists():
+        return []
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import whisper_reel as R                                # noqa: PLC0415
+    assets = json.loads(man.read_text()).get("assets", [])
+    return [s["source"] for s in p["segments"] if not R.pictureable(s["source"], assets)]
 
 
 def status_lines() -> list[str]:

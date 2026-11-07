@@ -51,6 +51,7 @@ Rules you must follow exactly:
 - Plain, everyday words. A child of twelve could follow every sentence.
 - Keep a real name only when it IS the topic; say it once, softly, and explain it in plain words. After that, say "it", "this glow", "that galaxy", and so on.
 - NO acronyms or initials (write "the space agency", not NASA). NO letters mixed with digits.
+- When two names appear together, treat them the same: soften both ("space agencies in the United States and Europe") or keep both, never one of each.
 - NO numerals at all. Say numbers in soft rounded words, as the source gives them: "about a thousand meters down", "more than a hundred years ago", "in the early nineteen hundreds". Never more than three number words in a row. Never convert a unit, never add a number the source does not give.
 - NO unit abbreviations, percent signs, degree signs, equations, brackets or lists.
 - No technical strings: never three long words close together.

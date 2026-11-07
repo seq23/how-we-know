@@ -66,6 +66,12 @@ EQUATION = re.compile(
     r"\bto the power of\b|\bdivided by\b|\bmultiplied by\b|\bequals\b", re.I)
 BRACKETS = re.compile(r"[()\[\]{}]")
 WORD = re.compile(r"[A-Za-z][A-Za-z'’-]*")
+# "measured by a space agency and the European Space Agency": one of a pair
+# of organisations softened, the other kept by name (6 Nov 2026). Both
+# softened ("space agencies in the United States and Europe") or both kept.
+ORG = r"(?:agency|agencies|university|universities|laboratory|laboratories|institute|observatory|survey|society|museum)"
+SOFTENED = re.compile(rf"\b(?:a|an|one|another)\s+(?:[a-z]+\s+){{0,2}}{ORG}\b")
+KEPT = re.compile(rf"\b(?:[A-Z][a-z]+\s+){{1,3}}{ORG.replace('agency', 'Agency').replace('university', 'University').replace('laboratory', 'Laboratory').replace('institute', 'Institute').replace('observatory', 'Observatory').replace('survey', 'Survey').replace('society', 'Society').replace('museum', 'Museum')}\b")
 
 # Long words a tired ear knows without effort. Only words a child or a
 # grandparent says every week: this list widens the plain, never the jargon.
@@ -193,6 +199,10 @@ def text_problems(text: str, named: list[str] | None = None,
         hw = sorted({_norm(w) for w, h in zip(words, hard) if h})[:8]
         out.append(f"{tag}HARD_WORDS {share:.1%} of {len(words)} words are 4+ syllables "
                    f"(at most 2.5%): {', '.join(hw)}")
+    for sent in re.split(r"(?<=[.!?])\s+", text):
+        if SOFTENED.search(sent) and KEPT.search(sent):
+            out.append(f"{tag}PAIRED_NAMES one name softened and its pair kept: {sent[:70]!r} "
+                       f"(soften both, or keep both)")
     for n in named or []:
         hits = len(re.findall(rf"\b{re.escape(n)}s?\b", text, re.I))
         if hits > 1 and syllables(n.split()[-1]) >= 4:
@@ -200,11 +210,22 @@ def text_problems(text: str, named: list[str] | None = None,
     return out
 
 
+# The plain reading of an initialism the source uses is not a new fact:
+# "NASA" may become "space agencies in the United States". Allowed only when
+# the source itself carries the initialism.
+PLAIN_READINGS = {
+    "NASA": "united states american", "ESA": "europe european", "NOAA": "united states american",
+    "MBARI": "california monterey", "JAMSTEC": "japan japanese", "WHOI": "massachusetts",
+    "USGS": "united states american", "NIST": "united states american",
+}
+
+
 def fact_problems(rewrite: str, source: str, where: str = "") -> list[str]:
     """A rewrite may only simplify its fact-checked source, never add to it."""
     tag = f"{where}: " if where else ""
     out = []
-    src_low = source.lower()
+    src_low = source.lower() + " " + " ".join(v for k, v in PLAIN_READINGS.items()
+                                             if re.search(rf"\b{k}\b", source))
     src_nums = {re.sub(r"\D", "", n) for n in _numerals(source)}
     for n in _numerals(rewrite):
         if re.sub(r"\D", "", n) not in src_nums:
@@ -251,6 +272,7 @@ BROKEN = [
     ("brackets", "The fish (a kind of anglerfish) waits in the dark."),
     ("jargon string", "Its bathypelagic chemiluminescent hydrostatic adaptation was observed."),
     ("named repeat", "Andromeda is a galaxy. Andromeda is far. Andromeda is old and quiet."),
+    ("paired names", "This distance was measured by a space agency and the European Space Agency."),
 ]
 
 

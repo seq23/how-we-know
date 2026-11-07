@@ -43,25 +43,36 @@ def subject(asset: dict) -> str:
     return (asset.get("subject") or asset.get("title") or asset.get("local_file") or "?").lower()
 
 
+def min_clips(shot_s: float = SHOT_S) -> int:
+    """Clips a part needs so no clip returns inside REPEAT_GAP_S."""
+    return int(REPEAT_GAP_S // shot_s) + 2
+
+
+def pictureable(slug: str, assets: list[dict]) -> bool:
+    import footage as F                                    # noqa: PLC0415
+    return len(F.episode_pool(slug, assets)) >= min_clips()
+
+
 def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=None,
               shot_s: float = SHOT_S) -> list[dict]:
     """[(source slug, seconds)] -> shots [{asset, cut, segment, t0, seconds}]."""
     import footage as F                                    # noqa: PLC0415
     pool_of = pool_of or (lambda slug: F.episode_pool(slug, assets))
     pools = [pool_of(s) for s, _ in segments]
-    union = []
-    for p in pools:
-        for a in p:
-            if a not in union:
-                union.append(a)
-    if not union:
-        raise FootageThin("no licence-checked footage for any source episode")
+    # FOOTAGE OF THE SUBJECT NAMED, PART BY PART (her call 6 Nov 2026): a part
+    # draws only on its own source episode's footage - never another part's
+    # (deep-sea footage under a galaxy part reads as low effort). Too few
+    # clips to avoid a repeat inside REPEAT_GAP_S is refused, never padded.
+    need = min_clips(shot_s)
+    for (src, _), p in zip(segments, pools):
+        if len(p) < need:
+            raise FootageThin(f"{src}: {len(p)} clip(s) of its own subject; a part needs {need}")
     last_t: dict[int, float] = {}
     uses: dict[int, int] = {}
     shots, t = [], 0.0
     for si, (_, seg_s) in enumerate(segments):
         end = t + seg_s
-        local = pools[si] or union
+        local = pools[si]
         ri = 0
         while t < end - 1e-6:
             sec = min(shot_s, end - t)
@@ -70,7 +81,7 @@ def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=Non
                 t = end
                 break
             pick = None
-            for cand_pool in (local, union):
+            for cand_pool in (local,):
                 n = len(cand_pool)
                 for k in range(n):
                     a = cand_pool[(ri + k) % n]
@@ -89,7 +100,7 @@ def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=Non
                     break
             if not pick:
                 raise FootageThin(f"segment {si + 1}: no clip free of a repeat inside "
-                                  f"{REPEAT_GAP_S:.0f} s at {t:.0f} s (pool {len(local)}, episode {len(union)})")
+                                  f"{REPEAT_GAP_S:.0f} s at {t:.0f} s (pool {len(local)})")
             a, cut = pick
             shots.append({"asset": a, "cut": cut, "segment": si, "t0": round(t, 3), "seconds": round(sec, 3)})
             last_t[id(a)] = t
