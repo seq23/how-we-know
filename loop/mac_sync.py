@@ -474,6 +474,19 @@ def push(paths: list[str], message: str) -> tuple[bool, str]:
     return True, "pushed"
 
 
+def _pending_count(v: str) -> int | str:
+    """argparse type for --pending: "" (not counted) or a whole number >= 0."""
+    if v.strip() == "":
+        return ""
+    try:
+        n = int(v)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"--pending must be a whole number or empty, got {v!r}")
+    if n < 0:
+        raise argparse.ArgumentTypeError(f"--pending cannot be negative, got {n}")
+    return n
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -486,8 +499,16 @@ def main() -> int:
     h.add_argument("--uploaded", type=int, default=None)
     h.add_argument("--held", default=None,
                    help="comma-separated slugs the render gate is holding")
-    h.add_argument("--pending", type=int, default=None,
-                   help="finished episodes still to ship after this run")
+    # EMPTY MEANS "NOT COUNTED", NOT A TYPO. Every early named stop in
+    # bin/loop-backfill-daily.sh reports `--pending ""` (it stopped before it
+    # could count), and so does a count that failed. 2026-11-07 08:00: `type=int`
+    # rejected that, so the heartbeat reporting the stop crashed and the stop
+    # never reached the repository. Empty clears the stale count (as for
+    # --resumed-from); anything else that is not a whole number >= 0 still fails.
+    # Guarded by loop/tests/test_heartbeat_empty_pending.py.
+    h.add_argument("--pending", type=_pending_count, default=None,
+                   help="finished episodes still to ship after this run "
+                        "(empty: not counted this run, clears the old count)")
     h.add_argument("--resumed-from", default=None,
                    help="phase/episode an interrupted night resumed from "
                         "(empty clears it); see loop/batch_progress.py")
