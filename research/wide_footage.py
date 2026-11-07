@@ -95,6 +95,16 @@ def clip_name(source: str, cid: str, url: str) -> str:
     return f"wide__{source}__{_slug(cid)[:48]}-{h}.{ext}"
 
 
+def repair_manifest() -> dict:
+    """repair() on the footage manifest, saved the way the harvest saves it."""
+    man = json.load(open(MANIFEST))
+    r = repair(man)
+    tmp = MANIFEST + ".tmp"
+    json.dump(man, open(tmp, "w"), indent=2)
+    os.replace(tmp, os.path.realpath(MANIFEST))
+    return r
+
+
 def repair(man: dict, download=None, clips: str | None = None) -> dict:
     """Re-home every wide clip whose file is shared, missing or not its own
     bytes. The clip is fetched again from its direct_url under a unique name
@@ -394,11 +404,7 @@ def harvest(slugs: list[str], per_subject: int = 4) -> dict:
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if "--repair" in sys.argv:
-        man = json.load(open(MANIFEST))
-        r = repair(man)
-        tmp = MANIFEST + ".tmp"
-        json.dump(man, open(tmp, "w"), indent=2)
-        os.replace(tmp, os.path.realpath(MANIFEST))
+        r = repair_manifest()
         print(f"OUTPUT {r['fixed']} wide clip(s) re-homed, {r['dropped']} dropped")
         raise SystemExit(0)
     if "--fix-bars" in sys.argv:
