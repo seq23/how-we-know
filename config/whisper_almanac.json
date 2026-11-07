@@ -1,0 +1,234 @@
+{
+  "_why": [
+    "Whisper Almanac: a faceless YouTube channel (@whisperalmanac) voiced by the owner's own cloned whisper. Her rulings 5-6 Nov 2026, spry brain Settled decisions. Lead lane: whispered sleep SCIENCE (How We Know deep sea, food and materials; history secondary, her ruling 6 Nov 2026), 2-3 hour videos, rewritten for sleep from fact-checked How We Know scripts. Backup lane: money and love affirmations, 1 a week, same channel.",
+    "Read by loop/whisper_lane.py (scripts, checks, kits, the Mac night step), loop/whisper_author.py (the $0 cloud author) and voice/whisper_voice.py (Chatterbox, on the Mac, inside the batch's narrator lock). Nothing in this file is decoration: every key has a reader.",
+    "Fact-checked = uploaded by the How We Know machine (loop/state/ledger.json `published`, not retired): those scripts passed the source, citation and render gates."
+  ],
+  "channel": {
+    "name": "Whisper Almanac",
+    "handle": "@whisperalmanac",
+    "ai_voice_line": "The voice is AI: a clone of the creator's own whisper, made with Chatterbox. The facts come from checked public sources.",
+    "altered_content": true,
+    "made_for_kids": false,
+    "category_id": "27",
+    "default_language": "en"
+  },
+  "sample": {
+    "dir": "~/.boss-os/asmr-voice",
+    "names": [
+      "whisper-sample.wav",
+      "whisper-sample.m4a"
+    ],
+    "min_seconds": 15,
+    "max_seconds": 60,
+    "reference_out": "reference_cond10.wav",
+    "why": "Chatterbox conditions on 10 seconds of the reference (voice/synth.py). 20-30 s of steady whispering lets the step pick the cleanest 10 s (synth.pick_voiced_window). Her sample stays on her Mac and never goes in a repo (her call 5 Nov)."
+  },
+  "voice": {
+    "exaggeration": 0.3,
+    "cfg_weight": 0.3,
+    "temperature": 0.7,
+    "max_words": 30,
+    "pause_sentence_s": 2.0,
+    "pause_paragraph_s": 8.0,
+    "pause_segment_s": 30.0,
+    "opening_silence_s": 3.0,
+    "why": "Lower exaggeration and cfg_weight than the How We Know read (0.4/0.4) for a flatter delivery; measured 6 Nov 2026 the register still spoke at 170 words a minute, so every chunk is slowed to 0.82 (pitch kept, ffmpeg atempo) and the pauses are long. Pauses and the slow-down are added in code: they cost no narration time on the Mac.",
+    "tempo": 0.82
+  },
+  "pacing": {
+    "speech_wpm": 139,
+    "speech_wpm_basis": "measured 6 Nov 2026: 170 words a minute from Chatterbox with this register (How We Know test voice), times the 0.82 tempo = 139; re-measured from her own voice on the first voiced episode",
+    "compute_s_per_audio_minute": null,
+    "max_sentence_words": 28
+  },
+  "lengths": {
+    "sleep": {
+      "min_s": 7200,
+      "max_s": 10800
+    },
+    "affirmations": {
+      "min_s": 2700,
+      "max_s": 4500
+    }
+  },
+  "distinct": {
+    "max_overlap": 0.15,
+    "why": "Every video is a distinct script (her call 6 Nov; mass-produced loops risk demonetisation). Overlap = share of a script's eight-word runs found in any other Whisper Almanac script."
+  },
+  "titles": {
+    "max_chars": 100,
+    "benefit_words": [
+      "deep sleep",
+      "fall asleep",
+      "sleep"
+    ],
+    "trigger_words": [
+      "ASMR",
+      "whispered",
+      "whisper"
+    ],
+    "sleep_pattern": "ASMR whispered {topic} for deep sleep · {moment} ({length})",
+    "affirmations_pattern": "ASMR whispered {topic} for deep sleep · {moment} ({length})"
+  },
+  "visual": {
+    "kind": "dim-moving-footage",
+    "shot_s": 18,
+    "repeat_gap_s": 180,
+    "subject_cap": 0.25,
+    "why": "Her ruling 6 Nov 2026 (money case): dim, moving footage of the named subject, not a dark screen - the Sep 2026 demonetisation wave hit near-identical dark-screen sleep compilations. The How We Know long-form footage rules apply (a new shot at least every 20 s, no clip repeated within 3 minutes, no subject over ~25%), enforced by visuals/whisper_reel.reel_problems."
+  },
+  "brand": {
+    "ground": "#120E0B",
+    "ink": "#F3E6CF",
+    "ember": "#E89B4C",
+    "glow": "#3A2616",
+    "moss": "#8FA98A",
+    "why": "The manifesting/sleep ASMR brand approved 6 Nov 2026 (one candle in a dark room, dark only; DM Serif Display italic lowercase for thumbnail words, Jost Light for the rest)."
+  },
+  "episodes": [
+    {
+      "slug": "the-deep-ocean-at-night",
+      "kind": "sleep",
+      "topic": "deep ocean science",
+      "moment": "drift off tonight",
+      "thumb_words": "the deep sea, softly",
+      "hook": "A slow, whispered trip down through the dark ocean: why deep animals glow, why so many are red or clear, how they live under the weight of the sea, and what happens when a whale comes to rest on the sea floor.",
+      "still_slots": [
+        "jelly",
+        "biolum",
+        "column"
+      ],
+      "named": [
+        "bioluminescence",
+        "chemosynthesis"
+      ],
+      "sources": [
+        "20-what-is-the-midnight-zone",
+        "05-why-many-deep-sea-creatures-are-red",
+        "06-why-some-deep-sea-creatures-are-transparent",
+        "18-why-does-black-smoker-water-not-boil",
+        "10-what-is-the-deepest-part-of-the-ocean"
+      ]
+    },
+    {
+      "slug": "the-strange-creatures-of-the-deep",
+      "kind": "sleep",
+      "topic": "deep sea creature science",
+      "moment": "fall asleep tonight",
+      "thumb_words": "the strange deep",
+      "hook": "A slow, whispered look at the strange animals of the deep sea: why they look the way they do, why some seem frightening and are not, how large a colossal squid really grows, and why deep fish change when they are brought up.",
+      "still_slots": [
+        "giants",
+        "anglerfish"
+      ],
+      "named": [
+        "bioluminescence"
+      ],
+      "sources": [
+        "01-why-deep-sea-creatures-look-so-weird",
+        "04-why-deep-sea-creatures-are-so-scary",
+        "07-why-deep-sea-creatures-get-creepier-deeper",
+        "09-what-is-the-scariest-deep-sea-creature",
+        "08-what-creatures-live-in-the-deep-sea"
+      ]
+    },
+    {
+      "slug": "how-we-know-the-far-and-the-deep",
+      "kind": "sleep",
+      "topic": "science of how we know",
+      "moment": "when you can't sleep",
+      "thumb_words": "how we know",
+      "hook": "A slow, whispered walk through how people learned what they cannot touch: how far away other galaxies are, how old a shell or a stone is, how the dark sea floor was mapped, and how people reached the deepest place on Earth.",
+      "still_slots": [
+        "trench",
+        "vehicle"
+      ],
+      "named": [
+        "Andromeda",
+        "Challenger"
+      ],
+      "sources": [
+        "how-do-scientists-know-about-other-galaxies",
+        "how-do-scientists-know-how-old-something-is",
+        "how-do-scientists-know-so-much",
+        "15-how-do-people-reach-challenger-deep",
+        "what-lives-in-mariana-trench"
+      ],
+      "waits_for": "footage of its own subjects for every part (galaxies, age dating, sea-floor mapping, Challenger Deep, the Mariana Trench): her call 6 Nov 2026, no part voiced or rendered without it. The nightly harvest grows the pool."
+    },
+    {
+      "slug": "how-steel-glass-and-iron-are-made",
+      "kind": "sleep",
+      "topic": "science of steel, glass and iron",
+      "moment": "for a quiet night",
+      "thumb_words": "how steel is made",
+      "hook": "A slow, whispered science lesson on the strong things around you: how steel gets its strength, why a blade is plunged into water, what made old swords famous, why some old iron never rusts, and how glass, concrete and the purest silicon are made.",
+      "still_slots": [
+        "mat"
+      ],
+      "named": [
+        "Damascus",
+        "aerogel"
+      ],
+      "sources": [
+        "why-is-steel-so-strong",
+        "how-does-quenching-harden-steel",
+        "how-is-damascus-steel-made",
+        "why-does-old-iron-not-rust",
+        "how-does-tempered-glass-shatter",
+        "what-is-concrete-made-of",
+        "what-is-aerogel-made-of",
+        "how-is-a-silicon-wafer-made"
+      ],
+      "waits_for": "footage: materials holds 8 licence-checked clips; the reel rules need more (visuals/whisper_reel.py). The imagery-harvest lane grows the pool; until then this script is not voiced."
+    }
+  ],
+  "affirmations": {
+    "rotation": [
+      "money",
+      "love"
+    ],
+    "movements": [
+      "settling in: breath, a soft body, a safe room",
+      "feeling safe and worthy right now",
+      "receiving: letting good things in",
+      "the kind of life you are building, calm and steady",
+      "gratitude for what is already here",
+      "drifting: fewer words, longer pauses, sleep"
+    ],
+    "lines_per_movement": 36,
+    "pause_after_line_s": 9.0,
+    "topics": {
+      "money": {
+        "topic": "money affirmations",
+        "moment": "it's already yours",
+        "thumb_words": "it's already yours"
+      },
+      "love": {
+        "topic": "love affirmations",
+        "moment": "you are loved",
+        "thumb_words": "you are loved"
+      }
+    },
+    "guardrail_why": "Affirmations only, never a guaranteed outcome; no fake income proof; no healing or health claims; the AI-voice line and the altered-content box on every upload (brand guardrail, approved 6 Nov 2026: law and YouTube policy, not taste).",
+    "footage_sources": [
+      "20-what-is-the-midnight-zone",
+      "05-why-many-deep-sea-creatures-are-red",
+      "06-why-some-deep-sea-creatures-are-transparent",
+      "18-why-does-black-smoker-water-not-boil",
+      "08-what-creatures-live-in-the-deep-sea",
+      "09-what-is-the-scariest-deep-sea-creature"
+    ]
+  },
+  "split": {
+    "hwk_nights": [
+      "mon",
+      "fri"
+    ],
+    "planned_uploads_per_week": 2,
+    "since": "2026-11-06",
+    "recheck_on": "2026-12-06",
+    "why": "Her ruling 6 Nov 2026: the Mac's narration nights split 5 to Whisper Almanac and 2 to How We Know long-form; How We Know Shorts keep going; re-check at day 30 (6 Dec 2026) with real views from both channels. Read by loop/night_split.py; the supply gates (loop/supply_gate.py) decide first. Monday is the food session's night and Friday the batch's deep sea and materials night."
+  }
+}

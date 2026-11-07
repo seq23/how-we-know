@@ -5,8 +5,12 @@ on:
     # main only: a branch push also ran the long suite, so a PR waited on it
     # (finding 20, 2 Nov 2026). PRs get the fast gate from pull_request.
     branches: [main]
-    paths: ['loop/**', 'auth/**', 'bin/loop-*.sh', '.github/workflows/**',
-            'scripts/**', 'pov/**', 'docs/CHANNEL-PLAN.md', 'research/publish_order.json',
+    # 6 Nov 2026: research/, visuals/, voice/, config/ and bin/ were missing, so
+    # a change to research/wide_footage.py (#331) reached main and redded the
+    # long suite with no run on its own commit, and #334's fix ran nothing.
+    paths: ['loop/**', 'auth/**', 'bin/**', '.github/workflows/**',
+            'scripts/**', 'pov/**', 'research/**', 'visuals/**', 'voice/**',
+            'config/**', 'channel/whisper/**', 'docs/CHANNEL-PLAN.md',
             '.gitattributes']
   pull_request:
   workflow_dispatch:
@@ -19,6 +23,7 @@ on:
   # every committing workflow.
   workflow_run:
     workflows:
+      - 'loop · Wed 14:00 CT · whisper almanac author (sleep scripts + weekly affirmations, $0)'
       - 'loop · daily demand + Mon 08:30 CT email'
       - 'loop · Fri 17:00 · measure'
       - 'loop · Fri 09:00 · flip to public'
@@ -73,9 +78,19 @@ jobs:
       - name: Install the one dependency the tests need
         run: pip install --quiet pyyaml
       - name: Install FFmpeg for the review-cut behavior test
+        # 6 Nov 2026: `apt-get update` + install ran past the job's 8-minute
+        # timeout twice in one evening (runs 42311192145, 42321428929) and
+        # cancelled the merge gate. The package list on the runner image is
+        # used as is, bounded; a static build is the fallback.
+        timeout-minutes: 4
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg
+          if ! timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg; then
+            echo "apt was slow or stale; using the static ffmpeg build"
+            curl -fsSL --retry 3 -o /tmp/ffmpeg.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+            tar -xJf /tmp/ffmpeg.tar.xz -C /tmp
+            sudo cp /tmp/ffmpeg-*-amd64-static/ffmpeg /tmp/ffmpeg-*-amd64-static/ffprobe /usr/local/bin/
+          fi
+          ffmpeg -version | head -1
       - name: Loop tests
         run: python loop/tests/run_all.py --shard ${{ matrix.shard }}/2 --skip-slow
       - name: Conformance with the locked plan

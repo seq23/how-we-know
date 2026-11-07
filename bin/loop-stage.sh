@@ -210,6 +210,10 @@ if [ "$STAGE" = "queue-reopen" ]; then
 fi
 # the food author lane (2026-10-25): its episode script, its kits and the
 # episode row; loop/drafts/ (its parts' drafts) is under loop/ above
+# Whisper Almanac (6 Nov 2026): the sleep scripts loop/whisper_author.py writes
+if [ "$STAGE" = "whisper-author" ]; then
+  git add scripts/whisper channel/whisper 2>/dev/null
+fi
 if [ "$STAGE" = "food-author" ]; then
   git add scripts/food channel/food_kits research/publish_order*.json 2>/dev/null
 fi

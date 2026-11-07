@@ -18,7 +18,7 @@ phase_idle() {
     return [line for line in result.stdout.splitlines() if line.startswith("stage:")]
 
 expected = ["stage:captions:phase_captions", "stage:shelve:shelve_shorts",
-            "stage:harvest:harvest_footage"]
+            "stage:harvest:harvest_footage", "stage:whisper:phase_whisper"]
 assert exercise(idle) == expected
 # Negative proof: restoring the former idle branch loses the caption stage.
 assert exercise(idle.replace("  step captions phase_captions\n", "")) != expected

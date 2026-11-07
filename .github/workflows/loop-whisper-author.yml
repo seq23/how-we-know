@@ -1,0 +1,54 @@
+name: loop · Wed 14:00 CT · whisper almanac author (sleep scripts + weekly affirmations, $0)
+
+# THE WHISPER ALMANAC LANE'S CLOUD HALF (6 Nov 2026). loop/whisper_author.py
+# rewrites fact-checked How We Know scripts for sleep (plain words, no new
+# facts, 2-3 hours, distinct) into scripts/whisper/<slug>.md, and writes the
+# week's money-or-love affirmations script, through the same $0 route as every
+# lane (Gemini free tier, then the curated $0 OpenRouter list, never paid).
+# The Mac voices them in the nightly batch, under the narrator lock
+# (bin/batch-session.sh phase_whisper). Only a script that passes every rule
+# is committed; a full runway is the self-resolving stop WHISPER_RUNWAY_FULL.
+#
+# CADENCE: weekly. The Mac voices about one sleep episode a week
+# (docs/WHISPER-ALMANAC.md), so the runway cap (two sleep scripts waiting,
+# one affirmations) keeps the author ahead of the voice without piling up.
+# Wednesday 14:00 CT: outside mon-draft's Monday authoring window and after
+# the 09:00 upload, in the loop-state group, so no two lanes push over each
+# other. loop/lanes.py lists this lane; V73 holds it to this file.
+on:
+  schedule:
+    - cron: '0 14 * * 3'  # America/Chicago, all year - Wednesdays
+      timezone: America/Chicago
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  whisper-author:
+    timeout-minutes: 120
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+      - name: Write the next whisper scripts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bin/loop-stage.sh whisper-author loop/whisper_author.py
