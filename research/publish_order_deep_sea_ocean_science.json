@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-01T21:21:06.784316+00:00",
+  "generated_utc": "2026-11-07T11:20:22.717342+00:00",
   "generator": "research/publish_order_domain.py --domain deep-sea-ocean-science",
   "domain": "deep-sea-ocean-science",
   "gate_source": "research/publish_order.py, imported unchanged",
@@ -1218,10 +1218,10 @@
       "matched": "why-deep-sea-fish-die-when-brought-to-surface"
     },
     {
-      "query": "how deep are olympic pools",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "same question with qualifiers added",
-      "matched": "how deep are pools"
+      "query": "how do scientists know the layers of the earth",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "earth know layer scientist"
     },
     {
       "query": "how do scientists know so much",
@@ -1240,6 +1240,12 @@
       "killed_by": "VAGUE",
       "rule": "names no subject beyond the domain's own core words",
       "matched": "?why sea"
+    },
+    {
+      "query": "what is mid atlantic ridge",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "atlantic mid ridg"
     },
     {
       "query": "how do scientists know how old something is",
@@ -1308,6 +1314,12 @@
       "matched": "what lives in mariana trench"
     },
     {
+      "query": "why greenland shark live so long",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "greenland live long shark"
+    },
+    {
       "query": "how do scientists know the age of fossils",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
@@ -1330,12 +1342,6 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
       "matched": "why are deep sea creatures so big"
-    },
-    {
-      "query": "how deep are pools",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "identical question key",
-      "matched": "how deep are pools"
     },
     {
       "query": "how deep is your love calvin harris",
@@ -1434,6 +1440,12 @@
       "matched": "song"
     },
     {
+      "query": "how deep is your love cover",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
       "query": "how deep is your love dru hill",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1530,6 +1542,12 @@
       "matched": "deep rust sea"
     },
     {
+      "query": "what is mid oceanic ridge",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "mid oceanic ridg"
+    },
+    {
       "query": "what is the deepest part of the ocean called",
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
@@ -1584,6 +1602,12 @@
       "matched": "dangerou deep diving sea"
     },
     {
+      "query": "why do greenland sharks live so long",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "greenland live long shark"
+    },
+    {
       "query": "why the deep sea frightens us",
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
@@ -1594,6 +1618,12 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
       "matched": "why deep sea creatures are so scary"
+    },
+    {
+      "query": "are sea pigs real",
+      "killed_by": "ALREADY_PUBLISHED",
+      "rule": "this episode already exists",
+      "matched": "are-sea-pigs-real"
     },
     {
       "query": "how are mid ocean ridges formed",
@@ -1624,6 +1654,12 @@
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "minecraft"
+    },
+    {
+      "query": "how deep are olympic pools",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
     },
     {
       "query": "how deep are septic tanks buried",
@@ -1777,9 +1813,9 @@
     },
     {
       "query": "how deep can you go in subnautica",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel, show or game",
+      "matched": "subnautica"
     },
     {
       "query": "how deep can you go in the ocean",
@@ -2118,12 +2154,6 @@
       "matched": "deep"
     },
     {
-      "query": "how deep is olympic pool",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "same question with qualifiers added",
-      "matched": "how deep are pools"
-    },
-    {
       "query": "how deep is quicksand",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -2173,9 +2203,9 @@
     },
     {
       "query": "how deep is the ocean in subnautica",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "a made question plus an autocomplete tail",
-      "matched": "deep ocean subnautica"
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel, show or game",
+      "matched": "subnautica"
     },
     {
       "query": "how deep is the ocean kirby shaw",
@@ -3084,6 +3114,12 @@
       "matched": "how is a mid-ocean ridge formed"
     },
     {
+      "query": "how long do greenland sharks live",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "greenland live long shark"
+    },
+    {
       "query": "how long nails",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
@@ -3126,12 +3162,6 @@
       "matched": "deep"
     },
     {
-      "query": "how to complete brine pool bestiary",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "bestiary brin complet pool"
-    },
-    {
       "query": "how to deep fry zucchini",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -3170,14 +3200,14 @@
     {
       "query": "how to get abyssal zone warframe",
       "killed_by": "OTHER_CHANNEL",
-      "rule": "names another channel",
+      "rule": "names another channel, show or game",
       "matched": "warframe"
     },
     {
       "query": "how to get brine pool exotic",
-      "killed_by": "NEAR_DUPLICATE_OF_MADE",
-      "rule": "same question with qualifiers added",
-      "matched": "how does a deep-sea brine pool form, and why is it so exotic"
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel, show or game",
+      "matched": "how to get brine pool exotic"
     },
     {
       "query": "how to get challenger deep rod",
@@ -3244,6 +3274,12 @@
       "killed_by": "NEAR_DUPLICATE_OF_MADE",
       "rule": "identical question key",
       "matched": "what does a greenland shark look like"
+    },
+    {
+      "query": "what does a sea pig look like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what does a sea pig look like"
     },
     {
       "query": "what does a vampire squid look like",
@@ -3360,12 +3396,6 @@
       "matched": "what is the deepest part of the ocean"
     },
     {
-      "query": "where brine pool",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "brin pool"
-    },
-    {
       "query": "where's brine pool in fisch",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
@@ -3398,7 +3428,7 @@
     {
       "query": "why deepu was killed by sea creatures",
       "killed_by": "OTHER_CHANNEL",
-      "rule": "names another channel",
+      "rule": "names another channel, show or game",
       "matched": "deepu"
     },
     {
@@ -3444,22 +3474,586 @@
       "matched": "creatur deep kill sea"
     },
     {
-      "query": "what is mid atlantic ridge",
+      "query": "how to get private island bestiary hypixel skyblock",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
-      "matched": "atlantic mid ridg"
+      "matched": "bestiary get hypixel island privat skyblock"
     },
     {
-      "query": "how deep is your love cover",
+      "query": "how to complete bestiary hypixel skyblock",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "bestiary complet hypixel skyblock"
+    },
+    {
+      "query": "what is a whale fall",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "what happens when a whale dies in the deep ocean"
+    },
+    {
+      "query": "where is brine pool in fisch roblox",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "where is the brine pool rod",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "rod"
+    },
+    {
+      "query": "how deep is the ocean release",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean releas"
+    },
+    {
+      "query": "how to complete brine pool bestiary fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "what do scientists know about ufos",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "about know scientist ufo"
+    },
+    {
+      "query": "how big is the ocean ted ed",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "ted ed"
+    },
+    {
+      "query": "how deep a water line should be buried",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
     },
     {
-      "query": "what is mid oceanic ridge",
+      "query": "how deep are gas lines typically buried",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep are you no tracks to follow",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep bass",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep bee gees lyrics",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep breathing changed my life",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep can we go",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep can you go in subnautica 2",
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel, show or game",
+      "matched": "subnautica"
+    },
+    {
+      "query": "how deep cleaning of teeth procedure",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep do you plant potatoes",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep does a tattoo needle go",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep does it go",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep does the rabbit hole go",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep fat joe",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep french drain",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep fry shrimp",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep frying works",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep golf 2",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep got killed",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep have we drilled into the earth",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep have we explored the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how do scientists know so much about the deep ocean when we've explored so little of it"
+    },
+    {
+      "query": "how deep how high how long and how wide",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep is the ocean actually is",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean alto sax",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "alto deep ocean sax"
+    },
+    {
+      "query": "how deep is the ocean bill frisell",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bill deep frisell ocean"
+    },
+    {
+      "query": "how deep is the ocean by the creator",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "creator deep ocean"
+    },
+    {
+      "query": "how deep is the ocean clapton",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "clapton deep ocean"
+    },
+    {
+      "query": "how deep is the ocean diana",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep diana ocean"
+    },
+    {
+      "query": "how deep is the ocean edit",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep edit ocean"
+    },
+    {
+      "query": "how deep is the ocean english",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean explained",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean in melon sandbox",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep melon ocean sandbox"
+    },
+    {
+      "query": "how deep is the ocean infographics show",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep infographic ocean show"
+    },
+    {
+      "query": "how deep is the ocean joshua redman",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep joshua ocean redman"
+    },
+    {
+      "query": "how deep is the ocean julie andrews",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "andrew deep juli ocean"
+    },
+    {
+      "query": "how deep is the ocean kurt",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep kurt ocean"
+    },
+    {
+      "query": "how deep is the ocean michael sweeney",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep michael ocean sweeney"
+    },
+    {
+      "query": "how deep is the ocean mike barone",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "baron deep mike ocean"
+    },
+    {
+      "query": "how deep is the ocean miles",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep mil ocean"
+    },
+    {
+      "query": "how deep is the ocean read aloud",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "aloud deep ocean read"
+    },
+    {
+      "query": "how deep is the ocean richlev",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean richlev"
+    },
+    {
+      "query": "how deep is the ocean roblox",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "roblox"
+    },
+    {
+      "query": "how deep is the ocean song irving berlin",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "song"
+    },
+    {
+      "query": "how deep is the ocean streisand",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean streisand"
+    },
+    {
+      "query": "how deep is the ocean submarine animation",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "animation deep ocean submarin"
+    },
+    {
+      "query": "how deep is the ocean tech insider",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep insider ocean tech"
+    },
+    {
+      "query": "how deep is the ocean zem tv",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean zem"
+    },
+    {
+      "query": "how deep john frusciante",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep lewis moyes",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep love is your love",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep mateus",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep my love can be",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep my voice",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep nemo baby",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep of a scratch can be buffed out",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep on hack squat",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep pro siege really gets",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep radio",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep rapture",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep reaction",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep should a koi pond be",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep should a raised bed garden be",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep should trolling motor be in water",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep the father's love for us stuart townend",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep u love",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep vishesh chamoli",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep was michael jackson voice",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep water horizon happen",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep your love mitski",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how get deep voice",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how long is the ocean deep",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep long ocean"
+    },
+    {
+      "query": "how long karaoke",
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
-      "matched": "mid oceanic ridg"
+      "matched": "karaok long"
+    },
+    {
+      "query": "how long kim petras",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "kim long petra"
+    },
+    {
+      "query": "how to complete brine pool bestiary in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to get to crystal caverns subnautica below zero",
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel, show or game",
+      "matched": "subnautica below zero"
+    },
+    {
+      "query": "how to get to underwater islands subnautica",
+      "killed_by": "OTHER_CHANNEL",
+      "rule": "names another channel, show or game",
+      "matched": "subnautica"
+    },
+    {
+      "query": "where brine pool in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "where is desolate brine pool in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "where is the brine pool located in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to get deep sea dragonfish in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to get bigfin squid in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "how to get tripod fish in fisch",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
+    },
+    {
+      "query": "where to find gulper eel dredge",
+      "killed_by": "OFF_DOMAIN_RELEVANCE",
+      "rule": "not inside \"Deep sea and ocean science\" (gemini/gemini-3.6-flash)",
+      "matched": "refers to a video game"
+    },
+    {
+      "query": "how deep are pools",
+      "killed_by": "OFF_DOMAIN_RELEVANCE",
+      "rule": "not inside \"Deep sea and ocean science\" (gemini/gemini-3.6-flash)",
+      "matched": "refers to swimming pools, not ocean features"
+    },
+    {
+      "query": "how to complete brine pool bestiary",
+      "killed_by": "OFF_DOMAIN_RELEVANCE",
+      "rule": "not inside \"Deep sea and ocean science\" (gemini/gemini-3.6-flash)",
+      "matched": "asks about a video game mechanic"
+    },
+    {
+      "query": "how deep fry fish",
+      "killed_by": "OFF_DOMAIN_RELEVANCE",
+      "rule": "not inside \"Deep sea and ocean science\" (gemini/gemini-3.6-flash)",
+      "matched": "asks about cooking"
+    },
+    {
+      "query": "how to beat ocean monument bedrock",
+      "killed_by": "OFF_DOMAIN_RELEVANCE",
+      "rule": "not inside \"Deep sea and ocean science\" (gemini/gemini-3.6-flash)",
+      "matched": "refers to Minecraft"
+    },
+    {
+      "query": "how to get ocean monument trim",
+      "killed_by": "OFF_DOMAIN_RELEVANCE",
+      "rule": "not inside \"Deep sea and ocean science\" (gemini/gemini-3.6-flash)",
+      "matched": "refers to Minecraft"
     }
   ],
   "queue": [
@@ -5099,243 +5693,19 @@
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
       "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.21) -- uncontested because few ask it."
-    }
-  ],
-  "killed": [
-    {
-      "slug": "how-deep-are-pools",
-      "domain": "deep-sea-ocean-science",
-      "title": "How deep are pools?",
-      "query": "how deep are pools",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.644 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.6445,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "pool",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "how deep are pools",
-          "how deep are olympic pools"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:51:56.461599+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.579,
-        "title_gap": 0.8,
-        "title_coverage_mean": 0.575,
-        "strong_match_count": 4,
-        "results_examined": 20,
-        "median_views": 5557059.0,
-        "p90_views": 31535325,
-        "median_subscribers": 460000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 1155,
-        "published_last_365d": 2,
-        "interpretation": "4 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.8,
-          "incumbent_subs": 0.191,
-          "view_ceiling": 0.036,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:34.483241+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6109,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 80% lexical title gap, but median 5,557,059 views and 460,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
-      "pulled": {
-        "at": "2026-11-01T23:08:16+00:00",
-        "why": "swimming pools, not the deep sea: shared the words 'deep'/'pool' with the grown seed 'brine pool'",
-        "script_moved_to": "scripts/pulled/how-deep-are-pools.md"
-      },
-      "killed_by": "OFF_DOMAIN_RELEVANCE"
     },
     {
-      "slug": "how-to-get-brine-pool-exotic",
+      "slug": "what-is-mid-ocean-ridge",
       "domain": "deep-sea-ocean-science",
-      "title": "How to get brine pool exotic?",
-      "query": "how to get brine pool exotic",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.249 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.2493,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "exotic",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "how to get brine pool exotic"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T18:52:05.618713+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.533,
-        "title_gap": 0.8,
-        "title_coverage_mean": 0.463,
-        "strong_match_count": 4,
-        "results_examined": 20,
-        "median_views": 60596.5,
-        "p90_views": 444582,
-        "median_subscribers": 117500.0,
-        "channels_under_100k_subs": 9,
-        "median_age_days": 279,
-        "published_last_365d": 16,
-        "interpretation": "4 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.8,
-          "incumbent_subs": 0.276,
-          "view_ceiling": 0.317,
-          "staleness": 0.2
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T18:51:46.745897+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3645,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.80, demand 0.25, opportunity 0.53.",
-      "pulled": {
-        "at": "2026-11-01T23:08:16+00:00",
-        "why": "a video-game item query (get an 'exotic'): the demand is for the game, not ocean science",
-        "script_moved_to": "scripts/pulled/how-to-get-brine-pool-exotic.md"
-      },
-      "killed_by": "OFF_DOMAIN_RELEVANCE"
-    },
-    {
-      "slug": "how-do-scientists-know-the-layers-of-the-earth",
-      "domain": "deep-sea-ocean-science",
-      "title": "How do scientists know the layers of the earth?",
-      "query": "how do scientists know the layers of the earth",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.389 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3892,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "layer",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "how do scientists know the layers of the earth"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:21:03.131312+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.698,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.375,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 424697.0,
-        "p90_views": 2343360,
-        "median_subscribers": 1235000.0,
-        "channels_under_100k_subs": 5,
-        "median_age_days": 1469,
-        "published_last_365d": 1,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.13,
-          "view_ceiling": 0.196,
-          "staleness": 0.95
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-11-01T21:20:58.807468+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5212,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it.",
-      "pulled": {
-        "at": "2026-11-01T23:08:16+00:00",
-        "why": "solid-earth geology, outside 'Deep sea and ocean science'",
-        "script_moved_to": "scripts/pulled/how-do-scientists-know-the-layers-of-the-earth.md"
-      },
-      "killed_by": "OFF_DOMAIN_RELEVANCE"
-    }
-  ],
-  "unmeasured": [
-    {
+      "title": "What is mid ocean ridge?",
       "query": "what is mid ocean ridge",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.21,
-      "meets_floor_on_free_signals": true,
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.246 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
+      },
       "demand": {
+        "demand_index": 0.2465,
         "autocomplete_completions": 2,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
@@ -5346,64 +5716,141 @@
           "what is mid ocean ridge",
           "what is mid atlantic ridge"
         ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:21:02.211733+00:00"
+          "fetched_utc": "2026-11-07T11:20:21.767363+00:00"
         }
-      }
-    },
-    {
-      "query": "why greenland shark live so long",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.21,
-      "meets_floor_on_free_signals": true,
-      "demand": {
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "greenland",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why greenland shark live so long",
-          "why do greenland sharks live so long"
-        ],
+      },
+      "competition": {
+        "opportunity_score": 0.515,
+        "title_gap": 0.5,
+        "title_coverage_mean": 0.683,
+        "strong_match_count": 10,
+        "results_examined": 20,
+        "median_views": 29813.5,
+        "p90_views": 609729,
+        "median_subscribers": 1108.0,
+        "channels_under_100k_subs": 14,
+        "median_age_days": 696,
+        "published_last_365d": 7,
+        "interpretation": "10 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.5,
+          "incumbent_subs": 0.565,
+          "view_ceiling": 0.361,
+          "staleness": 0.65
+        },
         "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:21:04.032497+00:00"
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-07T11:20:19.653405+00:00"
         }
-      }
-    },
-    {
-      "query": "where to find gulper eel dredge",
-      "status": "no_competition_score",
-      "demand_without_competition": 0.1925,
-      "meets_floor_on_free_signals": true,
-      "demand": {
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "find",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "where to find gulper eel dredge"
-        ],
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-01T21:21:04.948705+00:00"
-        }
-      }
+      },
+      "combined": {
+        "combined_score": 0.3563,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.50, demand 0.25, opportunity 0.52."
     }
   ],
-  "parts_of_episodes": [],
-  "meets_floor_on_free_signals": [
-    "what is mid ocean ridge",
-    "why greenland shark live so long",
-    "where to find gulper eel dredge"
+  "killed": [
+    {
+      "slug": "where-brine-pool",
+      "domain": "deep-sea-ocean-science",
+      "title": "Where brine pool?",
+      "query": "where brine pool",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.368,
+          "demand_floor": 0.16,
+          "title_gap": 0.2,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 3,
+          "corpus_breadth": 1
+        },
+        "reason": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
+      "demand": {
+        "demand_index": 0.368,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "brine",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "where brine pool",
+          "where is brine pool in fisch roblox",
+          "where is the brine pool rod"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-11-07T11:20:22.716876+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.269,
+        "title_gap": 0.2,
+        "title_coverage_mean": 0.9,
+        "strong_match_count": 16,
+        "results_examined": 20,
+        "median_views": 173645.5,
+        "p90_views": 744221,
+        "median_subscribers": 371000.0,
+        "channels_under_100k_subs": 5,
+        "median_age_days": 532,
+        "published_last_365d": 8,
+        "interpretation": "16 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.2,
+          "incumbent_subs": 0.204,
+          "view_ceiling": 0.251,
+          "staleness": 0.6
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-11-07T11:20:20.824891+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3146,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 80% of the top 20 titles answer this question squarely (median 173,646 views, 371,000 subs). The definitive video exists."
+    }
   ],
-  "queue_length": 23
+  "unmeasured": [],
+  "parts_of_episodes": [],
+  "meets_floor_on_free_signals": [],
+  "queue_length": 24
 }
