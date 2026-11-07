@@ -1962,3 +1962,17 @@ past/hidden-future/invalid schedule cases. V32 also recognises only the same
 bounded `LONGFORM_DATING_PENDING` transition (otherwise an empty calendar
 still fails); the owner-hold test proves both branches. Existing competition
 record, calendar and cloud-upload proofs remain active.
+
+## 2026-11-07 — The launchd runner had no media; measured timings restored
+
+- **What broke:** since #300 the Mac jobs run in `~/GitHub/.hwk-runner`, a fresh clone holding no
+  wavs, renders or footage (all gitignored). The batch queued 81 episodes for re-narration,
+  `voice/narrate_all.py` dropped `seconds` from all 60 `audio/*/beats.json`, the backfill pushed
+  them (c69c59d), and main went red (no measured episode left for the caption guards).
+- **Fix:** the 60 manifests restored from c69c59d^ (only `seconds` differed); `narrate_all` refuses
+  with `AUDIO_MEDIA_ABSENT` (exit 3, nothing written) when a fully measured, unchanged episode has
+  no wav at all (`visuals/captions.measured_audio_absent`); `bin/loop-install-launchd.sh
+  --prepare-runner` clones every ignored media file the runner lacks with `cp -c` (APFS, no extra
+  disk), never secrets or runtimes.
+- Guard: `loop/tests/test_narration_refuses_without_media.py`. Negative proofs: dropping the call
+  fails it; the stripped manifests fail test_captions_self_heal; restored, green.

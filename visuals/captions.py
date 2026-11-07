@@ -181,6 +181,37 @@ def write_beats_manifest(path: Path, rows: list) -> bool:
     return True
 
 
+def measured_audio_absent(plans: dict, audio: Path | None = None) -> list[str]:
+    """Episodes whose manifest records a measured duration for EVERY beat of
+    an unchanged plan while not one of their wavs is on this machine.
+
+    That is never an episode that needs narrating: it is a checkout that never
+    received its media. CONFIRMED 2026-11-07: the launchd runner
+    (~/GitHub/.hwk-runner, a fresh clone since #300) held no wavs and no
+    renders, voice/narrate_all.py dropped `seconds` from all 60 manifests
+    because their wavs were "missing", the backfill pushed them (c69c59d), and
+    the cloud could no longer build a single caption track. narrate_all refuses
+    to run, touching nothing, while this list is non-empty."""
+    audio = audio or AUDIO
+    out = []
+    for slug, plan in plans.items():
+        mf = audio / slug / "beats.json"
+        try:
+            rows = json.loads(mf.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if not isinstance(rows, list) or not rows or len(rows) != len(plan):
+            continue
+        if not all(isinstance(r, dict) and "seconds" in r and
+                   r.get("narration") == b["narration"]
+                   for r, b in zip(rows, plan)):
+            continue
+        if not any((audio / slug / f"{i:04d}.wav").exists()
+                   for i in range(len(plan))):
+            out.append(slug)
+    return out
+
+
 def read_beats_manifest(slug: str) -> dict[int, dict]:
     p = beats_manifest_path(slug)
     if not p.exists():
