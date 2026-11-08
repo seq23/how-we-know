@@ -1,0 +1,957 @@
+[
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "A polycrystalline quartz block blocks clear sight, yet amorphous window glass stays invisible.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Glass is transparent because its electrons require roughly 9 electron-volts of energy to absorb light, while visible light photons carry only 1.65 to 3.1 electron-volts.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Because visible photons lack the energy to excite those electrons, they pass through without absorption.",
+    "args": {
+      "term": "OPTICAL BEHAVIOR",
+      "includes": [
+        "amorphous window glass"
+      ],
+      "excludes": [
+        "polycrystalline quartz block"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "Furthermore, because glass is an amorphous solid without internal grain boundaries, light moves straight through without scattering.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "Data published by NIST shows that standard window glass allows over ninety percent of visible light to pass straight through.",
+    "args": {
+      "term": "OPTICAL BEHAVIOR",
+      "includes": [
+        "amorphous window glass"
+      ],
+      "excludes": [
+        "polycrystalline quartz block"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "But this baseline figure raises a fundamental question about condensed matter physics.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "If glass is made of dense atoms packed closely together, why do light waves move through it as if the solid material were barely there at all?",
+    "args": {
+      "term": "OPTICAL BEHAVIOR",
+      "includes": [
+        "amorphous window glass"
+      ],
+      "excludes": [
+        "polycrystalline quartz block"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "To understand how light interacts with glass, material scientists at MIT DMSE look first at how atoms arrange themselves when a liquid cools into a solid.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "Most solid materials in nature, such as metals or minerals, form rigid geometric structures known as crystalline lattices.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "As a liquid metal or molten quartz cools slowly, microscopic individual crystals sprout in different orientations, creating internal interfaces where these distinct crystalline grains meet.",
+    "args": {
+      "title": "GLASS FORMATION",
+      "steps": [
+        [
+          "DISSOLVE SILICA MELT",
+          ""
+        ],
+        [
+          "COOL RAPIDLY TO PREVENT CRYSTALLIZATION",
+          ""
+        ],
+        [
+          "LOCK DISORDER IN AMORPHOUS SOLID",
+          ""
+        ]
+      ],
+      "note": "UNIFORM REFRACTIVE INDEX"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "When a wave of light encounters a boundary between two crystalline grains, the sudden change in atomic orientation shifts the speed and direction of the wave.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "The light reflects, refracts, and scatters in countless random directions, rendering the bulk material opaque or milky white.",
+    "args": {
+      "title": "GLASS FORMATION",
+      "steps": [
+        [
+          "DISSOLVE SILICA MELT",
+          ""
+        ],
+        [
+          "COOL RAPIDLY TO PREVENT CRYSTALLIZATION",
+          ""
+        ],
+        [
+          "LOCK DISORDER IN AMORPHOUS SOLID",
+          ""
+        ]
+      ],
+      "note": "UNIFORM REFRACTIVE INDEX"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "In contrast, researchers examine how to dissolve silica melt, cool rapidly to prevent crystallization, and lock disorder in amorphous solid form to produce a uniform refractive index.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "Glass behaves entirely differently because of the specific thermal pathway used during production.",
+    "args": {
+      "term": "AMORPHOUS SOLID",
+      "meaning": "A SOLID LACKING LONG-RANGE CRYSTALLINE ORDER",
+      "boundary": "UNIFORM MOLECULAR DENSITY",
+      "source": "ASTM INTERNATIONAL"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "When molten silicon dioxide is cooled rapidly, individual silicon and oxygen atoms cannot move quickly enough to organize into a repeating crystalline lattice.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "Instead, the liquid structure freezes in place. According to material classification definitions published by ASTM International, an amorphous solid is defined as a solid lacking long-range crystalline order while maintaining uniform molecular density.",
+    "args": {
+      "term": "AMORPHOUS SOLID",
+      "meaning": "A SOLID LACKING LONG-RANGE CRYSTALLINE ORDER",
+      "boundary": "UNIFORM MOLECULAR DENSITY",
+      "source": "ASTM INTERNATIONAL"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "Because an amorphous network contains no grain boundaries, phase interfaces, or micro-crystalline boundaries, light encounters a continuous atomic density throughout the material.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Crystalline order scatters light while amorphous networks let it pass",
+    "narration": "On spatial scales larger than the wavelength of visible light\u2014between 400 and 700 nanometers\u2014the refractive index remains constant across the entire volume, allowing visible light waves to propagate in straight lines without structural scattering.",
+    "args": {
+      "term": "AMORPHOUS SOLID",
+      "meaning": "A SOLID LACKING LONG-RANGE CRYSTALLINE ORDER",
+      "boundary": "UNIFORM MOLECULAR DENSITY",
+      "source": "ASTM INTERNATIONAL"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "Eliminating structural scattering explains why light is not bounced around inside glass, but it does not explain why light is not absorbed by the atoms themselves.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "Optical absorption depends on quantum mechanics and the behavior of subatomic electrons.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "In any solid material, electrons reside in specific allowed energy levels grouped into distinct bands.",
+    "args": {
+      "title": "PHOTON ABSORPTION BARRIER",
+      "stages": [
+        "INCIDENT VISIBLE PHOTON",
+        "INSUFFICIENT ENERGY FOR ELECTRON JUMP"
+      ],
+      "conclusion": "UNABSORBED OPTICAL TRANSMISSION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "The lower energy band occupied by bound valence electrons is called the valence band, while the higher energy band where electrons move freely is called the conduction band.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "The energy gap separating these two states is known as the electronic band gap.",
+    "args": {
+      "title": "PHOTON ABSORPTION BARRIER",
+      "stages": [
+        "INCIDENT VISIBLE PHOTON",
+        "INSUFFICIENT ENERGY FOR ELECTRON JUMP"
+      ],
+      "conclusion": "UNABSORBED OPTICAL TRANSMISSION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "When an incident visible photon hits the structure, if it brings insufficient energy for electron jump across the gap, the result is unabsorbed optical transmission through the material.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "Reference measurements established by NIST demonstrate that pure silica glass has an exceptionally wide electronic band gap comparison threshold of 9 electron-volts.",
+    "args": {
+      "title": "ELECTRON VOLT GAP COMPARISON",
+      "unit": "electron-volts",
+      "items": [
+        [
+          "VISIBLE LIGHT MINIMUM",
+          "1.65"
+        ],
+        [
+          "VISIBLE LIGHT MAXIMUM",
+          "3.1"
+        ],
+        [
+          "SILICA BAND GAP",
+          "9"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "By comparison, visible light occupies a much lower energy range on the electromagnetic spectrum.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "Optical physics data from NIST shows a visible light minimum of 1.65 electron-volts at the red end of the spectrum and a visible light maximum of 3.1 electron-volts at the violet end.",
+    "args": {
+      "title": "ELECTRON VOLT GAP COMPARISON",
+      "unit": "electron-volts",
+      "items": [
+        [
+          "VISIBLE LIGHT MINIMUM",
+          "1.65"
+        ],
+        [
+          "VISIBLE LIGHT MAXIMUM",
+          "3.1"
+        ],
+        [
+          "SILICA BAND GAP",
+          "9"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "Because even the highest-energy violet photon carries barely one-third of the 9 electron-volts required to jump the electronic band gap, visible light lacks the energy to excite electrons in pure silica.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 8.69,
+    "heading": "Electronic band gaps determine which light frequencies pass through",
+    "narration": "The electrons remain locked in their covalent valence bonds, and visible light photons travel directly through the atomic matrix without loss.",
+    "args": {
+      "title": "ELECTRON VOLT GAP COMPARISON",
+      "unit": "electron-volts",
+      "items": [
+        [
+          "VISIBLE LIGHT MINIMUM",
+          "1.65"
+        ],
+        [
+          "VISIBLE LIGHT MAXIMUM",
+          "3.1"
+        ],
+        [
+          "SILICA BAND GAP",
+          "9"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "I trust sources that show me how they know what they claim to know.",
+    "args": {
+      "title": "SPECTROPHOTOMETRIC BODIES",
+      "sources": [
+        [
+          "NIST",
+          "SPECTROPHOTOMETRIC TRANSMISSION SPECTRA"
+        ],
+        [
+          "IEEE",
+          "OPTICAL LOSS MEASUREMENTS"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The data, the method, the limitations, and preferably the original. When analyzing optical properties, researchers do not rely on theoretical models alone; they measure light transmission directly across the electromagnetic spectrum using calibrated spectrophotometers.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "By directing controlled beams of light through polished samples, spectrophotometric bodies like NIST measure spectrophotometric transmission spectra across UV, visible, and infrared wavelengths, while IEEE records optical loss measurements.",
+    "args": {
+      "title": "SPECTROPHOTOMETRIC BODIES",
+      "sources": [
+        [
+          "NIST",
+          "SPECTROPHOTOMETRIC TRANSMISSION SPECTRA"
+        ],
+        [
+          "IEEE",
+          "OPTICAL LOSS MEASUREMENTS"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "These empirical curves demonstrate that transparency is not an inherent property of matter in isolation, but a precise quantum match between incoming photon energy and available electronic energy transitions.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "While pure silica glass is completely clear across all visible wavelengths, ordinary window glass often exhibits a noticeable greenish tint, particularly when viewed edge-on.",
+    "args": {
+      "title": "SODA-LIME GLASS COMPOSITION",
+      "items": [
+        "+SILICON DIOXIDE SEVENTY PERCENT",
+        "+SODIUM OXIDE FIFTEEN PERCENT",
+        "+CALCIUM OXIDE NINE PERCENT"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "Standard window pane material is soda-lime glass, which according to soda-lime glass composition guidelines from USGS Minerals consists of silicon dioxide seventy percent, sodium oxide fifteen percent, and calcium oxide nine percent.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "During commercial glass manufacturing, raw materials such as sand contain trace amounts of iron oxide impurities.",
+    "args": {
+      "title": "SODA-LIME GLASS COMPOSITION",
+      "items": [
+        "+SILICON DIOXIDE SEVENTY PERCENT",
+        "+SODIUM OXIDE FIFTEEN PERCENT",
+        "+CALCIUM OXIDE NINE PERCENT"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "Even when present in concentrations of less than one-tenth of one percent, iron ions introduce intermediate energy levels inside the 9 electron-volt band gap of the silica host matrix.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "These iron-induced intermediate energy states allow the material to absorb specific visible wavelengths that pure silica would normally ignore.",
+    "args": {
+      "term": "GLASS PURITY TYPES",
+      "includes": [
+        "ultra-clear low-iron glass"
+      ],
+      "excludes": [
+        "standard green-edge soda-lime glass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "Specifically, divalent iron ions absorb light in the red and near-infrared regions around 700 nanometers.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "Because red photons are selectively absorbed as light passes through thick sections of glass, the light that successfully exits the material is shifted toward the blue and green portions of the spectrum.",
+    "args": {
+      "term": "GLASS PURITY TYPES",
+      "includes": [
+        "ultra-clear low-iron glass"
+      ],
+      "excludes": [
+        "standard green-edge soda-lime glass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "How glass purity types behave differs from standard green-edge soda-lime glass when produced as ultra-clear low-iron glass.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Chemical impurities alter energy absorption to create visible tinting",
+    "narration": "To manufacture ultra-clear glass, producers refine raw materials to reduce iron content below 0.01 percent by weight, restoring uniform transmission across all visible wavelengths.",
+    "args": {
+      "term": "GLASS PURITY TYPES",
+      "includes": [
+        "ultra-clear low-iron glass"
+      ],
+      "excludes": [
+        "standard green-edge soda-lime glass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 4.97,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "Glass is transparent only within a specific window of the electromagnetic spectrum.",
+    "args": {
+      "highlight": "ELECTROMAGNETIC TRANSMISSION REGIMES"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "If human vision operated in the ultraviolet or far infrared regions, standard glass windows would appear completely dark and opaque.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 4.97,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "In the short-wavelength ultraviolet spectrum, photon energy increases rapidly as wavelength decreases.",
+    "args": {
+      "highlight": "ELECTROMAGNETIC TRANSMISSION REGIMES"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "Photons with wavelengths below 200 nanometers carry energies above 6 electron-volts, approaching the electronic band gap threshold of silica.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 6.21,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "Electromagnetic transmission regimes transition across far ultraviolet absorption, visible light transparency, and far infrared opacity.",
+    "args": {
+      "highlight": "ELECTROMAGNETIC TRANSMISSION REGIMES"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "Optical data compiled by IEEE shows that standard glass absorbs ultraviolet light with wavelengths shorter than 350 nanometers, explaining why glass blocks sunburn-causing rays while remaining clear to visible light.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.28,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "At the long-wavelength end of the spectrum, in the far infrared region, glass becomes opaque through an infrared absorption mechanism.",
+    "args": {
+      "title": "INFRARED ABSORPTION MECHANISM",
+      "stages": [
+        "INCIDENT INFRARED PHOTON",
+        "RESONANCE WITH SILICON OXYGEN BOND",
+        "MOLECULAR VIBRATION HEAT LOSS"
+      ],
+      "conclusion": "FAR INFRARED OPACITY"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "An incident infrared photon carries very low energy\u2014well under 1 electron-volt\u2014which is far too weak to excite electrons across the 9 electron-volt band gap.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "However, infrared frequencies match the natural mechanical vibration frequencies of the covalent bonds connecting silicon and oxygen atoms.",
+    "args": {
+      "title": "INFRARED ABSORPTION MECHANISM",
+      "stages": [
+        "INCIDENT INFRARED PHOTON",
+        "RESONANCE WITH SILICON OXYGEN BOND",
+        "MOLECULAR VIBRATION HEAT LOSS"
+      ],
+      "conclusion": "FAR INFRARED OPACITY"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "An incident infrared photon creates resonance with silicon oxygen bond structures, leading to molecular vibration heat loss and resulting in far infrared opacity at wavelengths longer than 2500 nanometers.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Invisible spectrum limits reveal the boundaries of glass transparency",
+    "narration": "This mechanical absorption converts light energy into heat within the solid atomic network.",
+    "args": {
+      "title": "INFRARED ABSORPTION MECHANISM",
+      "stages": [
+        "INCIDENT INFRARED PHOTON",
+        "RESONANCE WITH SILICON OXYGEN BOND",
+        "MOLECULAR VIBRATION HEAT LOSS"
+      ],
+      "conclusion": "FAR INFRARED OPACITY"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "The upper boundary of transparency in solid matter is revealed by high purity optical fiber technology.",
+    "args": {
+      "title": "HIGH PURITY OPTICAL FIBER",
+      "steps": [
+        [
+          "SYNTHESIZE SYNTHETIC FUSED SILICA",
+          ""
+        ],
+        [
+          "ELIMINATE TRACE METAL IMPURITIES",
+          ""
+        ],
+        [
+          "DRAW HIGH PURITY FIBER",
+          ""
+        ]
+      ],
+      "note": "MINIMAL OPTICAL ATTENUATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "In standard window glass, light intensity decays after traveling through only a few meters because of scattering from microscopic density fluctuations and absorption by trace metal contaminants.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "Technical developments documented by Fraunhofer Institute and published by IEEE demonstrate how to synthesize synthetic fused silica using chemical vapor deposition, eliminate trace metal impurities, and draw high purity fiber with minimal optical attenuation.",
+    "args": {
+      "title": "HIGH PURITY OPTICAL FIBER",
+      "steps": [
+        [
+          "SYNTHESIZE SYNTHETIC FUSED SILICA",
+          ""
+        ],
+        [
+          "ELIMINATE TRACE METAL IMPURITIES",
+          ""
+        ],
+        [
+          "DRAW HIGH PURITY FIBER",
+          ""
+        ]
+      ],
+      "note": "MINIMAL OPTICAL ATTENUATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "By removing structural defects and chemical impurities down to parts-per-billion levels, engineered silica glass allows optical signals to travel across vast distances without signal degradation.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 5.79,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "In these specialized optical fibers, signal loss\u2014known as optical attenuation\u2014is reduced to extraordinary levels.",
+    "args": {
+      "value": "OPTICAL FIBER LOSS",
+      "unit": "decibels per kilometer",
+      "plus": "0.025",
+      "minus": null,
+      "confidence": "HIGH",
+      "caption": "IEEE AND NIST MEASURED DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "At an infrared wavelength of 1550 nanometers, optical fiber loss is measured at 0.175 decibels per kilometer with a range of plus or minus 0.025 decibels per kilometer, confirmed by IEEE and NIST measured data.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "At an attenuation rate of 0.20 decibels per kilometer, light can travel through 20 kilometers of solid glass before losing half of its original intensity.",
+    "args": {
+      "value": "OPTICAL FIBER LOSS",
+      "unit": "decibels per kilometer",
+      "plus": "0.025",
+      "minus": null,
+      "confidence": "HIGH",
+      "caption": "IEEE AND NIST MEASURED DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "The minute amount of remaining loss is not caused by impurity absorption, but by fundamental density fluctuations frozen into the glass matrix during cooling.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 7.45,
+    "heading": "Modern fiber optics push silica transparency to theoretical limits",
+    "narration": "This physical limit, known as Rayleigh scattering, represents the ultimate structural boundary of transparency in an amorphous solid.",
+    "args": {
+      "value": "OPTICAL FIBER LOSS",
+      "unit": "decibels per kilometer",
+      "plus": "0.025",
+      "minus": null,
+      "confidence": "HIGH",
+      "caption": "IEEE AND NIST MEASURED DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "In the visual illustrations, pay close attention to how photon energy levels line up against the electronic band gap of silica.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "When the visible light spectrum\u2014spanning from 1.65 to 3.1 electron-volts\u2014is visually compared to the 9 electron-volt threshold of pure silica, the fundamental reason for transparency becomes obvious.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Notice also how the atomic structural models contrast the disordered network of an amorphous solid with the ordered lattice of a crystal.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The complete absence of grain boundaries in the amorphous glass model is the visual key to understanding why light waves pass straight through without internal scattering or reflection.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "While spectrophotometric measurements and electronic band theory fully explain light transmission under normal illumination, existing evidence does not fully account for non-linear optical phenomena under extreme laser intensity.",
+    "args": {
+      "value": "HIGH INTENSITY LASER THRESHOLD",
+      "unit": "gigawatts per square centimeter",
+      "plus": "45",
+      "minus": null,
+      "confidence": "MODERATE",
+      "caption": "IEEE AND NIST HIGH POWER DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "When subjected to an intense high intensity laser threshold of 55 gigawatts per square centimeter with a range of plus or minus 45 gigawatts per square centimeter, based on IEEE and NIST high power data, silica glass can experience multi-photon absorption.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "This forces the material to absorb visible light even when single photon energies remain well below the 9 electron-volt band gap limit.",
+    "args": {
+      "value": "HIGH INTENSITY LASER THRESHOLD",
+      "unit": "gigawatts per square centimeter",
+      "plus": "45",
+      "minus": null,
+      "confidence": "MODERATE",
+      "caption": "IEEE AND NIST HIGH POWER DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "Additionally, sub-nanometer mapping of structural disorder in amorphous networks remains constrained by modern X-ray resolution limits.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Glass is transparent not because it is empty space, but because its electronic structure rejects visible photon energy and its amorphous network provides a continuous path.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Closing",
+    "narration": "Understanding how atomic disorder and band gap mechanics interact reveals how simple sand becomes an invisible solid.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  }
+]
