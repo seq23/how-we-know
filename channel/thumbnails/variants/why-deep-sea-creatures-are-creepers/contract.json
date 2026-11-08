@@ -1,0 +1,116 @@
+{
+  "slug": "why-deep-sea-creatures-are-creepers",
+  "title": "Why Are Deep Sea Animals Red?",
+  "layout": "question-photo-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/anglerfish__15767__20210801-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "anglerfish",
+      "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
+      "box": [
+        0,
+        11,
+        1900,
+        1080
+      ],
+      "crop": null,
+      "text": "Why Are Deep Sea Animals Red?",
+      "credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          860,
+          647
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          839,
+          11,
+          1269,
+          32
+        ]
+      }
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/anglerfish__13309__ex2206-dive06-anglerfish-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "anglerfish",
+      "sha256": "c3ef2a3531839b870e1b8f903bfbec918a1555d40cf0ed6177b702e07c1ec6f4",
+      "box": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "crop": null,
+      "text": "Why Are Deep Sea Animals Red?",
+      "credit": "NOAA Ocean Exploration, Voyage to the Ridge 2022",
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          860,
+          647
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          822,
+          11,
+          1269,
+          32
+        ]
+      }
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/anglerfish__30136__october2026-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "anglerfish",
+      "sha256": "39b08d0aef17557f1aef7b9c97e3759c2980d6c6cece83cf48bd73ec2ed73cae",
+      "box": [
+        569,
+        494,
+        1230,
+        866
+      ],
+      "crop": null,
+      "text": "Why Are Deep Sea Animals Red?",
+      "credit": "NOAA Ocean Exploration, Mountains in the Deep: Exploring the Central Pacific Basin",
+      "bboxes": {
+        "text": [
+          74,
+          504,
+          860,
+          647
+        ],
+        "mark": [
+          75,
+          46,
+          287,
+          60
+        ],
+        "credit": [
+          548,
+          11,
+          1270,
+          32
+        ]
+      }
+    }
+  }
+}
