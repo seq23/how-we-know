@@ -89,6 +89,9 @@ D.SHORTS_LEDGER.write_text(json.dumps({"published": [{"video_id": "S1"}]}))
 LT.STATE.write_text(json.dumps({"titles": {}}))
 
 
+ANALYTICS_URL = "https://youtubeanalytics.googleapis.com/v2/reports"
+
+
 class FakeAPI:
     def __init__(self, v1_views=120, v1_avp=22.0, curve=True):
         self.calls: list[tuple] = []
@@ -116,11 +119,21 @@ class FakeAPI:
                         {"elapsedVideoTimeRatio": 0.05, "audienceWatchRatio": 0.5},
                         {"elapsedVideoTimeRatio": 0.10, "audienceWatchRatio": 0.3}]
             return []
-        if dimensions == "video,insightTrafficSourceType":
-            return [{"video": "V1", "insightTrafficSourceType": "YT_SEARCH", "views": 70},
-                    {"video": "V1", "insightTrafficSourceType": "RELATED_VIDEO", "views": 30},
-                    {"video": "V1", "insightTrafficSourceType": "SUBSCRIBER", "views": 15},
-                    {"video": "V1", "insightTrafficSourceType": "EXT_URL", "views": 5}]
+        if "insightTrafficSourceType" in dimensions:
+            # Google's real answer to the undocumented multi-video shape
+            # (3-8 Nov 2026): HTTP 500 on every try. Only the documented
+            # one-video traffic report is answered.
+            if dimensions != "insightTrafficSourceType" or len(ids) != 1:
+                import io
+                import urllib.error
+                raise urllib.error.HTTPError(ANALYTICS_URL, 500, "unsupported",
+                                             {}, io.BytesIO(b""))
+            if ids != ["V1"]:
+                return []
+            return [{"insightTrafficSourceType": "YT_SEARCH", "views": 70},
+                    {"insightTrafficSourceType": "RELATED_VIDEO", "views": 30},
+                    {"insightTrafficSourceType": "SUBSCRIBER", "views": 15},
+                    {"insightTrafficSourceType": "EXT_URL", "views": 5}]
         rows = []
         if "V1" in ids:
             rows.append({"video": "V1", "views": self.v1_views,
