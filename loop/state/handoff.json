@@ -1,8 +1,11 @@
 {
-  "last_run_at": "2026-11-07T15:06:10+00:00",
+  "last_run_at": "2026-11-08T00:13:51+00:00",
   "lane": "handoff",
-  "deferred": [],
-  "resets_at": null,
+  "deferred": [
+    "-8gyi8oq3zU",
+    "xQHrZplcmI8"
+  ],
+  "resets_at": "2026-11-08T00:00:00-08:00",
   "notes": [
     "what-is-carbon-fiber-made-of: no episode in the ledger for this Short (BFIuGqIvRow); nothing to hand off to",
     "how-are-microchips-designed: no episode in the ledger for this Short (J16Aj8L0e98); nothing to hand off to",
@@ -18,5 +21,5 @@
     "why-does-meat-need-to-rest-after-cooking: no episode in the ledger for this Short (gzfS8409lV8); nothing to hand off to",
     "does-damascus-steel-rust: no episode in the ledger for this Short (6GR-Ie3Sxm4); nothing to hand off to"
   ],
-  "units_spent": 54
+  "units_spent": 4
 }
