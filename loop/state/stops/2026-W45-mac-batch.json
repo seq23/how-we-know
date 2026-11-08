@@ -1,0 +1,16 @@
+{
+  "stage": "mac-batch",
+  "week": "2026-W45",
+  "at": "2026-11-08T15:04:30+00:00",
+  "code": "BATCH_NIGHT_INCOMPLETE",
+  "message": "The Mac batch for the night of 2026-11-07 was interrupted at captions/- (last unit 2026-11-08T08:52:41) and had not resumed by 09:00. Tonight's 23:00 batch continues it; every step skips what is already on disk.",
+  "detail": null,
+  "unblock": "Nothing to do: tonight's batch resumes it. If it repeats, read ~/Library/Logs/how-we-know/batch.log.",
+  "disposition": "self_resolving",
+  "disposition_why": "The Mac's nightly batch was interrupted (a reboot, a battery run flat, a kill) and com.howweknow.batch-resume had not finished it by 09:00, when the day's cloud lanes own the Mac's outputs. Nothing is lost: every step skips what is on disk, so tonight's 23:00 batch continues from where the night stopped (loop/batch_progress.py, bin/batch-session.sh RESUME ON WAKE). Raised once per interrupted night, from the resume agent's first run after 09:00. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": []
+}
