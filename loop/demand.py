@@ -349,11 +349,19 @@ def pull(api, doc: dict | None = None, day: date | None = None) -> dict:
     life = {x["video"]: x for x in api.report(CORE, "video", public, LIFETIME_START)}
     traffic: dict[str, dict] = {vid: {"browse": 0, "suggested": 0, "search": 0,
                                       "external": 0, "other": 0} for vid in public}
-    for x in api.report("views", "video,insightTrafficSourceType", public,
-                        LIFETIME_START):
-        b = TRAFFIC.get(x.get("insightTrafficSourceType"), "other")
-        if x.get("video") in traffic:
-            traffic[x["video"]][b] += int(x.get("views") or 0)
+    # ONE VIDEO PER CALL. `video,insightTrafficSourceType` over a video list
+    # is not a documented Analytics report: Google answered it with HTTP 500
+    # on every try from Actions (3-8 Nov 2026, 6 runs lost; the stop's
+    # failing call named it). The documented traffic-source report is
+    # dimensions=insightTrafficSourceType filtered to one video. A video
+    # with no views has no traffic to split, so it costs no call.
+    for vid in public:
+        if not int((life.get(vid) or {}).get("views") or 0):
+            continue
+        for x in api.report("views", "insightTrafficSourceType", [vid],
+                            LIFETIME_START):
+            b = TRAFFIC.get(x.get("insightTrafficSourceType"), "other")
+            traffic[vid][b] += int(x.get("views") or 0)
     windows: dict[str, list[str]] = {}
     for vid in public:
         v = vids[vid]
