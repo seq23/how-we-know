@@ -200,7 +200,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-04T19:46:12+00:00",
-      "verified_at": "2026-10-24T17:49:14+00:00"
+      "verified_at": "2026-11-08T16:02:15+00:00"
     },
     "YuZxDiNUw4w": {
       "slug": "how-are-microchips-made",
@@ -616,7 +616,8 @@
       "cues": 188,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-11-07T16:01:55+00:00"
+      "recorded_at": "2026-11-07T16:01:55+00:00",
+      "verified_at": "2026-11-08T16:02:15+00:00"
     },
     "TN0MquikEPM": {
       "slug": "what-is-hydrothermal-vents",
@@ -626,28 +627,51 @@
       "cues": 168,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-11-07T16:01:56+00:00"
+      "recorded_at": "2026-11-07T16:01:56+00:00",
+      "verified_at": "2026-11-08T16:02:15+00:00"
+    },
+    "bjSlVIIDPsE": {
+      "slug": "how-deep-can-whales-dive",
+      "caption_id": "AUieDaaWcTutOnZzp1-L3GiJ-qLzDGeUWlZSrFi9Ltq9pQuvzHazMO2_",
+      "language": "en",
+      "srt_sha256": "f89d476bef9f85d4de7f96a7c21900ca881e3bf450eafe44dd84a00ec78de0b5",
+      "cues": 160,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-08T16:02:15+00:00"
     }
   },
   "blocked": {
-    "bjSlVIIDPsE": {
-      "slug": "how-deep-can-whales-dive",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-11-07T16:01:54+00:00",
-      "sha256": "f89d476bef9f85d4de7f96a7c21900ca881e3bf450eafe44dd84a00ec78de0b5"
-    },
     "N1mpUttSNd8": {
       "slug": "why-deep-sea-creatures-are-creepers",
       "reason": "QUOTA_DEFERRED",
       "since": "2026-11-07T16:01:54+00:00",
       "sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509"
+    },
+    "VUeFHBIXoRc": {
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-11-08T16:02:14+00:00",
+      "sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e"
+    },
+    "HWJ16RxXhH0": {
+      "slug": "is-damascus-steel-better",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-11-08T16:02:14+00:00",
+      "sha256": "981b998e45883b351e759e93d63f35e9377a0313fb0f051e158925e1bfb6ac95"
+    },
+    "OSEN-Uv7A0I": {
+      "slug": "does-damascus-steel-rust",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-11-08T16:02:14+00:00",
+      "sha256": "8fff824e6f0637d2b79a2b8207aa64e593d2f78f3ef037ec7c85ecac51096dc4"
     }
   },
-  "updated": "2026-11-07T16:25:51+00:00",
+  "updated": "2026-11-08T16:02:15+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-07T16:01:56+00:00",
+    "at": "2026-11-08T16:02:15+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
