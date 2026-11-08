@@ -114,6 +114,23 @@ RETRY_STATUSES = (429, 500, 502, 503, 504)
 RETRY_WAITS_S = (2, 8, 30)
 
 
+def describe_call(url: str) -> str:
+    """A failing Google call, named well enough to replay: endpoint plus every
+    query parameter except the video list (only its size). The OAuth token is
+    in a header, never the URL, so nothing secret is printed."""
+    import urllib.parse
+    base, _, q = url.partition("?")
+    parts = []
+    for k, v in urllib.parse.parse_qsl(q):
+        if k == "filters" and v.startswith("video=="):
+            head, sep, rest = v.partition(";")
+            ids = head[7:].split(",")
+            if len(ids) > 1:
+                v = f"video==<{len(ids)} ids>" + (sep + rest)
+        parts.append(f"{k}={v}")
+    return base + (" " + " ".join(parts) if parts else "")
+
+
 def urlopen_retry(req, timeout: float = 60, waits=RETRY_WAITS_S, sleep=None):
     """`urllib.request.urlopen(req)` read to bytes, retrying a transient
     HTTP status after each wait in `waits`. The last error is raised."""
@@ -128,7 +145,7 @@ def urlopen_retry(req, timeout: float = 60, waits=RETRY_WAITS_S, sleep=None):
         except urllib.error.HTTPError as e:
             if e.code not in RETRY_STATUSES or wait is None:
                 raise
-            print(f"  [retry] HTTP {e.code} from {req.full_url.split('?')[0]}; "
+            print(f"  [retry] HTTP {e.code} from {describe_call(req.full_url)}; "
                   f"again in {wait}s", file=sys.stderr)
             sleep(wait)
 
