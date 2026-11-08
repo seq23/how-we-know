@@ -104,6 +104,35 @@ def annotation(level: str, title: str, message: str) -> str:
 
 # ---------------------------------------------------------------- primitives
 
+# Google's Analytics/Reporting front ends answer a scattered 500/503 on
+# individual calls (demand-pull 2-8 Nov 2026: 5 of 7 daily runs lost to ONE
+# such answer among ~70 calls, while the same calls replayed clean). A pull
+# is many calls, so one transient answer must not throw away the day: each
+# read is retried a bounded number of times. 4xx is never retried - it is
+# the request's fault and retrying hides it.
+RETRY_STATUSES = (429, 500, 502, 503, 504)
+RETRY_WAITS_S = (2, 8, 30)
+
+
+def urlopen_retry(req, timeout: float = 60, waits=RETRY_WAITS_S, sleep=None):
+    """`urllib.request.urlopen(req)` read to bytes, retrying a transient
+    HTTP status after each wait in `waits`. The last error is raised."""
+    import time
+    import urllib.error
+    import urllib.request
+    sleep = sleep or time.sleep
+    for wait in (*waits, None):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code not in RETRY_STATUSES or wait is None:
+                raise
+            print(f"  [retry] HTTP {e.code} from {req.full_url.split('?')[0]}; "
+                  f"again in {wait}s", file=sys.stderr)
+            sleep(wait)
+
+
 def now() -> str:
     return _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds")
 

@@ -30,8 +30,11 @@ class Reporting:
         req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
                                      headers={'Authorization': f'Bearer {self.token}',
                                               'Content-Type': 'application/json'})
-        with urllib.request.urlopen(req, timeout=60) as response:
-            return response.read().decode('utf-8-sig')
+        if body:  # creating a job is not idempotent: never re-sent
+            with urllib.request.urlopen(req, timeout=60) as response:
+                return response.read().decode('utf-8-sig')
+        from common import urlopen_retry
+        return urlopen_retry(req, timeout=60).decode('utf-8-sig')
 
     def items(self, path, key):
         page, out = '', []
