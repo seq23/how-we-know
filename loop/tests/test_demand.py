@@ -365,6 +365,70 @@ check(bool(D.problems(d, good_hist)), "NEGATIVE (email number not in snapshot) m
 path.write_text(md)
 check(D.problems(d, good_hist) == [], "restored books pass again")
 
+# ------------------------------------------- transient 5xx is retried
+# 2-8 Nov 2026: one scattered HTTP 500 among ~70 calls stopped the whole
+# pull on 5 of 7 days. Each read is retried; a 4xx and a job creation never.
+print("── transient 5xx: a read is retried, a 4xx and a POST are not")
+import io as _io
+import time as _time
+import urllib.error as _ue
+import urllib.request as _ur
+import common as _C
+import reach as _R
+
+
+class _Resp(_io.BytesIO):
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+
+def _scripted(codes):
+    seen = []
+
+    def fake(req, timeout=None):
+        seen.append(req.full_url)
+        code = codes.pop(0) if codes else 200
+        if code != 200:
+            raise _ue.HTTPError(req.full_url, code, "x", {}, _io.BytesIO(b""))
+        return _Resp(b'{"columnHeaders": [{"name": "video"}], "rows": [["V1"]]}')
+    return fake, seen
+
+
+_real_open, _real_sleep = _ur.urlopen, _time.sleep
+_time.sleep = lambda s: None
+try:
+    _ur.urlopen, seen = _scripted([500, 503])
+    rows = D.Analytics("t").report("views", "video", ["V1"], "2020-01-01")
+    check(rows == [{"video": "V1"}] and len(seen) == 3,
+          f"two 5xx then 200 must yield the rows on the third call: {rows} {len(seen)}")
+    _ur.urlopen, seen = _scripted([500] * 10)
+    try:
+        D.Analytics("t").report("views", "video", ["V1"], "2020-01-01")
+        check(False, "a 5xx on every try must still raise")
+    except _ue.HTTPError as e:
+        check(e.code == 500 and len(seen) == len(_C.RETRY_WAITS_S) + 1,
+              f"persistent 5xx raises after a BOUNDED number of tries: {len(seen)}")
+    _ur.urlopen, seen = _scripted([400])
+    try:
+        D.Analytics("t").report("views", "video", ["V1"], "2020-01-01")
+        check(False, "a 4xx must raise")
+    except _ue.HTTPError as e:
+        check(e.code == 400 and len(seen) == 1, f"a 4xx is never retried: {len(seen)}")
+    _ur.urlopen, seen = _scripted([500])
+    try:
+        _R.Reporting("t").create()
+        check(False, "a 5xx on job creation must raise")
+    except _ue.HTTPError:
+        check(len(seen) == 1, f"creating a reach job is never re-sent: {len(seen)}")
+    _ur.urlopen, seen = _scripted([502])
+    _R.Reporting("t").request("https://youtubereporting.googleapis.com/v1/jobs")
+    check(len(seen) == 2, f"a reach READ is retried: {len(seen)}")
+finally:
+    _ur.urlopen, _time.sleep = _real_open, _real_sleep
+
 # the validator wiring itself
 src = (LOOP / "validate.py").read_text()
 check("v70_demand_verdict()" in src and "def v70_demand_verdict" in src,

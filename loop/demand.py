@@ -64,7 +64,7 @@ LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
-from common import Stage, config, now, read_json, week_id, write_json  # noqa: E402
+from common import Stage, config, now, read_json, urlopen_retry, week_id, write_json  # noqa: E402
 
 SNAPSHOT = LOOP / "state" / "demand.json"
 HISTORY = LOOP / "state" / "demand_history.jsonl"
@@ -228,8 +228,7 @@ class Analytics:
         req = urllib.request.Request(
             f"{url}?{urllib.parse.urlencode(params)}",
             headers={"Authorization": f"Bearer {self.token}"})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            return json.loads(r.read())
+        return json.loads(urlopen_retry(req, timeout=60))
 
     def report(self, metrics: str, dimensions: str, ids: list[str],
                start: str, extra_filter: str = "") -> list[dict]:
@@ -1050,6 +1049,9 @@ def cmd_pull(dry_run: bool, api=None, yt=None, propose=None) -> int:
             st.named_stop(f"ANALYTICS_HTTP_{e.code}",
                           f"the YouTube API returned HTTP {e.code}; today is "
                           f"unmeasured and tomorrow re-reads the same numbers",
+                          detail=f"failing call: {(e.geturl() or '').split('?')[0]} "
+                                 f"(after {len(urlopen_retry.__defaults__[1])} retries "
+                                 f"when transient)",
                           unblock="Usually transient. Two weeks running means "
                                   "the project or quota needs looking at.")
         except ValueError as e:
