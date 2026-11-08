@@ -12,7 +12,10 @@
      the REAL one (rounded down), and the upload is private;
   e. the Mac night with no whisper sample is the GREEN owner_action stop
      WHISPER_SAMPLE_MISSING that names the exact place to drop the file -
-     and the same night with a sample present goes past that stop.
+     and the same night with a sample present goes past that stop;
+  b2. a script without the opening promise (the real length, whispered, for
+     sleep, a whole thought, at most ~10 s) fails the check;
+  d2. the kit makes 3 thumbnail variants, each 1280x720, dark, distinct.
 
 Every committed script in scripts/whisper/ must pass (zero scripts = fail).
 """
@@ -95,6 +98,23 @@ with tempfile.TemporaryDirectory() as td:
     twin = write("twin", segs)
     broken("copy", segs, "NOT_DISTINCT", others=[twin])
 
+    # the opening promise (owner, 8 Nov 2026): a script that starts mid-thought,
+    # without the plain promise naming what it is and its real length, fails
+    good_open = WL.parse(good)["segments"][0]["paragraphs"][0]
+    check(not [x for x in base if x.startswith("OPENING")], f"(b) a script with the promise fails: {base[:3]}")
+    for label, swap in (("no-opening", None),
+                        ("wrong-length", good_open.replace("Two hours", "Three hours")),
+                        ("not-named", "Two hours of the deep sea."),
+                        ("too-long", good_open + " " + " ".join(["The water is calm and dark."] * 4))):
+        txt = good.read_text()
+        txt = txt.replace(good_open + "\n\n", "" if swap is None else swap + "\n\n", 1)
+        bad = td / f"{label}.md"
+        bad.write_text(txt)
+        probs = WL.script_problems(bad, others=[])
+        check(any(x.startswith("OPENING") for x in probs), f"(b) {label}: the opening rule is not enforced: {probs[:3]}")
+    check(WL.spoken_length(2 * 3600 + 4 * 60) == "two hours" and WL.spoken_length(48 * 60) == "forty-five minutes",
+          "(b) the promise's length is not the real one, rounded down")
+
 # -- c. affirmations guardrail -----------------------------------------------
 for bad in ("You will get $10,000 by Friday.", "Your ex will text you tonight.",
             "My body heals itself as I sleep."):
@@ -121,6 +141,18 @@ check(any("LENGTH_NOT_REAL" in x for x in WL.meta_problems(meta, 3 * 3600 + 5, c
 pub = json.loads(json.dumps(meta))
 pub["body"]["status"]["privacyStatus"] = "public"
 check(any("PRIVATE" in x for x in WL.meta_problems(pub, secs, c)), "(d) a public upload passes")
+
+# -- d2. three thumbnail variants (owner, 8 Nov 2026), each in the brand ---
+with tempfile.TemporaryDirectory() as td:
+    ep = WL.parse(WL.SCRIPTS / "the-deep-ocean-at-night.md")
+    thumbs = WL.thumbnails(ep, WL.estimate_seconds(ep, c), Path(td), c)
+    check(len(thumbs) == 3 and thumbs[0].name == "thumbnail.png",
+          f"(d2) the kit does not make 3 variants with A as thumbnail.png: {[t.name for t in thumbs]}")
+    check(not WL.thumbnail_problems(thumbs, c), f"(d2) a variant breaks the brand: {WL.thumbnail_problems(thumbs, c)}")
+    check(any("THUMB_SAME" in x for x in WL.thumbnail_problems([thumbs[0]] * 3, c)),
+          "(d2) three copies of one picture pass as three variants")
+    check(any("THUMB_VARIANTS" in x for x in WL.thumbnail_problems(thumbs[:1], c)),
+          "(d2) one thumbnail passes as three variants")
 
 # -- e. the Mac night ---------------------------------------------------------
 with tempfile.TemporaryDirectory() as td:

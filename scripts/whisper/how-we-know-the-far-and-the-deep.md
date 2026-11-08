@@ -13,6 +13,8 @@
 
 ## Segment 1 · how-do-scientists-know-about-other-galaxies
 
+Two hours of how we learned about far stars and the deep sea, whispered slowly, to help you fall asleep.
+
 Now, let your mind drift down a little further, into the quiet calm of the evening. Far away across the velvet dark rests the Andromeda galaxy, glowing like a soft cloud. It is more than two million light-years away from our quiet home on Earth. This distance was carefully measured by space agencies in the United States and Europe.
 
 The measurement comes from observing a very special kind of pulsing star. Its brightness rises and falls at a rate tied directly to its true inner light. The calculated distance is not a simple guess made in the dark. Watchers compare how bright the star looks from Earth to how bright it truly is.

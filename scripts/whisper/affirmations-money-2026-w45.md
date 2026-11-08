@@ -13,6 +13,8 @@
 
 ## Segment 1 · movement-1
 
+Forty-five minutes of money affirmations, whispered slowly, to help you fall asleep.
+
 I breathe in the quiet air of this safe room.
 
 My shoulders drop away from my ears.

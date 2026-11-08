@@ -184,6 +184,7 @@ def _commit(out: Path, text: str) -> Path:
     tmp.write_text(text)
     scale = WL.fit_pause_scale(WL.parse(tmp))
     text = text.replace("**Written:**", f"**Pause scale:** {scale}\n**Written:**", 1)
+    text = WL.add_opening(text, out.stem)                    # the promise names the real length
     est = WL.estimate_seconds(WL.parse(tmp) | {"meta": {**WL.parse(tmp)["meta"], "pause scale": str(scale)}})
     text = re.sub(r"\*\*Estimated length:\*\* [^(]*", f"**Estimated length:** {WL.fmt_len(est)} ", text, 1)
     tmp.write_text(text)

@@ -5,13 +5,15 @@
 **Status:** READY FOR VOICE
 **Sources:** 01-why-deep-sea-creatures-look-so-weird, 04-why-deep-sea-creatures-are-so-scary, 07-why-deep-sea-creatures-get-creepier-deeper, 09-what-is-the-scariest-deep-sea-creature, 08-what-creatures-live-in-the-deep-sea
 **Named:** bioluminescence
-**Estimated length:** 2 h 04 min (speech at the configured pace plus the pauses added in code)
+**Estimated length:** 2 h 05 min (speech at the configured pace plus the pauses added in code)
 **Pause scale:** 2.07
 **Written:** 2026-11-06
 **Topic:** deep sea creature science
 **Models:** gemini/gemini-3.5-flash-lite, gemini/gemini-3.8-flash, nvidia/nemotron-3-ultra-550b-a55b:free, nvidia/nemotron-3.5-super-vl:free
 
 ## Segment 1 · 01-why-deep-sea-creatures-look-so-weird
+
+Two hours of the strange animals of the deep sea, whispered slowly, to help you fall asleep.
 
 Now, let your mind drift down a little further, into the cool ocean waters. You might picture a photograph of a strange fish from the deep. That fish is not deformed or broken. The photograph shows what happens when an animal built for darkness meets our daylight. It meets our bright camera angle and our idea of what a normal body should look like.
 
