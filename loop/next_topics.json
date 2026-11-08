@@ -1,6 +1,6 @@
 {
   "week": "2026-W45",
-  "generated": "2026-11-06T23:12:17+00:00",
+  "generated": "2026-11-08T11:05:59+00:00",
   "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
@@ -21,20 +21,6 @@
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
-      "slug": "what-is-hydrothermal-vents",
-      "question": "What is a hydrothermal vent?",
-      "script": "scripts/what-is-hydrothermal-vents.md",
-      "source": "authored-inventory",
-      "publish_rank": 21,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-077",
-      "pov_line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it.",
-      "pov_tag": "earth",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
       "slug": "how-are-microchips-designed",
       "question": "How are microchips designed?",
       "script": "scripts/how-are-microchips-designed.md",
@@ -46,34 +32,6 @@
       "pov_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
       "pov_tag": "evidence",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "how-deep-can-whales-dive",
-      "question": "How deep can whales dive?",
-      "script": "scripts/how-deep-can-whales-dive.md",
-      "source": "authored-inventory",
-      "publish_rank": 23,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-085",
-      "pov_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
-      "pov_tag": "instruments",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "why-deep-sea-creatures-are-creepers",
-      "question": "Why Are Deep Sea Creatures Creepers?",
-      "script": "scripts/why-deep-sea-creatures-are-creepers.md",
-      "source": "authored-inventory",
-      "publish_rank": 24,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-002",
-      "pov_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
-      "pov_tag": "scale",
-      "pov_tier": "specific",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
@@ -89,16 +47,58 @@
       "pov_tag": "unknown",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "is-damascus-steel-better",
+      "question": "Is Damascus steel better?",
+      "script": "scripts/is-damascus-steel-better.md",
+      "source": "authored-inventory",
+      "publish_rank": 27,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-042",
+      "pov_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
+      "pov_tag": "evidence",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "are-sea-pigs-real",
+      "question": "Are sea pigs real?",
+      "script": "scripts/are-sea-pigs-real.md",
+      "source": "authored-inventory",
+      "publish_rank": 28,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-048",
+      "pov_line": "What was actually measured? By whom? Over what period? How big was the sample?",
+      "pov_tag": "numbers",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "does-damascus-steel-rust",
+      "question": "Does Damascus steel rust?",
+      "script": "scripts/does-damascus-steel-rust.md",
+      "source": "authored-inventory",
+      "publish_rank": 29,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-064",
+      "pov_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+      "pov_tag": "failure",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     }
   ],
   "to_author": 0,
-  "inventory_remaining": 28,
+  "inventory_remaining": 27,
   "cadence": {
     "videos_per_week": 6,
     "why": "configured default (6/week)"
   },
   "publish_order": {
-    "ranked": 34,
+    "ranked": 33,
     "unranked": 7,
     "unranked_slugs": [
       "how-deep-mariana-trench",
@@ -116,9 +116,9 @@
       "17-what-is-a-yeti-crab"
     ],
     "queued_despite_kill": [],
-    "order_entries": 90,
+    "order_entries": 91,
     "source": "research/publish_order.json",
-    "generated_at": "2026-11-01T21:11:20.622229+00:00",
+    "generated_at": "2026-11-07T11:09:56.922213+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -126,31 +126,31 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 45,
-    "publishable": 33,
-    "scheduled_not_yet_aired": 3,
+    "unpublished_scripts": 44,
+    "publishable": 32,
+    "scheduled_not_yet_aired": 5,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 6.0,
+    "weeks_remaining": 6.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 10,
-        "scheduled_ahead": 2,
-        "weeks": 6.0,
+        "queued": 11,
+        "scheduled_ahead": 5,
+        "weeks": 8.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (10 queued, 2 already dated)"
+        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 20,
-        "scheduled_ahead": 1,
-        "weeks": 10.5,
+        "scheduled_ahead": 0,
+        "weeks": 10.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 10.5 week(s) at 2/week (20 queued, 1 already dated)"
+        "message": "materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
@@ -163,7 +163,7 @@
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "6.0 weeks of queue at 6/week (33 publishable of 45 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (10 queued, 2 already dated); materials-and-manufacturing: 10.5 week(s) at 2/week (20 queued, 1 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "6.2 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated); materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -694,8 +694,8 @@
     }
   ],
   "candidate_skips": {
-    "already_published": 5,
-    "already_authored": 3,
+    "already_published": 7,
+    "already_authored": 2,
     "excluded": 15
   },
   "override": {
