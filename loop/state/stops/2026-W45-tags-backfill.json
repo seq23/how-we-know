@@ -1,9 +1,9 @@
 {
   "stage": "tags-backfill",
   "week": "2026-W45",
-  "at": "2026-11-07T16:25:56+00:00",
+  "at": "2026-11-08T16:10:38+00:00",
   "code": "QUOTA_DEFERRED",
-  "message": "15 video(s) held for quota: today's remaining units are kept for the uploads (quota day 2026-11-07 (PT): spent 6155 of 10000, 3445 usable after 400 headroom; lanes: captions 1001, cloud-upload 5100, handoff 54)",
+  "message": "15 video(s) held for quota: today's remaining units are kept for the uploads (quota day 2026-11-08 (PT): spent 6160 of 10000, 3440 usable after 400 headroom; lanes: captions 601, cloud-upload 5100, handoff 204, localize 255)",
   "detail": {
     "deferred": [
       "10-what-is-the-deepest-part-of-the-ocean",
@@ -22,12 +22,12 @@
       "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
       "13-how-does-bioluminescence-work-in-the-deep-sea"
     ],
-    "resets_at": "2026-11-08T00:00:00-08:00"
+    "resets_at": "2026-11-09T00:00:00-08:00"
   },
   "unblock": "Nothing to do; the allowance resets at midnight Pacific and this lane runs daily.",
   "disposition": "self_resolving",
-  "disposition_why": "The lane deliberately left the day's remaining YouTube units for the upload it is protecting. It takes fewer per run and finishes over several days; the allowance resets at midnight Pacific. (run 1 of at most 5 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "The lane deliberately left the day's remaining YouTube units for the upload it is protecting. It takes fewer per run and finishes over several days; the allowance resets at midnight Pacific. (run 2 of at most 5 before this escalates to a human.)",
+  "consecutive": 2,
   "held_items": [
     "01-why-deep-sea-creatures-look-so-weird",
     "04-why-deep-sea-creatures-are-so-scary",
