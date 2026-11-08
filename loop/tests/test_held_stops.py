@@ -367,6 +367,17 @@ def b_a_class_not_an_exemption():
 
 # ----------------------------------------------------------------- section C
 
+GNU_STAT = """import os, sys
+a = sys.argv[1:]
+if a[:1] == ["-f"]:
+    print("  File: " + a[-1]); print("    ID: 0 Namelen: 255 Type: ext2/ext3")
+    sys.exit(0)
+if a[:2] == ["-c", "%Y"]:
+    print(int(os.stat(a[2]).st_mtime)); sys.exit(0)
+sys.exit(2)
+"""
+
+
 def c_the_wrapper():
     """bin/loop-stage.sh: label, issue number written back, then green."""
     fails, examined = [], 0
@@ -488,6 +499,23 @@ def c_the_wrapper():
         _, _, calls = stage(GH_OPEN_ISSUES="4242")
         if "issue close" in calls:
             fails.append("a stage that took a stop closed its own tracker")
+        # 5. THE SAME ON A LINUX RUNNER. GNU `stat -f` is "filesystem status":
+        #    it EXITS 0 and prints "  File: ...", so a BSD-first
+        #    `stat -f %m || stat -c %Y` never reaches the fallback. CONFIRMED
+        #    on shorts-cloud run 42428599101 (2026-11-08): "line 370: [:
+        #    File: ..." and every stopped cloud run counted as clean.
+        examined += 1
+        gnu = os.path.join(td, "gnubin")
+        os.makedirs(gnu, exist_ok=True)
+        with open(os.path.join(gnu, "stat"), "w") as fh:
+            fh.write(f"#!{PY}\n" + GNU_STAT)
+        os.chmod(os.path.join(gnu, "stat"), 0o755)
+        _, out, calls = stage(GH_OPEN_ISSUES="4242",
+                              PATH=gnu + os.pathsep + env0["PATH"])
+        if "issue close" in calls or "[: " in out:
+            fails.append("under GNU stat (the Actions runner) a stage that "
+                         "took a stop closed its own tracker or broke the "
+                         f"stop-time test:\n{out[-400:]}")
 
     return fails, examined
 

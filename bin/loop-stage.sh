@@ -367,7 +367,9 @@ fi
 # run - a held or self-resolving stop also exits 0, and closing its tracker
 # would page again (loop/held.py).
 STOPPED_THIS_RUN=""
-if [ -f "$STOPFILE" ] && [ "$(stat -f %m "$STOPFILE" 2>/dev/null || stat -c %Y "$STOPFILE")" -ge "$STAGE_START" ]; then
+# GNU stat first: on Linux `stat -f` is filesystem status and exits 0, so a
+# BSD-first chain never falls back (loop/tests/test_held_stops.py section C.5).
+if [ -f "$STOPFILE" ] && [ "$(stat -c %Y "$STOPFILE" 2>/dev/null || stat -f %m "$STOPFILE")" -ge "$STAGE_START" ]; then
   STOPPED_THIS_RUN=1
 fi
 if [ "$RC" -eq 0 ] && [ -z "$STOPPED_THIS_RUN" ] && command -v gh >/dev/null 2>&1 \
