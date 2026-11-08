@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T13:07:19+00:00",
+  "generated": "2026-11-08T14:52:58+00:00",
   "domain": "any",
   "policy": "Thumbnail and Short-opening stills: public domain or CC0 (Commons, imagery.pd_licence_ok), or Pixabay / Pexels / Mixkit under their free licences (owner ruling 2 Nov 2026), checked by research/food_footage.record_problems with the licence wording stored under licences/. Anything else, CC-BY included, is refused.",
   "rights_fields_required": [
@@ -10,7 +10,7 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 34,
+  "asset_count": 35,
   "subjects_total": 1,
   "subjects_covered": [
     "auto-15-how-do-people-reach-challenger-deep",
@@ -38,6 +38,7 @@
     "auto-what-does-a-sea-pig-look-like",
     "auto-what-is-inside-butter-rice-meat",
     "auto-what-is-inside-chili-coffee-honey",
+    "auto-what-is-mid-ocean-ridge",
     "auto-where-does-chemosynthesis-occur",
     "auto-why-are-deep-sea-creatures-so-big",
     "auto-why-bread-rises-steak-browns-chocolate-snaps",
@@ -51,7 +52,31 @@
   "subjects_unillustratable": {},
   "rejected": [
     {
-      "subject": "auto-where-does-chemosynthesis-occur",
+      "subject": "auto-what-is-mid-ocean-ridge",
+      "title": "File:Iceland's Mid-Atlantic Ridge during snow.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Iceland%27s_Mid-Atlantic_Ridge_during_snow.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "auto-what-is-mid-ocean-ridge",
+      "title": "File:Mid-ocean ridge cut away view.png",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Mid-ocean_ridge_cut_away_view.png",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "auto-what-is-mid-ocean-ridge",
+      "title": "File:Mid-ocean ridge stand at American Museum of Natural History.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Mid-ocean_ridge_stand_at_American_Museum_of_Natural_History.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 4.0)"
+    },
+    {
+      "subject": "auto-what-is-mid-ocean-ridge",
+      "title": "File:Ridge Push (Mid-ocean Ridge).png",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Ridge_Push_(Mid-ocean_Ridge).png",
+      "reason": "not a photograph (not a JPEG)"
+    },
+    {
+      "subject": "auto-what-is-mid-ocean-ridge",
       "title": null,
       "reason": "no candidate passed both gates"
     }
@@ -608,6 +633,24 @@
       "width": 1600,
       "height": 1600,
       "item_url": "visuals/drawn_card.py",
+      "subject": "auto-what-is-mid-ocean-ridge",
+      "label": "MID RIDGE",
+      "local_file": "assets/auto__auto-what-is-mid-ocean-ridge__drawn-card.jpg",
+      "title": "Drawn card (rings)",
+      "fetched_at": "2026-11-08T14:52:53+00:00",
+      "subject_basis": "No licence-checked photo of what-is-mid-ocean-ridge's subject was found; a plain drawn schematic, pinned at once (owner rulings 2 Nov 2026)."
+    },
+    {
+      "source": "drawn card",
+      "motif": "rings",
+      "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+      "credit_line": "ILLUSTRATION \u2014 DRAWN BY HOW WE KNOW",
+      "depicts": "drawing",
+      "treatment": "drawn",
+      "sha256": "144ab20b7a7fde8dc7850f2da60c550e4aed6d2aec8c5ad888b9063a83e431cb",
+      "width": 1600,
+      "height": 1600,
+      "item_url": "visuals/drawn_card.py",
       "subject": "auto-where-does-chemosynthesis-occur",
       "label": "CHEMOSYNTHESIS OCCUR",
       "local_file": "assets/auto__auto-where-does-chemosynthesis-occur__drawn-card.jpg",
@@ -651,12 +694,12 @@
       "terms_text": "licences/pixabay-api-terms-excerpt.txt",
       "matched_query": "bread rise steak brown",
       "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-      "download_url": "https://pixabay.com/get/g0ece28a5fb01a8275b417028400bd88d4aa188511702157e4ac7bea337537c667b4a673f6338c1b45ca179bb918a24a86b5af2dffaaaad327017282066882516_1280.jpg",
+      "download_url": "https://pixabay.com/get/ged5686096d563cce4e4265857741a503d1e75b3411417c915d9569d4b0309edc83be7a16394d7273994a64ad3680a2025fcc019a123b9089a431dd60e33ec304_1280.jpg",
       "local_file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
       "sha256": "8248a6ae47577b2964506e840746f4819fd34e7e64f3f7fde9dd93ea06dc7c34",
       "width": 1280,
       "height": 853,
-      "fetched_at": "2026-11-04T13:07:19+00:00",
+      "fetched_at": "2026-11-08T14:52:58+00:00",
       "licence_basis": "Pixabay Content License: API re-checked id 1077984 (type photo, not AI) at download"
     },
     {

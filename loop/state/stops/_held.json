@@ -1,4 +1,15 @@
 {
+  "captions-build::CAPTIONS_UNBUILDABLE": {
+    "code": "CAPTIONS_UNBUILDABLE",
+    "first_reported_at": "2026-11-08T14:52:41+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-08T14:52:41+00:00",
+    "last_seen_at": "2026-11-08T14:52:41+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "captions-build"
+  },
   "mon-draft::AUTHOR_REQUIRED": {
     "code": "AUTHOR_REQUIRED",
     "first_reported_at": "2026-09-25T17:07:24+00:00",
@@ -20,17 +31,6 @@
     "reported_run": null,
     "reports": 1,
     "stage": "mon-draft"
-  },
-  "render-gate::RENDER_GATE_EMPTY": {
-    "code": "RENDER_GATE_EMPTY",
-    "first_reported_at": "2026-11-07T04:01:11+00:00",
-    "issue": null,
-    "items": [],
-    "last_reported_at": "2026-11-07T14:00:18+00:00",
-    "last_seen_at": "2026-11-07T14:00:18+00:00",
-    "reported_run": null,
-    "reports": 2,
-    "stage": "render-gate"
   },
   "tags-backfill::TAGS_BACKFILL_INERT": {
     "code": "TAGS_BACKFILL_INERT",
