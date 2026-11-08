@@ -1,17 +1,17 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-07T10:43:17.186Z",
+  "collected_at": "2026-11-08T10:43:13.335Z",
   "window_days": 28,
   "window": {
-    "start": "2026-10-08",
-    "end": "2026-11-05"
+    "start": "2026-10-09",
+    "end": "2026-11-06"
   },
   "totals": {
     "clicks": 0,
-    "impressions": 35,
+    "impressions": 33,
     "queries": 21,
-    "pages": 42
+    "pages": 41
   },
   "sitemaps": [
     {
@@ -30,13 +30,6 @@
       "impressions": 1,
       "ctr": 0,
       "position": 71
-    },
-    {
-      "key": "abyssal zone ocean",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 77
     },
     {
       "key": "barreleye fish",
@@ -97,9 +90,16 @@
     {
       "key": "hadalpelagic zone",
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 6,
       "ctr": 0,
-      "position": 87.9
+      "position": 87.7
+    },
+    {
+      "key": "krillian",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 8
     },
     {
       "key": "midnight zone shark",
@@ -153,9 +153,9 @@
     {
       "key": "twilight zone sea",
       "clicks": 0,
-      "impressions": 4,
+      "impressions": 3,
       "ctr": 0,
-      "position": 74
+      "position": 73
     },
     {
       "key": "what is the twilight zone ocean",
@@ -398,13 +398,6 @@
       "position": 36
     },
     {
-      "key": "https://howweknowdeep.com/questions/why-does-black-smoker-water-not-boil/",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 11
-    },
-    {
       "key": "https://howweknowdeep.com/questions/why-some-deep-sea-creatures-are-transparent/",
       "clicks": 0,
       "impressions": 1,
@@ -435,16 +428,16 @@
     {
       "key": "https://howweknowdeep.com/zones/abyss/",
       "clicks": 0,
-      "impressions": 6,
+      "impressions": 5,
       "ctr": 0,
-      "position": 30.7
+      "position": 21.4
     },
     {
       "key": "https://howweknowdeep.com/zones/hadal/",
       "clicks": 0,
-      "impressions": 26,
+      "impressions": 28,
       "ctr": 0,
-      "position": 46.7
+      "position": 40.5
     },
     {
       "key": "https://howweknowdeep.com/zones/midnight/",
@@ -463,9 +456,9 @@
     {
       "key": "https://howweknowdeep.com/zones/twilight/",
       "clicks": 0,
-      "impressions": 18,
+      "impressions": 17,
       "ctr": 0,
-      "position": 71.6
+      "position": 71.3
     }
   ]
 }
