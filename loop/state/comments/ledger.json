@@ -1665,6 +1665,33 @@
         "applied_at": "2026-11-05T15:04:47+00:00",
         "result": "posted (Ugy2hLRlzqPwRSJjVTV4AaABAg)"
       }
+    },
+    "UgzFpdugeG9K6BkQUZt4AaABAg": {
+      "comment_id": "UgzFpdugeG9K6BkQUZt4AaABAg",
+      "video_id": "xQHrZplcmI8",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is concrete made of? Full episode: https://youtu.be/-8gyi8oq3zU",
+      "published_at": "2026-11-08T15:06:13+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-08T15:06:13+00:00",
+      "acted": {
+        "comment_id": "UgzFpdugeG9K6BkQUZt4AaABAg",
+        "video_id": "xQHrZplcmI8",
+        "action": "channel_comment",
+        "reply_text": "What is concrete made of? Full episode: https://youtu.be/-8gyi8oq3zU",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-08T15:06:13+00:00",
+        "result": "posted (UgzFpdugeG9K6BkQUZt4AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -2361,6 +2388,18 @@
       "note": null,
       "applied_at": "2026-11-05T15:04:47+00:00",
       "result": "posted (Ugy2hLRlzqPwRSJjVTV4AaABAg)"
+    },
+    {
+      "comment_id": "UgzFpdugeG9K6BkQUZt4AaABAg",
+      "video_id": "xQHrZplcmI8",
+      "action": "channel_comment",
+      "reply_text": "What is concrete made of? Full episode: https://youtu.be/-8gyi8oq3zU",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-08T15:06:13+00:00",
+      "result": "posted (UgzFpdugeG9K6BkQUZt4AaABAg)"
     }
   ],
   "sweeps": [
@@ -2888,7 +2927,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "xQHrZplcmI8": {
+      "comment_id": "UgzFpdugeG9K6BkQUZt4AaABAg",
+      "text": "What is concrete made of? Full episode: https://youtu.be/-8gyi8oq3zU",
+      "posted_at": "2026-11-08T15:06:13+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-11-05T15:04:47+00:00"
+  "updated": "2026-11-08T15:06:13+00:00"
 }

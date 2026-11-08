@@ -447,9 +447,13 @@
       "scheduled_publish_at": "2026-09-24T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC40NzZCMERDMjVEN0RFRThB",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "-8gyi8oq3zU",
+      "handoff_at": "2026-11-08T15:06:12+00:00",
+      "handoff_comment_id": "UgzFpdugeG9K6BkQUZt4AaABAg",
+      "handoff_comment_at": "2026-11-08T15:06:13+00:00"
     },
     {
       "slug": "why-does-old-iron-not-rust",
@@ -1455,5 +1459,5 @@
       "handoff_at": "2026-11-06T00:13:34+00:00"
     }
   ],
-  "updated": "2026-11-08T00:13:51+00:00"
+  "updated": "2026-11-08T15:06:14+00:00"
 }
