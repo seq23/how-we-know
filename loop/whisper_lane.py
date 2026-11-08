@@ -137,7 +137,7 @@ def render_script(slug: str, kind: str, title: str, sources: list[str], named: l
         body += ["", f"## Segment {i} · {src}", ""]
         for p in paras:
             body += [p, ""]
-    return "\n".join(head + body).rstrip() + "\n"
+    return add_opening("\n".join(head + body).rstrip() + "\n", slug)
 
 
 def spoken_text(p: dict) -> str:
@@ -196,6 +196,98 @@ def fmt_len(sec: float) -> str:
     return f"{h} h {m:02d} min"
 
 
+# ------------------------------------------------------------- the opening promise
+# The owner's ruling 8 Nov 2026 (spry brain): every episode starts with a
+# plain spoken promise of at most ~10 seconds, naming what it is and its real
+# length ("Two hours of the deep ocean, whispered slowly, to help you fall
+# asleep."), never mid-thought. It is the first paragraph of segment 1.
+OPENING_MAX_S = 10.0
+CONTINUING = re.compile(r"^(?:now|and|so|but|then|still|also|again|next|further|meanwhile|or|as|because)\b", re.I)
+_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
+
+def spoken_length(seconds: float) -> str:
+    """The real length as a plain spoken phrase, rounded DOWN (never overstated):
+    to the half hour from an hour, to the quarter hour under it."""
+    if seconds >= 3600:
+        halves = int(seconds // 1800)
+        h, half = divmod(halves, 2)
+        base = "an hour" if h == 1 else f"{_ONES[h]} hours"
+        if half:
+            return "an hour and a half" if h == 1 else f"{_ONES[h]} and a half hours"
+        return base
+    q = int(seconds // 900)
+    return {3: "forty-five minutes", 2: "half an hour", 1: "fifteen minutes"}.get(
+        q, f"{max(1, int(seconds // 60))} minutes")
+
+
+def promise_subject(p: dict, c: dict) -> str:
+    if p.get("kind") == "affirmations":
+        t = c["affirmations"]["topics"].get(p.get("meta", {}).get("theme", "money"), {})
+        return t.get("promise") or t.get("topic") or "affirmations"
+    for e in c["episodes"]:
+        if e["slug"] == p.get("slug"):
+            return e.get("promise") or e["topic"]
+    return p.get("meta", {}).get("topic") or "sleep science"
+
+
+def opening_text(p: dict, seconds: float, c: dict) -> str:
+    s = f"{spoken_length(seconds)} of {promise_subject(p, c)}, whispered slowly, to help you fall asleep."
+    return s[0].upper() + s[1:]
+
+
+def _is_opening(para: str) -> bool:
+    return bool(re.search(r"\b(?:hours?|minutes)\b", para) and re.search(r"\basleep\b", para)
+                and len(W.WORD.findall(para)) <= 30)
+
+
+def add_opening(text: str, slug: str, c: dict | None = None) -> str:
+    """Put (or refresh) the opening promise as the first paragraph of segment 1,
+    naming the length the finished script estimates (the promise included)."""
+    import tempfile                                          # noqa: PLC0415
+    c = c or cfg()
+    m = re.search(r"^## Segment 1 · \S+\s*\n\n", text, re.M)
+    if not m:
+        return text
+    rest = text[m.end():]
+    first, _, after = rest.partition("\n\n")
+    if _is_opening(first):
+        rest = after
+    line = ""
+    for _ in range(3):                                       # the promise is part of the length
+        with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as t:
+            t.write(text[:m.end()] + (line + "\n\n" if line else "") + rest)
+        try:
+            p = parse(t.name)
+        finally:
+            os.unlink(t.name)
+        new = opening_text({**p, "slug": slug}, estimate_seconds(p, c), c)
+        if new == line:
+            break
+        line = new
+    return text[:m.end()] + line + "\n\n" + rest
+
+
+def opening_problems(p: dict, seconds: float, c: dict) -> list[str]:
+    """A plain promise first: short, the real length, what it is, a whole thought."""
+    first = p["segments"][0]["paragraphs"][0] if p["segments"] and p["segments"][0]["paragraphs"] else ""
+    out = []
+    n = len(W.WORD.findall(first))
+    spoken = n / float(c["pacing"]["speech_wpm"]) * 60
+    if not first or spoken > OPENING_MAX_S + 0.5:
+        out.append(f"OPENING_TOO_LONG the first paragraph is {spoken:.0f} s of speech "
+                   f"(the promise is at most {OPENING_MAX_S:.0f} s): {first[:60]!r}")
+    want = spoken_length(seconds)
+    if want not in first.lower():
+        out.append(f"OPENING_LENGTH the opening must name the real length {want!r} "
+                   f"(estimated {fmt_len(seconds)}): {first[:60]!r}")
+    if not (re.search(r"\bwhisper", first, re.I) and re.search(r"\b(?:sleep|asleep)\b", first, re.I)):
+        out.append(f"OPENING_NOT_NAMED the opening must say it is whispered, for sleep: {first[:60]!r}")
+    if not first[:1].isupper() or CONTINUING.match(first) or not first.rstrip().endswith((".", "!", "?")):
+        out.append(f"OPENING_MID_THOUGHT the opening must be one whole thought, not a continuation: {first[:60]!r}")
+    return out
+
+
 # ------------------------------------------------------------- the checks
 GUARANTEE = re.compile(
     r"\$\s?\d|\bdollars?\b|\bguarantee|\bwill (?:get|receive|win|earn|make|have) (?:\$|\d|a raise|rich|money)|"
@@ -252,6 +344,7 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
         else:
             out += [f"{where}: {x}" for x in affirmation_problems(text)]
     est = estimate_seconds(p, c)
+    out += opening_problems(p, est, c)
     lo, hi = c["lengths"][kind]["min_s"], c["lengths"][kind]["max_s"]
     if not lo <= est <= hi:
         out.append(f"LENGTH estimated {fmt_len(est)}, outside {fmt_len(lo)} to {fmt_len(hi)}")
@@ -397,19 +490,30 @@ def _font(name: str, size: int):
     return ImageFont.truetype(str(FONTS / name), size)
 
 
-def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None) -> Path:
+# The owner's ruling 8 Nov 2026: three thumbnail variants per episode, the
+# same brand, beside each other in the kit. A (thumbnail.png) is uploaded.
+# Each variant: (candle x, candle y, words x, words anchor "l"/"m", words top y).
+VARIANTS = {"a": (980, 430, 80, "l", 250),
+            "b": (300, 430, 1200, "r", 250),
+            "c": (640, 500, 640, "m", 110)}
+VARIANT_FILES = {"a": "thumbnail.png", "b": "thumbnail-b.png", "c": "thumbnail-c.png"}
+
+
+def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None,
+              variant: str = "a") -> Path:
     """1280x720: one candle in a dark room (the approved brand). An ember glow
     drawn in code, lowercase italic words, the real length. No faces, no
-    starfields, no pastel purple, no flashes."""
+    starfields, no pastel purple, no flashes. `variant` moves the candle and
+    the words (VARIANTS); the palette, fonts and words stay the brand's."""
     from PIL import Image, ImageDraw, ImageFilter          # noqa: PLC0415
     c = c or cfg()
     b = c["brand"]
     e = episode_cfg(p, c)
     W_, H_ = 1280, 720
+    cx, cy, tx, anchor, ty = VARIANTS[variant]
     img = Image.new("RGB", (W_, H_), b["ground"])
     glow = Image.new("RGB", (W_, H_), b["ground"])
     g = ImageDraw.Draw(glow)
-    cx, cy = 980, 430
     for r, col in ((330, b["glow"]), (190, "#5A3A1E"), (90, "#8A5A2A")):
         g.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
     glow = glow.filter(ImageFilter.GaussianBlur(90))
@@ -435,15 +539,55 @@ def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None) -> Path
     if d.textlength(words, font=font) > 760:
         mid = words.rfind(" ", 0, len(words) // 2 + 4)
         lines = [words[:mid], words[mid + 1:]]
-    y = 250 - (len(lines) - 1) * size // 2
+    y = ty - (len(lines) - 1) * size // 2 if variant != "c" else ty
+    a = {"l": "la", "r": "ra", "m": "ma"}[anchor]
     for ln in lines:
-        d.text((80, y), ln, font=font, fill=b["ink"])
+        d.text((tx, y), ln, font=font, fill=b["ink"], anchor=a)
         y += int(size * 1.05)
     small = _font("Jost-Light.ttf", 40)
-    d.text((84, y + 30), f"{length_label(seconds)} · whispered · sleep science", font=small, fill=b["ember"])
-    d.text((84, 640), "whisper almanac", font=_font("Jost-Light.ttf", 30), fill="#BFAF95")
+    sx = tx + 4 if anchor == "l" else tx
+    d.text((sx, y + 30), f"{length_label(seconds)} · whispered · sleep science", font=small,
+           fill=b["ember"], anchor=a)
+    d.text((sx, 640) if variant != "c" else (84, 640), "whisper almanac",
+           font=_font("Jost-Light.ttf", 30), fill="#BFAF95", anchor=a if variant != "c" else "la")
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out, "PNG", optimize=True)
+    return out
+
+
+def thumbnails(p: dict, seconds: float, d: Path, c: dict | None = None) -> list[Path]:
+    """The three variants, A (the uploaded thumbnail.png), B and C, in d."""
+    return [thumbnail(p, seconds, d / VARIANT_FILES[v], c, v) for v in VARIANTS]
+
+
+def thumbnail_problems(paths: list[Path], c: dict | None = None) -> list[str]:
+    """The brand's picture rules, checked on the files: three variants, each
+    1280x720 and dark (one candle in a dark room, dark only), the ember present,
+    and no two alike."""
+    from PIL import Image, ImageChops, ImageStat           # noqa: PLC0415
+    c = c or cfg()
+    ember = tuple(int(c["brand"]["ember"][i:i + 2], 16) for i in (1, 3, 5))
+    out = []
+    if len(paths) != len(VARIANTS):
+        out.append(f"THUMB_VARIANTS {len(paths)} thumbnails, {len(VARIANTS)} required")
+    imgs = []
+    for f in paths:
+        if not Path(f).exists():
+            out.append(f"THUMB_MISSING {Path(f).name}")
+            continue
+        im = Image.open(f).convert("RGB")
+        imgs.append((Path(f).name, im))
+        if im.size != (1280, 720):
+            out.append(f"THUMB_SIZE {Path(f).name} is {im.size[0]}x{im.size[1]}, not 1280x720")
+        if sum(ImageStat.Stat(im.convert("L")).mean) > 70:
+            out.append(f"THUMB_NOT_DARK {Path(f).name}: the brand is dark only")
+        small = im.resize((160, 90))
+        if not any(sum(abs(a - b) for a, b in zip(px, ember)) < 60 for px in small.getdata()):
+            out.append(f"THUMB_NO_EMBER {Path(f).name}: no candle flame")
+    for i in range(len(imgs)):
+        for j in range(i + 1, len(imgs)):
+            if not ImageChops.difference(imgs[i][1], imgs[j][1]).getbbox():
+                out.append(f"THUMB_SAME {imgs[i][0]} and {imgs[j][0]} are the same picture")
     return out
 
 
@@ -485,7 +629,9 @@ def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | No
             meta.update({k: prev[k] for k in UPLOAD_KEYS if k in prev})
     d = KITS / slug
     d.mkdir(parents=True, exist_ok=True)
-    thumbnail(p, secs, d / "thumbnail.png", c)
+    thumbs = thumbnails(p, secs, d, c)
+    meta["thumbnails"] = [x.name for x in thumbs]
+    meta["thumbnail_problems"] = thumbnail_problems(thumbs, c)
     (d / "kit.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n")
     return meta
 

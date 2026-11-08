@@ -5,13 +5,15 @@
 **Status:** READY FOR VOICE
 **Sources:** 20-what-is-the-midnight-zone, 05-why-many-deep-sea-creatures-are-red, 06-why-some-deep-sea-creatures-are-transparent, 18-why-does-black-smoker-water-not-boil, 10-what-is-the-deepest-part-of-the-ocean
 **Named:** bioluminescence, chemosynthesis
-**Estimated length:** 2 h 01 min (speech at the configured pace plus the pauses added in code)
+**Estimated length:** 2 h 02 min (speech at the configured pace plus the pauses added in code)
 **Pause scale:** 2.5
 **Written:** 2026-11-06
 **Topic:** deep ocean science
 **Models:** gemini/gemini-3.6-flash
 
 ## Segment 1 · 20-what-is-the-midnight-zone
+
+Two hours of the deep ocean, whispered slowly, to help you fall asleep.
 
 Now, let your mind drift down a little further into the quiet ocean. At about a thousand meters deep, the last sunlight fades away completely. This dark region is known as the midnight zone. It stretches down to roughly four thousand meters beneath the surface. This vast layer holds around seventy percent of all the ocean water.
 
