@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T01:37:55Z",
+  "generated": "2026-11-08T01:24:18Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -675,6 +675,20 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "'We don't know yet' is a good answer when someone can tell you what we do know, what's missing, and what evidence would settle it."
+    },
+    {
+      "video": "what-is-mid-ocean-ridge",
+      "pov_id": "pov-098",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one."
+    },
+    {
+      "video": "why-is-glass-see-through",
+      "pov_id": "pov-051",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "I trust sources that show me how they know what they claim to know. The data, the method, the limitations, and preferably the original."
     }
   ]
 }

@@ -3442,10 +3442,54 @@
       "completion_tokens": 25713,
       "total_tokens": 42028,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-11-08T01:14:26+00:00",
+      "slug": "what-is-mid-ocean-ridge",
+      "model": "gemini/gemini-3.8-flash",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2263,
+      "completion_tokens": 3113,
+      "total_tokens": 6819,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-08T01:15:02+00:00",
+      "slug": "what-is-mid-ocean-ridge",
+      "model": "gemini/gemini-3.6-flash",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5756,
+      "completion_tokens": 2835,
+      "total_tokens": 13112,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-08T01:18:00+00:00",
+      "slug": "why-is-glass-see-through",
+      "model": "gemini/gemini-3.6-flash",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2187,
+      "completion_tokens": 3157,
+      "total_tokens": 19349,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-08T01:22:50+00:00",
+      "slug": "why-is-glass-see-through",
+      "model": "gemini/gemini-2.5-flash",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5701,
+      "completion_tokens": 3170,
+      "total_tokens": 9679,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 137,
-  "average_usd_per_accepted_draft": 0.074277,
-  "updated": "2026-11-03T01:36:52+00:00"
+  "drafts_written": 139,
+  "average_usd_per_accepted_draft": 0.073208,
+  "updated": "2026-11-08T01:22:50+00:00"
 }
