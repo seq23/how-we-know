@@ -1,24 +1,24 @@
 {
   "stage": "repackage-apply",
   "week": "2026-W45",
-  "at": "2026-11-08T01:03:34+00:00",
+  "at": "2026-11-08T17:36:37+00:00",
   "code": "QUOTA_EXHAUSTED",
   "message": "2 title(s) ready to apply and the day's usable allowance after the upload and Shorts reserves (3400 units) does not fit one",
   "detail": {
-    "resets_at": "2026-11-08T00:00:00-08:00",
+    "resets_at": "2026-11-09T00:00:00-08:00",
     "waiting": [
       "how-does-quenching-harden-steel",
       "what-is-concrete-made-of"
     ]
   },
   "unblock": "Nothing to do: tomorrow's run resumes where this one stopped.",
-  "disposition": "self_resolving",
-  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 3 of at most 3 before this escalates to a human.)",
-  "consecutive": 3,
+  "disposition": "needs_human",
+  "disposition_why": "'QUOTA_EXHAUSTED' has now stopped repackage-apply on 4 consecutive runs (limit 3), so it is not resolving itself. Three runs in a row means the day's allowance is structurally short, not momentarily spent - the lanes are asking for more units than a day holds. That needs a human: reduce a lane's per-run limit, or spread the caption backfill wider.",
+  "consecutive": 4,
   "held_items": [],
-  "exit_code": 0,
+  "exit_code": 3,
   "work_done_before_stop": [],
   "notes": [
-    "quota fits 0 of 2 today; the rest wait, in order. quota day 2026-11-07 (PT): spent 6159 of 10000, 3441 usable after 400 headroom; lanes: captions 1001, cloud-upload 5100, handoff 58"
+    "quota fits 0 of 2 today; the rest wait, in order. quota day 2026-11-08 (PT): spent 6160 of 10000, 3440 usable after 400 headroom; lanes: captions 601, cloud-upload 5100, handoff 204, localize 255"
   ]
 }
