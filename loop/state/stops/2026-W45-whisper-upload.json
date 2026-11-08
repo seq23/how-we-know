@@ -1,0 +1,26 @@
+{
+  "stage": "whisper-upload",
+  "week": "2026-W45",
+  "at": "2026-11-08T14:44:03+00:00",
+  "code": "FRAME_CHECK_FAILED",
+  "message": "1 finished episode(s) failed the final frame check and were not uploaded: the-strange-creatures-of-the-deep: PICTURE_CHECK_FAILED at 0:01 (Shows mostly bare seabed with no clearly visible animal subject.), 1:01 (Extremely dark frame with no clearly visible animal subject.), 1:41 (Shows open water and silt cl",
+  "detail": {
+    "failed": [
+      "the-strange-creatures-of-the-deep: PICTURE_CHECK_FAILED at 0:01 (Shows mostly bare seabed with no clearly visible animal subject.), 1:01 (Extremely dark frame with no clearly visible animal subject.), 1:41 (Shows open water and silt cl"
+    ]
+  },
+  "unblock": "Each file is set aside beside its render (never deleted); a footage fix and a re-render (delete the set-aside file) put it back in line.",
+  "disposition": "needs_human",
+  "disposition_why": "'FRAME_CHECK_FAILED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'FRAME_CHECK_FAILED' is holding on 1 item(s) that have never been reported. The first report is always loud.",
+  "consecutive": 1,
+  "held_items": [
+    "the-strange-creatures-of-the-deep"
+  ],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "signed in to @whisperalmanac",
+    "the-strange-creatures-of-the-deep failed the frame check; set aside as the-strange-creatures-of-the-deep.mp4.frame-check-failed",
+    "morning line written"
+  ]
+}

@@ -19,9 +19,9 @@
   },
   "pov-repair": {
     "code": "POV_ALL_TRACED",
-    "count": 9,
+    "count": 10,
     "first_at": "2026-10-21T04:00:09+00:00",
-    "last_at": "2026-11-07T04:00:10+00:00"
+    "last_at": "2026-11-08T05:00:23+00:00"
   },
   "food-author": {
     "code": "FOOD_EPISODE_IN_FLIGHT",
@@ -118,5 +118,11 @@
     "count": 1,
     "first_at": "2026-11-08T01:03:15+00:00",
     "last_at": "2026-11-08T01:03:15+00:00"
+  },
+  "whisper-upload": {
+    "code": "FRAME_CHECK_FAILED",
+    "count": 1,
+    "first_at": "2026-11-08T14:44:03+00:00",
+    "last_at": "2026-11-08T14:44:03+00:00"
   }
 }
