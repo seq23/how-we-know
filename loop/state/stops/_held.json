@@ -32,17 +32,6 @@
     "reports": 1,
     "stage": "mon-draft"
   },
-  "tags-backfill::TAGS_BACKFILL_INERT": {
-    "code": "TAGS_BACKFILL_INERT",
-    "first_reported_at": "2026-11-06T16:02:28+00:00",
-    "issue": null,
-    "items": [],
-    "last_reported_at": "2026-11-07T16:02:01+00:00",
-    "last_seen_at": "2026-11-07T16:02:01+00:00",
-    "reported_run": null,
-    "reports": 2,
-    "stage": "tags-backfill"
-  },
   "whisper-upload::FRAME_CHECK_FAILED": {
     "code": "FRAME_CHECK_FAILED",
     "first_reported_at": "2026-11-08T14:44:03+00:00",
