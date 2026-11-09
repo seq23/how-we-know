@@ -1,12 +1,12 @@
 {
-  "week": "2026-W45",
-  "generated": "2026-11-02T06:26:29+00:00",
+  "week": "2026-W46",
+  "generated": "2026-11-09T06:26:10+00:00",
   "videos_per_week": 6,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 844,
+      "examined": 911,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -146,27 +146,27 @@
     },
     {
       "validator": "V20 cadence-schedule",
-      "examined": 62,
+      "examined": 54,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "12 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (0, 3), 'food-science': (2, 5), 'materials-and-manufacturing': (1, 4)} at 6/week"
+        "8 episode(s) dated through 2026-11-18; 3 domain(s) allocating on disjoint days {'materials-and-manufacturing': (1, 4), 'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3)} at 6/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 73,
+      "examined": 75,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "7 dead-topic script(s) not judged - killed or refused, never in the batch queue or the ledger, so they never render: 03-why-deep-sea-creatures-are-surfacing.md, 11-what-is-a-dumbo-octopus.md, 12-what-is-a-frilled-shark.md, 17-what-is-a-yeti-crab.md, how-deep-mariana-trench.md, what-lives-in-the-depths-of-the-ocean.md, what-lives-in-the-sea.md"
+        "11 dead-topic script(s) not judged - killed or refused, never in the batch queue or the ledger, so they never render: 03-why-deep-sea-creatures-are-surfacing.md, 11-what-is-a-dumbo-octopus.md, 12-what-is-a-frilled-shark.md, 17-what-is-a-yeti-crab.md, how-deep-mariana-trench.md, how-does-butter-get-made-from-cream.md, what-lives-in-the-depths-of-the-ocean.md, what-lives-in-the-sea.md, why-blobfish-look-weird.md, why-does-meat-need-to-rest-after-cooking.md, why-does-rice-get-sticky.md"
       ],
       "stops": []
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 80,
+      "examined": 86,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -192,7 +192,7 @@
     },
     {
       "validator": "V27 lanes-see-domains",
-      "examined": 30,
+      "examined": 31,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -200,7 +200,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 36,
+      "examined": 38,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -208,7 +208,7 @@
     },
     {
       "validator": "V29 material-image rights",
-      "examined": 19,
+      "examined": 52,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -216,11 +216,11 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 452,
+      "examined": 613,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "channel/imagery/food_clips.json: 90 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest",
+        "channel/imagery/food_clips.json: 126 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest",
         "channel/sound/food.json: 3 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest"
       ],
       "stops": []
@@ -237,7 +237,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 14,
+      "examined": 10,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -245,11 +245,11 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 82,
+      "examined": 88,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "82 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "88 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
@@ -259,27 +259,6 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "what-does-a-greenland-shark-look-like: no plan yet - the batch freezes one before it narrates",
-        "why-blobfish-look-weird: no plan yet - the batch freezes one before it narrates",
-        "where-does-chemosynthesis-occur: no plan yet - the batch freezes one before it narrates",
-        "is-giant-isopod-edible: no plan yet - the batch freezes one before it narrates",
-        "how-does-chemosynthesis-work: no plan yet - the batch freezes one before it narrates",
-        "what-blobfish-actually-looks-like: no plan yet - the batch freezes one before it narrates",
-        "what-does-a-goblin-shark-look-like: no plan yet - the batch freezes one before it narrates",
-        "how-does-thermohaline-circulation-work: no plan yet - the batch freezes one before it narrates",
-        "what-does-a-vampire-squid-look-like: no plan yet - the batch freezes one before it narrates",
-        "how-mid-oceanic-ridge-is-formed: no plan yet - the batch freezes one before it narrates",
-        "are-sea-pigs-real: no plan yet - the batch freezes one before it narrates",
-        "what-does-a-sea-pig-look-like: no plan yet - the batch freezes one before it narrates",
-        "how-to-tell-if-steel-is-hardened: no plan yet - the batch freezes one before it narrates",
-        "does-damascus-steel-rust: no plan yet - the batch freezes one before it narrates",
-        "is-aluminum-stronger-than-steel: no plan yet - the batch freezes one before it narrates",
-        "how-to-tell-if-steel-is-high-carbon: no plan yet - the batch freezes one before it narrates",
-        "is-damascus-steel-stronger: no plan yet - the batch freezes one before it narrates",
-        "is-diamond-stronger-than-metal: no plan yet - the batch freezes one before it narrates",
-        "how-powder-metallurgy-works: no plan yet - the batch freezes one before it narrates",
-        "why-is-glass-clear: no plan yet - the batch freezes one before it narrates",
-        "is-titanium-stronger-than-steel: no plan yet - the batch freezes one before it narrates",
         "examined 27 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
       ],
       "stops": []
@@ -294,7 +273,7 @@
     },
     {
       "validator": "V73 every-lane-has-a-runner",
-      "examined": 48,
+      "examined": 52,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -304,7 +283,7 @@
     },
     {
       "validator": "V33 domain-harvesters",
-      "examined": 6,
+      "examined": 7,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -336,7 +315,7 @@
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 49,
+      "examined": 47,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -348,7 +327,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "3 queued row(s) refused as a repeated question or another channel's topic: {'deep-sea-ocean-science': 3}"
+        "4 queued row(s) refused as a repeated question or another channel's topic: {'deep-sea-ocean-science': 4}"
       ],
       "stops": []
     },
@@ -362,11 +341,11 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 50,
+      "examined": 48,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "3 queued row(s) refused on read as a repeated question or another channel's topic"
+        "4 queued row(s) refused on read as a repeated question or another channel's topic"
       ],
       "stops": []
     },
@@ -380,47 +359,62 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 175,
+      "examined": 208,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 69, automated/error 1, error 89, owner_secret 16"
+        "stop kinds by class: automated 86, automated/error 1, error 103, owner_secret 18"
       ],
       "stops": []
     },
     {
       "validator": "V74 nothing-paid rule",
-      "examined": 11,
+      "examined": 10,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "4 free model(s); max_cost_usd 0, no paid fallback"
+        "3 free model(s); max_cost_usd 0, no paid fallback"
       ],
       "stops": []
     },
     {
       "validator": "V46 shorts-handoff",
-      "examined": 108,
+      "examined": 117,
       "status": "PASS",
       "failures": [],
       "notes": [
+        "what-is-carbon-fiber-made-of: Short BFIuGqIvRow has no episode in the ledger; nothing to hand off to",
+        "how-are-microchips-designed: Short J16Aj8L0e98 has no episode in the ledger; nothing to hand off to",
+        "how-deep-can-a-sperm-whale-go: Short CA28GilEiRE has no episode in the ledger; nothing to hand off to",
         "why-does-chocolate-taste-so-good: Short _dEimGejxNc has no episode in the ledger; nothing to hand off to",
         "why-does-steak-taste-better-seared: Short EFGCT_ZLdzY has no episode in the ledger; nothing to hand off to",
-        "why-is-my-bread-not-rising: Short prHJLtgqN6g has no episode in the ledger; nothing to hand off to"
+        "why-is-my-bread-not-rising: Short prHJLtgqN6g has no episode in the ledger; nothing to hand off to",
+        "how-deep-can-a-sperm-whale-go: Short hBcqr4qpAv4 has no episode in the ledger; nothing to hand off to",
+        "how-does-butter-get-made-from-cream: Short JWwo4OPq9nk has no episode in the ledger; nothing to hand off to",
+        "why-does-rice-get-sticky: Short BPpmHWdQQ-w has no episode in the ledger; nothing to hand off to",
+        "why-does-meat-need-to-rest-after-cooking: Short gzfS8409lV8 has no episode in the ledger; nothing to hand off to"
       ],
       "stops": []
     },
     {
       "validator": "V47 longform-title",
-      "examined": 69,
+      "examined": 71,
       "status": "PASS",
       "failures": [],
-      "notes": [],
+      "notes": [
+        "03-why-deep-sea-creatures-are-surfacing: titles.json draft 'One Deep Sea Fish Is Not a Trend' predates the one-question rule; the upload uses the question",
+        "how-deep-can-whales-dive: titles.json row was applied to pb27XYAfKAs, an earlier upload; the live video is bjSlVIIDPsE",
+        "is-damascus-steel-better: titles.json row was applied to a2Kbf3jFqtg, an earlier upload; the live video is HWJ16RxXhH0",
+        "what-is-hydrothermal-vents: titles.json row was applied to 09O44lDEYYo, an earlier upload; the live video is TN0MquikEPM",
+        "what-lives-in-mariana-trench: titles.json row was applied to REa1JiBNVto, an earlier upload; the live video is pT1BETTFbsY",
+        "why-deep-sea-creatures-are-creepers: titles.json row was applied to xex6Bbzbdkg, an earlier upload; the live video is N1mpUttSNd8",
+        "why-deep-sea-fish-die-when-brought-to-surface: titles.json row was applied to qECmixjkDDU, an earlier upload; the live video is TEmyz8h_DIA"
+      ],
       "stops": []
     },
     {
       "validator": "V48 thumbnail-contract",
-      "examined": 30,
+      "examined": 39,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -428,7 +422,7 @@
     },
     {
       "validator": "V49 lengthen-splice",
-      "examined": 9,
+      "examined": 12,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -436,7 +430,7 @@
     },
     {
       "validator": "V50 repackage-state",
-      "examined": 107,
+      "examined": 103,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -454,20 +448,29 @@
     },
     {
       "validator": "V60 description-search-block",
-      "examined": 72,
+      "examined": 76,
       "status": "PASS(STOP:DESCRIPTION_PENDING)",
       "failures": [],
       "notes": [],
       "stops": [
         {
           "code": "DESCRIPTION_PENDING",
-          "message": "5 live long-form video(s) do not carry today's search block yet; loop-repackage prepares and applies it daily",
+          "message": "14 live long-form video(s) do not carry today's search block yet; loop-repackage prepares and applies it daily",
           "items": [
             "09-what-is-the-scariest-deep-sea-creature",
             "18-why-does-black-smoker-water-not-boil",
             "20-what-is-the-midnight-zone",
+            "does-damascus-steel-rust",
+            "how-deep-can-whales-dive",
             "how-do-self-healing-materials-work",
-            "how-does-quenching-harden-steel"
+            "how-does-quenching-harden-steel",
+            "is-damascus-steel-better",
+            "what-is-concrete-made-of",
+            "what-is-hydrothermal-vents",
+            "what-lives-in-mariana-trench",
+            "why-are-deep-sea-creatures-so-big",
+            "why-deep-sea-creatures-are-creepers",
+            "why-deep-sea-fish-die-when-brought-to-surface"
           ]
         }
       ]
@@ -503,19 +506,39 @@
       "failures": [],
       "notes": [
         "why-bread-rises-steak-browns-chocolate-snaps: 28.5 min, real video 96%, hands 13%, spectacle by piece {'open': 0.0918, 'chocolate': 0.5888, 'bread': 0.5055, 'steak': 0.512, 'tail': 1.0}",
-        "what-is-inside-chili-coffee-honey: 30.8 min, real video 96%, hands 9%, spectacle by piece {'open': 0.1284, 'chili': 0.5097, 'coffee': 0.5091, 'honey': 0.5024, 'tail': 0.0}",
-        "what-is-inside-happen-to-cheese: held by the upload lane until rendered: no episode spec at channel/specs/<slug>.json - a food video ships only with one"
+        "what-is-inside-butter-rice-meat: held by the upload lane until rendered: no episode spec at channel/specs/<slug>.json - a food video ships only with one",
+        "what-is-inside-chili-coffee-honey: 30.8 min, real video 96%, hands 9%, spectacle by piece {'open': 0.1284, 'chili': 0.5097, 'coffee': 0.5091, 'honey': 0.5024, 'tail': 0.0}"
       ],
       "stops": []
     },
     {
       "validator": "V70 demand-verdict",
-      "examined": 35,
+      "examined": 37,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "pull 2026-10-31: {'PASS': 0, 'WATCH': 0, 'FAIL': 1, 'INSUFFICIENT': 34}"
+        "pull 2026-11-08: {'PASS': 0, 'WATCH': 7, 'FAIL': 9, 'INSUFFICIENT': 21}"
       ],
+      "stops": []
+    },
+    {
+      "validator": "V75 plan-domain",
+      "examined": 85,
+      "status": "PASS",
+      "failures": [],
+      "notes": [
+        "how-do-self-healing-materials-work is live with ['depth_descent'] (forward only; its Shorts drop those beats)",
+        "how-hot-does-a-welding-arc-get is live with ['depth_descent', 'light_attenuation', 'zone_column'] (forward only; its Shorts drop those beats)",
+        "why-is-carbon-fiber-so-strong is live with ['anatomy_callout', 'depth_descent'] (forward only; its Shorts drop those beats)"
+      ],
+      "stops": []
+    },
+    {
+      "validator": "V76 one-question",
+      "examined": 161,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
       "stops": []
     }
   ],
@@ -532,31 +555,31 @@
     "why": "configured default (6/week)"
   },
   "runway": {
-    "unpublished_scripts": 34,
-    "publishable": 23,
-    "scheduled_not_yet_aired": 12,
+    "unpublished_scripts": 41,
+    "publishable": 29,
+    "scheduled_not_yet_aired": 8,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 5.8,
+    "weeks_remaining": 6.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 12,
-        "scheduled_ahead": 8,
-        "weeks": 10.0,
+        "queued": 11,
+        "scheduled_ahead": 6,
+        "weeks": 8.5,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 10.0 week(s) at 2/week (12 queued, 8 already dated)"
+        "message": "deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 21,
-        "scheduled_ahead": 4,
-        "weeks": 12.5,
+        "queued": 20,
+        "scheduled_ahead": 2,
+        "weeks": 11.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 12.5 week(s) at 2/week (21 queued, 4 already dated)"
+        "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
@@ -569,7 +592,7 @@
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "5.8 weeks of queue at 6/week (23 publishable of 34 on disk). By domain: deep-sea-ocean-science: 10.0 week(s) at 2/week (12 queued, 8 already dated); materials-and-manufacturing: 12.5 week(s) at 2/week (21 queued, 4 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "6.2 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
@@ -578,195 +601,186 @@
   },
   "items": [
     {
-      "slug": "why-does-chocolate-taste-so-good",
-      "question": "Why does chocolate taste so good?",
-      "script": "scripts/why-does-chocolate-taste-so-good.md",
+      "slug": "what-is-carbon-fiber-made-of",
+      "question": "What is carbon fiber made of?",
+      "script": "scripts/what-is-carbon-fiber-made-of.md",
       "generated": false,
       "carried_draft": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-095",
-      "pov_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
+      "pov_id": "pov-110",
+      "pov_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-does-chocolate-taste-so-good.md",
-      "audio_dir": "audio/why-does-chocolate-taste-so-good",
-      "plan": "loop/plans/why-does-chocolate-taste-so-good.json",
-      "render": "renders/why-does-chocolate-taste-so-good.mp4",
+      "work_copy": "loop/work/what-is-carbon-fiber-made-of.md",
+      "audio_dir": "audio/what-is-carbon-fiber-made-of",
+      "plan": "loop/plans/what-is-carbon-fiber-made-of.json",
+      "render": "renders/what-is-carbon-fiber-made-of.mp4",
       "source": "authored-inventory",
       "status": "queued",
-      "pov_bank_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
-      "pov_script_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
+      "pov_bank_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
+      "pov_script_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
+      "source_count": 4,
+      "sources_cited": [
+        "ASTM International"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 72
+    },
+    {
+      "slug": "how-are-microchips-designed",
+      "question": "How are microchips designed?",
+      "script": "scripts/how-are-microchips-designed.md",
+      "generated": false,
+      "carried_draft": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-041",
+      "pov_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/how-are-microchips-designed.md",
+      "audio_dir": "audio/how-are-microchips-designed",
+      "plan": "loop/plans/how-are-microchips-designed.json",
+      "render": "renders/how-are-microchips-designed.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "pov_script_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "source_count": 4,
+      "sources_cited": [
+        "NIST",
+        "IEEE",
+        "SEMI",
+        "SEMI International Standards"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 72
+    },
+    {
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "question": "Why are deep sea creatures so big?",
+      "script": "scripts/why-are-deep-sea-creatures-so-big.md",
+      "generated": false,
+      "carried_draft": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-021",
+      "pov_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/why-are-deep-sea-creatures-so-big.md",
+      "audio_dir": "audio/why-are-deep-sea-creatures-so-big",
+      "plan": "loop/plans/why-are-deep-sea-creatures-so-big.json",
+      "render": "renders/why-are-deep-sea-creatures-so-big.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
+      "pov_script_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
+      "source_count": 7,
+      "sources_cited": [
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "Smithsonian",
+        "Smithsonian Ocean",
+        "Schmidt Ocean Institute",
+        "Ocean Census",
+        "Nature",
+        "British Antarctic Survey"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 84
+    },
+    {
+      "slug": "is-damascus-steel-better",
+      "question": "Is Damascus steel better?",
+      "script": "scripts/is-damascus-steel-better.md",
+      "generated": false,
+      "carried_draft": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-042",
+      "pov_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/is-damascus-steel-better.md",
+      "audio_dir": "audio/is-damascus-steel-better",
+      "plan": "loop/plans/is-damascus-steel-better.json",
+      "render": "renders/is-damascus-steel-better.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
+      "pov_script_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
       "source_count": 5,
       "sources_cited": [
-        "Journal of Agricultural and Food Chemistry",
-        "Food Chemistry",
-        "National Institutes of Health",
-        "PubChem",
-        "American Oil Chemists' Society"
+        "NIST",
+        "ASM International",
+        "ASTM International",
+        "Nature",
+        "British Museum"
       ],
       "attribution_gaps": [],
-      "planned_beats": 89
+      "planned_beats": 83
     },
     {
-      "slug": "why-does-steak-taste-better-seared",
-      "question": "Why does steak taste better seared?",
-      "script": "scripts/why-does-steak-taste-better-seared.md",
+      "slug": "are-sea-pigs-real",
+      "question": "Are sea pigs real?",
+      "script": "scripts/are-sea-pigs-real.md",
       "generated": false,
       "carried_draft": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-081",
-      "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
+      "pov_id": "pov-048",
+      "pov_line": "What was actually measured? By whom? Over what period? How big was the sample?",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-does-steak-taste-better-seared.md",
-      "audio_dir": "audio/why-does-steak-taste-better-seared",
-      "plan": "loop/plans/why-does-steak-taste-better-seared.json",
-      "render": "renders/why-does-steak-taste-better-seared.mp4",
+      "work_copy": "loop/work/are-sea-pigs-real.md",
+      "audio_dir": "audio/are-sea-pigs-real",
+      "plan": "loop/plans/are-sea-pigs-real.json",
+      "render": "renders/are-sea-pigs-real.mp4",
       "source": "authored-inventory",
       "status": "queued",
-      "pov_bank_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
-      "pov_script_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
-      "source_count": 6,
-      "sources_cited": [
-        "USDA",
-        "American Chemical Society",
-        "Journal of Agricultural and Food Chemistry",
-        "Food Chemistry",
-        "PubChem",
-        "French Academy of Sciences"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 78
-    },
-    {
-      "slug": "why-is-my-bread-not-rising",
-      "question": "Why is my bread not rising?",
-      "script": "scripts/why-is-my-bread-not-rising.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-096",
-      "pov_line": "I like questions where the obvious answer starts falling apart once you look closely.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-is-my-bread-not-rising.md",
-      "audio_dir": "audio/why-is-my-bread-not-rising",
-      "plan": "loop/plans/why-is-my-bread-not-rising.json",
-      "render": "renders/why-is-my-bread-not-rising.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "I like questions where the obvious answer starts falling apart once you look closely.",
-      "pov_script_line": "I like questions where the obvious answer starts falling apart once you look closely.",
+      "pov_bank_line": "What was actually measured? By whom? Over what period? How big was the sample?",
+      "pov_script_line": "What was actually measured? By whom? Over what period? How big was the sample?",
       "source_count": 5,
       "sources_cited": [
-        "USDA",
-        "USDA Agricultural Research Service",
-        "Institute of Food Technologists",
-        "American Chemical Society",
-        "Institut Pasteur"
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "MBARI",
+        "Monterey Bay Aquarium Research Institute"
       ],
       "attribution_gaps": [],
-      "planned_beats": 82
+      "planned_beats": 80
     },
     {
-      "slug": "how-does-butter-get-made-from-cream",
-      "question": "How does butter get made from cream?",
-      "script": "scripts/how-does-butter-get-made-from-cream.md",
+      "slug": "does-damascus-steel-rust",
+      "question": "Does Damascus steel rust?",
+      "script": "scripts/does-damascus-steel-rust.md",
       "generated": false,
       "carried_draft": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-112",
-      "pov_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
+      "pov_id": "pov-064",
+      "pov_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/how-does-butter-get-made-from-cream.md",
-      "audio_dir": "audio/how-does-butter-get-made-from-cream",
-      "plan": "loop/plans/how-does-butter-get-made-from-cream.json",
-      "render": "renders/how-does-butter-get-made-from-cream.mp4",
+      "work_copy": "loop/work/does-damascus-steel-rust.md",
+      "audio_dir": "audio/does-damascus-steel-rust",
+      "plan": "loop/plans/does-damascus-steel-rust.json",
+      "render": "renders/does-damascus-steel-rust.mp4",
       "source": "authored-inventory",
       "status": "queued",
-      "pov_bank_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
-      "pov_script_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
-      "source_count": 5,
+      "pov_bank_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+      "pov_script_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+      "source_count": 4,
       "sources_cited": [
-        "USDA",
-        "American Chemical Society",
-        "National Institutes of Health",
-        "PubChem",
-        "American Oil Chemists' Society"
+        "NIST",
+        "ASM International",
+        "ASTM International",
+        "Nature"
       ],
       "attribution_gaps": [],
-      "planned_beats": 87
-    },
-    {
-      "slug": "why-does-rice-get-sticky",
-      "question": "Why Does Rice Get Sticky?",
-      "script": "scripts/why-does-rice-get-sticky.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-097",
-      "pov_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-does-rice-get-sticky.md",
-      "audio_dir": "audio/why-does-rice-get-sticky",
-      "plan": "loop/plans/why-does-rice-get-sticky.json",
-      "render": "renders/why-does-rice-get-sticky.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
-      "pov_script_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
-      "source_count": 6,
-      "sources_cited": [
-        "USDA",
-        "USDA Agricultural Research Service",
-        "American Chemical Society",
-        "Royal Society of Chemistry",
-        "Journal of Agricultural and Food Chemistry",
-        "Food Chemistry",
-        "National Institutes of Health",
-        "PubChem"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 73
-    },
-    {
-      "slug": "why-does-meat-need-to-rest-after-cooking",
-      "question": "Why does meat need to rest after cooking?",
-      "script": "scripts/why-does-meat-need-to-rest-after-cooking.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-098",
-      "pov_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-does-meat-need-to-rest-after-cooking.md",
-      "audio_dir": "audio/why-does-meat-need-to-rest-after-cooking",
-      "plan": "loop/plans/why-does-meat-need-to-rest-after-cooking.json",
-      "render": "renders/why-does-meat-need-to-rest-after-cooking.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
-      "pov_script_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
-      "source_count": 6,
-      "sources_cited": [
-        "USDA",
-        "USDA Agricultural Research Service",
-        "Institute of Food Technologists",
-        "American Chemical Society",
-        "Journal of Agricultural and Food Chemistry",
-        "Food Chemistry"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 97
+      "planned_beats": 92
     }
   ],
   "unauthored": []
