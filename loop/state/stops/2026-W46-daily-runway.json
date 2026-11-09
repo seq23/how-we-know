@@ -1,0 +1,19 @@
+{
+  "stage": "daily-runway",
+  "week": "2026-W46",
+  "at": "2026-11-09T01:14:14+00:00",
+  "code": "RUNWAY_FULL",
+  "message": "nothing to author today: 6.2 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated).; the Mac has 27 written script(s) to make",
+  "detail": null,
+  "unblock": "Nothing to run. The check repeats tomorrow.",
+  "disposition": "self_resolving",
+  "disposition_why": "The daily runway check (loop/draft.py --daily) found the runway at target and the Mac holding at least two nights of written scripts, so nothing needed authoring today. Finished, not blocked; it checks again tomorrow. (run 5 of at most 400 before this escalates to a human.)",
+  "consecutive": 5,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "runway 6.2 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated).; the Mac has 27 written script(s) to make (buffer 8)",
+    "runway rebuild: not needed - 6.2 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+  ]
+}
