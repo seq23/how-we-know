@@ -82,7 +82,9 @@ def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     name = source.split(":", 1)[1]
     by: dict[str, list[dict]] = {}
     for a in assets:
-        if a.get("calm_set") == name:
+        # Only clips that hold a whole shot: a shorter one is never placed,
+        # and counting it would let the long ones crowd the screen.
+        if a.get("calm_set") == name and float(a.get("seconds") or 0) >= SHOT_S + 1.0:
             by.setdefault(subject(a), []).append(a)
     out, k = [], 0
     while any(k < len(v) for v in by.values()):

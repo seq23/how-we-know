@@ -202,14 +202,16 @@ try:
     finally:
         WL.parse = real_parse
 
-    assets = ([{"local_file": f"y{i}", "subject": "a yacht at sunset", "calm_set": "money-luxury"}
-               for i in range(3)]
-              + [{"local_file": f"j{i}", "subject": "gold and jewelry close-ups", "calm_set": "money-luxury"}
-                 for i in range(3)]
-              + [{"local_file": "c0", "subject": "candlelight", "calm_set": "calm-night"},
+    assets = ([{"local_file": f"y{i}", "subject": "a yacht at sunset", "calm_set": "money-luxury",
+                "seconds": 30.0} for i in range(3)]
+              + [{"local_file": f"j{i}", "subject": "gold and jewelry close-ups", "calm_set": "money-luxury",
+                  "seconds": 30.0} for i in range(3)]
+              + [{"local_file": "short", "subject": "a yacht at sunset", "calm_set": "money-luxury",
+                  "seconds": 9.0},
+                 {"local_file": "c0", "subject": "candlelight", "calm_set": "calm-night", "seconds": 30.0},
                  {"local_file": "deep", "subject": "isopod", "title": "isopod", "source": "pixabay"}])
     pool = REEL.pool("calm:money-luxury", assets, C)
-    check("the Money reel pool is only the money-luxury clips, interleaved by subject",
+    check("the Money reel pool is only the money-luxury clips that hold a shot, interleaved by subject",
           [a["local_file"] for a in pool] == ["y0", "j0", "y1", "j1", "y2", "j2"],
           [a["local_file"] for a in pool])
 
