@@ -326,7 +326,6 @@
     "days": {
       "sleep": [
         "tue",
-        "thu",
         "fri"
       ],
       "neville": [
@@ -340,6 +339,7 @@
         "sun"
       ]
     },
+    "days_why": "One upload day per video the mix makes each week (9 Nov 2026, her catch: 3 sleep days for 2 sleep videos a week made the schedule drift). Sleep science 2 a week: Tue and Fri. When the mix moves to 3 history after monetising, add Thu back.",
     "max_days_waiting": 14,
     "min_lead_hours": 12,
     "max_per_run": 2,
