@@ -211,7 +211,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-04T20:34:34+00:00",
-      "verified_at": "2026-10-24T17:49:14+00:00"
+      "verified_at": "2026-11-09T16:02:26+00:00"
     },
     "aKyOg7xbxC0": {
       "slug": "how-does-quenching-harden-steel",
@@ -222,7 +222,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-04T20:34:35+00:00",
-      "verified_at": "2026-10-25T18:07:09+00:00"
+      "verified_at": "2026-11-09T16:02:26+00:00"
     },
     "eJSCm5sk5AA": {
       "slug": "how-do-self-healing-materials-work",
@@ -638,40 +638,56 @@
       "cues": 160,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-11-08T16:02:15+00:00"
-    }
-  },
-  "blocked": {
+      "recorded_at": "2026-11-08T16:02:15+00:00",
+      "verified_at": "2026-11-09T16:02:25+00:00"
+    },
     "N1mpUttSNd8": {
       "slug": "why-deep-sea-creatures-are-creepers",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-11-07T16:01:54+00:00",
-      "sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509"
+      "caption_id": "AUieDaZbfqsB9rzlRRB0UPlQOujR_VkuEGWNkDasq2Yycxojbbk0x-dM",
+      "language": "en",
+      "srt_sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509",
+      "cues": 172,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-09T16:02:22+00:00"
     },
     "VUeFHBIXoRc": {
       "slug": "why-are-deep-sea-creatures-so-big",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-11-08T16:02:14+00:00",
-      "sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e"
+      "caption_id": "AUieDaYCva9z_xhPBQ_Ni-TvGMiX_oLfi5p6TspYxkmgQ9kxcFhf7w8M",
+      "language": "en",
+      "srt_sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e",
+      "cues": 177,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-09T16:02:23+00:00"
     },
     "HWJ16RxXhH0": {
       "slug": "is-damascus-steel-better",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-11-08T16:02:14+00:00",
-      "sha256": "981b998e45883b351e759e93d63f35e9377a0313fb0f051e158925e1bfb6ac95"
+      "caption_id": "AUieDaZZinyT-pU6Cuju2J7bDzSDitJkusRohi1gyZrZ8i2EJx3XIqcA",
+      "language": "en",
+      "srt_sha256": "981b998e45883b351e759e93d63f35e9377a0313fb0f051e158925e1bfb6ac95",
+      "cues": 184,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-09T16:02:24+00:00"
     },
     "OSEN-Uv7A0I": {
       "slug": "does-damascus-steel-rust",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-11-08T16:02:14+00:00",
-      "sha256": "8fff824e6f0637d2b79a2b8207aa64e593d2f78f3ef037ec7c85ecac51096dc4"
+      "caption_id": "AUieDabaQtp5LFW1SDBueETrUrlq37aXQj6DeqnyEvPrzCpimvtps2q6",
+      "language": "en",
+      "srt_sha256": "8fff824e6f0637d2b79a2b8207aa64e593d2f78f3ef037ec7c85ecac51096dc4",
+      "cues": 187,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-11-09T16:02:25+00:00"
     }
   },
-  "updated": "2026-11-08T16:02:15+00:00",
+  "blocked": {},
+  "updated": "2026-11-09T16:02:26+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-08T16:02:15+00:00",
+    "at": "2026-11-09T16:02:25+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
