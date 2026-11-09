@@ -344,7 +344,7 @@ def stock_pool(slug: str, assets: list[dict]) -> list[dict]:
     if episode_domain(slug) not in STOCK.DOMAINS:
         return []
     phrases = STOCK.episode_phrases(slug)
-    return [a for a in assets if STOCK.is_stock(a)
+    return [a for a in assets if STOCK.is_stock(a) and not a.get("calm_set")
             and a.get("subject") in phrases
             and STOCK.phrase_in(a["subject"], a.get("title", ""))]
 

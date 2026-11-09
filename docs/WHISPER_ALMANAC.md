@@ -29,7 +29,7 @@
 
 - **Realistic weekly total: 5 videos (3 manifesting + 2 history)**, one per Almanac night, on a quiet Mac. Under load (20.4 Mac-min per spoken minute, measured 6 Nov) a history episode takes two nights: **4 a week**.
 - The supply gate (no new video of a format while 14+ days of it wait) and the storage caps are unchanged.
-- **Known blocker, 8 Nov:** the first finished history render failed the final frame check (FRAME_CHECK_FAILED, "no clearly visible animal subject" on dark frames); it is set aside, never uploaded. Nothing is public yet.
+- **8 Nov blocker, fixed 9 Nov:** the first history render failed How We Know's every-frame documentary gate on dim open-water frames. The Almanac now has its own sleep picture gate (`visuals/whisper_frame_check.py`, below), and renders dim each cut only to a luma floor (`visuals/whisper_reel.dim_for`), never to black.
 
 ### How a video is made (0 steps for her)
 
@@ -165,7 +165,8 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 ### The upload step (`loop/whisper_upload.py`, built 7 Nov 2026)
 
 - **Where:** her Mac, every night in the batch (step `whisper-upload`, after the whisper step). It uses no narrator, so the 5:2 night split is unchanged.
-- **Only a checked episode:** every lane check again (script rules, kit rules, a measured length), then the final frame check on the finished file (`visuals/frame_check.py`, one frame every 20 s). No credit is burned into the picture (the frame check fails any word on screen); every footage source is credited in the description.
+- **Only a checked episode:** every lane check again (script rules, kit rules, a measured length), then the final frame check on the finished file (`visuals/whisper_frame_check.py`, one frame every 20 s; config `picture_gate`): any frame with text, black bars, a graphic/CG filler or a near-black mean luma fails; ambient frames are fine, but at least `subject_share_min` of frames must show real footage of the subject. A set-aside render that now passes goes back in line with `visuals/whisper_frame_check.py SLUG --restore`.
+- **Manifesting footage (her call 9 Nov):** Neville, Money and the rotating lane never show deep sea. Config `calm_footage` maps each lane to a set (calm night sky / water / rain / candlelight; Money: luxury and money), harvested by `research/imagery_stock_video.py --calm` (Pixabay/Mixkit, licence-checked, OCR-clean, credited). A manifesting kit without its set is refused for upload and re-rendered. `visuals/whisper_render.py SLUG --plan` shows the footage a render would use. No credit is burned into the picture (the frame check fails any word on screen); every footage source is credited in the description.
 - **Private with a publish date:** the publishAt rides in the upload body itself, with altered content = yes and made for kids = no, so no second status write can reset them. The kit's title, description, chapters and tags go up unchanged.
 - **Supply gate:** no new upload of a format while 14+ days of it already wait on YouTube (a green HOLD; the render waits on the Mac).
 - **Confirmed before anything is deleted:** the upload is recorded once YouTube lists the id with processing started; the local files go on a later night, once it reads `processed`.
