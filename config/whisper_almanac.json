@@ -642,12 +642,16 @@
       "rotating": "calm-night",
       "money": "money-luxury"
     },
-    "per_subject": 4,
+    "per_subject": 5,
     "sets": {
       "calm-night": [
         {
           "subject": "the night sky and stars",
-          "query": "night sky stars",
+          "queries": [
+            "night sky stars",
+            "starry sky",
+            "milky way"
+          ],
           "accept": [
             "star",
             "starry sky",
@@ -657,7 +661,11 @@
         },
         {
           "subject": "moonlight on water",
-          "query": "moonlight water",
+          "queries": [
+            "moonlight water",
+            "moon sea",
+            "moonlight"
+          ],
           "accept": [
             "moonlight",
             "moon"
@@ -665,7 +673,9 @@
         },
         {
           "subject": "gentle ocean waves at dusk",
-          "query": "ocean waves dusk",
+          "queries": [
+            "ocean waves dusk"
+          ],
           "accept": [
             "ocean",
             "wave",
@@ -675,7 +685,10 @@
         },
         {
           "subject": "rain on a window",
-          "query": "rain window",
+          "queries": [
+            "rain window",
+            "raindrops window"
+          ],
           "accept": [
             "rain",
             "raindrop",
@@ -684,7 +697,10 @@
         },
         {
           "subject": "candlelight",
-          "query": "candle",
+          "queries": [
+            "candle",
+            "candlelight"
+          ],
           "accept": [
             "candle",
             "candle flame",
@@ -693,7 +709,10 @@
         },
         {
           "subject": "drifting clouds at golden hour",
-          "query": "clouds golden hour",
+          "queries": [
+            "clouds golden hour",
+            "clouds sunset"
+          ],
           "accept": [
             "cloud",
             "cloudscape",
@@ -703,7 +722,10 @@
         },
         {
           "subject": "a calm forest at dawn",
-          "query": "forest dawn",
+          "queries": [
+            "forest dawn",
+            "forest morning fog"
+          ],
           "accept": [
             "forest",
             "tree",
@@ -714,27 +736,46 @@
       "money-luxury": [
         {
           "subject": "a luxury interior at night",
-          "query": "luxury interior",
+          "queries": [
+            "luxury interior",
+            "luxury apartment",
+            "luxury hotel room",
+            "penthouse"
+          ],
           "accept": [
             "luxury interior",
             "hotel",
             "interior",
-            "living room"
+            "living room",
+            "luxury apartment",
+            "apartment",
+            "hotel room",
+            "penthouse",
+            "bedroom"
           ]
         },
         {
           "subject": "a penthouse view over city lights",
-          "query": "city lights night",
+          "queries": [
+            "city lights night",
+            "city skyline night",
+            "night city"
+          ],
           "accept": [
             "city light",
             "cityscape",
             "skyline",
-            "night city"
+            "night city",
+            "city skyline"
           ]
         },
         {
           "subject": "a yacht at sunset",
-          "query": "yacht sunset",
+          "queries": [
+            "yacht sunset",
+            "yacht",
+            "luxury yacht"
+          ],
           "accept": [
             "yacht",
             "sailing yacht"
@@ -742,45 +783,71 @@
         },
         {
           "subject": "a private jet cabin",
-          "query": "private jet",
+          "queries": [
+            "private jet",
+            "private jet interior",
+            "business jet"
+          ],
           "accept": [
             "private jet",
-            "small private jet"
+            "small private jet",
+            "business jet"
           ]
         },
         {
           "subject": "champagne and fine dining in soft light",
-          "query": "champagne",
+          "queries": [
+            "champagne",
+            "fine dining",
+            "champagne glass"
+          ],
           "accept": [
             "champagne",
             "sparkling wine",
             "champagne bottle",
-            "champagne glass"
+            "champagne glass",
+            "fine dining"
           ]
         },
         {
           "subject": "gold and jewelry close-ups",
-          "query": "jewelry",
+          "queries": [
+            "jewelry",
+            "gold jewelry",
+            "diamond"
+          ],
           "accept": [
             "jewelry",
             "jewellery",
             "diamond ring",
             "ring",
-            "gold"
+            "gold",
+            "diamond",
+            "necklace",
+            "earring"
           ]
         },
         {
           "subject": "gold bars handled slowly",
-          "query": "gold bullion",
+          "queries": [
+            "gold bullion",
+            "gold bars",
+            "gold coins"
+          ],
           "accept": [
             "gold bullion",
             "gold bar",
-            "gold"
+            "gold",
+            "gold coin"
           ]
         },
         {
           "subject": "a luxury car interior",
-          "query": "luxury car interior",
+          "queries": [
+            "luxury car interior",
+            "car interior",
+            "car dashboard night"
+          ],
           "accept": [
             "car interior",
             "luxury car"
@@ -788,14 +855,21 @@
         },
         {
           "subject": "designer shopping bags",
-          "query": "shopping bags",
+          "queries": [
+            "shopping bags",
+            "shopping"
+          ],
           "accept": [
-            "shopping bag"
+            "shopping bag",
+            "shopping"
           ]
         },
         {
           "subject": "a calm infinity pool at dusk",
-          "query": "infinity pool",
+          "queries": [
+            "infinity pool",
+            "pool sunset"
+          ],
           "accept": [
             "infinity pool",
             "swimming pool",
@@ -804,7 +878,18 @@
         }
       ]
     },
-    "why": "Her call 9 Nov 2026 (\"apply the correct footage\"): the manifesting lanes never show How We Know's deep-sea creatures. Neville and the rotating lane (Shinn, love, specific person, self-concept) take calm night footage (real night sky, moonlight on water, waves at dusk, rain on a window, candlelight, golden-hour clouds, a forest at dawn); Money takes money and luxury footage (her correction the same day: luxury interiors at night, a penthouse over city lights, a yacht at sunset, a private jet cabin, champagne, gold and jewelry, gold bars, a luxury car interior, shopping bags, an infinity pool at dusk). Real footage only, Pixabay/Mixkit under their free licences, licence wording stored and re-checked, credited in the description (research/imagery_stock_video.harvest_calm); a clip with any word on screen is refused at harvest. History sleep episodes keep their own episode footage. per_subject caps each subject so none holds over ~25% of the screen (visuals/whisper_reel.reel_problems)."
+    "why": "Her call 9 Nov 2026 (\"apply the correct footage\"): the manifesting lanes never show How We Know's deep-sea creatures. Neville and the rotating lane (Shinn, love, specific person, self-concept) take calm night footage (real night sky, moonlight on water, waves at dusk, rain on a window, candlelight, golden-hour clouds, a forest at dawn); Money takes money and luxury footage (her correction the same day: luxury interiors at night, a penthouse over city lights, a yacht at sunset, a private jet cabin, champagne, gold and jewelry, gold bars, a luxury car interior, shopping bags, an infinity pool at dusk). Real footage only, Pixabay/Mixkit under their free licences, licence wording stored and re-checked, credited in the description (research/imagery_stock_video.harvest_calm); a clip with any word on screen is refused at harvest. History sleep episodes keep their own episode footage. per_subject caps each subject so none holds over ~25% of the screen (visuals/whisper_reel.reel_problems). min_seconds: a clip must hold one whole 18 s shot (visuals/whisper_reel.SHOT_S) - measured 9 Nov, shorter clips were never placed, so the few long ones crowded the Money reel over the 25% subject cap. refused: clips looked at frame by frame on 9 Nov and kept off the screen (a word accepted at harvest that matched the wrong thing: 'car' took highway traffic).",
+    "min_seconds": 19.0,
+    "refused": {
+      "pixabay:4053": "an ordinary car dashboard with a lit screen, not a luxury car interior",
+      "pixabay:2165": "highway traffic, not a luxury car interior",
+      "pixabay:1906": "highway traffic, not a luxury car interior",
+      "pixabay:1900": "highway traffic, not a luxury car interior",
+      "pixabay:25907": "daytime aerial of hotel buildings, not a luxury interior at night",
+      "pixabay:36944": "daytime aerial of a town, not city lights",
+      "pixabay:13963": "an unreadable close-up, not champagne",
+      "pixabay:19255": "blown-out white frame, no jewelry visible"
+    }
   },
   "picture_gate": {
     "subject_share_min": 0.5,

@@ -188,17 +188,32 @@ try:
               WL.footage_set(WL.parse("love.md"), C) == "calm-night")
         check("a sleep history script keeps its own episode footage",
               WL.footage_set({"kind": "sleep", "meta": {}}, C) is None)
+        import shot_list                                                          # noqa: PLC0415
+        real_subjects = shot_list.subjects
+        shot_list.subjects = lambda slug: []
+        scripts["hist"] = {"kind": "sleep", "meta": {}, "title": "h",
+                           "segments": [{"source": "08-what-creatures-live-in-the-deep-sea"}]}
+        try:
+            sh = WU.subject("hist", C)
+        finally:
+            shot_list.subjects = real_subjects
+        check("a sleep source with no shot list still names a subject (never empty)",
+              "creatures live in the deep sea" in sh, sh)
     finally:
         WL.parse = real_parse
 
-    assets = ([{"local_file": f"y{i}", "subject": "a yacht at sunset", "calm_set": "money-luxury"}
-               for i in range(3)]
-              + [{"local_file": f"j{i}", "subject": "gold and jewelry close-ups", "calm_set": "money-luxury"}
-                 for i in range(3)]
-              + [{"local_file": "c0", "subject": "candlelight", "calm_set": "calm-night"},
+    assets = ([{"local_file": f"y{i}", "subject": "a yacht at sunset", "calm_set": "money-luxury",
+                "seconds": 30.0} for i in range(3)]
+              + [{"local_file": f"j{i}", "subject": "gold and jewelry close-ups", "calm_set": "money-luxury",
+                  "seconds": 30.0} for i in range(3)]
+              + [{"local_file": "short", "subject": "a yacht at sunset", "calm_set": "money-luxury",
+                  "seconds": 9.0},
+                 {"local_file": "traffic", "post_id": "pixabay:2165", "subject": "a luxury car interior",
+                  "calm_set": "money-luxury", "seconds": 30.0},
+                 {"local_file": "c0", "subject": "candlelight", "calm_set": "calm-night", "seconds": 30.0},
                  {"local_file": "deep", "subject": "isopod", "title": "isopod", "source": "pixabay"}])
     pool = REEL.pool("calm:money-luxury", assets, C)
-    check("the Money reel pool is only the money-luxury clips, interleaved by subject",
+    check("the Money reel pool is only money-luxury clips that hold a shot and are not refused, interleaved",
           [a["local_file"] for a in pool] == ["y0", "j0", "y1", "j1", "y2", "j2"],
           [a["local_file"] for a in pool])
 

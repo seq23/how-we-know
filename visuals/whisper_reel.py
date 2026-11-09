@@ -80,9 +80,17 @@ def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     if not source.startswith("calm:"):
         return F.episode_pool(source, assets)
     name = source.split(":", 1)[1]
+    if c is None:
+        sys.path.insert(0, str(ROOT / "loop"))
+        import whisper_lane as WL                          # noqa: PLC0415
+        c = WL.cfg()
+    refused = c["calm_footage"].get("refused") or {}
     by: dict[str, list[dict]] = {}
     for a in assets:
-        if a.get("calm_set") == name:
+        # Only clips that hold a whole shot: a shorter one is never placed,
+        # and counting it would let the long ones crowd the screen.
+        if (a.get("calm_set") == name and float(a.get("seconds") or 0) >= SHOT_S + 1.0
+                and a.get("post_id") not in refused):
             by.setdefault(subject(a), []).append(a)
     out, k = [], 0
     while any(k < len(v) for v in by.values()):

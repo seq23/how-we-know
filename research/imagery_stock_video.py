@@ -526,6 +526,8 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     description like every stock clip."""
     cfgc = json.loads(CALM_CONFIG.read_text())["calm_footage"]
     per = int(cfgc["per_subject"])
+    min_s = float(cfgc["min_seconds"])
+    refused = cfgc.get("refused") or {}
     cap = cap if cap is not None else MAX_PER_RUN
     FF = _ff()
     status, stops = source_status()
@@ -538,20 +540,22 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     for name in sets or list(cfgc["sets"]):
         for ent in cfgc["sets"][name]:
             n_have = sum(1 for a in have + new
-                         if a.get("calm_set") == name and a.get("subject") == ent["subject"])
-            for src in live:
+                         if a.get("calm_set") == name and a.get("subject") == ent["subject"]
+                         and float(a.get("seconds") or 0) >= min_s and a.get("post_id") not in refused)
+            for src, query in [(s_, q) for q in ent["queries"] for s_ in live]:
                 if n_have >= per or fetched >= cap:
                     break
                 try:
-                    cands = FF.BY_NAME[src].search(ent["query"])
+                    cands = FF.BY_NAME[src].search(query)
                 except Exception as e:                   # noqa: BLE001
-                    print(f"  {src} {ent['query']!r}: search failed ({str(e)[:80]})")
+                    print(f"  {src} {query!r}: search failed ({str(e)[:80]})")
                     continue
                 for c in cands:
                     uid = f"{src}:{c['id']}"
                     hit = next((w for w in ent["accept"] if phrase_in(w, c.get("title") or "")), None)
-                    if (not hit or uid in used or FF.banned(c) or n_have >= per or fetched >= cap
-                            or (c.get("duration") and float(c["duration"]) < MIN_SECONDS)):
+                    if (not hit or uid in used or uid in refused or FF.banned(c) or n_have >= per
+                            or fetched >= cap
+                            or (c.get("duration") and float(c["duration"]) < min_s)):
                         continue
                     try:
                         meta, blob = FF.BY_NAME[src].download(c)
@@ -566,7 +570,7 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
                     path.write_bytes(blob)
                     used.add(uid)
                     info = FF.probe(path)
-                    probs = ([] if info["duration_s"] >= MIN_SECONDS and info["width"] >= 1280
+                    probs = ([] if info["duration_s"] >= min_s and info["width"] >= 1280
                              else ["too short or too small"])
                     probs = probs or clip_problems(path, info["duration_s"])
                     rec = record(c, ent["subject"], f"whisper:{name}", meta, blob, info)
