@@ -1,0 +1,26 @@
+{
+  "stage": "repackage-apply",
+  "week": "2026-W46",
+  "at": "2026-11-09T00:54:19+00:00",
+  "code": "QUOTA_EXHAUSTED",
+  "message": "4 title(s) ready to apply and the day's usable allowance after the upload and Shorts reserves (3400 units) does not fit one",
+  "detail": {
+    "resets_at": "2026-11-09T00:00:00-08:00",
+    "waiting": [
+      "does-damascus-steel-rust",
+      "how-does-quenching-harden-steel",
+      "what-is-concrete-made-of",
+      "why-are-deep-sea-creatures-so-big"
+    ]
+  },
+  "unblock": "Nothing to do: tomorrow's run resumes where this one stopped.",
+  "disposition": "needs_human",
+  "disposition_why": "'QUOTA_EXHAUSTED' has now stopped repackage-apply on 5 consecutive runs (limit 3), so it is not resolving itself. Three runs in a row means the day's allowance is structurally short, not momentarily spent - the lanes are asking for more units than a day holds. That needs a human: reduce a lane's per-run limit, or spread the caption backfill wider.",
+  "consecutive": 5,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "quota fits 0 of 4 today; the rest wait, in order. quota day 2026-11-08 (PT): spent 6164 of 10000, 3436 usable after 400 headroom; lanes: captions 601, cloud-upload 5100, demand 1, handoff 207, localize 255"
+  ]
+}
