@@ -188,6 +188,17 @@ try:
               WL.footage_set(WL.parse("love.md"), C) == "calm-night")
         check("a sleep history script keeps its own episode footage",
               WL.footage_set({"kind": "sleep", "meta": {}}, C) is None)
+        import shot_list                                                          # noqa: PLC0415
+        real_subjects = shot_list.subjects
+        shot_list.subjects = lambda slug: []
+        scripts["hist"] = {"kind": "sleep", "meta": {}, "title": "h",
+                           "segments": [{"source": "08-what-creatures-live-in-the-deep-sea"}]}
+        try:
+            sh = WU.subject("hist", C)
+        finally:
+            shot_list.subjects = real_subjects
+        check("a sleep source with no shot list still names a subject (never empty)",
+              "creatures live in the deep sea" in sh, sh)
     finally:
         WL.parse = real_parse
 

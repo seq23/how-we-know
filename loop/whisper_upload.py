@@ -155,9 +155,12 @@ def subject(slug: str, c: dict) -> str:
     subs: list[str] = []
     for s in srcs:
         try:
-            subs += shot_list.subjects(s)
+            got = shot_list.subjects(s)
         except Exception:                                   # noqa: BLE001
-            subs.append(s.split("-", 1)[-1].replace("-", " "))
+            got = []
+        # No shot list (measured 9 Nov 2026 on W45: every source had none, so
+        # the judge was asked about an EMPTY subject): the episode's own words.
+        subs += got or [s.split("-", 1)[-1].replace("-", " ")]
     names = ", ".join(dict.fromkeys(x for x in subs if x))
     return f"{names} (dimmed for sleep; the video is titled {p['title']!r})"
 
