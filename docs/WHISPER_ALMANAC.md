@@ -1,5 +1,72 @@
 # Whisper Almanac — master plan and how the lane works
 
+**Current plan: 9 Nov 2026** (her rulings: "i want to reach monetization fastest", "build the neville lane", then Money and a rotating Shinn slot). The 6 Nov plan below it is kept for the how-it-works detail; its cadence is **Superseded**.
+
+## The plan (9 Nov 2026)
+
+**Goal:** YouTube monetisation as fast as possible: **1,000 subscribers + 4,000 watch hours** (12 months).
+
+### Four lanes, per week, until monetised
+
+| Lane | Per week | Length | What it is |
+|---|---|---|---|
+| **Neville** | 1 | 1 h | A guided whisper built on one Neville Goddard technique (whisper method / inner conversation, SATS, law of assumption, living in the end, revision, feeling is the secret, self-concept, bridge of incidents, imagination creates reality) |
+| **Money** | 1 | 1 h | Affirmations in her whisper: billionaire, rich woman, manifest money while you sleep; steady/monthly income as lines inside them |
+| **Rotating** | 1 | 1 h | In turn: Florence Scovel Shinn, specific person, Shinn, love, Shinn, self-concept |
+| **History** | 2 (floor 1) | 2 h | Sleep science/history rewritten from fact-checked How We Know scripts |
+| **Shorts** | none yet | — | **No Almanac Shorts path exists** (How We Know's Shorts cutter is not wired for the Almanac); a later build |
+
+- **Where it lives:** `config/whisper_almanac.json` (`lanes`, `mix`, `teachings`, `affirmations.topics`), read by `loop/whisper_lane.py` (which script the Mac voices next) and `loop/whisper_author.py` (what gets written). No new job: the 23:00 batch and the Wednesday author.
+
+### What the Mac can really make (measured, not guessed)
+
+| Item | Measured / computed | Source |
+|---|---|---|
+| History episode, voice | **6.8 h** (407.5 min) for 49.5 spoken minutes = 8.2 Mac-min per spoken minute | batch log, night of 7 Nov 2026 |
+| History episode, render | **2.7 h** (05:48 to 08:30) for a 1 h 43 min video | file times, 8 Nov |
+| 1-hour manifesting video | about **3.3 h** (affirmations: 13 spoken min) to **4.6 h** (teaching: ~22 spoken min) of voice + render | computed from the two rows above |
+| Almanac nights | 5 a week (5:2 split with How We Know); voice until 07:00, render after | `loop/night_split.py` |
+
+- **Realistic weekly total: 5 videos (3 manifesting + 2 history)**, one per Almanac night, on a quiet Mac. Under load (20.4 Mac-min per spoken minute, measured 6 Nov) a history episode takes two nights: **4 a week**.
+- The supply gate (no new video of a format while 14+ days of it wait) and the storage caps are unchanged.
+- **Known blocker, 8 Nov:** the first finished history render failed the final frame check (FRAME_CHECK_FAILED, "no clearly visible animal subject" on dark frames); it is set aside, never uploaded. Nothing is public yet.
+
+### How a video is made (0 steps for her)
+
+1. **Script ($0 free models, Wednesday 14:00 CT):** history from fact-checked How We Know scripts; affirmations line by line; **teaching = a plain explanation in our own words → 2–4 of the teacher's own lines → a long guided section to fall asleep in the wish fulfilled**.
+2. **Checks in code:** plain words, no promise, length, distinct; teaching adds the rights and straight-reading checks (`loop/teachings.py`).
+3. **Voice:** her cloned whisper (Chatterbox) on the Mac, the lane furthest behind its weekly count first.
+4. **Picture:** dim moving footage (history: its own subject; manifesting: the calm deep-sea set).
+5. **Upload:** private with a 20:00 CT publish date (history Tue/Thu/Fri, Neville Mon, affirmations Wed/Sun, Shinn Sat), altered-content box ticked.
+
+### Monetisation-safe rules (all in code)
+
+- **Every script different:** an 8-word-run overlap check across all scripts; teaching scripts also differ in **structure** (one of 4 shapes × 12 scenes, never repeating a recent one).
+- **Affirmations, never promises:** no amounts, dates, "will make you", "guaranteed", nothing another person will do, no health claims (risk brain ADV; R-ADV-05 no income claims). Titles never say "no ads" or promise anything.
+- **Public-domain quotes only** (`config/teacher_rights.json`): Neville's books 1939–1961 checked against the US renewal records on 9 Nov 2026, none renewed; Shinn's 1925 and 1928 books are public domain (pre-1930 rule). *Resurrection* (1966), *The Power of Awareness* (later edition with new matter), his lectures and his voice are **never quoted**. Each quote must match a verified line word for word; the book's own text outside a quote is refused.
+- **Credit, no endorsement:** "Techniques from the public-domain writings of Neville Goddard (1905–1972)" (or Shinn), the quoted books, and "Not affiliated with or endorsed by any estate, publisher or organisation."
+- **Altered-content box** and the AI-voice line in the first 3 description lines, every upload.
+
+### The 30-day check per lane, and the shift after monetisation
+
+- **Every night** (`loop/whisper_scorecard.py`, in the upload step): the channel's own views, watch hours and subscribers per lane, last 30 days, into `loop/state/whisper_channel.json`. A number YouTube did not return reads "not read", never a guess.
+- **Per lane, 30 days after its first public video:** views, watch hours, subscribers (`python loop/whisper_scorecard.py report`).
+- **Data rule, no calendar:** the lane with the most watch hours per video (2+ measured videos, against another lane with 2+) takes one slot from the weakest; history never drops below 1.
+- **Once monetised** (her channel reads 1,000+ subscribers and 4,000+ watch hours): the mix moves to **history 3 + money 2**; the watch-hour rule still applies.
+
+### Description links
+
+- **Money videos only**, one plain line, her own products, no affiliate framing: Billionaire High Performance Coach (billionairehighperformancecoach.com) and A Player Mode (aplayermode.com).
+
+### What she does
+
+- **Nothing per video.**
+- **Once eligible:** apply for the YouTube Partner Program in YouTube Studio (her account).
+
+---
+
+_Below: the 6 Nov 2026 master plan (how the flow, the Mac, storage and uploads work)._
+
 Written 6 Nov 2026 from measured facts (the plan page shown to the owner, in Markdown). The lane's rules, files and stops follow the plan.
 
 
@@ -7,7 +74,7 @@ Every number here is measured on 6 Nov or computed from a measurement; nothing i
 
 _Her rulings, 6 Nov_
 
-- Lead lane: sleep science from How We Know's deep sea, food and materials topics; history second.
+- Lead lane: sleep science from How We Know's deep sea, food and materials topics; history second. **Superseded 9 Nov 2026** by the four lanes above.
 
 - Dim, moving footage under the How We Know footage rules, never a dark screen.
 
@@ -105,6 +172,8 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 - **Named stops:** WHISPER_YT_TOKEN_INVALID (owner action: her sign-in), UPLOAD_QUOTA (resets by itself), FRAME_CHECK_FAILED (red; the file is set aside, never deleted). Each is in loop/state/stops (the Sunday digest) and puts one line in her morning email's Notices.
 
 ## Plan · 5. Videos per week
+
+> **Superseded 9 Nov 2026:** the 6 Nov cadence (2 sleep-science episodes + 1 affirmation a week) is replaced by the four lanes at the top of this page.
 
 - **Recommended: 2 sleep-science episodes and 1 affirmation a week to start; 3 sleep a week from day 30 if day-30 views pass.**
 

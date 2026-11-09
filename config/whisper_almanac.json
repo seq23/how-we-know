@@ -2,7 +2,8 @@
   "_why": [
     "Whisper Almanac: a faceless YouTube channel (@whisperalmanac) voiced by the owner's own cloned whisper. Her rulings 5-6 Nov 2026, spry brain Settled decisions. Lead lane: whispered sleep SCIENCE (How We Know deep sea, food and materials; history secondary, her ruling 6 Nov 2026), 2-3 hour videos, rewritten for sleep from fact-checked How We Know scripts. Backup lane: money and love affirmations, 1 a week, same channel.",
     "Read by loop/whisper_lane.py (scripts, checks, kits, the Mac night step), loop/whisper_author.py (the $0 cloud author) and voice/whisper_voice.py (Chatterbox, on the Mac, inside the batch's narrator lock). Nothing in this file is decoration: every key has a reader.",
-    "Fact-checked = uploaded by the How We Know machine (loop/state/ledger.json `published`, not retired): those scripts passed the source, citation and render gates."
+    "Fact-checked = uploaded by the How We Know machine (loop/state/ledger.json `published`, not retired): those scripts passed the source, citation and render gates.",
+    "9 Nov 2026 (her rulings: \"i want to reach monetization fastest\", \"build the neville lane\", then Money and a rotating Shinn slot): four lanes until monetised - Neville technique whispers, Money affirmations, a rotating slot (Florence Scovel Shinn, love, specific person, self-concept) and sleep history - in the weekly `mix`, read by loop/whisper_lane.queue; manifesting videos are 1 hour, history 2 hours. Teaching rules and rights: loop/teachings.py, config/teacher_rights.json."
   ],
   "channel": {
     "name": "Whisper Almanac",
@@ -45,12 +46,25 @@
   "lengths": {
     "sleep": {
       "min_s": 7200,
-      "max_s": 10800
+      "max_s": 10800,
+      "goal_s": 7500
     },
     "affirmations": {
       "min_s": 2700,
-      "max_s": 4500
-    }
+      "max_s": 4500,
+      "goal_s": 3780
+    },
+    "neville": {
+      "min_s": 3600,
+      "max_s": 4500,
+      "goal_s": 3780
+    },
+    "shinn": {
+      "min_s": 3600,
+      "max_s": 4500,
+      "goal_s": 3780
+    },
+    "_why": "Manifesting videos 1 hour (the '1 hr' search term; about half the Mac time of a history episode), history 2 hours (coordinator's correction 9 Nov 2026 from the measured night: 6.8 h of voice + 2.7 h of render for one 1 h 43 min history episode). goal_s: the pause scale the author fits a new script to."
   },
   "distinct": {
     "max_overlap": 0.15,
@@ -69,7 +83,50 @@
       "whisper"
     ],
     "sleep_pattern": "ASMR whispered {topic} for deep sleep · {moment} ({length})",
-    "affirmations_pattern": "ASMR whispered {topic} for deep sleep · {moment} ({length})"
+    "affirmations_pattern": "ASMR whispered {topic} for deep sleep · {moment} ({length})",
+    "teaching_tags": {
+      "neville": [
+        "neville goddard",
+        "neville goddard sleep meditation",
+        "law of assumption",
+        "sats meditation",
+        "whisper method",
+        "manifest while you sleep",
+        "neville goddard asmr",
+        "sleep affirmations asmr"
+      ],
+      "shinn": [
+        "florence scovel shinn",
+        "money affirmations",
+        "sleep affirmations asmr",
+        "manifest while you sleep",
+        "asmr affirmations sleep"
+      ],
+      "money": [
+        "money affirmations asmr",
+        "billionaire affirmations sleep",
+        "rich woman affirmations",
+        "manifest money while you sleep",
+        "money affirmations sleep",
+        "asmr money affirmations"
+      ],
+      "rotating": [
+        "asmr affirmations sleep",
+        "sleep affirmations asmr",
+        "asmr manifest love",
+        "specific person",
+        "self-concept affirmations"
+      ]
+    },
+    "banned": [
+      "no ads",
+      "guaranteed",
+      "guarantee",
+      "will make you",
+      "100%",
+      "instant"
+    ],
+    "why": "Benefit, trigger, moment, real length; never 'no ads' (we monetise) and never a promise (risk brain ADV). Lead keywords from free YouTube autocomplete, 9 Nov 2026; 'neville goddard asmr' is a tag, not a lead."
   },
   "visual": {
     "kind": "dim-moving-footage",
@@ -188,10 +245,6 @@
     }
   ],
   "affirmations": {
-    "rotation": [
-      "money",
-      "love"
-    ],
     "movements": [
       "settling in: breath, a soft body, a safe room",
       "feeling safe and worthy right now",
@@ -206,12 +259,54 @@
       "money": {
         "topic": "money affirmations",
         "moment": "it's already yours",
-        "thumb_words": "it's already yours"
+        "thumb_words": "it's already yours",
+        "promise": "money affirmations"
       },
       "love": {
         "topic": "love affirmations",
         "moment": "you are loved",
-        "thumb_words": "you are loved"
+        "thumb_words": "you are loved",
+        "promise": "love affirmations"
+      },
+      "billionaire": {
+        "topic": "billionaire affirmations",
+        "moment": "female voice",
+        "thumb_words": "a woman who builds wealth",
+        "promise": "billionaire affirmations for a woman who builds wealth",
+        "title": "Billionaire affirmations before sleep · whispered ASMR in a female voice ({length})",
+        "guide": "She is a calm, capable woman who builds wealth: she owns her time, makes clear decisions, builds things that last and receives well. Fold in a few lines about steady, monthly income that grows from her own work. Never a promise of becoming a billionaire, never an amount."
+      },
+      "rich-woman": {
+        "topic": "rich woman affirmations",
+        "moment": "money affirmations",
+        "thumb_words": "rich woman energy",
+        "promise": "rich woman affirmations",
+        "title": "Rich woman affirmations for sleep · ASMR money affirmations, whispered ({length})",
+        "guide": "A rich woman's quiet confidence: worthy of money, at ease with it, generous, organised, saving and investing calmly, her income steady month after month. Feelings and choices, never an amount, never a promise."
+      },
+      "money-fast": {
+        "topic": "money affirmations",
+        "moment": "manifest money while you sleep",
+        "thumb_words": "money flows to me",
+        "promise": "money affirmations",
+        "title": "Manifest money fast while you sleep · whispered ASMR money affirmations ({length})",
+        "guide": "Money flowing in easily and often; open to new income and steady monthly income; noticing opportunities; grateful. Present tense and calm. Never a date, a speed, an amount or a promise."
+      },
+      "specific-person": {
+        "topic": "specific person affirmations",
+        "moment": "love, already here",
+        "thumb_words": "love, already here",
+        "promise": "affirmations for the love you feel",
+        "title": "Specific person affirmations for sleep · whispered ASMR, law of assumption ({length})",
+        "guide": "The warm, steady bond she feels with someone she loves, told only through her own feelings: safe, close, peaceful, secure. Never name anyone, never say what the other person will do, never an ex, never a promise."
+      },
+      "self-concept": {
+        "topic": "self-concept affirmations",
+        "moment": "I am already her",
+        "thumb_words": "i am already her",
+        "promise": "self-concept affirmations",
+        "title": "Self-concept sleep affirmations · whispered ASMR, I am already her ({length})",
+        "guide": "Who she already is: worthy, calm, confident, chosen, at home in herself. Identity lines in the present tense."
       }
     },
     "guardrail_why": "Affirmations only, never a guaranteed outcome; no fake income proof; no healing or health claims; the AI-voice line and the altered-content box on every upload (brand guardrail, approved 6 Nov 2026: law and YouTube policy, not taste).",
@@ -229,19 +324,27 @@
       "mon",
       "fri"
     ],
-    "planned_uploads_per_week": 2,
+    "planned_uploads_per_week": 5,
     "since": "2026-11-06",
     "recheck_on": "2026-12-06",
-    "why": "Her ruling 6 Nov 2026: the Mac's narration nights split 5 to Whisper Almanac and 2 to How We Know long-form; How We Know Shorts keep going; re-check at day 30 (6 Dec 2026) with real views from both channels. Read by loop/night_split.py; the supply gates (loop/supply_gate.py) decide first. Monday is the food session's night and Friday the batch's deep sea and materials night."
+    "why": "Her ruling 6 Nov 2026: the Mac's narration nights split 5 to Whisper Almanac and 2 to How We Know long-form; How We Know Shorts keep going; re-check at day 30 (6 Dec 2026) with real views from both channels. Read by loop/night_split.py; the supply gates (loop/supply_gate.py) decide first. Monday is the food session's night and Friday the batch's deep sea and materials night. 9 Nov 2026: 5 Almanac uploads a week (3 manifesting at 1 hour, 2 history at 2 hours; mix)."
   },
   "upload": {
     "publish_time_ct": "20:00",
     "days": {
       "sleep": [
         "tue",
+        "thu",
         "fri"
       ],
+      "neville": [
+        "mon"
+      ],
+      "shinn": [
+        "sat"
+      ],
       "affirmations": [
+        "wed",
         "sun"
       ]
     },
@@ -250,6 +353,295 @@
     "max_per_run": 2,
     "token_file": ".secrets/whisper_youtube_token.json",
     "token_env": "WHISPER_YT_TOKEN_JSON",
-    "why": "Read by loop/whisper_upload.py (the Mac, nightly batch step whisper-upload). Every episode is uploaded PRIVATE with a publish date, as How We Know does: 20:00 Central so it is live before bedtime in every US zone (master plan, 6 Nov 2026). 2 sleep episodes (Tue, Fri) and 1 affirmation (Sun) a week, the plan's starting cadence. The supply gate (her 12 Oct rule): no new upload of a format while 14+ days of it already wait on YouTube. min_lead_hours: a 2-hour video's processing time before its publish moment."
+    "why": "Read by loop/whisper_upload.py (the Mac, nightly batch step whisper-upload). Every episode is uploaded PRIVATE with a publish date, as How We Know does: 20:00 Central so it is live before bedtime in every US zone (master plan, 6 Nov 2026). 2 sleep episodes (Tue, Fri) and 1 affirmation (Sun) a week, the plan's starting cadence. The supply gate (her 12 Oct rule): no new upload of a format while 14+ days of it already wait on YouTube. min_lead_hours: a 2-hour video's processing time before its publish moment. 9 Nov 2026: days for the four lanes (history Tue/Thu/Fri, Neville Mon, affirmations Wed/Sun, Shinn Sat); a free slot is the first unused one, so a lane with spare days just publishes sooner."
+  },
+  "teachings": {
+    "why": "Her rulings 9 Nov 2026: guided whispered sessions BUILT ON a teacher's techniques, never a straight reading: a short plain explanation in our own words, a few of the teacher's own lines (only from titles cleared in config/teacher_rights.json), then a long guided section to fall asleep in the wish fulfilled. Every script differs in structure (shape + scene), not only topic. Read by loop/teachings.py and loop/whisper_author.py.",
+    "shapes": {
+      "a": [
+        "explain",
+        "quotes",
+        "guide",
+        "guide"
+      ],
+      "b": [
+        "quotes",
+        "explain",
+        "guide",
+        "guide"
+      ],
+      "c": [
+        "explain",
+        "guide",
+        "quotes",
+        "guide"
+      ],
+      "d": [
+        "explain",
+        "quotes",
+        "guide"
+      ]
+    },
+    "scenes": [
+      "the evening after it has happened, at home",
+      "waking slowly the next morning, already living it",
+      "a friend's warm call to say well done",
+      "walking home under soft street lights",
+      "a quiet dinner to celebrate",
+      "writing it in your journal before bed",
+      "reading the good news again, in bed",
+      "sitting by a window while it rains",
+      "a slow train ride home",
+      "a warm bath at the end of the day",
+      "a walk by the sea at dusk",
+      "a hand on your shoulder and a quiet thank you"
+    ],
+    "explain_words": 520,
+    "guide_words": 1150,
+    "neville": {
+      "teacher": "neville",
+      "topics": {
+        "inner-conversation": {
+          "name": "the inner conversation",
+          "title": "Whisper method guided meditation for sleep · Neville Goddard's inner conversation ({length})",
+          "thumb_words": "the whisper method",
+          "promise": "the whisper method, from Neville Goddard's inner conversation",
+          "points": [
+            "Neville taught that the words you say to yourself, silently, all day, shape how you see your life.",
+            "He asked people to notice that inner talk, and to change it so it matches the wish already fulfilled.",
+            "The whisper method many people use today is built on this: you quietly hear, in your mind, the words you would hear if the wish were already true.",
+            "You keep it simple: one short, warm sentence, heard as if a friend whispered it to you, again and again, as you drift off."
+          ]
+        },
+        "sats": {
+          "name": "the state akin to sleep",
+          "title": "SATS guided meditation for sleep · Neville Goddard's state akin to sleep, whispered ({length})",
+          "thumb_words": "the state akin to sleep",
+          "promise": "Neville Goddard's state akin to sleep",
+          "points": [
+            "Neville called the drowsy moment before sleep the state akin to sleep.",
+            "Your body is still and heavy, but you can still gently guide your attention.",
+            "In that state you picture one short scene that would follow the wish fulfilled, and you feel it as real, now.",
+            "You repeat the little scene until it feels natural, and let yourself fall asleep inside it."
+          ]
+        },
+        "law-of-assumption": {
+          "name": "the law of assumption",
+          "title": "Law of assumption sleep meditation · whispered ASMR, Neville Goddard ({length})",
+          "thumb_words": "assume it is done",
+          "promise": "Neville Goddard's law of assumption",
+          "points": [
+            "Neville taught that what you quietly assume about yourself and your life tends to show up in how you live.",
+            "To assume is to take something as already true, before you can see it.",
+            "The practice is to choose the assumption you want, and to keep returning to it, calmly, especially at night.",
+            "It is a practice of attention and feeling, not a promise of any result."
+          ]
+        },
+        "living-in-the-end": {
+          "name": "living in the end",
+          "title": "Neville Goddard sleep meditation · living in the end, whispered ASMR ({length})",
+          "thumb_words": "live in the end",
+          "promise": "Neville Goddard's living in the end",
+          "points": [
+            "Living in the end means imagining from the moment after your wish is fulfilled, not wishing toward it.",
+            "You think from the wish, not of it: you are already there, looking around.",
+            "You notice small, ordinary details of that moment, and how calm and settled you feel.",
+            "Then you rest there, and let sleep come while you are still inside that ending."
+          ]
+        },
+        "revision": {
+          "name": "revision",
+          "title": "Neville Goddard sleep manifestation · revision, a whispered ASMR meditation ({length})",
+          "thumb_words": "revise the day",
+          "promise": "Neville Goddard's revision",
+          "points": [
+            "Revision is a gentle evening practice Neville taught.",
+            "Before sleep, you look back over the day and pick a moment you wish had gone differently.",
+            "You replay it in your imagination, slowly, the way you wish it had gone, until the new version feels real.",
+            "You end the day on the revised scene, kind to yourself, and fall asleep there."
+          ]
+        },
+        "feeling-is-the-secret": {
+          "name": "feeling is the secret",
+          "title": "Neville Goddard sleep affirmations · feeling is the secret, whispered ASMR ({length})",
+          "thumb_words": "feeling is the secret",
+          "promise": "Neville Goddard's feeling is the secret",
+          "points": [
+            "Neville taught that the feeling behind an idea matters more than the words.",
+            "The practice is to feel, now, how you would feel if the wish were already fulfilled.",
+            "Relief, quiet joy, thankfulness: you let one of those feelings fill your chest and shoulders.",
+            "You carry that feeling with you into sleep."
+          ]
+        },
+        "self-concept": {
+          "name": "self-concept",
+          "title": "Self-concept sleep meditation · Neville Goddard, whispered ASMR ({length})",
+          "thumb_words": "who you are now",
+          "promise": "Neville Goddard's teaching on self-concept",
+          "points": [
+            "Neville taught that your idea of yourself shapes the part you play in your life.",
+            "Self-concept is simply the story you quietly hold about who you are.",
+            "The practice is to choose the self you want to be, and to feel like her tonight, in small, ordinary ways.",
+            "You fall asleep as that self, not trying to become her."
+          ]
+        },
+        "bridge-of-incidents": {
+          "name": "the bridge of incidents",
+          "title": "Manifest while you sleep ASMR · Neville Goddard's bridge of incidents, whispered ({length})",
+          "thumb_words": "the bridge of incidents",
+          "promise": "Neville Goddard's bridge of incidents",
+          "points": [
+            "Neville described a bridge of incidents: the ordinary steps that seem to lead from where you are to the life you imagined.",
+            "He taught that you do not need to plan every step.",
+            "Your part is to hold the end in your imagination and to take the natural next step when it appears.",
+            "Tonight you rest, and leave the steps to the days ahead."
+          ]
+        },
+        "imagination-creates-reality": {
+          "name": "imagination creates reality",
+          "title": "Neville Goddard sleep meditation · imagination creates reality, whispered ASMR ({length})",
+          "thumb_words": "imagine it is real",
+          "promise": "Neville Goddard's teaching that imagination creates reality",
+          "points": [
+            "Neville taught that imagination is where every change begins.",
+            "Before anything changes outside, he said, something changes in how you picture it.",
+            "The practice is to picture your wish as a small, vivid, finished scene, and to return to it often.",
+            "You let the scene be soft and real, and you fall asleep in it."
+          ]
+        }
+      }
+    },
+    "shinn": {
+      "teacher": "shinn",
+      "topics": {
+        "law-of-prosperity": {
+          "name": "the law of prosperity",
+          "title": "Florence Scovel Shinn money affirmations for sleep · whispered ASMR ({length})",
+          "thumb_words": "rich first in mind",
+          "promise": "Florence Scovel Shinn's money affirmations",
+          "points": [
+            "Florence Scovel Shinn taught that prosperity starts as an inner state before it shows up outside.",
+            "She asked people to feel rich in mind first: calm, grateful, expecting good.",
+            "Her practice was to speak short, bold words of plenty, and to act as if they were true.",
+            "Tonight you rest in that feeling of plenty, without counting or worrying."
+          ]
+        },
+        "your-word-is-your-wand": {
+          "name": "your word is your wand",
+          "title": "Your word is your wand · Florence Scovel Shinn sleep affirmations, whispered ASMR ({length})",
+          "thumb_words": "your word is your wand",
+          "promise": "Florence Scovel Shinn's your word is your wand",
+          "points": [
+            "Florence Scovel Shinn believed the words you speak about your life carry power.",
+            "She wrote short affirmations for every part of life, and asked people to say them with feeling.",
+            "The practice is to choose kind, hopeful words, and to stop repeating words of lack.",
+            "Tonight you let a few gentle words carry you into sleep."
+          ]
+        },
+        "divine-selection": {
+          "name": "the right love",
+          "title": "Florence Scovel Shinn love affirmations for sleep · whispered ASMR ({length})",
+          "thumb_words": "the right love",
+          "promise": "Florence Scovel Shinn's love affirmations",
+          "points": [
+            "Florence Scovel Shinn wrote about love without fear.",
+            "She asked people to let go of worry and of trying to control another person.",
+            "Her love affirmations are about peace, warmth and being loved by the right people.",
+            "Tonight you rest in that peace."
+          ]
+        },
+        "divine-design": {
+          "name": "your divine design",
+          "title": "Florence Scovel Shinn self-concept sleep meditation · whispered ASMR ({length})",
+          "thumb_words": "your divine design",
+          "promise": "Florence Scovel Shinn's divine design",
+          "points": [
+            "Florence Scovel Shinn taught that each person has a perfect way to express themselves, a design that is truly theirs.",
+            "She asked people to trust that design and to follow quiet hunches toward it.",
+            "The practice is to picture yourself doing what you were made for, calm and at ease.",
+            "Tonight you fall asleep as that self."
+          ]
+        }
+      }
+    }
+  },
+  "lanes": {
+    "why": "Her plan 9 Nov 2026: four lanes until monetised. Each script belongs to one lane (loop/whisper_lane.lane_of). Money's description carries one plain line to her own products (her ruling 9 Nov: no affiliate framing).",
+    "history": {
+      "kinds": [
+        "sleep"
+      ],
+      "name": "sleep history"
+    },
+    "neville": {
+      "kinds": [
+        "neville"
+      ],
+      "name": "Neville Goddard"
+    },
+    "money": {
+      "kinds": [
+        "affirmations"
+      ],
+      "themes": [
+        "billionaire",
+        "rich-woman",
+        "money-fast",
+        "money"
+      ],
+      "rotation": [
+        "billionaire",
+        "rich-woman",
+        "money-fast"
+      ],
+      "name": "Money",
+      "products_line": "Also from the creator of this channel: Billionaire High Performance Coach (https://billionairehighperformancecoach.com) and A Player Mode (https://aplayermode.com)."
+    },
+    "rotating": {
+      "kinds": [
+        "shinn",
+        "affirmations"
+      ],
+      "themes": [
+        "love",
+        "specific-person",
+        "self-concept"
+      ],
+      "rotation": [
+        "shinn",
+        "specific-person",
+        "shinn",
+        "love",
+        "shinn",
+        "self-concept"
+      ],
+      "name": "Shinn / love / specific person / self-concept"
+    }
+  },
+  "mix": {
+    "why": "Videos per lane per week, read by loop/whisper_lane.queue (which script the Mac voices next) and loop/whisper_author.py (what to write). Measured 7-8 Nov 2026: one 1 h 43 min history episode took 6.8 h of voice (8.2 Mac minutes per spoken minute) and 2.7 h of render; a 1-hour manifesting video is about 3-5 h. Five Almanac nights hold 3 manifesting + 2 history. Data rules, no calendar: once monetised (her channel's own numbers in loop/state/whisper_channel.json) the weights move to history and money; and the lane with the most watch hours per video over the last 30 days takes one slot from the weakest (both with 2+ measured videos), never pushing a lane under its floor.",
+    "before_monetized": {
+      "neville": 1,
+      "money": 1,
+      "rotating": 1,
+      "history": 2
+    },
+    "after_monetized": {
+      "history": 3,
+      "money": 2,
+      "neville": 0,
+      "rotating": 0
+    },
+    "floors": {
+      "history": 1
+    },
+    "monetized_when": {
+      "subscribers": 1000,
+      "watch_hours_365d": 4000
+    },
+    "bonus": {
+      "window_days": 30,
+      "min_videos": 2
+    }
   }
 }

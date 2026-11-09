@@ -1042,7 +1042,10 @@ phase_whisper() {
 phase_whisper_upload() {
   echo; echo "--- whisper almanac: upload, scheduled ---"
   $PY loop/whisper_upload.py run 2>&1 | sed 's/^/  /' || true
-  $PY loop/mac_sync.py push --lane whisper-upload loop/state/quota.json \
+  # the channel's own numbers per lane (views, watch hours, subscribers):
+  # the weekly mix and the 30-day check read them (loop/whisper_scorecard.py)
+  $PY loop/whisper_scorecard.py run 2>&1 | sed 's/^/  /' || true
+  $PY loop/mac_sync.py push --lane whisper-upload loop/state/quota.json loop/state/whisper_channel.json \
     $(ls channel/whisper/*/kit.json 2>/dev/null) 2>&1 | tail -1 | sed 's/^/  /' || true
 }
 

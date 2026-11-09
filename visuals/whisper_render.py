@@ -74,7 +74,7 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     for m in metas:
         seg_secs[m["segment"]] = seg_secs.get(m["segment"], 0.0) + m["duration"]
     srcs = [s["source"] for s in p["segments"]]
-    if p["kind"] == "affirmations":
+    if p["kind"] != "sleep":               # affirmations and the teaching lanes: calm footage
         calm = c["affirmations"]["footage_sources"]
         srcs = [calm[i % len(calm)] for i in range(len(srcs))]
     segs, left = [], dur

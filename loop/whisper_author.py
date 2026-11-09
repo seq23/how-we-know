@@ -3,7 +3,8 @@
 
     python loop/whisper_author.py              # top up: next sleep episode + this week's affirmations
     python loop/whisper_author.py sleep SLUG   # one planned episode (config/whisper_almanac.json)
-    python loop/whisper_author.py affirmations [--theme money|love]
+    python loop/whisper_author.py affirmations [--theme THEME]
+    python loop/whisper_author.py teaching neville|shinn [--topic TOPIC]
 
 Sleep: every segment is ONE fact-checked How We Know script (uploaded by
 that machine, loop/whisper_lane.fact_checked) rewritten for sleep by a free
@@ -18,9 +19,17 @@ Affirmations: one script a week, money and love in turn, six movements;
 every line passes the plain-words check and the brand guardrail (no
 guaranteed outcome, no fake proof, no health claim).
 
-RUNWAY. The Mac voices about one sleep episode a week (docs/WHISPER-ALMANAC.md),
-so the author keeps at most RUNWAY sleep scripts waiting for voice and one
-affirmations script; a full runway is the self-resolving stop
+Teaching (her rulings 9 Nov 2026: Neville Goddard, Florence Scovel Shinn):
+a guided session BUILT ON a technique, never a reading. The explanation and
+the guided parts are written by a free model from OUR OWN points (config
+`teachings`), never from the book text; the teacher's lines are picked in
+code from the verified, rights-cleared quotes (config/teacher_rights.json).
+Each script takes a shape and a scene no recent teaching script used, so
+every script differs in structure, not only topic (loop/teachings.py).
+
+RUNWAY. Per lane (config `lanes`: history, neville, money, rotating) the
+author keeps up to RUNWAY scripts waiting for voice, writing at most
+MAX_WRITES a run; a full runway is the self-resolving stop
 WHISPER_RUNWAY_FULL, never a green no-op.
 """
 from __future__ import annotations
@@ -41,6 +50,7 @@ import whisper_words as W                                   # noqa: E402
 
 ATTEMPTS = 4
 RUNWAY = 2
+MAX_WRITES = 4
 CACHE_FILE = WL.WORK / "_segments.json"   # gitignored; one file, keyed by episode and part
 STAGE = "whisper-author"
 
@@ -182,7 +192,8 @@ def _commit(out: Path, text: str) -> Path:
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".md.tmp")
     tmp.write_text(text)
-    scale = WL.fit_pause_scale(WL.parse(tmp))
+    kind = WL.parse(tmp)["kind"]
+    scale = WL.fit_pause_scale(WL.parse(tmp), goal_s=float(WL.cfg()["lengths"][kind].get("goal_s", 7500)))
     text = text.replace("**Written:**", f"**Pause scale:** {scale}\n**Written:**", 1)
     text = WL.add_opening(text, out.stem)                    # the promise names the real length
     est = WL.estimate_seconds(WL.parse(tmp) | {"meta": {**WL.parse(tmp)["meta"], "pause scale": str(scale)}})
@@ -199,9 +210,9 @@ def _commit(out: Path, text: str) -> Path:
 
 AFFIRM_STYLE = """You write whispered sleep affirmations, one short line at a time.
 Rules you must follow exactly:
-- Each line is one calm sentence of 4 to 14 everyday words, in the first person ("I...") or second person ("You...").
+- Each line is one calm sentence of 4 to 14 everyday words, in the first person ("I...") or second person ("You..."). The listener is a woman.
 - Present tense, gentle, believable. Feelings, choices, safety, rest, openness.
-- NEVER promise an outcome: no amounts, no money figures, no dates, no "by tomorrow", no "will text you", no specific person or ex.
+- NEVER promise an outcome: no amounts, no money figures, no dates, no "by tomorrow", no "fast", no "will make you rich", no "will text you", no specific person or ex. Affirm who she is and how she feels ("I am a woman who builds wealth"), never what will happen.
 - NEVER mention health, healing, cures, illness or medicine. No proof, results or screenshots.
 - No numerals, acronyms, brackets, lists, emojis or exclamation marks.
 - Every line different from every other line. No line repeated with small changes.
@@ -212,13 +223,18 @@ def author_affirmations(theme: str, c: dict) -> Path:
     a = c["affirmations"]
     week = _dt.date.today().isocalendar()
     slug = f"affirmations-{theme}-{week[0]}-w{week[1]:02d}"
+    n = 2
+    while (WL.SCRIPTS / f"{slug}.md").exists():
+        slug = f"affirmations-{theme}-{week[0]}-w{week[1]:02d}-{n}"
+        n += 1
+    guide = a["topics"][theme].get("guide", "")
     segs, models, seen = [], set(), set()
     others = "\n".join(WL.spoken_text(WL.parse(p)) for p in WL.all_scripts()
                        if WL.parse(p)["kind"] == "affirmations")
     for i, mv in enumerate(a["movements"], 1):
         msgs = [{"role": "system", "content": AFFIRM_STYLE},
                 {"role": "user", "content":
-                 f"Theme: {theme}. Movement {i} of {len(a['movements'])}: {mv}.\n"
+                 f"Theme: {a['topics'][theme]['topic']}. {guide}\nMovement {i} of {len(a['movements'])}: {mv}.\n"
                  f"Write {a['lines_per_movement'] + 6} lines."}]
         lines: list[str] = []
         for _ in range(ATTEMPTS):
@@ -246,9 +262,150 @@ def author_affirmations(theme: str, c: dict) -> Path:
         print(f"  movement {i}: {len(segs[-1][1])} lines", flush=True)
     t = a["topics"][theme]
     out = WL.SCRIPTS / f"{slug}.md"
-    text = WL.render_script(slug, "affirmations", f"Whispered {theme} affirmations for sleep",
+    text = WL.render_script(slug, "affirmations", f"Whispered {t['topic']} for sleep",
                             [], [], segs, {"Theme": theme, "Topic": t["topic"],
                                            "Models": ", ".join(sorted(models))})
+    return _commit(out, text)
+
+
+TEACH_STYLE = """You write part of a WHISPERED, GUIDED SLEEP MEDITATION for a woman lying in bed.
+Write for the ear, slow, soft and warm, in plain everyday words.
+
+Rules you must follow exactly:
+- Use ONLY the points you are given about the teacher's idea. Never quote the teacher, never add a fact, a date, a place, a book or a story about the teacher's life.
+- Never promise a result: no "you will get", no "guaranteed", no money amounts, no dates, no "by tomorrow", nothing about what another person will do, no health or healing claims. It is a practice for rest and imagination.
+- No numerals, acronyms, brackets, lists, headings, emojis or exclamation marks. No quotation marks.
+- Short sentences: at most 22 words each, most of them 8 to 14. Paragraphs of three to five sentences, one blank line between them.
+- Second person, present tense, gentle ("you might notice...", "let your shoulders soften...").
+- Write only the text. No title, no notes."""
+
+
+def _own_problems(paras: list[str], allowed: str, want: int, c: dict) -> list[str]:
+    import teachings as TG                                  # noqa: PLC0415
+    text = "\n\n".join(paras)
+    probs = W.text_problems(text, []) + W.fact_problems(text, allowed) + WL.affirmation_problems(text)
+    if re.search(r"[“”\"]", text):
+        probs.append("QUOTE_MARKS no quotation marks in your own words")
+    if TG.book_hits(text) > TG.BOOK_HITS_MAX:
+        probs.append("BOOK_READ this reads the teacher's book; use only the given points, in new words")
+    for s in WL.sentences(text):
+        if len(W.WORD.findall(s)) > c["pacing"]["max_sentence_words"]:
+            probs.append(f"LONG_SENTENCE: {s[:50]!r}")
+    n = len(W.WORD.findall(text))
+    if not 0.75 * want <= n <= 1.6 * want:
+        probs.append(f"LENGTH {n} words; write about {want} words")
+    return probs
+
+
+def write_own(prompt: str, allowed: str, want: int, c: dict) -> tuple[list[str], str]:
+    """One explanation or guided part from a free model, sent back with its
+    named problems until it passes (ATTEMPTS)."""
+    base = [{"role": "system", "content": TEACH_STYLE}, {"role": "user", "content": prompt}]
+    msgs, rejected, last = list(base), set(), []
+    for _ in range(ATTEMPTS):
+        text, model = _complete(msgs, rejected)
+        paras = clean(text)
+        last = _own_problems(paras, allowed, want, c) if paras else ["EMPTY answer"]
+        if not last:
+            return paras, model
+        if model:
+            rejected.add(model)
+        msgs = base + [{"role": "assistant", "content": text},
+                       {"role": "user", "content": "Rewrite the whole text. It broke these rules:\n- "
+                        + "\n- ".join(last[:15]) + "\nFix every one. Write only the text."}]
+    raise WL_SegmentRefused("teaching part", last)
+
+
+LEADS = ["In {book}, {who} wrote:", "{who} put it this way, in {book}:", "From {book}, in {pron} own words:",
+         "Here is a line from {book}:", "{who} wrote, in {book}:"]
+
+
+def quote_paras(teacher: str, topic: str, n_done: int, shape: str) -> list[str]:
+    """Two or three verified lines for this technique, rotated so the next
+    script on it leads with a different one; each names its book."""
+    import teachings as TG                                  # noqa: PLC0415
+    r = TG.rights()
+    ok = TG.quotable(r)
+    pool = [q for q in r["quotes"] if topic in q["topics"] and q["title"] in ok
+            and r["titles"][q["title"]]["teacher"] == teacher]
+    if len(pool) < TG.MIN_QUOTES:
+        raise WL_SegmentRefused(f"{teacher}/{topic}", [f"only {len(pool)} cleared quotes recorded for {topic}"])
+    k = 3 if len(pool) >= 3 and shape in ("a", "c") else 2
+    pick = [pool[(n_done + i) % len(pool)] for i in range(k)]
+    who, pron = r["teachers"][teacher]["spoken"], "his" if teacher == "neville" else "her"
+    out = []
+    for i, q in enumerate(pick):
+        t = r["titles"][q["title"]]
+        lead = LEADS[(n_done + i) % len(LEADS)].format(book=t.get("spoken_title") or t["title"], who=who, pron=pron)
+        out.append(f"{lead} “{q['text']}”")
+    return out
+
+
+def teaching_scripts(teacher: str) -> list[dict]:
+    return [WL.parse(p) for p in WL.all_scripts() if WL.parse(p)["kind"] == teacher]
+
+
+def pick_structure(c: dict) -> tuple[str, str]:
+    """The first shape + scene no recent teaching script used."""
+    import teachings as TG                                  # noqa: PLC0415
+    every = [WL.parse(p) for p in WL.all_scripts() if WL.parse(p)["kind"] in WL.TEACHING]
+    recent = {TG.signature(o) for o in sorted(every, key=lambda o: o["meta"].get("written", ""),
+                                               reverse=True)[:TG.RECENT]}
+    shapes, scenes = list(c["teachings"]["shapes"]), c["teachings"]["scenes"]
+    n = len(every)
+    for i in range(len(shapes) * len(scenes)):
+        sh, sc = shapes[(n + i) % len(shapes)], scenes[(n * 5 + i) % len(scenes)]
+        if (sh, sc) not in recent:
+            return sh, sc
+    raise WL_SegmentRefused("structure", ["every shape and scene was used recently; add scenes"])
+
+
+def next_topic(teacher: str, c: dict) -> str:
+    topics = list(c["teachings"][teacher]["topics"])
+    used = [p["meta"].get("technique") for p in teaching_scripts(teacher)]
+    return min(topics, key=lambda t: (used.count(t), topics.index(t)))
+
+
+def author_teaching(teacher: str, topic: str, c: dict) -> Path:
+    import teachings as TG                                  # noqa: PLC0415
+    r = TG.rights()
+    tc = c["teachings"]
+    t = tc[teacher]["topics"][topic]
+    who = r["teachers"][teacher]["name"]
+    shape, scene = pick_structure(c)
+    done = sum(1 for p in teaching_scripts(teacher) if p["meta"].get("technique") == topic)
+    slug = f"{teacher}-{topic}-{done + 1:02d}"
+    allowed = " ".join([who, r["teachers"][teacher]["spoken"], t["name"]])
+    allowed += " " + " ".join(f"{w}'s {w}’s" for w in allowed.split())
+    points = "\n".join(f"- {x}" for x in t["points"])
+    guides = [x for x in tc["shapes"][shape] if x == "guide"]
+    parts, models, gi = [], set(), 0
+    for kind in tc["shapes"][shape]:
+        if kind == "quotes":
+            parts.append(("quotes", quote_paras(teacher, topic, done, shape)))
+            continue
+        if kind == "explain":
+            want = tc["explain_words"]
+            prompt = (f"Write the short plain EXPLANATION part: what {who}'s idea of {t['name']} is, in our own "
+                      f"words, and how to practise it tonight in bed. Say the name {who} once.\n"
+                      f"The points (our own words; use only these):\n{points}\nWrite about {want} words.")
+        else:
+            gi += 1
+            want = int(tc["guide_words"] * (2 if len(guides) == 1 else 1))
+            stage = ("Settle the body, then step slowly into the scene" if gi == 1 else
+                     "Stay inside the scene, quieter and slower, and let it carry the listener into sleep")
+            prompt = (f"Write GUIDED part {gi} of {len(guides)}: help her fall asleep in the wish already "
+                      f"fulfilled, practising {t['name']} (points below). The scene: {scene}. {stage}. "
+                      f"Use long, soft sentences of calm detail; repeat gentle cues; end very softly.\n"
+                      f"The points (our own words):\n{points}\nWrite about {want} words.")
+        paras, model = write_own(prompt, allowed, want, c)
+        models.add(model)
+        parts.append((f"{kind}-{gi}" if kind == "guide" else kind, paras))
+        print(f"  {kind}: {sum(len(p.split()) for p in paras)} words ({model})", flush=True)
+    out = WL.SCRIPTS / f"{slug}.md"
+    text = WL.render_script(slug, teacher, f"{who}: {t['name']}, a whispered sleep meditation", [], [],
+                            parts, {"Technique": topic, "Shape": shape, "Scene": scene,
+                                    "Models": ", ".join(sorted(models))})
     return _commit(out, text)
 
 
@@ -258,9 +415,28 @@ def waiting(kind: str) -> list[str]:
             and not WL.video_path(p.stem).exists()]
 
 
-def next_theme(c: dict) -> str:
-    rot = c["affirmations"]["rotation"]
-    return rot[_dt.date.today().isocalendar()[1] % len(rot)]
+def waiting_in(lane: str, c: dict) -> list[str]:
+    return [p.stem for p in WL.all_scripts()
+            if WL.lane_of(WL.parse(p), c) == lane and WL.parse(p)["status"] == WL.READY
+            and not WL.video_path(p.stem).exists() and not WL.handed_on(p.stem)]
+
+
+def next_in_lane(lane: str, c: dict) -> tuple[str, str]:
+    """(what, which): ('affirmations', theme) or ('teaching', teacher), by the
+    lane's rotation and how many of its scripts exist."""
+    if lane == "neville":
+        return "teaching", "neville"
+    rot = c["lanes"][lane]["rotation"]
+    n = sum(1 for p in WL.all_scripts() if WL.lane_of(WL.parse(p), c) == lane)
+    pick = rot[n % len(rot)]
+    return ("teaching", pick) if pick in WL.TEACHING else ("affirmations", pick)
+
+
+def write_next(lane: str, c: dict) -> Path:
+    what, which = next_in_lane(lane, c)
+    if what == "teaching":
+        return author_teaching(which, next_topic(which, c), c)
+    return author_affirmations(which, c)
 
 
 def run(args, c: dict) -> int:
@@ -272,14 +448,23 @@ def run(args, c: dict) -> int:
                 e = next(x for x in c["episodes"] if x["slug"] == args.slug)
                 st.work(f"wrote {author_sleep(e, c).relative_to(WL.ROOT)}")
             elif args.cmd == "affirmations":
-                st.work(f"wrote {author_affirmations(args.theme or next_theme(c), c).relative_to(WL.ROOT)}")
+                st.work(f"wrote {author_affirmations(args.theme or next_in_lane('money', c)[1], c).relative_to(WL.ROOT)}")
+            elif args.cmd == "teaching":
+                st.work(f"wrote {author_teaching(args.teacher, args.topic or next_topic(args.teacher, c), c).relative_to(WL.ROOT)}")
             else:
                 have = {p.stem for p in WL.all_scripts()}
                 todo = [e for e in c["episodes"] if e["slug"] not in have]
                 if len(waiting("sleep")) < RUNWAY and todo:
                     st.work(f"wrote {author_sleep(todo[0], c).relative_to(WL.ROOT)}")
-                if not waiting("affirmations"):
-                    st.work(f"wrote {author_affirmations(next_theme(c), c).relative_to(WL.ROOT)}")
+                # the manifesting lanes, the furthest behind its weekly count first
+                mix, _ = WL.weekly_mix(c)
+                for _ in range(MAX_WRITES):
+                    short = [ln for ln in ("neville", "money", "rotating")
+                             if mix.get(ln, 0) > 0 and len(waiting_in(ln, c)) < RUNWAY]
+                    if not short or len(st.units) >= MAX_WRITES:
+                        break
+                    ln = min(short, key=lambda x: (len(waiting_in(x, c)), -mix[x]))
+                    st.work(f"wrote {write_next(ln, c).relative_to(WL.ROOT)} ({ln})")
                 if not st.units:
                     if not todo and len(waiting("sleep")) < RUNWAY:
                         st.named_stop("WHISPER_EPISODES_UNPLANNED",
@@ -287,8 +472,8 @@ def run(args, c: dict) -> int:
                                       "next ones in config/whisper_almanac.json `episodes`",
                                       unblock="Add the next episodes (8-9 unused fact-checked sources each).")
                     st.named_stop("WHISPER_RUNWAY_FULL",
-                                  f"{len(waiting('sleep'))} sleep and {len(waiting('affirmations'))} "
-                                  f"affirmations script(s) are waiting for the Mac to voice them",
+                                  "scripts waiting for the Mac, by lane: " + ", ".join(
+                                      f"{ln} {len(waiting_in(ln, c))}" for ln in ("history", "neville", "money", "rotating")),
                                   unblock="Nothing to do: the Mac voices them nightly.")
         except WL_SegmentRefused as e:
             st.named_stop("WHISPER_SEGMENT_REFUSED",
@@ -308,7 +493,10 @@ def main(argv: list[str] | None = None) -> int:
     s = sub.add_parser("sleep")
     s.add_argument("slug")
     a = sub.add_parser("affirmations")
-    a.add_argument("--theme", choices=["money", "love"])
+    a.add_argument("--theme", choices=sorted(WL.cfg()["affirmations"]["topics"]))
+    t = sub.add_parser("teaching")
+    t.add_argument("teacher", choices=list(WL.TEACHING))
+    t.add_argument("--topic")
     return run(ap.parse_args(argv), WL.cfg())
 
 
