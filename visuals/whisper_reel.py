@@ -78,7 +78,8 @@ def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     footage (footage.episode_pool)."""
     import footage as F                                    # noqa: PLC0415
     if not source.startswith("calm:"):
-        return F.episode_pool(source, assets)
+        # '<slug>#<Part>' is one part of a How We Know script: its footage
+        return F.episode_pool(source.split("#", 1)[0], assets)
     name = source.split(":", 1)[1]
     if c is None:
         sys.path.insert(0, str(ROOT / "loop"))

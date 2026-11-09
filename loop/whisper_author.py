@@ -27,7 +27,8 @@ code from the verified, rights-cleared quotes (config/teacher_rights.json).
 Each script takes a shape and a scene no recent teaching script used, so
 every script differs in structure, not only topic (loop/teachings.py).
 
-RUNWAY. Per lane (config `lanes`: history, neville, money, rotating) the
+RUNWAY. Per lane with slots in the mix (config `lanes`; 9 Nov 2026: food,
+ocean, neville, money; rotating paused) the
 author keeps up to RUNWAY scripts waiting for voice, writing at most
 MAX_WRITES a run; a full runway is the self-resolving stop
 WHISPER_RUNWAY_FULL, never a green no-op.
@@ -119,7 +120,7 @@ def segment_problems(paras: list[str], source: str, named: list[str], want: int,
 
 
 def write_segment(source: str, named: list[str], want: int, c: dict,
-                  episode: str, idx: int) -> tuple[list[str], str]:
+                  episode: str, idx: int, frame: str = "") -> tuple[list[str], str]:
     key = f"{episode}/{idx:02d}-{source}"
     cache = json.loads(CACHE_FILE.read_text()) if CACHE_FILE.exists() else {}
     rec = cache.get(key)
@@ -133,7 +134,8 @@ def write_segment(source: str, named: list[str], want: int, c: dict,
     base = [{"role": "system", "content": STYLE},
             {"role": "user", "content":
              f"Topic names you may keep (each said once, then plain words): {keep}.\n"
-             f"Write about {want} words.\n\nSOURCE SCRIPT (fact-checked):\n\n{src}"}]
+             + (f"{frame}\n" if frame else "")
+             + f"Write about {want} words.\n\nSOURCE SCRIPT (fact-checked):\n\n{src}"}]
     msgs, rejected, last = list(base), set(), []
     for _ in range(ATTEMPTS):
         try:
@@ -175,8 +177,10 @@ def author_sleep(e: dict, c: dict) -> Path:
     want = target_words(len(e["sources"]), c,
                         sum(len(WL.source_narration(x).split()) for x in e["sources"]))
     segs, models = [], set()
+    # her decision 9 Nov 2026: food told as history, ocean as a documentary of a place
+    frame = c["lanes"].get(e.get("lane") or "", {}).get("frame", "")
     for i, src in enumerate(e["sources"], 1):
-        paras, model = write_segment(src, e["named"], want, c, e["slug"], i)
+        paras, model = write_segment(src, e["named"], want, c, e["slug"], i, frame)
         segs.append((src, paras))
         models.add(model)
         print(f"  segment {i}/{len(e['sources'])} {src}: {sum(len(p.split()) for p in paras)} words ({model})", flush=True)
@@ -435,6 +439,26 @@ def next_in_lane(lane: str, c: dict) -> tuple[str, str]:
     return ("teaching", pick) if pick in WL.TEACHING else ("affirmations", pick)
 
 
+def sleep_lanes(c: dict) -> list[str]:
+    """The lanes made of How We Know scripts rewritten for sleep (her decision
+    9 Nov 2026: food history and ocean documentary; science and materials
+    are paused, with no slots in the mix)."""
+    return [ln for ln, v in c["lanes"].items() if isinstance(v, dict) and v.get("kinds") == ["sleep"]]
+
+
+def next_episode(lane: str, c: dict) -> dict | None:
+    """The first planned episode of this lane not yet written whose every
+    source How We Know has uploaded (an unchecked source would only be
+    refused after the free-model calls)."""
+    have = {p.stem for p in WL.all_scripts()}
+    checked = WL.fact_checked()
+    for e in c["episodes"]:
+        if (e.get("lane") == lane and e["slug"] not in have
+                and all(WL.base_slug(s) in checked for s in e["sources"])):
+            return e
+    return None
+
+
 def write_next(lane: str, c: dict) -> Path:
     what, which = next_in_lane(lane, c)
     if what == "teaching":
@@ -455,28 +479,39 @@ def run(args, c: dict) -> int:
             elif args.cmd == "teaching":
                 st.work(f"wrote {author_teaching(args.teacher, args.topic or next_topic(args.teacher, c), c).relative_to(WL.ROOT)}")
             else:
-                have = {p.stem for p in WL.all_scripts()}
-                todo = [e for e in c["episodes"] if e["slug"] not in have]
-                if len(waiting("sleep")) < RUNWAY and todo:
-                    st.work(f"wrote {author_sleep(todo[0], c).relative_to(WL.ROOT)}")
-                # the manifesting lanes, the furthest behind its weekly count first
+                # every lane with slots, the furthest behind its weekly count
+                # first; at most one long sleep episode a run (her decision
+                # 9 Nov 2026: food history and ocean documentary are lanes)
                 mix, _ = WL.weekly_mix(c)
-                for _ in range(MAX_WRITES):
-                    short = [ln for ln in ("neville", "money", "rotating")
-                             if mix.get(ln, 0) > 0 and len(waiting_in(ln, c)) < RUNWAY]
+                sleepy, unplanned, sleep_done = sleep_lanes(c), [], False
+                for _ in range(MAX_WRITES + len(mix)):
+                    short = [ln for ln in mix if mix.get(ln, 0) > 0 and ln not in unplanned
+                             and not (sleep_done and ln in sleepy) and len(waiting_in(ln, c)) < RUNWAY]
                     if not short or len(st.units) >= MAX_WRITES:
                         break
-                    ln = min(short, key=lambda x: (len(waiting_in(x, c)), -mix[x]))
+                    ln = min(short, key=lambda x: (len(waiting_in(x, c)), -mix[x], x))
+                    if ln in sleepy:
+                        e = next_episode(ln, c)
+                        if e is None:
+                            unplanned.append(ln)
+                            continue
+                        sleep_done = True
+                        st.work(f"wrote {author_sleep(e, c).relative_to(WL.ROOT)} ({ln})")
+                        continue
                     st.work(f"wrote {write_next(ln, c).relative_to(WL.ROOT)} ({ln})")
+                for ln in unplanned:
+                    st.note(f"WHISPER_EPISODES_UNPLANNED {ln}: no planned episode with every source "
+                            f"fact-checked is left to write")
                 if not st.units:
-                    if not todo and len(waiting("sleep")) < RUNWAY:
+                    if unplanned:
                         st.named_stop("WHISPER_EPISODES_UNPLANNED",
-                                      "every planned Whisper Almanac episode is written; plan the "
-                                      "next ones in config/whisper_almanac.json `episodes`",
-                                      unblock="Add the next episodes (8-9 unused fact-checked sources each).")
+                                      f"no planned {', '.join(unplanned)} episode is left to write (every "
+                                      "source fact-checked); plan the next ones in "
+                                      "config/whisper_almanac.json `episodes`",
+                                      unblock="Add the next episodes (unused fact-checked sources, with the lane).")
                     st.named_stop("WHISPER_RUNWAY_FULL",
                                   "scripts waiting for the Mac, by lane: " + ", ".join(
-                                      f"{ln} {len(waiting_in(ln, c))}" for ln in ("history", "neville", "money", "rotating")),
+                                      f"{ln} {len(waiting_in(ln, c))}" for ln in mix if mix[ln] > 0),
                                   unblock="Nothing to do: the Mac voices them nightly.")
         except WL_SegmentRefused as e:
             st.named_stop("WHISPER_SEGMENT_REFUSED",

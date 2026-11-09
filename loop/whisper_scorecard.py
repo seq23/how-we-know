@@ -40,7 +40,7 @@ import whisper_lane as WL                                   # noqa: E402
 STAGE = "whisper-scorecard"
 ANALYTICS = "https://youtubeanalytics.googleapis.com/v2/reports"
 DATA = "https://www.googleapis.com/youtube/v3"
-LANES = ("history", "neville", "money", "rotating")
+LANES = ("food", "ocean", "neville", "money", "rotating")   # her decision 9 Nov 2026
 WINDOW = 30
 
 
