@@ -527,6 +527,7 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     cfgc = json.loads(CALM_CONFIG.read_text())["calm_footage"]
     per = int(cfgc["per_subject"])
     min_s = float(cfgc["min_seconds"])
+    refused = cfgc.get("refused") or {}
     cap = cap if cap is not None else MAX_PER_RUN
     FF = _ff()
     status, stops = source_status()
@@ -540,7 +541,7 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
         for ent in cfgc["sets"][name]:
             n_have = sum(1 for a in have + new
                          if a.get("calm_set") == name and a.get("subject") == ent["subject"]
-                         and float(a.get("seconds") or 0) >= min_s)
+                         and float(a.get("seconds") or 0) >= min_s and a.get("post_id") not in refused)
             for src, query in [(s_, q) for q in ent["queries"] for s_ in live]:
                 if n_have >= per or fetched >= cap:
                     break
@@ -552,7 +553,8 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
                 for c in cands:
                     uid = f"{src}:{c['id']}"
                     hit = next((w for w in ent["accept"] if phrase_in(w, c.get("title") or "")), None)
-                    if (not hit or uid in used or FF.banned(c) or n_have >= per or fetched >= cap
+                    if (not hit or uid in used or uid in refused or FF.banned(c) or n_have >= per
+                            or fetched >= cap
                             or (c.get("duration") and float(c["duration"]) < min_s)):
                         continue
                     try:

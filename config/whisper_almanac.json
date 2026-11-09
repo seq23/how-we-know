@@ -766,7 +766,6 @@
             "cityscape",
             "skyline",
             "night city",
-            "city",
             "city skyline"
           ]
         },
@@ -851,9 +850,7 @@
           ],
           "accept": [
             "car interior",
-            "luxury car",
-            "car",
-            "dashboard"
+            "luxury car"
           ]
         },
         {
@@ -881,8 +878,18 @@
         }
       ]
     },
-    "why": "Her call 9 Nov 2026 (\"apply the correct footage\"): the manifesting lanes never show How We Know's deep-sea creatures. Neville and the rotating lane (Shinn, love, specific person, self-concept) take calm night footage (real night sky, moonlight on water, waves at dusk, rain on a window, candlelight, golden-hour clouds, a forest at dawn); Money takes money and luxury footage (her correction the same day: luxury interiors at night, a penthouse over city lights, a yacht at sunset, a private jet cabin, champagne, gold and jewelry, gold bars, a luxury car interior, shopping bags, an infinity pool at dusk). Real footage only, Pixabay/Mixkit under their free licences, licence wording stored and re-checked, credited in the description (research/imagery_stock_video.harvest_calm); a clip with any word on screen is refused at harvest. History sleep episodes keep their own episode footage. per_subject caps each subject so none holds over ~25% of the screen (visuals/whisper_reel.reel_problems). min_seconds: a clip must hold one whole 18 s shot (visuals/whisper_reel.SHOT_S) - measured 9 Nov, shorter clips were never placed, so the few long ones crowded the Money reel over the 25% subject cap.",
-    "min_seconds": 19.0
+    "why": "Her call 9 Nov 2026 (\"apply the correct footage\"): the manifesting lanes never show How We Know's deep-sea creatures. Neville and the rotating lane (Shinn, love, specific person, self-concept) take calm night footage (real night sky, moonlight on water, waves at dusk, rain on a window, candlelight, golden-hour clouds, a forest at dawn); Money takes money and luxury footage (her correction the same day: luxury interiors at night, a penthouse over city lights, a yacht at sunset, a private jet cabin, champagne, gold and jewelry, gold bars, a luxury car interior, shopping bags, an infinity pool at dusk). Real footage only, Pixabay/Mixkit under their free licences, licence wording stored and re-checked, credited in the description (research/imagery_stock_video.harvest_calm); a clip with any word on screen is refused at harvest. History sleep episodes keep their own episode footage. per_subject caps each subject so none holds over ~25% of the screen (visuals/whisper_reel.reel_problems). min_seconds: a clip must hold one whole 18 s shot (visuals/whisper_reel.SHOT_S) - measured 9 Nov, shorter clips were never placed, so the few long ones crowded the Money reel over the 25% subject cap. refused: clips looked at frame by frame on 9 Nov and kept off the screen (a word accepted at harvest that matched the wrong thing: 'car' took highway traffic).",
+    "min_seconds": 19.0,
+    "refused": {
+      "pixabay:4053": "an ordinary car dashboard with a lit screen, not a luxury car interior",
+      "pixabay:2165": "highway traffic, not a luxury car interior",
+      "pixabay:1906": "highway traffic, not a luxury car interior",
+      "pixabay:1900": "highway traffic, not a luxury car interior",
+      "pixabay:25907": "daytime aerial of hotel buildings, not a luxury interior at night",
+      "pixabay:36944": "daytime aerial of a town, not city lights",
+      "pixabay:13963": "an unreadable close-up, not champagne",
+      "pixabay:19255": "blown-out white frame, no jewelry visible"
+    }
   },
   "picture_gate": {
     "subject_share_min": 0.5,
