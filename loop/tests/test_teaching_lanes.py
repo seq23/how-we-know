@@ -16,7 +16,8 @@ four lanes steered by the channel's own numbers, never a calendar.
   f. a promise in the guided part is refused;
   g. the kit: credit, no-endorsement line and quoted books in the description;
      Money carries the one products line; "no ads" in a title is refused;
-  h. the mix: 1/1/1/2 before monetisation, history and money after; the lane
+  h. the mix (her decision 9 Nov 2026): Neville 2, Money 1, food history 1,
+     ocean documentary 1, rotating 0 before monetisation; ocean, food and money after; the lane
      with the most watch hours per video takes a slot from the weakest only
      with 2+ measured videos in each; unread numbers move nothing; the queue
      voices the lane furthest behind first;
@@ -193,34 +194,36 @@ for teacher, tc in c["teachings"].items():
 
 # h. the mix and the queue
 mix, _ = WL.weekly_mix(c, {})
-check(mix == {"neville": 1, "money": 1, "rotating": 1, "history": 2}, f"(h) the mix before monetisation: {mix}")
+check(mix == {"neville": 2, "money": 1, "rotating": 0, "food": 1, "ocean": 1}, f"(h) the mix before monetisation: {mix}")
 mix, _ = WL.weekly_mix(c, {"subscribers": 1200, "watch_hours_365d": 4100})
-check(mix["history"] > 2 and mix["money"] >= 1, f"(h) monetised did not shift to history and money: {mix}")
+check(mix["food"] + mix["ocean"] > 2 and mix["money"] >= 1 and sum(mix.values()) == 5,
+      f"(h) monetised did not shift to the sleep lanes and money: {mix}")
 lanes = {"neville": {"videos_30d": 3, "watch_hours_per_video": 9.0},
          "money": {"videos_30d": 3, "watch_hours_per_video": 2.0},
-         "history": {"videos_30d": 4, "watch_hours_per_video": 5.0}}
+         "ocean": {"videos_30d": 4, "watch_hours_per_video": 5.0}}
 mix, why = WL.weekly_mix(c, {"lanes": lanes})
-check(mix["neville"] == 2 and mix["money"] == 0 and sum(mix.values()) == 5,
+check(mix["neville"] == 3 and mix["money"] == 0 and sum(mix.values()) == 5,
       f"(h) the watch-hour rule did not move a slot to neville from money: {mix} {why}")
 mix, _ = WL.weekly_mix(c, {"lanes": {"neville": {"videos_30d": 1, "watch_hours_per_video": 99.0},
                                      "money": {"videos_30d": 3, "watch_hours_per_video": 1.0}}})
-check(mix["neville"] == 1, f"(h) one measured video moved a slot: {mix}")
-low_hist = {"history": {"videos_30d": 3, "watch_hours_per_video": 0.1},
-            "neville": {"videos_30d": 3, "watch_hours_per_video": 9.0}}
-mix, _ = WL.weekly_mix(c, {"lanes": low_hist})
-check(mix["history"] >= c["mix"]["floors"]["history"], f"(h) history fell under its floor: {mix}")
-rows = {"sleep-a": "history", "money-a": "money"}
+check(mix["neville"] == 2, f"(h) one measured video moved a slot: {mix}")
+for weak in ("food", "ocean"):
+    low = {weak: {"videos_30d": 3, "watch_hours_per_video": 0.1},
+           "neville": {"videos_30d": 3, "watch_hours_per_video": 9.0}}
+    mix, _ = WL.weekly_mix(c, {"lanes": low})
+    check(mix[weak] >= c["mix"]["floors"][weak] >= 1, f"(h) {weak} fell under its floor before day 30: {mix}")
+rows = {"the-deep-ocean-at-night": "ocean", "money-a": "money"}
 orig_parse, orig_all, orig_voiced = WL.parse, WL.all_scripts, WL.voiced
 try:
     WL.all_scripts = lambda: [Path(f"/x/{s}.md") for s in rows]
     WL.parse = lambda f: {"slug": Path(f).stem, "status": WL.READY, "segments": [],
-                          "kind": "sleep" if rows[Path(f).stem] == "history" else "affirmations",
+                          "kind": "sleep" if rows[Path(f).stem] == "ocean" else "affirmations",
                           "meta": {"theme": "billionaire", "written": "2026-11-09"}}
     WL.voiced = lambda s: (0, 10)
-    q = WL.queue(c, mix={"history": 2, "money": 1, "neville": 1, "rotating": 1}, made={"history": 2})
+    q = WL.queue(c, mix={"ocean": 2, "money": 1, "neville": 1, "rotating": 1}, made={"ocean": 2})
     check(q[:1] == ["money-a"], f"(h) the lane furthest behind did not voice first: {q}")
-    q = WL.queue(c, mix={"history": 2, "money": 1, "neville": 1, "rotating": 1}, made={})
-    check(q[:1] == ["sleep-a"], f"(h) with nothing made, history (2 a week) did not lead: {q}")
+    q = WL.queue(c, mix={"ocean": 2, "money": 1, "neville": 1, "rotating": 1}, made={})
+    check(q[:1] == ["the-deep-ocean-at-night"], f"(h) with nothing made, ocean (2 a week) did not lead: {q}")
 finally:
     WL.parse, WL.all_scripts, WL.voiced = orig_parse, orig_all, orig_voiced
 

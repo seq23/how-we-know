@@ -192,12 +192,36 @@ def waiting_days(kind: str, ks: dict[str, dict], now: _dt.datetime) -> float:
     return max(((t - now).total_seconds() / 86400 for t in ahead), default=0.0)
 
 
-def next_slot(kind: str, ks: dict[str, dict], now: _dt.datetime, c: dict) -> _dt.datetime:
-    """The first free 20:00 Central slot on this format's days, at least
+def days_for(k: dict, c: dict, ks: dict[str, dict] | None = None) -> list[str]:
+    """The `upload.days` keys for a kit: its lane when the lane has its own
+    days (her decision 9 Nov 2026: Tue food history, Fri ocean documentary),
+    else its kind. A finished video never waits for a planned one (9 Nov
+    2026): a lane in `share_when_idle` also takes its partner's days while
+    the partner has no rendered video waiting to upload (a measured kit
+    with no video id)."""
+    u = ucfg(c)
+    lane = k.get("lane") or ""
+    if lane not in u["days"]:
+        return [k.get("kind", "sleep")]
+    keys = [lane]
+    for group in u.get("share_when_idle", []):
+        if lane not in group:
+            continue
+        for other in group:
+            if other != lane and other in u["days"] and not any(
+                    o.get("lane") == other and o.get("length_basis") == "measured" and not o.get("video_id")
+                    for o in (ks or {}).values()):
+                keys.append(other)
+    return keys
+
+
+def next_slot(kind: str | list[str], ks: dict[str, dict], now: _dt.datetime, c: dict) -> _dt.datetime:
+    """The first free 20:00 Central slot on this format's days (`kind` is an
+    `upload.days` key: a lane or a kind, days_for), at least
     `min_lead_hours` away (a 2-hour video needs its processing time)."""
     u = ucfg(c)
     hh, mm = (int(x) for x in u["publish_time_ct"].split(":"))
-    days = {DAYS.index(d) for d in u["days"][kind]}
+    days = {DAYS.index(d) for key in ([kind] if isinstance(kind, str) else kind) for d in u["days"][key]}
     taken = {k.get("scheduled_publish_at") for k in ks.values()}
     earliest = now + _dt.timedelta(hours=u["min_lead_hours"])
     d = now.astimezone(CT).date()
@@ -449,6 +473,10 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
         uploaded = 0
         for slug in todo[:ucfg(c)["max_per_run"]]:
             k = ks[slug]
+            if WL.retitle(k, c) != k:          # her decision 9 Nov 2026 renamed lanes and titles
+                k = WL.retitle(k, c)
+                write_kit(slug, k)
+                st.note(f"{slug}: retitled for its lane: {k['title']}")
             video = WL.video_path(slug)
             probs = lane_problems(slug, k, c)
             if probs:
@@ -488,7 +516,7 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                 out.named_stop("UPLOAD_QUOTA", f"no quota left today for {slug} ({UNITS} units). {quota_line()}",
                      unblock="Nothing to do: the allowance resets at midnight Pacific and the next "
                              "night uploads it.", detail={"resets_at": quota_line()})
-            when = next_slot(kind, ks_now, now, c)
+            when = next_slot(days_for(k, c, ks_now), ks_now, now, c)
             want = stamp(when)
             body = json.loads(json.dumps(k["body"]))
             body["status"].update({"privacyStatus": "private", "publishAt": want,
@@ -568,7 +596,9 @@ def plan() -> int:
     todo = candidates(ks)
     for slug in todo:
         kind = ks[slug].get("kind", "sleep")
-        print(f"{slug}: {kind}, next slot {next_slot(kind, ks, now, c).strftime('%a %d %b %H:%M CT')}, "
+        k = WL.retitle(ks[slug], c)
+        print(f"{slug}: {k.get('lane') or kind}, next slot "
+              f"{next_slot(days_for(k, c, ks), ks, now, c).strftime('%a %d %b %H:%M CT')}, title {k['title']!r}, "
               f"{waiting_days(kind, ks, now):.1f} days of {kind} waiting")
     print(f"OUTPUT {len(todo)} Whisper Almanac episode(s) ready to upload")
     return 0

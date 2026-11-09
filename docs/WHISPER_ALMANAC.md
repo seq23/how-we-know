@@ -1,19 +1,23 @@
 # Whisper Almanac — master plan and how the lane works
 
-**Current plan: 9 Nov 2026** (her rulings: "i want to reach monetization fastest", "build the neville lane", then Money and a rotating Shinn slot). The 6 Nov plan below it is kept for the how-it-works detail; its cadence is **Superseded**.
+**Current plan: 9 Nov 2026, option "a"** (her rulings: "i want to reach monetization fastest", "build the neville lane", then her option "a" the same day: 2 Neville, 1 Money, food history and ocean documentary from How We Know's own fact-checked scripts, the rotating lane paused). **Re-check on 9 Dec 2026** (day 30) with real views per lane. The 6 Nov plan below it is kept for the how-it-works detail; its cadence is **Superseded**.
+
+**The week:** **Mon Neville · Tue food history · Wed Money · Thu Neville · Fri ocean documentary.** Rotating lane paused. Never "no AI" or "human voiced" in a title or description (the voice is her own voice, cloned; the description says so). Evidence: [demand research, 9 Nov 2026](https://claude.ai/artifact/Ja6ppnQDz2JJTgQWVwacmB).
 
 ## The plan (9 Nov 2026)
 
 **Goal:** YouTube monetisation as fast as possible: **1,000 subscribers + 4,000 watch hours** (12 months).
 
-### Four lanes, per week, until monetised
+### The lanes, per week, until monetised
 
 | Lane | Per week | Length | What it is |
 |---|---|---|---|
-| **Neville** | 1 | 1 h | A guided whisper built on one Neville Goddard technique (whisper method / inner conversation, SATS, law of assumption, living in the end, revision, feeling is the secret, self-concept, bridge of incidents, imagination creates reality) |
-| **Money** | 1 | 1 h | Affirmations in her whisper: billionaire, rich woman, manifest money while you sleep; steady/monthly income as lines inside them |
-| **Rotating** | 1 | 1 h | In turn: Florence Scovel Shinn, specific person, Shinn, love, Shinn, self-concept |
-| **History** | 2 (floor 1) | 2 h | Sleep science/history rewritten from fact-checked How We Know scripts |
+| **Neville** (Mon, Thu) | 2 | 1 h | A guided whisper built on one Neville Goddard technique (whisper method / inner conversation, SATS, law of assumption, living in the end, revision, feeling is the secret, self-concept, bridge of incidents, imagination creates reality) |
+| **Money** (Wed) | 1 | 1 h | Affirmations in her whisper: billionaire, rich woman, manifest money while you sleep; steady/monthly income as lines inside them |
+| **Rotating** | **0, paused** | 1 h | In turn: Florence Scovel Shinn, specific person, Shinn, love, Shinn, self-concept. A love or specific-person wish inside a Neville video is **not built** (the Neville author has no wish input) |
+| **Food history** (Tue) | 1 (floor 1) | 2 h | How We Know's fact-checked food scripts told as history; title e.g. "ASMR whispered food history for deep sleep · how we learned why bread rises (2 hr)" |
+| **Ocean documentary** (Fri) | 1 (floor 1) | 2 h | How We Know's deep-sea scripts framed around a PLACE (midnight zone, ocean floor, trench), never single-animal facts; title says "deep sea documentary"; NOAA Ocean Exploration footage first |
+| **Materials** | 0, not in rotation | 2 h | One test later (history of an everyday thing), then judge |
 | **Shorts** | none yet | — | **No Almanac Shorts path exists** (How We Know's Shorts cutter is not wired for the Almanac); a later build |
 
 - **Where it lives:** `config/whisper_almanac.json` (`lanes`, `mix`, `teachings`, `affirmations.topics`), read by `loop/whisper_lane.py` (which script the Mac voices next) and `loop/whisper_author.py` (what gets written). No new job: the 23:00 batch and the Wednesday author.
@@ -27,7 +31,7 @@
 | 1-hour manifesting video | about **3.3 h** (affirmations: 13 spoken min) to **4.6 h** (teaching: ~22 spoken min) of voice + render | computed from the two rows above |
 | Almanac nights | 5 a week (5:2 split with How We Know); voice until 07:00, render after | `loop/night_split.py` |
 
-- **Realistic weekly total: 5 videos (3 manifesting + 2 history)**, one per Almanac night, on a quiet Mac. Under load (20.4 Mac-min per spoken minute, measured 6 Nov) a history episode takes two nights: **4 a week**.
+- **Realistic weekly total: 5 videos (3 manifesting + 2 food/ocean)**, one per Almanac night, on a quiet Mac. Under load (20.4 Mac-min per spoken minute, measured 6 Nov) a history episode takes two nights: **4 a week**.
 - The supply gate (no new video of a format while 14+ days of it wait) and the storage caps are unchanged.
 - **8 Nov blocker, fixed 9 Nov:** the first history render failed How We Know's every-frame documentary gate on dim open-water frames. The Almanac now has its own sleep picture gate (`visuals/whisper_frame_check.py`, below), and renders dim each cut only to a luma floor (`visuals/whisper_reel.dim_for`), never to black.
 
@@ -36,13 +40,13 @@
 1. **Script ($0 free models, Wednesday 14:00 CT):** history from fact-checked How We Know scripts; affirmations line by line; **teaching = a plain explanation in our own words → 2–4 of the teacher's own lines → a long guided section to fall asleep in the wish fulfilled**.
 2. **Checks in code:** plain words, no promise, length, distinct; teaching adds the rights and straight-reading checks (`loop/teachings.py`).
 3. **Voice:** her cloned whisper (Chatterbox) on the Mac, the lane furthest behind its weekly count first.
-4. **Picture:** dim moving footage (history: its own subject; manifesting: the calm deep-sea set).
-5. **Upload:** private with a 20:00 CT publish date (history Tue/Thu/Fri, Neville Mon, affirmations Wed/Sun, Shinn Sat), altered-content box ticked.
+4. **Picture:** dim moving footage (food and ocean: each part's own subject, NOAA first for ocean; manifesting: the calm night or Money set).
+5. **Upload:** private with a 20:00 CT publish date (Mon Neville, Tue food history, Wed Money, Thu Neville, Fri ocean documentary; Shinn Sat unused while rotating is paused; a finished food or ocean video takes the other lane's day when that lane has nothing rendered, so a finished video never waits for a planned one), altered-content box ticked. Only one food script is fact-checked today; more come with the How We Know restart on Fri 13 Nov 2026.
 
 ### Monetisation-safe rules (all in code)
 
 - **Every script different:** an 8-word-run overlap check across all scripts; teaching scripts also differ in **structure** (one of 4 shapes × 12 scenes, never repeating a recent one).
-- **Affirmations, never promises:** no amounts, dates, "will make you", "guaranteed", nothing another person will do, no health claims (risk brain ADV; R-ADV-05 no income claims). Titles never say "no ads" or promise anything.
+- **Affirmations, never promises:** no amounts, dates, "will make you", "guaranteed", nothing another person will do, no health claims (risk brain ADV; R-ADV-05 no income claims). Titles never say "no ads", "no AI" or "human voiced", or promise anything; a food title must say "history", an ocean title "deep sea documentary" and no animal-facts words (`titles.lane_rules`).
 - **Public-domain quotes only** (`config/teacher_rights.json`): Neville's books 1939–1961 checked against the US renewal records on 9 Nov 2026, none renewed; Shinn's 1925 and 1928 books are public domain (pre-1930 rule). *Resurrection* (1966), *The Power of Awareness* (later edition with new matter), his lectures and his voice are **never quoted**. Each quote must match a verified line word for word; the book's own text outside a quote is refused.
 - **Credit, no endorsement:** "Techniques from the public-domain writings of Neville Goddard (1905–1972)" (or Shinn), the quoted books, and "Not affiliated with or endorsed by any estate, publisher or organisation."
 - **Altered-content box** and the AI-voice line in the first 3 description lines, every upload.
@@ -51,8 +55,8 @@
 
 - **Every night** (`loop/whisper_scorecard.py`, in the upload step): the channel's own views, watch hours and subscribers per lane, last 30 days, into `loop/state/whisper_channel.json`. A number YouTube did not return reads "not read", never a guess.
 - **Per lane, 30 days after its first public video:** views, watch hours, subscribers (`python loop/whisper_scorecard.py report`).
-- **Data rule, no calendar:** the lane with the most watch hours per video (2+ measured videos, against another lane with 2+) takes one slot from the weakest; history never drops below 1.
-- **Once monetised** (her channel reads 1,000+ subscribers and 4,000+ watch hours): the mix moves to **history 3 + money 2**; the watch-hour rule still applies.
+- **Data rule, no calendar:** the lane with the most watch hours per video (2+ measured videos, against another lane with 2+) takes one slot from the weakest; food history and ocean documentary never drop below 1 each before the 9 Dec 2026 re-check.
+- **Once monetised** (her channel reads 1,000+ subscribers and 4,000+ watch hours): the mix moves to **ocean 2 + food 1 + money 2** (ocean takes Thu, which Neville frees); the watch-hour rule still applies.
 
 ### Description links
 
@@ -160,7 +164,7 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 
 - **Altered content:** every upload body sets `status.containsSyntheticMedia = true`; the kit check fails without it, and without the AI-voice line in the first 3 description lines.
 
-- **Publish time:** 20:00 Central, so it is live before bedtime in every US zone (21:00 Eastern, 18:00 Pacific); uploaded private with a publish date, as How We Know does. Sleep episodes on Tuesday and Friday, the affirmation on Sunday (`config/whisper_almanac.json` `upload`).
+- **Publish time:** 20:00 Central, so it is live before bedtime in every US zone (21:00 Eastern, 18:00 Pacific); uploaded private with a publish date, as How We Know does. Since 9 Nov 2026: Mon Neville, Tue food history, Wed Money, Thu Neville, Fri ocean documentary (`config/whisper_almanac.json` `upload.days`; a lane key wins over the kind key).
 
 ### The upload step (`loop/whisper_upload.py`, built 7 Nov 2026)
 

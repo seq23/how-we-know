@@ -84,18 +84,32 @@ SKIP_SECTIONS = {"title card", "producer pov", "what to notice in the edit",
                  "editorial gate", "b-roll plan"}
 
 
+def base_slug(source: str) -> str:
+    """'<slug>#<Part>' names one part of a How We Know script (its
+    '### <Part>: ...' sections); the script itself is '<slug>'."""
+    return source.split("#", 1)[0]
+
+
 def source_narration(slug: str) -> str:
     """The spoken narration of a How We Know script: the `## Narration` part
     only, without directives ({{...}}), the producer POV, the title card or
-    edit notes."""
-    text = source_path(slug).read_text()
+    edit notes. '<slug>#<Part>' keeps only that part's sections (her decision
+    9 Nov 2026: the food-history lane is built from the one fact-checked food
+    script, whose bread, steak and chocolate parts become three segments)."""
+    part = slug.split("#", 1)[1].strip().lower() if "#" in slug else None
+    text = source_path(base_slug(slug)).read_text()
     m = re.search(r"^## Narration\s*$(.*?)(?=^## )", text, re.S | re.M)
     body = m.group(1) if m else ""
     out, skip = [], False
     for line in body.splitlines():
         h = re.match(r"^###\s+(.*)", line)
         if h:
-            skip = h.group(1).strip().lower() in SKIP_SECTIONS
+            head = h.group(1).strip().lower()
+            mine, _, rest = head.partition(":")
+            if part is not None:
+                skip = mine.strip() != part or rest.strip() in SKIP_SECTIONS
+            else:
+                skip = head in SKIP_SECTIONS or rest.strip() in SKIP_SECTIONS
             continue
         s = line.strip()
         if skip or not s or s.startswith("{{") or s.startswith("[") or s.startswith("**"):
@@ -344,7 +358,7 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
         if kind in TEACHING:
             pass                           # loop/teachings.teaching_problems, below
         elif kind == "sleep":
-            if s["source"] not in checked:
+            if base_slug(s["source"]) not in checked:
                 out.append(f"{where}: SOURCE_NOT_FACT_CHECKED {s['source']} was never uploaded by How We Know")
             else:
                 out += W.fact_problems(text, source_narration(s["source"]), where)
@@ -451,7 +465,9 @@ def description(p: dict, seconds: float, c: dict | None = None,
     lines += [{"neville": "#sleep #asmr #nevillegoddard #lawofassumption",
                "shinn": "#sleep #asmr #florencescovelshinn #affirmations",
                "money": "#sleep #asmr #moneyaffirmations #affirmations",
-               "rotating": "#sleep #asmr #affirmations"}.get(lane, "#sleep #asmr #whisper")]
+               "rotating": "#sleep #asmr #affirmations",
+               "food": "#sleep #asmr #foodhistory #historyforsleep",
+               "ocean": "#sleep #asmr #deepsea #documentary"}.get(lane, "#sleep #asmr #whisper")]
     return "\n".join(lines).strip() + "\n"
 
 
@@ -470,6 +486,16 @@ def meta_problems(meta: dict, seconds: float, c: dict | None = None) -> list[str
     for w in c["titles"].get("banned", []):
         if w.lower() in tl:
             out.append(f"TITLE_BANNED_WORDS {w!r} (no 'no ads', no promise)")
+    # her decision 9 Nov 2026: food titles read as history; ocean titles say
+    # "deep sea documentary" and never use a single-animal facts pattern
+    rule = c["titles"].get("lane_rules", {}).get(meta.get("lane") or "")
+    if rule:
+        for w in rule.get("must", []):
+            if w.lower() not in tl:
+                out.append(f"TITLE_LANE_FRAME {meta['lane']} title lacks {w!r}")
+        for w in rule.get("never", []):
+            if re.search(rf"\b{re.escape(w.lower())}\b", tl):
+                out.append(f"TITLE_LANE_FRAME {meta['lane']} title uses {w!r} (a facts/animal pattern)")
     if f"({length_label(seconds)}" not in t:
         out.append(f"TITLE_LENGTH_NOT_REAL expected ({length_label(seconds)}")
     first3 = "\n".join(meta.get("description", "").splitlines()[:3])
@@ -676,6 +702,24 @@ def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | No
     return meta
 
 
+def retitle(k: dict, c: dict | None = None) -> dict:
+    """A kit not yet uploaded that was made under a lane that no longer
+    exists (her decision 9 Nov 2026 split "history" into food history and
+    ocean documentary after some kits were rendered) takes the title its
+    lane gives it now. Only the title, the body title and the lane change;
+    an uploaded kit's words stay the published words."""
+    c = c or cfg()
+    if (k.get("video_id") or not k.get("lane") or k["lane"] in c["lanes"]
+            or not (SCRIPTS / f"{k['slug']}.md").exists()):
+        return k
+    p = parse(SCRIPTS / f"{k['slug']}.md")
+    t = title(p, float(k.get("length_s") or estimate_seconds(p, c)), c)
+    k = json.loads(json.dumps(k))
+    k["title"], k["lane"] = t, lane_of(p, c)
+    k.setdefault("body", {}).setdefault("snippet", {})["title"] = t
+    return k
+
+
 # ------------------------------------------------------------- the sample gate
 def sample_dir(c: dict | None = None) -> Path:
     c = c or cfg()
@@ -769,7 +813,17 @@ def lane_of(p: dict, c: dict | None = None) -> str:
     """The lane a script belongs to (config `lanes`; her plan 9 Nov 2026)."""
     c = c or cfg()
     if p["kind"] == "sleep":
-        return "history"
+        # her decision 9 Nov 2026: the sleep lane is food history or ocean
+        # documentary, by the episode's `lane`; a script with no planned
+        # episode goes by its sources (food script -> food), else the paused
+        # science lane
+        for e in c["episodes"]:
+            if e["slug"] == p.get("slug") and e.get("lane"):
+                return e["lane"]
+        srcs = [base_slug(s.get("source", "")) for s in p.get("segments", [])]
+        if srcs and all((ROOT / "scripts" / "food" / f"{s}.md").exists() for s in srcs):
+            return "food"
+        return "science"
     if p["kind"] == "neville":
         return "neville"
     if p["kind"] == "affirmations" and p.get("meta", {}).get("theme", "money") in c["lanes"]["money"]["themes"]:
@@ -929,7 +983,7 @@ def footage_gaps(p: dict) -> list[str]:
     sys.path.insert(0, str(ROOT / "visuals"))
     import whisper_reel as R                                # noqa: PLC0415
     assets = json.loads(man.read_text()).get("assets", [])
-    return [s["source"] for s in p["segments"] if not R.pictureable(s["source"], assets)]
+    return [s["source"] for s in p["segments"] if not R.pictureable(base_slug(s["source"]), assets)]
 
 
 def status_lines() -> list[str]:
