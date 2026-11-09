@@ -1,0 +1,86 @@
+{
+  "stage": "cloud-upload",
+  "week": "2026-W46",
+  "at": "2026-11-09T15:05:49+00:00",
+  "code": "NOTHING_SHELVED",
+  "message": "Mac batch last ran 2026-11-08T15:04:30+00:00 (NOT ok); 16 renders finished on the Mac; 0 held by the render gate. 26 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): what-is-carbon-fiber-made-of, how-are-microchips-designed, are-sea-pigs-real, what-does-a-greenland-shark-look-like, where-does-chemosynthesis-occur, is-giant-isopod-edible, how-does-chemosynthesis-work, what-blobfish-actually-looks-like ...",
+  "detail": {
+    "awaiting_mac": [
+      "what-is-carbon-fiber-made-of",
+      "how-are-microchips-designed",
+      "are-sea-pigs-real",
+      "what-does-a-greenland-shark-look-like",
+      "where-does-chemosynthesis-occur",
+      "is-giant-isopod-edible",
+      "how-does-chemosynthesis-work",
+      "what-blobfish-actually-looks-like",
+      "what-does-a-goblin-shark-look-like",
+      "how-does-thermohaline-circulation-work",
+      "what-does-a-vampire-squid-look-like",
+      "how-mid-oceanic-ridge-is-formed",
+      "what-does-a-sea-pig-look-like",
+      "how-to-tell-if-steel-is-hardened",
+      "is-aluminum-stronger-than-steel",
+      "how-to-tell-if-steel-is-high-carbon",
+      "is-damascus-steel-stronger",
+      "is-diamond-stronger-than-metal",
+      "how-powder-metallurgy-works",
+      "why-is-glass-clear",
+      "is-titanium-stronger-than-steel",
+      "how-to-keep-steel-from-rusting",
+      "how-does-photolithography-work",
+      "how-does-3d-printing-metal-work",
+      "how-strong-is-3d-printed-metal",
+      "why-is-glass-see-through"
+    ],
+    "shelved_without_thumbnail": [],
+    "shelf_scan_error": null,
+    "mac_heartbeat": {
+      "batch_last_run_at": "2026-11-08T15:04:30+00:00",
+      "renders_finished": 16,
+      "held": []
+    },
+    "render_gate_held": [
+      "what-is-mid-ocean-ridge"
+    ],
+    "food_pipeline": [
+      "why-does-chocolate-taste-so-good",
+      "why-does-steak-taste-better-seared",
+      "why-is-my-bread-not-rising",
+      "what-is-inside-butter-rice-meat",
+      "what-is-inside-chili-coffee-honey",
+      "what-happens-to-meat-when-you-cook-it",
+      "what-to-do-when-chocolate-is-not-melting",
+      "how-is-cheese-made",
+      "what-to-do-if-melted-chocolate-is-too-thick",
+      "why-is-my-bread-flat",
+      "why-does-dough-rise"
+    ],
+    "food_made_by_batch_held": [
+      "why-does-chocolate-taste-so-good",
+      "why-does-steak-taste-better-seared",
+      "why-is-my-bread-not-rising"
+    ],
+    "awaiting_authoring": [
+      "why-does-metal-shock-you",
+      "how-anodizing-works",
+      "why-does-metal-rust-in-water",
+      "is-steel-stronger-than-iron",
+      "why-are-metals-ductile",
+      "why-is-metal-cold",
+      "why-does-metal-smell"
+    ],
+    "queued": 91,
+    "uploaded": 46
+  },
+  "unblock": "For the rest, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
+  "disposition": "self_resolving",
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 1 of at most 7 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders"
+  ]
+}
