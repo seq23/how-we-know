@@ -117,6 +117,39 @@ try:
         reader=no_text, cfg=CFG), FC.PictureCheckFailed)
     check("ONE graphic / CG filler frame fails it", e is not None and "graphic" in str(e), e)
 
+    # 3b. a model flag is confirmed on the same shot before it fails the video (9 Nov 2026)
+    near_a, near_b = frame("near_a", (20, 60, 70)), frame("near_b", (20, 60, 70))
+    clean_near = lambda t: [(t - 3, near_a), (t + 3, near_b)]                     # noqa: E731
+    try:
+        WFC.check_frames(frames, "isopod", judge=sleep_judge, cfg=CFG, second_look=clean_near,
+                         reader=lambda paths: {p: "2 Se" for p in paths if p == frames[7][1]})
+        check("a one-frame text misread with a clean shot around it passes", True)
+    except FC.PictureCheckFailed as ex:
+        check("a one-frame text misread with a clean shot around it passes", False, str(ex))
+    try:
+        WFC.check_frames(frames, "isopod", judge=lambda p, s: sleep_judge(p, s, graphic={frames[2][1]}),
+                         reader=no_text, cfg=CFG, second_look=clean_near)
+        check("a one-frame CG call with a clean shot around it passes", True)
+    except FC.PictureCheckFailed as ex:
+        check("a one-frame CG call with a clean shot around it passes", False, str(ex))
+    cap = frame("caption", (30, 30, 30))
+    text_shot = lambda paths: {p: "SUBSCRIBE" for p in paths if p in (frames[7][1], cap)}   # noqa: E731
+    e = raises(lambda: WFC.check_frames(frames, "isopod", judge=sleep_judge, reader=text_shot, cfg=CFG,
+                                        second_look=lambda t: [(t - 3, cap), (t + 3, near_a)]),
+               FC.PictureCheckFailed)
+    check("text that stays on the shot still fails it", e is not None and "text on screen" in str(e), e)
+    e = raises(lambda: WFC.check_frames(frames, "isopod", judge=lambda p, s: sleep_judge(p, s, graphic={frames[2][1], cap}),
+                                        reader=no_text, cfg=CFG, second_look=lambda t: [(t - 3, cap)]),
+               FC.PictureCheckFailed)
+    check("CG filler that stays on the shot still fails it", e is not None and "graphic" in str(e), e)
+    e = raises(lambda: WFC.check_frames(frames, "isopod", judge=lambda p, s: sleep_judge(p, s, graphic={frames[2][1]}) if len(p) > 2 else None,
+                                        reader=no_text, cfg=CFG, second_look=clean_near),
+               FC.PictureCheckFailed)
+    check("no model answering the second look keeps the fail", e is not None, e)
+    e = raises(lambda: WFC.check_frames(dark, "isopod", judge=sleep_judge, reader=no_text, cfg=CFG, second_look=clean_near),
+               FC.PictureCheckFailed)
+    check("a near-black frame is never second-guessed", e is not None and "near-black" in str(e), e)
+
     thin = [(t, amb[0] if i < 12 else p) for i, (t, p) in enumerate(frames)]
     e = raises(lambda: WFC.check_frames(thin, "isopod", judge=sleep_judge, reader=no_text, cfg=CFG),
                FC.PictureCheckFailed)

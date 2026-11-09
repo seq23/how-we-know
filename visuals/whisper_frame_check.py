@@ -34,6 +34,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 
@@ -91,7 +92,7 @@ def gemini_judge(frames: list[str], subject: str) -> list[dict] | None:
 
 
 def check_frames(frames: list[tuple[float, str]], subject: str, judge=None, reader=None,
-                 luma=None, cfg: dict | None = None) -> dict:
+                 luma=None, cfg: dict | None = None, second_look=None) -> dict:
     """Pass the sleep picture, or raise PictureCheckFailed naming each failing time."""
     if not frames:
         raise PictureCheckFailed("PICTURE_CHECK_FAILED: no frame was sampled", [])
@@ -126,6 +127,25 @@ def check_frames(frames: list[tuple[float, str]], subject: str, judge=None, read
                 hard[t] = f"not real footage: {why}"
             if t not in hard and r.get("subject_visible") is True:
                 subject_frames += 1
+    if second_look:
+        # A free model's flag on ONE sampled frame is confirmed on that same shot before it
+        # fails a 1-2 h video: real text, a graphic or CG filler stays on screen for the shot,
+        # a misread does not (9 Nov 2026: real NOAA squid called CG at 4:41, "2 Se" read off
+        # bare seabed at 22:21 - both clean to the eye; the episode sat held). Measured fails
+        # (near-black, black bars) are never second-guessed.
+        for t, why in list(hard.items()):
+            if not (why.startswith("text") or why.startswith("not real footage")):
+                continue
+            near = second_look(t)
+            if not near:
+                continue
+            near_paths = [p for _, p in near]
+            near_text = reader(near_paths)
+            rows = judge(near_paths, subject) or []
+            flagged = bool(near_text) or len(rows) != len(near_paths) or any(
+                r.get("graphic_or_text") is not False or r.get("real_footage") is not True for r in rows)
+            if not flagged:
+                del hard[t]
     share = subject_frames / len(frames)
     if hard:
         fl = sorted(hard.items())
@@ -144,7 +164,21 @@ def check(video: str, subject: str, judge=None, reader=None, luma=None,
           every: float = FC.SAMPLE_EVERY) -> dict:
     work = tempfile.mkdtemp(prefix="whisper-frames-")
     try:
-        return check_frames(FC.sample(video, work, every), subject, judge, reader, luma)
+        def second_look(t: float) -> list[tuple[float, str]]:
+            out = []
+            for dt in (-3.0, 3.0):
+                t2 = t + dt
+                if t2 <= 0:
+                    continue
+                p = os.path.join(work, f"near{int(t2 * 10):07d}.jpg")
+                r = subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel", "error",
+                                    "-y", "-ss", f"{t2:.2f}", "-i", video, "-frames:v", "1",
+                                    "-vf", "scale=768:-2", "-q:v", "4", p])
+                if r.returncode == 0 and os.path.exists(p):
+                    out.append((t2, p))
+            return out
+        return check_frames(FC.sample(video, work, every), subject, judge, reader, luma,
+                            second_look=second_look)
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
