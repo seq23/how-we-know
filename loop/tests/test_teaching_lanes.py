@@ -172,6 +172,25 @@ with tempfile.TemporaryDirectory() as td:
     check(WL.lane_of(money, c) == "money" and WL.lane_of({**money, "meta": {"theme": "love"}}, c) == "rotating",
           "(g) affirmation themes are in the wrong lanes")
 
+# g2. every recorded line, with every lead the author may give it, stays a
+#     sentence the script check accepts (8 Nov run: a Shinn lead + quote was 30 words)
+import whisper_author as WA  # noqa: E402
+for teacher, tc in c["teachings"].items():
+    if teacher not in WL.TEACHING:
+        continue
+    for topic in tc["topics"]:
+        for n in range(6):
+            try:
+                paras = WA.quote_paras(teacher, topic, n, "a")
+            except WA.WL_SegmentRefused:
+                continue
+            for para in paras:
+                for s in WL.sentences(para):
+                    check(len(WL.W.WORD.findall(s)) <= c["pacing"]["max_sentence_words"],
+                          f"(g2) {teacher}/{topic} quote sentence too long: {s[:70]!r}")
+                pr, _ = T.quote_problems(para, teacher)
+                check(pr == [], f"(g2) {teacher}/{topic}: the author's quote paragraph is refused: {pr[:1]}")
+
 # h. the mix and the queue
 mix, _ = WL.weekly_mix(c, {})
 check(mix == {"neville": 1, "money": 1, "rotating": 1, "history": 2}, f"(h) the mix before monetisation: {mix}")

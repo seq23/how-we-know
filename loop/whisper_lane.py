@@ -392,7 +392,8 @@ def episode_cfg(p: dict, c: dict) -> dict:
         t = c["teachings"][p["kind"]]["topics"][p["meta"].get("technique", "")]
         who = TG.rights()["teachers"][p["kind"]]["name"]
         return {**t, "slug": p["slug"], "kind": p["kind"], "topic": t["name"], "moment": "",
-                "hook": (f"A guided, whispered sleep meditation built on {who}'s {t['name']}: a short plain "
+                "hook": (f"A guided, whispered sleep meditation built on {who}'s "
+                         f"{re.sub(r'^the ', '', t['name'])}: a short plain "
                          f"explanation, a few lines from the public-domain books, then a long, quiet "
                          f"stretch to fall asleep in the wish fulfilled."),
                 "still_slots": []}
@@ -430,7 +431,8 @@ def description(p: dict, seconds: float, c: dict | None = None,
     lane = lane_of(p, c)
     lines = [e["hook"],
              c["channel"]["ai_voice_line"],
-             f"{length_label(seconds)} of soft whispering over dim, slow footage of the real thing, no music.",
+             f"{length_label(seconds)} of soft whispering over dim, slow footage"
+             f"{' of the real thing' if p['kind'] == 'sleep' else ''}, no music.",
              ""]
     ch = chapters(p, seg_starts)
     if ch:
