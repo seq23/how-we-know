@@ -316,8 +316,11 @@ def write_own(prompt: str, allowed: str, want: int, c: dict) -> tuple[list[str],
     raise WL_SegmentRefused("teaching part", last)
 
 
-LEADS = ["In {book}, {who} wrote:", "{who} put it this way, in {book}:", "From {book}, in {pron} own words:",
-         "Here is a line from {book}:", "{who} wrote, in {book}:"]
+# Each lead is its own spoken sentence (ends with a full stop), so a long
+# line never runs over the sentence limit with its lead (9 Nov 2026 run: a
+# Shinn lead and quote spoken as one sentence was 30 words and refused).
+LEADS = ["In {book}, {who} wrote this.", "{who} put it this way, in {book}.", "From {book}, in {pron} own words.",
+         "Here is a line from {book}.", "{who} wrote this in {book}."]
 
 
 def quote_paras(teacher: str, topic: str, n_done: int, shape: str) -> list[str]:
