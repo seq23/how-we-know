@@ -428,6 +428,9 @@ MAC_OWNED_GLOBS = (
     # chapters, credits) and by loop/whisper_upload.py (video id, schedule).
     "channel/whisper/*/kit.json",
     "channel/whisper/*/thumbnail.png",
+    "channel/whisper/*/thumbnail-*.png",
+    # the channel's own numbers, per lane (loop/whisper_scorecard.py, 9 Nov 2026)
+    "loop/state/whisper_channel.json",
 )
 
 

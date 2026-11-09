@@ -55,6 +55,8 @@ FONTS = ROOT / "channel" / "whisper" / "fonts"
 STAGE = "whisper-voice"
 
 READY = "READY FOR VOICE"
+TEACHING = ("neville", "shinn")                 # loop/teachings.py: guided sessions built on a teacher
+KINDS = ("sleep", "affirmations") + TEACHING
 STATUSES = (READY, "VOICED", "RENDERED")
 
 
@@ -145,7 +147,7 @@ def spoken_text(p: dict) -> str:
 
 
 def sentences(text: str) -> list[str]:
-    return [s for s in re.split(r"(?<=[.!?])\s+", text.strip()) if s]
+    return [s for s in re.split(r"(?<=[.!?])\s+|(?<=[.!?][”\"’])\s+", text.strip()) if s]
 
 
 def pause_scale(p: dict) -> float:
@@ -225,6 +227,9 @@ def promise_subject(p: dict, c: dict) -> str:
     if p.get("kind") == "affirmations":
         t = c["affirmations"]["topics"].get(p.get("meta", {}).get("theme", "money"), {})
         return t.get("promise") or t.get("topic") or "affirmations"
+    if p.get("kind") in TEACHING:
+        t = c["teachings"][p["kind"]]["topics"].get(p.get("meta", {}).get("technique", ""), {})
+        return t.get("promise") or t.get("name") or "a guided meditation"
     for e in c["episodes"]:
         if e["slug"] == p.get("slug"):
             return e.get("promise") or e["topic"]
@@ -323,8 +328,8 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
     if not p["segments"]:
         return out + ["EMPTY no segments examined"]
     kind = p["kind"]
-    if kind not in c["lengths"]:
-        out.append(f"KIND {kind!r} is not sleep or affirmations")
+    if kind not in KINDS or kind not in c["lengths"]:
+        out.append(f"KIND {kind!r} is not one of {', '.join(KINDS)}")
         return out
     checked = fact_checked() if kind == "sleep" else set()
     for s in p["segments"]:
@@ -336,13 +341,20 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
             if n > c["pacing"]["max_sentence_words"]:
                 out.append(f"{where}: LONG_SENTENCE {n} words (at most "
                            f"{c['pacing']['max_sentence_words']}): {sent[:60]!r}")
-        if kind == "sleep":
+        if kind in TEACHING:
+            pass                           # loop/teachings.teaching_problems, below
+        elif kind == "sleep":
             if s["source"] not in checked:
                 out.append(f"{where}: SOURCE_NOT_FACT_CHECKED {s['source']} was never uploaded by How We Know")
             else:
                 out += W.fact_problems(text, source_narration(s["source"]), where)
         else:
             out += [f"{where}: {x}" for x in affirmation_problems(text)]
+    if kind in TEACHING:
+        import teachings as TG                              # noqa: PLC0415
+        mates = [parse(o) for o in (others if others is not None else all_scripts())
+                 if Path(o).resolve() != Path(path).resolve()]
+        out += TG.teaching_problems(p, mates, c)
     est = estimate_seconds(p, c)
     out += opening_problems(p, est, c)
     lo, hi = c["lengths"][kind]["min_s"], c["lengths"][kind]["max_s"]
@@ -371,8 +383,18 @@ def length_label(seconds: float) -> str:
 def episode_cfg(p: dict, c: dict) -> dict:
     if p["kind"] == "affirmations":
         theme = p["meta"].get("theme", "money")
-        return {**c["affirmations"]["topics"][theme], "slug": p["slug"], "kind": "affirmations",
-                "hook": f"Whispered {theme} affirmations for sleep, slow and soft, with long pauses.",
+        t = c["affirmations"]["topics"][theme]
+        return {**t, "slug": p["slug"], "kind": "affirmations",
+                "hook": f"Whispered {t['topic']} for sleep, slow and soft, with long pauses.",
+                "still_slots": []}
+    if p["kind"] in TEACHING:
+        import teachings as TG                              # noqa: PLC0415
+        t = c["teachings"][p["kind"]]["topics"][p["meta"].get("technique", "")]
+        who = TG.rights()["teachers"][p["kind"]]["name"]
+        return {**t, "slug": p["slug"], "kind": p["kind"], "topic": t["name"], "moment": "",
+                "hook": (f"A guided, whispered sleep meditation built on {who}'s {t['name']}: a short plain "
+                         f"explanation, a few lines from the public-domain books, then a long, quiet "
+                         f"stretch to fall asleep in the wish fulfilled."),
                 "still_slots": []}
     for e in c["episodes"]:
         if e["slug"] == p["slug"]:
@@ -384,7 +406,7 @@ def episode_cfg(p: dict, c: dict) -> dict:
 def title(p: dict, seconds: float, c: dict | None = None) -> str:
     c = c or cfg()
     e = episode_cfg(p, c)
-    pat = c["titles"]["affirmations_pattern" if p["kind"] == "affirmations" else "sleep_pattern"]
+    pat = e.get("title") or c["titles"]["affirmations_pattern" if p["kind"] == "affirmations" else "sleep_pattern"]
     return pat.format(topic=e["topic"], moment=e["moment"], length=length_label(seconds))
 
 
@@ -405,6 +427,7 @@ def description(p: dict, seconds: float, c: dict | None = None,
                 seg_starts: list[float] | None = None, credits: list[str] | None = None) -> str:
     c = c or cfg()
     e = episode_cfg(p, c)
+    lane = lane_of(p, c)
     lines = [e["hook"],
              c["channel"]["ai_voice_line"],
              f"{length_label(seconds)} of soft whispering over dim, slow footage of the real thing, no music.",
@@ -414,11 +437,19 @@ def description(p: dict, seconds: float, c: dict | None = None,
         lines += ["Chapters", *ch, ""]
     if p["kind"] == "sleep":
         lines += ["Written for sleep from fact-checked How We Know scripts (howweknowdeep.com).", ""]
+    elif p["kind"] in TEACHING:
+        import teachings as TG                              # noqa: PLC0415
+        lines += [*TG.credits(p), "A practice for rest and imagination, not a promise of any outcome.", ""]
     else:
         lines += ["Affirmations are words to rest with, not a promise of any outcome.", ""]
+    if c["lanes"].get(lane, {}).get("products_line"):
+        lines += [c["lanes"][lane]["products_line"], ""]
     if credits:
         lines += ["Picture credits", *credits, ""]
-    lines += ["#sleep #asmr #whisper"]
+    lines += [{"neville": "#sleep #asmr #nevillegoddard #lawofassumption",
+               "shinn": "#sleep #asmr #florencescovelshinn #affirmations",
+               "money": "#sleep #asmr #moneyaffirmations #affirmations",
+               "rotating": "#sleep #asmr #affirmations"}.get(lane, "#sleep #asmr #whisper")]
     return "\n".join(lines).strip() + "\n"
 
 
@@ -434,6 +465,9 @@ def meta_problems(meta: dict, seconds: float, c: dict | None = None) -> list[str
         out.append("TITLE_NO_BENEFIT (sleep)")
     if not any(w.lower() in tl for w in c["titles"]["trigger_words"]):
         out.append("TITLE_NO_TRIGGER (ASMR / whispered)")
+    for w in c["titles"].get("banned", []):
+        if w.lower() in tl:
+            out.append(f"TITLE_BANNED_WORDS {w!r} (no 'no ads', no promise)")
     if f"({length_label(seconds)}" not in t:
         out.append(f"TITLE_LENGTH_NOT_REAL expected ({length_label(seconds)}")
     first3 = "\n".join(meta.get("description", "").splitlines()[:3])
@@ -449,13 +483,15 @@ def meta_problems(meta: dict, seconds: float, c: dict | None = None) -> list[str
     return out
 
 
-def upload_body(t: str, d: str, c: dict) -> dict:
+def upload_body(t: str, d: str, c: dict, lane: str = "history") -> dict:
     """The videos.insert body. `status.containsSyntheticMedia` is YouTube's
     altered-or-synthetic-content box; ads stay on (her call 6 Nov), so
     nothing here turns monetisation off."""
     return {"snippet": {"title": t, "description": d, "categoryId": c["channel"]["category_id"],
                         "defaultLanguage": c["channel"]["default_language"],
-                        "tags": ["sleep", "asmr", "whisper", "sleep story", "dark screen"]},
+                        "tags": ["sleep", "asmr", "whisper"]
+                        + (c["titles"].get("teaching_tags", {}).get(lane)
+                           or ["sleep story", "dark screen"])},
             "status": {"privacyStatus": "private", "containsSyntheticMedia": True,
                        "selfDeclaredMadeForKids": c["channel"]["made_for_kids"]}}
 
@@ -546,7 +582,9 @@ def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None,
         y += int(size * 1.05)
     small = _font("Jost-Light.ttf", 40)
     sx = tx + 4 if anchor == "l" else tx
-    d.text((sx, y + 30), f"{length_label(seconds)} · whispered · sleep science", font=small,
+    sub = {"sleep": "sleep science", "neville": "neville goddard", "shinn": "florence scovel shinn",
+           "affirmations": "affirmations"}.get(p["kind"], "sleep")
+    d.text((sx, y + 30), f"{length_label(seconds)} · whispered · {sub}", font=small,
            fill=b["ember"], anchor=a)
     d.text((sx, 640) if variant != "c" else (84, 640), "whisper almanac",
            font=_font("Jost-Light.ttf", 30), fill="#BFAF95", anchor=a if variant != "c" else "la")
@@ -616,7 +654,7 @@ def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | No
     meta = {"slug": slug, "kind": p["kind"], "title": t, "description": dsc,
             "length_s": round(secs, 1), "length_basis": "measured" if measured_s else "estimated",
             "still": (st[0]["local_file"] if st else None), "credits": credits,
-            "body": upload_body(t, dsc, c), "uploaded": False}
+            "lane": lane_of(p, c), "body": upload_body(t, dsc, c, tag_key(p, c)), "uploaded": False}
     probs = meta_problems(meta, secs, c)
     meta["problems"] = probs
     old = KITS / slug / "kit.json"
@@ -721,10 +759,111 @@ def voiced(slug: str) -> tuple[int, int]:
     return done, n
 
 
-def queue() -> list[str]:
-    """Scripts ready for voice, sleep episodes first (the lead lane), oldest first."""
+# ------------------------------------------------------------- lanes and the weekly mix
+CHANNEL_STATE = LOOP / "state" / "whisper_channel.json"
+
+
+def lane_of(p: dict, c: dict | None = None) -> str:
+    """The lane a script belongs to (config `lanes`; her plan 9 Nov 2026)."""
+    c = c or cfg()
+    if p["kind"] == "sleep":
+        return "history"
+    if p["kind"] == "neville":
+        return "neville"
+    if p["kind"] == "affirmations" and p.get("meta", {}).get("theme", "money") in c["lanes"]["money"]["themes"]:
+        return "money"
+    return "rotating"
+
+
+def tag_key(p: dict, c: dict | None = None) -> str:
+    return p["kind"] if p["kind"] in TEACHING else lane_of(p, c)
+
+
+def channel_numbers() -> dict:
+    try:
+        return json.loads(CHANNEL_STATE.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+def _or_unread(v) -> str:
+    return "unread" if v is None else f"{v:g}" if isinstance(v, (int, float)) else str(v)
+
+
+def monetized(nums: dict, c: dict) -> bool:
+    w = c["mix"]["monetized_when"]
+    subs, hours = nums.get("subscribers"), nums.get("watch_hours_365d")
+    return subs is not None and hours is not None and subs >= w["subscribers"] and hours >= w["watch_hours_365d"]
+
+
+def weekly_mix(c: dict | None = None, nums: dict | None = None) -> tuple[dict, list[str]]:
+    """Videos per lane per week, from the channel's OWN numbers (never a
+    calendar): the before/after-monetisation weights, then one slot moved to
+    the lane with the most watch hours per video over the last 30 days from
+    the weakest measured lane (each with `min_videos` measured), never below
+    a lane's floor. Returns (mix, why lines)."""
+    c = c or cfg()
+    nums = channel_numbers() if nums is None else nums
+    m = c["mix"]
+    on = monetized(nums, c)
+    mix = dict(m["after_monetized" if on else "before_monetized"])
+    why = [("monetised: " if on else "not yet monetised: ")
+           + f"{_or_unread(nums.get('subscribers'))} subscribers, {_or_unread(nums.get('watch_hours_365d'))} "
+             f"watch hours (needs {m['monetized_when']['subscribers']} and {m['monetized_when']['watch_hours_365d']})"]
+    lanes = nums.get("lanes") or {}
+    rated = {k: v["watch_hours_per_video"] for k, v in lanes.items()
+             if k in mix and (v.get("videos_30d") or 0) >= m["bonus"]["min_videos"]
+             and v.get("watch_hours_per_video") is not None}
+    if len(rated) >= 2:
+        top = max(rated, key=rated.get)
+        low = [k for k in sorted(rated, key=rated.get) if k != top and mix[k] > m["floors"].get(k, 0)]
+        if low:
+            mix[top] += 1
+            mix[low[0]] -= 1
+            why.append(f"{top} earns the most watch hours per video ({rated[top]:.1f}); one slot moves "
+                       f"to it from {low[0]} ({rated[low[0]]:.1f})")
+    else:
+        why.append(f"watch-hour rule waits for 2+ lanes with {m['bonus']['min_videos']}+ measured videos")
+    return mix, why
+
+
+def made_at(slug: str) -> float | None:
+    """When a script's video was made (render, a set-aside render, or its upload)."""
+    v = video_path(slug)
+    for f in (v, v.with_name(v.name + ".frame-check-failed")):
+        if f.exists():
+            return f.stat().st_mtime
+    k = KITS / slug / "kit.json"
+    if k.exists():
+        up = json.loads(k.read_text()).get("uploaded_at")
+        if up:
+            return _dt.datetime.fromisoformat(up.replace("Z", "+00:00")).timestamp()
+    return None
+
+
+def made_last_week(c: dict | None = None, now: float | None = None) -> dict[str, int]:
+    c = c or cfg()
+    now = now or time.time()
+    out: dict[str, int] = {}
+    for f in all_scripts():
+        t = made_at(f.stem)
+        if t and now - t < 7 * 86400:
+            ln = lane_of(parse(f), c)
+            out[ln] = out.get(ln, 0) + 1
+    return out
+
+
+def queue(c: dict | None = None, mix: dict | None = None, made: dict | None = None) -> list[str]:
+    """Scripts ready for voice, in the order the weekly mix wants them: a
+    script already part-voiced first, then the lane furthest behind its
+    weekly count (mix minus videos made in the last 7 days), oldest first.
+    A lane at zero still voices after the others: the Mac never idles."""
+    c = c or cfg()
+    if mix is None:
+        mix, _ = weekly_mix(c)
+    made = made_last_week(c) if made is None else made
     rows = []
-    waits = {e["slug"] for e in cfg()["episodes"] if e.get("waits_for")}
+    waits = {e["slug"] for e in c["episodes"] if e.get("waits_for")}
     for f in all_scripts():
         p = parse(f)
         if p["status"] != READY or video_path(p["slug"]).exists() or p["slug"] in waits:
@@ -733,7 +872,10 @@ def queue() -> list[str]:
             continue
         if footage_gaps(p):                # never voiced without its own footage
             continue
-        rows.append((0 if p["kind"] == "sleep" else 1, p["meta"].get("written", ""), p["slug"]))
+        ln = lane_of(p, c)
+        started = voiced(p["slug"])[0] > 0
+        rows.append((0 if started else 1, -(mix.get(ln, 0) - made.get(ln, 0)),
+                     0 if p["kind"] == "sleep" else 1, p["meta"].get("written", ""), p["slug"]))
     return [s for *_, s in sorted(rows)]
 
 
