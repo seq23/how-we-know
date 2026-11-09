@@ -335,7 +335,7 @@
   },
   "repackage": {
     "long_form_per_day": 2,
-    "_long_form_per_day": "Owner's choice, 13 Oct 2026: two re-uploaded longer cuts a day while the backlog lasts (loop/repackage.py). Hers to change; 0 pauses the re-upload drain. The standing 4-a-week cadence is the upload lane's and is not affected.",
+    "_long_form_per_day": "Owner's choice, 13 Oct 2026: two re-uploaded longer cuts a day while the backlog lasts (loop/repackage.py). Hers to change; 0 pauses the re-upload drain. The standing 4-a-week cadence is the upload lane's and is not affected. QUOTA CHECK 9 Nov 2026 (issue #353): no code reads this number today; the units are spent by loop/cloud_upload.py (up to 3 uploads x 1,700 = 5,100 a day, sized by quota.videos_affordable), and the repackage apply needs 101 units a title (4 waiting = 404). The apply stopped QUOTA_EXHAUSTED because quota.shorts_reserve() kept 3,400 units for Shorts after the 18:00 CT Shorts lane had already found an empty shelf (10,000 - 400 headroom - 6,164 spent - 3,400 = 36 units). Fixed at source: the Shorts lane releases its reserve when it has nothing to upload (quota.stand_down), so the 18:30 CT apply has ~3,400 units on such days. Kept at 2: on a full day (5,100 uploads + 3,400 Shorts + ~1,000 captions/handoff) about 100-500 units remain, so the apply fits about 1-4 titles a day and the queue drains over several days. If it still fits 0 three runs running, the QUOTA_EXHAUSTED escalation fires again: lower this to 1 then.",
     "slot_times_local": [
       "11:00",
       "15:00",

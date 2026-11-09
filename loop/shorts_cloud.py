@@ -157,6 +157,12 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # hold that has lifted is work for this run even when nothing new is
         # on the shelf; a hold still in force is a note, not a stop.
         to_release, still_held = SL.releasable(SL.load_ledger())
+        if not todo and not to_release and not dry_run:
+            # Nothing to upload tonight: release the day's Shorts reserve so
+            # the deferrable lanes after this one (the 18:30 CT repackage
+            # apply) are not starved guarding Shorts that are not coming
+            # (issue #353, 9 Nov 2026; loop/quota.shorts_reserve).
+            quota.stand_down(LANE)
         if not todo and not to_release and look.no_footage:
             st.named_stop("SHORT_MASTER_NO_FOOTAGE",
                           "Re-cut from new footage masters: " + ", ".join(look.no_footage),
