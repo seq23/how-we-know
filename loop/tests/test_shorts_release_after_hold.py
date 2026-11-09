@@ -78,6 +78,7 @@ P.set_privacy = tube.set_privacy
 P.read_status_full = tube.read_status_full
 SPENT: list[tuple] = []
 quota.spend = lambda units, lane: SPENT.append((units, lane))
+quota.STATE = tmp / "quota.json"         # an empty-shelf run stands the Shorts reserve down (quota.stand_down)
 
 
 class FakeStage:

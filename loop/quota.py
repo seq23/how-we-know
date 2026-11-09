@@ -183,13 +183,28 @@ def shorts_reserve() -> int:
     and Shorts are the only cheap lever on the subscriber half of the Partner
     Programme threshold, so starving them is not the harmless direction.
 
-    Returns two whole video uploads while no Shorts lane has spent today, 0
-    after one has.
+    Returns two whole video uploads while no Shorts lane has RUN today, 0
+    after one has: spent, or stood down with nothing to upload
+    (`stand_down`). Before 9 Nov 2026 only a spend released it, so on days
+    the Shorts shelf was empty (6-9 Nov) the 3,400 units stayed held all day
+    for Shorts that had already been looked for and were not coming, and the
+    18:30 CT repackage apply found 36 units after a 5,100-unit upload day:
+    QUOTA_EXHAUSTED five runs in a row (issue #353).
     """
     spent_by = _load().get("by_lane") or {}
-    if any(spent_by.get(lane) for lane in SHORTS_LANES):
+    if any(lane in spent_by for lane in SHORTS_LANES):
         return 0
     return SHORTS_PER_DAY_PEAK * PER_VIDEO
+
+
+def stand_down(lane: str) -> None:
+    """Record that `lane` ran today and will upload nothing more today, so the
+    reserve held for it is released (a 0-unit entry under its name). Called
+    by the Shorts lane when its shelf has nothing to upload."""
+    d = _load()
+    d.setdefault("by_lane", {}).setdefault(lane, 0)
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(json.dumps(d, indent=2) + "\n")
 
 
 def deferrable_reserve() -> int:
