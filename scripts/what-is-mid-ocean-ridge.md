@@ -1,5 +1,7 @@
 # What is the mid-ocean ridge?
 
+**Picture target seconds:** 900
+
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
 **Domain:** deep-sea-ocean-science  
 **Opening:** stake-then-payoff

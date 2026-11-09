@@ -133,6 +133,28 @@
       "words_after": 1691,
       "words_before": 1696
     },
+    "what-is-mid-ocean-ridge": {
+      "attempts": 0,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "{{stat: 65,000 | kilometers | continuous volcanic mountain range | NOAA}}\nNew seafloor is manufactured continuously along 65,000 kilometers of volcanic peaks. The mid-ocean ridge is a continuous volcanic mountain range stretching 65,000 kil",
+      "hook_before": "{{stat: 65,000 | kilometers | continuous volcanic mountain range | NOAA}}\nNew seafloor is manufactured continuously along 65,000 kilometers of volcanic peaks. The mid-ocean ridge is a continuous volcanic mountain range stretching 65,000 kil",
+      "hook_problems_before": [],
+      "kind": "extend",
+      "minutes_after": 9.6,
+      "minutes_before": 9.6,
+      "mode": "pending_bind",
+      "model": null,
+      "new_script_sha256": "3991c78926b343d388013171fbe1589b7b1be7c514a56838e93bf6a0d92a5116",
+      "old_render_sha256": null,
+      "old_script_sha256": "7011055ca913dd5ee2c75095e1938239491bdf6f152347140b8926e621d3f7e7",
+      "scripted_at": "2026-11-09T00:48:56+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1388,
+      "words_before": 1388
+    },
     "what-lives-in-mariana-trench": {
       "amended": [
         {
@@ -247,5 +269,5 @@
       "words_before": 1800
     }
   },
-  "updated": "2026-11-03T05:29:13+00:00"
+  "updated": "2026-11-09T00:48:56+00:00"
 }
