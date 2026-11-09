@@ -420,6 +420,19 @@
       "slug": "20-what-is-the-midnight-zone",
       "thumbnail_applied": false
     },
+    "does-damascus-steel-rust": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "gemini/gemini-3.5-flash-lite",
+      "new_title": "Does Damascus steel pit?",
+      "old_title": "Does Damascus steel rust?",
+      "old_title_source": "ledger",
+      "problems": [],
+      "proposed_at": "2026-11-09T00:48:53+00:00",
+      "question": "does damascus steel rust",
+      "slug": "does-damascus-steel-rust"
+    },
     "how-are-microchips-designed": {
       "applied_at": "2026-10-17T08:42:06+00:00",
       "applied_video_id": "rn99K4kav40",
@@ -996,21 +1009,21 @@
       "slug": "what-lives-in-the-sea"
     },
     "why-are-deep-sea-creatures-so-big": {
-      "applied_at": "2026-10-17T08:43:20+00:00",
-      "applied_video_id": "1ME4-ztFBXM",
+      "applied_at": null,
       "attempts": 1,
       "checks_passed": true,
-      "description_applied_at": "2026-10-17T08:43:20+00:00",
-      "description_sha256": "c4e4aab2fc43210b248941c0573ffe0067da1595ed39f294b4178594c15aa208",
-      "model": "claude-subscription/opus",
-      "new_title": "Most deep-sea creatures are not big",
-      "old_title": "Deep sea creatures grow so big in cold, oxygen-rich water — and how we know",
-      "old_title_source": "titles.py (2026-10-08 rule)",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "new_title": "Are deep sea creatures big?",
+      "old_title": "Most deep-sea creatures are not big",
+      "old_title_source": "ledger",
+      "previous": {
+        "applied_at": "2026-10-17T08:43:20+00:00",
+        "new_title": "Most deep-sea creatures are not big"
+      },
       "problems": [],
-      "proposed_at": "2026-10-13T13:33:48+00:00",
+      "proposed_at": "2026-11-09T00:48:53+00:00",
       "question": "why are deep sea creatures so big",
-      "slug": "why-are-deep-sea-creatures-so-big",
-      "thumbnail_applied": false
+      "slug": "why-are-deep-sea-creatures-so-big"
     },
     "why-deep-sea-creatures-are-creepers": {
       "applied_at": "2026-10-17T08:43:20+00:00",
@@ -1124,5 +1137,5 @@
       "thumbnail_sha256": "5612dfe6532a5fd9a0c1dbfae4466204d0c16e16143b24ba80ac0c805384af52"
     }
   },
-  "updated": "2026-11-07T00:44:05+00:00"
+  "updated": "2026-11-09T00:48:53+00:00"
 }
