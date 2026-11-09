@@ -11,8 +11,9 @@ sit in R2 (docs/WHISPER_ALMANAC.md, Storage). How We Know's rules, reused:
   * ONLY A CHECKED EPISODE GOES UP: every lane check again here (the script
     rules, loop/whisper_lane.script_problems; the kit rules, meta_problems;
     a measured length), then the final frame check on the finished file
-    (visuals/frame_check.py: one frame every 20 s, OCR + a free vision
-    model). A failing frame is NAMED STOP [FRAME_CHECK_FAILED]; the file is
+    (visuals/whisper_frame_check.py: one frame every 20 s, OCR, measured
+    luma and a free vision model; the sleep gate). A failure is NAMED STOP
+    [FRAME_CHECK_FAILED]; the file is
     set aside (never deleted) and the next episode goes on.
   * PRIVATE WITH A PUBLISH DATE, never public at once, as How We Know does
     (loop/backfill.py): 20:00 Central on the format's own days
@@ -131,6 +132,13 @@ def lane_problems(slug: str, k: dict, c: dict) -> list[str]:
     st = (k.get("body") or {}).get("status") or {}
     if st.get("selfDeclaredMadeForKids") is not False:
         out.append("MADE_FOR_KIDS_NOT_NO")
+    if k.get("kind", "sleep") != "sleep":
+        # Her call 9 Nov 2026: a manifesting video never goes up with deep-sea
+        # footage. visuals/whisper_render.py records the set it rendered with.
+        want = c["calm_footage"]["lanes"].get(k.get("lane") or "")
+        if not want or k.get("footage_set") != want:
+            out.append(f"WRONG_FOOTAGE_SET rendered with {k.get('footage_set') or 'deep-sea footage'}, "
+                       f"its lane takes {want}: re-render it")
     return out
 
 
@@ -139,8 +147,11 @@ def subject(slug: str, c: dict) -> str:
     each part was rewritten from (affirmations: their calm footage)."""
     import shot_list                                        # noqa: PLC0415
     p = WL.parse(WL.SCRIPTS / f"{slug}.md")
-    srcs = ([s["source"] for s in p["segments"]] if p["kind"] == "sleep"
-            else c["affirmations"]["footage_sources"])
+    fs = WL.footage_set(p, c)
+    if fs:                                 # manifesting lanes: their calm footage set
+        return (f"{', '.join(WL.footage_subjects(fs, c))} (dimmed for sleep; the video "
+                f"is titled {p['title']!r})")
+    srcs = [s["source"] for s in p["segments"]]
     subs: list[str] = []
     for s in srcs:
         try:
@@ -152,10 +163,11 @@ def subject(slug: str, c: dict) -> str:
 
 
 def frame_check(video: Path, slug: str, c: dict) -> dict:
-    """visuals/frame_check.check on the finished file. Raises its own
-    PictureCheckFailed / FrameCheckUnavailable."""
-    import frame_check as FC                                # noqa: PLC0415
-    return FC.check(str(video), subject(slug, c))
+    """visuals/whisper_frame_check.check on the finished file - the sleep
+    picture gate, not How We Know's every-frame documentary gate. Raises
+    frame_check's PictureCheckFailed / FrameCheckUnavailable."""
+    import whisper_frame_check as WFC                       # noqa: PLC0415
+    return WFC.check(str(video), subject(slug, c))
 
 
 # ------------------------------------------------------------------ the calendar

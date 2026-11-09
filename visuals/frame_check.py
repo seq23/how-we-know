@@ -152,12 +152,23 @@ VISION_FREE = ["nvidia/nemotron-3.5-super-vl:free", "google/gemma-4-31b-it:free"
 
 def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | None:
     """[(pass, why)] per frame from a free Gemini vision model, or None."""
+    rows = ask_vision(frames, question(subject).replace("{n}", str(len(frames))))
+    if rows is None:
+        return None
+    return [(bool(r.get("pass")), str(r.get("why") or "")[:120]) for r in rows]
+
+
+def ask_vision(frames: list[str], prompt: str, valid=None) -> list[dict] | None:
+    """One JSON object per frame from the free vision route (Gemini free tier,
+    then the $0 OpenRouter vision models), or None when none answered.
+    `valid(rows)` may refuse a malformed answer, so the next model is asked.
+    Shared with visuals/whisper_frame_check.py."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     sys.path.insert(0, HERE)
     import shot_list                                    # noqa: PLC0415
     or_key = shot_list._keys()                          # GEMINI_API_KEY from .secrets
     import llm_router as R                              # noqa: PLC0415
-    content = [{"type": "text", "text": question(subject).replace("{n}", str(len(frames)))}]
+    content = [{"type": "text", "text": prompt}]
     for p in frames:
         b64 = base64.b64encode(open(p, "rb").read()).decode()
         content.append({"type": "image_url",
@@ -198,9 +209,10 @@ def gemini_judge(frames: list[str], subject: str) -> list[tuple[bool, str]] | No
             rows = json.loads(m.group(0)) if m else []
         except ValueError:
             rows = []
-        if len(rows) == len(frames):
+        if (len(rows) == len(frames) and all(isinstance(r, dict) for r in rows)
+                and (valid is None or valid(rows))):
             _LAST_OK[0] = model
-            return [(bool(r.get("pass")), str(r.get("why") or "")[:120]) for r in rows]
+            return rows
     return None
 
 

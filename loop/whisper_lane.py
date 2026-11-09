@@ -777,6 +777,32 @@ def lane_of(p: dict, c: dict | None = None) -> str:
     return "rotating"
 
 
+def footage_set(p: dict, c: dict | None = None) -> str | None:
+    """The calm footage set a manifesting script is pictured with (config
+    `calm_footage`, her call 9 Nov 2026: never How We Know's deep sea); None
+    for a sleep history script, which keeps its own episodes' footage."""
+    c = c or cfg()
+    if p["kind"] == "sleep":
+        return None
+    return c["calm_footage"]["lanes"][lane_of(p, c)]
+
+
+def wrong_footage(p: dict, c: dict | None = None) -> bool:
+    """A manifesting render made without its lane's footage set (before
+    9 Nov 2026 they took deep-sea footage): it goes back in the queue and is
+    rendered again, and the upload step refuses it meanwhile."""
+    want = footage_set(p, c)
+    if not want or not video_path(p["slug"]).exists():
+        return False
+    k = KITS / p["slug"] / "kit.json"
+    return not k.exists() or json.loads(k.read_text()).get("footage_set") != want
+
+
+def footage_subjects(name: str, c: dict | None = None) -> list[str]:
+    c = c or cfg()
+    return [e["subject"] for e in c["calm_footage"]["sets"][name]]
+
+
 def tag_key(p: dict, c: dict | None = None) -> str:
     return p["kind"] if p["kind"] in TEACHING else lane_of(p, c)
 
@@ -868,7 +894,9 @@ def queue(c: dict | None = None, mix: dict | None = None, made: dict | None = No
     waits = {e["slug"] for e in c["episodes"] if e.get("waits_for")}
     for f in all_scripts():
         p = parse(f)
-        if p["status"] != READY or video_path(p["slug"]).exists() or p["slug"] in waits:
+        if p["status"] != READY or p["slug"] in waits:
+            continue
+        if video_path(p["slug"]).exists() and not wrong_footage(p, c):
             continue
         if handed_on(p["slug"]):           # uploaded, or set aside by the frame check
             continue

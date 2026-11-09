@@ -5,6 +5,7 @@ deep-sea and materials-and-manufacturing episodes.
     python research/imagery_stock_video.py --phrases SLUG # the subject words an episode is matched on
     python research/imagery_stock_video.py --harvest      # search, licence-check, download, merge
     python research/imagery_stock_video.py --verify       # licence + sha256 of every stock record
+    python research/imagery_stock_video.py --calm         # Whisper Almanac calm footage sets only
 
 THE OWNER'S RULING (2 Nov 2026, spry brain, "Yes, all topics"): moving footage
 from Pixabay, Pexels and Mixkit may be used in EVERY domain, not only food, on
@@ -389,7 +390,7 @@ def merge(new: list[dict], stops: list[dict], status: dict) -> dict:
         path = IMAGERY / a.get("local_file", "")
         if not ok:
             dropped.append(f"{a['post_id']}: {why}")
-        elif not phrase_in(str(a.get("subject") or ""), a.get("title", "")):
+        elif not phrase_in(str(a.get("matched") or a.get("subject") or ""), a.get("title", "")):
             dropped.append(f"{a['post_id']}: its tags no longer show {a.get('subject')!r} "
                            f"under the subject gate")
         elif not path.exists():
@@ -485,6 +486,110 @@ def harvest(slugs: list[str] | None = None) -> dict:
     return man
 
 
+# ------------------------------------------------- Whisper Almanac calm sets
+CALM_CONFIG = ROOT / "config" / "whisper_almanac.json"
+
+
+def clip_problems(path: Path, seconds: float) -> list[str]:
+    """A calm clip is refused with any word on screen (the sleep picture gate
+    fails a video on one text frame) or a near-black frame. Five frames, read
+    with Apple Vision OCR and measured luma."""
+    import subprocess                                   # noqa: PLC0415
+    import tempfile                                     # noqa: PLC0415
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import frame_check as FC                            # noqa: PLC0415
+    from PIL import Image, ImageStat                    # noqa: PLC0415
+    if not FC.ocr_available():
+        return ["no OCR on this host: a clip cannot be cleared of text"]
+    floor = float(json.loads(CALM_CONFIG.read_text())["picture_gate"]["near_black_luma"])
+    with tempfile.TemporaryDirectory() as td:
+        frames = []
+        for k in range(5):
+            j = os.path.join(td, f"c{k}.jpg")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{seconds * (k + 0.5) / 5:.2f}",
+                            "-i", str(path), "-frames:v", "1", "-vf", "scale=768:-2", j], check=True)
+            if os.path.exists(j):
+                frames.append(j)
+        out = [f"text on screen: {w!r}" for w in FC.text_on_screen(frames).values()]
+        out += [f"near-black frame (luma {v:.1f})" for v in
+                (ImageStat.Stat(Image.open(j).convert("L")).mean[0] for j in frames) if v < floor * 2]
+    return out
+
+
+def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
+    """Fill each Whisper Almanac calm footage set (config `calm_footage`, her
+    call 9 Nov 2026) up to `per_subject` clips per subject: real footage only
+    (Pixabay type film, not AI; Mixkit's free licence re-read), the subject
+    gate (`phrase_in` on one of the subject's `accept` words), the licence gate
+    (`stock_licence_ok`) and no word or near-black frame (`clip_problems`).
+    Records go into the one manifest with `calm_set`; credited in the
+    description like every stock clip."""
+    cfgc = json.loads(CALM_CONFIG.read_text())["calm_footage"]
+    per = int(cfgc["per_subject"])
+    cap = cap if cap is not None else MAX_PER_RUN
+    FF = _ff()
+    status, stops = source_status()
+    live = [n for n in STOCK_SOURCES if status[n] == "usable"]
+    if not live:
+        raise SystemExit(f"RULE 0: no stock source is usable on this host ({status})")
+    have = [a for a in load().get("assets", []) if is_stock(a)]
+    used = {a["post_id"] for a in have}
+    new, fetched, report = [], 0, {}
+    for name in sets or list(cfgc["sets"]):
+        for ent in cfgc["sets"][name]:
+            n_have = sum(1 for a in have + new
+                         if a.get("calm_set") == name and a.get("subject") == ent["subject"])
+            for src in live:
+                if n_have >= per or fetched >= cap:
+                    break
+                try:
+                    cands = FF.BY_NAME[src].search(ent["query"])
+                except Exception as e:                   # noqa: BLE001
+                    print(f"  {src} {ent['query']!r}: search failed ({str(e)[:80]})")
+                    continue
+                for c in cands:
+                    uid = f"{src}:{c['id']}"
+                    hit = next((w for w in ent["accept"] if phrase_in(w, c.get("title") or "")), None)
+                    if (not hit or uid in used or FF.banned(c) or n_have >= per or fetched >= cap
+                            or (c.get("duration") and float(c["duration"]) < MIN_SECONDS)):
+                        continue
+                    try:
+                        meta, blob = FF.BY_NAME[src].download(c)
+                    except Exception as e:               # noqa: BLE001
+                        print(f"  refused {uid}: {str(e)[:100]}")
+                        continue
+                    stem = re.sub(r"[^a-z0-9]+", "-", str(c.get("title") or "").lower()).strip("-")[:40]
+                    c = {**c, "source": src,
+                         "_fname": f"stock__{src}-{re.sub(r'[^A-Za-z0-9]+', '-', str(c['id']))}__{stem}.mp4"}
+                    CLIPS.mkdir(parents=True, exist_ok=True)
+                    path = CLIPS / c["_fname"]
+                    path.write_bytes(blob)
+                    used.add(uid)
+                    info = FF.probe(path)
+                    probs = ([] if info["duration_s"] >= MIN_SECONDS and info["width"] >= 1280
+                             else ["too short or too small"])
+                    probs = probs or clip_problems(path, info["duration_s"])
+                    rec = record(c, ent["subject"], f"whisper:{name}", meta, blob, info)
+                    rec.update({"calm_set": name, "domain": "whisper-calm", "matched": hit,
+                                "episodes": [f"whisper:{name}"]})
+                    ok, why = stock_licence_ok(rec)
+                    if probs or not ok:
+                        path.unlink()
+                        print(f"  refused {uid}: {(probs or [why])[0]}")
+                        continue
+                    new.append(rec)
+                    fetched += 1
+                    n_have += 1
+                    print(f"  CLIP {name:<13} {ent['subject'][:34]:<34} {uid}")
+            report[f"{name}: {ent['subject']}"] = n_have
+    man = merge(new, stops, status)
+    for k, v in report.items():
+        print(f"  {k}: {v} clip(s)")
+    print(f"calm footage: {len(new)} new clip(s); "
+          f"{sum(1 for a in man['assets'] if a.get('calm_set'))} on record")
+    return man
+
+
 def verify() -> int:
     stock = [a for a in load().get("assets", []) if is_stock(a)]
     bad = []
@@ -513,9 +618,15 @@ def main(argv: list[str]) -> int:
     if "--verify" in argv:
         verify()
         return 0
+    if "--calm" in argv:
+        harvest_calm()
+        verify()
+        return 0
     if "--harvest" in argv:
         eps = argv[argv.index("--episode") + 1].split(",") if "--episode" in argv else None
         harvest(eps)
+        if eps is None:                 # the weekly run also tops up the Almanac calm sets
+            harvest_calm()
         verify()
         return 0
     print(__doc__.split("\n\n")[0])

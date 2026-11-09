@@ -74,9 +74,9 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     for m in metas:
         seg_secs[m["segment"]] = seg_secs.get(m["segment"], 0.0) + m["duration"]
     srcs = [s["source"] for s in p["segments"]]
-    if p["kind"] != "sleep":               # affirmations and the teaching lanes: calm footage
-        calm = c["affirmations"]["footage_sources"]
-        srcs = [calm[i % len(calm)] for i in range(len(srcs))]
+    fset = WL.footage_set(p, c)
+    if fset:                               # manifesting lanes: their own calm footage set,
+        srcs = [f"calm:{fset}"] * len(srcs)  # never How We Know's deep sea (her call 9 Nov 2026)
     segs, left = [], dur
     for i in sorted(seg_secs):
         if left <= 0:
@@ -86,7 +86,8 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     import footage as F                                     # noqa: PLC0415
     import whisper_reel as R                                # noqa: PLC0415
     try:
-        shots = R.plan_reel(segs, F.usable_assets())
+        assets = F.usable_assets()
+        shots = R.plan_reel(segs, assets, pool_of=lambda s: R.pool(s, assets, c))
     except R.FootageThin as e:
         print(f"NAMED STOP [WHISPER_FOOTAGE_THIN] {slug}: {e}")
         raise SystemExit(5)
@@ -95,6 +96,9 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
         raise SystemExit(f"NAMED STOP [WHISPER_REEL_REFUSED] {slug}: {len(probs)} footage rule(s) broken: {probs[:3]}")
     kit = WL.kit(slug, measured_s=total, seg_starts=seg_starts, c=c,
                  footage_credits=None if proof_seconds else R.credits(shots))
+    if fset and not proof_seconds:         # the upload step refuses any other set
+        kit["footage_set"] = fset
+        (WL.KITS / slug / "kit.json").write_text(json.dumps(kit, indent=2, ensure_ascii=False) + "\n")
     with tempfile.TemporaryDirectory(dir=out.parent) as td:
         lst = Path(td) / "beats.txt"
         lst.write_text("".join(f"file '{w}'\n" for w in wavs))
@@ -113,11 +117,31 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     return out
 
 
+def plan(slug: str) -> int:
+    """--plan: the footage the next render of SLUG would show (no ffmpeg)."""
+    c = WL.cfg()
+    p = WL.parse(WL.SCRIPTS / f"{slug}.md")
+    fset = WL.footage_set(p, c)
+    import footage as F                                     # noqa: PLC0415
+    import whisper_reel as R                                # noqa: PLC0415
+    assets = F.usable_assets()
+    srcs = [f"calm:{fset}"] if fset else list(dict.fromkeys(s["source"] for s in p["segments"]))
+    for s in srcs:
+        pool = R.pool(s, assets, c)
+        subs = sorted({R.subject(a) for a in pool})
+        print(f"{slug} ({p['kind']}, footage {s}): {len(pool)} clip(s) of {len(subs)} subject(s): "
+              f"{'; '.join(subs)}")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("slug")
     ap.add_argument("--seconds", type=float)
+    ap.add_argument("--plan", action="store_true")
     a = ap.parse_args()
+    if a.plan:
+        return plan(a.slug)
     render(a.slug, a.seconds)
     return 0
 

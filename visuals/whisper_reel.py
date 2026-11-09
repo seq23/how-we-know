@@ -18,7 +18,8 @@ so the picture shows the named subject. Every cut sits inside a clean window,
 is sha256-verified (visuals/footage.render_cut). No credit is burned into the
 picture: the final frame check fails any word on screen (as How We Know's
 long-form, owner 2026-11-03); every source is credited in the description
-(credits()). The reel is dimmed and desaturated in one pass for sleep.
+(credits()). Each cut is dimmed and desaturated for sleep, down to a luma
+floor, never to black (dim_for).
 """
 from __future__ import annotations
 
@@ -35,6 +36,31 @@ SHOT_S = 18.0
 REPEAT_GAP_S = 180.0
 SUBJECT_CAP = 0.25
 DIM = "eq=brightness=-0.16:saturation=0.7:contrast=0.92"
+# Dim, never black (her 6 Nov rule; 9 Nov measurement: a flat -0.16 turned
+# every already-dark deep-sea cut near-black, 42 of 310 sampled frames of the
+# W45 render under luma 6). Each cut is dimmed only down to DIM_FLOOR mean luma.
+DIM_MAX = 0.16
+DIM_FLOOR = 28.0
+
+
+def dim_for(luma: float) -> str:
+    """The eq filter for a cut whose darkest sampled frame has mean luma `luma`."""
+    b = min(DIM_MAX, max(0.0, (luma - DIM_FLOOR) / 255.0))
+    return f"eq=brightness={-b:.3f}:saturation=0.7:contrast=0.92"
+
+
+def cut_luma(path: str, seconds: float, workdir: str) -> float:
+    """Darkest mean luma of three frames of a rendered cut."""
+    from PIL import Image, ImageStat                       # noqa: PLC0415
+    vals = []
+    for k, t in enumerate((0.2, seconds / 2, max(0.2, seconds - 0.5))):
+        j = os.path.join(workdir, f"l{k}.jpg")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.2f}", "-i", path,
+                        "-frames:v", "1", "-vf", "scale=192:-2", j], check=True)
+        if os.path.exists(j):
+            vals.append(ImageStat.Stat(Image.open(j).convert("L")).mean[0])
+            os.remove(j)
+    return min(vals) if vals else 255.0
 
 
 class FootageThin(Exception):
@@ -43,6 +69,26 @@ class FootageThin(Exception):
 
 def subject(asset: dict) -> str:
     return (asset.get("subject") or asset.get("title") or asset.get("local_file") or "?").lower()
+
+
+def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
+    """A part's clips. "calm:<set>" (the manifesting lanes, her call 9 Nov
+    2026) is that set's harvested clips, interleaved subject by subject so no
+    subject crowds the screen; any other source is a How We Know episode's own
+    footage (footage.episode_pool)."""
+    import footage as F                                    # noqa: PLC0415
+    if not source.startswith("calm:"):
+        return F.episode_pool(source, assets)
+    name = source.split(":", 1)[1]
+    by: dict[str, list[dict]] = {}
+    for a in assets:
+        if a.get("calm_set") == name:
+            by.setdefault(subject(a), []).append(a)
+    out, k = [], 0
+    while any(k < len(v) for v in by.values()):
+        out += [v[k] for v in by.values() if k < len(v)]
+        k += 1
+    return out
 
 
 def min_clips(shot_s: float = SHOT_S) -> int:
@@ -155,13 +201,19 @@ def render_reel(shots: list[dict], out: Path, audio: Path, workdir: Path) -> Pat
             parts = []
             for k, s in enumerate(x for x in shots if x["segment"] == si):
                 p = os.path.join(td, f"{k:04d}.mp4")
-                F.render_cut({**s["cut"], "asset": s["asset"]}, p, s["seconds"], td, credit=False)
+                raw = os.path.join(td, f"{k:04d}-raw.mp4")
+                F.render_cut({**s["cut"], "asset": s["asset"]}, raw, s["seconds"], td, credit=False)
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-vf",
+                                f"{dim_for(cut_luma(raw, s['seconds'], td))},scale=1280:720",
+                                "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-an", p],
+                               check=True)
+                os.remove(raw)
                 parts.append(p)
             lst = Path(td) / "parts.txt"
             lst.write_text("".join(f"file '{p}'\n" for p in parts))
             seg = workdir / f"seg{si:02d}.mp4"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
-                            "-vf", f"{DIM},scale=1280:720", "-c:v", "libx264", "-preset", "veryfast",
+                            "-vf", "scale=1280:720", "-c:v", "libx264", "-preset", "veryfast",
                             "-crf", "28", "-maxrate", "900k", "-bufsize", "1800k", "-an", str(seg)], check=True)
             seg_files.append(seg)
     lst = workdir / "segs.txt"
