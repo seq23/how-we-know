@@ -489,6 +489,12 @@
       "escalation": "Four failed drafts in a row: read the stage log's validator lines.",
       "plain": "a Money draft failed validation and will be redrafted"
     },
+    "MONEY_DRAFT_PATH_MOVED": {
+      "why": "loop/author.draft wrote the Money draft somewhere other than loop/drafts/<slug>.md, the static path loop/money_author.py reads and the stage's commit pathspec covers; the stage stops before writing anything uncommitted.",
+      "max_consecutive": 1,
+      "escalation": "Point DRAFTS in loop/money_author.py at author.DRAFTS and check the money-author pathspec in bin/loop-stage.sh.",
+      "plain": "a Money draft landed in an unexpected folder"
+    },
     "FOOD_LONGFORM_PAUSED": {
       "why": "Food long-forms are paused for How We Know's Money test (owner, 9 Nov 2026; loop/config.json domains.money_test.longform_paused). loop/food_author.py writes no food episode and loop/food_lane.py renders none; existing food videos stay up. The 30-day lane check (loop/lane_check.py, the Sunday digest) is where the test is judged.",
       "max_consecutive": 26,
