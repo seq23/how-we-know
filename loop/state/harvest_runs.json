@@ -54,20 +54,20 @@
   },
   "research/imagery_video.py": {
     "host": "mac-batch",
-    "last_run_at": "2026-11-02T14:15:37+00:00",
+    "last_run_at": "2026-11-10T13:50:17+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W45",
-    "records": 172,
+    "week": "2026-W46",
+    "records": 430,
     "tail": [
       "  rejected   42  gate 0-size",
       "  rejected    1  gate C-window",
-      "  carried forward 6 previously-accepted clip(s)",
-      "downloaded 166 clips -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/clips",
-      "manifest -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/video_rights.json",
-      "verified 172 clips: sha256 matches, clean window present, commercial use cleared"
+      "  carried forward 264 previously-accepted clip(s)",
+      "downloaded 166 clips -> /Users/sequoiataylor/GitHub/.hwk-runner/channel/imagery/clips",
+      "manifest -> /Users/sequoiataylor/GitHub/.hwk-runner/channel/imagery/video_rights.json",
+      "verified 430 clips: sha256 matches, clean window present, commercial use cleared"
     ],
-    "last_success_at": "2026-11-02T14:15:37+00:00"
+    "last_success_at": "2026-11-10T13:50:17+00:00"
   },
   "research/imagery_food.py": {
     "host": "ci",
@@ -88,19 +88,19 @@
   },
   "research/imagery_stock_video.py": {
     "host": "mac-batch",
-    "last_run_at": "2026-11-03T21:33:50+00:00",
+    "last_run_at": "2026-11-10T12:48:11+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W45",
-    "records": 252,
+    "week": "2026-W46",
+    "records": 430,
     "tail": [
-      "  CLIP why-is-glass-clear                           'glass bottle'           mixkit:5071",
-      "  CLIP why-is-glass-clear                           'glass bottle'           mixkit:4920",
-      "  CLIP why-is-glass-clear                           'limestone'              pixabay:364188",
-      "  CLIP why-is-glass-clear                           'glass'                  pixabay:79872",
-      "stock footage: 20 new clip(s), 34 on record, 20 episode(s) with no clip that shows the subject (drawn / NOAA treatment stands): 03-why-deep-sea-creatures-are-surfacing, 11-what-is-a-dumbo-octopus, 12-what-is-a-frilled-shark, 17-what-is-a-yeti-crab, are-sea-pigs-real, how-deep-mariana-trench, how-does-photolithography-work, how-does-thermohaline-circulation-work, is-giant-isopod-edible, what-blobfish-actually-looks-like, what-does-a-goblin-shark-look-like, what-does-a-greenland-shark-look-like",
-      "verified 34 stock clip(s): licence wording re-checked, sha256 matches"
+      "  money-luxury: gold bars handled slowly: 0 clip(s)",
+      "  money-luxury: a luxury car interior: 0 clip(s)",
+      "  money-luxury: designer shopping bags: 0 clip(s)",
+      "  money-luxury: a calm infinity pool at dusk: 5 clip(s)",
+      "calm footage: 1 new clip(s); 87 on record",
+      "verified 141 stock clip(s): licence wording re-checked, sha256 matches"
     ],
-    "last_success_at": "2026-11-03T21:33:50+00:00"
+    "last_success_at": "2026-11-10T12:48:11+00:00"
   }
 }
