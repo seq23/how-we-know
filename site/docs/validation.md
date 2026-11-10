@@ -7,7 +7,7 @@
 - Direct answers limited to 40 words.
 - Minimum section, FAQ and comparison depth.
 - Source and related-record integrity.
-- Explorer route, canonical article link, depth constant, controls, and reduced-motion behavior.
+- Explorer Challenger Deep depth equals the sourced value in its question record (`scripts/validate-explorer.mjs`).
 - Sitemap and `llms.txt` route coverage.
 - Conditional video sitemap generation.
 - Dormant/published video metadata rules.
