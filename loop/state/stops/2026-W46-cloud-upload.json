@@ -1,9 +1,9 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W46",
-  "at": "2026-11-09T15:05:49+00:00",
+  "at": "2026-11-10T15:05:26+00:00",
   "code": "NOTHING_SHELVED",
-  "message": "Mac batch last ran 2026-11-08T15:04:30+00:00 (NOT ok); 16 renders finished on the Mac; 0 held by the render gate. 26 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): what-is-carbon-fiber-made-of, how-are-microchips-designed, are-sea-pigs-real, what-does-a-greenland-shark-look-like, where-does-chemosynthesis-occur, is-giant-isopod-edible, how-does-chemosynthesis-work, what-blobfish-actually-looks-like ...",
+  "message": "Mac batch last ran 2026-11-10T13:50:25+00:00 (ok); 16 renders finished on the Mac; 0 held by the render gate. 27 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): what-is-carbon-fiber-made-of, how-are-microchips-designed, are-sea-pigs-real, what-does-a-greenland-shark-look-like, where-does-chemosynthesis-occur, is-giant-isopod-edible, how-does-chemosynthesis-work, what-blobfish-actually-looks-like ...",
   "detail": {
     "awaiting_mac": [
       "what-is-carbon-fiber-made-of",
@@ -19,6 +19,7 @@
       "what-does-a-vampire-squid-look-like",
       "how-mid-oceanic-ridge-is-formed",
       "what-does-a-sea-pig-look-like",
+      "what-is-mid-ocean-ridge",
       "how-to-tell-if-steel-is-hardened",
       "is-aluminum-stronger-than-steel",
       "how-to-tell-if-steel-is-high-carbon",
@@ -36,13 +37,11 @@
     "shelved_without_thumbnail": [],
     "shelf_scan_error": null,
     "mac_heartbeat": {
-      "batch_last_run_at": "2026-11-08T15:04:30+00:00",
+      "batch_last_run_at": "2026-11-10T13:50:25+00:00",
       "renders_finished": 16,
       "held": []
     },
-    "render_gate_held": [
-      "what-is-mid-ocean-ridge"
-    ],
+    "render_gate_held": [],
     "food_pipeline": [
       "why-does-chocolate-taste-so-good",
       "why-does-steak-taste-better-seared",
@@ -75,8 +74,8 @@
   },
   "unblock": "For the rest, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "self_resolving",
-  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 1 of at most 7 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 2 of at most 7 before this escalates to a human.)",
+  "consecutive": 2,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
