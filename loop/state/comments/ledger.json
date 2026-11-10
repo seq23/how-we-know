@@ -1719,6 +1719,60 @@
         "applied_at": "2026-11-09T15:05:53+00:00",
         "result": "posted (UgxE1HS6CloDFA9b5td4AaABAg)"
       }
+    },
+    "UgzPXJTLude5vIJ8vah4AaABAg": {
+      "comment_id": "UgzPXJTLude5vIJ8vah4AaABAg",
+      "video_id": "0I4Pi91TWB4",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+      "published_at": "2026-11-10T00:11:55+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-10T00:11:55+00:00",
+      "acted": {
+        "comment_id": "UgzPXJTLude5vIJ8vah4AaABAg",
+        "video_id": "0I4Pi91TWB4",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-10T00:11:55+00:00",
+        "result": "posted (UgzPXJTLude5vIJ8vah4AaABAg)"
+      }
+    },
+    "Ugyij_AR051qsWFfP3R4AaABAg": {
+      "comment_id": "Ugyij_AR051qsWFfP3R4AaABAg",
+      "video_id": "wOMTQA4oQOA",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+      "published_at": "2026-11-10T00:11:55+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-10T00:11:55+00:00",
+      "acted": {
+        "comment_id": "Ugyij_AR051qsWFfP3R4AaABAg",
+        "video_id": "wOMTQA4oQOA",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-10T00:11:55+00:00",
+        "result": "posted (Ugyij_AR051qsWFfP3R4AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -2439,6 +2493,30 @@
       "note": null,
       "applied_at": "2026-11-09T15:05:53+00:00",
       "result": "posted (UgxE1HS6CloDFA9b5td4AaABAg)"
+    },
+    {
+      "comment_id": "UgzPXJTLude5vIJ8vah4AaABAg",
+      "video_id": "0I4Pi91TWB4",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-10T00:11:55+00:00",
+      "result": "posted (UgzPXJTLude5vIJ8vah4AaABAg)"
+    },
+    {
+      "comment_id": "Ugyij_AR051qsWFfP3R4AaABAg",
+      "video_id": "wOMTQA4oQOA",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-10T00:11:55+00:00",
+      "result": "posted (Ugyij_AR051qsWFfP3R4AaABAg)"
     }
   ],
   "sweeps": [
@@ -2982,7 +3060,23 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "0I4Pi91TWB4": {
+      "comment_id": "UgzPXJTLude5vIJ8vah4AaABAg",
+      "text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+      "posted_at": "2026-11-10T00:11:55+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "wOMTQA4oQOA": {
+      "comment_id": "Ugyij_AR051qsWFfP3R4AaABAg",
+      "text": "Why deep sea fish die when brought to surface? Full episode: https://youtu.be/TEmyz8h_DIA",
+      "posted_at": "2026-11-10T00:11:55+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-11-09T15:05:53+00:00"
+  "updated": "2026-11-10T00:11:55+00:00"
 }

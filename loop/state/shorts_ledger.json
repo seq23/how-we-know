@@ -642,9 +642,13 @@
       "scheduled_publish_at": "2026-10-07T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS43NDhFRTgwOTRERTU4Rjg3",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "TEmyz8h_DIA",
+      "handoff_at": "2026-11-10T00:11:53+00:00",
+      "handoff_comment_id": "UgzPXJTLude5vIJ8vah4AaABAg",
+      "handoff_comment_at": "2026-11-10T00:11:55+00:00"
     },
     {
       "slug": "20-what-is-the-midnight-zone",
@@ -1026,11 +1030,15 @@
       "title": "Why do deep-sea fish die at the surface?",
       "chapter": "Swim bladders are the first system to fail",
       "chapter_start_s": 93.667,
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS43NERCMDIzQzFBMERCMEE3",
       "playlist": "PLOrZMDyoy1XM",
       "title_was": "Why deep sea fish die when brought to surface: swim bladders are the first system to fail",
-      "retitled_at": "2026-11-02T14:29:57+00:00"
+      "retitled_at": "2026-11-02T14:29:57+00:00",
+      "handoff_episode": "TEmyz8h_DIA",
+      "handoff_at": "2026-11-10T00:11:54+00:00",
+      "handoff_comment_id": "Ugyij_AR051qsWFfP3R4AaABAg",
+      "handoff_comment_at": "2026-11-10T00:11:55+00:00"
     },
     {
       "slug": "how-do-scientists-know-so-much",
@@ -1463,5 +1471,5 @@
       "handoff_at": "2026-11-06T00:13:34+00:00"
     }
   ],
-  "updated": "2026-11-09T15:05:54+00:00"
+  "updated": "2026-11-10T00:11:56+00:00"
 }
