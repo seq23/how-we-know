@@ -421,9 +421,12 @@
       "thumbnail_applied": false
     },
     "does-damascus-steel-rust": {
-      "applied_at": null,
+      "applied_at": "2026-11-10T00:50:21+00:00",
+      "applied_video_id": "OSEN-Uv7A0I",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-11-10T00:50:21+00:00",
+      "description_sha256": "2e71fa7bf76ed702647af6128aafecb09b7fe0805735ed9ab29233e03b608868",
       "model": "gemini/gemini-3.5-flash-lite",
       "new_title": "Does Damascus steel pit?",
       "old_title": "Does Damascus steel rust?",
@@ -431,7 +434,10 @@
       "problems": [],
       "proposed_at": "2026-11-09T00:48:53+00:00",
       "question": "does damascus steel rust",
-      "slug": "does-damascus-steel-rust"
+      "slug": "does-damascus-steel-rust",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-11-10T00:50:21+00:00",
+      "thumbnail_sha256": "b6010e8253c4ee93a0aa22f60abd2ae061ccd99241696dec80c1712bd153c08c"
     },
     "how-are-microchips-designed": {
       "applied_at": "2026-10-17T08:42:06+00:00",
@@ -623,10 +629,12 @@
       "thumbnail_sha256": "7efab7f2cfbf1254887ffa363d9e9d07acb29902a1d303574eb940f0f1b5fe3d"
     },
     "how-does-quenching-harden-steel": {
-      "applied_at": "2026-10-17T08:42:25+00:00",
+      "applied_at": "2026-11-10T00:50:22+00:00",
       "applied_video_id": "aKyOg7xbxC0",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-11-10T00:50:22+00:00",
+      "description_sha256": "491e49fc883239a4b42000ea11b16b5ca30c856e2d6a657be25284997931e67c",
       "model": "claude-subscription/opus",
       "new_title": "Why Must Quenching Be So Fast?",
       "old_title": "Faster than 100 degrees per second, carbon is trapped",
@@ -891,9 +899,12 @@
       "thumbnail_sha256": "c24e2c1ac9b00533991af3f9ad2f48a125e617a34d3298deec489de5a5ba315f"
     },
     "what-is-concrete-made-of": {
-      "applied_at": null,
+      "applied_at": "2026-11-10T00:50:27+00:00",
+      "applied_video_id": "-8gyi8oq3zU",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-11-10T00:50:27+00:00",
+      "description_sha256": "f7376e5b00c230d03c20103596d320766f06843f19b1a5ba14d705539aa1fd9a",
       "model": "gemini/gemini-3.6-flash",
       "new_title": "What Is Concrete Made Of?",
       "old_title": "Concrete Does Not Dry",
@@ -905,7 +916,10 @@
       "problems": [],
       "proposed_at": "2026-11-07T00:44:05+00:00",
       "question": "what is concrete made of",
-      "slug": "what-is-concrete-made-of"
+      "slug": "what-is-concrete-made-of",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-11-10T00:50:27+00:00",
+      "thumbnail_sha256": "c0ac9a92d14175b04d189975b45725b531e233f029286864746652cedbfbfc85"
     },
     "what-is-hydrothermal-vents": {
       "applied_at": "2026-10-17T08:43:16+00:00",
@@ -1009,9 +1023,12 @@
       "slug": "what-lives-in-the-sea"
     },
     "why-are-deep-sea-creatures-so-big": {
-      "applied_at": null,
+      "applied_at": "2026-11-10T00:50:31+00:00",
+      "applied_video_id": "VUeFHBIXoRc",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-11-10T00:50:31+00:00",
+      "description_sha256": "7e2e1f137f4c7a5aec84e151af1bafa3d7ab3f4c639b296fa11ed77b4afbdf39",
       "model": "gemini/gemini-3.5-flash-lite",
       "new_title": "Are deep sea creatures big?",
       "old_title": "Most deep-sea creatures are not big",
@@ -1023,7 +1040,10 @@
       "problems": [],
       "proposed_at": "2026-11-09T00:48:53+00:00",
       "question": "why are deep sea creatures so big",
-      "slug": "why-are-deep-sea-creatures-so-big"
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-11-10T00:50:31+00:00",
+      "thumbnail_sha256": "13f7e145b95f9cf4e8b2b627db7aba80767da4d8bf8bd580f69adbe338545728"
     },
     "why-deep-sea-creatures-are-creepers": {
       "applied_at": "2026-10-17T08:43:20+00:00",
@@ -1137,5 +1157,5 @@
       "thumbnail_sha256": "5612dfe6532a5fd9a0c1dbfae4466204d0c16e16143b24ba80ac0c805384af52"
     }
   },
-  "updated": "2026-11-09T00:48:53+00:00"
+  "updated": "2026-11-10T00:50:31+00:00"
 }
