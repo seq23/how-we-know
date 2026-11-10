@@ -51,6 +51,7 @@ DOMAIN = "money-and-business"
 TOPICS = ROOT / "config" / "money_topics.json"
 ORDER = ROOT / "research" / "publish_order_money_and_business.json"
 SCRIPTS = ROOT / "scripts"
+DRAFTS = LOOP / "drafts"                                    # where author.draft writes
 MAX_IN_FLIGHT = 2                   # two How We Know nights a week
 LANE_MARK = "**Made by:** loop/money_author.py"
 DISCLAIMER = "This is not financial advice."
@@ -201,7 +202,11 @@ def run(plan_only: bool = False) -> int:
                                deadline=time.monotonic() + 150 * 60)
         except author.AuthorStop as e:
             st.named_stop(e.code, f"{t['slug']}: {e.message}", unblock=e.unblock)
-        draft = ROOT / out["path"]
+        draft = DRAFTS / f"{t['slug']}.md"
+        if (ROOT / out["path"]).resolve() != draft.resolve():
+            st.named_stop("MONEY_DRAFT_PATH_MOVED", f"{t['slug']}: author wrote {out['path']}, "
+                          f"expected {draft.relative_to(ROOT)}",
+                          unblock="Point DRAFTS in loop/money_author.py at author.DRAFTS.")
         text = finish(draft.read_text(), t)
         bad = money_problems(text)
         if bad:
