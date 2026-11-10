@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-03T05:28:32+00:00",
+  "generated": "2026-11-10T14:36:13+00:00",
   "domain": "food-science",
   "module": "research/food_footage.py",
   "policy": "Real video only, through the free fallback chain (Pixabay, Pexels, Mixkit, [Coverr disabled by its terms], Commons PD/CC0, Internet Archive PD collections, NASA). Licences allow commercial reuse without attribution; every clip is still credited on screen.",
@@ -16,7 +16,7 @@
     "depicts",
     "subject_basis"
   ],
-  "asset_count": 126,
+  "asset_count": 140,
   "chain": [
     "pixabay",
     "pexels",
@@ -190,6 +190,486 @@
     {
       "subject": "rice-rice-melting-close-up-2",
       "reason": "no adapter in the chain had a matching clip"
+    },
+    {
+      "subject": "bread-long-pixabay-128126",
+      "source": "pixabay",
+      "reason": "whisper-long: near-black frame (luma 8.1)"
+    },
+    {
+      "subject": "bread-long-pixabay-1261",
+      "source": "pixabay",
+      "reason": "whisper-long: text on screen: '1352 WILLIAMS SO'"
+    },
+    {
+      "subject": "steak-long-pixabay-173107",
+      "source": "pixabay",
+      "reason": "whisper-long: text on screen: 'SC=22'"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10380",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41120",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3797",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41116",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-2737",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-18323",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3229",
+      "source": "mixkit",
+      "reason": "whisper-long: 11 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10378",
+      "source": "mixkit",
+      "reason": "whisper-long: 18 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10384",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "bread-long-pixabay-128126",
+      "source": "pixabay",
+      "reason": "whisper-long: near-black frame (luma 8.1)"
+    },
+    {
+      "subject": "steak-long-pixabay-173107",
+      "source": "pixabay",
+      "reason": "whisper-long: text on screen: 'SC=22'"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10380",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41120",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3797",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41116",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-2737",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-18323",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3229",
+      "source": "mixkit",
+      "reason": "whisper-long: 11 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10378",
+      "source": "mixkit",
+      "reason": "whisper-long: 18 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10384",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41124",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41106",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41114",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41118",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41122",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41113",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44100",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44091",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10367",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10375",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10377",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44187",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10383",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10380",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41120",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3797",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41116",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-2737",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-18323",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3229",
+      "source": "mixkit",
+      "reason": "whisper-long: 11 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10378",
+      "source": "mixkit",
+      "reason": "whisper-long: 18 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10384",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41124",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41106",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41114",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41118",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41122",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41113",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44100",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44091",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10367",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10375",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10377",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44187",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10383",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-commons-File:Bear enters Californian home and allegedly eats chocolate cake (4 September 2022).webm",
+      "source": "commons",
+      "reason": "whisper-long: text on screen: 'aswns 2022-09-04 10:17:05 -0700 AXON BODY 3 X60A60472 ey Police Department /BODY'"
+    },
+    {
+      "subject": "chocolate-long-commons-File:March 6, 2025 -City of Cocoa Beach City Commission.webm",
+      "source": "commons",
+      "reason": "whisper-long: text on screen: 'XL\u0430\u0432Cu'"
+    },
+    {
+      "subject": "steak-long-pixabay-173107",
+      "source": "pixabay",
+      "reason": "whisper-long: text on screen: 'SC=22'"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10380",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41120",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3797",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41116",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-2737",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-18323",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3229",
+      "source": "mixkit",
+      "reason": "whisper-long: 11 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10378",
+      "source": "mixkit",
+      "reason": "whisper-long: 18 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10384",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41124",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41106",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41114",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41118",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41122",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41113",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44100",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44091",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10367",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10375",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10377",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44187",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10383",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-commons-File:Bear enters Californian home and allegedly eats chocolate cake (4 September 2022).webm",
+      "source": "commons",
+      "reason": "whisper-long: text on screen: 'aswns 2022-09-04 10:17:05 -0700 AXON BODY 3 X60A60472 ey Police Department /BODY'"
     }
   ],
   "index": [
@@ -855,6 +1335,206 @@
         "spans": [],
         "sha256": "c7054dae8f5e9c4c52a87c88f96e6a82bb4950fa30af6df3c78afc846721fae0"
       }
+    },
+    {
+      "subject": "bread-long-pixabay-14239",
+      "key": "bread-long-pixabay-14239",
+      "label": "BREAD",
+      "source": "pixabay",
+      "source_id": "14239",
+      "title": "bread, cook, fresh bread, bakery, cutting board, cooking, table, dish, knife, loaf, food, wheat bread, slicing, nutrition, bakery products, a sandwich",
+      "item_url": "https://pixabay.com/videos/id-14239/",
+      "download_url": "https://cdn.pixabay.com/video/2018/02/10/14239-255658087_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:06:52+00:00",
+      "sha256": "ec448c923d8193e97873030193d2c3c9680a68e476079bdcc4a731d5bf850bfa",
+      "local_file": "clips/food_clip__bread-long-pixabay-14239__pixabay-14239__bread-cook-fresh-bread-bakery-cutting-board-cook.mp4",
+      "credit_line": "BREAD - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "AlekseiyPovar",
+      "depicts": "video",
+      "subject_basis": "Bread, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'bread')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "bread",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 21.205,
+      "black": {
+        "spans": [],
+        "sha256": "ec448c923d8193e97873030193d2c3c9680a68e476079bdcc4a731d5bf850bfa"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "bread-long-pixabay-207993",
+      "key": "bread-long-pixabay-207993",
+      "label": "BREAD",
+      "source": "pixabay",
+      "source_id": "207993",
+      "title": "bread, buns, treat, snack, starch, flour",
+      "item_url": "https://pixabay.com/videos/id-207993/",
+      "download_url": "https://cdn.pixabay.com/video/2024/04/15/207993_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:07:32+00:00",
+      "sha256": "cda0242cd5dcb48d761b35039957fa138d0e1411a41f545e5a9b426b2442f319",
+      "local_file": "clips/food_clip__bread-long-pixabay-207993__pixabay-207993__bread-buns-treat-snack-starch-flour.mp4",
+      "credit_line": "BREAD - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "NGUYENTHONG7997",
+      "depicts": "video",
+      "subject_basis": "Bread, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'bread')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "bread",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 29.029,
+      "black": {
+        "spans": [],
+        "sha256": "cda0242cd5dcb48d761b35039957fa138d0e1411a41f545e5a9b426b2442f319"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "bread-long-pixabay-252213",
+      "key": "bread-long-pixabay-252213",
+      "label": "BREAD",
+      "source": "pixabay",
+      "source_id": "252213",
+      "title": "bread, food, healthy, delicious, meal, fresh, gourmet",
+      "item_url": "https://pixabay.com/videos/id-252213/",
+      "download_url": "https://cdn.pixabay.com/video/2025/01/12/252213_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:07:25+00:00",
+      "sha256": "7a23bc77b5a470740a82f93a26e92a524cb899f7fbe07478133707ff30a863e2",
+      "local_file": "clips/food_clip__bread-long-pixabay-252213__pixabay-252213__bread-food-healthy-delicious-meal-fresh-gourmet.mp4",
+      "credit_line": "BREAD - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Islamicprince_77",
+      "depicts": "video",
+      "subject_basis": "Bread, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'bread')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "bread",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 21.188,
+      "black": {
+        "spans": [],
+        "sha256": "7a23bc77b5a470740a82f93a26e92a524cb899f7fbe07478133707ff30a863e2"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "bread-long-pixabay-49549",
+      "key": "bread-long-pixabay-49549",
+      "label": "BREAD",
+      "source": "pixabay",
+      "source_id": "49549",
+      "title": "flour, bread, wheat, food, nutrition, cereals, bakery, grains, agriculture, oil, salt, hands, kitchen",
+      "item_url": "https://pixabay.com/videos/id-49549/",
+      "download_url": "https://cdn.pixabay.com/video/2020/09/10/49549-459598226_small.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:07:13+00:00",
+      "sha256": "e48246b4c0e2e4277fecdf16b9ac619e192ecba8b5a19543a853cbc6af717edf",
+      "local_file": "clips/food_clip__bread-long-pixabay-49549__pixabay-49549__flour-bread-wheat-food-nutrition-cereals-bakery-.mp4",
+      "credit_line": "BREAD - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "x_OI",
+      "depicts": "video",
+      "subject_basis": "Bread, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'flour')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "bread",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 30.975,
+      "black": {
+        "spans": [],
+        "sha256": "e48246b4c0e2e4277fecdf16b9ac619e192ecba8b5a19543a853cbc6af717edf"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "bread-long-pixabay-72827",
+      "key": "bread-long-pixabay-72827",
+      "label": "BREAD",
+      "source": "pixabay",
+      "source_id": "72827",
+      "title": "wheat, earth, agriculture, rural, country, bread, cereals",
+      "item_url": "https://pixabay.com/videos/id-72827/",
+      "download_url": "https://cdn.pixabay.com/video/2021/05/02/72827-544315415_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:11:54+00:00",
+      "sha256": "21e09590097886920d817fba228e13a17cf618070498359f5c9d9cbab0a8564e",
+      "local_file": "clips/food_clip__bread-long-pixabay-72827__pixabay-72827__wheat-earth-agriculture-rural-country-bread-cere.mp4",
+      "credit_line": "BREAD - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "Stdudioray",
+      "depicts": "video",
+      "subject_basis": "Bread, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'wheat')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "bread",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 21.76,
+      "black": {
+        "spans": [],
+        "sha256": "21e09590097886920d817fba228e13a17cf618070498359f5c9d9cbab0a8564e"
+      },
+      "lane": "whisper-long"
     },
     {
       "subject": "bread-microscope",
@@ -2581,6 +3261,126 @@
       },
       "hands": false,
       "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41111",
+      "key": "chocolate-long-mixkit-41111",
+      "label": "CHOCOLATE",
+      "source": "mixkit",
+      "source_id": "41111",
+      "title": "demonstration video of donuts with a lot of chocolate",
+      "item_url": "https://mixkit.co/free-stock-video/demonstration-video-of-donuts-with-a-lot-of-chocolate-41111/",
+      "download_url": "https://assets.mixkit.co/videos/41111/41111-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:14:34+00:00",
+      "sha256": "a33f1971a91f66e176058833fec6c900bb4e5174638ce7d484d9c6ded2fc47f9",
+      "local_file": "clips/food_clip__chocolate-long-mixkit-41111__mixkit-41111__demonstration-video-of-donuts-with-a-lot-of-choc.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'demonstration video of donuts with a lot of chocolate')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 21.897,
+      "black": {
+        "spans": [],
+        "sha256": "a33f1971a91f66e176058833fec6c900bb4e5174638ce7d484d9c6ded2fc47f9"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "chocolate-long-mixkit-52210",
+      "key": "chocolate-long-mixkit-52210",
+      "label": "CHOCOLATE",
+      "source": "mixkit",
+      "source_id": "52210",
+      "title": "milk pouring over a bowl full of chocolate flakes with",
+      "item_url": "https://mixkit.co/free-stock-video/milk-pouring-over-a-bowl-full-of-chocolate-flakes-with-52210/",
+      "download_url": "https://assets.mixkit.co/videos/52210/52210-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:09:49+00:00",
+      "sha256": "7384dddbd45675e6de78f631f9e6186b2dc9589933326fbbcc719a12ce8b0c28",
+      "local_file": "clips/food_clip__chocolate-long-mixkit-52210__mixkit-52210__milk-pouring-over-a-bowl-full-of-chocolate-flake.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'milk pouring over a bowl full of chocolate flakes with')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 24.0,
+      "duration_s": 21.458,
+      "black": {
+        "spans": [],
+        "sha256": "7384dddbd45675e6de78f631f9e6186b2dc9589933326fbbcc719a12ce8b0c28"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "chocolate-long-pixabay-81261",
+      "key": "chocolate-long-pixabay-81261",
+      "label": "CHOCOLATE",
+      "source": "pixabay",
+      "source_id": "81261",
+      "title": "chocolate, candy, sugar, chocolates, sweets, dessert",
+      "item_url": "https://pixabay.com/videos/id-81261/",
+      "download_url": "https://cdn.pixabay.com/video/2021/07/12/81261-575216286_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:08:18+00:00",
+      "sha256": "0fc6d645dbac2ea86a3c8d59abaceb42cfe8234b6cfb02b06e01e45d43956197",
+      "local_file": "clips/food_clip__chocolate-long-pixabay-81261__pixabay-81261__chocolate-candy-sugar-chocolates-sweets-dessert.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "RoyBuri",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'chocolate')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 24.274,
+      "black": {
+        "spans": [],
+        "sha256": "0fc6d645dbac2ea86a3c8d59abaceb42cfe8234b6cfb02b06e01e45d43956197"
+      },
+      "lane": "whisper-long"
     },
     {
       "subject": "chunks",
@@ -6809,6 +7609,246 @@
         "spans": [],
         "sha256": "8fb0b59182a1d75767f48aba0a4a9253ea1d54d2a812a5dd979f2cb9b8550eb4"
       }
+    },
+    {
+      "subject": "steak-long-pixabay-11663",
+      "key": "steak-long-pixabay-11663",
+      "label": "STEAK",
+      "source": "pixabay",
+      "source_id": "11663",
+      "title": "beef, stir fry, food, meal, fry, stir, cuisine, dinner, asian, healthy, chinese, sauce, lunch, meat, dish, traditional, onion, pepper, oriental, green, cooking, fresh, wok, fried, gourmet, soy, cabbage, mushroom, stirfry, pan, carrot, cooked",
+      "item_url": "https://pixabay.com/videos/id-11663/",
+      "download_url": "https://cdn.pixabay.com/video/2017/08/30/11663-231758777_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:12:15+00:00",
+      "sha256": "36ae5de08a4eec7b49c135487a61a62170f002c8220a7904ca0ee7d0bf9a5429",
+      "local_file": "clips/food_clip__steak-long-pixabay-11663__pixabay-11663__beef-stir-fry-food-meal-fry-stir-cuisine-dinner-.mp4",
+      "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "XiaosKitchen",
+      "depicts": "video",
+      "subject_basis": "Steak, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'beef')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "steak",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 29.97,
+      "duration_s": 39.106,
+      "black": {
+        "spans": [],
+        "sha256": "36ae5de08a4eec7b49c135487a61a62170f002c8220a7904ca0ee7d0bf9a5429"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "steak-long-pixabay-152830",
+      "key": "steak-long-pixabay-152830",
+      "label": "STEAK",
+      "source": "pixabay",
+      "source_id": "152830",
+      "title": "barbecue, meat, grill, beef, food",
+      "item_url": "https://pixabay.com/videos/id-152830/",
+      "download_url": "https://cdn.pixabay.com/video/2023/03/02/152830-804130714_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:12:06+00:00",
+      "sha256": "7e662b70564833f9af2752026d3be750ba4e56a0329807ac7dc82c7a0344b08b",
+      "local_file": "clips/food_clip__steak-long-pixabay-152830__pixabay-152830__barbecue-meat-grill-beef-food.mp4",
+      "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "ymyphoto",
+      "depicts": "video",
+      "subject_basis": "Steak, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'barbecue')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "steak",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 24.0,
+      "duration_s": 39.508,
+      "black": {
+        "spans": [],
+        "sha256": "7e662b70564833f9af2752026d3be750ba4e56a0329807ac7dc82c7a0344b08b"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "steak-long-pixabay-15737",
+      "key": "steak-long-pixabay-15737",
+      "label": "STEAK",
+      "source": "pixabay",
+      "source_id": "15737",
+      "title": "beef, meat, frying, frying pan, grilled meat, saucepan, gas stove, food, fried, steaks, dish",
+      "item_url": "https://pixabay.com/videos/id-15737/",
+      "download_url": "https://cdn.pixabay.com/video/2018/04/22/15737-266043629_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:07:56+00:00",
+      "sha256": "2c69aa22480fc180cbec13c7713250b4f69d003827de37c48b215050a2453a4b",
+      "local_file": "clips/food_clip__steak-long-pixabay-15737__pixabay-15737__beef-meat-frying-frying-pan-grilled-meat-saucepa.mp4",
+      "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "AlekseiyPovar",
+      "depicts": "video",
+      "subject_basis": "Steak, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'beef')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "steak",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 25.0,
+      "duration_s": 42.2,
+      "black": {
+        "spans": [],
+        "sha256": "2c69aa22480fc180cbec13c7713250b4f69d003827de37c48b215050a2453a4b"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "steak-long-pixabay-16395",
+      "key": "steak-long-pixabay-16395",
+      "label": "STEAK",
+      "source": "pixabay",
+      "source_id": "16395",
+      "title": "steak, grill, meat, beef, food, dinner, grilled, meal, bbq, barbecue, delicious, cooking, roast, summer, tasty, tenderloin, fillet, hot, sirloin, juicy, cook, steak dinner, cooked",
+      "item_url": "https://pixabay.com/videos/id-16395/",
+      "download_url": "https://cdn.pixabay.com/video/2018/05/23/16395-271607412_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:07:37+00:00",
+      "sha256": "ef2b676a348bca956702630f536a13b0d44bb28996cdde0cec932c5671945889",
+      "local_file": "clips/food_clip__steak-long-pixabay-16395__pixabay-16395__steak-grill-meat-beef-food-dinner-grilled-meal-b.mp4",
+      "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "max_bbb",
+      "depicts": "video",
+      "subject_basis": "Steak, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'steak')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "steak",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 25.493,
+      "black": {
+        "spans": [],
+        "sha256": "ef2b676a348bca956702630f536a13b0d44bb28996cdde0cec932c5671945889"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "steak-long-pixabay-179446",
+      "key": "steak-long-pixabay-179446",
+      "label": "STEAK",
+      "source": "pixabay",
+      "source_id": "179446",
+      "title": "beef, meat, grill, bbq, marinade, sizzle, protein, food",
+      "item_url": "https://pixabay.com/videos/id-179446/",
+      "download_url": "https://cdn.pixabay.com/video/2023/09/06/179446-861846795_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:31:50+00:00",
+      "sha256": "3c25590d6c495de190fcdc1e7b8dd3298295ef569411d8be3a9538450f62d5f4",
+      "local_file": "clips/food_clip__steak-long-pixabay-179446__pixabay-179446__beef-meat-grill-bbq-marinade-sizzle-protein-food.mp4",
+      "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "LAWJR",
+      "depicts": "video",
+      "subject_basis": "Steak, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'beef')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "steak",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_s": 24.033,
+      "black": {
+        "spans": [],
+        "sha256": "3c25590d6c495de190fcdc1e7b8dd3298295ef569411d8be3a9538450f62d5f4"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "steak-long-pixabay-87692",
+      "key": "steak-long-pixabay-87692",
+      "label": "STEAK",
+      "source": "pixabay",
+      "source_id": "87692",
+      "title": "beef, barbecue, brazier, grill, fire, flame, cuisine",
+      "item_url": "https://pixabay.com/videos/id-87692/",
+      "download_url": "https://cdn.pixabay.com/video/2021/09/06/87692-602894354_large.mp4",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_url": "https://pixabay.com/api/docs/",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "licence_basis": "Pixabay Content License: API result for this id",
+      "attribution_required": false,
+      "fetched_at": "2026-11-10T14:12:21+00:00",
+      "sha256": "3988a50701350a130a13496306bb28515677b18758eaa387c3460c9f0aeeabef",
+      "local_file": "clips/food_clip__steak-long-pixabay-87692__pixabay-87692__beef-barbecue-brazier-grill-fire-flame-cuisine.mp4",
+      "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+      "source_org": "gatekrj",
+      "depicts": "video",
+      "subject_basis": "Steak, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'beef')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "steak",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 32.468,
+      "black": {
+        "spans": [],
+        "sha256": "3988a50701350a130a13496306bb28515677b18758eaa387c3460c9f0aeeabef"
+      },
+      "lane": "whisper-long"
     },
     {
       "subject": "steak-pan",

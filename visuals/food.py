@@ -261,6 +261,8 @@ def catalogue() -> dict[str, dict]:
         for r in json.loads(p.read_text()).get("index") or []:
             if r.get("excluded"):
                 continue                    # reviewed and refused, with its reason
+            if r.get("lane") == "whisper-long":
+                continue                    # Whisper Almanac's sleep-reel clips only
             key = r.get("subject") or r.get("key")
             path = IMAGERY / r["local_file"]
             if not path.exists():

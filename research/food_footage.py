@@ -210,8 +210,9 @@ class Pixabay(Adapter):
                 best = f
         return best
 
-    def search(self, query: str) -> list[dict]:
-        js = self._q("per_page=50&q=" + urllib.parse.quote(query), f"q-{query}")
+    def search(self, query: str, per_page: int = 50) -> list[dict]:
+        js = self._q(f"per_page={per_page}&q=" + urllib.parse.quote(query),
+                     f"q-{query}" if per_page == 50 else f"q{per_page}-{query}")
         out = []
         for h in js.get("hits") or []:
             # Real footage only: Pixabay labels generated video (isAiGenerated)
@@ -1149,6 +1150,8 @@ def harvest(only_missing: bool = True, segments: list[str] | None = None) -> dic
     if segments:
         index = {k: v for k, v in prior.items()
                  if v.get("segment", "chocolate") not in segments}
+    # the Whisper Almanac's long clips are not shot-list picks: always kept
+    index.update({k: v for k, v in prior.items() if v.get("lane") == LONG_LANE})
     shot_by = {s["need"]: s for s in SHOTS}
     for pick in res["picks"]:
         shot = shot_by[pick["need"]]
@@ -1172,6 +1175,195 @@ def harvest(only_missing: bool = True, segments: list[str] | None = None) -> dic
     for need in res["misses"]:
         rejected.append({"subject": need, "reason": "no adapter in the chain had a matching clip"})
     return save(measure_hands(score_richness(list(index.values()))), rejected, res)
+
+
+# ------------------------------------------- Whisper Almanac: long food clips
+# Her week (9 Nov 2026): one food-history sleep video, built from How We Know's
+# fact-checked food script, whose Bread, Steak and Chocolate parts are its
+# segments. A sleep reel holds each shot 18 s and never repeats a clip inside
+# 3 minutes (visuals/whisper_reel.py SHOT_S, REPEAT_GAP_S - unchanged), so a
+# part needs LONG_NEED clips that can EACH hold an 18 s shot. The first
+# episode's clips were cut for 6-10 s beats (bread 7, steak 7, chocolate 2
+# long enough). These are longer clips of the same foods, through the same
+# free chain and licence records, with one more gate the sleep picture needs:
+# no word on screen (Apple Vision OCR, research/imagery_stock_video.clip_problems).
+# They carry `lane: whisper-long`: the food long-form catalogue
+# (visuals/food.catalogue) leaves them out, and a food harvest never drops them.
+LONG_LANE = "whisper-long"
+LONG_HOLD_S = 19.0              # visuals/whisper_reel.SHOT_S + 1.0: holds an 18 s shot
+LONG_MIN_S = 21.0               # searched for: a clip this long survives a black edge
+LONG_NEED = 12                  # visuals/whisper_reel.min_clips(): 180 // 18 + 2
+LONG_PARTS: dict[str, dict] = {
+    "bread": {"queries": ["bread", "baking bread", "bread dough", "bakery", "bread oven",
+                          "kneading dough", "sourdough", "fresh bread", "baguette", "flour",
+                          "wheat field", "bread loaf", "bread baking", "rye bread",
+                          "homemade bread", "bread slices", "bakery oven", "dough"],
+              "must": ["bread", "dough", "loaf", "bakery", "baking", "bake", "baker", "flour",
+                       "wheat", "baguette", "bun", "sourdough", "pastry", "croissant"],
+              "core": ["bread", "dough", "loaf", "baguette", "bun", "sourdough", "bakery"],
+              "off": ["cake", "dessert", "cupcake", "cookie", "pizza", "sweets", "donut"]},
+    "steak": {"queries": ["steak", "grilling steak", "beef steak", "steak grill", "meat grill",
+                          "barbecue meat", "steak pan", "ribeye", "grilled meat", "beef",
+                          "beef grill", "sirloin", "roast beef"],
+              "must": ["steak", "beef", "meat", "grill", "barbecue", "bbq", "sirloin",
+                       "ribeye", "tenderloin", "roast"],
+              "core": ["steak", "beef", "sirloin", "ribeye", "tenderloin"],
+              "off": ["chicken", "wing", "sausage", "fish", "salmon", "shrimp", "vegetable",
+                      "corn", "pork", "kebab", "lamb", "meadow", "pasture", "cow", "cattle"]},
+    "chocolate": {"queries": ["chocolate", "melted chocolate", "chocolate pouring", "cocoa",
+                              "chocolate making", "cacao", "dark chocolate", "chocolate bar",
+                              "hot chocolate", "chocolate dessert", "cocoa beans",
+                              "chocolate fountain", "chocolate factory", "cocoa powder",
+                              "chocolate truffles", "melting chocolate", "chocolate sauce",
+                              "chocolate cake", "chocolate chips", "cocoa plantation",
+                              "cacao fruit", "chocolate candy", "fondue", "praline",
+                              "chocolate cookies", "hot cocoa", "chocolate drink"],
+                  "must": ["chocolate", "cocoa", "cacao", "praline", "truffle", "fondue"],
+                  "core": ["chocolate", "cocoa", "cacao", "praline", "truffle", "fondue"],
+                  # Commons file names: places named after chocolate are not chocolate
+                  "off": ["beach", "mountain", "gunnery", "pier", "hills", "island", "river",
+                          "bayou", "street", "aerial"]},
+}
+
+
+def clean_windows(rec: dict) -> list[dict]:
+    """The spans of a clip a cut may sit in: its reviewed `ranges` when it has
+    them, else the whole clip with its black spans (blackdetect) cut out."""
+    if rec.get("ranges"):
+        return [{"start": float(a), "end": float(b)} for a, b in rec["ranges"] if b > a]
+    dur = float(rec.get("duration_s") or 0)
+    out, t = [], 0.0
+    for a, b in sorted((rec.get("black") or {}).get("spans") or []):
+        if a > t:
+            out.append({"start": round(t, 3), "end": round(min(a, dur), 3)})
+        t = max(t, float(b))
+    if dur > t:
+        out.append({"start": round(t, 3), "end": round(dur, 3)})
+    return out
+
+
+def holds(rec: dict, seconds: float = LONG_HOLD_S) -> bool:
+    return any(w["end"] - w["start"] >= seconds for w in clean_windows(rec))
+
+
+def long_count(index: list[dict], part: str) -> int:
+    """Clips of `part` that can hold a sleep shot, with clean rights."""
+    return sum(1 for r in index if r.get("segment") == part and not r.get("excluded")
+               and not record_problems(r) and holds(r))
+
+
+def _long_head_ok(c: dict, part: str) -> bool:
+    """The part's food named in the clip's first tag, its core word anywhere
+    in its own words (a bare 'bbq' could be chicken wings), and none of the
+    part's off-subject words."""
+    h, t, spec = _head(c), _text(c), LONG_PARTS[part]
+    return (any(w in h for w in spec["must"]) and any(w in t for w in spec["core"])
+            and not any(re.search(rf"\b{re.escape(w)}", t) for w in spec["off"])
+            and not banned(c))
+
+
+def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
+                 cap: int = MAX_PER_RUN, text_check=None) -> dict:
+    """Fill each part up to `need` long clips. Real footage only (the chain's
+    own gates: Pixabay type film and not AI, Mixkit's FREE licence re-read on
+    the item page), the part's food named in the clip's first tag, at least
+    LONG_MIN_S long, and no word on screen. Returns {part: count}."""
+    if text_check is None:
+        sys.path.insert(0, str(HERE))
+        import imagery_stock_video as STOCK                  # noqa: PLC0415
+        text_check = STOCK.clip_problems
+    man = load()
+    index = list(man.get("index") or [])
+    rejected = list(man.get("rejected") or [])
+    kept = {"by_source": man.get("resolved_by_source")}       # the shot list's own tally
+    used = {f"{r.get('source')}:{r.get('source_id')}" for r in index}
+    # the free libraries, then Wikimedia Commons (public domain / CC0 only);
+    # Internet Archive films are left out: their title cards put words on screen
+    live = [a for a in CHAIN if a.name in ("pixabay", "pexels", "mixkit", "commons")
+            and a.enabled()[0]]
+    if not live:
+        raise SystemExit("RULE 0: no free stock source is usable on this host "
+                         f"({ {a.name: a.enabled()[1] for a in CHAIN[:3]} })")
+    fetched, report = 0, {}
+    for part in parts or list(LONG_PARTS):
+        have = long_count(index, part)
+        for a in live:
+            for q in LONG_PARTS[part]["queries"]:
+                if have >= need or fetched >= cap:
+                    break
+                try:
+                    cands = a.search(q, per_page=200) if a.name == "pixabay" else a.search(q)
+                except Exception as e:                       # noqa: BLE001
+                    print(f"  {a.name} {q!r}: search failed ({str(e)[:80]})")
+                    continue
+                for c in cands:
+                    uid = f"{a.name}:{c['id']}"
+                    if have >= need or fetched >= cap:
+                        break
+                    if (uid in used or uid in REFUSED or not _long_head_ok(c, part)
+                            or (c.get("duration") and float(c["duration"]) < LONG_MIN_S)):
+                        continue
+                    used.add(uid)
+                    try:
+                        meta, blob = a.download(c)
+                    except Exception as e:                   # noqa: BLE001
+                        print(f"  refused {uid}: {str(e)[:100]}")
+                        continue
+                    shot = {"need": f"{part}-long-{a.name}-{c['id']}", "label": part.upper(),
+                            "segment": part, "uses": ["sleep", "scale"],
+                            "basis": f"{part.capitalize()}, filmed: a long take for the Whisper "
+                                     f"Almanac food-history sleep reel (first tag: {_head(c)!r})"}
+                    rec = _record({**c, "source": a.name}, shot, meta, blob)
+                    path = IMAGERY / rec["local_file"]
+                    rec["black"] = {"spans": black_spans(path), "sha256": rec["sha256"]}
+                    probs = ([] if rec["duration_s"] >= LONG_MIN_S and rec["width"] >= 960
+                             else [f"{rec['duration_s']:.0f} s / {rec['width']} px: too short or small"])
+                    probs = probs or ([] if holds(rec) else ["black edges leave no 19 s window"])
+                    probs = probs or text_check(path, rec["duration_s"])
+                    probs = probs or record_problems(rec)
+                    if probs:
+                        path.unlink(missing_ok=True)
+                        rejected.append({"subject": shot["need"], "source": a.name,
+                                         "reason": f"whisper-long: {probs[0]}"[:200]})
+                        print(f"  refused {uid}: {probs[0]}")
+                        continue
+                    rec["lane"] = LONG_LANE
+                    index.append(rec)
+                    fetched += 1
+                    have += 1
+                    print(f"  CLIP {part:<10} {uid:<22} {rec['duration_s']:6.1f}s {str(c.get('title'))[:40]}")
+                    save(index, rejected, kept)
+        report[part] = have
+    save(index, rejected, kept)
+    return report
+
+
+def fetch_long_missing(index: list[dict] | None = None, get=None) -> dict:
+    """This Mac's copy of every recorded long clip: a record whose file is not
+    in this checkout's clips/ (the nightly batch runs in its own checkout) is
+    fetched again from its recorded download_url and kept only if its bytes
+    hash to the recorded sha256 - the rights decision was made about those
+    bytes. {"fetched": n, "refused": [why...]}."""
+    get = get or (lambda url: _get(url, binary=True, gap=1.0))
+    out = {"fetched": 0, "refused": []}
+    for r in index if index is not None else (load().get("index") or []):
+        if r.get("lane") != LONG_LANE or r.get("excluded"):
+            continue
+        path = IMAGERY / r["local_file"]
+        if path.exists():
+            continue
+        try:
+            blob = get(r["download_url"])
+        except Exception as e:                                 # noqa: BLE001
+            out["refused"].append(f"{r['subject']}: {str(e)[:80]}")
+            continue
+        if hashlib.sha256(blob).hexdigest() != r.get("sha256"):
+            out["refused"].append(f"{r['subject']}: bytes differ from the recorded sha256")
+            continue
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(blob)
+        out["fetched"] += 1
+    return out
 
 
 def record_problems(rec: dict) -> list[str]:
@@ -1240,8 +1432,19 @@ def main(argv: list[str]) -> int:
             return 1
         print(f"ok: {r['count']} real clips resolved (>= {MIN_REAL_CLIPS})")
         return 0
+    if "--whisper-long" in argv:
+        parts = argv[argv.index("--parts") + 1].split(",") if "--parts" in argv else None
+        got = harvest_long(parts)
+        print(f"whisper-long: {json.dumps(got)} clips per part that hold an 18 s shot "
+              f"(need {LONG_NEED})")
+        short = {p: n for p, n in got.items() if n < LONG_NEED}
+        if short:
+            print(f"NAMED STOP [WHISPER_FOOD_CLIPS_SHORT] free sources ran dry: {short}")
+            return 1
+        print(f"OUTPUT whisper-long food clips: {json.dumps(got)}")
+        return 0
     if "--harvest" in argv:
-        segs = argv[argv.index("--segments") + 1].split(",") if "--segments" in argv else None
+        segs =argv[argv.index("--segments") + 1].split(",") if "--segments" in argv else None
         m = harvest(segments=segs)
         if segs:
             have = {}

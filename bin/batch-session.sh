@@ -594,6 +594,11 @@ harvest_footage() {
   echo "  $pool_line"
   nice -n 10 $PY research/wide_footage.py --pending 2>&1 | grep -E "CLIP|wide footage|Traceback" | tail -20 \
     || echo "  wide footage step exited $? - the episode renders from what is on record"
+  # WHISPER FOOD REEL (her week, 9 Nov 2026): each food part needs 12 clips
+  # that hold an 18 s shot; a part already full searches nothing. A short part
+  # is the named stop WHISPER_FOOD_CLIPS_SHORT, re-tried here every night.
+  nice -n 10 $PY research/food_footage.py --whisper-long 2>&1 | grep -E "whisper-long|NAMED STOP|OUTPUT|Traceback" | tail -3 \
+    || echo "  whisper food clips step exited $? - the reel waits for its parts"
   nice -n 10 $PY loop/footage_lane.py --host mac-batch
   local rc=$?
   case $rc in

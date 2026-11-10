@@ -983,7 +983,7 @@ def footage_gaps(p: dict) -> list[str]:
     sys.path.insert(0, str(ROOT / "visuals"))
     import whisper_reel as R                                # noqa: PLC0415
     assets = json.loads(man.read_text()).get("assets", [])
-    return [s["source"] for s in p["segments"] if not R.pictureable(base_slug(s["source"]), assets)]
+    return [s["source"] for s in p["segments"] if not R.pictureable(s["source"], assets)]
 
 
 def status_lines() -> list[str]:
