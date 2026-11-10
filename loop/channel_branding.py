@@ -35,7 +35,7 @@ must have a `display` name and keywords in branding.json, or this refuses.
 WHAT RUNNING IT DOES, idempotently (a re-run changes nothing and costs reads):
   1. builds the banner (Pillow, the thumbnail contract's one grade and type,
      rights-checked imagery re-hashed first) to channel/branding/banner.png
-     and ~/Desktop/how-we-know-banner.png;
+     (no Desktop copy since 10 Nov 2026: the owner asked why it was there);
   2. uploads it with channelBanners.insert (50 units) ONLY if its sha256 is
      not the one already recorded live, then ONE channels.update
      part=brandingSettings (50 units) carrying the banner URL, the composed
@@ -365,7 +365,7 @@ def _lockup_metrics(d, cand: dict, k: float):
     return word, groups
 
 
-def build_banner(out: Path = BANNER, desktop: Path | None = DESKTOP,
+def build_banner(out: Path = BANNER, desktop: Path | None = None,
                  name: str | None = None) -> dict:
     """Render one candidate. Returns the measured text and art boxes so the
     test checks pixels-as-built, not intentions."""
@@ -482,7 +482,7 @@ def ImageFont_truetype(path: str, size: int):
     return ImageFont.truetype(path, size)
 
 
-def build_candidates(desktop_dir: Path | None = CANDIDATES_DIR) -> dict:
+def build_candidates(desktop_dir: Path | None = None) -> dict:
     """Every candidate to channel/branding/candidates/<X>.png (and the
     Desktop folder), the applied one also to banner.png."""
     sp = spec()
