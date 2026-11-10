@@ -516,13 +516,22 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
   has no scored topics yet, the ceiling holds at whatever deep sea alone can
   carry — it will not "average" the two domains' inventory together and scale
   early on a queue that is not really there.
-- **Results decide which topics stay** (your rule A, 2 Nov). No topic is
-  dropped or added until all three have 30 long videos with analytics — the
-  weekly digest's "Topics" table shows each count against 30. After that, a
-  topic scoring under half the best (subscribers per 1,000 views + hours
-  watched, per long video) is replaced by the next topic that is fully set up.
-  A thin idea queue never drops a topic: the Saturday lane researches more
-  ideas for it.
+- **Each lane is judged at 30 days** (your call 9 Nov, replacing the 2 Nov
+  "30 long videos per topic" rule): watch hours and subscribers per lane, in the
+  weekly digest's "Lanes, 30-day check" table. A number not yet measured says
+  "not read", never 0.
+
+## Money, the 12-video test — nothing for you to do
+
+- **Both How We Know nights (Mon, Fri) narrate Money** (your call 9 Nov). The cloud writes the next
+  of the 12 topics on Sunday and Thursday afternoons; the Mac voices and renders it that night;
+  it uploads into the Wednesday or Saturday slot (food's, while food long-forms rest; materials keeps
+  Tuesday and Friday for the episodes already dated there). A night with no Money script narrates deep sea instead.
+- **Every Money video says "This is not financial advice."**; a draft that gives a tip or promises
+  money is refused and redrafted. Pictures are money footage only (trading floors, Wall Street,
+  banknotes, vaults, courthouses), never deep sea.
+- **Paused meanwhile:** food long-forms and new materials long-forms. Deep sea and materials
+  Shorts keep going. Judged on 10 Dec 2026 (30 days) in the digest's lane table.
 
 ## Food, the third domain — approved, running
 

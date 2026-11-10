@@ -20,12 +20,14 @@
     "Archaeology and ancient technology",
     "Aviation and maritime incident analysis",
     "Materials science and manufacturing",
-    "Food science and cooking chemistry"
+    "Food science and cooking chemistry",
+    "Money and business stories proven by the public record"
   ],
   "admitted_domain_ids": {
     "deep-sea-ocean-science": "Deep sea and ocean science",
     "materials-and-manufacturing": "Materials science and manufacturing",
-    "food-science": "Food science and cooking chemistry"
+    "food-science": "Food science and cooking chemistry",
+    "money-and-business": "Money and business stories proven by the public record"
   },
   "admitted_domain_ids_note": "Maps loop/domains.py's `research/proposed-taxonomy.json` domain ids to their entry in admitted_domains above, so a validator can check 'is this running domain actually admitted' without guessing a name match. Only allocated domains need an entry here; see loop/config.json domains.allocation for what is actually running.",
   "hard_exclusions": [
@@ -70,6 +72,13 @@
       "change": "Added 'Food science and cooking chemistry' to admitted_domains and admitted_domain_ids['food-science'].",
       "why": "Owner decision 2026-10-13 (docs/CHANNEL-PLAN.md, A third domain: food science): a third domain on this channel, Wed/Sat in the three-niche rotation, held behind a sample the owner reviews first (loop/config.json domains.sample_gate).",
       "new_niche_requirement_satisfied_by": "Three tier:specific lines drafted 2026-10-13 in pov/pov-bank.json with pending_approval true; they ride with the sample review and count for loop/validate_plan.py c10 only while the sample gate is open."
+    },
+    {
+      "date": "2026-11-08",
+      "by": "Sequoia",
+      "change": "Added 'Money and business stories proven by the public record' to admitted_domains and admitted_domain_ids['money-and-business'].",
+      "why": "Owner decision 8-9 Nov 2026 (spry brain Settled decisions): How We Know's Money lane, a 12-video test on both long-form nights, judged per lane at 30 days (config/money_topics.json, loop/config.json domains.money_test).",
+      "new_niche_requirement_satisfied_by": "loop/config.json domains.pov_not_required['money-and-business']: no money top-up interview; a money episode speaks only a transferable line from her bank, verbatim, or none."
     }
   ]
 }

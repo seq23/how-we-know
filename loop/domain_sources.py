@@ -68,6 +68,20 @@ ALLOWLIST: dict[str, list[str]] = {
         "NIH", "PubChem", "American Oil Chemists' Society", "AOCS",
         "French Academy of Sciences",
     ],
+    # 2026-11-08, the owner's Money lane (spry brain: "money and business
+    # stories proven by the public record"). Regulators, courts, the central
+    # bank and statistics agencies, the official inquiries, and the national
+    # archives: each publishes the primary record a money story is proven by.
+    "money-and-business": [
+        "SEC", "Securities and Exchange Commission", "SEC Office of Inspector General",
+        "Department of Justice", "DOJ", "CFTC", "FDIC", "Federal Reserve",
+        "Federal Reserve Board", "Federal Reserve Bank of St. Louis", "FRED",
+        "Bureau of Labor Statistics", "BLS", "Financial Crisis Inquiry Commission",
+        "FCIC", "Congress", "U.S. Senate", "U.S. House of Representatives",
+        "Government Accountability Office", "GAO", "Supreme Court", "CourtListener",
+        "National Archives", "Library of Congress", "U.S. Treasury",
+        "Bureau of Engraving and Printing", "California DFPI",
+    ],
 }
 
 # Alternate spellings/domains an attribution check should accept as the same
@@ -99,6 +113,23 @@ ALIAS: dict[str, dict[str, str]] = {
         "National Institutes of Health": "nih.gov", "PubChem": "nih.gov",
         "AOCS": "American Oil Chemists' Society",
         "American Oil Chemists' Society": "aocs.org",
+    },
+    "money-and-business": {
+        "SEC": "sec.gov", "Securities and Exchange Commission": "sec.gov",
+        "SEC Office of Inspector General": "sec.gov",
+        "Department of Justice": "justice.gov", "DOJ": "justice.gov",
+        "CFTC": "cftc.gov", "FDIC": "fdic.gov",
+        "Federal Reserve": "federalreserve.gov", "Federal Reserve Board": "federalreserve.gov",
+        "Federal Reserve Bank of St. Louis": "stlouisfed.org", "FRED": "stlouisfed.org",
+        "Bureau of Labor Statistics": "bls.gov", "BLS": "bls.gov",
+        "Financial Crisis Inquiry Commission": "govinfo.gov", "FCIC": "govinfo.gov",
+        "Congress": "congress.gov", "U.S. Senate": "senate.gov",
+        "U.S. House of Representatives": "house.gov",
+        "Government Accountability Office": "gao.gov", "GAO": "gao.gov",
+        "Supreme Court": "supremecourt.gov", "CourtListener": "courtlistener.com",
+        "National Archives": "archives.gov", "Library of Congress": "loc.gov",
+        "U.S. Treasury": "treasury.gov", "Bureau of Engraving and Printing": "bep.gov",
+        "California DFPI": "dfpi.ca.gov",
     },
 }
 

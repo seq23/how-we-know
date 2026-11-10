@@ -185,7 +185,8 @@ def main() -> int:
     check("every allocated domain has a scheduled harvester", not uncovered,
           f"uncovered: {uncovered}")
     check("harvesters were actually found", len(picked) > 0)
-    doms = {h["domain"] for h in picked}
+    # a harvester may feed several domains (`domains`), as harvesters_for() reads it
+    doms = {d_ for h in picked for d_ in (h.get("domains") or [h["domain"]])}
     check("the harvesters span both live domains", doms >= set(alloc),
           f"harvested domains {doms} vs allocation {set(alloc)}")
 
@@ -196,8 +197,16 @@ def main() -> int:
         _, gone = FL.harvesters_for(cfg)
     finally:
         FL.declared_harvesters = real_dec
+    # the removed harvesters may also feed other domains (the stock harvester
+    # feeds deep sea, materials and Money): every allocated domain left with no
+    # harvester is reported, the victim among them, and no covered one is
+    def _feeds(h):
+        return h.get("domains") or [h["domain"]]
+    left = {d_ for h in real_dec() if h["domain"] != victim and h.get("scheduled", True)
+            for d_ in _feeds(h)}
     check("a domain whose harvester disappears is reported, not skipped",
-          gone == [victim], f"got {gone}")
+          victim in gone and set(gone) == {d_ for d_ in alloc if d_ not in left},
+          f"got {gone}")
 
     # 7 ------------------------------- a queued slug with no script still counts
     import publish_order_domain as POD                      # noqa: PLC0415

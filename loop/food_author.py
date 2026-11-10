@@ -619,6 +619,14 @@ def register_episode(slug: str, title: str, rows: list[dict]) -> None:
 
 
 # ------------------------------------------------------------- the stage
+def paused() -> str | None:
+    """Why food long-forms are paused, or None (loop/config.json
+    domains.money_test.longform_paused; her call 9 Nov 2026)."""
+    from common import config                               # noqa: PLC0415
+    t = (config().get("domains") or {}).get("money_test") or {}
+    return (t.get("longform_paused") or {}).get("food-science")
+
+
 def run(plan_only: bool = False) -> int:
     from common import Stage, week_id                       # noqa: PLC0415
     import author                                           # noqa: PLC0415
@@ -633,6 +641,11 @@ def run(plan_only: bool = False) -> int:
         return 0
     with Stage("food-author", week_id(),
                zero_work_hint="loop/food_author.py writes one food episode a run") as st:
+        why_paused = paused()
+        if why_paused:
+            st.named_stop("FOOD_LONGFORM_PAUSED", why_paused,
+                          unblock="Nothing to do: the Money test's 30-day check "
+                                  "(loop/lane_check.py) decides when food long-forms return.")
         busy = in_flight()
         if len(busy) >= MAX_IN_FLIGHT:
             st.named_stop("FOOD_EPISODE_IN_FLIGHT",

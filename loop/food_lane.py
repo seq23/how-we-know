@@ -326,6 +326,12 @@ def run(slug: str | None, until: str | None) -> int:
     import food                                              # noqa: PLC0415
     import food_episode as FE                                # noqa: PLC0415
     import food_voice                                        # noqa: PLC0415
+    import food_author as FA                                 # noqa: PLC0415
+    why_paused = FA.paused()
+    if why_paused and not slug:
+        say(f"NAMED STOP [FOOD_LONGFORM_PAUSED]: {why_paused} - nothing rendered tonight; "
+            f"the Money test's 30-day check (loop/lane_check.py) decides when they return")
+        return 3
     ep = episode(slug)
     if not ep:
         say("NAMED STOP [FOOD_NOTHING_TO_RENDER]: no authored food episode is waiting "

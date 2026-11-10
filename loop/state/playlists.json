@@ -15,23 +15,35 @@
       "title": "Food Science",
       "created_at": "2026-10-13T13:35:04+00:00",
       "by": "channel_branding"
+    },
+    "money-and-business": {
+      "id": "PLQvekpZZg1uM",
+      "title": "Money, Proven",
+      "created_at": "2026-11-10T14:34:18+00:00",
+      "by": "channel_branding"
     }
   },
   "sections": {
     "deep-sea-ocean-science": {
       "id": "UC5vZFZc15DIM6IrFwFgAECg.jNQXAC9IVRw",
       "playlist": "PLOrZMDyoy1XM",
-      "at": "2026-10-13T13:35:35+00:00"
+      "at": "2026-11-10T14:34:18+00:00"
     },
     "materials-and-manufacturing": {
       "id": "UC5vZFZc15DIM6IrFwFgAECg.LeAltgu_pbM",
       "playlist": "PLG5GY-GuhiF8",
-      "at": "2026-10-13T13:35:35+00:00"
+      "at": "2026-11-10T14:34:18+00:00"
     },
     "food-science": {
       "id": "UC5vZFZc15DIM6IrFwFgAECg.nGzAI5pLbMY",
       "playlist": "PLX5v_andxwYE",
-      "at": "2026-10-13T13:35:35+00:00"
+      "at": "2026-11-10T14:34:18+00:00"
+    },
+    "money-and-business": {
+      "refused": "HTTP 400 channelNotActive",
+      "playlist": "PLQvekpZZg1uM",
+      "at": "2026-11-10T14:34:18+00:00",
+      "by": "channel_branding"
     }
   }
 }

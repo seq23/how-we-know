@@ -646,31 +646,33 @@ def auto_photos_block(now: dt.datetime) -> list[str]:
             "| Episode | Picture | Source |", "|---|---|---|", *rows, ""]
 
 
-def topics_block(cfg: dict, led: dict) -> list[str]:
-    """RESULTS DECIDE (owner rule A, 2 Nov 2026): each topic's long videos with
-    analytics against the floor, and its score once every topic is judgeable.
-    No topic is described as ending: a thin queue is refilled, and only
-    results retire a topic (loop/domains.py lifecycle())."""
-    try:
-        rows = json.loads((ROOT / "loop" / "state" / "measurement.json").read_text()).get("videos") or []
-    except (OSError, ValueError):
-        rows = []
-    rule = domains.results_rule(cfg)
-    split = domains.split_rows(rows, led.get("published") or [])
-    res = {d: domains.results_score(split.get(d, []), cfg) for d in domains.allocation(cfg)}
-    need = rule["min_long_videos"]
-    judgeable = all(r["videos"] >= need for r in res.values())
-    out = ["## Topics", "",
-           (f"Every topic is judged on results once each has {need} long videos "
-            f"with analytics. Until then no topic is added or retired." if not judgeable
-            else f"Score = subscribers per 1,000 views x {rule['w_subs']:g} + hours "
-                 f"watched x {rule['w_hours']:g}, per long video. A topic under "
-                 f"{rule['retire_below_ratio']:g} x the best is replaced."), "",
-           "| Topic | Long videos measured | Score |", "|---|---|---|"]
-    for d, r in sorted(res.items()):
-        score = (f"{r['score']:.2f}" if judgeable and r["score"] is not None
-                 else "— (collecting)")
-        out.append(f"| {d} | {r['videos']} of {need} | {score} |")
+def lanes_block(cfg: dict, led: dict, now: dt.datetime) -> list[str]:
+    """THE 30-DAY CHECK PER LANE (her call 9 Nov 2026, replacing the 2 Nov
+    "about 30 long videos per topic, results decide" rule): each lane's long
+    videos in the Money test's window, their watch hours and subscribers
+    (loop/lane_check.py). A number that could not be read says "not read",
+    never 0, with the named stop under the table."""
+    import lane_check                                      # noqa: PLC0415
+    res = lane_check.check(cfg, led.get("published") or [], lane_check.read_rows(),
+                           now.date())
+    win = lane_check.window(cfg)
+    out = ["## Lanes, 30-day check", "",
+           (f"Both long-form nights go to Money for its 12-video test from "
+            f"{win[0]:%d %b %Y}; each lane is judged at 30 days ({win[1]:%d %b %Y}) "
+            f"on watch hours and subscribers." if win else
+            "No Money test window is set (loop/config.json domains.money_test)."), "",
+           "| Lane | Long videos in the window | Watch hours | Subscribers | Views | Check |",
+           "|---|---|---|---|---|---|"]
+    for r in res:
+        out.append(f"| {r['lane']} | {lane_check.fmt(r['videos'])} | {lane_check.val(r, 'watch_hours')} "
+                   f"| {lane_check.val(r, 'subscribers')} | {lane_check.val(r, 'views')} | {r['state']} |")
+    unread = [r for r in res if r["unread"]]
+    if unread:
+        out += ["", "NAMED STOP [LANE_CHECK_NOT_READ] "
+                + "; ".join(f"{r['lane']}: {r['unread'][0]}" for r in unread)
+                + " - the next Friday measure writes the rows."]
+    for r in res:
+        print(f"OUTPUT lane check {lane_check.line(r)}", flush=True)
     return out + [""]
 
 
@@ -847,7 +849,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                  f"| {depth.get(name, 0)} "
                  f"| {'—' if weeks is None else f'{weeks:.1f}'} | {rmark} |")
     L.append("")
-    L += topics_block(cfg, led)
+    L += lanes_block(cfg, led, now)
     L += auto_photos_block(now)
 
     loud = [s for s in stops if s["disposition"] == "needs_human"]

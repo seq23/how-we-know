@@ -1,0 +1,53 @@
+name: loop · Sun+Thu 14:00 CT · money author (next Money episode, $0)
+
+# THE MONEY LANE'S CLOUD HALF (her calls 8-9 Nov 2026: How We Know's Money
+# lane, a 12-video test on both long-form nights). loop/money_author.py writes
+# the next Money topic (config/money_topics.json, rank order) through the same
+# $0 route as mon-draft (Gemini free tier, the free OpenRouter list, never
+# paid) and the full validator set, into scripts/<slug>.md and
+# research/publish_order_money_and_business.json. The Mac's nightly batch
+# narrates it first on How We Know's nights (Mon + Fri; loop/night_split.py).
+#
+# CADENCE: Sunday and Thursday 14:00 CT, the afternoon before each How We
+# Know night (Mon, Fri), at most two scripts in flight
+# (MONEY_EPISODE_IN_FLIGHT, self-resolving). Outside mon-draft's Monday
+# authoring window, in the loop-state concurrency group, so no two lanes push
+# over each other. loop/lanes.py lists this lane; V73 holds it to this file.
+on:
+  schedule:
+    - cron: '0 14 * * 0,4'  # America/Chicago, all year - Sun + Thu: before the Mon + Fri How We Know nights
+      timezone: America/Chicago
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  money-author:
+    timeout-minutes: 180
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      # 2026-11-04: no Claude CLI; loop/llm_router.py uses Gemini free tier then $0 OpenRouter only.
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+      - name: Author the next Money episode
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bin/loop-stage.sh money-author loop/money_author.py

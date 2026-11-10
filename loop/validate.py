@@ -4857,7 +4857,14 @@ def v52_food_domain() -> Result:
         return r
     alloc = _d.allocation(cfg)
     days = _bf.domain_weekdays(cfg, int(cfg["cadence"]["videos_per_week"])).get(FOOD)
-    if alloc.get(FOOD) != 2 or days != (2, 5):
+    paused = (_d.money_test(cfg).get("longform_paused") or {}).get(FOOD)
+    if paused:
+        # The Money test (owner, 9 Nov 2026): food long-forms are paused and
+        # its Wed/Sat go to Money, so food holds no slot and no weekday.
+        if alloc.get(FOOD) != 0 or days:
+            r.fail(f"food-science long-forms are paused ({paused}) but it still holds "
+                   f"allocation {alloc.get(FOOD)} / weekdays {days}")
+    elif alloc.get(FOOD) != 2 or days != (2, 5):
         r.fail(f"food-science allocation {alloc.get(FOOD)} / weekdays {days}: the "
                f"rotation gives it Wednesday and Saturday (2, 5)")
     r.examined += 1
