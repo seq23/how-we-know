@@ -21,8 +21,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 69,
-      "days_since_packaging": 6,
+      "days_public": 70,
+      "days_since_packaging": 7,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -48,7 +48,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -64,7 +64,7 @@
       "ctr": {
         "pct": 0.0,
         "impressions": 12,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -87,8 +87,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-03",
-      "days_public": 64,
-      "days_since_packaging": 6,
+      "days_public": 65,
+      "days_since_packaging": 7,
       "public": true,
       "lifetime": {
         "views": 6,
@@ -114,7 +114,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -130,7 +130,7 @@
       "ctr": {
         "pct": 0.047619047619047616,
         "impressions": 21,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -155,8 +155,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 62,
-      "days_since_packaging": 26,
+      "days_public": 63,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -182,7 +182,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -196,9 +196,9 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.034482758620689655,
-        "impressions": 29,
-        "as_of": "2026-11-09",
+        "pct": 0.037037037037037035,
+        "impressions": 27,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -223,34 +223,34 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 57,
-      "days_since_packaging": 24,
+      "days_public": 58,
+      "days_since_packaging": 25,
       "public": true,
       "lifetime": {
-        "views": 11,
+        "views": 13,
         "watch_minutes": 4.0,
-        "avd_s": 49.0,
-        "avp_pct": 10.42,
+        "avd_s": 36.0,
+        "avp_pct": 7.72,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
           "suggested": 0,
-          "search": 8,
+          "search": 10,
           "external": 3,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 2,
+        "views": 4,
         "watch_minutes": 2.0,
-        "avd_s": 71.0,
-        "avp_pct": 15.01,
+        "avd_s": 37.0,
+        "avp_pct": 8.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -265,8 +265,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 47,
-        "as_of": "2026-11-09",
+        "impressions": 43,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -289,8 +289,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 55,
-      "days_since_packaging": 23,
+      "days_public": 56,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 13,
@@ -316,7 +316,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -331,8 +331,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 35,
-        "as_of": "2026-11-09",
+        "impressions": 33,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -357,8 +357,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 50,
-      "days_since_packaging": 24,
+      "days_public": 51,
+      "days_since_packaging": 25,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -384,7 +384,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -399,8 +399,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 32,
-        "as_of": "2026-11-09",
+        "impressions": 28,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -425,8 +425,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 48,
-      "days_since_packaging": 26,
+      "days_public": 49,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
         "views": 16,
@@ -452,7 +452,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -467,8 +467,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 29,
-        "as_of": "2026-11-09",
+        "impressions": 24,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -491,8 +491,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-16",
-      "days_public": 43,
-      "days_since_packaging": 24,
+      "days_public": 44,
+      "days_since_packaging": 25,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -518,7 +518,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -533,8 +533,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 35,
-        "as_of": "2026-11-09",
+        "impressions": 30,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -559,8 +559,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 41,
-      "days_since_packaging": 6,
+      "days_public": 42,
+      "days_since_packaging": 7,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -586,7 +586,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -601,8 +601,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 80,
-        "as_of": "2026-11-09",
+        "impressions": 71,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -627,8 +627,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 36,
-      "days_since_packaging": 26,
+      "days_public": 37,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
         "views": 10,
@@ -654,7 +654,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -669,8 +669,8 @@
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 66,
-        "as_of": "2026-11-09",
+        "impressions": 57,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -695,8 +695,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 34,
-      "days_since_packaging": 23,
+      "days_public": 35,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -722,7 +722,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -736,9 +736,9 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.031746031746031744,
-        "impressions": 63,
-        "as_of": "2026-11-09",
+        "pct": 0.02,
+        "impressions": 50,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -763,8 +763,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 29,
-      "days_since_packaging": 24,
+      "days_public": 30,
+      "days_since_packaging": 25,
       "public": true,
       "lifetime": {
         "views": 17,
@@ -790,9 +790,9 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
-        "ctr": "pass",
+        "ctr": "fail",
         "retention_30s": "unknown",
         "avp": "fail"
       },
@@ -804,9 +804,9 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.011111111111111112,
-        "impressions": 90,
-        "as_of": "2026-11-09",
+        "pct": 0.0,
+        "impressions": 77,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -831,8 +831,8 @@
         "A"
       ],
       "packaging_since": "2026-10-15",
-      "days_public": 27,
-      "days_since_packaging": 25,
+      "days_public": 28,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 37,
@@ -858,7 +858,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-15"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -872,9 +872,9 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.014388489208633094,
-        "impressions": 695,
-        "as_of": "2026-11-09",
+        "pct": 0.027472527472527472,
+        "impressions": 182,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -899,8 +899,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 63,
-      "days_since_packaging": 23,
+      "days_public": 64,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 8,
@@ -926,7 +926,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -935,14 +935,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 22,
-        "as_of": "2026-11-09",
+        "impressions": 20,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -956,7 +956,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-11",
       "duration_s": 680.0,
-      "packaging_pass_at": "2026-10-17T08:42:25+00:00",
+      "packaging_pass_at": "2026-11-10T00:50:22+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -966,9 +966,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-17",
-      "days_public": 59,
-      "days_since_packaging": 23,
+      "packaging_since": "2026-11-10",
+      "days_public": 60,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 47,
@@ -986,31 +986,31 @@
         "retention_30s_pct": 40.0
       },
       "current": {
-        "views": 2,
-        "watch_minutes": 1.0,
-        "avd_s": 36.0,
-        "avp_pct": 5.41,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-17"
+        "since": "2026-11-10"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.06896551724137931,
-        "impressions": 29,
-        "as_of": "2026-11-09",
+        "pct": 0.07692307692307693,
+        "impressions": 26,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1035,8 +1035,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 56,
-      "days_since_packaging": 23,
+      "days_public": 57,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 22,
@@ -1062,7 +1062,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1071,14 +1071,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 36,
-        "as_of": "2026-11-09",
+        "impressions": 32,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1101,8 +1101,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 52,
-      "days_since_packaging": 23,
+      "days_public": 53,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 15,
@@ -1128,7 +1128,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1137,14 +1137,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 42,
-        "as_of": "2026-11-09",
+        "impressions": 38,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1167,8 +1167,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 49,
-      "days_since_packaging": 23,
+      "days_public": 50,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 20,
@@ -1194,7 +1194,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1203,14 +1203,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.02,
-        "impressions": 50,
-        "as_of": "2026-11-09",
+        "pct": 0.02127659574468085,
+        "impressions": 47,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1233,8 +1233,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-03",
-      "days_public": 45,
-      "days_since_packaging": 6,
+      "days_public": 46,
+      "days_since_packaging": 7,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -1260,7 +1260,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1269,14 +1269,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 51,
-        "as_of": "2026-11-09",
+        "impressions": 47,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1301,8 +1301,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 42,
-      "days_since_packaging": 23,
+      "days_public": 43,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 42,
@@ -1328,7 +1328,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1337,14 +1337,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.037037037037037035,
-        "impressions": 81,
-        "as_of": "2026-11-09",
+        "pct": 0.039473684210526314,
+        "impressions": 76,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1369,8 +1369,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 38,
-      "days_since_packaging": 23,
+      "days_public": 39,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -1396,7 +1396,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1405,14 +1405,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.0196078431372549,
-        "impressions": 51,
-        "as_of": "2026-11-09",
+        "pct": 0.022222222222222223,
+        "impressions": 45,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1435,8 +1435,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 35,
-      "days_since_packaging": 23,
+      "days_public": 36,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1462,23 +1462,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
-      "verdict": "WATCH",
+      "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.017699115044247787,
-        "impressions": 113,
-        "as_of": "2026-11-09",
+        "pct": 0.02040816326530612,
+        "impressions": 98,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1501,8 +1501,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 31,
-      "days_since_packaging": 23,
+      "days_public": 32,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 161,
@@ -1528,23 +1528,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
-        "ctr": "fail",
+        "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.012658227848101266,
-        "impressions": 79,
-        "as_of": "2026-11-09",
+        "pct": 0.0136986301369863,
+        "impressions": 73,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1584,8 +1584,8 @@
         "B"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 28,
-      "days_since_packaging": 0,
+      "days_public": 29,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -1603,31 +1603,31 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 7,
-        "watch_minutes": 1.0,
-        "avd_s": 50.0,
-        "avp_pct": 7.01,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-17"
+        "since": "2026-11-09"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
-      "verdict": "FAIL",
+      "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.005917159763313609,
-        "impressions": 169,
-        "as_of": "2026-11-09",
+        "pct": 0.01020408163265306,
+        "impressions": 98,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1664,8 +1664,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-23",
-      "days_public": 25,
-      "days_since_packaging": 17,
+      "days_public": 26,
+      "days_since_packaging": 18,
       "public": true,
       "lifetime": {
         "views": 86,
@@ -1691,7 +1691,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-23"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1707,7 +1707,7 @@
       "ctr": {
         "pct": 0.011950655358519661,
         "impressions": 2594,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1732,8 +1732,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 24,
-      "days_since_packaging": 23,
+      "days_public": 25,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -1759,23 +1759,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
-        "ctr": "fail",
+        "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
         "pct": 0.012195121951219513,
         "impressions": 82,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1798,8 +1798,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 23,
-      "days_since_packaging": 23,
+      "days_public": 24,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1825,7 +1825,7 @@
         "retention_30s_pct": 69.6,
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "fail",
@@ -1834,14 +1834,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011928816051352854,
+        "pct": 0.011927708631640783,
         "group": "channel",
-        "n": 14
+        "n": 12
       },
       "ctr": {
         "pct": 0.008823529411764706,
         "impressions": 1020,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1881,8 +1881,8 @@
         "B"
       ],
       "packaging_since": "2026-10-26",
-      "days_public": 21,
-      "days_since_packaging": 14,
+      "days_public": 22,
+      "days_since_packaging": 15,
       "public": true,
       "lifetime": {
         "views": 88,
@@ -1908,7 +1908,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-26"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1924,7 +1924,7 @@
       "ctr": {
         "pct": 0.008472824963835503,
         "impressions": 4839,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -1949,8 +1949,8 @@
         "A"
       ],
       "packaging_since": "2026-10-20",
-      "days_public": 20,
-      "days_since_packaging": 20,
+      "days_public": 21,
+      "days_since_packaging": 21,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -1976,7 +1976,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-20"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1985,14 +1985,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.027649769585253458,
-        "impressions": 217,
-        "as_of": "2026-11-09",
+        "pct": 0.027522935779816515,
+        "impressions": 218,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2042,8 +2042,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 18,
-      "days_since_packaging": 0,
+      "days_public": 19,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 78,
@@ -2061,19 +2061,19 @@
         "retention_30s_pct": 50.2
       },
       "current": {
-        "views": 6,
-        "watch_minutes": 8.0,
-        "avd_s": 161.0,
-        "avp_pct": 35.64,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-29"
+        "since": "2026-11-09"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "FAIL",
       "needs_review": false,
@@ -2083,9 +2083,9 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.006610927474236827,
-        "impressions": 5143,
-        "as_of": "2026-11-09",
+        "pct": 0.006608357628765792,
+        "impressions": 5145,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2139,11 +2139,11 @@
         "C"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 17,
-      "days_since_packaging": 0,
+      "days_public": 18,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
-        "views": 230,
+        "views": 231,
         "watch_minutes": 273.0,
         "avd_s": 83.0,
         "avp_pct": 10.62,
@@ -2151,38 +2151,38 @@
         "traffic": {
           "browse": 18,
           "suggested": 186,
-          "search": 6,
+          "search": 7,
           "external": 1,
           "other": 19
         },
         "retention_30s_pct": 46.9
       },
       "current": {
-        "views": 4,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 11.0,
-        "avp_pct": 1.42,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-30"
+        "since": "2026-11-09"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.011906976744186046,
-        "impressions": 10750,
-        "as_of": "2026-11-09",
+        "pct": 0.011904761904761904,
+        "impressions": 10752,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2219,8 +2219,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 14,
-      "days_since_packaging": 0,
+      "days_public": 15,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -2238,19 +2238,19 @@
         "retention_30s_pct": 25.2
       },
       "current": {
-        "views": 18,
-        "watch_minutes": 13.0,
-        "avd_s": 75.0,
-        "avp_pct": 10.58,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
-        "retention_30s_pct": 25.2,
-        "since": "2026-10-26"
+        "retention_30s_pct": "insufficient",
+        "since": "2026-11-09"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
-        "retention_30s": "fail",
-        "avp": "fail"
+        "retention_30s": "unknown",
+        "avp": "unknown"
       },
       "verdict": "FAIL",
       "needs_review": false,
@@ -2260,9 +2260,9 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.001971414489896501,
-        "impressions": 2029,
-        "as_of": "2026-11-09",
+        "pct": 0.0019704433497536944,
+        "impressions": 2030,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2299,50 +2299,50 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-04",
-      "days_public": 13,
-      "days_since_packaging": 5,
+      "days_public": 14,
+      "days_since_packaging": 6,
       "public": true,
       "lifetime": {
-        "views": 50,
-        "watch_minutes": 64.0,
-        "avd_s": 132.0,
-        "avp_pct": 19.25,
+        "views": 52,
+        "watch_minutes": 76.0,
+        "avd_s": 151.0,
+        "avp_pct": 21.93,
         "subscribers_gained": 0,
         "traffic": {
-          "browse": 17,
-          "suggested": 20,
-          "search": 12,
+          "browse": 16,
+          "suggested": 21,
+          "search": 13,
           "external": 0,
           "other": 2
         },
-        "retention_30s_pct": 52.9
+        "retention_30s_pct": 54.5
       },
       "current": {
-        "views": 1,
-        "watch_minutes": 0.0,
-        "avd_s": 3.0,
-        "avp_pct": 0.54,
+        "views": 3,
+        "watch_minutes": 11.0,
+        "avd_s": 345.0,
+        "avp_pct": 50.21,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-11-04"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "pass"
       },
-      "verdict": "WATCH",
+      "verdict": "PASS",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.014940239043824702,
-        "impressions": 1004,
-        "as_of": "2026-11-09",
+        "pct": 0.015888778550148957,
+        "impressions": 1007,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2379,8 +2379,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 11,
-      "days_since_packaging": 0,
+      "days_public": 12,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -2398,19 +2398,19 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 12,
-        "watch_minutes": 1.0,
-        "avd_s": 14.0,
-        "avp_pct": 1.88,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-29"
+        "since": "2026-11-09"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "FAIL",
       "needs_review": false,
@@ -2422,7 +2422,7 @@
       "ctr": {
         "pct": 0.002188183807439825,
         "impressions": 914,
-        "as_of": "2026-11-09",
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2447,8 +2447,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 10,
-      "days_since_packaging": 6,
+      "days_public": 11,
+      "days_since_packaging": 7,
       "public": true,
       "lifetime": {
         "views": 11,
@@ -2474,23 +2474,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
-        "ctr": "fail",
+        "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
-      "verdict": "FAIL",
+      "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "ctr": {
-        "pct": 0.013651877133105802,
-        "impressions": 293,
-        "as_of": "2026-11-09",
+        "pct": 0.013605442176870748,
+        "impressions": 294,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
@@ -2513,34 +2513,34 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-02",
-      "days_public": 7,
-      "days_since_packaging": 7,
+      "days_public": 8,
+      "days_since_packaging": 8,
       "public": true,
       "lifetime": {
-        "views": 33,
-        "watch_minutes": 8.0,
-        "avd_s": 46.0,
-        "avp_pct": 6.13,
+        "views": 34,
+        "watch_minutes": 15.0,
+        "avd_s": 80.0,
+        "avp_pct": 10.57,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 24,
           "suggested": 6,
-          "search": 0,
+          "search": 1,
           "external": 0,
           "other": 3
         },
-        "retention_30s_pct": 39.3
+        "retention_30s_pct": 44.8
       },
       "current": {
-        "views": 33,
-        "watch_minutes": 8.0,
-        "avd_s": 46.0,
-        "avp_pct": 6.13,
+        "views": 34,
+        "watch_minutes": 15.0,
+        "avd_s": 80.0,
+        "avp_pct": 10.57,
         "subscribers_gained": 0,
-        "retention_30s_pct": 39.3,
+        "retention_30s_pct": 44.8,
         "since": "2026-11-02"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "floors": {
         "ctr": "pass",
         "retention_30s": "fail",
@@ -2554,21 +2554,21 @@
         "n": 7
       },
       "ctr": {
-        "pct": 0.03787878787878788,
-        "impressions": 264,
-        "as_of": "2026-11-09",
+        "pct": 0.04150943396226415,
+        "impressions": 265,
+        "as_of": "2026-11-10",
         "source": "reporting"
       }
     },
     "-8gyi8oq3zU": {
       "video_id": "-8gyi8oq3zU",
       "slug": "what-is-concrete-made-of",
-      "title": "What is concrete made of?",
+      "title": "What Is Concrete Made Of?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-11-07",
       "duration_s": 615.0,
-      "packaging_pass_at": "2026-10-17T08:43:09+00:00",
+      "packaging_pass_at": "2026-11-10T00:50:27+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -2576,19 +2576,19 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-11-07",
-      "days_public": 2,
-      "days_since_packaging": 2,
+      "packaging_since": "2026-11-10",
+      "days_public": 3,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "views": 2,
+        "watch_minutes": 1.0,
+        "avd_s": 46.0,
+        "avp_pct": 7.61,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
-          "suggested": 0,
+          "suggested": 2,
           "search": 0,
           "external": 0,
           "other": 0
@@ -2602,21 +2602,27 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-11-07"
+        "since": "2026-11-10"
       },
-      "measured_on": "2026-11-09",
+      "measured_on": "2026-11-10",
       "ctr_baseline": {
-        "pct": 0.014296058088465253,
-        "group": "materials-and-manufacturing",
-        "n": 6
+        "pct": 0.011927708631640783,
+        "group": "channel",
+        "n": 12
       },
       "floors": {
-        "ctr": "unknown",
+        "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
-      "needs_review": false
+      "needs_review": false,
+      "ctr": {
+        "pct": 0.020833333333333332,
+        "impressions": 48,
+        "as_of": "2026-11-10",
+        "source": "reporting"
+      }
     },
     "bjSlVIIDPsE": {
       "video_id": "bjSlVIIDPsE",
@@ -2648,10 +2654,66 @@
     },
     "TEmyz8h_DIA": {
       "video_id": "TEmyz8h_DIA",
-      "public": false
+      "public": true,
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "title": "Why Do Deep Sea Fish Eyes Bulge?",
+      "domain": "deep-sea-ocean-science",
+      "variant_of": "stake-then-payoff",
+      "public_since": "2026-11-09",
+      "duration_s": 697.0,
+      "packaging_pass_at": null,
+      "hooked": true,
+      "thumbnail_test": {
+        "active": false,
+        "started": null,
+        "variants": []
+      },
+      "thumbnails_used": [
+        "A"
+      ],
+      "packaging_since": "2026-11-09",
+      "days_public": 1,
+      "days_since_packaging": 1,
+      "lifetime": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "traffic": {
+          "browse": 0,
+          "suggested": 0,
+          "search": 0,
+          "external": 0,
+          "other": 0
+        },
+        "retention_30s_pct": "insufficient"
+      },
+      "current": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "retention_30s_pct": "insufficient",
+        "since": "2026-11-09"
+      },
+      "measured_on": "2026-11-10",
+      "ctr_baseline": {
+        "pct": 0.008472824963835503,
+        "group": "deep-sea-ocean-science",
+        "n": 7
+      },
+      "floors": {
+        "ctr": "unknown",
+        "retention_30s": "unknown",
+        "avp": "unknown"
+      },
+      "verdict": "INSUFFICIENT",
+      "needs_review": false
     }
   },
-  "as_of": "2026-11-09",
+  "as_of": "2026-11-10",
   "config": {
     "floors": {
       "ctr_pct": 4.0,
@@ -2669,27 +2731,33 @@
   },
   "channel": {
     "week": "2026-W46",
-    "date": "2026-11-09",
-    "public_longform": 37,
+    "date": "2026-11-10",
+    "public_longform": 38,
     "packaging_working": "no",
     "counts": {
-      "PASS": 0,
-      "WATCH": 6,
-      "FAIL": 8,
-      "INSUFFICIENT": 23
+      "PASS": 1,
+      "WATCH": 5,
+      "FAIL": 6,
+      "INSUFFICIENT": 26
     },
     "judged_medians": {
-      "n": 14,
+      "n": 12,
       "ctr_pct": 0.0,
-      "retention_30s_pct": 39.3,
-      "avp_pct": 5.9
+      "retention_30s_pct": 57.2,
+      "avp_pct": 8.1
     },
     "cohorts": {
       "pre-rule": {
         "n": 37,
         "ctr_pct": 0.0,
         "retention_30s_pct": 52.9,
-        "avp_pct": 19.2
+        "avp_pct": 19.1
+      },
+      "stake-then-payoff": {
+        "n": 1,
+        "ctr_pct": null,
+        "retention_30s_pct": null,
+        "avp_pct": null
       }
     },
     "best3": [
@@ -2793,7 +2861,7 @@
     "gate": {
       "first_repackaged": "2026-10-14",
       "gate_date": "2026-11-13",
-      "days_left": 4
+      "days_left": 3
     },
     "food": [
       {
@@ -2807,8 +2875,8 @@
     ]
   },
   "pull": {
-    "at": "2026-11-09T14:43:06+00:00",
-    "date": "2026-11-09",
+    "at": "2026-11-10T14:42:39+00:00",
+    "date": "2026-11-10",
     "public_ids": [
       "-8gyi8oq3zU",
       "2zQAc_ZSbMs",
@@ -2827,6 +2895,7 @@
       "OdYunlbB73g",
       "RlbR0qGmU0s",
       "T6XeND2qM4k",
+      "TEmyz8h_DIA",
       "TjrpzJE3utU",
       "VDFFur-xYUU",
       "YuZxDiNUw4w",
@@ -2849,14 +2918,14 @@
       "zs-gueHeX8k"
     ],
     "ledger_longform": 45,
-    "analytics_calls": 106,
+    "analytics_calls": 104,
     "data_api_units": 1,
     "retention": {
       "returned": 17,
-      "insufficient": 20
+      "insufficient": 21
     }
   },
-  "updated": "2026-11-09T14:43:32+00:00",
+  "updated": "2026-11-10T14:42:39+00:00",
   "reach": {
     "reports": {
       "20730932358": {
@@ -10769,11 +10838,481 @@
             0.0
           ]
         }
+      },
+      "17782656746": {
+        "start": "2026-11-07T08:00:00Z",
+        "end": "2026-11-08T08:00:00Z",
+        "created": "2026-11-09T21:03:08.147580Z",
+        "daily": {
+          "2026-11-07/-8gyi8oq3zU": [
+            48,
+            1.0
+          ],
+          "2026-11-07/-LXdt8tsw9k": [
+            2,
+            0.0
+          ],
+          "2026-11-07/0BZkBylEZRo": [
+            1,
+            0.0
+          ],
+          "2026-11-07/0ajaT-tu1ho": [
+            1,
+            0.0
+          ],
+          "2026-11-07/6GR-Ie3Sxm4": [
+            11,
+            0.0
+          ],
+          "2026-11-07/7QtJ_B2kggQ": [
+            1,
+            0.0
+          ],
+          "2026-11-07/7tdvXATeeng": [
+            1,
+            0.0
+          ],
+          "2026-11-07/98ejztJsQNY": [
+            1,
+            0.0
+          ],
+          "2026-11-07/9FcDJniofMM": [
+            2,
+            0.0
+          ],
+          "2026-11-07/BPpmHWdQQ-w": [
+            5,
+            0.0
+          ],
+          "2026-11-07/EFGCT_ZLdzY": [
+            3,
+            0.0
+          ],
+          "2026-11-07/JWwo4OPq9nk": [
+            1,
+            0.0
+          ],
+          "2026-11-07/Kh2k6I4il3g": [
+            7,
+            0.0
+          ],
+          "2026-11-07/LCQ_0ZWCJvU": [
+            1,
+            0.0
+          ],
+          "2026-11-07/QPu684MYUFI": [
+            3,
+            0.0
+          ],
+          "2026-11-07/RlbR0qGmU0s": [
+            1,
+            0.0
+          ],
+          "2026-11-07/Rvuh_RlSuKU": [
+            45,
+            0.0
+          ],
+          "2026-11-07/UOSkatcspag": [
+            1,
+            0.0
+          ],
+          "2026-11-07/VDFFur-xYUU": [
+            1,
+            0.0
+          ],
+          "2026-11-07/Z-Z1FNVQXW0": [
+            1,
+            1.0
+          ],
+          "2026-11-07/_dEimGejxNc": [
+            3,
+            0.0
+          ],
+          "2026-11-07/hm4tKu0sLj8": [
+            2,
+            0.0
+          ],
+          "2026-11-07/hxWh8S51SQw": [
+            4,
+            1.0
+          ],
+          "2026-11-07/nv-M6q8h-Lk": [
+            2,
+            0.0
+          ],
+          "2026-11-07/prHJLtgqN6g": [
+            3,
+            0.0
+          ],
+          "2026-11-07/rY7t_VDz9sk": [
+            3,
+            1.0
+          ],
+          "2026-11-07/seSX8I52aag": [
+            1,
+            0.0
+          ],
+          "2026-11-07/tJz6_OYNoJE": [
+            1,
+            0.0
+          ],
+          "2026-11-07/tbKynCHfU-c": [
+            2,
+            0.0
+          ],
+          "2026-11-07/tlI93J6jwBU": [
+            1,
+            0.0
+          ],
+          "2026-11-07/vrb83gWWaYw": [
+            2,
+            0.0
+          ],
+          "2026-11-07/xbmIX6n2OI8": [
+            1,
+            0.0
+          ],
+          "2026-11-07/zs-gueHeX8k": [
+            1,
+            0.0
+          ]
+        }
+      },
+      "20762844828": {
+        "start": "2026-11-05T08:00:00Z",
+        "end": "2026-11-06T08:00:00Z",
+        "created": "2026-11-10T12:49:38.582583Z",
+        "daily": {
+          "2026-11-05/-LXdt8tsw9k": [
+            4,
+            0.0
+          ],
+          "2026-11-05/0ajaT-tu1ho": [
+            2,
+            0.0
+          ],
+          "2026-11-05/1dW_8f4BWxE": [
+            2,
+            0.0
+          ],
+          "2026-11-05/4Pin2aln58w": [
+            2,
+            0.0
+          ],
+          "2026-11-05/7QtJ_B2kggQ": [
+            9,
+            0.0
+          ],
+          "2026-11-05/7tdvXATeeng": [
+            5,
+            0.0
+          ],
+          "2026-11-05/8bVPoTWAfFQ": [
+            1,
+            0.0
+          ],
+          "2026-11-05/98ejztJsQNY": [
+            18,
+            0.0
+          ],
+          "2026-11-05/9FcDJniofMM": [
+            1,
+            0.0
+          ],
+          "2026-11-05/BPpmHWdQQ-w": [
+            6,
+            0.0
+          ],
+          "2026-11-05/CA28GilEiRE": [
+            1,
+            0.0
+          ],
+          "2026-11-05/EFGCT_ZLdzY": [
+            1,
+            0.0
+          ],
+          "2026-11-05/EFimztjj_j8": [
+            1,
+            0.0
+          ],
+          "2026-11-05/EY__zREBIUk": [
+            2,
+            0.0
+          ],
+          "2026-11-05/Eueb6oHEbMs": [
+            1,
+            0.0
+          ],
+          "2026-11-05/G1TqXmf36Qo": [
+            1,
+            0.0
+          ],
+          "2026-11-05/GTvZFHQMMuQ": [
+            2,
+            1.0
+          ],
+          "2026-11-05/HLjcjyug4Ac": [
+            1,
+            0.0
+          ],
+          "2026-11-05/IEbq-U5_i5M": [
+            4,
+            0.0
+          ],
+          "2026-11-05/IbrSPKUK1IM": [
+            9,
+            0.0
+          ],
+          "2026-11-05/J16Aj8L0e98": [
+            1,
+            0.0
+          ],
+          "2026-11-05/JWwo4OPq9nk": [
+            2,
+            0.0
+          ],
+          "2026-11-05/KJ6fDyFqLQ8": [
+            1,
+            0.0
+          ],
+          "2026-11-05/Kh2k6I4il3g": [
+            7,
+            0.0
+          ],
+          "2026-11-05/Ky9Omx9nHr4": [
+            1,
+            0.0
+          ],
+          "2026-11-05/LCQ_0ZWCJvU": [
+            1,
+            0.0
+          ],
+          "2026-11-05/MAV4PF056RA": [
+            1,
+            0.0
+          ],
+          "2026-11-05/MWOUa3UEXSk": [
+            1,
+            0.0
+          ],
+          "2026-11-05/Mou_ltfkI1c": [
+            1,
+            0.0
+          ],
+          "2026-11-05/MozJZ-ChEZU": [
+            1,
+            0.0
+          ],
+          "2026-11-05/OdYunlbB73g": [
+            1,
+            0.0
+          ],
+          "2026-11-05/PzNU6whcXjc": [
+            6,
+            0.0
+          ],
+          "2026-11-05/QPu684MYUFI": [
+            1,
+            0.0
+          ],
+          "2026-11-05/R60DEOs5urg": [
+            1,
+            0.0
+          ],
+          "2026-11-05/RPtB8FQhaA4": [
+            4,
+            0.0
+          ],
+          "2026-11-05/RlbR0qGmU0s": [
+            1,
+            0.0
+          ],
+          "2026-11-05/Rvuh_RlSuKU": [
+            138,
+            0.0
+          ],
+          "2026-11-05/T6XeND2qM4k": [
+            5,
+            0.0
+          ],
+          "2026-11-05/TjrpzJE3utU": [
+            1,
+            0.0
+          ],
+          "2026-11-05/UOSkatcspag": [
+            2,
+            0.0
+          ],
+          "2026-11-05/VDFFur-xYUU": [
+            1,
+            0.0
+          ],
+          "2026-11-05/VGWcX3Yskyg": [
+            1,
+            0.0
+          ],
+          "2026-11-05/YuZxDiNUw4w": [
+            1,
+            0.0
+          ],
+          "2026-11-05/Z-Z1FNVQXW0": [
+            8,
+            0.0
+          ],
+          "2026-11-05/ZeiCLj5WN28": [
+            1,
+            0.0
+          ],
+          "2026-11-05/_dEimGejxNc": [
+            1,
+            0.0
+          ],
+          "2026-11-05/aKyOg7xbxC0": [
+            1,
+            0.0
+          ],
+          "2026-11-05/dZw0_PMoBno": [
+            2,
+            0.0
+          ],
+          "2026-11-05/debozzLtVRA": [
+            2,
+            0.0
+          ],
+          "2026-11-05/dpL6cNWnwe0": [
+            3,
+            0.0
+          ],
+          "2026-11-05/eJSCm5sk5AA": [
+            1,
+            0.0
+          ],
+          "2026-11-05/gzfS8409lV8": [
+            3,
+            0.0
+          ],
+          "2026-11-05/hBcqr4qpAv4": [
+            15,
+            0.0
+          ],
+          "2026-11-05/hm4tKu0sLj8": [
+            1,
+            0.0
+          ],
+          "2026-11-05/izdEaeOQBvI": [
+            1,
+            0.0
+          ],
+          "2026-11-05/jec80gk8rM0": [
+            1,
+            0.0
+          ],
+          "2026-11-05/k4OOYUrar30": [
+            9,
+            0.0
+          ],
+          "2026-11-05/kTBlLeWdi4g": [
+            1,
+            0.0
+          ],
+          "2026-11-05/l6HwRYGo-Nw": [
+            1,
+            0.0
+          ],
+          "2026-11-05/l8sjx720GhI": [
+            1,
+            0.0
+          ],
+          "2026-11-05/mOP33elEfpU": [
+            1,
+            0.0
+          ],
+          "2026-11-05/n14-h_0f5DY": [
+            1,
+            0.0
+          ],
+          "2026-11-05/nv-M6q8h-Lk": [
+            3,
+            0.0
+          ],
+          "2026-11-05/prHJLtgqN6g": [
+            2,
+            0.0
+          ],
+          "2026-11-05/q_SGlBjkJX8": [
+            1,
+            0.0
+          ],
+          "2026-11-05/rDJ0lUO1Yf0": [
+            4,
+            0.0
+          ],
+          "2026-11-05/rHjyomS0aZo": [
+            3,
+            0.0
+          ],
+          "2026-11-05/rY7t_VDz9sk": [
+            27,
+            0.0
+          ],
+          "2026-11-05/sICeM1lLrVE": [
+            1,
+            0.0
+          ],
+          "2026-11-05/seSX8I52aag": [
+            1,
+            0.0
+          ],
+          "2026-11-05/sfveDF88ZHo": [
+            1,
+            0.0
+          ],
+          "2026-11-05/tJz6_OYNoJE": [
+            1,
+            0.0
+          ],
+          "2026-11-05/tbKynCHfU-c": [
+            1,
+            0.0
+          ],
+          "2026-11-05/tlI93J6jwBU": [
+            1,
+            0.0
+          ],
+          "2026-11-05/uSZ4X7NvOeM": [
+            1,
+            0.0
+          ],
+          "2026-11-05/vrb83gWWaYw": [
+            4,
+            0.0
+          ],
+          "2026-11-05/wOMTQA4oQOA": [
+            4,
+            0.0
+          ],
+          "2026-11-05/xbmIX6n2OI8": [
+            1,
+            0.0
+          ],
+          "2026-11-05/xyZ9xs7OF3g": [
+            2,
+            0.0
+          ],
+          "2026-11-05/zd_fjP4RPWE": [
+            2,
+            0.0
+          ],
+          "2026-11-05/zs-gueHeX8k": [
+            6,
+            0.0
+          ]
+        }
       }
     },
     "job_id": "afc2ca97-15e3-4d96-ba59-4654e73ecb56",
-    "as_of": "2026-11-09",
-    "window_start": "2026-10-13",
-    "merged": 36
+    "as_of": "2026-11-10",
+    "window_start": "2026-10-14",
+    "merged": 37
   }
 }
