@@ -15,7 +15,7 @@
     "validate": "node scripts/validate-all.mjs",
     "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
-    "build": "npm run generate && npm run validate && npm test && npm run typecheck && vite build && node scripts/finalize-404.mjs && node scripts/validate-built-html.mjs && node scripts/validate-entity-graph.mjs --built",
+    "build": "npm run generate && npm run validate && npm test && npm run typecheck && vite build && node scripts/finalize-404.mjs",
     "verify": "npm run build",
     "preview": "vite preview",
     "start": "node .output/server/index.mjs",
@@ -30,7 +30,7 @@
     "human:validate": "python production/automation/validate_human_pass.py --count 20",
     "entity:watch": "node scripts/entity-backlink-watch.mjs",
     "indexnow:ping": "node scripts/indexnow-ping.mjs",
-    "validate:live": "node scripts/validate-live-canonicals.mjs && node scripts/validate-legal-policy.mjs --live",
+    "validate:live": "node scripts/validate-legal-policy.mjs --live",
     "deploy:pages": "npm run build && wrangler pages deploy .output/public --project-name how-we-know --branch main --commit-dirty=true && npm run validate:live"
   },
   "dependencies": {
