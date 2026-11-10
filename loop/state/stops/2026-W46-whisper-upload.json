@@ -1,0 +1,32 @@
+{
+  "stage": "whisper-upload",
+  "week": "2026-W46",
+  "at": "2026-11-10T10:47:11+00:00",
+  "code": "FRAME_CHECK_FAILED",
+  "message": "1 finished episode(s) failed the final frame check and were not uploaded: neville-inner-conversation-01: PICTURE_CHECK_FAILED at 4:21 (text, graphic or filler: The starfield is a computer-generated filler graphic or animation rather than real camera footage of), 4:41 (text, graphic or filler: The composi",
+  "detail": {
+    "failed": [
+      "neville-inner-conversation-01: PICTURE_CHECK_FAILED at 4:21 (text, graphic or filler: The starfield is a computer-generated filler graphic or animation rather than real camera footage of), 4:41 (text, graphic or filler: The composi"
+    ]
+  },
+  "unblock": "Each file is set aside beside its render (never deleted); a footage fix and a re-render (delete the set-aside file) put it back in line.",
+  "disposition": "needs_human",
+  "disposition_why": "'FRAME_CHECK_FAILED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'FRAME_CHECK_FAILED' is now holding on 1 item(s) nobody has been told about (neville-inner-conversation-01). A hold that grows is new news.",
+  "consecutive": 2,
+  "held_items": [
+    "neville-inner-conversation-01"
+  ],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "the-strange-creatures-of-the-deep: frame check passed (312 frames)",
+    "uploaded the-strange-creatures-of-the-deep -> Q_k2_ALK5uQ (private, public Tue 10 Nov 2026 20:00 CT)",
+    "YouTube confirms Q_k2_ALK5uQ: uploaded, private until 2026-11-11T02:00:00Z"
+  ],
+  "notes": [
+    "signed in to @whisperalmanac",
+    "the-strange-creatures-of-the-deep: retitled for its lane: ASMR whispered deep sea documentary for deep sleep \u00b7 where sunlight never reaches (1.5 hr)",
+    "thumbnail not set on Q_k2_ALK5uQ (HTTP Error 403: Forbidden); the video is up and dated",
+    "neville-inner-conversation-01 failed the frame check; set aside as neville-inner-conversation-01.mp4.frame-check-failed",
+    "morning line written"
+  ]
+}
