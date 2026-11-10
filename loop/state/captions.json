@@ -649,7 +649,8 @@
       "cues": 172,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-11-09T16:02:22+00:00"
+      "recorded_at": "2026-11-09T16:02:22+00:00",
+      "verified_at": "2026-11-10T16:02:22+00:00"
     },
     "VUeFHBIXoRc": {
       "slug": "why-are-deep-sea-creatures-so-big",
@@ -659,7 +660,8 @@
       "cues": 177,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-11-09T16:02:23+00:00"
+      "recorded_at": "2026-11-09T16:02:23+00:00",
+      "verified_at": "2026-11-10T16:02:22+00:00"
     },
     "HWJ16RxXhH0": {
       "slug": "is-damascus-steel-better",
@@ -669,7 +671,8 @@
       "cues": 184,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-11-09T16:02:24+00:00"
+      "recorded_at": "2026-11-09T16:02:24+00:00",
+      "verified_at": "2026-11-10T16:02:22+00:00"
     },
     "OSEN-Uv7A0I": {
       "slug": "does-damascus-steel-rust",
@@ -683,11 +686,11 @@
     }
   },
   "blocked": {},
-  "updated": "2026-11-09T16:02:26+00:00",
+  "updated": "2026-11-10T16:02:22+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-09T16:02:25+00:00",
+    "at": "2026-11-10T16:02:22+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
