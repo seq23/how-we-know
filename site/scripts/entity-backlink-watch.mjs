@@ -121,7 +121,7 @@ async function main() {
   for (const c of changes) console.log(`SELF-HEAL ${c}`)
   for (const s of stops) console.log(s)
   if (!next.sameAs.length) {
-    console.log('NAMED STOP [ENTITY_SAMEAS_EMPTY] every sameAs profile is dead; validate-entity-graph will refuse the build until one resolves.')
+    console.log('NAMED STOP [ENTITY_SAMEAS_EMPTY] every sameAs profile is dead; fix entity.json by hand.')
   }
   const report = { checked_at: new Date().toISOString(), results, changes, stops }
   if (process.env.WATCH_REPORT) fs.writeFileSync(process.env.WATCH_REPORT, `${JSON.stringify(report, null, 2)}\n`)

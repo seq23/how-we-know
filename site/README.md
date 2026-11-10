@@ -23,7 +23,7 @@ subjects, methods, zones, creatures, the depth explorer — is navigation over t
 ## The two axes
 
 Every question record carries two orthogonal first-class fields, defined in
-`src/lib/taxonomy.ts` and enforced by `scripts/validate-taxonomy.mjs`:
+`src/lib/taxonomy.ts`:
 
 - **`subject`** — how a reader browses (`deep-sea`, `marine-geology`, …). The
   vocabulary mirrors the admitted domains in `pov/topic-taxonomy.json`.
@@ -69,8 +69,7 @@ npm run build        # all of the above, then vite build + prerender
 ## Launch switches — `site-flags.json`
 
 All launch gating lives in **one file**, `site-flags.json`, read by both the app and
-the node generators. Do not hardcode any of these anywhere else; a validator
-(`scripts/validate-launch-flags.mjs`) fails the build if you do.
+the node generators. Do not hardcode any of these anywhere else.
 
 | Flag | Now | What it controls |
 |---|---|---|
