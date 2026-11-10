@@ -145,6 +145,8 @@ const bodies = []
 let offers = 0
 let examined = 0
 let internalLinksChecked = 0
+let pagesWithH2s = 0
+let mailtoPagesChecked = 0
 const LEGAL_LITERAL_HREFS = new Set(['/privacy', '/terms'])
 
 for (const route of routes) {
@@ -230,6 +232,23 @@ for (const route of routes) {
     failures.push(`${where}: names ${authors.join(', ')} as author, and none of them is visible on the page`)
   }
 
+  // b3: a page with two or more H2s has at least one phrased as a question. The hubs'
+  // card headings were bare names, so /creatures/ had 11 H2s and no question (10 Nov 2026).
+  const h2s = [...html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/giu)].map((m) => decode(m[1].replace(/<[^>]+>/gu, '')).trim())
+  // Same pages the weekly sampler reads: not the homepage, not utility or legal pages
+  // (boss-os searchReadiness/audit.mjs isUtility), whose H2s are fixed policy wording.
+  const sampled = route !== '/' && !/\/(privacy|terms|legal|cookie|disclaimer|editorial-policy|accessibility|contact|thank|thanks|login|signin|404|search|unsubscribe|sitemap)/iu.test(route)
+  if (sampled && h2s.length >= 2) {
+    pagesWithH2s += 1
+    if (!h2s.some((heading) => /[?？]\s*$/u.test(heading))) failures.push(`${where}: none of its ${h2s.length} H2 headings is a question`)
+  }
+
+  // Cloudflare Email Obfuscation rewrites any address outside email_off/email_on into a
+  // link to /cdn-cgi/l/email-protection, which crawlers see as a dead page.
+  const unguarded = html.replace(/<!--email_off-->[\s\S]*?<!--email_on-->/gu, '')
+  if (/mailto:/u.test(unguarded)) failures.push(`${where}: has a mailto outside <!--email_off-->, which Cloudflare rewrites to a dead link`)
+  mailtoPagesChecked += 1
+
   // q1, first rule: the same eight words more than three times in one body is template filler.
   const body = bodyText(html)
   const slots = repeatedSlots(body)
@@ -261,6 +280,8 @@ for (let a = 0; a < bodies.length; a += 1) {
 
 assert(examined > 0, 'Built-HTML validation examined zero pages')
 assert(pairs > 0, 'Built-HTML validation compared zero page pairs for near-duplication')
+assert(pagesWithH2s > 0, 'Built-HTML validation found zero pages with two or more H2s to read for b3')
+assert(mailtoPagesChecked > 0, 'Built-HTML validation read zero pages for unguarded mailto links')
 assert(internalLinksChecked > 0, 'Built-HTML validation read zero internal links')
 assert(failures.length === 0, `Built HTML is not search-ready:\n  ${failures.join('\n  ')}`)
 console.log(

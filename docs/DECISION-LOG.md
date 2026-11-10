@@ -1976,3 +1976,21 @@ record, calendar and cloud-upload proofs remain active.
   disk), never secrets or runtimes.
 - Guard: `loop/tests/test_narration_refuses_without_media.py`. Negative proofs: dropping the call
   fails it; the stripped manifests fail test_captions_self_heal; restored, green.
+
+## 2026-11-10 — o1 re-read: still the 23 September ranking cliff; two crawl-visible gaps fixed
+
+- **Re-read live, not from the brief.** Search Console (gsc-bot, `sc-domain:howweknowdeep.com`):
+  22 Sep 61 impressions at average position ~24, 23 Sep 6 at ~59, and 1–6 a day at positions
+  60–90 ever since. Cloudflare Pages deployment history shows **no deploy between 31 Aug and
+  26 Oct**, so nothing this repo shipped caused it — the same finding as 2026-11-03.
+- **Indexing is not the cause.** 41 of 45 sitemap URLs indexed, 0 crawled-not-indexed, robots
+  allows everything; the one "Page with redirect" top loser (/creatures/dumbo-octopus/) is the
+  deliberate #301 consolidation into /questions/what-is-a-dumbo-octopus/.
+- **Fixed what a crawler could see:** /privacy/ and /terms/ linked to Cloudflare's
+  /cdn-cgi/l/email-protection (a dead page for crawlers) — the address is now inside
+  email_off/email_on (`site/src/components/PlainEmail.tsx`); and the q1 b3 gap — /creatures/,
+  /zones/, /methods/, /about/, /watch/ and /methodology/ had no question H2 at all.
+- Guard: `site/scripts/validate-built-html.mjs` fails a sampled page with 2+ H2s and no question,
+  and any mailto outside email_off; hard-fails on zero pages read. Negative proofs: the bare
+  creature names and the unwrapped mailto each fail it; restored, green.
+- The remaining lever is page quality and time; the next o1 brief re-measures the 28-day line.

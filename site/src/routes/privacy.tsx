@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { pageMeta } from '~/lib/seo'
 import { privacyContactEmail } from '~/lib/site'
+import { PlainEmail } from '~/components/PlainEmail'
 
 export const Route = createFileRoute('/privacy')({
   head: () =>
@@ -165,7 +166,7 @@ function Privacy() {
         {privacyContactEmail ? (
           <p>
             Privacy questions, complaints about these practices, and data-deletion requests can be
-            sent to <a href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a>. Requests are
+            sent to <PlainEmail address={privacyContactEmail} />. Requests are
             answered within 30 days.
           </p>
         ) : (
