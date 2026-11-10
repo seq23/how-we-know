@@ -271,12 +271,15 @@ check("episode description gains the Shorts block after the sources, before the 
 check("episode rows record the block", ep["EP1"].get("shorts_block") == ["SH1"]
       and ep["EP2"].get("shorts_block") == ["SH2"], json.dumps(ep)[:400])
 pl = H.load_playlists()
-# Three shelves since the food sample gate cleared (owner, 13 Oct 2026); a
+# Four shelves: food since its sample gate cleared (owner, 13 Oct 2026), Money
+# since its test began (owner, 9 Nov 2026); a
 # domain still behind a sample gate would get none (domains.sample_gated).
 check("one playlist per live domain, created with the decided titles",
-      sorted(yt.playlists.values()) == ["Deep Sea Science", "Food Science", "Materials & Manufacturing"]
+      sorted(yt.playlists.values()) == ["Deep Sea Science", "Food Science", "Materials & Manufacturing",
+                                        "Money, Proven"]
       and {d: p["id"] for d, p in pl["playlists"].items()}.keys()
-      == {"deep-sea-ocean-science", "materials-and-manufacturing", "food-science"}, json.dumps(pl))
+      == {"deep-sea-ocean-science", "materials-and-manufacturing", "food-science",
+          "money-and-business"}, json.dumps(pl))
 deep_pid = pl["playlists"]["deep-sea-ocean-science"]["id"]
 mat_pid = pl["playlists"]["materials-and-manufacturing"]["id"]
 check("each video inserted into its domain playlist exactly once",
@@ -286,7 +289,7 @@ check("playlist item ids recorded on every row",
       all(r.get("playlist_item_id") for r in [*sh.values(), *ep.values()]),
       json.dumps({k: v.get("playlist_item_id") for k, v in {**sh, **ep}.items()}))
 check("one channel section per playlist, recorded",
-      len(yt.sections) == 3 and set(pl["sections"]) == set(pl["playlists"])
+      len(yt.sections) == 4 and set(pl["sections"]) == set(pl["playlists"])
       and all(pl["sections"][d].get("id") for d in pl["sections"]),
       json.dumps(pl["sections"]))
 n_writes = len(yt.writes()) + len(comment_writes)

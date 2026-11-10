@@ -351,6 +351,7 @@ BUILDERS = {
     DEEP_SEA: build_question,
     MATERIALS: build_question,
     "food-science": build_question,
+    "money-and-business": build_question,    # the one-question card (10 Nov 2026)
 }
 
 

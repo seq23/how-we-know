@@ -84,9 +84,24 @@ check(allowed == ["why-bread-rises-steak-browns-chocolate-snaps"],
       f"publish_queue_gate admits the first food episode: {why}")
 import digest                                                  # noqa: E402
 import datetime as dt                                          # noqa: E402
-cal = digest.calendar({"published": []}, cfg, dt.datetime(2026, 10, 13, tzinfo=dt.timezone.utc))
+# THE MONEY TEST (owner, 9 Nov 2026) rests food long-forms and hands food's
+# Wed/Sat to Money; the real config counts no food slot meanwhile. The cleared
+# gate's behaviour is proven on `resumed`, the config as it is the day food's
+# pause lifts: food back on Wed/Sat with its two slots.
+paused_now = json.loads(json.dumps(cfg))
+cal_paused = digest.calendar({"published": []}, paused_now, dt.datetime(2026, 11, 11, tzinfo=dt.timezone.utc))
+check(cal_paused and not any(c["domain"] == FOOD for c in cal_paused),
+      "while the Money test rests food long-forms, the calendar counts no food slot")
+resumed = json.loads(json.dumps(cfg))
+resumed["domains"]["allocation"][FOOD] = 2
+resumed["domains"]["allocation"]["money-and-business"] = 0
+for _d in ("wed", "sat"):
+    resumed["cadence"]["rotation"]["weekdays"][_d] = FOOD
+resumed["domains"].get("money_test", {}).get("longform_paused", {}).pop(FOOD, None)
+resumed["domains"].get("publish_days", {})[FOOD] = ["Wednesday", "Saturday"]
+cal = digest.calendar({"published": []}, resumed, dt.datetime(2026, 10, 13, tzinfo=dt.timezone.utc))
 check(any(c["domain"] == FOOD for c in cal), "cleared: food's Wed/Sat are counted slots")
-gated = json.loads(json.dumps(cfg))
+gated = json.loads(json.dumps(resumed))
 gated["domains"]["sample_gate"][FOOD]["state"] = "awaiting_owner_review"
 okg, refg = D.allocation_gate([{"slug": "f", "domain": FOOD}], gated)
 check(not okg and "sample_gate" in refg.get("f", ""),
@@ -110,7 +125,7 @@ check(not c10.failures, f"c10 passes on the real repo: {c10.failures}")
 check(cfg["domains"].get("pov_not_required", {}).get(FOOD, {}).get("decided") == "2026-10-13",
       "food-science ships with no POV beat by a dated declaration, until its top-up")
 saved = VP.config
-undeclared = json.loads(json.dumps(cfg))
+undeclared = json.loads(json.dumps(resumed))
 undeclared["domains"].pop("pov_not_required", None)
 VP.config = lambda: undeclared
 try:
@@ -122,11 +137,13 @@ check(any("food-science" in f for f in c10b.failures),
 # the declaration never excuses a [HUMAN] beat in a shipping food episode
 ep = ROOT / "scripts" / "food" / "why-bread-rises-steak-browns-chocolate-snaps.md"
 orig = ep.read_text()
+VP.config = lambda: resumed
 try:
     ep.write_text(orig.replace("### Closing\n\n{{ambient}}\n", "### Closing\n\n{{ambient}}\n[HUMAN] ", 1))
     c10c = VP.c10_domains_admitted()
 finally:
     ep.write_text(orig)
+    VP.config = saved
 check(any("[HUMAN]" in f for f in c10c.failures),
       f"c10 FAILS a shipping food episode that carries a [HUMAN] beat: {c10c.failures}")
 

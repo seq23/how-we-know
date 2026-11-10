@@ -227,12 +227,16 @@ def main() -> int:
              f"{title!r} was taken as showing {phrase!r}")
     want(SV.phrase_in("glass", "molten glass being shaped"),
          "a Mixkit title whose head noun is the subject was refused")
-    for other in ("05-why-many-deep-sea-creatures-are-red",
-                  "19-what-is-the-deepest-fish-ever-recorded",
-                  "10-what-is-the-deepest-part-of-the-ocean"):
-        want(SV.episode_phrases(other) == [],
-             f"{other} asks stock for {SV.episode_phrases(other)} - an adjective "
-             f"or verb is not a subject a clip can show")
+    # the SLUG fallback (no shot list): these episodes now carry shot lists
+    # (visuals/shot_list.py, PICTURE FIRST 3 Nov 2026) whose filmable subjects
+    # rightly win, so the slug-word rule is proven with the shot list absent
+    with patch.object(SV, "_shot_list", return_value=[]):
+        for other in ("05-why-many-deep-sea-creatures-are-red",
+                      "19-what-is-the-deepest-fish-ever-recorded",
+                      "10-what-is-the-deepest-part-of-the-ocean"):
+            want(SV.episode_phrases(other) == [],
+                 f"{other} asks stock for {SV.episode_phrases(other)} - an adjective "
+                 f"or verb is not a subject a clip can show")
     farm = stock("pixabay", "303", "pig, farm, sea", "sea pig", "clips/stock__pixabay-303.mp4", b"farm")
     want(FT.stock_pool(slug, [farm]) == [], "a farm-pig clip entered the sea-pig pool")
     octo = stock("pixabay", "404", "octopus, dumbo octopus", "dumbo octopus",

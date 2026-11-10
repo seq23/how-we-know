@@ -28,6 +28,7 @@ from __future__ import annotations
 DEEP = "deep-sea-ocean-science"
 MATS = "materials-and-manufacturing"
 FOOD = "food-science"
+MONEY = "money-and-business"
 
 LANES: dict[str, dict] = {
     # ---- the cloud (GitHub Actions)
@@ -37,6 +38,8 @@ LANES: dict[str, dict] = {
                          "makes": "author", "domains": [DEEP, MATS]},
     "food-author":      {"runner": "workflow", "file": "loop-food-author.yml",
                          "entry": "loop/food_author.py", "makes": "author", "domains": [FOOD]},
+    "money-author":     {"runner": "workflow", "file": "loop-money-author.yml",
+                         "entry": "loop/money_author.py", "makes": "author", "domains": [MONEY]},
     "whisper-author":   {"runner": "workflow", "file": "loop-whisper-author.yml",
                          "entry": "loop/whisper_author.py"},
     "demand":           {"runner": "workflow", "file": "loop-demand.yml", "entry": "loop/demand.py"},
@@ -64,7 +67,7 @@ LANES: dict[str, dict] = {
                          "entry": "site/scripts/entity-backlink-watch.mjs"},
     # ---- this Mac (launchd, bin/loop-install-launchd.sh)
     "batch":            {"runner": "launchd", "agent": "batch", "entry": "bin/batch-session.sh",
-                         "makes": "render", "domains": [DEEP, MATS]},
+                         "makes": "render", "domains": [DEEP, MATS, MONEY]},
     "batch-resume":     {"runner": "launchd", "agent": "batch-resume", "entry": "bin/batch-session.sh"},
     "nightquit":        {"runner": "launchd", "agent": "nightquit", "entry": "bin/night-quit.sh"},
     "backfill":         {"runner": "launchd", "agent": "backfill", "entry": "bin/loop-backfill-daily.sh"},

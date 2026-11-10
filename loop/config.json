@@ -32,10 +32,10 @@
       "weekdays": {
         "mon": "deep-sea-ocean-science",
         "tue": "materials-and-manufacturing",
-        "wed": "food-science",
+        "wed": "money-and-business",
         "thu": "deep-sea-ocean-science",
         "fri": "materials-and-manufacturing",
-        "sat": "food-science",
+        "sat": "money-and-business",
         "sun": null
       },
       "per_day": 1,
@@ -172,7 +172,8 @@
     "allocation": {
       "deep-sea-ocean-science": 2,
       "materials-and-manufacturing": 2,
-      "food-science": 2
+      "food-science": 0,
+      "money-and-business": 2
     },
     "allocation_note": "Weekly long-form slots per domain AT THE CADENCE CEILING (cadence.ceiling). The live weekly split is derived from cadence.videos_per_week by loop/domains.py live_slots(), largest share first, so there is ONE list and the split cannot drift from the cadence. At today's 2/week that is deep sea 2, materials 0; at the owner's 4/week target it is 2 and 2. The monthly review may move at most ONE ceiling slot a month, from measured evidence, and never to zero - a domain is retired only by results (domains.results_decide), never on queue decay or one bad month.",
     "min_episodes_to_judge": 8,
@@ -193,6 +194,10 @@
       "food-science": [
         "Wednesday",
         "Saturday"
+      ],
+      "money-and-business": [
+        "Wednesday",
+        "Saturday"
       ]
     },
     "sample_gate": {
@@ -211,7 +216,24 @@
       "food-science": {
         "decided": "2026-10-13",
         "basis": "the owner approved the round-2 sample and ordered the first full video published; her food interview (the three pending_approval lines in pov/pov-bank.json) has not happened, so food episodes carry NO producer-POV beat until it does - one voice, her words never invented. loop/validate_plan.py c10 fails any scripts/food/*.md narration that carries a [HUMAN] beat."
+      },
+      "money-and-business": {
+        "decided": "2026-11-10",
+        "basis": "the Money lane (owner, 8-9 Nov 2026) is a 12-video test with no money top-up interview: a money episode speaks only a TRANSFERABLE line from her POV bank (loop/pov_match.select, verbatim, recorded in pov/pov-assignments.json) or none - never a money-specific line in her voice, which she has not given."
       }
+    },
+    "money_test": {
+      "lane": "money-and-business",
+      "started": "2026-11-10",
+      "nights": "both How We Know long-form nights (loop/night_split.py hwk_nights) narrate money-and-business; a night with no money script to voice narrates deep-sea-ocean-science instead",
+      "fallback": "deep-sea-ocean-science",
+      "own_author": {"money-and-business": "loop/money_author.py"},
+      "longform_paused": {
+        "food-science": "food long-forms paused for the Money test (owner, 9 Nov 2026); existing videos stay up",
+        "materials-and-manufacturing": "no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue"
+      },
+      "check_days": 30,
+      "_why": "Her call 9 Nov 2026 (spry brain): both weekly long-form nights go to the Money lane for its 12-video test (config/money_topics.json); food long-forms paused; deep sea and materials make no new long-forms, their Shorts continue; a night the Money pipeline cannot fill falls back to deep sea; judged at 30 days on watch hours and subscribers per lane (loop/lane_check.py, the Sunday digest), replacing the 2 Nov '30 long videos per topic' rule (domains.results_decide no longer holds anything back)."
     },
     "sample_gate_note": "A domain listed here is registered and scheduled but may not author, narrate or render a full episode until its state is 'cleared'. A missing entry means no gate. Self-explaining hold, not a stop: its rotation days stay empty, never borrowed.",
     "publish_days_note": "Owner decision 2026-09-03. Materials runs ON TOP of deep sea, not instead of it, on the two days deep sea does not use. Long-form stays 10:00 Central; Shorts keep the evening window.",
@@ -270,6 +292,19 @@
         "hashtags": [
           "#FoodScience",
           "#FoodChemistry"
+        ]
+      },
+      "money-and-business": {
+        "tags": [
+          "money history",
+          "financial history",
+          "business stories",
+          "how it was caught",
+          "public record"
+        ],
+        "hashtags": [
+          "#MoneyHistory",
+          "#FinancialHistory"
         ]
       }
     },

@@ -110,6 +110,8 @@ PLAYLIST_TITLES = {
     # science"): a Food playlist, created ahead of the first food episode by
     # loop/channel_branding.py so its shelf exists the day the domain lands.
     "food-science": "Food Science",
+    # Owner decision 8 Nov 2026 (spry brain): the Money lane's 12-video test.
+    "money-and-business": "Money, Proven",
 }
 PLAYLIST_DESCRIPTIONS = {
     "deep-sea-ocean-science":
@@ -123,6 +125,10 @@ PLAYLIST_DESCRIPTIONS = {
         "Evidence-first answers about the food on your plate: why bread "
         "rises, steak browns and chocolate snaps, and how anyone found out. "
         "Every figure traces to a named public source.",
+    "money-and-business":
+        "Money and business stories proven by the public record: SEC filings, "
+        "court records, Federal Reserve data and official inquiries. Every "
+        "figure traces to a named public source. Not financial advice.",
 }
 
 # Who is on record for the channel comments. loop/comments.py refuses any

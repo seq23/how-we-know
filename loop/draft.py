@@ -234,6 +234,12 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
             st.note(f"runway rebuild: {row['slug']} names domain {dom!r}, "
                     f"not in domains.allocation — refused, not authored")
     candidates = allocated_candidates
+    t_ = domains.money_test(cfg)
+    skip_ = {**(t_.get("longform_paused") or {}), **(t_.get("own_author") or {})}
+    for row, dom in candidates:
+        if dom in skip_:
+            st.note(f"runway rebuild: {row['slug']} ({dom}) not authored here: {skip_[dom]}")
+    candidates = [(row, dom) for row, dom in candidates if dom not in skip_]
 
     # THE CAP COUNTS SCRIPTS ADDED, NOT ATTEMPTS. candidates[:cap] let two
     # V21 failures spend two of three slots (run 40310147557 added 1 of 3
@@ -446,6 +452,10 @@ def main() -> None:
         # loop/promotion_holds.json, a separate fix). This is the second,
         # independent gate — see loop/domains.py allocation_gate().
         selected, dom_refused = domains.allocation_gate(selected, cfg)
+        # The Money test (her call 9 Nov 2026): paused long-form domains are
+        # not authored here, and Money is loop/money_author.py's alone.
+        selected, test_refused = domains.longform_gate(selected, cfg)
+        dom_refused = {**dom_refused, **test_refused}
         for slug_, why_ in dom_refused.items():
             print(f"  REFUSE {slug_}: {why_}", flush=True)
         if dom_refused:

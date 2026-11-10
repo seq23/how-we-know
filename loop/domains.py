@@ -287,6 +287,31 @@ def allocation_gate(rows: list[dict], cfg: dict) -> tuple[list[dict], dict[str, 
     return allowed, refused
 
 
+def money_test(cfg: dict) -> dict:
+    """loop/config.json domains.money_test (her call 9 Nov 2026)."""
+    return (cfg.get("domains") or {}).get("money_test") or {}
+
+
+def longform_gate(rows: list[dict], cfg: dict) -> tuple[list[dict], dict[str, str]]:
+    """The Money test's hold on the GENERIC authoring path (loop/draft.py):
+    a domain whose long-forms are paused is not authored, and a domain with
+    its own author lane (Money: loop/money_author.py) is left to it, so no
+    topic is drafted twice. Same shape as allocation_gate()."""
+    t = money_test(cfg)
+    paused = t.get("longform_paused") or {}
+    own = t.get("own_author") or {}
+    allowed, refused = [], {}
+    for row in rows:
+        dom = row_domain(row)
+        if dom in paused:
+            refused[row.get("slug", "<no-slug>")] = f"{dom}: {paused[dom]}"
+        elif dom in own:
+            refused[row.get("slug", "<no-slug>")] = f"{dom} is authored by {own[dom]}"
+        else:
+            allowed.append(row)
+    return allowed, refused
+
+
 # ------------------------------------------------------------- allocation
 
 def config_domains(cfg: dict) -> dict:
@@ -786,7 +811,11 @@ def lifecycle(cfg: dict, per_domain: dict[str, dict],
                                                for d in sorted(counts))
                     + "." + (f" Queue under the floor, refilled by the Saturday "
                              f"miner (never retired): {', '.join(research_more)}."
-                             if research_more else "")),
+                             if research_more else "")
+                    + (f" The Money test runs from {money_test(cfg)['started']} (owner, 9 Nov "
+                       f"2026): each lane is judged at {money_test(cfg).get('check_days', 30)} "
+                       f"days on watch hours and subscribers (loop/lane_check.py, the Sunday "
+                       f"digest)." if money_test(cfg).get("started") else "")),
         }
     scores = {d: (per_domain.get(d) or {}).get("score") for d in alloc}
     scores = {d: float(v or 0.0) for d, v in scores.items()}

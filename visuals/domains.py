@@ -93,6 +93,20 @@ PALETTES: dict[str, dict[str, tuple[int, int, int]]] = {
         "TEXT":  (252, 244, 232),
         "MUTED": (196, 170, 148),
     },
+    "money-and-business": {
+        # 2026-11-10, the Money lane (owner, 8 Nov 2026). The ground is the
+        # dark green-black of currency ink and a banker's ledger; the accent
+        # is the gold of bullion and the gilt edge of a court record; a pale
+        # paper tone for a filing's page. Not the ocean palette recoloured.
+        "INK":   (8, 12, 10),       # ledger black-green - the ground
+        "DEEP":  (18, 32, 26),      # banknote ink
+        "MID":   (38, 70, 55),      # engraving green
+        "CYAN":  (212, 175, 90),    # bullion gold - primary accent
+        "PALE":  (236, 226, 196),   # filing paper - secondary accent
+        "AMBER": (196, 72, 56),     # a court's red seal, used sparingly
+        "TEXT":  (246, 242, 230),
+        "MUTED": (176, 180, 160),
+    },
 }
 
 
@@ -187,6 +201,21 @@ DEVICES: dict[str, dict] = {
                       "open with a single butter-white line tracing the "
                       "structure that answers the question "
                       "(visuals/food.py cross_section)."),
+    },
+    "money-and-business": {
+        # Money's device is the public record's own order of events: years on
+        # a timeline (the shared `timeline` and `chain` segments). No physical
+        # scale is drawn for it, so no thermal or depth segment is allowed in
+        # a money plan (visuals/plan_domain.py SEGMENT_DOMAINS).
+        "axis": "year",
+        "unit": "",
+        "unit_label": "YEAR",
+        "title": "THE PUBLIC RECORD",
+        "max": 2026,
+        "bands": [],
+        "source_note": ("every date and figure comes from that episode's own "
+                        "narration and ## Sources (SEC, courts, the Federal "
+                        "Reserve, BLS, official inquiries), never the visual."),
     },
 }
 

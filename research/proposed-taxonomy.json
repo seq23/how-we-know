@@ -2761,6 +2761,42 @@
         "by": "owner decision (docs/CHANNEL-PLAN.md, A third domain: food science)",
         "how_scored": "research/mine_broad.py general + method passes for food-science only (same 216/54-request budgets), then research/propose.py run in a scratch copy over all 21 domains; only this record was taken from that run so the 20 committed records stay byte-identical. Competition is not measured at domain level (demand_over_competition null), the same state as 13 of the 20."
       }
+    },
+    {
+      "domain": "money-and-business",
+      "in_current_taxonomy": false,
+      "demand_side_score": null,
+      "measured": {
+        "status": "autocomplete_only",
+        "source": "config/money_topics.json (free YouTube autocomplete, ds=yt, 9 Nov 2026)"
+      },
+      "competition": {
+        "measured": false,
+        "status": "NOT_MEASURED",
+        "why": "registered by owner decision as a 12-video test; the 30-day lane check judges it on watch hours and subscribers"
+      },
+      "demand_over_competition": {
+        "score": null,
+        "status": "unscored_competition_not_measured"
+      },
+      "top_questions": [
+        "How was Bernie Madoff actually caught?",
+        "Why did FTX collapse?",
+        "How did Theranos work, and why did it fail?",
+        "How does the Federal Reserve create money?",
+        "How does the Federal Reserve control interest rates?",
+        "What caused the 2008 financial crisis?",
+        "What caused the 1929 stock market crash?",
+        "How did Enron hide its losses?",
+        "How did Lehman Brothers collapse?",
+        "Why did Silicon Valley Bank fail?",
+        "How did Charles Ponzi's scheme actually work?",
+        "What really happened in the GameStop short squeeze?"
+      ],
+      "registered": {
+        "date": "2026-11-08",
+        "by": "owner decision (spry brain Settled decisions 8 and 9 Nov 2026: How We Know Money lane, 12-video test on both long-form nights; config/money_topics.json)"
+      }
     }
   ]
 }

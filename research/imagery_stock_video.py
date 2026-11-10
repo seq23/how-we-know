@@ -6,6 +6,7 @@ deep-sea and materials-and-manufacturing episodes.
     python research/imagery_stock_video.py --harvest      # search, licence-check, download, merge
     python research/imagery_stock_video.py --verify       # licence + sha256 of every stock record
     python research/imagery_stock_video.py --calm         # Whisper Almanac calm footage sets only
+    python research/imagery_stock_video.py --money        # How We Know's Money footage set only
 
 THE OWNER'S RULING (2 Nov 2026, spry brain, "Yes, all topics"): moving footage
 from Pixabay, Pexels and Mixkit may be used in EVERY domain, not only food, on
@@ -71,7 +72,7 @@ RENDERS = ROOT / "renders"
 # nightly batch runs it and the Linux lane verifies its stamp.
 HARVESTER = {
     "domain": "deep-sea-ocean-science",
-    "domains": ["deep-sea-ocean-science", "materials-and-manufacturing"],
+    "domains": ["deep-sea-ocean-science", "materials-and-manufacturing", "money-and-business"],
     "gate": "stock_licence_ok",
     "manifest": "channel/imagery/video_rights.json",
     "args": ["--harvest"],
@@ -83,6 +84,14 @@ HARVESTER = {
     "timeout_seconds": 3600,
 }
 DOMAINS = tuple(HARVESTER["domains"])
+# The Money lane (owner, 8-9 Nov 2026) is not matched on its slug's words
+# (Pixabay has no "Bernie Madoff"): its footage is ONE set of money imagery
+# (config/money_topics.json `footage`: trading floors, Wall Street, banknotes,
+# vaults and gold, ticker screens, courthouses), harvested by harvest_money()
+# with the calm sets' gates and placed only in money episodes
+# (visuals/footage.money_pool). Never deep-sea footage.
+MONEY = "money-and-business"
+MONEY_CONFIG = ROOT / "config" / "money_topics.json"
 
 STOCK_SOURCES = ("pixabay", "pexels", "mixkit")
 MIN_SECONDS = 6.0           # same floor as a NOAA clean window
@@ -294,8 +303,8 @@ def targets(all_episodes: bool = False) -> list[str]:
     """Deep-sea and materials episodes not yet rendered (with --all, every one)."""
     out = []
     for p in sorted(SCRIPTS.glob("*.md")):
-        if domain_of(p.stem) not in DOMAINS:
-            continue
+        if domain_of(p.stem) not in DOMAINS or domain_of(p.stem) == MONEY:
+            continue                    # money: its own set (harvest_money)
         if not all_episodes and (RENDERS / f"{p.stem}-final.mp4").exists():
             continue
         out.append(p.stem)
@@ -525,6 +534,21 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     Records go into the one manifest with `calm_set`; credited in the
     description like every stock clip."""
     cfgc = json.loads(CALM_CONFIG.read_text())["calm_footage"]
+    return _harvest_sets(cfgc, sets, cap, tag="calm_set", domain="whisper-calm",
+                         episode=lambda name: f"whisper:{name}")
+
+
+def harvest_money(cap: int | None = None) -> dict:
+    """Fill How We Know's Money footage set (config/money_topics.json
+    `footage`) with the same gates as the calm sets: real footage, the
+    subject's own words, the licence wording, no word on screen."""
+    cfgc = json.loads(MONEY_CONFIG.read_text())["footage"]
+    return _harvest_sets(cfgc, None, cap, tag="money_set", domain=MONEY,
+                         episode=lambda name: MONEY)
+
+
+def _harvest_sets(cfgc: dict, sets: list[str] | None, cap: int | None, tag: str,
+                  domain: str, episode) -> dict:
     per = int(cfgc["per_subject"])
     min_s = float(cfgc["min_seconds"])
     refused = cfgc.get("refused") or {}
@@ -540,7 +564,7 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     for name in sets or list(cfgc["sets"]):
         for ent in cfgc["sets"][name]:
             n_have = sum(1 for a in have + new
-                         if a.get("calm_set") == name and a.get("subject") == ent["subject"]
+                         if a.get(tag) == name and a.get("subject") == ent["subject"]
                          and float(a.get("seconds") or 0) >= min_s and a.get("post_id") not in refused)
             for src, query in [(s_, q) for q in ent["queries"] for s_ in live]:
                 if n_have >= per or fetched >= cap:
@@ -573,9 +597,9 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
                     probs = ([] if info["duration_s"] >= min_s and info["width"] >= 1280
                              else ["too short or too small"])
                     probs = probs or clip_problems(path, info["duration_s"])
-                    rec = record(c, ent["subject"], f"whisper:{name}", meta, blob, info)
-                    rec.update({"calm_set": name, "domain": "whisper-calm", "matched": hit,
-                                "episodes": [f"whisper:{name}"]})
+                    rec = record(c, ent["subject"], episode(name), meta, blob, info)
+                    rec.update({tag: name, "domain": domain, "matched": hit,
+                                "episodes": [episode(name)]})
                     ok, why = stock_licence_ok(rec)
                     if probs or not ok:
                         path.unlink()
@@ -589,8 +613,8 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     man = merge(new, stops, status)
     for k, v in report.items():
         print(f"  {k}: {v} clip(s)")
-    print(f"calm footage: {len(new)} new clip(s); "
-          f"{sum(1 for a in man['assets'] if a.get('calm_set'))} on record")
+    print(f"{tag.replace('_', ' ')} footage: {len(new)} new clip(s); "
+          f"{sum(1 for a in man['assets'] if a.get(tag))} on record")
     return man
 
 
@@ -626,11 +650,16 @@ def main(argv: list[str]) -> int:
         harvest_calm()
         verify()
         return 0
+    if "--money" in argv:
+        harvest_money()
+        verify()
+        return 0
     if "--harvest" in argv:
         eps = argv[argv.index("--episode") + 1].split(",") if "--episode" in argv else None
         harvest(eps)
         if eps is None:                 # the weekly run also tops up the Almanac calm sets
-            harvest_calm()
+            harvest_calm()              # and How We Know's Money set
+            harvest_money()
         verify()
         return 0
     print(__doc__.split("\n\n")[0])

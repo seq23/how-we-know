@@ -27,7 +27,9 @@ from common import config  # noqa: E402
 def main() -> int:
     fails = []
     per_week = 4
-    split = B.domain_weekdays(config(), per_week)
+    # a registered domain resting at 0 slots (food during the Money test) has
+    # no days by design; the borrowing rule is about domains on the rotation
+    split = {d: w for d, w in B.domain_weekdays(config(), per_week).items() if w}
     if len(split) < 2:
         print("FAIL: fewer than two domains on the rotation; nothing to borrow")
         return 1

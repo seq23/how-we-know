@@ -459,6 +459,42 @@
       "escalation": "Three runs with no free model answering is not a burst: a listed model has probably been withdrawn or gated. Refresh config/llm_routing.json from https://openrouter.ai/api/v1/models (keep only ':free' 0/0 models, >=32k context) and re-run; detail lists each model's failure.",
       "plain": "every free AI model failed this run; nothing was written and it tries again"
     },
+    "MONEY_EPISODE_IN_FLIGHT": {
+      "why": "loop/money_author.py keeps at most two Money scripts written and not yet uploaded; the Mac's How We Know nights narrate and render them first (loop/night_split.longform_slugs). An upload clears it.",
+      "max_consecutive": 6,
+      "escalation": "Three weeks with the same Money scripts in flight means the Mac's nights are not finishing them: read the batch log's 'longform tonight' line.",
+      "plain": "the next Money episode waits until the Mac renders the current ones"
+    },
+    "MONEY_TOPICS_DONE": {
+      "why": "All 12 Money test topics (config/money_topics.json) are written. The 30-day lane check (loop/lane_check.py) judges the test; more topics follow only if it passes.",
+      "max_consecutive": 26,
+      "escalation": "The test should have been judged: read the digest's 'Lanes, 30-day check' section.",
+      "plain": "all 12 Money test topics are written"
+    },
+    "MONEY_NO_POV_LINE": {
+      "why": "No transferable POV line from her bank is free for this Money topic (loop/pov_match.select never invents one). Lines free up as the rotation window moves; the next run tries again.",
+      "max_consecutive": 4,
+      "escalation": "Four runs with no free line: the bank's transferable lines are exhausted; read pov/pov-bank.json.",
+      "plain": "no free POV line for the next Money topic yet"
+    },
+    "MONEY_DRAFT_REFUSED": {
+      "why": "A free-model Money draft broke risk rule R-ADV-04 (advice, a money promise) or lacked its disclaimer; it is never written to scripts/. The next run drafts again.",
+      "max_consecutive": 4,
+      "escalation": "Four refused drafts in a row: read loop/drafts/<slug>.md and the Money brief in loop/author.py.",
+      "plain": "a Money draft was refused for giving advice"
+    },
+    "MONEY_DRAFT_FAILED_VALIDATION": {
+      "why": "A Money draft failed the full validator set (loop/validate.run_all), the same bar every script meets; it stays in loop/drafts/ and the next run drafts again.",
+      "max_consecutive": 4,
+      "escalation": "Four failed drafts in a row: read the stage log's validator lines.",
+      "plain": "a Money draft failed validation and will be redrafted"
+    },
+    "FOOD_LONGFORM_PAUSED": {
+      "why": "Food long-forms are paused for How We Know's Money test (owner, 9 Nov 2026; loop/config.json domains.money_test.longform_paused). loop/food_author.py writes no food episode and loop/food_lane.py renders none; existing food videos stay up. The 30-day lane check (loop/lane_check.py, the Sunday digest) is where the test is judged.",
+      "max_consecutive": 26,
+      "escalation": "Thirteen weeks paused is long past the 30-day check: read the digest's 'Lanes, 30-day check' section and decide whether food returns.",
+      "plain": "food long-forms are paused for the Money test"
+    },
     "FOOD_EPISODE_IN_FLIGHT": {
       "why": "loop/food_author.py authors one food episode at a time; the previous one is still the Mac's to render (bin/food-session.sh, Tue and Thu nights). Its stitch writes channel/specs/<slug>.json and the next weekly run authors the next episode.",
       "max_consecutive": 3,

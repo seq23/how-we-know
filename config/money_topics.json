@@ -2,7 +2,7 @@
   "_why": [
     "How We Know's Money lane, 12-video test (approved 8 Nov 2026, spry brain Settled decisions: money and business stories proven by the public record; one plain question per title; topics from real search demand first; 'not financial advice' on every video; no tips, no get-rich promises; real people only as court/SEC findings record them; every number sourced, risk brain R-ADV-04; Bookshop/Amazon book links; $0).",
     "Her decisions 9 Nov 2026: both How We Know long-form nights (the 2 in the 5:2 split) go to this lane for the test; food long-forms paused (existing videos stay up); deep sea and materials Shorts only, deep sea fills any night Money cannot; 'how it's made' later. Topics are picked by demand and evidence, with NO owner approval.",
-    "STATUS: data only. Nothing in the pipeline reads this file yet. The wiring (a money domain for drafting, sources and pictures; night_split giving both How We Know nights to it with the deep-sea fallback; the per-lane 30-day check replacing the 2 Nov '30 long videos per topic' rule; CHANNEL-PLAN.md and RUNBOOK.md) is the Open Loop row dated 13 Nov 2026 (no Claude or Codex work on How We Know before then, her call 9 Nov).",
+    "STATUS (10 Nov 2026): wired. loop/money_author.py (loop-money-author.yml) drafts the next topic here in rank order into scripts/<slug>.md and research/publish_order_money_and_business.json; the Mac's How We Know nights narrate money first and deep sea only when no money script waits (loop/night_split.longform_slugs); food long-forms are paused (loop/food_author.py, loop/food_lane.py: FOOD_LONGFORM_PAUSED) and materials makes no new long-forms (config.json domains.longform_paused); the digest's per-lane 30-day check (loop/lane_check.py) replaces the 2 Nov '30 long videos per topic' rule.",
     "demand = free YouTube autocomplete pulled 9 Nov 2026 (suggestqueries.google.com, ds=yt); no paid keyword data."
   ],
   "picked_on": "2026-11-09",
@@ -65,5 +65,146 @@
   "reserve": [
     {"slug": "how-does-inflation-work", "title": "What actually causes inflation?", "demand": "how does inflation work",
      "sources": ["BLS Consumer Price Index", "Federal Reserve explainers"]}
-  ]
+  ],
+  "footage": {
+   "why": "Money episodes show money imagery only, never deep-sea footage (her call 9 Nov 2026 for the Almanac's Money lane, the same rule here): real footage, Pixabay/Mixkit under their free licences, licence wording stored and re-checked, the subject's own words in the clip's first tag, no word on screen (research/imagery_stock_video.harvest_money). visuals/footage.money_pool places only this set in a money episode.",
+   "per_subject": 6,
+   "min_seconds": 8.0,
+   "refused": {},
+   "sets": {
+    "hwk-money": [
+     {
+      "subject": "a stock exchange trading floor",
+      "queries": [
+       "stock exchange",
+       "trading floor",
+       "stock market"
+      ],
+      "accept": [
+       "stock exchange",
+       "trading floor",
+       "stock market",
+       "stock trading"
+      ]
+     },
+     {
+      "subject": "Wall Street and the financial district",
+      "queries": [
+       "wall street",
+       "financial district",
+       "new york skyline"
+      ],
+      "accept": [
+       "wall street",
+       "financial district",
+       "skyscraper",
+       "new york",
+       "manhattan"
+      ]
+     },
+     {
+      "subject": "banknotes and counting money",
+      "queries": [
+       "money counting",
+       "dollar bills",
+       "banknotes",
+       "cash"
+      ],
+      "accept": [
+       "money",
+       "dollar",
+       "banknote",
+       "cash",
+       "bill",
+       "currency"
+      ]
+     },
+     {
+      "subject": "gold bars and a bank vault",
+      "queries": [
+       "gold bars",
+       "bank vault",
+       "gold bullion"
+      ],
+      "accept": [
+       "gold bar",
+       "gold",
+       "vault",
+       "bullion"
+      ]
+     },
+     {
+      "subject": "a market chart on a trading screen",
+      "queries": [
+       "stock chart",
+       "trading screen",
+       "stock ticker"
+      ],
+      "accept": [
+       "stock chart",
+       "chart",
+       "trading",
+       "ticker",
+       "stock"
+      ]
+     },
+     {
+      "subject": "coins",
+      "queries": [
+       "coins",
+       "coin stack",
+       "falling coins"
+      ],
+      "accept": [
+       "coin",
+       "coins"
+      ]
+     },
+     {
+      "subject": "a courthouse and the law",
+      "queries": [
+       "courthouse",
+       "court gavel",
+       "justice"
+      ],
+      "accept": [
+       "courthouse",
+       "court",
+       "gavel",
+       "judge",
+       "justice"
+      ]
+     },
+     {
+      "subject": "documents, signatures and paperwork",
+      "queries": [
+       "signing documents",
+       "paperwork",
+       "contract signing"
+      ],
+      "accept": [
+       "document",
+       "paperwork",
+       "contract",
+       "signature",
+       "signing"
+      ]
+     },
+     {
+      "subject": "luxury: a penthouse, a yacht, a private jet",
+      "queries": [
+       "luxury yacht",
+       "private jet",
+       "penthouse"
+      ],
+      "accept": [
+       "yacht",
+       "private jet",
+       "penthouse",
+       "luxury"
+      ]
+     }
+    ]
+   }
+  }
 }
