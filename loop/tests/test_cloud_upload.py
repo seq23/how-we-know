@@ -184,6 +184,7 @@ import r2
 # token, and that is correct behaviour — but it would mask the missing-token
 # case here, so this scenario is run as a machine with no login: a CI runner.
 r2.WRANGLER_LOGINS = ()
+os.environ["R2_VAULT_TOKEN_CMD"] = "exit 1"   # and no Boss OS vault either
 try:
     r2.require(env=os.environ)
     print("NO_STOP")
