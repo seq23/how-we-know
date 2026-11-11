@@ -114,7 +114,7 @@ def read(token: str, now: _dt.datetime, c: dict) -> dict:
     year = _rows(_get(ANALYTICS, token, ids="channel==MINE",
                       startDate=(now - _dt.timedelta(days=365)).strftime("%Y-%m-%d"), endDate=end,
                       metrics="views,estimatedMinutesWatched"))
-    stats = (_get(DATA, token, part="statistics", mine="true").get("items") or [{}])[0].get("statistics", {})
+    stats = (_get(f"{DATA}/channels", token, part="statistics", mine="true").get("items") or [{}])[0].get("statistics", {})
     subs = int(stats["subscriberCount"]) if "subscriberCount" in stats else None
     views = int(stats["viewCount"]) if "viewCount" in stats else None
     firsts = [t for vids in lanes.values() for _, t in vids]
