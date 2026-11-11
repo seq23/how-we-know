@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T10:50:15+00:00",
+  "generated": "2026-11-11T05:03:08+00:00",
   "domain": "any",
   "policy": "Thumbnail and Short-opening stills: public domain or CC0 (Commons, imagery.pd_licence_ok), or Pixabay / Pexels / Mixkit under their free licences (owner ruling 2 Nov 2026), checked by research/food_footage.record_problems with the licence wording stored under licences/. Anything else, CC-BY included, is refused.",
   "rights_fields_required": [
@@ -10,7 +10,7 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 35,
+  "asset_count": 36,
   "subjects_total": 1,
   "subjects_covered": [
     "auto-15-how-do-people-reach-challenger-deep",
@@ -30,6 +30,7 @@
     "auto-how-powder-metallurgy-works",
     "auto-how-to-keep-steel-from-rusting",
     "auto-how-to-tell-if-steel-is-high-carbon",
+    "auto-how-was-bernie-madoff-caught",
     "auto-is-aluminum-stronger-than-steel",
     "auto-is-giant-isopod-edible",
     "auto-what-blobfish-actually-looks-like",
@@ -52,31 +53,7 @@
   "subjects_unillustratable": {},
   "rejected": [
     {
-      "subject": "auto-what-is-mid-ocean-ridge",
-      "title": "File:Iceland's Mid-Atlantic Ridge during snow.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Iceland%27s_Mid-Atlantic_Ridge_during_snow.jpg",
-      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
-    },
-    {
-      "subject": "auto-what-is-mid-ocean-ridge",
-      "title": "File:Mid-ocean ridge cut away view.png",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Mid-ocean_ridge_cut_away_view.png",
-      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
-    },
-    {
-      "subject": "auto-what-is-mid-ocean-ridge",
-      "title": "File:Mid-ocean ridge stand at American Museum of Natural History.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Mid-ocean_ridge_stand_at_American_Museum_of_Natural_History.jpg",
-      "reason": "item page marks the work as copyrighted (cc by 4.0)"
-    },
-    {
-      "subject": "auto-what-is-mid-ocean-ridge",
-      "title": "File:Ridge Push (Mid-ocean Ridge).png",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Ridge_Push_(Mid-ocean_Ridge).png",
-      "reason": "not a photograph (not a JPEG)"
-    },
-    {
-      "subject": "auto-what-is-mid-ocean-ridge",
+      "subject": "auto-how-was-bernie-madoff-caught",
       "title": null,
       "reason": "no candidate passed both gates"
     }
@@ -448,6 +425,24 @@
       "licence_basis": "Pixabay Content License: API re-checked id 2969649 (type photo, not AI) at download"
     },
     {
+      "source": "drawn card",
+      "motif": "rings",
+      "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+      "credit_line": "ILLUSTRATION \u2014 DRAWN BY HOW WE KNOW",
+      "depicts": "drawing",
+      "treatment": "drawn",
+      "sha256": "144ab20b7a7fde8dc7850f2da60c550e4aed6d2aec8c5ad888b9063a83e431cb",
+      "width": 1600,
+      "height": 1600,
+      "item_url": "visuals/drawn_card.py",
+      "subject": "auto-how-was-bernie-madoff-caught",
+      "label": "BERNIE MADOFF CAUGHT",
+      "local_file": "assets/auto__auto-how-was-bernie-madoff-caught__drawn-card.jpg",
+      "title": "Drawn card (rings)",
+      "fetched_at": "2026-11-11T05:03:03+00:00",
+      "subject_basis": "No licence-checked photo of how-was-bernie-madoff-caught's subject was found; a plain drawn schematic, pinned at once (owner rulings 2 Nov 2026)."
+    },
+    {
       "subject": "auto-is-aluminum-stronger-than-steel",
       "label": "ALUMINUM STRONGER STEEL",
       "title": "ALUMINUM AND STAINLESS STEEL FLANGE ASSEMBLY - NARA - 17444079.jpg",
@@ -694,12 +689,12 @@
       "terms_text": "licences/pixabay-api-terms-excerpt.txt",
       "matched_query": "bread rise steak brown",
       "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-      "download_url": "https://pixabay.com/get/gaecdacd83e32df2645693e53ec2aa94f2f48818bbd10585ef9b509c0dca40cfffa732de4b3af5ae407d64664922a098f16334544e719749eab4122557afa7d49_1280.jpg",
+      "download_url": "https://pixabay.com/get/g59a24b672474292d790cf6de8114322f6ee759ad406580a54cacb0f76b2a1bbe408420ac4726caa4d2a57ba790fa5c7947e9c58d22f97e9a2399ef3188c2f29c_1280.jpg",
       "local_file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
       "sha256": "8248a6ae47577b2964506e840746f4819fd34e7e64f3f7fde9dd93ea06dc7c34",
       "width": 1280,
       "height": 853,
-      "fetched_at": "2026-11-10T10:50:15+00:00",
+      "fetched_at": "2026-11-11T05:03:08+00:00",
       "licence_basis": "Pixabay Content License: API re-checked id 1077984 (type photo, not AI) at download"
     },
     {
