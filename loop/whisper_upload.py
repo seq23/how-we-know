@@ -30,6 +30,19 @@ sit in R2 (docs/WHISPER_ALMANAC.md, Storage). How We Know's rules, reused:
     it `processed` with no rejection (the disk-guard rule of
     loop/render_prune.prune_uploaded; the R2 half does not apply - masters
     never go to R2).
+  * THE RIGHT CHANNEL, AND ONE THAT MAY TAKE A LONG VIDEO (11 Nov 2026): the
+    signed-in channel's id must equal config `channel.id`
+    (WHISPER_WRONG_CHANNEL), and a video over 15 minutes goes up only while
+    YouTube reports the channel's longUploadsStatus `allowed`
+    (WHISPER_LONG_UPLOADS_NOT_ALLOWED: verify the channel at
+    youtube.com/verify). Measured 10 Nov: the first episode (1 h 43 min) went
+    up to the unverified channel, read "uploaded", and YouTube then abandoned
+    the processing and removed it.
+  * AN UPLOAD YOUTUBE NO LONGER LISTS IS LOST, never "still processing"
+    (lost): its id is moved to the kit's `lost_uploads`, the render goes up
+    again in the same run (at most MAX_REUPLOADS times), and the run ends on
+    WHISPER_UPLOAD_LOST. A rejected or failed upload is the same stop, not
+    re-sent.
   * NAMED STOPS someone sees: WHISPER_YT_TOKEN_INVALID, UPLOAD_QUOTA and
     FRAME_CHECK_FAILED (and the other red ones) are written to
     loop/state/stops/ (the Sunday digest reads them; the batch pushes them)
@@ -71,7 +84,13 @@ FAILED = ".frame-check-failed"
 REAUTH = (
     "On the Mac, in how-we-know: .venv/bin/python auth/whisper_youtube_auth.py, pick Whisper Almanac.")
 MORNING_CODES = {"WHISPER_YT_TOKEN_INVALID", "UPLOAD_QUOTA", "FRAME_CHECK_FAILED",
-                 "WHISPER_UPLOAD_REFUSED", "WHISPER_UPLOAD_FAILED", "WHISPER_UPLOAD_NOT_CONFIRMED"}
+                 "WHISPER_UPLOAD_REFUSED", "WHISPER_UPLOAD_FAILED", "WHISPER_UPLOAD_NOT_CONFIRMED",
+                 "WHISPER_WRONG_CHANNEL", "WHISPER_LONG_UPLOADS_NOT_ALLOWED", "WHISPER_UPLOAD_LOST"}
+LONG_S = 15 * 60                   # over this YouTube wants a verified channel
+VERIFY = "Signed in to @whisperalmanac, open youtube.com/verify and enter the phone code."
+MAX_REUPLOADS = 2                  # a render YouTube keeps removing is not re-sent for ever
+UPLOAD_FIELDS = ("video_id", "uploaded_at", "privacy", "scheduled_publish_at", "publish_at_ct",
+                 "youtube_confirmed")
 
 
 def dry_run() -> bool:
@@ -261,7 +280,8 @@ def credentials(c: dict) -> dict | None:
 
 
 class YouTube:
-    """The live calls. Tests hand run() a fake with the same five methods."""
+    """The live calls. Tests hand run() a fake with the same five methods
+    (channel, insert, status, thumbnail and the token)."""
 
     def __init__(self, creds: dict):
         import upload as up                                 # noqa: PLC0415
@@ -278,9 +298,14 @@ class YouTube:
         with urllib.request.urlopen(req, timeout=30) as r:
             return json.loads(r.read())
 
-    def handle(self) -> str:
-        items = self._get("channels", part="snippet", mine="true").get("items") or []
-        return (items[0]["snippet"].get("customUrl") or "").lower() if items else ""
+    def channel(self) -> dict:
+        """The signed-in channel: its id, handle and whether YouTube lets it
+        upload a video over 15 minutes (status.longUploadsStatus)."""
+        items = self._get("channels", part="snippet,status", mine="true").get("items") or []
+        if not items:
+            return {"id": "", "handle": "", "long_uploads": None}
+        return {"id": items[0]["id"], "handle": (items[0]["snippet"].get("customUrl") or "").lower(),
+                "long_uploads": (items[0].get("status") or {}).get("longUploadsStatus")}
 
     def insert(self, body: dict, video: Path) -> str:
         try:
@@ -351,24 +376,60 @@ PLAIN = {
                     "goes up on the next night by itself.",
     "FRAME_CHECK_FAILED": "Whisper Almanac: a finished episode failed the picture check, so it was "
                           "not uploaded. It is kept on the Mac, and the next finished episode goes up instead.",
+    "WHISPER_LONG_UPLOADS_NOT_ALLOWED": "Whisper Almanac: YouTube will not keep a video over 15 minutes "
+                                        "until the channel is verified, so nothing was uploaded. " + VERIFY
+                                        + " The episode goes up by itself the next night.",
 }
 
 
 # ------------------------------------------------------------------ the lane
-def prune_confirmed(yt, ks: dict[str, dict], st) -> int:
+def lost(yt, slug: str, k: dict, s: dict | None, now: _dt.datetime, st) -> str:
+    """An upload YouTube no longer lists (removed: an abandoned processing,
+    a deletion) or lists as rejected or failed is LOST, never "still
+    processing". Gone: the id moves to `lost_uploads` and the upload fields
+    are cleared, so the render (or, with no render left, the script) is in
+    line again - at most MAX_REUPLOADS times. Rejected or failed: nothing
+    is re-sent (the same file would be refused again). Returns the line for
+    the WHISPER_UPLOAD_LOST stop."""
+    vid = k["video_id"]
+    if s:
+        return (f"{slug}: YouTube reports {vid} {s.get('uploadStatus')} "
+                f"({s.get('rejectionReason') or s.get('failureReason') or 'no reason given'}); not re-sent")
+    before = k.get("lost_uploads") or []
+    if len(before) >= MAX_REUPLOADS:
+        return (f"{slug}: YouTube no longer lists {vid}, and it removed {len(before)} upload(s) of "
+                f"this episode before; not re-sent")
+    k["lost_uploads"] = before + [{"found_at": stamp(now), **{f: k[f] for f in UPLOAD_FIELDS if f in k}}]
+    for f in UPLOAD_FIELDS:
+        k.pop(f, None)
+    k["uploaded"] = False
+    write_kit(slug, k)
+    again = "its render goes up again" if WL.video_path(slug).exists() else "no render is left, so it is made again"
+    st.work(f"{slug}: YouTube no longer lists {vid} (removed after the upload); {again}")
+    return f"{slug}: YouTube no longer lists {vid} (it was removed after the upload); {again}"
+
+
+def prune_confirmed(yt, ks: dict[str, dict], st, now: _dt.datetime | None = None) -> tuple[int, list[str], int]:
     """Delete the local render and voice wavs of every upload YouTube
-    reports `processed` with no rejection. Returns how many."""
+    reports `processed` with no rejection. Returns (how many were deleted,
+    the lost uploads (lost), how many YouTube is still processing)."""
+    now = now or _dt.datetime.now(_dt.timezone.utc)
     rows = {s: k for s, k in ks.items() if k.get("video_id") and not k.get("pruned")}
     if not rows:
-        return 0
+        return 0, [], 0
     got = yt.status([k["video_id"] for k in rows.values()])
-    n = 0
+    missing = [k["video_id"] for k in rows.values() if k["video_id"] not in got]
+    if missing:                    # asked twice before an upload is called gone
+        got.update(yt.status(missing))
+    n, gone, processing = 0, [], 0
     for slug, k in rows.items():
         s = got.get(k["video_id"])
-        if not s:
-            st.note(f"{slug}: YouTube does not list {k['video_id']}; nothing deleted")
+        if not s or s.get("uploadStatus") in ("rejected", "failed", "deleted") \
+                or s.get("rejectionReason") or s.get("failureReason"):
+            gone.append(lost(yt, slug, k, s, now, st))
             continue
-        if s.get("uploadStatus") != "processed" or s.get("rejectionReason"):
+        if s.get("uploadStatus") != "processed":
+            processing += 1
             st.note(f"{slug}: {k['video_id']} is {s.get('uploadStatus')}; render kept until processed")
             continue
         v = WL.video_path(slug)
@@ -383,7 +444,7 @@ def prune_confirmed(yt, ks: dict[str, dict], st) -> int:
         st.work(f"deleted {slug}'s local render and voice ({freed / 2**30:.2f} GiB): "
                 f"YouTube reports {k['video_id']} processed")
         n += 1
-    return n
+    return n, gone, processing
 
 
 def confirm(yt, vid: str, want: str) -> tuple[dict | None, str]:
@@ -415,9 +476,9 @@ class Seen:
     def __init__(self, st, notify):
         self.st, self.notify = st, notify
 
-    def named_stop(self, code, message, unblock="", **kw):
+    def named_stop(self, code, message, unblock="", plain="", **kw):
         if code in MORNING_CODES:
-            self.st.note(self.notify(PLAIN.get(code) or f"Whisper Almanac: {message[:220]}"))
+            self.st.note(self.notify(plain or PLAIN.get(code) or f"Whisper Almanac: {message[:220]}"))
         self.st.named_stop(code, message, unblock=unblock, **kw)
 
 
@@ -456,18 +517,22 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                 out.named_stop("WHISPER_UPLOAD_FAILED", f"could not reach Google to sign in: {str(e)[:200]}",
                      unblock="Nothing is lost: the next night tries again.")
         try:
-            handle = yt.handle()
+            ch = yt.channel()
         except urllib.error.HTTPError as e:
             out.named_stop("WHISPER_YT_TOKEN_INVALID" if e.code in (401, 403) else "WHISPER_UPLOAD_FAILED",
                  f"YouTube refused the channel read (HTTP {e.code})",
                  unblock=REAUTH)
-        if handle != c["channel"]["handle"]:
-            out.named_stop("WHISPER_YT_TOKEN_INVALID",
-                 f"the token signs in to {handle or 'no channel'}, not {c['channel']['handle']}; nothing uploaded",
+        if ch["id"] != c["channel"]["id"]:
+            out.named_stop("WHISPER_WRONG_CHANNEL",
+                 f"the token signs in to {ch['handle'] or 'no channel'} ({ch['id'] or 'no id'}), not "
+                 f"{c['channel']['handle']} ({c['channel']['id']}); nothing uploaded",
                  unblock=REAUTH)
-        st.note(f"signed in to {handle}")
+        st.note(f"signed in to {ch['handle']} ({ch['id']})")
 
-        pruned = prune_confirmed(yt, ks, st)
+        pruned, gone, processing = prune_confirmed(yt, ks, st, now)
+        if gone:                   # a removed upload's render is in line again
+            ks = kits()
+            todo = candidates(ks)
 
         refused, failed, holds, unavailable = [], [], [], []
         uploaded = 0
@@ -512,6 +577,14 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                 st.note(f"HOLD {slug}: {days:.1f} days of {kind} already wait on YouTube "
                         f"(the supply gate: under {ucfg(c)['max_days_waiting']}); the render waits")
                 continue
+            if float(k.get("length_s") or 0) > LONG_S and ch.get("long_uploads") != "allowed":
+                out.named_stop("WHISPER_LONG_UPLOADS_NOT_ALLOWED",
+                     f"{slug} runs {float(k['length_s']) / 60:.0f} minutes and YouTube reports the channel's "
+                     f"longUploadsStatus as {ch.get('long_uploads') or 'not given'}, not allowed: a video over "
+                     f"15 minutes would be removed after the upload, so nothing was sent"
+                     + (f". Already lost: {'; '.join(gone)}" if gone else ""),
+                     detail={"slug": slug, "long_uploads": ch.get("long_uploads"), "lost": gone},
+                     unblock=VERIFY + " The render is kept and goes up the next night.")
             if not afford():
                 out.named_stop("UPLOAD_QUOTA", f"no quota left today for {slug} ({UNITS} units). {quota_line()}",
                      unblock="Nothing to do: the allowance resets at midnight Pacific and the next "
@@ -558,6 +631,27 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
             uploaded += 1
             st.work(f"YouTube confirms {vid}: {s.get('uploadStatus')}, private until {want}")
 
+        if gone:
+            again = [f"{k['title']} (public {k.get('publish_at_ct') or 'scheduled'})" for k in kits().values()
+                     if k.get("lost_uploads") and k.get("video_id")
+                     and k["video_id"] not in {x.get("video_id") for x in k["lost_uploads"]}
+                     and not any(k["video_id"] in g for g in gone)]
+        if gone and len(again) == len(gone):
+            # every lost upload went up again this run: a morning line, not a problem
+            st.note(notify(f"Whisper Almanac: YouTube had removed {len(gone)} upload(s); uploaded again: "
+                           f"{'; '.join(again)}."))
+            gone = []
+        if gone:
+            out.named_stop(
+                 "WHISPER_UPLOAD_LOST",
+                 f"{len(gone)} upload(s) are no longer on YouTube as uploaded: {'; '.join(gone)}"
+                 f"{f'. {uploaded} episode(s) uploaded and scheduled this run' if uploaded else ''}",
+                 plain=f"Whisper Almanac: YouTube no longer has {len(gone)} uploaded episode(s). "
+                       + (f"Uploaded again: {'; '.join(again)}." if again else
+                          "Not uploaded again yet: the Problems list names why."),
+                 detail={"lost": gone, "uploaded_this_run": uploaded},
+                 unblock="Read the line: a removed upload is sent again by itself (twice at most); a "
+                         "rejected one names YouTube's reason - open it in YouTube Studio.")
         if failed:
             out.named_stop("FRAME_CHECK_FAILED",
                  f"{len(failed)} finished episode(s) failed the final frame check and were not "
@@ -581,10 +675,11 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                               f"no free vision model answered the frame check for {', '.join(unavailable)}; "
                               f"nothing uploaded unchecked",
                               unblock="Nothing to do: the next night checks it again.")
-            st.named_stop("WHISPER_AWAITING_PROCESSING",
-                          f"{len(pending)} upload(s) are on YouTube and still processing; their local "
-                          f"renders are kept until YouTube reports them processed",
-                          unblock="Nothing to do: the next night deletes them once processed.")
+            if processing:
+                st.named_stop("WHISPER_AWAITING_PROCESSING",
+                              f"{processing} upload(s) are on YouTube and still processing; their local "
+                              f"renders are kept until YouTube reports them processed",
+                              unblock="Nothing to do: the next night deletes them once processed.")
         print(f"OUTPUT {uploaded} Whisper Almanac episode(s) uploaded and scheduled")
     return 0
 
