@@ -72,8 +72,10 @@ def whisper_supply(now: _dt.datetime | None = None) -> dict:
         if WL.video_path(slug).exists() or (n and done == n):
             made += 1
     per, n = G.rate(times, now)
-    if not n:
-        per = float(WL.cfg()["split"]["planned_uploads_per_week"]) / 7
+    # A new channel's pace is its PLAN until real uploads beat it: one upload in
+    # 28 days read as 1/28 a day made one waiting video "28 days of supply" and
+    # held the Almanac at 1 a month (11 Nov 2026, plan is 5 a week).
+    per = max(per, float(WL.cfg()["split"]["planned_uploads_per_week"]) / 7)
     return G.verdict("whisper", made, per, n, now)
 
 
