@@ -9,6 +9,8 @@
   "channel": {
     "name": "Whisper Almanac",
     "handle": "@whisperalmanac",
+    "id": "UCf8FJ4M34oYG2Pg8-QGVbtg",
+    "id_why": "The channel's public id (channels.list forHandle=@whisperalmanac, read 11 Nov 2026). loop/whisper_upload.py uploads only when the signed-in channel's id equals it (NAMED STOP WHISPER_WRONG_CHANNEL).",
     "ai_voice_line": "The voice is AI: a clone of the creator's own whisper, made with Chatterbox. The facts come from checked public sources.",
     "altered_content": true,
     "made_for_kids": false,

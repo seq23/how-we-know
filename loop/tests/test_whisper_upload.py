@@ -63,13 +63,16 @@ def check(name, ok, why=""):
 
 
 class FakeYT:
-    def __init__(self, handle="@whisperalmanac", upload_status="uploaded", insert_error=None):
+    def __init__(self, handle="@whisperalmanac", upload_status="uploaded", insert_error=None,
+                 channel_id=None, long_uploads="allowed", gone=()):
         self._handle, self.upload_status, self.insert_error = handle, upload_status, insert_error
+        self.channel_id = channel_id or (C["channel"]["id"] if handle == "@whisperalmanac" else "UCother")
+        self.long_uploads, self.gone = long_uploads, set(gone)
         self.inserted: list[dict] = []
         self.published: dict[str, str] = {}
 
-    def handle(self):
-        return self._handle
+    def channel(self):
+        return {"id": self.channel_id, "handle": self._handle, "long_uploads": self.long_uploads}
 
     def insert(self, body, video):
         if self.insert_error:
@@ -83,7 +86,7 @@ class FakeYT:
     def status(self, ids):
         return {i: {"uploadStatus": self.upload_status, "privacyStatus": "private",
                     "publishAt": self.published.get(i, "2026-12-01T02:00:00Z"),
-                    "containsSyntheticMedia": True} for i in ids}
+                    "containsSyntheticMedia": True} for i in ids if i not in self.gone}
 
     def thumbnail(self, vid, png):
         pass
@@ -199,8 +202,8 @@ try:
     yt = FakeYT(handle="@howweknowdeep")
     rc, rec, lines = run(yt)
     check("e. a token for another channel uploads nothing", yt.inserted == [])
-    check("e. it is WHISPER_YT_TOKEN_INVALID, with a morning line",
-          rec.get("code") == "WHISPER_YT_TOKEN_INVALID" and len(lines) == 1, (rec, lines))
+    check("e. it is WHISPER_WRONG_CHANNEL, with a morning line",
+          rec.get("code") == "WHISPER_WRONG_CHANNEL" and len(lines) == 1, (rec, lines))
     sandbox("e2")
     episode("ep-e2")
     rc, rec, lines = run(None)
@@ -230,6 +233,36 @@ try:
     rc, rec, lines = run(yt)
     check("g. a kit without the altered-content box is refused, never sent",
           yt.inserted == [] and rec.get("code") == "WHISPER_UPLOAD_REFUSED", (yt.inserted, rec))
+    # h. an unverified channel (11 Nov 2026: a 1 h 43 min upload was abandoned and removed)
+    sandbox("h")
+    episode("ep-h")
+    yt = FakeYT(long_uploads="eligible")
+    rc, rec, lines = run(yt)
+    check("h. a long video is not sent while longUploadsStatus is not allowed",
+          yt.inserted == [] and rec.get("code") == "WHISPER_LONG_UPLOADS_NOT_ALLOWED" and len(lines) == 1,
+          (yt.inserted, rec, lines))
+
+    # i. an upload YouTube no longer lists is lost, never "still processing": sent again
+    sandbox("i")
+    episode("ep-i", uploaded=True, video_id="gone1", uploaded_at="2026-11-06T10:00:00Z",
+            privacy="private", scheduled_publish_at="2026-11-11T02:00:00Z")
+    yt = FakeYT(gone={"gone1"})
+    rc, rec, lines = run(yt)
+    k = WU.read_kit("ep-i")
+    check("i. the removed upload's render is sent again in the same run",
+          len(yt.inserted) == 1 and k.get("video_id") == "vid1", (yt.inserted, k))
+    check("i. the old id is kept under lost_uploads",
+          [x.get("video_id") for x in k.get("lost_uploads", [])] == ["gone1"], k.get("lost_uploads"))
+    check("i. a removed upload sent again is one morning line, never AWAITING_PROCESSING or a red stop",
+          rec.get("code") != "WHISPER_AWAITING_PROCESSING" and rc in (0, None)
+          and any("uploaded again" in x for x in lines), (rc, rec, lines))
+    sandbox("i2")
+    episode("ep-i2", uploaded=True, video_id="gone2", uploaded_at="2026-11-06T10:00:00Z",
+            lost_uploads=[{"video_id": "a"}, {"video_id": "b"}])
+    yt = FakeYT(gone={"gone2"})
+    rc, rec, lines = run(yt)
+    check("i. a third removal is not re-sent and is WHISPER_UPLOAD_LOST",
+          yt.inserted == [] and rec.get("code") == "WHISPER_UPLOAD_LOST", (yt.inserted, rec))
 finally:
     shutil.rmtree(TMP, ignore_errors=True)
 

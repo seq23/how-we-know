@@ -26,7 +26,9 @@ import digest  # noqa: E402
 CREDENTIAL = re.compile(r"KEY|OAUTH|TOKEN|CREDENTIAL|SCOPE|CHANNEL|LOCKED|ARMED|ACCOUNT")
 # Her hardware, not a key: the Mac that runs the night batch must be awake.
 # And her own voice (6 Nov 2026): the Whisper Almanac sample only she can record.
-HER_HARDWARE = {"DELEGATED_HARVEST_STALE", "WHISPER_SAMPLE_MISSING", "WHISPER_SAMPLE_UNUSABLE"}
+# And her phone (11 Nov 2026): only she can take the youtube.com/verify code.
+HER_HARDWARE = {"DELEGATED_HARVEST_STALE", "WHISPER_SAMPLE_MISSING", "WHISPER_SAMPLE_UNUSABLE",
+                "WHISPER_LONG_UPLOADS_NOT_ALLOWED"}
 
 
 def rc_of(code: str, message: str, unblock: str = "") -> int:
