@@ -354,18 +354,6 @@
     "gemini/gemini-3.5-flash-lite": [
       {
         "lane": "describe",
-        "latency_s": 0.7,
-        "outcome": "answered",
-        "ts": "2026-11-10T00:47:46Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 15.3,
-        "outcome": "answered",
-        "ts": "2026-11-10T00:48:23Z"
-      },
-      {
-        "lane": "describe",
         "latency_s": 1.1,
         "outcome": "answered",
         "ts": "2026-11-10T00:48:48Z"
@@ -471,6 +459,18 @@
         "latency_s": 7.0,
         "outcome": "answered",
         "ts": "2026-11-11T00:51:36Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 0.9,
+        "outcome": "answered",
+        "ts": "2026-11-11T14:39:44Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 1.6,
+        "outcome": "answered",
+        "ts": "2026-11-11T14:39:46Z"
       }
     ],
     "gemini/gemini-3.6-flash": [
