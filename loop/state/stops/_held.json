@@ -43,6 +43,17 @@
     "reports": 1,
     "stage": "mon-draft"
   },
+  "money-author::DRAFT_FAILED_VALIDATION": {
+    "code": "DRAFT_FAILED_VALIDATION",
+    "first_reported_at": "2026-11-12T20:05:36+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-12T20:05:36+00:00",
+    "last_seen_at": "2026-11-12T20:05:36+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "money-author"
+  },
   "whisper-upload::FRAME_CHECK_FAILED": {
     "code": "FRAME_CHECK_FAILED",
     "first_reported_at": "2026-11-08T14:44:03+00:00",
