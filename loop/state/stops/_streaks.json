@@ -19,9 +19,9 @@
   },
   "pov-repair": {
     "code": "POV_ALL_TRACED",
-    "count": 12,
+    "count": 13,
     "first_at": "2026-10-21T04:00:09+00:00",
-    "last_at": "2026-11-11T05:00:24+00:00"
+    "last_at": "2026-11-12T05:00:20+00:00"
   },
   "food-author": {
     "code": "FOOD_EPISODE_IN_FLIGHT",
@@ -54,10 +54,10 @@
     "last_at": "2026-11-06T14:06:55+00:00"
   },
   "whisper-upload": {
-    "code": "WHISPER_AWAITING_PROCESSING",
+    "code": "FRAME_CHECK_FAILED",
     "count": 1,
-    "first_at": "2026-11-11T05:00:25+00:00",
-    "last_at": "2026-11-11T05:00:25+00:00"
+    "first_at": "2026-11-12T07:40:11+00:00",
+    "last_at": "2026-11-12T07:40:11+00:00"
   },
   "captions-build": {
     "code": "CAPTIONS_UNBUILDABLE",
@@ -94,12 +94,6 @@
     "count": 3,
     "first_at": "2026-11-10T00:49:59+00:00",
     "last_at": "2026-11-12T00:53:46+00:00"
-  },
-  "whisper-scorecard": {
-    "code": "WHISPER_ANALYTICS_NOT_READ",
-    "count": 2,
-    "first_at": "2026-11-10T10:47:12+00:00",
-    "last_at": "2026-11-11T05:00:26+00:00"
   },
   "shorts-master": {
     "code": "SHORT_MASTER_NO_FOOTAGE",

@@ -1,12 +1,58 @@
 {
   "_why": "Whisper Almanac's numbers for the Boss OS scorecard row whisper-almanac-youtube (her ruling 6 Nov 2026: count subscribers per 1,000 views; day-30, day-60 and day-90 checks from the money case). Every field is null until the first upload: the row reads 'Too early until the first upload', never a made-up zero. Written by loop/whisper_scorecard.py (the nightly batch, after the upload step) from the @whisperalmanac grant; per-lane numbers (history, neville, money, rotating) over the last 30 days feed the weekly mix (loop/whisper_lane.weekly_mix), 9 Nov 2026.",
-  "first_upload_at": null,
-  "views": null,
-  "subscribers": null,
-  "subs_per_1000_views": null,
   "median_views_first_14_days_long": null,
   "median_views_first_28_days_long": null,
-  "at": null,
-  "watch_hours_365d": null,
-  "lanes": {}
+  "first_upload_at": null,
+  "views": 0,
+  "subscribers": 1,
+  "subs_per_1000_views": null,
+  "watch_hours_365d": 0.0,
+  "lanes": {
+    "food": {
+      "videos_30d": 0,
+      "views_30d": null,
+      "watch_hours_30d": null,
+      "subscribers_30d": null,
+      "watch_hours_per_video": null,
+      "first_public": null,
+      "check_30d_due": null
+    },
+    "ocean": {
+      "videos_30d": 0,
+      "views_30d": null,
+      "watch_hours_30d": null,
+      "subscribers_30d": null,
+      "watch_hours_per_video": null,
+      "first_public": null,
+      "check_30d_due": null
+    },
+    "neville": {
+      "videos_30d": 0,
+      "views_30d": null,
+      "watch_hours_30d": null,
+      "subscribers_30d": null,
+      "watch_hours_per_video": null,
+      "first_public": null,
+      "check_30d_due": null
+    },
+    "money": {
+      "videos_30d": 0,
+      "views_30d": null,
+      "watch_hours_30d": null,
+      "subscribers_30d": null,
+      "watch_hours_per_video": null,
+      "first_public": null,
+      "check_30d_due": null
+    },
+    "rotating": {
+      "videos_30d": 0,
+      "views_30d": null,
+      "watch_hours_30d": null,
+      "subscribers_30d": null,
+      "watch_hours_per_video": null,
+      "first_public": null,
+      "check_30d_due": null
+    }
+  },
+  "at": "2026-11-12T07:40:11Z"
 }
