@@ -1,7 +1,7 @@
 {
   "stage": "captions-build",
   "week": "2026-W46",
-  "at": "2026-11-11T05:02:45+00:00",
+  "at": "2026-11-12T07:44:49+00:00",
   "code": "CAPTIONS_UNBUILDABLE",
   "message": "20 queued episode(s) have no caption track and no measured narration timing to build one from: how-powder-metallurgy-works, how-strong-is-3d-printed-metal, how-to-keep-steel-from-rusting, how-to-tell-if-steel-is-hardened, how-to-tell-if-steel-is-high-carbon, how-was-bernie-madoff-caught, is-aluminum-stronger-than-steel, is-damascus-steel-stronger, is-diamond-stronger-than-metal, is-giant-isopod-edible, is-titanium-stronger-than-steel, what-blobfish-actually-looks-like, what-does-a-goblin-shark-look-like, what-does-a-greenland-shark-look-like, what-does-a-sea-pig-look-like, what-does-a-vampire-squid-look-like, what-is-mid-ocean-ridge, where-does-chemosynthesis-occur, why-is-glass-clear, why-is-glass-see-through",
   "detail": {
@@ -91,7 +91,7 @@
   "unblock": "These episodes have never been narrated, or their audio/<slug>/beats.json was never committed. Run bin/batch-session.sh on the Mac: it narrates, records the measured beat durations into beats.json and commits them, after which this lane builds the track by itself.",
   "disposition": "needs_human",
   "disposition_why": "'CAPTIONS_UNBUILDABLE' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'CAPTIONS_UNBUILDABLE' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
-  "consecutive": 3,
+  "consecutive": 4,
   "held_items": [],
   "exit_code": 3,
   "work_done_before_stop": [],
