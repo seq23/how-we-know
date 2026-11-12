@@ -1994,3 +1994,19 @@ record, calendar and cloud-upload proofs remain active.
   and any mailto outside email_off; hard-fails on zero pages read. Negative proofs: the bare
   creature names and the unwrapped mailto each fail it; restored, green.
 - The remaining lever is page quality and time; the next o1 brief re-measures the 28-day line.
+
+## 2026-11-12 — resume the unlanded site-audit repair
+
+- Re-read Search Console with the audit service account: property is available; the
+  22–23 September cliff remains 61 to 6 impressions, average position 23.66 to 59.33.
+- Fresh URL Inspection: /zones/abyss/, /zones/hadal/ and /zones/midnight/ are
+  submitted and indexed, fetch successfully, allow indexing and agree on canonical.
+  /creatures/dumbo-octopus/ is still the intentional redirect to its question page.
+- Manual actions cannot be read through the Search Console API; none is claimed
+  absent here. The dated ranking cliff is confirmed; its algorithmic cause remains
+  an inference, not a reproduced repository defect. No content expansion is justified.
+- Fresh live crawl: 45/45 sitemap pages, one email-protection target; nine outbound
+  robots refusals are not dead-link evidence. The original source repairs in this
+  branch remain necessary and were reviewed rather than duplicated.
+- Revalidated typecheck, generation, all structural validators, Vite prerender,
+  built HTML, built entity graph and legal policy. PR #368 remains the runner's lane.
