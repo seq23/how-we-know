@@ -107,10 +107,21 @@ FOOD_SIGNALS = [
 # first domain, deep sea), an undeclared domain raises, and
 # visuals/plan_domain.py refuses any plan that still carries another
 # domain's graphics (assemble.py, the batch and validator V77).
+# MONEY (2026-11-10, the owner's Money lane). Its device is the record's own
+# order of events, so only the domain-agnostic evidence cards: a dated
+# timeline, a comparison, a held figure (dollars, percent), and the stages of
+# how a scheme or a failure worked. None of the ocean's or the kitchen's.
+MONEY_SIGNALS = [
+    ("timeline",        r"\b(?:1[5-9]\d\d|20[0-2]\d)\b.*\b(?:1[5-9]\d\d|20[0-2]\d)\b|\bhistory\b"),
+    ("comparison",      r"\bcompared? (?:to|with)\b|\bversus\b|\btimes (?:the|as)\b"),
+    ("stat_card",       rf"\b{NUM}\s*(?:percent|%|times|billion|million|dollars?)"),
+]
+
 _SIGNALS_BY_DOMAIN = {
     "deep-sea-ocean-science": (DEEP_SEA_SIGNALS, "depth_descent"),
     "materials-and-manufacturing": (MATERIALS_SIGNALS, "thermal_ascent"),
     "food-science": (FOOD_SIGNALS, "thermal_ascent"),
+    "money-and-business": (MONEY_SIGNALS, "timeline"),
 }
 DEFAULT_DOMAIN = "deep-sea-ocean-science"
 _DOMAIN_LINE = re.compile(r"^\*\*Domain:\*\*\s*([a-z0-9-]+)", re.M)

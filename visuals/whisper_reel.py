@@ -77,6 +77,9 @@ def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     subject crowds the screen; any other source is a How We Know episode's own
     footage (footage.episode_pool)."""
     import footage as F                                    # noqa: PLC0415
+    part = food_part(source)
+    if part:
+        return food_pool(part)
     if not source.startswith("calm:"):
         # '<slug>#<Part>' is one part of a How We Know script: its footage
         return F.episode_pool(source.split("#", 1)[0], assets)
@@ -100,14 +103,64 @@ def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     return out
 
 
+FOOD_SCRIPTS = ROOT / "scripts" / "food"
+
+
+def food_part(source: str) -> str | None:
+    """'<food script slug>#<Part>' -> that part's food segment ('bread'); else None.
+    Her week (9 Nov 2026): the food-history sleep video is How We Know's
+    fact-checked food script, its Bread, Steak and Chocolate parts as segments."""
+    if "#" not in source:
+        return None
+    slug, part = source.split("#", 1)
+    return part.strip().lower() if (FOOD_SCRIPTS / f"{slug}.md").exists() else None
+
+
+def _ff():
+    sys.path.insert(0, str(ROOT / "research"))
+    import food_footage as FF                              # noqa: PLC0415
+    return FF
+
+
+def food_asset(rec: dict) -> dict:
+    """A channel/imagery/food_clips.json record in the shape visuals/footage.py
+    places and renders: its clean windows (reviewed ranges, else the clip less
+    its black spans) and, for a stock library, the licence wording committed
+    under channel/imagery/licences/ that footage.verify re-checks."""
+    FF = _ff()
+    a = {**rec, "seconds": float(rec.get("duration_s") or 0),
+         "clean_windows": FF.clean_windows(rec),
+         "post_id": f"{rec.get('source')}:{rec.get('source_id')}"}
+    if rec.get("source") in ("pixabay", "mixkit", "pexels") and rec.get("licence_text"):
+        a["commercial_use_permitted"] = True
+        a["licence_wording"] = (ROOT / "channel" / "imagery" / rec["licence_text"]).read_text()
+    return a
+
+
+def food_pool(part: str, index: list[dict] | None = None, present=None) -> list[dict]:
+    """A food part's clips: its own food only (never another part's), clean
+    rights (food_footage.record_problems), long enough to hold a whole shot
+    (a shorter clip is never placed, so it is never counted), and on this Mac
+    (a clip this checkout does not hold is fetched first by
+    food_footage.fetch_long_missing, never counted on faith)."""
+    FF = _ff()
+    index = FF.load().get("index") or [] if index is None else index
+    present = present or (lambda r: (FF.IMAGERY / r["local_file"]).exists())
+    return [food_asset(r) for r in index
+            if r.get("segment") == part and not r.get("excluded")
+            and not FF.record_problems(r) and FF.holds(r, SHOT_S + 1.0) and present(r)]
+
+
 def min_clips(shot_s: float = SHOT_S) -> int:
     """Clips a part needs so no clip returns inside REPEAT_GAP_S."""
     return int(REPEAT_GAP_S // shot_s) + 2
 
 
-def pictureable(slug: str, assets: list[dict]) -> bool:
+def pictureable(source: str, assets: list[dict]) -> bool:
     import footage as F                                    # noqa: PLC0415
-    return len(F.episode_pool(slug, assets)) >= min_clips()
+    if food_part(source):
+        return len(food_pool(food_part(source))) >= min_clips()
+    return len(F.episode_pool(source.split("#", 1)[0], assets)) >= min_clips()
 
 
 def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=None,

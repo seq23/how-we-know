@@ -69,13 +69,28 @@
     "thumbnail-c.png"
   ],
   "thumbnail_problems": [],
-  "video_id": "Q_k2_ALK5uQ",
-  "uploaded_at": "2026-11-10T10:29:18Z",
+  "lost_uploads": [
+    {
+      "found_at": "2026-11-12T07:20:30Z",
+      "video_id": "Q_k2_ALK5uQ",
+      "uploaded_at": "2026-11-10T10:29:18Z",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-11-11T02:00:00Z",
+      "publish_at_ct": "Tue 10 Nov 2026 20:00 CT",
+      "youtube_confirmed": {
+        "at": "2026-11-10T10:41:01Z",
+        "upload_status": "uploaded",
+        "processing": "processing"
+      }
+    }
+  ],
+  "video_id": "eziIC0NHL1g",
+  "uploaded_at": "2026-11-12T07:20:30Z",
   "privacy": "private",
-  "scheduled_publish_at": "2026-11-11T02:00:00Z",
-  "publish_at_ct": "Tue 10 Nov 2026 20:00 CT",
+  "scheduled_publish_at": "2026-11-14T02:00:00Z",
+  "publish_at_ct": "Fri 13 Nov 2026 20:00 CT",
   "youtube_confirmed": {
-    "at": "2026-11-10T10:41:01Z",
+    "at": "2026-11-12T07:22:25Z",
     "upload_status": "uploaded",
     "processing": "processing"
   }

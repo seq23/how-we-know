@@ -594,6 +594,11 @@ harvest_footage() {
   echo "  $pool_line"
   nice -n 10 $PY research/wide_footage.py --pending 2>&1 | grep -E "CLIP|wide footage|Traceback" | tail -20 \
     || echo "  wide footage step exited $? - the episode renders from what is on record"
+  # WHISPER FOOD REEL (her week, 9 Nov 2026): each food part needs 12 clips
+  # that hold an 18 s shot; a part already full searches nothing. A short part
+  # is the named stop WHISPER_FOOD_CLIPS_SHORT, re-tried here every night.
+  nice -n 10 $PY research/food_footage.py --whisper-long 2>&1 | grep -E "whisper-long|NAMED STOP|OUTPUT|Traceback" | tail -3 \
+    || echo "  whisper food clips step exited $? - the reel waits for its parts"
   nice -n 10 $PY loop/footage_lane.py --host mac-batch
   local rc=$?
   case $rc in
@@ -786,12 +791,25 @@ if pgrep -f "voice/narrate_all.py" >/dev/null 2>&1; then
   pending_audio=""
 fi
 
+# WHAT A HOW WE KNOW NIGHT NARRATES (her call 9 Nov 2026, the Money test):
+# Money scripts first; deep sea only when no Money script waits; food and
+# materials make no new long-forms (loop/night_split.py longform_slugs).
+LANE_ONLY=""
+if [ -n "${pending_audio// }" ]; then
+  lane_out=$($PY loop/night_split.py longform 2>&1) || lane_out="none"
+  LANE_ONLY=$(printf '%s\n' "$lane_out" | head -1)
+  printf '%s\n' "$lane_out" | sed -n '2,3p'
+  if [ -z "$LANE_ONLY" ] || [ "$LANE_ONLY" = "none" ]; then
+    echo "  note: nothing for the Money test or deep sea to voice tonight; narration rests"
+    pending_audio=""; LANE_ONLY=""
+  fi
+fi
 if [ -n "${pending_audio// }" ]; then
   echo; echo "--- narration (~1.2 h per episode) ---"
   if [ -n "$OVERLAP" ]; then
     echo "  rendering overlaps narration: each episode is assembled as soon as"
     echo "  its audio is COMPLETE, while the voice model moves to the next."
-    $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" &
+    $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" --only $LANE_ONLY &
     NARRATE_PID=$!
     while kill -0 "$NARRATE_PID" 2>/dev/null; do
       for slug in $(renderable); do
@@ -803,13 +821,19 @@ if [ -n "${pending_audio// }" ]; then
     done
     wait "$NARRATE_PID" || echo "  narration exited $? - rendering covers what completed"
   else
-    $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" || echo "  narration exited $? - rendering covers what completed"
+    $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" --only $LANE_ONLY || echo "  narration exited $? - rendering covers what completed"
   fi
 fi
 }
 
 phase_render() {
 echo; echo "--- render (final sweep) ---"
+  # THE MONEY SET (her call 9 Nov 2026): the Money lane's own footage, topped
+  # up nightly BEFORE the renders so a Money render never waits for the weekly
+  # harvest; a
+  # subject already holding its clips searches nothing.
+  nice -n 10 $PY research/imagery_stock_video.py --money 2>&1 | grep -E "money footage|calm footage|NAMED STOP|Traceback" | tail -3 \
+    || echo "  money footage step exited $? - Money renders from what is on record"
 for slug in $(renderable); do
   render_one "$slug" || { echo "  --max-episodes $MAX_EPISODES reached; stopping"; break; }
 done

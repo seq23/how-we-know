@@ -1,0 +1,269 @@
+{
+  "generator": "loop/money_author.py --queue (config/money_topics.json)",
+  "domain": "money-and-business",
+  "why": "How We Know's Money lane, the 12-video test (owner 8-9 Nov 2026). Rows come from config/money_topics.json in rank order; loop/money_author.py writes each script; the Mac's How We Know nights narrate Money first.",
+  "queue": [
+    {
+      "slug": "how-was-bernie-madoff-caught",
+      "domain": "money-and-business",
+      "title": "How was Bernie Madoff actually caught?",
+      "query": "how was bernie madoff actually caught",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 1 of 12, picked 2026-11-09 by YouTube autocomplete demand (how did bernie madoff get caught; what did bernie madoff do) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "how did bernie madoff get caught; what did bernie madoff do",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "SEC Office of Inspector General, 'Investigation of Failure of the SEC to Uncover Bernard Madoff's Ponzi Scheme' (2009)",
+        "United States v. Madoff, S.D.N.Y. 09-cr-213: plea allocution and sentencing record",
+        "DOJ press releases (2009)"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "why-did-ftx-collapse",
+      "domain": "money-and-business",
+      "title": "Why did FTX collapse?",
+      "query": "why did ftx collapse",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 2 of 12, picked 2026-11-09 by YouTube autocomplete demand (why did ftx collapse) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "why did ftx collapse",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "SEC v. Bankman-Fried complaint (Dec 2022)",
+        "CFTC complaint (Dec 2022)",
+        "First-day declaration of John J. Ray III, In re FTX Trading, D. Del. 22-11068",
+        "United States v. Bankman-Fried, S.D.N.Y. 22-cr-673: verdict and sentencing"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "how-did-theranos-work",
+      "domain": "money-and-business",
+      "title": "How did Theranos work, and why did it fail?",
+      "query": "how did theranos work and why did it fail",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 3 of 12, picked 2026-11-09 by YouTube autocomplete demand (how did theranos work; why did theranos fail; what happened to theranos) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "how did theranos work; why did theranos fail; what happened to theranos",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "SEC v. Holmes and Theranos complaint (Mar 2018)",
+        "CMS inspection report on the Newark lab (2016)",
+        "United States v. Holmes, N.D. Cal. 18-cr-258: verdict"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "how-does-the-federal-reserve-create-money",
+      "domain": "money-and-business",
+      "title": "How does the Federal Reserve create money?",
+      "query": "how does the federal reserve create money",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 4 of 12, picked 2026-11-09 by YouTube autocomplete demand (how does the federal reserve create money; how the federal reserve creates money; how does the federal reserve work) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "how does the federal reserve create money; how the federal reserve creates money; how does the federal reserve work",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Federal Reserve H.4.1 balance sheet release",
+        "Federal Reserve Board explainers on open market operations",
+        "FRED series WALCL and M2SL (St. Louis Fed)"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "how-does-the-fed-control-interest-rates",
+      "domain": "money-and-business",
+      "title": "How does the Federal Reserve control interest rates?",
+      "query": "how does the federal reserve control interest rates",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 5 of 12, picked 2026-11-09 by YouTube autocomplete demand (how does the federal reserve control interest rates) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "how does the federal reserve control interest rates",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "FOMC statements and implementation notes",
+        "Federal Reserve Board: interest on reserve balances",
+        "FRED series FEDFUNDS"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "what-caused-the-2008-financial-crisis",
+      "domain": "money-and-business",
+      "title": "What caused the 2008 financial crisis?",
+      "query": "what caused the  financial crisis",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 6 of 12, picked 2026-11-09 by YouTube autocomplete demand (what caused the 2008 financial crisis; what caused the 2008 recession; what caused the 2008 crash) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "what caused the 2008 financial crisis; what caused the 2008 recession; what caused the 2008 crash",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Financial Crisis Inquiry Commission, Final Report (2011)",
+        "FRED housing and credit series"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "what-caused-the-1929-stock-market-crash",
+      "domain": "money-and-business",
+      "title": "What caused the 1929 stock market crash?",
+      "query": "what caused the  stock market crash",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 7 of 12, picked 2026-11-09 by YouTube autocomplete demand (what caused the 1929 stock market crash; what caused the great depression 1929; why did the 1929 crash happen) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "what caused the 1929 stock market crash; what caused the great depression 1929; why did the 1929 crash happen",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Senate Banking and Currency Committee, Stock Exchange Practices (Pecora) report (1934)",
+        "Federal Reserve historical data"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "how-did-enron-fail",
+      "domain": "money-and-business",
+      "title": "How did Enron hide its losses?",
+      "query": "how did enron hide its losses",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 8 of 12, picked 2026-11-09 by YouTube autocomplete demand (how did enron fail; what happened to enron; how enron scandal happened) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "how did enron fail; what happened to enron; how enron scandal happened",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Powers Report, Special Investigative Committee of Enron's board (2002)",
+        "SEC complaints against Enron executives",
+        "United States v. Skilling, S.D. Tex.: verdict"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "how-did-lehman-brothers-collapse",
+      "domain": "money-and-business",
+      "title": "How did Lehman Brothers collapse?",
+      "query": "how did lehman brothers collapse",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 9 of 12, picked 2026-11-09 by YouTube autocomplete demand (how did lehman brothers collapse; what did lehman brothers do) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "how did lehman brothers collapse; what did lehman brothers do",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Report of Examiner Anton R. Valukas, In re Lehman Brothers Holdings, S.D.N.Y. Bankr. (2010)",
+        "FCIC Final Report (2011)"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "why-did-silicon-valley-bank-fail",
+      "domain": "money-and-business",
+      "title": "Why did Silicon Valley Bank fail?",
+      "query": "why did silicon valley bank fail",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 10 of 12, picked 2026-11-09 by YouTube autocomplete demand (why did silicon valley bank fail) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "why did silicon valley bank fail",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Federal Reserve, Review of the Supervision and Regulation of Silicon Valley Bank (Apr 2023)",
+        "FDIC, Options for Deposit Insurance Reform and SVB failure materials (2023)",
+        "California DFPI closure order (Mar 2023)"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "how-did-charles-ponzi-scheme-work",
+      "domain": "money-and-business",
+      "title": "How did Charles Ponzi's scheme actually work?",
+      "query": "how did charles ponzis scheme actually work",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 11 of 12, picked 2026-11-09 by YouTube autocomplete demand (charles ponzi scheme explained; who is charles ponzi) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "charles ponzi scheme explained; who is charles ponzi",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "Cunningham v. Brown, 265 U.S. 1 (1924)",
+        "Massachusetts and federal court records (1920)",
+        "Library of Congress newspaper archive (Chronicling America)"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    },
+    {
+      "slug": "what-was-the-gamestop-short-squeeze",
+      "domain": "money-and-business",
+      "title": "What really happened in the GameStop short squeeze?",
+      "query": "what really happened in the gamestop short squeeze",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "Money test topic 12 of 12, picked 2026-11-09 by YouTube autocomplete demand (gamestop short squeeze explained) and public-record evidence (config/money_topics.json); owner decision 8-9 Nov 2026"
+      },
+      "demand": {
+        "autocomplete": "gamestop short squeeze explained",
+        "caveat": "autocomplete presence, NOT search volume"
+      },
+      "sources_expected": [
+        "SEC Staff Report on Equity and Options Market Structure Conditions in Early 2021 (Oct 2021)",
+        "House Financial Services Committee hearing record (Feb 2021)"
+      ],
+      "made_by": "loop/money_author.py (scripts/<slug>.md; the nightly batch renders it)",
+      "queued": "2026-11-09"
+    }
+  ],
+  "queue_length": 12
+}

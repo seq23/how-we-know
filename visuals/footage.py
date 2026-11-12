@@ -344,15 +344,35 @@ def stock_pool(slug: str, assets: list[dict]) -> list[dict]:
     if episode_domain(slug) not in STOCK.DOMAINS:
         return []
     phrases = STOCK.episode_phrases(slug)
-    return [a for a in assets if STOCK.is_stock(a) and not a.get("calm_set")
+    return [a for a in assets if STOCK.is_stock(a) and not a.get("calm_set") and not a.get("money_set")
             and a.get("subject") in phrases
             and STOCK.phrase_in(a["subject"], a.get("title", ""))]
+
+
+def money_pool(assets: list[dict]) -> list[dict]:
+    """A Money episode's footage: ONLY the How We Know Money set
+    (research/imagery_stock_video.harvest_money - trading floors, Wall Street,
+    banknotes, vaults and gold, courthouses), interleaved subject by subject
+    so no one subject crowds the screen. Never NOAA, never deep sea, never
+    another episode's stock clip."""
+    by: dict[str, list[dict]] = {}
+    for a in assets:
+        if a.get("money_set") and STOCK.is_stock(a) and a.get("domain") == STOCK.MONEY:
+            by.setdefault(str(a.get("subject")), []).append(a)
+    out, k = [], 0
+    while any(k < len(v) for v in by.values()):
+        out += [v[k] for v in by.values() if k < len(v)]
+        k += 1
+    return out
 
 
 def episode_pool(slug: str, assets: list[dict], needed: int = 0) -> list[dict]:
     """NOAA first, and only NOAA when it alone covers `needed` beats without
     repeating a clip; stock fills the rest. NOAA stays preferred where it
-    matches; a stock clip never displaces one."""
+    matches; a stock clip never displaces one. A Money episode takes its own
+    money set and nothing else (money_pool)."""
+    if episode_domain(slug) == STOCK.MONEY:
+        return money_pool(assets)
     noaa = noaa_pool(slug, assets)
     if noaa and len(noaa) >= needed:
         return noaa

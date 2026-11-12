@@ -3,6 +3,7 @@
 
     python loop/night_split.py tonight     # line 1: whisper | hwk; then the notes
     python loop/night_split.py report      # the split, both gates, the re-check date
+    python loop/night_split.py longform    # line 1: the slugs How We Know narrates tonight
 
 Her ruling, 6 Nov 2026: the Mac's narration nights split 5 to Whisper Almanac
 and 2 to How We Know long-form; How We Know Shorts keep going; re-check at day
@@ -71,8 +72,10 @@ def whisper_supply(now: _dt.datetime | None = None) -> dict:
         if WL.video_path(slug).exists() or (n and done == n):
             made += 1
     per, n = G.rate(times, now)
-    if not n:
-        per = float(WL.cfg()["split"]["planned_uploads_per_week"]) / 7
+    # A new channel's pace is its PLAN until real uploads beat it: one upload in
+    # 28 days read as 1/28 a day made one waiting video "28 days of supply" and
+    # held the Almanac at 1 a month (11 Nov 2026, plan is 5 a week).
+    per = max(per, float(WL.cfg()["split"]["planned_uploads_per_week"]) / 7)
     return G.verdict("whisper", made, per, n, now)
 
 
@@ -106,7 +109,58 @@ def tonight(now: _dt.datetime | None = None, *, hwk_gate=None, whisper_gate=None
     return "hwk", notes
 
 
+# ------------------------------------------------ the Money test (9 Nov 2026)
+# Her call: both How We Know long-form nights go to the Money lane for its
+# 12-video test; a night the Money pipeline cannot fill falls back to deep
+# sea; food and materials make no new long-forms (loop/config.json
+# domains.money_test). This is WHAT a How We Know night narrates; tonight()
+# above still decides WHOSE night it is.
+
+def _voiced(slug: str) -> bool:
+    root = LOOP.parent
+    plan = root / "plans" / f"{slug}.json"
+    if not plan.exists():
+        return False
+    want = len(json.loads(plan.read_text()))
+    names = {p.name for p in (root / "audio" / slug).glob("*.wav")}
+    return want > 0 and all(f"{i:04d}.wav" in names for i in range(want))
+
+
+def longform_slugs(queued: list[str] | None = None, domain_of=None, voiced=None,
+                   cfg: dict | None = None) -> tuple[list[str], str]:
+    """(slugs to narrate tonight, why). Money scripts still to voice, best
+    first; only when there are none, the fallback domain's (deep sea). A paused
+    domain is never narrated. Nothing to voice is ([], why) - a note."""
+    import batch_queue as BQ                                # noqa: PLC0415
+    import domains as D                                     # noqa: PLC0415
+    if cfg is None:
+        from common import config                           # noqa: PLC0415
+        cfg = config()
+    t = D.money_test(cfg)
+    lane, fallback = t.get("lane"), t.get("fallback")
+    if not lane:
+        return [], "no Money test configured (domains.money_test)"
+    queued = BQ.queued_slugs() if queued is None else queued
+    domain_of = domain_of or (lambda s: D.domain_of_slug(s))
+    voiced = voiced or _voiced
+    scripts = LOOP.parent / "scripts"
+    todo = [s for s in queued if (scripts / f"{s}.md").exists() and not voiced(s)]
+    money = [s for s in todo if domain_of(s) == lane]
+    if money:
+        return money, f"{len(money)} {lane} script(s) to voice: the Money test's night"
+    back = [s for s in todo if domain_of(s) == fallback]
+    if back:
+        return back, f"no {lane} script waits to be voiced; {fallback} fills the night"
+    return [], f"nothing to voice: no {lane} or {fallback} script waits"
+
+
 def main(argv: list[str]) -> int:
+    if argv[:1] == ["longform"]:
+        slugs, why = longform_slugs()
+        print(" ".join(slugs) or "none")
+        print(f"  {why}")
+        print(f"OUTPUT longform tonight: {len(slugs)} script(s) - {why}")
+        return 0
     if argv[:1] == ["tonight"]:
         kind, notes = tonight()
         print(kind)

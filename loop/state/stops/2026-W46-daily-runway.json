@@ -1,19 +1,78 @@
 {
   "stage": "daily-runway",
   "week": "2026-W46",
-  "at": "2026-11-10T01:12:35+00:00",
-  "code": "RUNWAY_FULL",
-  "message": "nothing to author today: 6.0 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated).; the Mac has 27 written script(s) to make",
-  "detail": null,
-  "unblock": "Nothing to run. The check repeats tomorrow.",
-  "disposition": "self_resolving",
-  "disposition_why": "The daily runway check (loop/draft.py --daily) found the runway at target and the Mac holding at least two nights of written scripts, so nothing needed authoring today. Finished, not blocked; it checks again tomorrow. (run 6 of at most 400 before this escalates to a human.)",
-  "consecutive": 6,
+  "at": "2026-11-12T01:12:38+00:00",
+  "code": "RUNWAY_AUTHORING_FALLBACK",
+  "message": "runway is ok for any and the authoring lane could not add a single script to cover it. no candidate topics were queued for the short domain(s) in research/publish_order.json",
+  "detail": {
+    "short_domains": [
+      "any"
+    ],
+    "by_domain": {
+      "deep-sea-ocean-science": {
+        "slots_per_week": 2,
+        "queued": 11,
+        "scheduled_ahead": 3,
+        "weeks": 7.0,
+        "level": "ok",
+        "message": "deep-sea-ocean-science: 7.0 week(s) at 2/week (11 queued, 3 already dated)"
+      },
+      "materials-and-manufacturing": {
+        "slots_per_week": 2,
+        "queued": 20,
+        "scheduled_ahead": 2,
+        "weeks": 11.0,
+        "level": "ok",
+        "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
+      },
+      "food-science": {
+        "slots_per_week": 0,
+        "queued": 11,
+        "scheduled_ahead": 0,
+        "weeks": null,
+        "level": "not_active",
+        "message": "food-science: 0 slots/week this week, not drawing from its queue"
+      },
+      "money-and-business": {
+        "slots_per_week": 2,
+        "queued": 12,
+        "scheduled_ahead": 0,
+        "weeks": 6.0,
+        "level": "ok",
+        "message": "money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
+      }
+    },
+    "goes_dark_by": {
+      "any": "2026-12-22"
+    },
+    "failures": []
+  },
+  "unblock": "This week's own queue already shipped and is unaffected. any needs more scored topics in research/publish_order.json (or a working OPENROUTER_API_KEY if authoring itself is what failed) before 2026-12-22 or it goes dark",
+  "disposition": "needs_human",
+  "disposition_why": "'RUNWAY_AUTHORING_FALLBACK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'RUNWAY_AUTHORING_FALLBACK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
   "held_items": [],
-  "exit_code": 0,
+  "exit_code": 3,
   "work_done_before_stop": [],
   "notes": [
-    "runway 6.0 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated).; the Mac has 27 written script(s) to make (buffer 8)",
-    "runway rebuild: not needed - 6.0 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "runway 5.8 weeks of queue at 6/week (30 publishable of 42 on disk). By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (11 queued, 3 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).; the Mac has 28 written script(s) to make (buffer 8)",
+    "runway rebuild: why-does-metal-shock-you (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: how-anodizing-works (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: why-does-metal-rust-in-water (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: is-steel-stronger-than-iron (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: why-are-metals-ductile (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: why-is-metal-cold (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: why-does-metal-smell (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+    "runway rebuild: why-did-ftx-collapse (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: how-did-theranos-work (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: how-does-the-federal-reserve-create-money (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: how-does-the-fed-control-interest-rates (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: what-caused-the-2008-financial-crisis (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: what-caused-the-1929-stock-market-crash (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: how-did-enron-fail (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: how-did-lehman-brothers-collapse (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: why-did-silicon-valley-bank-fail (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: how-did-charles-ponzi-scheme-work (money-and-business) not authored here: loop/money_author.py",
+    "runway rebuild: what-was-the-gamestop-short-squeeze (money-and-business) not authored here: loop/money_author.py"
   ]
 }

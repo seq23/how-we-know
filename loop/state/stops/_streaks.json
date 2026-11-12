@@ -19,9 +19,9 @@
   },
   "pov-repair": {
     "code": "POV_ALL_TRACED",
-    "count": 11,
+    "count": 13,
     "first_at": "2026-10-21T04:00:09+00:00",
-    "last_at": "2026-11-10T05:00:25+00:00"
+    "last_at": "2026-11-12T05:00:20+00:00"
   },
   "food-author": {
     "code": "FOOD_EPISODE_IN_FLIGHT",
@@ -36,16 +36,16 @@
     "last_at": "2026-11-04T15:02:10+00:00"
   },
   "daily-runway": {
-    "code": "RUNWAY_FULL",
-    "count": 6,
-    "first_at": "2026-11-04T01:12:49+00:00",
-    "last_at": "2026-11-10T01:12:35+00:00"
+    "code": "RUNWAY_AUTHORING_FALLBACK",
+    "count": 1,
+    "first_at": "2026-11-12T01:12:38+00:00",
+    "last_at": "2026-11-12T01:12:38+00:00"
   },
   "comment-watch": {
     "code": "NO_NEW_COMMENTS",
-    "count": 1,
+    "count": 2,
     "first_at": "2026-11-05T00:05:36+00:00",
-    "last_at": "2026-11-05T00:05:36+00:00"
+    "last_at": "2026-11-11T20:05:39+00:00"
   },
   "fri-publish": {
     "code": "OWNER_HOLD_LONGFORM",
@@ -53,76 +53,64 @@
     "first_at": "2026-11-06T14:06:55+00:00",
     "last_at": "2026-11-06T14:06:55+00:00"
   },
-  "shorts-cloud": {
-    "code": "SHORT_MASTER_NO_FOOTAGE",
-    "count": 4,
-    "first_at": "2026-11-07T00:12:19+00:00",
-    "last_at": "2026-11-10T00:11:50+00:00"
-  },
   "whisper-upload": {
     "code": "FRAME_CHECK_FAILED",
-    "count": 2,
-    "first_at": "2026-11-08T14:44:03+00:00",
-    "last_at": "2026-11-10T10:47:11+00:00"
+    "count": 1,
+    "first_at": "2026-11-12T07:40:11+00:00",
+    "last_at": "2026-11-12T07:40:11+00:00"
   },
   "captions-build": {
     "code": "CAPTIONS_UNBUILDABLE",
-    "count": 2,
+    "count": 4,
     "first_at": "2026-11-08T14:52:41+00:00",
-    "last_at": "2026-11-10T10:50:09+00:00"
-  },
-  "mac-batch": {
-    "code": "R2_COMMAND_FAILED",
-    "count": 1,
-    "first_at": "2026-11-10T13:50:25+00:00",
-    "last_at": "2026-11-10T13:50:25+00:00"
+    "last_at": "2026-11-12T07:44:49+00:00"
   },
   "whisper-author": {
     "code": "WHISPER_SEGMENT_REFUSED",
-    "count": 1,
+    "count": 2,
     "first_at": "2026-11-09T14:51:20+00:00",
-    "last_at": "2026-11-09T14:51:20+00:00"
+    "last_at": "2026-11-11T20:17:20+00:00"
   },
   "cloud-upload": {
     "code": "NOTHING_SHELVED",
-    "count": 2,
+    "count": 3,
     "first_at": "2026-11-09T15:05:49+00:00",
-    "last_at": "2026-11-10T15:05:26+00:00"
+    "last_at": "2026-11-11T15:05:37+00:00"
   },
   "titles": {
     "code": "TITLES_UP_TO_DATE",
-    "count": 2,
+    "count": 4,
     "first_at": "2026-11-09T20:49:44+00:00",
-    "last_at": "2026-11-10T00:44:37+00:00"
-  },
-  "queue-reopen": {
-    "code": "QUEUE_HOOK_CLEAN",
-    "count": 2,
-    "first_at": "2026-11-09T20:49:46+00:00",
-    "last_at": "2026-11-10T00:44:39+00:00"
+    "last_at": "2026-11-12T00:47:09+00:00"
   },
   "thumbs": {
     "code": "THUMBS_UP_TO_DATE",
-    "count": 1,
+    "count": 3,
     "first_at": "2026-11-10T00:44:41+00:00",
-    "last_at": "2026-11-10T00:44:41+00:00"
+    "last_at": "2026-11-12T00:47:13+00:00"
   },
   "describe": {
     "code": "DESCRIPTIONS_HELD",
-    "count": 1,
+    "count": 3,
     "first_at": "2026-11-10T00:49:59+00:00",
-    "last_at": "2026-11-10T00:49:59+00:00"
-  },
-  "whisper-scorecard": {
-    "code": "WHISPER_ANALYTICS_NOT_READ",
-    "count": 1,
-    "first_at": "2026-11-10T10:47:12+00:00",
-    "last_at": "2026-11-10T10:47:12+00:00"
+    "last_at": "2026-11-12T00:53:46+00:00"
   },
   "shorts-master": {
     "code": "SHORT_MASTER_NO_FOOTAGE",
-    "count": 1,
+    "count": 3,
     "first_at": "2026-11-10T11:11:34+00:00",
-    "last_at": "2026-11-10T11:11:34+00:00"
+    "last_at": "2026-11-12T07:49:47+00:00"
+  },
+  "localize": {
+    "code": "LOCALIZATIONS_UP_TO_DATE",
+    "count": 2,
+    "first_at": "2026-11-10T16:02:25+00:00",
+    "last_at": "2026-11-11T16:02:30+00:00"
+  },
+  "repackage-apply": {
+    "code": "REPACKAGE_UP_TO_DATE",
+    "count": 4,
+    "first_at": "2026-11-10T17:37:21+00:00",
+    "last_at": "2026-11-12T00:54:10+00:00"
   }
 }

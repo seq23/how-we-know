@@ -1,6 +1,6 @@
 {
   "week": "2026-W46",
-  "at": "2026-11-09T16:02:21+00:00",
+  "at": "2026-11-11T16:02:27+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -378,7 +378,7 @@
       "cues": 172,
       "sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509",
       "order": 41,
-      "already": false
+      "already": true
     },
     {
       "slug": "why-are-deep-sea-creatures-so-big",
@@ -387,7 +387,7 @@
       "cues": 177,
       "sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e",
       "order": 42,
-      "already": false
+      "already": true
     },
     {
       "slug": "is-damascus-steel-better",
@@ -396,7 +396,7 @@
       "cues": 184,
       "sha256": "981b998e45883b351e759e93d63f35e9377a0313fb0f051e158925e1bfb6ac95",
       "order": 43,
-      "already": false
+      "already": true
     },
     {
       "slug": "does-damascus-steel-rust",
@@ -405,7 +405,7 @@
       "cues": 187,
       "sha256": "8fff824e6f0637d2b79a2b8207aa64e593d2f78f3ef037ec7c85ecac51096dc4",
       "order": 44,
-      "already": false
+      "already": true
     }
   ],
   "gaps": []

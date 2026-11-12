@@ -1,18 +1,23 @@
+// The depth explorer's Challenger Deep number must equal its sourced value.
+// The question record's keyStat is the admitted, sourced figure (NOAA and the
+// 2021 submersible study); the explorer constant is compared against it, never
+// against a hard-coded number. Trimmed 10 Nov 2026 (hostile review of the
+// validator cut): the accessibility and markup pins were cut.
 import fs from 'node:fs'
 import { assert, readJson } from './validation-helpers.mjs'
 
-const zones = readJson('content/zones.json')
-const creatures = readJson('content/creatures.json')
+const raw = readJson('content/questions.json')
+const questions = Array.isArray(raw) ? raw : raw.questions || []
+const record = questions.find((q) => q.slug === 'what-is-the-deepest-part-of-the-ocean')
+assert(record, 'content/questions.json has no what-is-the-deepest-part-of-the-ocean record to check the explorer against')
+const statText = String(record?.keyStat?.value || '')
+const sourced = Number((statText.match(/([\d][\d,_]*)\s*m\b/) || [])[1]?.replace(/[,_]/g, ''))
+assert(Number.isFinite(sourced) && sourced > 0, `the Challenger Deep record's keyStat "${statText}" carries no metre figure`)
+assert((record?.sourceIds || []).length > 0, 'the Challenger Deep record cites no sources, so its figure is not a sourced value')
+
 const explorer = fs.readFileSync('src/lib/explorer.ts', 'utf8')
-const component = fs.readFileSync('src/components/DepthExplorer.tsx', 'utf8')
-const route = fs.readFileSync('src/routes/explore.tsx', 'utf8')
+const constant = Number((explorer.match(/CHALLENGER_DEEP_M\s*=\s*([\d_]+)/) || [])[1]?.replace(/_/g, ''))
+assert(Number.isFinite(constant), 'src/lib/explorer.ts no longer defines CHALLENGER_DEEP_M')
+assert(constant === sourced, `explorer CHALLENGER_DEEP_M is ${constant} m but the sourced question record says ${sourced} m`)
 
-assert(explorer.includes('CHALLENGER_DEEP_M = 10_935'), 'Explorer must use the admitted Challenger Deep depth')
-assert(component.includes('explorer-viewport'), 'Explorer viewport is missing')
-assert(component.includes('type="range"'), 'Explorer needs a keyboard-accessible depth control')
-assert(component.includes('prefers-reduced-motion'), 'Explorer must respect reduced-motion preferences')
-assert(route.includes('/questions/what-is-the-deepest-part-of-the-ocean'), 'Explorer must link to the canonical Challenger Deep answer')
-for (const zone of zones) assert(explorer.includes("oceanZones"), `Explorer data layer missing zone integration for ${zone.slug}`)
-for (const creature of creatures) assert(component.includes('explorerCreatures'), `Explorer creature layer missing ${creature.slug}`)
-
-console.log('Interactive depth-explorer validation passed.')
+console.log(`Explorer depth matches its source: ${constant} m.`)

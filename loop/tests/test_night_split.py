@@ -64,6 +64,31 @@ check(k == "hwk", "(c) an open How We Know night was taken by the Almanac")
 check(G.verdict("whisper", 15, 2 / 7, 0, NOW)["hold"], "(d) 15 made at two a week does not hold")
 check(not G.verdict("whisper", 3, 2 / 7, 0, NOW)["hold"], "(d) 3 made at two a week holds")
 
+# d2. one upload never drags the pace below the plan (11 Nov 2026: 1 upload in
+# 28 days read as 1/28 a day held the Almanac with a single video waiting)
+import json as _json, tempfile as _tf, types as _types  # noqa: E401,E402
+_tmp = Path(_tf.mkdtemp())
+(_tmp / "kits" / "up").mkdir(parents=True)
+(_tmp / "kits" / "up" / "kit.json").write_text(_json.dumps({"uploaded_at": "2026-11-05T00:00:00Z"}))
+(_tmp / "made.mp4").write_text("x")
+_fake = _types.SimpleNamespace(
+    KITS=_tmp / "kits",
+    all_scripts=lambda: [Path("up.md"), Path("made.md")],
+    voiced=lambda slug: (0, 0),
+    video_path=lambda slug: _tmp / f"{slug}.mp4",
+    cfg=lambda: {"split": {"planned_uploads_per_week": 5}})
+_real = sys.modules.get("whisper_lane")
+sys.modules["whisper_lane"] = _fake
+try:
+    v = N.whisper_supply(NOW)
+finally:
+    if _real is not None:
+        sys.modules["whisper_lane"] = _real
+    else:
+        sys.modules.pop("whisper_lane", None)
+check(not v["hold"] and v["per_day"] >= round(5 / 7, 3), f"(d2) one upload held the Almanac: {v['line']}")
+check(v["made"] == 1, f"(d2) made counted {v['made']}, expected 1")
+
 # e. the sessions obey
 sh = (ROOT / "bin" / "batch-session.sh").read_text()
 seq = sh[sh.index("# THE SEQUENCE."):]

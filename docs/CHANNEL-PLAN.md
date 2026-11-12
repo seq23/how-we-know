@@ -301,6 +301,9 @@ sea ends"; deep sea shows no sign of ending (see below) and keeps its own slots.
   `CHANGE_BOUNDS` fence every other knob respects, and requires **8 published episodes
   with analytics before a domain can be judged at all** — below that, allocation HOLDS,
   it does not average toward an even split.
+- **Replaced 9 Nov 2026 by the Money test** (section "The Money lane" below): each lane
+  is judged at **30 days on watch hours and subscribers** (`loop/lane_check.py`, the
+  Sunday digest). The rule it replaced, kept for the record:
 - **Results decide** (owner rule A, 2 Nov 2026; replaces "a domain retires on its own
   queue decaying"). No topic is retired or added until **every** allocated topic has
   **30 long videos with analytics** (`domains.results_decide.min_long_videos`; until then
@@ -505,3 +508,30 @@ sources, palette, preset, harvester, thumbnail builder, seeded queue; validator 
 its sample gate (`loop/config.json` `domains.sample_gate`) until the owner cleared it on
 2026-10-13; its Wednesday and Saturday stay empty, never borrowed, whenever no food episode is queued. Changing this
 table without moving those pins is drift.
+
+## The Money lane (decided 8-9 Nov 2026; a 12-video test)
+
+Her calls (spry brain, Settled decisions 8 and 9 Nov 2026), in code:
+
+- **What it is**: money and business stories proven by the public record - SEC filings
+  and litigation releases, court records, Federal Reserve / BLS / FRED data, the
+  Financial Crisis Inquiry Report, congressional reports, the National Archives and
+  the Library of Congress (`loop/domain_sources.py`). Each title is one plain question.
+  The 12 topics were picked by demand and evidence on 9 Nov (`config/money_topics.json`).
+- **Never advice** (risk brain R-ADV-04): the narration says "This is not financial
+  advice."; a draft that gives a tip or promises money is refused
+  (`loop/money_author.money_problems`); real people only as courts, the SEC or an
+  official report record them.
+- **Who makes it**: `loop/money_author.py` (cloud, Sun + Thu) writes the next topic into
+  `scripts/<slug>.md`; the Mac's nightly batch narrates and renders it.
+- **The nights**: both How We Know long-form nights (Mon, Fri) narrate Money first; a
+  night with no Money script to voice narrates deep sea (`loop/night_split.longform_slugs`).
+  Uploads: Money Tue + Fri (`cadence.rotation`).
+- **Paused**: food long-forms (`FOOD_LONGFORM_PAUSED`; existing videos stay up);
+  materials makes no new long-forms (0 slots); deep sea and materials Shorts continue.
+- **Pictures**: money footage only, never deep sea - one licence-checked set of
+  trading floors, Wall Street, banknotes, vaults and gold, courthouses
+  (`config/money_topics.json footage`, `visuals/footage.money_pool`).
+- **The judgement**: at 30 days from 10 Nov 2026, per lane, on watch hours and
+  subscribers (`loop/lane_check.py`; "not read", never 0, when a number is missing).
+

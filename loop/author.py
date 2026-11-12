@@ -82,6 +82,25 @@ DOMAIN_BRIEF: dict[str, dict[str, str]] = {
             "https://www.ars.usda.gov/ or "
             "https://pubchem.ncbi.nlm.nih.gov/"),
     },
+    # 2026-11-08, the owner's Money lane (spry brain; risk brain R-ADV-04):
+    # money and business stories proven by the public record. Information,
+    # never advice: no tips, no get-rich promises, and real people only as a
+    # court, the SEC or an official report records them.
+    "money-and-business": {
+        "subject": "money and business stories proven by the public record - "
+                   "what happened, how it worked and how anyone found out, "
+                   "told from SEC filings and litigation releases, court "
+                   "records, Federal Reserve, BLS and FRED data, the Financial "
+                   "Crisis Inquiry Report, congressional reports and the "
+                   "National Archives. It is information, NOT financial advice: "
+                   "the closing says 'This is not financial advice.' It never "
+                   "gives investing tips, never promises riches, and describes "
+                   "a real person only as a court record, SEC finding or "
+                   "official report records them (alleged until proven)",
+        "example_urls": (
+            "https://www.sec.gov/litigation/litreleases or "
+            "https://fred.stlouisfed.org/"),
+    },
 }
 
 
@@ -415,6 +434,10 @@ DEVICE_DIRECTIVES: dict[str, str] = {
     # LABEL is what the glowing line traces, spoken in the same paragraph.
     "food-science": """{{cross_section: SUBJECT | LABEL}}             the glowing cross-section, the signature device: at most one per part
 {{kitchen: TO_C | LABEL}}                      a rise through the kitchen scale (MELT/BAKE CORE/MAILLARD/CARAMEL/CHAR), live degree counter""",
+    # Money's device is the public record's own order of events: the
+    # timeline and the chain from filing to finding (shared directives).
+    "money-and-business": """{{timeline: YEAR=LABEL | YEAR=LABEL}}          the money story's dated record, its signature device
+{{chain: TITLE | STAGE | STAGE | >CONCLUSION}} filing -> investigation -> finding""",
 }
 
 

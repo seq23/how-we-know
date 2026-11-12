@@ -217,6 +217,10 @@ fi
 if [ "$STAGE" = "food-author" ]; then
   git add scripts/food channel/food_kits research/publish_order*.json 2>/dev/null
 fi
+# the Money author lane (10 Nov 2026): its script, its queue row, its POV row
+if [ "$STAGE" = "money-author" ]; then
+  git add scripts research/publish_order*.json pov/pov-assignments.json 2>/dev/null
+fi
 if [ "$STAGE" = "mon-draft" ]; then
   git add scripts 2>/dev/null
   git add pov/pov-assignments.json 2>/dev/null

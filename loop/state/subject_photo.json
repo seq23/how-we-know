@@ -205,6 +205,24 @@
     "status": "found",
     "tries": 1
   },
+  "how-was-bernie-madoff-caught": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-how-was-bernie-madoff-caught__drawn-card.jpg",
+    "found_at": "2026-11-11T05:03:03+00:00",
+    "last_tried": "2026-11-10",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+    "queries": [
+      "bernie madoff caught",
+      "bernie madoff",
+      "madoff caught",
+      "bernie",
+      "madoff",
+      "caught"
+    ],
+    "status": "drawn card",
+    "tries": 1,
+    "why": "pixabay 5116181: brand/logo-heavy tags; no candidate passed both gates"
+  },
   "is-aluminum-stronger-than-steel": {
     "chosen_by": "auto",
     "file": "assets/auto__auto-is-aluminum-stronger-than-steel__aluminum-and-stainless-steel-flange-assembly-nara-17444079-j.jpg",
@@ -402,9 +420,9 @@
   "why-bread-rises-steak-browns-chocolate-snaps": {
     "chosen_by": "auto",
     "file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
-    "found_at": "2026-11-10T10:50:15+00:00",
+    "found_at": "2026-11-12T07:44:55+00:00",
     "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-    "last_tried": "2026-11-10",
+    "last_tried": "2026-11-12",
     "licence": "Pixabay Content License",
     "queries": [
       "bread rise steak brown",
@@ -415,7 +433,7 @@
       "chocolate snap"
     ],
     "status": "found",
-    "tries": 5
+    "tries": 7
   },
   "why-deep-sea-creatures-are-creepers": {
     "chosen_by": "owner",

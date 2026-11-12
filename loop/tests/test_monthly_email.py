@@ -212,7 +212,17 @@ check("rules section carries no raw domain ids", DS not in rules and MAT not in 
 FOOD = "food-science"
 alloc_ = list(domains.allocation(cfg))
 mat_hist, mat_rows = list(hist), list(long_pub)
-for dom_, tag, subs, mins in ((DS, "D", 10, 600), (MAT, "M", 0, 30), (FOOD, "F", 10, 600)):
+MONEY = "money-and-business"
+# During the Money test (owner, 9 Nov 2026) a lane short of 30 long videos holds
+# every swap and the hold names the per-lane 30-day check; once every lane
+# holds 30, results decide exactly as before.
+held_test = domains.lifecycle(cfg, {d_: {"videos": 30 if d_ != MONEY else 0} for d_ in alloc_})
+check("during the Money test a short lane holds the swap and names the 30-day lane check",
+      MONEY not in alloc_ or (not held_test.get("applied")
+                              and held_test.get("stop") == "TOPICS_HELD_FOR_EVIDENCE"
+                              and "lane_check" in held_test.get("why", "")), held_test)
+for dom_, tag, subs, mins in ((DS, "D", 10, 600), (MAT, "M", 0, 30), (FOOD, "F", 10, 600),
+                              (MONEY, "X", 10, 600)):
     if dom_ not in alloc_:
         continue
     for i in range(30):

@@ -119,16 +119,27 @@ if "[@]" in (ROOT / "bin" / "food-session.sh").read_text():
     fails.append("food-session.sh uses a bash array again (empty arrays are unbound under "
                  "set -u in /bin/bash 3.2)")
 
-# 3. no food render lane
+# 3./4. food on the rotation needs both lanes. During the Money test food
+# rests at 0 slots (owner, 9 Nov 2026), so these run on the config as it is the
+# day food returns to Wed/Sat; the Money lane is proven on the real config.
+import json as _json                                         # noqa: E402
+REAL_CFG = _json.loads((ROOT / "loop" / "config.json").read_text())
+FOOD_ON = copy.deepcopy(REAL_CFG)
+for _d in ("wed", "sat"):
+    FOOD_ON["cadence"]["rotation"]["weekdays"][_d] = "food-science"
 lanes = copy.deepcopy(L.LANES)
 lanes.pop("food", None)
-expect_fail("food render lane removed", run(lanes=lanes), "no scheduled lane that renders it")
-expect_fail("food agent unlisted", run(lanes=lanes), "'food' is installed and is not a lane")
+expect_fail("food render lane removed", run(lanes=lanes, config=FOOD_ON), "no scheduled lane that renders it")
+expect_fail("food agent unlisted", run(lanes=lanes, config=FOOD_ON), "'food' is installed and is not a lane")
 
-# 4. no food author lane
 lanes = copy.deepcopy(L.LANES)
 lanes.pop("food-author", None)
-expect_fail("food author lane removed", run(lanes=lanes), "no scheduled lane that authors it")
+expect_fail("food author lane removed", run(lanes=lanes, config=FOOD_ON), "no scheduled lane that authors it")
+
+# 4b. the Money lane on the real rotation needs its author lane
+lanes = copy.deepcopy(L.LANES)
+lanes.pop("money-author", None)
+expect_fail("money author lane removed", run(lanes=lanes), "no scheduled lane that authors it")
 
 # 5. a runner that does not exist
 lanes = copy.deepcopy(L.LANES)

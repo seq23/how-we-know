@@ -85,6 +85,11 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
         left -= seg_secs[i]
     import footage as F                                     # noqa: PLC0415
     import whisper_reel as R                                # noqa: PLC0415
+    if any(R.food_part(s) for s, _ in segs):
+        # the long food clips this checkout does not hold yet, sha256-checked
+        got = R._ff().fetch_long_missing()
+        if got["fetched"] or got["refused"]:
+            print(f"  food clips fetched for this Mac: {got['fetched']}; refused: {got['refused'][:3]}")
     try:
         assets = F.usable_assets()
         shots = R.plan_reel(segs, assets, pool_of=lambda s: R.pool(s, assets, c))

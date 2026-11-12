@@ -1,14 +1,14 @@
 {
   "stage": "describe",
   "week": "2026-W46",
-  "at": "2026-11-10T00:49:59+00:00",
+  "at": "2026-11-12T00:53:46+00:00",
   "code": "DESCRIPTIONS_HELD",
-  "message": "11 slug(s) got no search block: 20-what-is-the-midnight-zone (3 phrasings); 09-what-is-the-scariest-deep-sea-creature (2 phrasings); 18-why-does-black-smoker-water-not-boil (2 phrasings); how-do-self-healing-materials-work (2 phrasings); 11-what-is-a-dumbo-octopus (3 phrasings); how-does-chemosynthesis-work (3 phrasings); how-does-thermohaline-circulation-work (2 phrasings); how-mid-oceanic-ridge-is-formed (2 phrasings); is-titanium-stronger-than-steel (2 phrasings); what-does-a-vampire-squid-look-like (2 phrasings); what-is-mid-ocean-ridge (2 phrasings)",
+  "message": "12 slug(s) got no search block: 20-what-is-the-midnight-zone (3 phrasings); 09-what-is-the-scariest-deep-sea-creature (2 phrasings); 18-why-does-black-smoker-water-not-boil (2 phrasings); how-do-self-healing-materials-work (2 phrasings); 11-what-is-a-dumbo-octopus (3 phrasings); how-does-chemosynthesis-work (3 phrasings); how-does-thermohaline-circulation-work (2 phrasings); how-mid-oceanic-ridge-is-formed (2 phrasings); how-was-bernie-madoff-caught (3 phrasings); is-titanium-stronger-than-steel (3 phrasings); what-does-a-vampire-squid-look-like (2 phrasings); what-is-mid-ocean-ridge (2 phrasings)",
   "detail": null,
   "unblock": "Nothing to type: titles land first, then the next run describes them.",
   "disposition": "self_resolving",
-  "disposition_why": "No search block could be prepared for these slugs: no passing title yet, or fewer than four real autocomplete phrasings. Retried daily. (run 1 of at most 7 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "No search block could be prepared for these slugs: no passing title yet, or fewer than four real autocomplete phrasings. Retried daily. (run 3 of at most 7 before this escalates to a human.)",
+  "consecutive": 3,
   "held_items": [
     "09-what-is-the-scariest-deep-sea-creature",
     "11-what-is-a-dumbo-octopus",
@@ -18,6 +18,7 @@
     "how-does-chemosynthesis-work",
     "how-does-thermohaline-circulation-work",
     "how-mid-oceanic-ridge-is-formed",
+    "how-was-bernie-madoff-caught",
     "is-titanium-stronger-than-steel",
     "what-does-a-vampire-squid-look-like",
     "what-is-mid-ocean-ridge"
@@ -33,7 +34,8 @@
     "held how-does-chemosynthesis-work: 3 phrasings",
     "held how-does-thermohaline-circulation-work: 2 phrasings",
     "held how-mid-oceanic-ridge-is-formed: 2 phrasings",
-    "held is-titanium-stronger-than-steel: 2 phrasings",
+    "held how-was-bernie-madoff-caught: 3 phrasings",
+    "held is-titanium-stronger-than-steel: 3 phrasings",
     "held what-does-a-vampire-squid-look-like: 2 phrasings",
     "held what-is-mid-ocean-ridge: 2 phrasings"
   ]

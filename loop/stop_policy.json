@@ -132,7 +132,7 @@
     "WHISPER_FOOTAGE_THIN": {"why": "The episode's sources do not yet have enough licence-checked moving footage to meet the How We Know footage rules (a new shot every 20 s, no repeat within 3 minutes, no subject over ~25%), so it is not rendered with filler. The imagery-harvest lane grows the pool weekly; the audio is kept.", "max_consecutive": 8, "escalation": "Two months without enough footage: swap the episode's thin sources in config/whisper_almanac.json.", "plain": "a whisper episode is waiting for more footage of its subject"},
     "WHISPER_NOTHING_TO_UPLOAD": {"why": "loop/whisper_upload.py found no rendered Whisper Almanac episode waiting and every upload confirmed and cleaned up. Finished, not blocked: the next render uploads the night it is made.", "max_consecutive": 30, "escalation": "A month with nothing to upload means the Almanac nights are not rendering: read the whisper step in the batch log.", "plain": "no whisper episode was waiting to upload"},
     "WHISPER_UPLOAD_HOLD": {"why": "The supply gate (her 12 Oct rule): 14+ days of this Whisper Almanac format already wait on YouTube, scheduled, so no new one went up. The render waits on the Mac; the gate opens as scheduled episodes go public.", "max_consecutive": 21, "escalation": "Three weeks held means the publish dates are not draining: check the scheduled videos in YouTube Studio.", "plain": "enough whisper episodes are already scheduled; the next waits its turn"},
-    "WHISPER_AWAITING_PROCESSING": {"why": "Every Whisper Almanac upload is on YouTube and dated; YouTube has not finished processing one yet, so its local render is kept (the disk-guard rule: delete only once YouTube reports it processed). The next night deletes it.", "max_consecutive": 3, "escalation": "Three nights unprocessed means YouTube is stuck on the file: open it in YouTube Studio.", "plain": "a whisper upload is still processing on YouTube"},
+    "WHISPER_AWAITING_PROCESSING": {"why": "YouTube lists every Whisper Almanac upload and has not finished processing one yet, so its local render is kept (the disk-guard rule: delete only once YouTube reports it processed). The next night deletes it.", "max_consecutive": 3, "escalation": "Three nights unprocessed means YouTube is stuck on the file: open it in YouTube Studio.", "plain": "a whisper upload is still processing on YouTube"},
     "FRAME_CHECK_UNAVAILABLE": {"why": "No free vision model answered the final frame check, so a finished episode was not uploaded unchecked. Free-tier limits reset daily; the next night checks it again.", "max_consecutive": 3, "escalation": "Three nights with no free vision model means the free route lost its vision models: see visuals/frame_check.VISION_FREE.", "plain": "the picture check could not run tonight; it runs again tomorrow"},
     "RUNWAY_FULL": {"why": "The daily runway check (loop/draft.py --daily) found the runway at target and the Mac holding at least two nights of written scripts, so nothing needed authoring today. Finished, not blocked; it checks again tomorrow.", "max_consecutive": 400, "plain": "enough scripts are written; nothing needed today"},
     "EPISODES_HELD_BY_VALIDATOR": {"why": "loop/draft.py: every validator failure named an episode, so exactly those episodes are held from upload (loop/state/validator_hold.json) and the rest ship (hostile review 2026-11-02, finding 7). The next draft run re-authors or re-validates them and the hold lifts on a pass.", "max_consecutive": 3, "escalation": "Three runs held means the same episodes keep failing validation - an agent reads the failures in the stop record.", "plain": "a few episodes failed a check and wait; the rest ship"},
@@ -459,6 +459,48 @@
       "escalation": "Three runs with no free model answering is not a burst: a listed model has probably been withdrawn or gated. Refresh config/llm_routing.json from https://openrouter.ai/api/v1/models (keep only ':free' 0/0 models, >=32k context) and re-run; detail lists each model's failure.",
       "plain": "every free AI model failed this run; nothing was written and it tries again"
     },
+    "MONEY_EPISODE_IN_FLIGHT": {
+      "why": "loop/money_author.py keeps at most two Money scripts written and not yet uploaded; the Mac's How We Know nights narrate and render them first (loop/night_split.longform_slugs). An upload clears it.",
+      "max_consecutive": 6,
+      "escalation": "Three weeks with the same Money scripts in flight means the Mac's nights are not finishing them: read the batch log's 'longform tonight' line.",
+      "plain": "the next Money episode waits until the Mac renders the current ones"
+    },
+    "MONEY_TOPICS_DONE": {
+      "why": "All 12 Money test topics (config/money_topics.json) are written. The 30-day lane check (loop/lane_check.py) judges the test; more topics follow only if it passes.",
+      "max_consecutive": 26,
+      "escalation": "The test should have been judged: read the digest's 'Lanes, 30-day check' section.",
+      "plain": "all 12 Money test topics are written"
+    },
+    "MONEY_NO_POV_LINE": {
+      "why": "No transferable POV line from her bank is free for this Money topic (loop/pov_match.select never invents one). Lines free up as the rotation window moves; the next run tries again.",
+      "max_consecutive": 4,
+      "escalation": "Four runs with no free line: the bank's transferable lines are exhausted; read pov/pov-bank.json.",
+      "plain": "no free POV line for the next Money topic yet"
+    },
+    "MONEY_DRAFT_REFUSED": {
+      "why": "A free-model Money draft broke risk rule R-ADV-04 (advice, a money promise) or lacked its disclaimer; it is never written to scripts/. The next run drafts again.",
+      "max_consecutive": 4,
+      "escalation": "Four refused drafts in a row: read loop/drafts/<slug>.md and the Money brief in loop/author.py.",
+      "plain": "a Money draft was refused for giving advice"
+    },
+    "MONEY_DRAFT_FAILED_VALIDATION": {
+      "why": "A Money draft failed the full validator set (loop/validate.run_all), the same bar every script meets; it stays in loop/drafts/ and the next run drafts again.",
+      "max_consecutive": 4,
+      "escalation": "Four failed drafts in a row: read the stage log's validator lines.",
+      "plain": "a Money draft failed validation and will be redrafted"
+    },
+    "MONEY_DRAFT_PATH_MOVED": {
+      "why": "loop/author.draft wrote the Money draft somewhere other than loop/drafts/<slug>.md, the static path loop/money_author.py reads and the stage's commit pathspec covers; the stage stops before writing anything uncommitted.",
+      "max_consecutive": 1,
+      "escalation": "Point DRAFTS in loop/money_author.py at author.DRAFTS and check the money-author pathspec in bin/loop-stage.sh.",
+      "plain": "a Money draft landed in an unexpected folder"
+    },
+    "FOOD_LONGFORM_PAUSED": {
+      "why": "Food long-forms are paused for How We Know's Money test (owner, 9 Nov 2026; loop/config.json domains.money_test.longform_paused). loop/food_author.py writes no food episode and loop/food_lane.py renders none; existing food videos stay up. The 30-day lane check (loop/lane_check.py, the Sunday digest) is where the test is judged.",
+      "max_consecutive": 26,
+      "escalation": "Thirteen weeks paused is long past the 30-day check: read the digest's 'Lanes, 30-day check' section and decide whether food returns.",
+      "plain": "food long-forms are paused for the Money test"
+    },
     "FOOD_EPISODE_IN_FLIGHT": {
       "why": "loop/food_author.py authors one food episode at a time; the previous one is still the Mac's to render (bin/food-session.sh, Tue and Thu nights). Its stitch writes channel/specs/<slug>.json and the next weekly run authors the next episode.",
       "max_consecutive": 3,
@@ -511,6 +553,8 @@
     ],
     "WHISPER_SAMPLE_MISSING": {"why": "Whisper Almanac is voiced by her own cloned whisper, and only she can record it. Every script is written and checked; until the file exists the Almanac nights go to How We Know (a note), and the first night it exists at ~/.boss-os/asmr-voice/whisper-sample.m4a (or .wav) the Mac voices the first ready episode.", "max_consecutive": 30, "escalation": "A month of nights without the sample is a channel that cannot launch: go red so it is raised again.", "holds": {"kind": "credential", "what": "her own whisper sample, ~/.boss-os/asmr-voice/whisper-sample.m4a (20-30 s, quiet room), kept on her Mac only"}, "plain": "the whisper channel is waiting for your 30-second whisper recording"},
     "WHISPER_SAMPLE_UNUSABLE": {"why": "The whisper sample exists but is too short, too long or unreadable (it must be 15-60 s; 20-30 s is best). Only she can record it again.", "max_consecutive": 30, "escalation": "A month with an unusable sample: go red so it is raised again.", "holds": {"kind": "credential", "what": "her own whisper sample, ~/.boss-os/asmr-voice/whisper-sample.m4a"}, "plain": "your whisper recording needs to be 20 to 30 seconds long"},
+    "WHISPER_WRONG_CHANNEL": {"why": "The upload grant signs in to a channel whose id is not @whisperalmanac's (config/whisper_almanac.json channel.id), so nothing was uploaded: a video must never land on another channel. Only she can sign in to the right channel again.", "max_consecutive": 3, "escalation": "Three nights on the wrong channel: go red so it is raised again.", "holds": {"kind": "credential", "what": "the @whisperalmanac YouTube grant, .secrets/whisper_youtube_token.json (auth/whisper_youtube_auth.py, pick Whisper Almanac)"}, "plain": "the whisper upload sign-in points at the wrong channel"},
+    "WHISPER_LONG_UPLOADS_NOT_ALLOWED": {"why": "YouTube reports the channel's longUploadsStatus as something other than allowed, so a video over 15 minutes would be removed after the upload (10 Nov 2026: the first 1 h 43 min episode was, Studio read 'Processing abandoned'). Nothing is sent; the render is kept. Only she can verify the channel (youtube.com/verify, a phone code).", "max_consecutive": 3, "escalation": "Three nights unverified means no Almanac video can go up: go red so it is raised again.", "holds": {"kind": "account", "what": "phone verification of the @whisperalmanac channel at youtube.com/verify"}, "plain": "the whisper channel must be verified before long videos can go up"},
     "WHISPER_YT_TOKEN_INVALID": {"why": "The @whisperalmanac upload grant is missing, refused by Google (revoked, password change) or signs in to a different channel, so nothing was uploaded. Only she can sign in to the channel's Google account again.", "max_consecutive": 3, "escalation": "Three nights without a working grant: go red so it is raised again.", "holds": {"kind": "credential", "what": "the @whisperalmanac YouTube grant, .secrets/whisper_youtube_token.json (auth/whisper_youtube_auth.py)"}, "plain": "the whisper channel's YouTube sign-in needs redoing"},
     "OAUTH_MISSING": {
       "why": "The YouTube credential is absent from this environment. Only she can mint one.",
@@ -677,6 +721,7 @@
     "FRAME_CHECK_FAILED": {"why": "A finished Whisper Almanac episode failed the final frame check (a word on screen, black bars, or frames that are not footage of the subject), so it was not uploaded. The file is set aside beside its render, never deleted, and the next episode goes on.", "plain": "a whisper episode failed the picture check and was not uploaded"},
     "WHISPER_UPLOAD_REFUSED": {"why": "A finished Whisper Almanac episode fails a lane check at upload time (script rules, kit rules, a length that was not measured). Every check passed when it was voiced, so a rule or a kit changed since: a defect.", "plain": "a whisper episode broke a rule after it was made and was not uploaded"},
     "WHISPER_UPLOAD_FAILED": {"why": "The YouTube upload of a finished Whisper Almanac episode failed for a reason other than quota or the sign-in. The render is kept; the next night tries again.", "plain": "a whisper episode failed to upload"},
+    "WHISPER_UPLOAD_LOST": {"why": "An upload the kit records is no longer on YouTube as uploaded: YouTube does not list its id any more (removed after the upload) or lists it rejected or failed. It is never called 'still processing'. A removed one is sent again from the kept render in the same run (twice at most, the old id kept in the kit's lost_uploads); a rejected one is not re-sent.", "plain": "YouTube no longer has a whisper episode that was uploaded"},
     "WHISPER_UPLOAD_NOT_CONFIRMED": {"why": "YouTube returned a video id but its read-back does not show the upload processing, private with the publish date, and the altered-content box set. The id is recorded (never uploaded twice) and the local render is kept.", "plain": "YouTube did not confirm a whisper upload as scheduled"},
     "DISK_LOW": {
       "why": "loop/render_prune.py guard pruned every render it could prove was uploaded (YouTube says processed, R2 holds the identical file) and the Mac still has less free space than the floor (DISK_FLOOR_GIB, default 6). No render was started, so nothing is half-written; narration continues. Something outside the uploaded masters is filling the disk, and a person must look at it.",

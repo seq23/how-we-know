@@ -4,11 +4,22 @@
     "first_reported_at": "2026-11-08T14:52:41+00:00",
     "issue": null,
     "items": [],
-    "last_reported_at": "2026-11-10T10:50:09+00:00",
-    "last_seen_at": "2026-11-10T10:50:09+00:00",
+    "last_reported_at": "2026-11-12T07:44:49+00:00",
+    "last_seen_at": "2026-11-12T07:44:49+00:00",
     "reported_run": null,
-    "reports": 2,
+    "reports": 4,
     "stage": "captions-build"
+  },
+  "daily-runway::RUNWAY_AUTHORING_FALLBACK": {
+    "code": "RUNWAY_AUTHORING_FALLBACK",
+    "first_reported_at": "2026-11-12T01:12:38+00:00",
+    "issue": 376,
+    "items": [],
+    "last_reported_at": "2026-11-12T01:12:38+00:00",
+    "last_seen_at": "2026-11-12T01:12:38+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "daily-runway"
   },
   "mon-draft::AUTHOR_REQUIRED": {
     "code": "AUTHOR_REQUIRED",
@@ -37,12 +48,12 @@
     "first_reported_at": "2026-11-08T14:44:03+00:00",
     "issue": null,
     "items": [
-      "neville-inner-conversation-01"
+      "affirmations-money-2026-w45"
     ],
-    "last_reported_at": "2026-11-10T10:47:11+00:00",
-    "last_seen_at": "2026-11-10T10:47:11+00:00",
+    "last_reported_at": "2026-11-12T07:40:11+00:00",
+    "last_seen_at": "2026-11-12T07:40:11+00:00",
     "reported_run": null,
-    "reports": 2,
+    "reports": 3,
     "stage": "whisper-upload"
   }
 }

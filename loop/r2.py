@@ -535,6 +535,14 @@ class WranglerBackend(_Backend):
                   f"network error; retry {attempt}/{tries - 1} in {wait}s",
                   flush=True)
             time.sleep(wait)
+        if ("Not logged in" in blob or "Failed to fetch auth token" in blob
+                or "non-interactive environment" in blob):
+            raise R2Unavailable(
+                "R2_AUTH_FAILED",
+                "wrangler has no token and the Mac's wrangler login has expired",
+                unblock="Check the Boss OS vault holds CLOUDFLARE_API_TOKEN "
+                        "(npm run -s vault:status in ~/GitHub/boss-os); "
+                        "loop/r2.py reads it when the env has none.")
         if "10000" in blob or "Authentication error" in blob:
             raise R2Unavailable(
                 "R2_AUTH_FAILED",
@@ -701,6 +709,10 @@ def require(env=None) -> _Backend:
                     "for a real run, or set R2_LOCAL_DIR to rehearse against "
                     "the filesystem stub.")
 
+    if not (e.get("CLOUDFLARE_API_TOKEN") or "").strip():
+        tok = vault_token(e)
+        if tok:
+            e = dict(e, CLOUDFLARE_API_TOKEN=tok)
     gone = missing_vars(e)
     if gone:
         raise R2Unavailable(
@@ -715,6 +727,34 @@ def require(env=None) -> _Backend:
     return WranglerBackend(e["CLOUDFLARE_ACCOUNT_ID"].strip(),
                            bucket_name(e),
                            (e.get("CLOUDFLARE_API_TOKEN") or "").strip() or None)
+
+
+def vault_token(env=None) -> str:
+    """CLOUDFLARE_API_TOKEN from the Boss OS vault, or "" when there is none.
+
+    Without a token wrangler falls back to the Mac's OAuth login, which
+    expires on its own ("Failed to fetch auth token: 400"); on 10 Nov 2026
+    that stopped the nightly shelf push. The vault token does not expire.
+    Never logged; any failure keeps the old behaviour (the wrangler login).
+    """
+    e = os.environ if env is None else env
+    boss = Path(os.path.expanduser(e.get("BOSS_OS_REPO") or "~/GitHub/boss-os"))
+    cmd = e.get("R2_VAULT_TOKEN_CMD")       # tests only: a fake vault
+    if cmd:
+        argv = ["/bin/sh", "-c", cmd]
+    else:
+        vault = boss / "scripts" / "vault" / "vault.mjs"
+        node = shutil.which("node")
+        if not (node and vault.exists()):
+            return ""
+        argv = [node, str(vault), "run", "--", node, "-e",
+                "process.stdout.write(process.env.CLOUDFLARE_API_TOKEN||'')"]
+    try:
+        r = subprocess.run(argv, capture_output=True, text=True, timeout=60,
+                           cwd=str(boss) if boss.is_dir() else None)
+    except Exception:                                       # noqa: BLE001
+        return ""
+    return r.stdout.strip() if r.returncode == 0 else ""
 
 
 def have_assets(backend: _Backend, slug: str) -> bool:

@@ -1,9 +1,12 @@
 {
-  "day": "2026-11-10",
-  "spent": 1908,
+  "day": "2026-11-11",
+  "spent": 4678,
   "by_lane": {
-    "whisper-upload": 1652,
-    "demand": 1,
-    "handoff": 255
+    "demand": 102,
+    "handoff": 308,
+    "captions": 151,
+    "tags-backfill": 765,
+    "shorts-cloud": 1700,
+    "whisper-upload": 1652
   }
 }
