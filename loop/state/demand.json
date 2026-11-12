@@ -21,8 +21,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 71,
-      "days_since_packaging": 8,
+      "days_public": 72,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -48,7 +48,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -57,14 +57,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 10,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -87,8 +87,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-03",
-      "days_public": 66,
-      "days_since_packaging": 8,
+      "days_public": 67,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
         "views": 6,
@@ -114,7 +114,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -123,14 +123,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.047619047619047616,
         "impressions": 21,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -155,8 +155,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 64,
-      "days_since_packaging": 28,
+      "days_public": 65,
+      "days_since_packaging": 29,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -182,7 +182,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -191,14 +191,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.038461538461538464,
-        "impressions": 26,
-        "as_of": "2026-11-11",
+        "pct": 0.037037037037037035,
+        "impressions": 27,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -223,11 +223,11 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 59,
-      "days_since_packaging": 26,
+      "days_public": 60,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
-        "views": 13,
+        "views": 14,
         "watch_minutes": 4.0,
         "avd_s": 36.0,
         "avp_pct": 7.72,
@@ -235,14 +235,14 @@
         "traffic": {
           "browse": 0,
           "suggested": 0,
-          "search": 10,
+          "search": 11,
           "external": 3,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 4,
+        "views": 5,
         "watch_minutes": 2.0,
         "avd_s": 37.0,
         "avp_pct": 8.0,
@@ -250,7 +250,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -259,14 +259,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 36,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -289,8 +289,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 57,
-      "days_since_packaging": 25,
+      "days_public": 58,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 13,
@@ -316,7 +316,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -325,14 +325,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 23,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -357,8 +357,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 52,
-      "days_since_packaging": 26,
+      "days_public": 53,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -384,7 +384,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -393,14 +393,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 25,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -425,8 +425,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 50,
-      "days_since_packaging": 28,
+      "days_public": 51,
+      "days_since_packaging": 29,
       "public": true,
       "lifetime": {
         "views": 16,
@@ -452,7 +452,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -461,14 +461,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 20,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -491,8 +491,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-16",
-      "days_public": 45,
-      "days_since_packaging": 26,
+      "days_public": 46,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -518,7 +518,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -527,14 +527,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 28,
-        "as_of": "2026-11-11",
+        "impressions": 29,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -559,8 +559,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 43,
-      "days_since_packaging": 8,
+      "days_public": 44,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -586,7 +586,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -595,14 +595,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 66,
-        "as_of": "2026-11-11",
+        "impressions": 62,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -627,8 +627,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 38,
-      "days_since_packaging": 28,
+      "days_public": 39,
+      "days_since_packaging": 29,
       "public": true,
       "lifetime": {
         "views": 10,
@@ -654,7 +654,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -663,14 +663,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 46,
-        "as_of": "2026-11-11",
+        "impressions": 44,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -695,8 +695,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 36,
-      "days_since_packaging": 25,
+      "days_public": 37,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -722,7 +722,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -731,14 +731,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.02564102564102564,
-        "impressions": 39,
-        "as_of": "2026-11-11",
+        "pct": 0.02631578947368421,
+        "impressions": 38,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -763,8 +763,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 31,
-      "days_since_packaging": 26,
+      "days_public": 32,
+      "days_since_packaging": 27,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -790,7 +790,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -799,14 +799,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 68,
-        "as_of": "2026-11-11",
+        "impressions": 64,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -831,8 +831,8 @@
         "A"
       ],
       "packaging_since": "2026-10-15",
-      "days_public": 29,
-      "days_since_packaging": 27,
+      "days_public": 30,
+      "days_since_packaging": 28,
       "public": true,
       "lifetime": {
         "views": 37,
@@ -858,7 +858,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-15"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -867,14 +867,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.0273972602739726,
-        "impressions": 146,
-        "as_of": "2026-11-11",
+        "pct": 0.01818181818181818,
+        "impressions": 110,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -899,8 +899,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 65,
-      "days_since_packaging": 25,
+      "days_public": 66,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 8,
@@ -926,7 +926,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -935,14 +935,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 18,
-        "as_of": "2026-11-11",
+        "impressions": 19,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -967,8 +967,8 @@
         "A"
       ],
       "packaging_since": "2026-11-10",
-      "days_public": 61,
-      "days_since_packaging": 1,
+      "days_public": 62,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 47,
@@ -994,7 +994,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-10"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1003,14 +1003,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
         "pct": 0.08695652173913043,
         "impressions": 23,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1035,8 +1035,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 58,
-      "days_since_packaging": 25,
+      "days_public": 59,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 22,
@@ -1062,7 +1062,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1071,14 +1071,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 27,
-        "as_of": "2026-11-11",
+        "impressions": 28,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1101,8 +1101,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 54,
-      "days_since_packaging": 25,
+      "days_public": 55,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 15,
@@ -1128,7 +1128,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1137,14 +1137,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 32,
-        "as_of": "2026-11-11",
+        "impressions": 30,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1167,8 +1167,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 51,
-      "days_since_packaging": 25,
+      "days_public": 52,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 20,
@@ -1194,23 +1194,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
-        "ctr": "pass",
+        "ctr": "fail",
         "retention_30s": "unknown",
         "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.024390243902439025,
-        "impressions": 41,
-        "as_of": "2026-11-11",
+        "pct": 0.0,
+        "impressions": 36,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1233,8 +1233,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-03",
-      "days_public": 47,
-      "days_since_packaging": 8,
+      "days_public": 48,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -1260,7 +1260,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1269,14 +1269,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 44,
-        "as_of": "2026-11-11",
+        "impressions": 45,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1301,8 +1301,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 44,
-      "days_since_packaging": 25,
+      "days_public": 45,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 42,
@@ -1328,7 +1328,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1337,14 +1337,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.04838709677419355,
-        "impressions": 62,
-        "as_of": "2026-11-11",
+        "pct": 0.03508771929824561,
+        "impressions": 57,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1369,8 +1369,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 40,
-      "days_since_packaging": 25,
+      "days_public": 41,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -1396,7 +1396,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1405,14 +1405,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
         "pct": 0.02702702702702703,
         "impressions": 37,
-        "as_of": "2026-11-11",
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1435,8 +1435,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 37,
-      "days_since_packaging": 25,
+      "days_public": 38,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1462,7 +1462,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1471,14 +1471,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.022988505747126436,
-        "impressions": 87,
-        "as_of": "2026-11-11",
+        "pct": 0.023529411764705882,
+        "impressions": 85,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1501,8 +1501,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 33,
-      "days_since_packaging": 25,
+      "days_public": 34,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 161,
@@ -1528,7 +1528,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1537,14 +1537,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.015625,
-        "impressions": 64,
-        "as_of": "2026-11-11",
+        "pct": 0.01639344262295082,
+        "impressions": 61,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1584,8 +1584,8 @@
         "B"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 30,
-      "days_since_packaging": 2,
+      "days_public": 31,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -1611,7 +1611,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1620,14 +1620,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.013888888888888888,
-        "impressions": 72,
-        "as_of": "2026-11-11",
+        "pct": 0.015384615384615385,
+        "impressions": 65,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1664,8 +1664,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-23",
-      "days_public": 27,
-      "days_since_packaging": 19,
+      "days_public": 28,
+      "days_since_packaging": 20,
       "public": true,
       "lifetime": {
         "views": 86,
@@ -1691,7 +1691,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-23"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1700,14 +1700,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.011950655358519661,
-        "impressions": 2594,
-        "as_of": "2026-11-11",
+        "pct": 0.012477718360071301,
+        "impressions": 2244,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1732,8 +1732,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 26,
-      "days_since_packaging": 25,
+      "days_public": 27,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -1759,7 +1759,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1768,14 +1768,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.012048192771084338,
-        "impressions": 83,
-        "as_of": "2026-11-11",
+        "pct": 0.011904761904761904,
+        "impressions": 84,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1798,8 +1798,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 25,
-      "days_since_packaging": 25,
+      "days_public": 26,
+      "days_since_packaging": 26,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1825,7 +1825,7 @@
         "retention_30s_pct": 69.6,
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "fail",
@@ -1834,14 +1834,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.008823529411764706,
-        "impressions": 1020,
-        "as_of": "2026-11-11",
+        "pct": 0.00881488736532811,
+        "impressions": 1021,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1895,8 +1895,8 @@
         "C"
       ],
       "packaging_since": "2026-11-11",
-      "days_public": 23,
-      "days_since_packaging": 0,
+      "days_public": 24,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 88,
@@ -1914,31 +1914,31 @@
         "retention_30s_pct": 52.0
       },
       "current": {
-        "views": 3,
-        "watch_minutes": 1.0,
-        "avd_s": 27.0,
-        "avp_pct": 5.63,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-26"
+        "since": "2026-11-11"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.008472824963835503,
-        "impressions": 4839,
-        "as_of": "2026-11-11",
+        "pct": 0.00846932451972733,
+        "impressions": 4841,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -1963,34 +1963,34 @@
         "A"
       ],
       "packaging_since": "2026-10-20",
-      "days_public": 22,
-      "days_since_packaging": 22,
+      "days_public": 23,
+      "days_since_packaging": 23,
       "public": true,
       "lifetime": {
-        "views": 10,
-        "watch_minutes": 27.0,
-        "avd_s": 230.0,
-        "avp_pct": 31.12,
+        "views": 11,
+        "watch_minutes": 39.0,
+        "avd_s": 294.0,
+        "avp_pct": 39.73,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
           "suggested": 7,
-          "search": 2,
+          "search": 3,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 10,
-        "watch_minutes": 27.0,
-        "avd_s": 230.0,
-        "avp_pct": 31.12,
+        "views": 11,
+        "watch_minutes": 39.0,
+        "avd_s": 294.0,
+        "avp_pct": 39.73,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-20"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1999,14 +1999,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.027149321266968326,
-        "impressions": 221,
-        "as_of": "2026-11-11",
+        "pct": 0.03111111111111111,
+        "impressions": 225,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2056,8 +2056,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 20,
-      "days_since_packaging": 2,
+      "days_public": 21,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 78,
@@ -2083,7 +2083,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -2092,14 +2092,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.006607073455110766,
-        "impressions": 5146,
-        "as_of": "2026-11-11",
+        "pct": 0.006604506604506605,
+        "impressions": 5148,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2153,8 +2153,8 @@
         "C"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 19,
-      "days_since_packaging": 2,
+      "days_public": 20,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 231,
@@ -2180,7 +2180,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -2189,14 +2189,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.011904761904761904,
-        "impressions": 10752,
-        "as_of": "2026-11-11",
+        "pct": 0.011902547889157523,
+        "impressions": 10754,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2233,8 +2233,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 16,
-      "days_since_packaging": 2,
+      "days_public": 17,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -2260,7 +2260,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -2269,14 +2269,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.0019694731659281144,
-        "impressions": 2031,
-        "as_of": "2026-11-11",
+        "pct": 0.001968503937007874,
+        "impressions": 2032,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2313,8 +2313,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-04",
-      "days_public": 15,
-      "days_since_packaging": 7,
+      "days_public": 16,
+      "days_since_packaging": 8,
       "public": true,
       "lifetime": {
         "views": 52,
@@ -2340,7 +2340,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-04"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -2349,14 +2349,14 @@
       "verdict": "PASS",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.015549076773566569,
-        "impressions": 1029,
-        "as_of": "2026-11-11",
+        "pct": 0.015267175572519083,
+        "impressions": 1048,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2393,8 +2393,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 13,
-      "days_since_packaging": 2,
+      "days_public": 14,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -2420,7 +2420,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -2429,14 +2429,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.002188183807439825,
-        "impressions": 914,
-        "as_of": "2026-11-11",
+        "pct": 0.0021810250817884407,
+        "impressions": 917,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2461,8 +2461,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 12,
-      "days_since_packaging": 8,
+      "days_public": 13,
+      "days_since_packaging": 9,
       "public": true,
       "lifetime": {
         "views": 13,
@@ -2488,7 +2488,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -2497,14 +2497,14 @@
       "verdict": "PASS",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "ctr": {
-        "pct": 0.013513513513513514,
-        "impressions": 296,
-        "as_of": "2026-11-11",
+        "pct": 0.013333333333333334,
+        "impressions": 300,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2527,8 +2527,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-02",
-      "days_public": 9,
-      "days_since_packaging": 9,
+      "days_public": 10,
+      "days_since_packaging": 10,
       "public": true,
       "lifetime": {
         "views": 34,
@@ -2554,7 +2554,7 @@
         "retention_30s_pct": 44.8,
         "since": "2026-11-02"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "floors": {
         "ctr": "pass",
         "retention_30s": "fail",
@@ -2563,14 +2563,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "ctr": {
-        "pct": 0.04150943396226415,
-        "impressions": 265,
-        "as_of": "2026-11-11",
+        "pct": 0.04119850187265917,
+        "impressions": 267,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2591,8 +2591,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-10",
-      "days_public": 4,
-      "days_since_packaging": 1,
+      "days_public": 5,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 3,
@@ -2618,11 +2618,11 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-10"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "ctr_baseline": {
-        "pct": 0.011927708631640783,
+        "pct": 0.011902547889157523,
         "group": "channel",
-        "n": 12
+        "n": 13
       },
       "floors": {
         "ctr": "pass",
@@ -2632,9 +2632,9 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr": {
-        "pct": 0.019230769230769232,
-        "impressions": 52,
-        "as_of": "2026-11-11",
+        "pct": 0.017857142857142856,
+        "impressions": 56,
+        "as_of": "2026-11-12",
         "source": "reporting"
       }
     },
@@ -2678,70 +2678,6 @@
         "A"
       ],
       "packaging_since": "2026-11-10",
-      "days_public": 1,
-      "days_since_packaging": 1,
-      "lifetime": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
-        "subscribers_gained": 0,
-        "traffic": {
-          "browse": 0,
-          "suggested": 0,
-          "search": 0,
-          "external": 0,
-          "other": 0
-        },
-        "retention_30s_pct": "insufficient"
-      },
-      "current": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
-        "subscribers_gained": 0,
-        "retention_30s_pct": "insufficient",
-        "since": "2026-11-10"
-      },
-      "measured_on": "2026-11-11",
-      "ctr_baseline": {
-        "pct": 0.008472824963835503,
-        "group": "deep-sea-ocean-science",
-        "n": 7
-      },
-      "floors": {
-        "ctr": "unknown",
-        "retention_30s": "unknown",
-        "avp": "unknown"
-      },
-      "verdict": "INSUFFICIENT",
-      "needs_review": false
-    },
-    "pT1BETTFbsY": {
-      "video_id": "pT1BETTFbsY",
-      "public": false
-    },
-    "TEmyz8h_DIA": {
-      "video_id": "TEmyz8h_DIA",
-      "public": true,
-      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
-      "title": "Why Do Deep Sea Fish Eyes Bulge?",
-      "domain": "deep-sea-ocean-science",
-      "variant_of": "stake-then-payoff",
-      "public_since": "2026-11-09",
-      "duration_s": 697.0,
-      "packaging_pass_at": null,
-      "hooked": true,
-      "thumbnail_test": {
-        "active": false,
-        "started": null,
-        "variants": []
-      },
-      "thumbnails_used": [
-        "A"
-      ],
-      "packaging_since": "2026-11-09",
       "days_public": 2,
       "days_since_packaging": 2,
       "lifetime": {
@@ -2766,13 +2702,13 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-11-09"
+        "since": "2026-11-10"
       },
-      "measured_on": "2026-11-11",
+      "measured_on": "2026-11-12",
       "ctr_baseline": {
-        "pct": 0.008472824963835503,
+        "pct": 0.010059904978310268,
         "group": "deep-sea-ocean-science",
-        "n": 7
+        "n": 8
       },
       "floors": {
         "ctr": "unknown",
@@ -2781,9 +2717,135 @@
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
+    },
+    "pT1BETTFbsY": {
+      "video_id": "pT1BETTFbsY",
+      "public": true,
+      "slug": "what-lives-in-mariana-trench",
+      "title": "Is the Mariana Trench Empty?",
+      "domain": "deep-sea-ocean-science",
+      "variant_of": "stake-then-payoff",
+      "public_since": "2026-11-11",
+      "duration_s": 664.0,
+      "packaging_pass_at": null,
+      "hooked": true,
+      "thumbnail_test": {
+        "active": false,
+        "started": null,
+        "variants": []
+      },
+      "thumbnails_used": [
+        "A"
+      ],
+      "packaging_since": "2026-11-11",
+      "days_public": 1,
+      "days_since_packaging": 1,
+      "lifetime": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "traffic": {
+          "browse": 0,
+          "suggested": 0,
+          "search": 0,
+          "external": 0,
+          "other": 0
+        },
+        "retention_30s_pct": "insufficient"
+      },
+      "current": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "retention_30s_pct": "insufficient",
+        "since": "2026-11-11"
+      },
+      "measured_on": "2026-11-12",
+      "ctr_baseline": {
+        "pct": 0.010059904978310268,
+        "group": "deep-sea-ocean-science",
+        "n": 8
+      },
+      "floors": {
+        "ctr": "unknown",
+        "retention_30s": "unknown",
+        "avp": "unknown"
+      },
+      "verdict": "INSUFFICIENT",
+      "needs_review": false
+    },
+    "TEmyz8h_DIA": {
+      "video_id": "TEmyz8h_DIA",
+      "public": true,
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "title": "Why Do Deep Sea Fish Eyes Bulge?",
+      "domain": "deep-sea-ocean-science",
+      "variant_of": "stake-then-payoff",
+      "public_since": "2026-11-09",
+      "duration_s": 697.0,
+      "packaging_pass_at": null,
+      "hooked": true,
+      "thumbnail_test": {
+        "active": false,
+        "started": null,
+        "variants": []
+      },
+      "thumbnails_used": [
+        "A"
+      ],
+      "packaging_since": "2026-11-09",
+      "days_public": 3,
+      "days_since_packaging": 3,
+      "lifetime": {
+        "views": 13,
+        "watch_minutes": 17.0,
+        "avd_s": 147.0,
+        "avp_pct": 21.11,
+        "subscribers_gained": 0,
+        "traffic": {
+          "browse": 0,
+          "suggested": 8,
+          "search": 2,
+          "external": 0,
+          "other": 3
+        },
+        "retention_30s_pct": "insufficient"
+      },
+      "current": {
+        "views": 13,
+        "watch_minutes": 17.0,
+        "avd_s": 147.0,
+        "avp_pct": 21.11,
+        "subscribers_gained": 0,
+        "retention_30s_pct": "insufficient",
+        "since": "2026-11-09"
+      },
+      "measured_on": "2026-11-12",
+      "ctr_baseline": {
+        "pct": 0.010059904978310268,
+        "group": "deep-sea-ocean-science",
+        "n": 8
+      },
+      "floors": {
+        "ctr": "pass",
+        "retention_30s": "unknown",
+        "avp": "fail"
+      },
+      "verdict": "WATCH",
+      "needs_review": false,
+      "ctr": {
+        "pct": 0.011650485436893204,
+        "impressions": 515,
+        "as_of": "2026-11-12",
+        "source": "reporting"
+      }
     }
   },
-  "as_of": "2026-11-11",
+  "as_of": "2026-11-12",
   "config": {
     "floors": {
       "ctr_pct": 4.0,
@@ -2801,20 +2863,20 @@
   },
   "channel": {
     "week": "2026-W46",
-    "date": "2026-11-11",
-    "public_longform": 39,
+    "date": "2026-11-12",
+    "public_longform": 40,
     "packaging_working": "no",
     "counts": {
       "PASS": 2,
-      "WATCH": 4,
+      "WATCH": 5,
       "FAIL": 6,
       "INSUFFICIENT": 27
     },
     "judged_medians": {
-      "n": 12,
+      "n": 13,
       "ctr_pct": 0.0,
       "retention_30s_pct": 57.2,
-      "avp_pct": 11.7
+      "avp_pct": 17.0
     },
     "cohorts": {
       "pre-rule": {
@@ -2824,13 +2886,19 @@
         "avp_pct": 19.1
       },
       "stake-then-payoff": {
-        "n": 2,
-        "ctr_pct": null,
+        "n": 3,
+        "ctr_pct": 0.0,
         "retention_30s_pct": null,
-        "avp_pct": null
+        "avp_pct": 21.1
       }
     },
     "best3": [
+      {
+        "video_id": "98ejztJsQNY",
+        "title": "What Makes Steel So Strong?",
+        "views": 11,
+        "watch_minutes_per_view": 3.55
+      },
       {
         "video_id": "k4OOYUrar30",
         "title": "A Welding Arc Is Not One Thing",
@@ -2842,12 +2910,6 @@
         "title": "Do Deep Sea Animals Get Scarier?",
         "views": 19,
         "watch_minutes_per_view": 2.84
-      },
-      {
-        "video_id": "98ejztJsQNY",
-        "title": "What Makes Steel So Strong?",
-        "views": 10,
-        "watch_minutes_per_view": 2.7
       }
     ],
     "worst3": [
@@ -2917,15 +2979,6 @@
         "title_only_reason": "no contract-holding variant B on disk"
       },
       {
-        "video_id": "rY7t_VDz9sk",
-        "round": 1,
-        "at": "2026-11-04",
-        "old_title": "Why Doesn't Kevlar Melt?",
-        "new_title": "How Is Kevlar Made?",
-        "thumbnail": null,
-        "title_only_reason": "no contract-holding variant B on disk"
-      },
-      {
         "video_id": "T6XeND2qM4k",
         "round": 1,
         "at": "2026-11-09",
@@ -2940,7 +2993,7 @@
     "gate": {
       "first_repackaged": "2026-10-14",
       "gate_date": "2026-11-13",
-      "days_left": 2
+      "days_left": 1
     },
     "food": [
       {
@@ -2948,14 +3001,14 @@
         "title": "Bread, Steak, Chocolate: What's Inside?",
         "views": 21,
         "watch_minutes_per_view": 2.43,
-        "ctr_pct": 0.008823529411764706,
+        "ctr_pct": 0.00881488736532811,
         "verdict": "FAIL"
       }
     ]
   },
   "pull": {
-    "at": "2026-11-11T14:39:43+00:00",
-    "date": "2026-11-11",
+    "at": "2026-11-12T14:42:13+00:00",
+    "date": "2026-11-12",
     "public_ids": [
       "-8gyi8oq3zU",
       "2zQAc_ZSbMs",
@@ -2990,6 +3043,7 @@
       "l6HwRYGo-Nw",
       "mOP33elEfpU",
       "nv-M6q8h-Lk",
+      "pT1BETTFbsY",
       "rY7t_VDz9sk",
       "sfveDF88ZHo",
       "vrb83gWWaYw",
@@ -2998,14 +3052,14 @@
       "zs-gueHeX8k"
     ],
     "ledger_longform": 45,
-    "analytics_calls": 104,
+    "analytics_calls": 105,
     "data_api_units": 1,
     "retention": {
       "returned": 17,
-      "insufficient": 22
+      "insufficient": 23
     }
   },
-  "updated": "2026-11-11T14:39:55+00:00",
+  "updated": "2026-11-12T14:42:13+00:00",
   "reach": {
     "reports": {
       "20730932358": {
@@ -11491,11 +11545,254 @@
             0.0
           ]
         }
+      },
+      "20767728142": {
+        "start": "2026-11-09T08:00:00Z",
+        "end": "2026-11-10T08:00:00Z",
+        "created": "2026-11-12T02:48:29.823857Z",
+        "daily": {
+          "2026-11-09/-8gyi8oq3zU": [
+            4,
+            0.0
+          ],
+          "2026-11-09/-LXdt8tsw9k": [
+            3,
+            0.0
+          ],
+          "2026-11-09/2zQAc_ZSbMs": [
+            1,
+            0.0
+          ],
+          "2026-11-09/4Pin2aln58w": [
+            1,
+            0.0
+          ],
+          "2026-11-09/6GR-Ie3Sxm4": [
+            3,
+            0.0
+          ],
+          "2026-11-09/7QtJ_B2kggQ": [
+            1,
+            0.0
+          ],
+          "2026-11-09/8bVPoTWAfFQ": [
+            1,
+            0.0
+          ],
+          "2026-11-09/98ejztJsQNY": [
+            4,
+            1.0
+          ],
+          "2026-11-09/9FcDJniofMM": [
+            2,
+            0.0
+          ],
+          "2026-11-09/BPpmHWdQQ-w": [
+            5,
+            0.0
+          ],
+          "2026-11-09/EFGCT_ZLdzY": [
+            1,
+            0.0
+          ],
+          "2026-11-09/EFimztjj_j8": [
+            2,
+            0.0
+          ],
+          "2026-11-09/EY__zREBIUk": [
+            1,
+            0.0
+          ],
+          "2026-11-09/Eueb6oHEbMs": [
+            1,
+            0.0
+          ],
+          "2026-11-09/G1TqXmf36Qo": [
+            2,
+            0.0
+          ],
+          "2026-11-09/GTvZFHQMMuQ": [
+            1,
+            0.0
+          ],
+          "2026-11-09/IEbq-U5_i5M": [
+            2,
+            0.0
+          ],
+          "2026-11-09/JWwo4OPq9nk": [
+            1,
+            0.0
+          ],
+          "2026-11-09/Kh2k6I4il3g": [
+            7,
+            0.0
+          ],
+          "2026-11-09/Ky9Omx9nHr4": [
+            1,
+            0.0
+          ],
+          "2026-11-09/MAV4PF056RA": [
+            1,
+            0.0
+          ],
+          "2026-11-09/MWOUa3UEXSk": [
+            1,
+            0.0
+          ],
+          "2026-11-09/Mou_ltfkI1c": [
+            2,
+            0.0
+          ],
+          "2026-11-09/MozJZ-ChEZU": [
+            1,
+            0.0
+          ],
+          "2026-11-09/N5mbwKym55c": [
+            16,
+            1.0
+          ],
+          "2026-11-09/OdYunlbB73g": [
+            1,
+            0.0
+          ],
+          "2026-11-09/RlbR0qGmU0s": [
+            2,
+            0.0
+          ],
+          "2026-11-09/Rvuh_RlSuKU": [
+            1,
+            0.0
+          ],
+          "2026-11-09/T6XeND2qM4k": [
+            3,
+            0.0
+          ],
+          "2026-11-09/TEmyz8h_DIA": [
+            515,
+            6.0
+          ],
+          "2026-11-09/TjrpzJE3utU": [
+            1,
+            0.0
+          ],
+          "2026-11-09/VDFFur-xYUU": [
+            2,
+            0.0
+          ],
+          "2026-11-09/YuZxDiNUw4w": [
+            1,
+            0.0
+          ],
+          "2026-11-09/Z-Z1FNVQXW0": [
+            2,
+            0.0
+          ],
+          "2026-11-09/_dEimGejxNc": [
+            1,
+            0.0
+          ],
+          "2026-11-09/aKyOg7xbxC0": [
+            1,
+            0.0
+          ],
+          "2026-11-09/bPD6Pyp5iKw": [
+            5,
+            0.0
+          ],
+          "2026-11-09/debozzLtVRA": [
+            1,
+            0.0
+          ],
+          "2026-11-09/eJSCm5sk5AA": [
+            3,
+            0.0
+          ],
+          "2026-11-09/gzfS8409lV8": [
+            1,
+            0.0
+          ],
+          "2026-11-09/hBcqr4qpAv4": [
+            7,
+            0.0
+          ],
+          "2026-11-09/izdEaeOQBvI": [
+            1,
+            0.0
+          ],
+          "2026-11-09/jec80gk8rM0": [
+            1,
+            0.0
+          ],
+          "2026-11-09/k4OOYUrar30": [
+            4,
+            0.0
+          ],
+          "2026-11-09/kTBlLeWdi4g": [
+            1,
+            0.0
+          ],
+          "2026-11-09/l6HwRYGo-Nw": [
+            2,
+            0.0
+          ],
+          "2026-11-09/nv-M6q8h-Lk": [
+            2,
+            0.0
+          ],
+          "2026-11-09/prHJLtgqN6g": [
+            1,
+            0.0
+          ],
+          "2026-11-09/qPnBKYAR3ps": [
+            2,
+            0.0
+          ],
+          "2026-11-09/rDJ0lUO1Yf0": [
+            1,
+            0.0
+          ],
+          "2026-11-09/rHjyomS0aZo": [
+            3,
+            0.0
+          ],
+          "2026-11-09/rY7t_VDz9sk": [
+            19,
+            0.0
+          ],
+          "2026-11-09/tlI93J6jwBU": [
+            1,
+            0.0
+          ],
+          "2026-11-09/vrb83gWWaYw": [
+            2,
+            0.0
+          ],
+          "2026-11-09/wOMTQA4oQOA": [
+            1,
+            0.0
+          ],
+          "2026-11-09/xbmIX6n2OI8": [
+            1,
+            0.0
+          ],
+          "2026-11-09/xyZ9xs7OF3g": [
+            1,
+            0.0
+          ],
+          "2026-11-09/zd_fjP4RPWE": [
+            2,
+            0.0
+          ],
+          "2026-11-09/zs-gueHeX8k": [
+            1,
+            0.0
+          ]
+        }
       }
     },
     "job_id": "afc2ca97-15e3-4d96-ba59-4654e73ecb56",
-    "as_of": "2026-11-11",
-    "window_start": "2026-10-15",
-    "merged": 37
+    "as_of": "2026-11-12",
+    "window_start": "2026-10-16",
+    "merged": 38
   }
 }
