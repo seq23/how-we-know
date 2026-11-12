@@ -1976,3 +1976,37 @@ record, calendar and cloud-upload proofs remain active.
   disk), never secrets or runtimes.
 - Guard: `loop/tests/test_narration_refuses_without_media.py`. Negative proofs: dropping the call
   fails it; the stripped manifests fail test_captions_self_heal; restored, green.
+
+## 2026-11-10 — o1 re-read: still the 23 September ranking cliff; two crawl-visible gaps fixed
+
+- **Re-read live, not from the brief.** Search Console (gsc-bot, `sc-domain:howweknowdeep.com`):
+  22 Sep 61 impressions at average position ~24, 23 Sep 6 at ~59, and 1–6 a day at positions
+  60–90 ever since. Cloudflare Pages deployment history shows **no deploy between 31 Aug and
+  26 Oct**, so nothing this repo shipped caused it — the same finding as 2026-11-03.
+- **Indexing is not the cause.** 41 of 45 sitemap URLs indexed, 0 crawled-not-indexed, robots
+  allows everything; the one "Page with redirect" top loser (/creatures/dumbo-octopus/) is the
+  deliberate #301 consolidation into /questions/what-is-a-dumbo-octopus/.
+- **Fixed what a crawler could see:** /privacy/ and /terms/ linked to Cloudflare's
+  /cdn-cgi/l/email-protection (a dead page for crawlers) — the address is now inside
+  email_off/email_on (`site/src/components/PlainEmail.tsx`); and the q1 b3 gap — /creatures/,
+  /zones/, /methods/, /about/, /watch/ and /methodology/ had no question H2 at all.
+- Guard: `site/scripts/validate-built-html.mjs` fails a sampled page with 2+ H2s and no question,
+  and any mailto outside email_off; hard-fails on zero pages read. Negative proofs: the bare
+  creature names and the unwrapped mailto each fail it; restored, green.
+- The remaining lever is page quality and time; the next o1 brief re-measures the 28-day line.
+
+## 2026-11-12 — resume the unlanded site-audit repair
+
+- Re-read Search Console with the audit service account: property is available; the
+  22–23 September cliff remains 61 to 6 impressions, average position 23.66 to 59.33.
+- Fresh URL Inspection: /zones/abyss/, /zones/hadal/ and /zones/midnight/ are
+  submitted and indexed, fetch successfully, allow indexing and agree on canonical.
+  /creatures/dumbo-octopus/ is still the intentional redirect to its question page.
+- Manual actions cannot be read through the Search Console API; none is claimed
+  absent here. The dated ranking cliff is confirmed; its algorithmic cause remains
+  an inference, not a reproduced repository defect. No content expansion is justified.
+- Fresh live crawl: 45/45 sitemap pages, one email-protection target; nine outbound
+  robots refusals are not dead-link evidence. The original source repairs in this
+  branch remain necessary and were reviewed rather than duplicated.
+- Revalidated typecheck, generation, all structural validators, Vite prerender,
+  built HTML, built entity graph and legal policy. PR #368 remains the runner's lane.

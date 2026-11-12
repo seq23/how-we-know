@@ -34,7 +34,7 @@ function WatchPage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Published</p>
-            <h2 id="published-videos">Watchable episodes</h2>
+            <h2 id="published-videos">Which episodes can you watch now?</h2>
           </div>
           <span>{published.length} live</span>
         </div>
@@ -71,7 +71,7 @@ function WatchPage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Production queue</p>
-            <h2 id="production-slate">Initial twenty-video release sequence</h2>
+            <h2 id="production-slate">What is in the initial twenty-video release sequence?</h2>
           </div>
           <span>{planned.length} awaiting production</span>
         </div>
