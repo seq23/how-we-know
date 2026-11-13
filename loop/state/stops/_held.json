@@ -64,18 +64,5 @@
     "reported_run": null,
     "reports": 1,
     "stage": "shorts-cloud"
-  },
-  "whisper-upload::FRAME_CHECK_FAILED": {
-    "code": "FRAME_CHECK_FAILED",
-    "first_reported_at": "2026-11-08T14:44:03+00:00",
-    "issue": null,
-    "items": [
-      "affirmations-money-2026-w45"
-    ],
-    "last_reported_at": "2026-11-12T07:40:11+00:00",
-    "last_seen_at": "2026-11-12T07:40:11+00:00",
-    "reported_run": null,
-    "reports": 3,
-    "stage": "whisper-upload"
   }
 }
