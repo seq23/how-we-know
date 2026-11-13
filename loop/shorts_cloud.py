@@ -56,6 +56,7 @@ path, not a second OCR engine.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import sys
 import json
 import tempfile
@@ -258,6 +259,33 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                         f"is still held by the render gate")
             st.note("DRY RUN — nothing downloaded, nothing uploaded.")
             return 0
+
+        gap_led = SL.load_ledger()
+        today = datetime.now(SL.SHORTS_TZ).date()
+        if (todo and not take and not to_release
+                and all(SL.gap_clears_on(gap_led, p.slug) > today for p in todo)):
+            # SHELVED, BUT EVERY CUT WAITS OUT THE EPISODE GAP (13 Nov 2026).
+            # plan() keeps two Shorts of one episode EPISODE_GAP_DAYS apart, so
+            # a shelf holding only later cuts of recently aired episodes plans
+            # nothing. That fell through to ZERO_WORK and paged her for a rule
+            # doing its job (run 43334821894: hydrothermal-vents and
+            # deep-sea-creatures cut 3, both inside the gap). It is a wait with
+            # a date: name the cuts and the day each clears.
+            clears = {p.label: SL.gap_clears_on(gap_led, p.slug).isoformat()
+                      for p in todo}
+            if not dry_run:
+                quota.stand_down(LANE)
+            st.named_stop(
+                "SHORTS_WAITING_EPISODE_GAP",
+                f"{len(todo)} verified Short(s) are shelved, but each is a cut "
+                f"of an episode that already has a Short within "
+                f"{SL.EPISODE_GAP_DAYS} days: "
+                + ", ".join(f"{k} (clear {v})" for k, v in sorted(clears.items())),
+                detail={"clears_on": clears, "resolves_at": min(clears.values())},
+                held_items=sorted(clears),
+                unblock="Nothing to do: the first cut is scheduled on the "
+                        "first run after its gap clears. A new episode's "
+                        "Short on the shelf is scheduled at once.")
 
         creds = up.load_credentials(cfg)
         if not creds or creds.get("unusable"):
