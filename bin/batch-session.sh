@@ -743,7 +743,9 @@ fi
 # night is freed. A note, never a red; it reopens as uploads drain the shelf.
 if [ -n "${pending_audio// }" ]; then
   local gate grc
-  gate=$($PY loop/supply_gate.py check longform 2>&1); grc=$?
+  # (13 Nov 2026) loop/night_split.py gate: a waiting Money script is judged
+  # on Money's own supply, not on long-forms other topics made before the test
+  gate=$($PY loop/night_split.py gate 2>&1); grc=$?
   echo "  supply gate: $gate"
   if [ "$grc" -eq 10 ]; then pending_audio=""; fi
 fi
@@ -832,7 +834,7 @@ echo; echo "--- render (final sweep) ---"
   # up nightly BEFORE the renders so a Money render never waits for the weekly
   # harvest; a
   # subject already holding its clips searches nothing.
-  nice -n 10 $PY research/imagery_stock_video.py --money 2>&1 | grep -E "money footage|calm footage|NAMED STOP|Traceback" | tail -3 \
+  nice -n 10 $PY research/imagery_stock_video.py --money 2>&1 | grep -E "money footage|calm footage|verified|NAMED STOP|Traceback" | tail -3 \
     || echo "  money footage step exited $? - Money renders from what is on record"
 for slug in $(renderable); do
   render_one "$slug" || { echo "  --max-episodes $MAX_EPISODES reached; stopping"; break; }

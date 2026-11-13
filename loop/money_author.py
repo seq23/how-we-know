@@ -31,6 +31,9 @@ WHAT ONE RUN DOES
      out), and a draft that gives a tip or promises money is refused.
   5. The full validator set (loop/validate.run_all) on the one script; only a
      script that passes reaches scripts/<slug>.md, where the batch reads it.
+  6. A topic that is not written (a failed draft, a refused one) is a note:
+     the next topics are tried in rank order, up to TOPICS_A_RUN a run, and
+     the skipped topic is first again at the next daily run.
 
 Rule 0: every run writes a script or ends on a named stop.
 """
@@ -53,6 +56,7 @@ ORDER = ROOT / "research" / "publish_order_money_and_business.json"
 SCRIPTS = ROOT / "scripts"
 DRAFTS = LOOP / "drafts"                                    # where author.draft writes
 MAX_IN_FLIGHT = 2                   # two How We Know nights a week
+TOPICS_A_RUN = 3                    # topics tried in one run before it is a stop
 LANE_MARK = "**Made by:** loop/money_author.py"
 DISCLAIMER = "This is not financial advice."
 
@@ -116,6 +120,12 @@ def next_topic(pub: set[str] | None = None) -> dict | None:
     pub = published_slugs() if pub is None else pub
     return next((t for t in topics() if not (SCRIPTS / f"{t['slug']}.md").exists()
                  and t["slug"] not in pub), None)
+
+
+def next_topics(pub: set[str] | None = None) -> list[dict]:
+    """Every topic with no script and no upload, in rank order."""
+    pub = published_slugs() if pub is None else pub
+    return [t for t in topics() if not (SCRIPTS / f"{t['slug']}.md").exists() and t["slug"] not in pub]
 
 
 def ensure_disclaimer(text: str) -> str:
@@ -184,55 +194,91 @@ def run(plan_only: bool = False) -> int:
                           f"nights; at most {MAX_IN_FLIGHT} Money scripts are in flight",
                           unblock="Nothing to do: an upload clears it and the next run "
                                   "writes the next topic.")
-        t = next_topic(pub)
-        if t is None:
+        todo = next_topics(pub)
+        if not todo:
             st.named_stop("MONEY_TOPICS_DONE",
                           "all 12 Money test topics are written; the 30-day lane check "
                           "(loop/lane_check.py) judges the test",
                           unblock="Nothing to do: more topics follow only if the test passes.")
-        print(f"next money topic: {t['slug']} ({t['title']})")
         used = [r.get("pov_id") for r in ledger.load()["published"] if r.get("pov_id")]
-        try:
-            pov = pov_match.select(t["slug"], f"{t['title']} {t['slug']}", used, domain=DOMAIN)
-        except Exception as e:                              # noqa: BLE001
-            st.named_stop("MONEY_NO_POV_LINE", f"{t['slug']}: no transferable POV line is free "
-                          f"({str(e)[:120]})", unblock="The next run tries again as lines free up.")
-        try:
-            out = author.draft(t["title"], t["slug"], pov, domain=DOMAIN,
-                               deadline=time.monotonic() + 150 * 60)
-        except author.AuthorStop as e:
-            st.named_stop(e.code, f"{t['slug']}: {e.message}", unblock=e.unblock)
-        draft = DRAFTS / f"{t['slug']}.md"
-        if (ROOT / out["path"]).resolve() != draft.resolve():
-            st.named_stop("MONEY_DRAFT_PATH_MOVED", f"{t['slug']}: author wrote {out['path']}, "
-                          f"expected {draft.relative_to(ROOT)}",
-                          unblock="Point DRAFTS in loop/money_author.py at author.DRAFTS.")
-        text = finish(draft.read_text(), t)
-        bad = money_problems(text)
-        if bad:
-            st.named_stop("MONEY_DRAFT_REFUSED", f"{t['slug']}: {bad[0]}",
-                          unblock="The next run drafts the topic again.")
-        draft.write_text(text)
-        item = {"slug": t["slug"], "question": t["title"], "script": out["path"],
-                "generated": True, "pov_id": pov.get("pov_id"), "pov_line": pov.get("line"),
-                "pov_tier": pov.get("tier"), "pov_matched_by": pov.get("matched_by"),
-                "domain": DOMAIN}
-        passed, report = validate.run_all([item])
-        if not passed:
-            fails = [f"{r['validator']}: {(r['failures'] or [''])[0][:140]}"
-                     for r in report if "FAIL" in r["status"]]
-            st.named_stop("MONEY_DRAFT_FAILED_VALIDATION",
-                          f"{t['slug']}: {len(fails)} validator(s) failed: {'; '.join(fails[:3])}",
-                          unblock="The draft stays in loop/drafts/; the next run drafts again.")
-        dest = SCRIPTS / f"{t['slug']}.md"
-        dest.write_text(text)
-        if pov.get("pov_id") and pov.get("line"):
-            pov_match.record_assignment(t["slug"], {"pov_id": pov["pov_id"], "line": pov["line"],
-                                                    "tier": pov.get("tier", "transferable")})
-        st.work(f"wrote scripts/{t['slug']}.md ({out.get('model')}, attempt {out.get('attempt')}, "
-                f"{len(report)} validators passed)")
-    print(f"OUTPUT money-author: scripts/{t['slug']}.md written")
+        deadline = time.monotonic() + 150 * 60
+        # ONE TOPIC THE FREE MODELS CANNOT WRITE TODAY NEVER COSTS THE NIGHT ITS
+        # SCRIPT (13 Nov 2026: the run ended on FTX's fourth failed draft and
+        # opened an issue, with ten more topics unwritten). The next topics are
+        # tried in rank order, up to TOPICS_A_RUN; the skipped one is first
+        # again at the next run. Only a run that writes nothing is the stop.
+        failed: list[TopicStop] = []
+        t = None
+        for t in todo[:TOPICS_A_RUN]:
+            print(f"next money topic: {t['slug']} ({t['title']})")
+            try:
+                line = write_topic(t, used, deadline, author, pov_match, validate)
+            except TopicStop as e:
+                failed.append(e)
+                st.note(f"{e.code} {e.message}")
+                continue
+            st.work(line)
+            break
+        else:
+            first = failed[0]
+            st.named_stop(first.code,
+                          f"{len(failed)} Money topic(s) tried, none written: "
+                          + " | ".join(f.message[:260] for f in failed),
+                          unblock=first.unblock)
+    print(f"OUTPUT money-author: scripts/{t['slug']}.md written"
+          + (f" ({len(failed)} earlier topic(s) refused today, tried again at the next run)" if failed else ""))
     return 0
+
+
+class TopicStop(Exception):
+    """One topic was not written this run; the next topic is tried."""
+
+    def __init__(self, code: str, message: str, unblock: str = ""):
+        super().__init__(f"{code}: {message}")
+        self.code, self.message, self.unblock = code, message, unblock
+
+
+def write_topic(t: dict, used: list, deadline: float, author, pov_match, validate) -> str:
+    """Draft, check (R-ADV-04, then every validator) and write ONE topic's
+    script. Returns the work line; raises TopicStop when it is not written."""
+    try:
+        pov = pov_match.select(t["slug"], f"{t['title']} {t['slug']}", used, domain=DOMAIN)
+    except Exception as e:                                  # noqa: BLE001
+        raise TopicStop("MONEY_NO_POV_LINE", f"{t['slug']}: no transferable POV line is free "
+                        f"({str(e)[:120]})", "The next run tries again as lines free up.") from e
+    try:
+        out = author.draft(t["title"], t["slug"], pov, domain=DOMAIN, deadline=deadline)
+    except author.AuthorStop as e:
+        raise TopicStop(e.code, f"{t['slug']}: {e.message}", e.unblock) from e
+    draft = DRAFTS / f"{t['slug']}.md"
+    if (ROOT / out["path"]).resolve() != draft.resolve():
+        raise TopicStop("MONEY_DRAFT_PATH_MOVED", f"{t['slug']}: author wrote {out['path']}, "
+                        f"expected {draft.relative_to(ROOT)}",
+                        "Point DRAFTS in loop/money_author.py at author.DRAFTS.")
+    text = finish(draft.read_text(), t)
+    bad = money_problems(text)
+    if bad:
+        raise TopicStop("MONEY_DRAFT_REFUSED", f"{t['slug']}: {bad[0]}",
+                        "The next run drafts the topic again.")
+    draft.write_text(text)
+    item = {"slug": t["slug"], "question": t["title"], "script": out["path"],
+            "generated": True, "pov_id": pov.get("pov_id"), "pov_line": pov.get("line"),
+            "pov_tier": pov.get("tier"), "pov_matched_by": pov.get("matched_by"),
+            "domain": DOMAIN}
+    passed, report = validate.run_all([item])
+    if not passed:
+        fails = [f"{r['validator']}: {(r['failures'] or [''])[0][:140]}"
+                 for r in report if "FAIL" in r["status"]]
+        raise TopicStop("MONEY_DRAFT_FAILED_VALIDATION",
+                        f"{t['slug']}: {len(fails)} validator(s) failed: {'; '.join(fails[:3])}",
+                        "The draft stays in loop/drafts/; the next run drafts again.")
+    (SCRIPTS / f"{t['slug']}.md").write_text(text)
+    if pov.get("pov_id") and pov.get("line"):
+        pov_match.record_assignment(t["slug"], {"pov_id": pov["pov_id"], "line": pov["line"],
+                                                "tier": pov.get("tier", "transferable")})
+        used.append(pov["pov_id"])
+    return (f"wrote scripts/{t['slug']}.md ({out.get('model')}, attempt {out.get('attempt')}, "
+            f"{len(report)} validators passed)")
 
 
 def main(argv: list[str]) -> int:

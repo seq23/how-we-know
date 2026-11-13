@@ -107,11 +107,27 @@ def verdict(fmt: str, made: int, per_day: float, uploads: int, now: _dt.datetime
 
 
 def check(fmt: str, now: _dt.datetime | None = None, root: Path = ROOT, **kw) -> dict:
+    """`lane` (long-form only): judge ONE topic on its own supply - what it
+    has made and not uploaded against its own upload pace, never slower than
+    `per_week` (its planned nights). 13 Nov 2026: 12 deep-sea and materials
+    long-forms made before the Money test held both Money nights until 22
+    Nov, with no Money video made at all."""
     now = now or _dt.datetime.now(_dt.timezone.utc)
     if fmt == "longform":
         led = kw.get("ledger") or json.loads((root / "loop/state/ledger.json").read_text())
         made = longform_made(root, kw.get("queued"), led)
-        per, n = rate([e.get("uploaded_at") for e in led.get("published", [])], now)
+        ups = led.get("published", [])
+        lane = kw.get("lane")
+        if lane:
+            if kw.get("domain_of") is None:
+                import domains as D                         # noqa: PLC0415
+            domain_of = kw.get("domain_of") or (lambda s: D.domain_of_slug(s))
+            made = [s for s in made if domain_of(s) == lane]
+            ups = [e for e in ups if domain_of(e.get("slug")) == lane]
+            fmt = f"{lane} long-form"
+        per, n = rate([e.get("uploaded_at") for e in ups], now)
+        if lane:
+            per = max(per, float(kw.get("per_week") or 0) / 7)
     elif fmt == "shorts":
         sl = kw.get("sledger") or json.loads((root / "loop/state/shorts_ledger.json").read_text())
         made = shorts_made(root, sl)

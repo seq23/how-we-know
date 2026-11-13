@@ -10,6 +10,7 @@ schedule); see the notes below for what moved.
 | site · entity backlink watch | `entity-backlink-watch.yml` | Thu 07:00 CT | `0 7 * * 4` |
 | loop · daily demand + Mon 08:30 CT email | `loop-demand.yml` | every day 08:30 CT | `30 8 * * *` |
 | loop · Mon+Thu 14:00 CT · food author (next food episode, $0) | `loop-food-author.yml` | Mon + Thu 14:00 CT | `0 14 * * 1,4` |
+| loop · daily 11:00 CT · money author (next Money episode, $0) | `loop-money-author.yml` | daily 11:00 CT | `0 11 * * *` |
 | loop · daily 14:00 CT · whisper almanac author (sleep, teaching and affirmation scripts, $0) | `loop-whisper-author.yml` | daily 14:00 CT | `0 14 * * *` |
 | loop · Fri 17:00 · measure | `loop-fri-measure.yml` | Fri 16:00 CT | `0 16 * * 5` |
 | loop · Fri 09:00 · flip to public | `loop-fri-publish.yml` | Fri 08:00 CT | `0 8 * * 5` |
