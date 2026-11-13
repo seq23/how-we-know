@@ -1,0 +1,24 @@
+{
+  "stage": "shorts-cloud",
+  "week": "2026-W46",
+  "at": "2026-11-13T00:13:14+00:00",
+  "code": "ZERO_WORK",
+  "message": "stage 'shorts-cloud' completed without doing anything",
+  "detail": {
+    "notes": [
+      "shelf: r2://how-we-know-renders",
+      "shorts mode: normal 9/week - verified backlog 2 cut(s) = 0.2 week(s) at 9/week (drain at >= 2 weeks)"
+    ]
+  },
+  "unblock": "No verified Short is shelved in R2 that is not already in loop/state/shorts_ledger.json. On the Mac: bin/make-shorts.sh --all && bin/push-to-r2.sh",
+  "disposition": "needs_human",
+  "disposition_why": "'ZERO_WORK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'ZERO_WORK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders",
+    "shorts mode: normal 9/week - verified backlog 2 cut(s) = 0.2 week(s) at 9/week (drain at >= 2 weeks)"
+  ]
+}

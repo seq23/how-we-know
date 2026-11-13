@@ -54,6 +54,17 @@
     "reports": 1,
     "stage": "money-author"
   },
+  "shorts-cloud::ZERO_WORK": {
+    "code": "ZERO_WORK",
+    "first_reported_at": "2026-11-13T00:13:14+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-13T00:13:14+00:00",
+    "last_seen_at": "2026-11-13T00:13:14+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "shorts-cloud"
+  },
   "whisper-upload::FRAME_CHECK_FAILED": {
     "code": "FRAME_CHECK_FAILED",
     "first_reported_at": "2026-11-08T14:44:03+00:00",
