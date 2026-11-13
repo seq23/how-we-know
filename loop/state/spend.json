@@ -3530,10 +3530,54 @@
       "completion_tokens": 4847,
       "total_tokens": 16539,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-11-13T14:14:47+00:00",
+      "slug": "why-did-ftx-collapse",
+      "model": "gemini/gemini-2.5-flash",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2286,
+      "completion_tokens": 2973,
+      "total_tokens": 5259,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-13T14:15:15+00:00",
+      "slug": "why-did-ftx-collapse",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 6616,
+      "completion_tokens": 2816,
+      "total_tokens": 9432,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-13T14:17:18+00:00",
+      "slug": "why-did-ftx-collapse",
+      "model": "gemini/gemini-3.6-flash",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 10273,
+      "completion_tokens": 2737,
+      "total_tokens": 17443,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-13T14:18:17+00:00",
+      "slug": "why-did-ftx-collapse",
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "attempt": 4,
+      "accepted": true,
+      "prompt_tokens": 14189,
+      "completion_tokens": 4955,
+      "total_tokens": 19144,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 139,
-  "average_usd_per_accepted_draft": 0.073208,
-  "updated": "2026-11-12T20:05:36+00:00"
+  "drafts_written": 140,
+  "average_usd_per_accepted_draft": 0.072685,
+  "updated": "2026-11-13T14:18:17+00:00"
 }
