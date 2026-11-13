@@ -42,37 +42,30 @@ def picture(slug: str, kit: dict) -> Path:
     return WL.KITS / slug / "thumbnail.png"
 
 
-def render(slug: str, proof_seconds: float | None = None) -> Path:
-    import render_prune as RP                               # noqa: PLC0415
-    rc, line = RP.guard()
-    print(line)
-    if rc:
-        raise SystemExit(3)
-    c = WL.cfg()
-    vis = c["visual"]
-    p = WL.parse(WL.SCRIPTS / f"{slug}.md")
+def measured(slug: str, p: dict, need_all: bool = True) -> tuple[list[Path], float, list[float], dict[int, float]]:
+    """(wavs, total seconds, segment start times, seconds per segment) from
+    the voiced beats: the audio is the authority for every length."""
     n = len(WL.beats(p))
     ad = WL.audio_dir(slug)
     wavs = [ad / f"{i:04d}.wav" for i in range(n)]
     missing = [w.name for w in wavs if not w.exists()]
-    if missing and not proof_seconds:
+    if missing and need_all:
         raise SystemExit(f"NAMED STOP [WHISPER_AUDIO_INCOMPLETE] {slug}: {len(missing)} of {n} beats missing")
     wavs = [w for w in wavs if w.exists()]
     metas = [json.loads((ad / f"{i:04d}.json").read_text()) for i in range(len(wavs))]
-    total = sum(m["duration"] for m in metas)
     seg_starts, t, seen = [], 0.0, set()
+    seg_secs: dict[int, float] = {}
     for m in metas:
         if m["segment"] not in seen:
             seen.add(m["segment"])
             seg_starts.append(t)
         t += m["duration"]
-    dur = min(total, proof_seconds) if proof_seconds else total
-    out = WL.video_path(slug) if not proof_seconds else WL.WORK / slug / f"{slug}-proof.mp4"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    # segment lengths from the measured beats, cut to the proof length
-    seg_secs: dict[int, float] = {}
-    for m in metas:
         seg_secs[m["segment"]] = seg_secs.get(m["segment"], 0.0) + m["duration"]
+    return wavs, t, seg_starts, seg_secs
+
+
+def segments(p: dict, c: dict, seg_secs: dict[int, float], dur: float) -> list[tuple[str, float]]:
+    """[(footage source, seconds)] per segment, cut to `dur`."""
     srcs = [s["source"] for s in p["segments"]]
     fset = WL.footage_set(p, c)
     if fset:                               # manifesting lanes: their own calm footage set,
@@ -83,6 +76,36 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
             break
         segs.append((srcs[i], min(seg_secs[i], left)))
         left -= seg_secs[i]
+    return segs
+
+
+def shots_for(slug: str, c: dict | None = None) -> list[dict]:
+    """The reel a render of SLUG shows now (no ffmpeg): what
+    loop/whisper_upload.clips_at reads for a render made before kits
+    recorded their reel."""
+    import footage as F                                     # noqa: PLC0415
+    import whisper_reel as R                                # noqa: PLC0415
+    c = c or WL.cfg()
+    p = WL.parse(WL.SCRIPTS / f"{slug}.md")
+    _, total, _, seg_secs = measured(slug, p)
+    assets = F.usable_assets()
+    return R.plan_reel(segments(p, c, seg_secs, total), assets, pool_of=lambda s: R.pool(s, assets, c))
+
+
+def render(slug: str, proof_seconds: float | None = None) -> Path:
+    import render_prune as RP                               # noqa: PLC0415
+    rc, line = RP.guard()
+    print(line)
+    if rc:
+        raise SystemExit(3)
+    c = WL.cfg()
+    p = WL.parse(WL.SCRIPTS / f"{slug}.md")
+    wavs, total, seg_starts, seg_secs = measured(slug, p, need_all=not proof_seconds)
+    dur = min(total, proof_seconds) if proof_seconds else total
+    out = WL.video_path(slug) if not proof_seconds else WL.WORK / slug / f"{slug}-proof.mp4"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    fset = WL.footage_set(p, c)
+    segs = segments(p, c, seg_secs, dur)
     import footage as F                                     # noqa: PLC0415
     import whisper_reel as R                                # noqa: PLC0415
     if any(R.food_part(s) for s, _ in segs):
@@ -101,8 +124,12 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
         raise SystemExit(f"NAMED STOP [WHISPER_REEL_REFUSED] {slug}: {len(probs)} footage rule(s) broken: {probs[:3]}")
     kit = WL.kit(slug, measured_s=total, seg_starts=seg_starts, c=c,
                  footage_credits=None if proof_seconds else R.credits(shots))
-    if fset and not proof_seconds:         # the upload step refuses any other set
-        kit["footage_set"] = fset
+    if not proof_seconds:
+        if fset:                           # the upload step refuses any other set
+            kit["footage_set"] = fset
+        # which clip is on screen when: a failed frame check names times, and
+        # loop/whisper_upload.repair refuses the clips shown at them
+        kit["reel"] = [[s["t0"], s["seconds"], s["asset"].get("post_id")] for s in shots]
         (WL.KITS / slug / "kit.json").write_text(json.dumps(kit, indent=2, ensure_ascii=False) + "\n")
     with tempfile.TemporaryDirectory(dir=out.parent) as td:
         lst = Path(td) / "beats.txt"

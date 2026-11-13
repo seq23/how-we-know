@@ -31,7 +31,9 @@ RUNWAY. Per lane with slots in the mix (config `lanes`; 9 Nov 2026: food,
 ocean, neville, money; rotating paused) the
 author keeps up to RUNWAY scripts waiting for voice, writing at most
 MAX_WRITES a run; a full runway is the self-resolving stop
-WHISPER_RUNWAY_FULL, never a green no-op.
+WHISPER_RUNWAY_FULL, never a green no-op. It runs DAILY (13 Nov 2026: the
+mix is 5 videos a week and a weekly run left the Mac with nothing to voice),
+and a script one lane's rules refuse never stops the other lanes' scripts.
 """
 from __future__ import annotations
 
@@ -425,7 +427,7 @@ def waiting(kind: str) -> list[str]:
 def waiting_in(lane: str, c: dict) -> list[str]:
     return [p.stem for p in WL.all_scripts()
             if WL.lane_of(WL.parse(p), c) == lane and WL.parse(p)["status"] == WL.READY
-            and not WL.video_path(p.stem).exists() and not WL.handed_on(p.stem)]
+            and not WL.made(p.stem)]
 
 
 def next_in_lane(lane: str, c: dict) -> tuple[str, str]:
@@ -484,21 +486,36 @@ def run(args, c: dict) -> int:
                 # 9 Nov 2026: food history and ocean documentary are lanes)
                 mix, _ = WL.weekly_mix(c)
                 sleepy, unplanned, sleep_done = sleep_lanes(c), [], False
-                for _ in range(MAX_WRITES + len(mix)):
+                refused: dict[str, WL_SegmentRefused] = {}
+                for _ in range(MAX_WRITES + 2 * len(mix)):
                     short = [ln for ln in mix if mix.get(ln, 0) > 0 and ln not in unplanned
+                             and ln not in refused
                              and not (sleep_done and ln in sleepy) and len(waiting_in(ln, c)) < RUNWAY]
                     if not short or len(st.units) >= MAX_WRITES:
                         break
                     ln = min(short, key=lambda x: (len(waiting_in(x, c)), -mix[x], x))
-                    if ln in sleepy:
-                        e = next_episode(ln, c)
-                        if e is None:
-                            unplanned.append(ln)
-                            continue
-                        sleep_done = True
-                        st.work(f"wrote {author_sleep(e, c).relative_to(WL.ROOT)} ({ln})")
+                    # ONE LANE'S REFUSED SCRIPT NEVER COSTS THE OTHER LANES
+                    # THEIRS (13 Nov 2026: the food episode was refused first
+                    # and the run ended, so Neville and Money got no script
+                    # and the Mac had nothing to voice the next night).
+                    try:
+                        if ln in sleepy:
+                            e = next_episode(ln, c)
+                            if e is None:
+                                unplanned.append(ln)
+                                continue
+                            out = author_sleep(e, c)
+                            sleep_done = True
+                        else:
+                            out = write_next(ln, c)
+                    except WL_SegmentRefused as e:
+                        refused[ln] = e
+                        st.note(f"WHISPER_SEGMENT_REFUSED {ln}: {e.source} still broke the script rules "
+                                f"after {ATTEMPTS} free-model attempts: {'; '.join(e.problems[:3])}")
                         continue
-                    st.work(f"wrote {write_next(ln, c).relative_to(WL.ROOT)} ({ln})")
+                    st.work(f"wrote {out.relative_to(WL.ROOT)} ({ln})")
+                if refused and not st.units:
+                    raise next(iter(refused.values()))
                 for ln in unplanned:
                     st.note(f"WHISPER_EPISODES_UNPLANNED {ln}: no planned episode with every source "
                             f"fact-checked is left to write")
@@ -518,7 +535,7 @@ def run(args, c: dict) -> int:
                           f"{e.source} still broke the script rules after {ATTEMPTS} free-model "
                           f"attempts: {'; '.join(e.problems[:3])}",
                           detail={"problems": e.problems[:20]},
-                          unblock="Nothing to do: the next run retries from the cached good segments.")
+                          unblock="Nothing to do: the next daily run retries from the cached good segments.")
         except R.LLMStop as e:
             st.named_stop(e.code, e.message, unblock=e.unblock)
     print(f"OUTPUT {len(st.units)} whisper scripts written")

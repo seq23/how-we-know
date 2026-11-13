@@ -51,6 +51,7 @@ SCRIPTS = ROOT / "scripts" / "whisper"
 KITS = ROOT / "channel" / "whisper"
 WORK = ROOT / "renders" / "whisper"
 LEDGER = LOOP / "state" / "ledger.json"
+REFUSED_CLIPS = LOOP / "state" / "whisper_refused_clips.json"
 FONTS = ROOT / "channel" / "whisper" / "fonts"
 STAGE = "whisper-voice"
 
@@ -658,7 +659,7 @@ def thumbnail_problems(paths: list[Path], c: dict | None = None) -> list[str]:
 
 
 UPLOAD_KEYS = ("uploaded", "video_id", "uploaded_at", "privacy", "scheduled_publish_at",
-               "publish_at_ct", "youtube_confirmed", "frame_check", "pruned")
+               "publish_at_ct", "youtube_confirmed", "frame_check", "pruned", "repairs")
 
 
 def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | None = None,
@@ -973,6 +974,42 @@ def handed_on(slug: str) -> bool:
     return v.with_name(v.name + ".frame-check-failed").exists()
 
 
+def refused_clips() -> dict:
+    """Clips the final frame check refused on a finished render: post id ->
+    {why, slug, at}. Written by loop/whisper_upload.repair on the Mac, read
+    by visuals/whisper_reel.pool: a refused clip is never placed again, in
+    any video."""
+    try:
+        return json.loads(REFUSED_CLIPS.read_text()).get("clips") or {}
+    except (OSError, ValueError):
+        return {}
+
+
+def made(slug: str) -> bool:
+    """Rendered, set aside or uploaded. The Mac's renders are not in the
+    cloud checkout, so there a kit whose length was MEASURED from the voiced
+    beats is the proof (13 Nov 2026: the cloud author counted two rendered
+    scripts as still waiting for voice and wrote nothing for their lanes)."""
+    if video_path(slug).exists() or handed_on(slug):
+        return True
+    k = KITS / slug / "kit.json"
+    return k.exists() and json.loads(k.read_text()).get("length_basis") == "measured"
+
+
+def ready_to_render(c: dict | None = None) -> list[str]:
+    """Scripts whose every beat is voiced and that have no render: a render
+    removed by a frame-check repair, or one a thin footage pool refused."""
+    c = c or cfg()
+    out = []
+    for f in all_scripts():
+        p = parse(f)
+        done, n = voiced(p["slug"])
+        if (p["status"] == READY and n and done == n and not video_path(p["slug"]).exists()
+                and not handed_on(p["slug"])):
+            out.append(p["slug"])
+    return out
+
+
 def footage_gaps(p: dict) -> list[str]:
     """Parts with too little footage of their own subject (her call 6 Nov
     2026: no part is voiced or rendered without it). Needs this Mac's footage
@@ -1028,16 +1065,19 @@ def night(until: str, budget_min: int | None, py_tts: str, dry: bool = False) ->
         ref, why = prepare_reference(sample, c)
         if ref is None:
             st.named_stop("WHISPER_SAMPLE_UNUSABLE", why, unblock=why)
-        problems = script_problems(SCRIPTS / f"{q[0]}.md")
+        # a script that still needs voice goes first: one that is fully voiced
+        # and waits only for footage is rendered by the nightly upload step
+        # (loop/whisper_upload.render_ready) and must not hold the narrator
+        slug = next((x for x in q if voiced(x)[0] < voiced(x)[1]), q[0])
+        problems = script_problems(SCRIPTS / f"{slug}.md")
         if problems:
             st.named_stop("WHISPER_SCRIPT_REFUSED",
-                          f"{q[0]} fails {len(problems)} script rule(s): {problems[0]}",
+                          f"{slug} fails {len(problems)} script rule(s): {problems[0]}",
                           detail={"problems": problems[:20]},
                           unblock="loop/whisper_author.py rewrites failing segments on its next run.")
         stop_at = _until_epoch(until)
         if budget_min:
             stop_at = min(stop_at, time.time() + budget_min * 60)
-        slug = q[0]
         before, n = voiced(slug)
         if dry:
             st.work(f"DRY: would voice {slug} from beat {before} of {n} until "

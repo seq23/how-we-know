@@ -37,7 +37,7 @@
 
 ### How a video is made (0 steps for her)
 
-1. **Script ($0 free models, Wednesday 14:00 CT):** history from fact-checked How We Know scripts; affirmations line by line; **teaching = a plain explanation in our own words → 2–4 of the teacher's own lines → a long guided section to fall asleep in the wish fulfilled**.
+1. **Script ($0 free models, daily 14:00 CT):** history from fact-checked How We Know scripts; affirmations line by line; **teaching = a plain explanation in our own words → 2–4 of the teacher's own lines → a long guided section to fall asleep in the wish fulfilled**.
 2. **Checks in code:** plain words, no promise, length, distinct; teaching adds the rights and straight-reading checks (`loop/teachings.py`).
 3. **Voice:** her cloned whisper (Chatterbox) on the Mac, the lane furthest behind its weekly count first.
 4. **Picture:** dim moving footage (food and ocean: each part's own subject, NOAA first for ocean; manifesting: the calm night or Money set).
@@ -94,7 +94,7 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 
 | Step | Where | Status | Human |
 |---|---|---|---|
-| Write the sleep script from fact-checked How We Know scripts ($0 free models) | GitHub Actions, Wed 14:00 CT | New, built | none |
+| Write the sleep script from fact-checked How We Know scripts ($0 free models) | GitHub Actions, daily 14:00 CT | New, built | none |
 | Plain-words, fact, length and distinct checks | code, every script | New, built | none |
 | Whose night: 5 Almanac : 2 How We Know, supply gates first | her Mac, 23:00 batch | New, built | none |
 | Voice in her cloned whisper (Chatterbox, $0) | her Mac, narrator lock | New, built | once: record the sample |
