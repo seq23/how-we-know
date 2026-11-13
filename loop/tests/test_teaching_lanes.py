@@ -198,20 +198,32 @@ check(mix == {"neville": 2, "money": 1, "rotating": 0, "food": 1, "ocean": 1}, f
 mix, _ = WL.weekly_mix(c, {"subscribers": 1200, "watch_hours_365d": 4100})
 check(mix["food"] + mix["ocean"] > 2 and mix["money"] >= 1 and sum(mix.values()) == 5,
       f"(h) monetised did not shift to the sleep lanes and money: {mix}")
-lanes = {"neville": {"videos_30d": 3, "watch_hours_per_video": 9.0},
-         "money": {"videos_30d": 3, "watch_hours_per_video": 2.0},
-         "ocean": {"videos_30d": 4, "watch_hours_per_video": 5.0}}
-mix, why = WL.weekly_mix(c, {"lanes": lanes})
-check(mix["neville"] == 3 and mix["money"] == 0 and sum(mix.values()) == 5,
-      f"(h) the watch-hour rule did not move a slot to neville from money: {mix} {why}")
-mix, _ = WL.weekly_mix(c, {"lanes": {"neville": {"videos_30d": 1, "watch_hours_per_video": 99.0},
-                                     "money": {"videos_30d": 3, "watch_hours_per_video": 1.0}}})
-check(mix["neville"] == 2, f"(h) one measured video moved a slot: {mix}")
-for weak in ("food", "ocean"):
-    low = {weak: {"videos_30d": 3, "watch_hours_per_video": 0.1},
-           "neville": {"videos_30d": 3, "watch_hours_per_video": 9.0}}
-    mix, _ = WL.weekly_mix(c, {"lanes": low})
-    check(mix[weak] >= c["mix"]["floors"][weak] >= 1, f"(h) {weak} fell under its floor before day 30: {mix}")
+# h2. the weekly Monday re-weighting (her yes 11 Nov 2026): the lane with the
+# most watch hours per video over 28 days gets the week's spare night; 5 a
+# week, every lane with a slot keeps 1, Neville 1 or more; no numbers, no move
+base = WL.base_mix(c, {})
+lanes = {"neville": {"videos_28d": 3, "watch_hours_per_video": 2.0},
+         "money": {"videos_28d": 3, "watch_hours_per_video": 1.0},
+         "ocean": {"videos_28d": 4, "watch_hours_per_video": 9.0}}
+got = WL.reweight(base, lanes, c)
+check(got is not None and got[0] == {"neville": 1, "money": 1, "rotating": 0, "food": 1, "ocean": 2},
+      f"(h2) the spare night did not go to the lane with the most watch hours per video: {got}")
+for top in ("neville", "money", "food", "ocean"):
+    one = {ln: {"videos_28d": 2, "watch_hours_per_video": 9.0 if ln == top else 0.1} for ln in base}
+    mix, _ = WL.reweight(base, one, c)
+    check(sum(mix.values()) == 5 and mix["neville"] >= 1 and mix["rotating"] == 0
+          and all(mix[ln] >= 1 for ln in base if base[ln] > 0) and mix[top] == 2,
+          f"(h2) with {top} on top the week is not 5 with every active lane at 1+: {mix}")
+check(WL.reweight(base, {}, c) is None and WL.reweight(base, {"ocean": {"videos_28d": 0, "watch_hours_per_video": None}}, c) is None,
+      "(h2) a week with no measured video was re-weighted")
+check(WL.reweight(base, {"rotating": {"videos_28d": 5, "watch_hours_per_video": 50.0}}, c) is None,
+      "(h2) a lane with no slot in the plan took the spare night")
+decided = {"week": "2026-W49", "decided_on": "2026-11-30", "base": base, "mix": got[0], "why": got[1]}
+mix, why = WL.weekly_mix(c, {"reweight": decided})
+check(mix == got[0] and any("2026-W49" in w for w in why), f"(h2) the Monday decision is not the week's mix: {mix} {why}")
+mix, _ = WL.weekly_mix(c, {"reweight": decided, "subscribers": 1200, "watch_hours_365d": 4100})
+check(mix == WL.base_mix(c, {"subscribers": 1200, "watch_hours_365d": 4100}),
+      f"(h2) a decision made on the old plan outlived monetisation: {mix}")
 rows = {"the-deep-ocean-at-night": "ocean", "money-a": "money"}
 orig_parse, orig_all, orig_voiced = WL.parse, WL.all_scripts, WL.voiced
 try:

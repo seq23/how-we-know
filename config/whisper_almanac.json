@@ -736,7 +736,7 @@
     }
   },
   "mix": {
-    "why": "Videos per lane per week, read by loop/whisper_lane.queue (which script the Mac voices next) and loop/whisper_author.py (what to write). Measured 7-8 Nov 2026: one 1 h 43 min history episode took 6.8 h of voice (8.2 Mac minutes per spoken minute) and 2.7 h of render; a 1-hour manifesting video is about 3-5 h. Five Almanac nights hold 3 manifesting + 2 history. Data rules, no calendar: once monetised (her channel's own numbers in loop/state/whisper_channel.json) the weights move to history and money (9 Nov 2026: history became ocean 2 + food 1, the bigger proven demand to ocean); and the lane with the most watch hours per video over the last 30 days takes one slot from the weakest (both with 2+ measured videos), never pushing a lane under its floor.",
+    "why": "Videos per lane per week, read by loop/whisper_lane.queue (which script the Mac voices next) and loop/whisper_author.py (what to write). Measured 7-8 Nov 2026: one 1 h 43 min history episode took 6.8 h of voice (8.2 Mac minutes per spoken minute) and 2.7 h of render; a 1-hour manifesting video is about 3-5 h. Five Almanac nights hold 3 manifesting + 2 history. Data rules, no calendar: once monetised (her channel's own numbers in loop/state/whisper_channel.json) the weights move to history and money (9 Nov 2026: history became ocean 2 + food 1, the bigger proven demand to ocean); and every Monday from week 3 the lane with the most watch hours per video over the last 28 days gets the week's spare nights (`reweight`), never pushing a lane under its floor.",
     "before_monetized": {
       "neville": 2,
       "money": 1,
@@ -744,7 +744,7 @@
       "food": 1,
       "ocean": 1
     },
-    "before_monetized_why": "Her decision 9 Nov 2026 (option a): 2 Neville + 1 Money + 1 food history + 1 ocean documentary; the rotating lane gets 0 slots for now. Re-check on 9 Dec 2026 with real views per lane (day 30).",
+    "before_monetized_why": "Her decision 9 Nov 2026 (option a): 2 Neville + 1 Money + 1 food history + 1 ocean documentary; the rotating lane gets 0 slots for now. Since 11 Nov 2026 the weekly Monday re-weighting (`reweight`) moves the spare night by the channel's own watch hours.",
     "after_monetized": {
       "ocean": 2,
       "food": 1,
@@ -753,19 +753,27 @@
       "rotating": 0
     },
     "floors": {
+      "neville": 1,
       "food": 1,
       "ocean": 1
     },
-    "floors_why": "Her decision 9 Nov 2026 (option a): neither non-manifesting lane is dropped by the watch-hour rule before day 30; re-check these floors on 9 Dec 2026.",
-    "recheck_on": "2026-12-09",
+    "floors_why": "Her decision 9 Nov 2026 (option a) and her yes 11 Nov 2026: the weekly re-weighting never takes a lane below these; every lane with a slot in the week keeps at least 1 night and Neville stays at 1 or more.",
     "monetized_when": {
       "subscribers": 1000,
       "watch_hours_365d": 4000
     },
-    "bonus": {
-      "window_days": 30,
-      "min_videos": 2
+    "reweight": {
+      "after_days": 14,
+      "window_days": 28,
+      "min_videos": 1,
+      "why": "Her yes 11 Nov 2026, replacing the single 30-day check (9 Dec): every Monday from the third week after the first public upload (14 days of numbers), the lane with the most watch hours per video over the last 28 days gets the next week's spare Almanac nights. The total stays 5, every lane with a slot keeps 1 night, Neville stays at 1 or more. Decided once a week by loop/whisper_lane.reweight at the nightly scorecard's first read on or after Monday, Central time (loop/whisper_scorecard.py writes it to loop/state/whisper_channel.json `reweight`); loop/whisper_lane.weekly_mix applies it. Before 14 days of numbers, or while no lane has a measured video, the planned mix stands."
     }
+  },
+  "click_rate": {
+    "after_hours": 48,
+    "min_impressions": 100,
+    "floor_pct": 4,
+    "why": "Her yes 11 Nov 2026: a long video public 48+ hours whose thumbnail click rate is under 4% (on at least 100 impressions) gets ONE line in her morning email's Notices: swap the thumbnail in Test & Compare. YouTube Studio's Test & Compare has no API, so it is a notice, never an action. Read nightly by loop/whisper_scorecard.py from the YouTube Reporting API (channel_reach_basic_a1, the report How We Know's loop/reach.py reads; the Analytics API does not serve impressions). A number YouTube has not reported reads 'not read', never 0."
   },
   "calm_footage": {
     "lanes": {
