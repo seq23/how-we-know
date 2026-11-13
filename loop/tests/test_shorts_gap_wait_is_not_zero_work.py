@@ -68,7 +68,10 @@ print("RESULT", json.dumps({"exit": code, "stops": recs}))
 def lane_run(ledger: dict, todo: list) -> dict:
     td = Path(tempfile.mkdtemp(prefix="shorts-gap-"))
     (td / "shelf").mkdir()
-    env = dict(os.environ, TEST_TMP=str(td), LOOP_NO_DOTENV="1", LOOP_DRY_RUN="1",
+    # The lane writes where common._stops_dir() says: LOOP_STOPS_DIR wins over
+    # common.STOPS (loop/tests/run_all.py sets it), so point both at this run.
+    env = dict(os.environ, TEST_TMP=str(td), LOOP_STOPS_DIR=str(td / "state" / "stops"),
+               LOOP_NO_DOTENV="1", LOOP_DRY_RUN="1",
                GITHUB_EVENT_NAME="workflow_dispatch", R2_LOCAL_DIR=str(td / "shelf"),
                CLOUDFLARE_ACCOUNT_ID="acct", CLOUDFLARE_API_TOKEN="tok",
                YT_CLIENT_JSON="", YT_REFRESH_TOKEN="")
