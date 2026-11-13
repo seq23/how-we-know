@@ -1193,6 +1193,15 @@ LONG_LANE = "whisper-long"
 LONG_HOLD_S = 19.0              # visuals/whisper_reel.SHOT_S + 1.0: holds an 18 s shot
 LONG_MIN_S = 21.0               # searched for: a clip this long survives a black edge
 LONG_NEED = 12                  # visuals/whisper_reel.min_clips(): 180 // 18 + 2
+# A CLIP A LITTLE SHORT OF A SHOT IS SLOWED, NEVER PADDED OR LOOPED (13 Nov
+# 2026). Measured that day: the free libraries hold 4 chocolate clips of 21 s
+# or more (Pixabay: 1,977 candidates over 57 searches, none left; Mixkit: 26
+# measured, 8 of 15-18 s and 7 of 13-14 s), so the part sat at 4 of 12 and the
+# food-history video could not be made. A calm food take played at no less
+# than two-thirds speed holds the same 18 s shot; the reel's shot length and
+# its repeat rule are unchanged.
+SLOW_MIN = 2 / 3
+SLOW_PAD_S = 1.0                # LONG_HOLD_S less the 18 s shot: the cut's margin, never slowed
 LONG_PARTS: dict[str, dict] = {
     "bread": {"queries": ["bread", "baking bread", "bread dough", "bakery", "bread oven",
                           "kneading dough", "sourdough", "fresh bread", "baguette", "flour",
@@ -1246,10 +1255,41 @@ def holds(rec: dict, seconds: float = LONG_HOLD_S) -> bool:
     return any(w["end"] - w["start"] >= seconds for w in clean_windows(rec))
 
 
+def speed_for(rec: dict, seconds: float = LONG_HOLD_S) -> float | None:
+    """The speed a clip plays at to hold a sleep shot: 1.0 when a clean
+    window is long enough as shot, else the gentlest slow-down that makes its
+    longest clean window long enough, and None when that would be slower than
+    SLOW_MIN (the clip is never placed)."""
+    longest = max((w["end"] - w["start"] for w in clean_windows(rec)), default=0.0)
+    if longest >= seconds:
+        return 1.0
+    speed = int((longest - SLOW_PAD_S) / (seconds - SLOW_PAD_S) * 1000) / 1000
+    return speed if speed + 1e-3 >= SLOW_MIN else None
+
+
 def long_count(index: list[dict], part: str) -> int:
     """Clips of `part` that can hold a sleep shot, with clean rights."""
     return sum(1 for r in index if r.get("segment") == part and not r.get("excluded")
-               and not record_problems(r) and holds(r))
+               and not record_problems(r) and speed_for(r) is not None)
+
+
+def _refused_for_good(rejected: list[dict]) -> set[str]:
+    """Long-clip candidates already measured and refused for a reason that
+    cannot change (a word on screen, too short even slowed): never fetched
+    again. Before 13 Nov 2026 every refused Mixkit clip was downloaded and
+    refused again every night. A clip refused only as "too short" under the
+    old 21 s floor that the slow-down now admits is tried once more."""
+    floor = SLOW_MIN * (LONG_HOLD_S - SLOW_PAD_S) + SLOW_PAD_S
+    out = set()
+    for r in rejected:
+        why = str(r.get("reason") or "")
+        if not why.startswith("whisper-long:"):
+            continue
+        m = re.match(r"whisper-long: (\d+) s / (\d+) px: too short or small", why)
+        if m and int(m[1]) >= floor and int(m[2]) >= 960:
+            continue
+        out.add(str(r.get("subject")))
+    return out
 
 
 def _long_head_ok(c: dict, part: str) -> bool:
@@ -1266,8 +1306,9 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
                  cap: int = MAX_PER_RUN, text_check=None) -> dict:
     """Fill each part up to `need` long clips. Real footage only (the chain's
     own gates: Pixabay type film and not AI, Mixkit's FREE licence re-read on
-    the item page), the part's food named in the clip's first tag, at least
-    LONG_MIN_S long, and no word on screen. Returns {part: count}."""
+    the item page), the part's food named in the clip's first tag, long
+    enough to hold an 18 s shot at no less than SLOW_MIN speed (speed_for),
+    and no word on screen. Returns {part: count}."""
     if text_check is None:
         sys.path.insert(0, str(HERE))
         import imagery_stock_video as STOCK                  # noqa: PLC0415
@@ -1277,6 +1318,8 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
     rejected = list(man.get("rejected") or [])
     kept = {"by_source": man.get("resolved_by_source")}       # the shot list's own tally
     used = {f"{r.get('source')}:{r.get('source_id')}" for r in index}
+    gone = _refused_for_good(rejected)
+    floor = SLOW_MIN * (LONG_HOLD_S - SLOW_PAD_S) + SLOW_PAD_S     # 13 s: holds a shot at two-thirds speed
     # the free libraries, then Wikimedia Commons (public domain / CC0 only);
     # Internet Archive films are left out: their title cards put words on screen
     live = [a for a in CHAIN if a.name in ("pixabay", "pexels", "mixkit", "commons")
@@ -1284,7 +1327,7 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
     if not live:
         raise SystemExit("RULE 0: no free stock source is usable on this host "
                          f"({ {a.name: a.enabled()[1] for a in CHAIN[:3]} })")
-    fetched, report = 0, {}
+    fetched, report, changed = 0, {}, False
     for part in parts or list(LONG_PARTS):
         have = long_count(index, part)
         for a in live:
@@ -1301,7 +1344,8 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
                     if have >= need or fetched >= cap:
                         break
                     if (uid in used or uid in REFUSED or not _long_head_ok(c, part)
-                            or (c.get("duration") and float(c["duration"]) < LONG_MIN_S)):
+                            or f"{part}-long-{a.name}-{c['id']}" in gone
+                            or (c.get("duration") and float(c["duration"]) < floor)):
                         continue
                     used.add(uid)
                     try:
@@ -1316,15 +1360,19 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
                     rec = _record({**c, "source": a.name}, shot, meta, blob)
                     path = IMAGERY / rec["local_file"]
                     rec["black"] = {"spans": black_spans(path), "sha256": rec["sha256"]}
-                    probs = ([] if rec["duration_s"] >= LONG_MIN_S and rec["width"] >= 960
+                    probs = ([] if rec["duration_s"] >= floor and rec["width"] >= 960
                              else [f"{rec['duration_s']:.0f} s / {rec['width']} px: too short or small"])
-                    probs = probs or ([] if holds(rec) else ["black edges leave no 19 s window"])
+                    probs = probs or ([] if speed_for(rec) is not None
+                                      else ["black edges leave no window that holds a shot, even slowed"])
                     probs = probs or text_check(path, rec["duration_s"])
                     probs = probs or record_problems(rec)
                     if probs:
                         path.unlink(missing_ok=True)
+                        rejected = [x for x in rejected if x.get("subject") != shot["need"]]
                         rejected.append({"subject": shot["need"], "source": a.name,
                                          "reason": f"whisper-long: {probs[0]}"[:200]})
+                        gone.add(shot["need"])
+                        changed = True
                         print(f"  refused {uid}: {probs[0]}")
                         continue
                     rec["lane"] = LONG_LANE
@@ -1334,7 +1382,8 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
                     print(f"  CLIP {part:<10} {uid:<22} {rec['duration_s']:6.1f}s {str(c.get('title'))[:40]}")
                     save(index, rejected, kept)
         report[part] = have
-    save(index, rejected, kept)
+    if changed:                    # a night that fetched and refused nothing rewrites nothing
+        save(index, rejected, kept)
     return report
 
 
