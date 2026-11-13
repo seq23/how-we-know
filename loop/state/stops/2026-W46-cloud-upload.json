@@ -1,9 +1,9 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W46",
-  "at": "2026-11-12T15:05:46+00:00",
+  "at": "2026-11-13T15:05:15+00:00",
   "code": "NOTHING_SHELVED",
-  "message": "Mac batch last ran 2026-11-12T08:24:05+00:00 (ok); 16 renders finished on the Mac; 0 held by the render gate. 28 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): what-is-carbon-fiber-made-of, how-are-microchips-designed, are-sea-pigs-real, what-does-a-greenland-shark-look-like, where-does-chemosynthesis-occur, is-giant-isopod-edible, how-does-chemosynthesis-work, what-blobfish-actually-looks-like ...",
+  "message": "Mac batch last ran 2026-11-13T05:29:29+00:00 (ok); 16 renders finished on the Mac; 0 held by the render gate. 29 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): what-is-carbon-fiber-made-of, how-are-microchips-designed, are-sea-pigs-real, what-does-a-greenland-shark-look-like, where-does-chemosynthesis-occur, is-giant-isopod-edible, how-does-chemosynthesis-work, what-blobfish-actually-looks-like ...",
   "detail": {
     "awaiting_mac": [
       "what-is-carbon-fiber-made-of",
@@ -33,12 +33,13 @@
       "how-does-3d-printing-metal-work",
       "how-strong-is-3d-printed-metal",
       "why-is-glass-see-through",
-      "how-was-bernie-madoff-caught"
+      "how-was-bernie-madoff-caught",
+      "why-did-ftx-collapse"
     ],
     "shelved_without_thumbnail": [],
     "shelf_scan_error": null,
     "mac_heartbeat": {
-      "batch_last_run_at": "2026-11-12T08:24:05+00:00",
+      "batch_last_run_at": "2026-11-13T05:29:29+00:00",
       "renders_finished": 16,
       "held": []
     },
@@ -69,7 +70,6 @@
       "why-are-metals-ductile",
       "why-is-metal-cold",
       "why-does-metal-smell",
-      "why-did-ftx-collapse",
       "how-did-theranos-work",
       "how-does-the-federal-reserve-create-money",
       "how-does-the-fed-control-interest-rates",
@@ -86,8 +86,8 @@
   },
   "unblock": "For the rest, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "self_resolving",
-  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 4 of at most 7 before this escalates to a human.)",
-  "consecutive": 4,
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 5 of at most 7 before this escalates to a human.)",
+  "consecutive": 5,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
