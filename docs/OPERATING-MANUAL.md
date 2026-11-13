@@ -363,6 +363,8 @@ video. Cloudflare R2 is the bridge:
 
 ```
 Mac    bin/push-to-r2.sh    renders/<slug>-final.mp4       -> r2://how-we-know-renders/renders/…
+
+**The shelf's `renders/` folder expires after 14 days** (owner, 13 Nov 2026: "delete them after 30 days or sooner whichever is best"). A Cloudflare lifecycle rule on the bucket (`expire-published-renders`, prefix `renders/`) deletes each render 14 days after it was shelved, which keeps the account's R2 storage near the free 10 GB. It is safe because a published episode leaves the batch queue (`batch_queue.queued_slugs()`), so `push()` never re-shelves it, and an episode still waiting has its render on the Mac, so the next `push()` puts it back. `shorts/` and `thumbnails/` are not expired: Shorts wait weeks for their slot. Check with `wrangler r2 bucket lifecycle list how-we-know-renders`.
                             channel/thumbnails/<slug>.jpg  -> r2://…/thumbnails/…
 cloud  loop/cloud_upload.py  pulls the one it is about to publish, verifies sha256
 ```
