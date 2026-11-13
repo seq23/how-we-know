@@ -239,7 +239,32 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
     for row, dom in candidates:
         if dom in skip_:
             st.note(f"runway rebuild: {row['slug']} ({dom}) not authored here: {skip_[dom]}")
+    paused = [(row, dom) for row, dom in candidates if dom in skip_]
     candidates = [(row, dom) for row, dom in candidates if dom not in skip_]
+    if not candidates and paused and rw["level"] == "ok":
+        # A HEALTHY RUNWAY TOPPING UP UNDER THE MONEY TEST (13 Nov 2026, runs
+        # 43150712370/43343042941). With the runway "ok" but under target_weeks
+        # (5.7 of 6), every queued topic belonged to a domain her 9 Nov call
+        # pauses or authors elsewhere, so nothing was authorable - and the
+        # lane raised RUNWAY_AUTHORING_FALLBACK, the "goes dark" alarm, daily.
+        # Nothing is going dark: this is her policy holding the top-up. A
+        # runway at warn/critical still falls through to the loud stop below.
+        import datetime as _dt                               # noqa: PLC0415
+        mt = domains.money_test(cfg)
+        ends = (_dt.date.fromisoformat(mt["started"])
+                + _dt.timedelta(days=int(mt.get("check_days", 30)))).isoformat() \
+            if mt.get("started") else None
+        st.named_stop(
+            "RUNWAY_TOPUP_PAUSED_BY_MONEY_TEST",
+            f"runway is ok ({rw['message']}) and below the {target:g}-week "
+            f"target, but all {len(paused)} queued topic(s) are in domains the "
+            f"Money test pauses or authors elsewhere: "
+            + ", ".join(sorted({d for _, d in paused})),
+            detail={"resolves_at": ends, "paused": {d: skip_[d] for _, d in paused},
+                    "weeks_remaining": rw["weeks_remaining"]},
+            unblock="Nothing to do: the Money test is judged on its end date; "
+                    "a runway that falls to warn raises "
+                    "RUNWAY_AUTHORING_FALLBACK instead.")
 
     # THE CAP COUNTS SCRIPTS ADDED, NOT ATTEMPTS. candidates[:cap] let two
     # V21 failures spend two of three slots (run 40310147557 added 1 of 3
