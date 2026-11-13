@@ -15,6 +15,11 @@ sit in R2 (docs/WHISPER_ALMANAC.md, Storage). How We Know's rules, reused:
     luma and a free vision model; the sleep gate). A failure is NAMED STOP
     [FRAME_CHECK_FAILED]; the file is
     set aside (never deleted) and the next episode goes on.
+  * A FAILED FRAME CHECK REPAIRS ITSELF (13 Nov 2026, repair): the clips on
+    screen at the failing times are refused for every video, the failed
+    render is removed and the episode renders again from its kept voice
+    (render_ready, every night). FRAME_CHECK_FAILED stays red only when no
+    clip can be named or MAX_REPAIRS re-renders still fail.
   * PRIVATE WITH A PUBLISH DATE, never public at once, as How We Know does
     (loop/backfill.py): 20:00 Central on the format's own days
     (config/whisper_almanac.json `upload`). The publishAt rides in the
@@ -56,6 +61,7 @@ from __future__ import annotations
 import datetime as _dt
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -190,6 +196,121 @@ def frame_check(video: Path, slug: str, c: dict) -> dict:
     frame_check's PictureCheckFailed / FrameCheckUnavailable."""
     import whisper_frame_check as WFC                       # noqa: PLC0415
     return WFC.check(str(video), subject(slug, c))
+
+
+# ------------------------------------------------- a failed frame check repairs itself
+MAX_REPAIRS = 2                    # then it is the red FRAME_CHECK_FAILED a person reads
+
+
+def failures_of(k: dict) -> list[tuple[float, str]]:
+    """(seconds, why) for each frame the last check failed: the list the
+    check raised, or (a kit set aside before 13 Nov 2026) the times in its
+    message."""
+    fc = k.get("frame_check") or {}
+    if fc.get("failures"):
+        return [(float(t), str(w)) for t, w in fc["failures"]]
+    out = []
+    for m in re.finditer(r"(?:(\d+):)?(\d+):(\d\d) \(([^)]*)", fc.get("why") or ""):
+        out.append((int(m[1] or 0) * 3600 + int(m[2]) * 60 + int(m[3]), m[4]))
+    return out
+
+
+def planned_reel(slug: str) -> list[list]:
+    """[t0, seconds, post id] of the reel a kit did not record."""
+    import whisper_render as WR                             # noqa: PLC0415
+    try:
+        return [[s["t0"], s["seconds"], s["asset"].get("post_id")] for s in WR.shots_for(slug)]
+    except (Exception, SystemExit) as e:                    # noqa: BLE001
+        print(f"  {slug}: its reel could not be re-planned ({str(e)[:120]})")
+        return []
+
+
+def clips_at(slug: str, k: dict, times: list[float], reel_of=None) -> dict[float, str]:
+    """failing time -> the post id of the clip on screen at it."""
+    reel = k.get("reel") or (reel_of or planned_reel)(slug)
+    out = {}
+    for t in times:
+        for t0, sec, pid in reel:
+            if pid and t0 <= t < t0 + sec:
+                out[t] = pid
+                break
+    return out
+
+
+def repair(st, now: _dt.datetime, reel_of=None) -> list[str]:
+    """Put a render the frame check set aside back in line by itself (13 Nov
+    2026: two of the channel's first three videos sat set aside for days on
+    one CG starfield and one 3D-rendered ring, waiting for a person). The
+    clips on screen at the failing times are refused for every video
+    (loop/state/whisper_refused_clips.json, read by visuals/whisper_reel.pool),
+    the failed render is removed and the episode renders again from its kept
+    voice. Not repaired, so still the red stop: a failure that names no clip
+    (too little of the subject), and an episode already repaired MAX_REPAIRS
+    times. Returns the slugs put back in line."""
+    ks = kits()
+    plans: dict[str, dict[str, str]] = {}
+    for slug, k in ks.items():            # every reel is read BEFORE any clip is refused
+        fc = k.get("frame_check") or {}
+        if (k.get("video_id") or fc.get("passed") is not False or not set_aside(slug).exists()
+                or int(k.get("repairs") or 0) >= MAX_REPAIRS):
+            continue
+        fails = failures_of(k)
+        at = clips_at(slug, k, [t for t, _ in fails], reel_of)
+        clips = {at[t]: w for t, w in fails if t in at}
+        if clips:
+            plans[slug] = clips
+    if not plans:
+        return []
+    try:
+        doc = json.loads(WL.REFUSED_CLIPS.read_text())
+    except (OSError, ValueError):
+        doc = {}
+    doc.setdefault("_why", "Clips the Whisper Almanac's final frame check failed on a finished render "
+                           "(loop/whisper_upload.repair). visuals/whisper_reel.pool never places one again.")
+    doc.setdefault("clips", {})
+    for slug, clips in plans.items():
+        for pid, why in clips.items():
+            doc["clips"].setdefault(pid, {"why": why[:160], "slug": slug, "at": stamp(now)})
+        k = ks[slug]
+        k["repairs"] = int(k.get("repairs") or 0) + 1
+        k["frame_check"] = {**k["frame_check"], "repaired_at": stamp(now), "refused_clips": sorted(clips)}
+        k.pop("reel", None)
+        write_kit(slug, k)
+    WL.REFUSED_CLIPS.parent.mkdir(parents=True, exist_ok=True)
+    WL.REFUSED_CLIPS.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
+    for slug, clips in plans.items():     # only once the refusals are on disk
+        set_aside(slug).unlink()
+        st.work(f"{slug}: the frame check named {len(clips)} clip(s) ({', '.join(sorted(clips))}); "
+                f"refused for every video, the failed render removed, and it renders again from "
+                f"its kept voice (repair {ks[slug]['repairs']} of {MAX_REPAIRS})")
+    return list(plans)
+
+
+def _render(slug: str) -> int:
+    venv = ROOT / ".venv" / "bin" / "python"
+    return subprocess.run([str(venv) if venv.exists() else sys.executable,
+                           str(ROOT / "visuals" / "whisper_render.py"), slug]).returncode
+
+
+def render_ready(st, renderer=None) -> int:
+    """Render every fully voiced script that has no render (a repaired one,
+    or one whose footage pool was thin the night it was voiced). It needs no
+    narrator, so it runs every night whoever's night it is. A render that
+    fails is a note here: the script stays in line for the next night."""
+    if renderer is None:
+        if dry_run():
+            return 0
+        renderer = _render
+    n = 0
+    for slug in WL.ready_to_render():
+        rc = renderer(slug)
+        if rc == 0 and WL.video_path(slug).exists():
+            n += 1
+            st.work(f"rendered {slug} from its kept voice")
+        else:
+            st.note(f"{slug}: voiced, not rendered tonight (visuals/whisper_render.py exited {rc}; "
+                    f"5 = its footage pool is still thin); the next night tries again")
+    return n
 
 
 # ------------------------------------------------------------------ the calendar
@@ -482,7 +603,8 @@ class Seen:
         self.st.named_stop(code, message, unblock=unblock, **kw)
 
 
-def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_line) -> int:
+def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_line,
+        renderer=None, reel_of=None) -> int:
     import breaker                                          # noqa: PLC0415
     import common as C                                      # noqa: PLC0415
     breaker.guard(LANE)
@@ -493,6 +615,8 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
     with C.Stage(LANE, zero_work_hint="no finished Whisper Almanac episode to upload or confirm") as st:
         out = Seen(st, notify)
 
+        repair(st, now, reel_of)           # a set-aside render goes back in line by itself
+        render_ready(st, renderer)
         ks = kits()
         todo = candidates(ks)
         pending = [s for s, k in ks.items() if k.get("video_id") and not k.get("pruned")]
@@ -555,7 +679,8 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                     r = checker(video, slug, c)
                 except FC.PictureCheckFailed as e:
                     k["frame_check"] = {"passed": False, "file": fingerprint(video),
-                                        "at": stamp(now), "why": str(e)[:600]}
+                                        "at": stamp(now), "why": str(e)[:600],
+                                        "failures": [[t, w] for t, w in e.failures]}
                     write_kit(slug, k)
                     video.replace(set_aside(slug))
                     failed.append(f"{slug}: {str(e)[:200]}")
@@ -631,6 +756,11 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
             uploaded += 1
             st.work(f"YouTube confirms {vid}: {s.get('uploadStatus')}, private until {want}")
 
+        if failed:
+            # the clips named are refused and the episode re-renders tomorrow
+            # night: only a failure repair() cannot mend stays for a person
+            mended = set(repair(st, now, reel_of))
+            failed = [f for f in failed if f.split(":")[0] not in mended]
         if gone:
             again = [f"{k['title']} (public {k.get('publish_at_ct') or 'scheduled'})" for k in kits().values()
                      if k.get("lost_uploads") and k.get("video_id")
@@ -657,8 +787,10 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                  f"{len(failed)} finished episode(s) failed the final frame check and were not "
                  f"uploaded: {'; '.join(failed)}",
                  detail={"failed": failed}, held_items=[f.split(":")[0] for f in failed],
-                 unblock="Each file is set aside beside its render (never deleted); a footage fix and "
-                         "a re-render (delete the set-aside file) put it back in line.")
+                 unblock="The frame check named no clip to refuse, or the episode already re-rendered "
+                         f"{MAX_REPAIRS} times and failed again. Each file is set aside beside its render "
+                         "(never deleted); a footage fix and a re-render (delete the set-aside file) put "
+                         "it back in line.")
         if refused:
             out.named_stop("WHISPER_UPLOAD_REFUSED",
                  f"{len(refused)} finished episode(s) fail a lane check and were not uploaded: "

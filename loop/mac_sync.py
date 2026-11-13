@@ -431,6 +431,8 @@ MAC_OWNED_GLOBS = (
     "channel/whisper/*/thumbnail-*.png",
     # the channel's own numbers, per lane (loop/whisper_scorecard.py, 9 Nov 2026)
     "loop/state/whisper_channel.json",
+    # clips the final frame check refused (loop/whisper_upload.repair, 13 Nov 2026)
+    "loop/state/whisper_refused_clips.json",
 )
 
 

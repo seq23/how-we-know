@@ -72,6 +72,17 @@ def subject(asset: dict) -> str:
 
 
 def pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
+    """A part's clips (_pool), less every clip the final frame check refused
+    on a finished render (loop/whisper_lane.refused_clips; 13 Nov 2026: a CG
+    starfield and a 3D-rendered ring each failed a finished video, which then
+    sat set aside with nothing re-made)."""
+    sys.path.insert(0, str(ROOT / "loop"))
+    import whisper_lane as WL                              # noqa: PLC0415
+    no = WL.refused_clips()
+    return [a for a in _pool(source, assets, c) if a.get("post_id") not in no]
+
+
+def _pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     """A part's clips. "calm:<set>" (the manifesting lanes, her call 9 Nov
     2026) is that set's harvested clips, interleaved subject by subject so no
     subject crowds the screen; any other source is a How We Know episode's own
@@ -157,10 +168,7 @@ def min_clips(shot_s: float = SHOT_S) -> int:
 
 
 def pictureable(source: str, assets: list[dict]) -> bool:
-    import footage as F                                    # noqa: PLC0415
-    if food_part(source):
-        return len(food_pool(food_part(source))) >= min_clips()
-    return len(F.episode_pool(source.split("#", 1)[0], assets)) >= min_clips()
+    return len(pool(source, assets)) >= min_clips()
 
 
 def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=None,

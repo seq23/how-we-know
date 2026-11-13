@@ -14,7 +14,19 @@ fake YouTube (no network; LOOP_DRY_RUN=1 refuses the real credential):
      (green), nothing sent;
   e. a token for the wrong channel, or none, is WHISPER_YT_TOKEN_INVALID;
   f. no quota, or YouTube's quotaExceeded, is UPLOAD_QUOTA;
-  g. a kit that fails a lane check (altered content not set) is refused.
+  g. a kit that fails a lane check (altered content not set) is refused;
+  j. A FAILED FRAME CHECK REPAIRS ITSELF (13 Nov 2026): when the failing
+     times name clips, those clips are refused for every video, the failed
+     render is removed, nothing is sent, nobody is paged, and the episode is
+     back in line; the reel never places a refused clip again;
+  k. a render set aside on an earlier night (a kit with no recorded reel) is
+     repaired from its re-planned reel, rendered again from its kept voice
+     and uploaded the same run;
+  l. an episode that fails again after MAX_REPAIRS re-renders stays the red
+     FRAME_CHECK_FAILED, set aside;
+  m. the author's "waiting for voice" count ignores a script the Mac already
+     rendered (a measured kit), and one lane's refused script does not stop
+     the other lanes' scripts.
 """
 from __future__ import annotations
 
@@ -97,6 +109,7 @@ def sandbox(name: str) -> Path:
     for sub in ("scripts", "kits", "work", "stops"):
         (d / sub).mkdir(parents=True)
     WL.SCRIPTS, WL.KITS, WL.WORK = d / "scripts", d / "kits", d / "work"
+    WL.REFUSED_CLIPS = d / "refused_clips.json"
     os.environ["LOOP_STOPS_DIR"] = str(d / "stops")
     return d
 
@@ -263,6 +276,114 @@ try:
     rc, rec, lines = run(yt)
     check("i. a third removal is not re-sent and is WHISPER_UPLOAD_LOST",
           yt.inserted == [] and rec.get("code") == "WHISPER_UPLOAD_LOST", (yt.inserted, rec))
+
+    # j. a failed frame check that names clips repairs itself
+    import whisper_reel as R                                # noqa: E402
+    sandbox("j")
+    episode("ep-j", reel=[[0.0, 18.0, "pixabay:1"], [18.0, 18.0, "pixabay:2"], [36.0, 18.0, "pixabay:3"]])
+
+    def fails_clip(video, slug, c):
+        raise FC.PictureCheckFailed("PICTURE_CHECK_FAILED at 0:21 (not real footage: a 3D render)",
+                                    [(21.0, "not real footage: a 3D render")])
+    yt = FakeYT()
+    rc, rec, lines = run(yt, fails_clip)
+    k = WU.read_kit("ep-j")
+    check("j. nothing is sent", yt.inserted == [], yt.inserted)
+    check("j. the clip on screen at the failing time is refused, and only it",
+          set(WL.refused_clips()) == {"pixabay:2"}, WL.refused_clips())
+    check("j. nobody is paged: no red stop and no morning line",
+          rec.get("code") != "FRAME_CHECK_FAILED" and rec.get("disposition") != "needs_human" and lines == [],
+          (rec, lines))
+    check("j. the failed render is out of the way and the episode is back in line",
+          not WU.set_aside("ep-j").exists() and not WL.video_path("ep-j").exists()
+          and not WL.handed_on("ep-j") and k.get("repairs") == 1, k.get("repairs"))
+    calm = [{"post_id": f"pixabay:{i}", "calm_set": "calm-night", "seconds": 30.0, "subject": f"s{i}"}
+            for i in (1, 2, 3)]
+    shown = [a["post_id"] for a in R.pool("calm:calm-night", calm, C)]
+    check("j. the reel never places a refused clip again", shown == ["pixabay:1", "pixabay:3"], shown)
+
+    # k. a render set aside on an earlier night: repaired, rendered again, uploaded
+    sandbox("k")
+    episode("ep-k", frame_check={"passed": False, "file": "x", "at": "2026-11-06T10:00:00Z",
+                                 "why": "PICTURE_CHECK_FAILED at 4:41 (not real footage: 3D render), "
+                                        "16:41 (black pillarbox bars at the sides)"})
+    WL.video_path("ep-k").replace(WU.set_aside("ep-k"))
+    WL.ready_to_render = lambda c=None: [] if (WL.video_path("ep-k").exists() or WL.handed_on("ep-k")) else ["ep-k"]
+    rendered: list[str] = []
+
+    def renders(slug):
+        rendered.append(slug)
+        WL.video_path(slug).write_bytes(b"new" * 100)
+        return 0
+    old_reel = lambda slug: [[270.0, 18.0, "pixabay:9"], [990.0, 18.0, "mixkit:7"], [1008.0, 18.0, "pixabay:1"]]  # noqa: E731
+    yt = FakeYT()
+    lines = []
+    try:
+        WU.run(now=NOW, yt=yt, checker=passes, notify=lambda t: lines.append(t) or "noted",
+               renderer=renders, reel_of=old_reel)
+    except SystemExit:
+        pass
+    check("k. both clips named by the old message are refused",
+          set(WL.refused_clips()) == {"pixabay:9", "mixkit:7"}, WL.refused_clips())
+    check("k. it is rendered again from its kept voice", rendered == ["ep-k"], rendered)
+    check("k. the new render is checked and uploaded the same run",
+          len(yt.inserted) == 1 and WU.read_kit("ep-k").get("video_id") == "vid1", yt.inserted)
+
+    # l. repaired MAX_REPAIRS times and still failing: the red stop, set aside
+    sandbox("l")
+    WL.ready_to_render = lambda c=None: []
+    episode("ep-l", repairs=WU.MAX_REPAIRS, reel=[[0.0, 40.0, "pixabay:5"]])
+    yt = FakeYT()
+    rc, rec, lines = run(yt, fails_clip)
+    check("l. past the repair cap it is FRAME_CHECK_FAILED, red, with a morning line",
+          rec.get("code") == "FRAME_CHECK_FAILED" and rec.get("disposition") == "needs_human"
+          and len(lines) == 1, (rec, lines))
+    check("l. the file stays set aside and no clip is refused",
+          WU.set_aside("ep-l").exists() and WL.refused_clips() == {}, WL.refused_clips())
+
+    # m. the cloud author: a rendered script is not "waiting"; one lane's refusal is not the run's
+    import whisper_author as WA                             # noqa: E402
+    sandbox("m")
+    episode("ep-m")
+    WL.video_path("ep-m").unlink()                          # the cloud holds the kit, never the render
+    check("m. a script with a measured kit counts as made where the render is absent", WL.made("ep-m"))
+    k = WU.read_kit("ep-m")
+    k["length_basis"] = "estimated"
+    WU.write_kit("ep-m", k)
+    check("m. a script whose kit is only an estimate is still waiting", not WL.made("ep-m"))
+    wrote: list[str] = []
+    WA.WL.weekly_mix = lambda c=None, nums=None: ({"food": 1, "neville": 2, "money": 1}, [])
+    WA.waiting_in = lambda lane, c: [x for x in wrote if x == lane]
+    WA.sleep_lanes = lambda c: ["food"]
+    WA.next_episode = lambda lane, c: {"slug": "food-ep"}
+
+    def refuse_food(e, c):
+        raise WA.WL_SegmentRefused("food-ep", ["LENGTH estimated 1 h 39 min"])
+
+    def write(lane, c):
+        wrote.append(lane)
+        return WL.ROOT / "scripts" / "whisper" / f"{lane}-{len(wrote)}.md"
+    WA.author_sleep, WA.write_next = refuse_food, write
+
+    class Args:
+        cmd = None
+    os.environ["LOOP_STOPS_DIR"] = str(TMP / "m" / "stops")
+    try:
+        rc = WA.run(Args(), C)
+    except SystemExit as e:
+        rc = e.code
+    check("m. the other lanes' scripts are written after food's is refused",
+          sorted(wrote) == ["money", "money", "neville", "neville"] and rc in (0, None), (wrote, rc))
+    wrote.clear()
+    WA.write_next = lambda lane, c: (_ for _ in ()).throw(WA.WL_SegmentRefused(lane, ["x"]))
+    try:
+        rc = WA.run(Args(), C)
+    except SystemExit as e:
+        rc = e.code
+    stop = TMP / "m" / "stops" / f"{common.week_id()}-{WA.STAGE}.json"
+    rec = json.loads(stop.read_text()) if stop.exists() else {}
+    check("m. a run where every lane is refused is the named stop, never a green nothing",
+          rec.get("code") == "WHISPER_SEGMENT_REFUSED", rec)
 finally:
     shutil.rmtree(TMP, ignore_errors=True)
 
