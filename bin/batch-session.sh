@@ -606,11 +606,8 @@ harvest_footage() {
     3) echo "  named stop above - see the banner; the stamp records tonight's outcome" ;;
     *) echo "  footage lane FAILED (rc=$rc) - see above; nothing was stamped for it" ;;
   esac
-  # channel/imagery/food_clips.json: the long food clips this Mac recorded
-  # tonight (13 Nov 2026: it was never pushed, so the checkout stayed changed)
   $PY loop/mac_sync.py push --lane imagery-harvest-mac \
-      loop/state/harvest_runs.json loop/state/stops/owner_action.json \
-      channel/imagery/food_clips.json 2>&1 | tail -1
+      loop/state/harvest_runs.json loop/state/stops/owner_action.json 2>&1 | tail -1
 }
 
 # THE "NOTHING TO DO" GATE LIVES HERE, AFTER THE POV REPAIR, NOT BEFORE IT.

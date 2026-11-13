@@ -421,6 +421,10 @@ def bind_paths(state: Path | None = None) -> list[str]:
 # Guarded by loop/tests/test_mac_push_leaves_checkout_clean.py.
 MAC_OWNED_GLOBS = (
     "channel/imagery/shot_lists.json",
+    # the long food clips the nightly harvest records (research/food_footage.py
+    # --whisper-long). 13 Nov 2026: no push named it, so the Mac's checkout
+    # stayed changed from 10 Nov. The one manifest file, never the clips.
+    "channel/imagery/food_clips.json",
     "loop/state/stops/*.json",
     "audio/*/beats.json",
     "renders/*-final.mp4.footage.json",
