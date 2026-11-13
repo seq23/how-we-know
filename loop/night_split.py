@@ -4,6 +4,7 @@
     python loop/night_split.py tonight     # line 1: whisper | hwk; then the notes
     python loop/night_split.py report      # the split, both gates, the re-check date
     python loop/night_split.py longform    # line 1: the slugs How We Know narrates tonight
+    python loop/night_split.py gate        # the supply gate a How We Know night obeys; exit 10 = HOLD
 
 Her ruling, 6 Nov 2026: the Mac's narration nights split 5 to Whisper Almanac
 and 2 to How We Know long-form; How We Know Shorts keep going; re-check at day
@@ -88,11 +89,26 @@ def whisper_ready() -> tuple[bool, str]:
     return True, ""
 
 
+def hwk_gate() -> dict:
+    """The supply gate for what a How We Know night would narrate. While a
+    Money script waits for voice the night is Money's, and Money is judged on
+    its OWN supply at its own pace (two nights a week): long-forms other
+    topics made before the test never hold it. With no Money script waiting,
+    the night is the fallback topic's and the whole channel's gate applies."""
+    import domains as D                                     # noqa: PLC0415
+    from common import config                               # noqa: PLC0415
+    lane = D.money_test(config()).get("lane")
+    slugs, _ = longform_slugs()
+    if lane and slugs and D.domain_of_slug(slugs[0]) == lane:
+        return G.check("longform", lane=lane, per_week=len(split_cfg()["hwk_nights"]))
+    return G.check("longform")
+
+
 def tonight(now: _dt.datetime | None = None, *, hwk_gate=None, whisper_gate=None,
             ready=None, cfg: dict | None = None) -> tuple[str, list[str]]:
     now = now or _dt.datetime.now()
     plan = planned(now, cfg)
-    hg = hwk_gate if hwk_gate is not None else G.check("longform")
+    hg = hwk_gate if hwk_gate is not None else globals()["hwk_gate"]()
     wg = whisper_gate if whisper_gate is not None else whisper_supply()
     ok, why = ready if ready is not None else whisper_ready()
     day = DAYS[night_of(now).weekday()]
@@ -161,6 +177,10 @@ def main(argv: list[str]) -> int:
         print(f"  {why}")
         print(f"OUTPUT longform tonight: {len(slugs)} script(s) - {why}")
         return 0
+    if argv[:1] == ["gate"]:
+        v = hwk_gate()
+        print(v["line"])
+        return G.HOLD_EXIT if v["hold"] else 0
     if argv[:1] == ["tonight"]:
         kind, notes = tonight()
         print(kind)
@@ -171,7 +191,7 @@ def main(argv: list[str]) -> int:
         c = split_cfg()
         print(f"split: Almanac {', '.join(d for d in DAYS if d not in c['hwk_nights'])}; "
               f"How We Know {', '.join(c['hwk_nights'])}; re-check {c['recheck_on']}")
-        print(G.check("longform")["line"])
+        print(hwk_gate()["line"])
         print(whisper_supply()["line"])
         return 0
     print(__doc__)

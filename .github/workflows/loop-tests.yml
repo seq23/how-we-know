@@ -31,7 +31,7 @@ on:
       - 'loop · Mon 00:00 CT · draft, validate, gate'
       - 'loop · daily 19:00 CT · runway check (author the shortfall the same day, $0)'
       - 'loop · Mon+Thu 14:00 CT · food author (next food episode, $0)'
-      - 'loop · Sun+Thu 14:00 CT · money author (next Money episode, $0)'
+      - 'loop · daily 11:00 CT · money author (next Money episode, $0)'
       - 'loop · 1st 07:00 · monthly review'
       - 'loop · owner override'
       - 'loop · Quarterly · refresh the candidate-niche taxonomy'

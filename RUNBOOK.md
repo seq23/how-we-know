@@ -524,7 +524,8 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
 ## Money, the 12-video test — nothing for you to do
 
 - **Both How We Know nights (Mon, Fri) narrate Money** (your call 9 Nov). The cloud writes the next
-  of the 12 topics on Sunday and Thursday afternoons; the Mac voices and renders it that night;
+  of the 12 topics every day at 11:00 (two waiting at most; a topic the free models cannot write that day
+  is skipped for the next one and tried again tomorrow); the Mac voices and renders it that night;
   it uploads into the Wednesday or Saturday slot (food's, while food long-forms rest; materials keeps
   Tuesday and Friday for the episodes already dated there). A night with no Money script narrates deep sea instead.
 - **Every Money video says "This is not financial advice."**; a draft that gives a tip or promises

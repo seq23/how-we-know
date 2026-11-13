@@ -1,4 +1,4 @@
-name: loop · Sun+Thu 14:00 CT · money author (next Money episode, $0)
+name: loop · daily 11:00 CT · money author (next Money episode, $0)
 
 # THE MONEY LANE'S CLOUD HALF (her calls 8-9 Nov 2026: How We Know's Money
 # lane, a 12-video test on both long-form nights). loop/money_author.py writes
@@ -8,14 +8,16 @@ name: loop · Sun+Thu 14:00 CT · money author (next Money episode, $0)
 # research/publish_order_money_and_business.json. The Mac's nightly batch
 # narrates it first on How We Know's nights (Mon + Fri; loop/night_split.py).
 #
-# CADENCE: Sunday and Thursday 14:00 CT, the afternoon before each How We
-# Know night (Mon, Fri), at most two scripts in flight
-# (MONEY_EPISODE_IN_FLIGHT, self-resolving). Outside mon-draft's Monday
-# authoring window, in the loop-state concurrency group, so no two lanes push
-# over each other. loop/lanes.py lists this lane; V73 holds it to this file.
+# CADENCE: daily 11:00 CT (13 Nov 2026; it was Sun + Thu 14:00). The free
+# models fail a topic some days, and with two runs a week one bad day left a
+# How We Know night with no Money script. At most two scripts are in flight
+# (MONEY_EPISODE_IN_FLIGHT, self-resolving), so a daily run cannot pile up.
+# 11:00: after the 10:00 reach lane and before the 14:00 whisper and food
+# authors, in the loop-state concurrency group, so no two lanes push over each
+# other. loop/lanes.py lists this lane; V73 holds it to this file.
 on:
   schedule:
-    - cron: '0 14 * * 0,4'  # America/Chicago, all year - Sun + Thu: before the Mon + Fri How We Know nights
+    - cron: '0 11 * * *'  # America/Chicago, all year - daily; at most two scripts in flight
       timezone: America/Chicago
   workflow_dispatch:
 

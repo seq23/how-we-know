@@ -105,6 +105,14 @@ GENERATED = {
     # route-wide reason (loop/draft.py, 2026-10-11).
     "AUTHOR_REQUIRED":             ("draft.py", 'else "AUTHOR_REQUIRED"'),
     "DRAFT_FAILED_VALIDATION":     ("author.py", '"DRAFT_FAILED_VALIDATION"'),
+    # 13 Nov 2026: the Money author tries the next topic when one is not
+    # written (money_author.write_topic raises TopicStop with the code; run()
+    # stops on the first one only when no topic was written).
+    "MONEY_NO_POV_LINE":           ("money_author.py", 'TopicStop("MONEY_NO_POV_LINE"'),
+    "MONEY_DRAFT_REFUSED":         ("money_author.py", 'TopicStop("MONEY_DRAFT_REFUSED"'),
+    "MONEY_DRAFT_FAILED_VALIDATION":
+                                   ("money_author.py", 'TopicStop("MONEY_DRAFT_FAILED_VALIDATION"'),
+    "MONEY_DRAFT_PATH_MOVED":      ("money_author.py", 'TopicStop("MONEY_DRAFT_PATH_MOVED"'),
     # The Monday lane's wall-clock budget (2026-10-12); folded into
     # AUTHOR_REQUIRED by draft.py the same way DRAFT_FAILED_VALIDATION is.
     "AUTHORING_BUDGET_EXHAUSTED":  ("author.py", '"AUTHORING_BUDGET_EXHAUSTED"'),

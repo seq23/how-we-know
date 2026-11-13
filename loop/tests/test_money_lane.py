@@ -22,6 +22,7 @@ import datetime as dt
 import json
 import os
 import sys
+import shutil
 import tempfile
 from pathlib import Path
 
@@ -221,6 +222,56 @@ finally:
     FL.say = real_say
 check("7b the Mac's food night renders nothing and says FOOD_LONGFORM_PAUSED",
       rc == 3 and any("FOOD_LONGFORM_PAUSED" in s for s in said), (rc, said))
+
+# ------------------------------------------- 7c. one failed topic, not the run
+# 13 Nov 2026: the run ended on FTX's fourth failed draft (DRAFT_FAILED_
+# VALIDATION, an issue) with ten more topics unwritten and no Money script for
+# the night. A topic that is not written is a note; the next one is tried.
+import os  # noqa: E402
+import common  # noqa: E402
+
+stops = Path(tempfile.mkdtemp(prefix="money-stops-"))
+os.environ["LOOP_STOPS_DIR"] = str(stops)
+real7 = MA.write_queue, MA.published_slugs, MA.in_flight, MA.next_topics, MA.write_topic
+tried: list[str] = []
+
+
+def fake_write(fail: set[str]):
+    def w(t, used, deadline, author, pov_match, validate):
+        tried.append(t["slug"])
+        if t["slug"] in fail:
+            raise MA.TopicStop("DRAFT_FAILED_VALIDATION", f"{t['slug']}: 4 drafts failed", "retry")
+        return f"wrote scripts/{t['slug']}.md"
+    return w
+
+
+def run7():
+    try:
+        rc = MA.run()
+    except SystemExit as e:
+        rc = e.code
+    f = stops / f"{common.week_id()}-money-author.json"
+    rec = json.loads(f.read_text()) if f.exists() else {}
+    f.unlink(missing_ok=True)
+    return rc, rec
+
+
+try:
+    MA.write_queue, MA.published_slugs, MA.in_flight = (lambda: {}), (lambda: set()), (lambda pub=None: [])
+    MA.next_topics = lambda pub=None: [{"slug": f"t{k}", "title": f"T{k}?"} for k in range(1, 6)]
+    MA.write_topic = fake_write({"t1"})
+    rc, rec = run7()
+    check("7c a topic the models cannot write today is skipped and the next one is written",
+          tried == ["t1", "t2"] and rc == 0 and rec.get("code") != "DRAFT_FAILED_VALIDATION", (tried, rc, rec))
+    tried.clear()
+    MA.write_topic = fake_write({"t1", "t2", "t3", "t4", "t5"})
+    rc, rec = run7()
+    check("7d a run that writes nothing is the named stop, after TOPICS_A_RUN topics and no more",
+          tried == ["t1", "t2", "t3"] and MA.TOPICS_A_RUN == 3 and rec.get("code") == "DRAFT_FAILED_VALIDATION"
+          and rc not in (0, None), (tried, rc, rec))
+finally:
+    MA.write_queue, MA.published_slugs, MA.in_flight, MA.next_topics, MA.write_topic = real7
+    shutil.rmtree(stops, ignore_errors=True)
 
 # ------------------------------------------------------------ 8. graphics
 import plan_domain as PD  # noqa: E402

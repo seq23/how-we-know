@@ -87,13 +87,55 @@ with tempfile.TemporaryDirectory() as td:
     v = G.check("shorts", NOW, r, sledger=sl2)      # 4 waiting at ~0.93/day
     check(not v["hold"], f"(d) 4 Shorts waiting did not reopen: {v['line']}")
 
+    # f. ONE LANE'S OWN SUPPLY (13 Nov 2026): 12 long-forms other topics made
+    # before the Money test held both Money nights with no Money video made
+    lanes = {**{s: "deep-sea" for s in queued}, **{f"money-{k}": "money" for k in range(6)}}
+    dom = lanes.get
+    old12 = queued[1:25:2]                                   # 12 rendered deep-sea episodes
+    v_all = G.check("longform", NOW, r, queued=old12, ledger=led)
+    v_money = G.check("longform", NOW, r, queued=old12, ledger=led, lane="money", per_week=2, domain_of=dom)
+    check(v_all["hold"] and not v_money["hold"] and v_money["made"] == 0,
+          f"(f) other topics' shelf holds the Money lane: {v_all['line']} / {v_money['line']}")
+    for k in range(6):
+        (r / "renders" / f"money-{k}-final.mp4").write_bytes(b"x")
+    some = G.check("longform", NOW, r, queued=old12 + [f"money-{k}" for k in range(3)], ledger=led,
+                   lane="money", per_week=2, domain_of=dom)   # 3 at 2 a week = 10.5 days
+    full = G.check("longform", NOW, r, queued=old12 + [f"money-{k}" for k in range(6)], ledger=led,
+                   lane="money", per_week=2, domain_of=dom)   # 6 at 2 a week = 21 days
+    check(not some["hold"] and some["made"] == 3 and full["hold"] and full["made"] == 6,
+          f"(f) the lane's own 14-day rule is wrong: {some['line']} / {full['line']}")
+    check("money" in full["line"], f"(f) the line does not name the lane: {full['line']}")
+
+# g. the gate a How We Know night obeys: Money's own while a Money script
+# waits for voice, the whole channel's otherwise; `gate` exits 10 on HOLD
+import domains as D  # noqa: E402
+import night_split as N  # noqa: E402
+asked = []
+real = G.check, N.longform_slugs, D.domain_of_slug, D.money_test, N.split_cfg
+try:
+    G.check = lambda fmt, *a, **kw: asked.append(kw) or {"hold": bool(kw.get("lane")) is False, "line": "x"}
+    D.money_test = lambda cfg: {"lane": "money", "fallback": "deep-sea"}
+    D.domain_of_slug = lambda s, default=None: "money" if s.startswith("money") else "deep-sea"
+    N.split_cfg = lambda: {"hwk_nights": ["mon", "fri"]}
+    N.longform_slugs = lambda *a, **kw: (["money-0"], "")
+    v = N.hwk_gate()
+    check(asked[-1] == {"lane": "money", "per_week": 2} and not v["hold"],
+          f"(g) a waiting Money script is not judged on Money's own supply at 2 a week: {asked[-1]}")
+    check(N.main(["gate"]) == 0, "(g) an open gate did not exit 0")
+    N.longform_slugs = lambda *a, **kw: (["ep-01"], "")
+    v = N.hwk_gate()
+    check(asked[-1] == {} and v["hold"], f"(g) the fallback topic skipped the whole-channel gate: {asked[-1]}")
+    check(N.main(["gate"]) == G.HOLD_EXIT == 10, "(g) a HOLD is not exit 10, the signal the batch reads")
+finally:
+    G.check, N.longform_slugs, D.domain_of_slug, D.money_test, N.split_cfg = real
+
 # e. the sessions obey it
 sh = (ROOT / "bin" / "batch-session.sh").read_text()
 narr = sh[sh.index("phase_narrate() {"):]
 narr = narr[:narr.index("\n}\n")]
-check('supply_gate.py check longform' in narr and '"$grc" -eq 10 ]; then pending_audio=""' in narr,
+check('night_split.py gate' in narr and '"$grc" -eq 10 ]; then pending_audio=""' in narr,
       "(e) the batch narrates without asking the supply gate")
-check(narr.index("supply_gate.py") < narr.index("voice/narrate_all.py"),
+check(narr.index("night_split.py gate") < narr.index("voice/narrate_all.py"),
       "(e) the gate is asked after narration starts")
 shelf = sh[sh.index("shelve_shorts() {"):]
 shelf = shelf[:shelf.index("\n}\n")]
@@ -112,4 +154,4 @@ if fails:
     for f in fails:
         print("  " + f)
     sys.exit(1)
-print("ok test_supply_gate: 90 made holds, drained reopens, floor rate, Shorts, sessions obey")
+print("ok test_supply_gate: 90 made holds, drained reopens, floor rate, Shorts, a lane on its own supply, sessions obey")
