@@ -262,16 +262,24 @@ try:
     WL.estimate_seconds = lambda p, c=None: 5940.0
     WL.opening_problems = lambda p, est, c: []
     plain = [x for x in WL.script_problems(WL.SCRIPTS / f"{ocean}.md", others=[], c=C10) if x.startswith("LENGTH")]
-    own = {**C10, "episodes": [{**e, "min_s": 5400} if e["slug"] == ocean else e for e in C10["episodes"]]}
+    own = {**C10, "episodes": [{**e, "min_s": 4500} if e["slug"] == ocean else e for e in C10["episodes"]]}
     floor = [x for x in WL.script_problems(WL.SCRIPTS / f"{ocean}.md", others=[], c=own) if x.startswith("LENGTH")]
-    WL.estimate_seconds = lambda p, c=None: 5000.0
+    # the author checks a draft under its temporary name, <slug>.md.tmp:
+    # 13 Nov 2026 the episode's own floor was not found there and the 2-hour
+    # floor refused the first draft after the fix
+    with tempfile.TemporaryDirectory() as td10:
+        draft = Path(td10) / f"{ocean}.md.tmp"
+        draft.write_text((WL.SCRIPTS / f"{ocean}.md").read_text())
+        as_draft = [x for x in WL.script_problems(draft, others=[], c=own) if x.startswith("LENGTH")]
+    WL.estimate_seconds = lambda p, c=None: 4000.0
     under = [x for x in WL.script_problems(WL.SCRIPTS / f"{ocean}.md", others=[], c=own) if x.startswith("LENGTH")]
 finally:
     WL.estimate_seconds, WL.opening_problems = real_est, real_open
 food_ep = next(e for e in C10["episodes"] if e.get("lane") == "food")
-check("10a a 1 h 39 min episode is refused by the 2-hour floor, passes with its own 1.5-hour floor, "
+check("10a a 1 h 39 min episode is refused by the 2-hour floor, passes with its own floor, "
       "and is still refused under that", bool(plain) and not floor and bool(under), (plain, floor, under))
-check("10b the food episode carries its own floor, and only it", food_ep.get("min_s") == 5400
+check("10c the author's draft file gets its episode's floor too", not as_draft, as_draft)
+check("10b the food episode carries its own floor, and only it", food_ep.get("min_s") == 4500
       and sum(1 for e in C10["episodes"] if "min_s" in e) == 1, food_ep.get("min_s"))
 
 print(f"examined {examined} case(s), {len(fails)} failed")
