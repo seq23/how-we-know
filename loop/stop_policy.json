@@ -290,6 +290,20 @@
       "escalation": "Seven days with nothing rendered while scripts are queued means the Mac batch is not running at all - bin/batch-session.sh, or the launchd agent that starts it.",
       "plain": "the Mac finished nothing new since the last run"
     },
+    "RUNWAY_TOPUP_PAUSED_BY_MONEY_TEST": {
+      "why": "loop/draft.py rebuild_runway_if_short: the runway is ok but under runway.target_weeks, and every queued topic belongs to a domain her Money-test call (9 Nov 2026, loop/config.json domains.money_test) pauses or leaves to loop/money_author.py. Topping up is opportunistic; nothing is going dark. Resolves when the test is judged (started + check_days). A runway at warn or critical never takes this path: it stays RUNWAY_AUTHORING_FALLBACK and pages.",
+      "requires_detail": ["resolves_at"],
+      "max_consecutive": 35,
+      "escalation": "Past five weeks the Money test has outlived its 30-day check, which loop/lane_check.py runs on watch hours and subscribers per lane: check that it ran and that its verdict reached domains.money_test.",
+      "plain": "the runway is fine; topping it up waits for the Money test to finish"
+    },
+    "SHORTS_WAITING_EPISODE_GAP": {
+      "why": "loop/shorts_cloud.py: verified Shorts are on the shelf, but every one is a later cut of an episode that already has a Short within EPISODE_GAP_DAYS (14, owner build 2026-10-14). The rule is doing its job; the first cut is scheduled on the run after its gap clears (detail.clears_on). Raised only when every waiting cut's clear date is in the future; anything else stays ZERO_WORK. Added 2026-11-13 after run 43334821894 paged for exactly this.",
+      "requires_detail": ["resolves_at"],
+      "max_consecutive": 15,
+      "escalation": "Fifteen runs waiting on a fourteen-day gap means the gap cleared and the cut still was not scheduled: read SL.plan and the slot ladder in loop/shorts_lane.py.",
+      "plain": "the shelved Shorts are later cuts of recently aired episodes and wait their 14 days"
+    },
     "NO_SHORTS_SHELVED": {
       "why": "Every cut Short is already uploaded, or none has been pushed to R2 since the last run. The Mac's push is the producer; an empty shelf resolves on the next one.",
       "max_consecutive": 2,
