@@ -1,16 +1,16 @@
 {
   "stage": "money-author",
   "week": "2026-W46",
-  "at": "2026-11-12T20:05:36+00:00",
-  "code": "DRAFT_FAILED_VALIDATION",
-  "message": "why-did-ftx-collapse: 4 drafts failed structural checks: narration is only 1350 words; at the measured 144.58 wpm that is ~9.3 minutes, under the 10.0-minute hard floor (1446 words minimum); directive draws name 'Release' the narration never speaks: '{{sources: ALLEGATIONS | SEC=Litigation Release | DOJ=Press Release}}'; directive draws name 'Release' the narration never speaks: '{{sources: ALLEGATIONS | SEC=Litigation Release | DOJ=Press Release}}'",
+  "at": "2026-11-13T17:04:41+00:00",
+  "code": "MONEY_EPISODE_IN_FLIGHT",
+  "message": "how-was-bernie-madoff-caught, why-did-ftx-collapse written and waiting for the Mac's How We Know nights; at most 2 Money scripts are in flight",
   "detail": null,
-  "unblock": "Falls back to AUTHOR_REQUIRED: the brief stays in loop/briefs/ for a human. The week still ships whatever inventory covers.",
-  "disposition": "needs_human",
-  "disposition_why": "'DRAFT_FAILED_VALIDATION' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'DRAFT_FAILED_VALIDATION' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "unblock": "Nothing to do: an upload clears it and the next run writes the next topic.",
+  "disposition": "self_resolving",
+  "disposition_why": "loop/money_author.py keeps at most two Money scripts written and not yet uploaded; the Mac's How We Know nights narrate and render them first (loop/night_split.longform_slugs). An upload clears it. (run 1 of at most 6 before this escalates to a human.)",
   "consecutive": 1,
   "held_items": [],
-  "exit_code": 3,
+  "exit_code": 0,
   "work_done_before_stop": [],
   "notes": []
 }
