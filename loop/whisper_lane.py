@@ -879,34 +879,65 @@ def monetized(nums: dict, c: dict) -> bool:
     return subs is not None and hours is not None and subs >= w["subscribers"] and hours >= w["watch_hours_365d"]
 
 
+def base_mix(c: dict, nums: dict) -> dict:
+    return dict(c["mix"]["after_monetized" if monetized(nums, c) else "before_monetized"])
+
+
+def reweight(base: dict, lanes: dict, c: dict) -> tuple[dict, str] | None:
+    """The week's mix from the channel's own numbers (her yes 11 Nov 2026):
+    the lane with the most watch hours per video over the last 28 days gets
+    the week's spare nights. The total stays the plan's; every lane with a
+    slot keeps its floor (at least 1 night; Neville 1 or more). None while no
+    lane with a slot has a measured video: nothing is decided on no numbers."""
+    m = c["mix"]
+    rw = m["reweight"]
+    active = [ln for ln in base if base[ln] > 0]
+    rated = {ln: float(v["watch_hours_per_video"]) for ln, v in (lanes or {}).items()
+             if ln in active and (v.get("videos_28d") or 0) >= rw["min_videos"]
+             and v.get("watch_hours_per_video") is not None}
+    if not rated:
+        return None
+    need = {ln: max(1, int(m["floors"].get(ln, 0))) for ln in active}
+    spare = sum(base.values()) - sum(need.values())
+    # a tie goes to the lane the plan already favours
+    top = max(rated, key=lambda ln: (rated[ln], base[ln], ln))
+    mix = {ln: need.get(ln, 0) for ln in base}
+    mix[top] += max(0, spare)
+    return mix, (f"{top} earns the most watch hours per video over {rw['window_days']} days "
+                 f"({rated[top]:.1f}); it gets the week's {max(0, spare)} spare night(s)")
+
+
+def reweight_from(nums: dict, c: dict) -> _dt.date | None:
+    """The first day a weekly re-weighting may be decided: `after_days` after
+    the first public upload (week 3)."""
+    first = nums.get("first_upload_at")
+    if not first:
+        return None
+    t = _dt.datetime.fromisoformat(first.replace("Z", "+00:00"))
+    return (t + _dt.timedelta(days=int(c["mix"]["reweight"]["after_days"]))).date()
+
+
 def weekly_mix(c: dict | None = None, nums: dict | None = None) -> tuple[dict, list[str]]:
-    """Videos per lane per week, from the channel's OWN numbers (never a
-    calendar): the before/after-monetisation weights, then one slot moved to
-    the lane with the most watch hours per video over the last 30 days from
-    the weakest measured lane (each with `min_videos` measured), never below
-    a lane's floor. Returns (mix, why lines)."""
+    """Videos per lane per week, from the channel's OWN numbers: the
+    before/after-monetisation plan, then the last Monday re-weighting
+    (loop/whisper_scorecard.decide wrote it to the channel state) while it
+    was decided on this same plan. Returns (mix, why lines)."""
     c = c or cfg()
     nums = channel_numbers() if nums is None else nums
     m = c["mix"]
     on = monetized(nums, c)
-    mix = dict(m["after_monetized" if on else "before_monetized"])
+    mix = base_mix(c, nums)
     why = [("monetised: " if on else "not yet monetised: ")
            + f"{_or_unread(nums.get('subscribers'))} subscribers, {_or_unread(nums.get('watch_hours_365d'))} "
              f"watch hours (needs {m['monetized_when']['subscribers']} and {m['monetized_when']['watch_hours_365d']})"]
-    lanes = nums.get("lanes") or {}
-    rated = {k: v["watch_hours_per_video"] for k, v in lanes.items()
-             if k in mix and (v.get("videos_30d") or 0) >= m["bonus"]["min_videos"]
-             and v.get("watch_hours_per_video") is not None}
-    if len(rated) >= 2:
-        top = max(rated, key=rated.get)
-        low = [k for k in sorted(rated, key=rated.get) if k != top and mix[k] > m["floors"].get(k, 0)]
-        if low:
-            mix[top] += 1
-            mix[low[0]] -= 1
-            why.append(f"{top} earns the most watch hours per video ({rated[top]:.1f}); one slot moves "
-                       f"to it from {low[0]} ({rated[low[0]]:.1f})")
-    else:
-        why.append(f"watch-hour rule waits for 2+ lanes with {m['bonus']['min_videos']}+ measured videos")
+    rw = nums.get("reweight") or {}
+    if rw.get("mix") and rw.get("base") == mix and sum(rw["mix"].values()) == sum(mix.values()):
+        why.append(f"week {rw.get('week')}, decided {rw.get('decided_on')}: {rw.get('why')}")
+        return dict(rw["mix"]), why
+    start = reweight_from(nums, c)
+    why.append("weekly re-weighting: the planned mix stands "
+               + (f"until the first Monday on or after {start:%a %d %b %Y} (week 3 after the first public upload)"
+                  if start else "until 14 days after the first public upload"))
     return mix, why
 
 

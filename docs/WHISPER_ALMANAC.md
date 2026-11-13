@@ -51,11 +51,12 @@
 - **Credit, no endorsement:** "Techniques from the public-domain writings of Neville Goddard (1905–1972)" (or Shinn), the quoted books, and "Not affiliated with or endorsed by any estate, publisher or organisation."
 - **Altered-content box** and the AI-voice line in the first 3 description lines, every upload.
 
-### The 30-day check per lane, and the shift after monetisation
+### Weekly re-weighting, the 48-hour click-rate check, and the shift after monetisation
 
-- **Every night** (`loop/whisper_scorecard.py`, in the upload step): the channel's own views, watch hours and subscribers per lane, last 30 days, into `loop/state/whisper_channel.json`. A number YouTube did not return reads "not read", never a guess.
-- **Per lane, 30 days after its first public video:** views, watch hours, subscribers (`python loop/whisper_scorecard.py report`).
-- **Data rule, no calendar:** the lane with the most watch hours per video (2+ measured videos, against another lane with 2+) takes one slot from the weakest; food history and ocean documentary never drop below 1 each before the 9 Dec 2026 re-check.
+- **Every night** (`loop/whisper_scorecard.py`, in the upload step): the channel's own views, watch hours and subscribers per lane, last 28 days, into `loop/state/whisper_channel.json`. A number YouTube did not return reads "not read", never 0.
+- **Every Monday from week 3** (her yes 11 Nov 2026, replacing the single 30-day check): at the first read on or after Monday, 14+ days after the first public upload, the lane with the most watch hours per video over 28 days gets the next week's spare night. 5 a week in total, every lane with a slot keeps 1, Neville 1 or more (`config/whisper_almanac.json` `mix.reweight`, `loop/whisper_lane.reweight`). No measured video, no move.
+- **48-hour click-rate check** (same yes): a video public 48+ hours with a thumbnail click rate under 4% on 100+ impressions gets one line in her morning email's Notices, once: swap the thumbnail in Test & Compare (`click_rate`; impressions come from the YouTube Reporting API, whose first reports arrive up to 48 hours after the first run).
+- `python loop/whisper_scorecard.py report` prints the lanes, the week's mix and the click rates from the last read.
 - **Once monetised** (her channel reads 1,000+ subscribers and 4,000+ watch hours): the mix moves to **ocean 2 + food 1 + money 2** (ocean takes Thu, which Neville frees); the watch-hour rule still applies.
 
 ### Description links
