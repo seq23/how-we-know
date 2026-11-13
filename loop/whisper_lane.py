@@ -130,7 +130,7 @@ def parse(path: Path | str) -> dict:
         paras = [p for p in paras if p and not p.startswith("#")]
         segs.append({"n": int(m.group(1)), "source": m.group(2), "paragraphs": paras})
     title = (re.search(r"^# (.+)$", text, re.M) or [None, ""])[1]
-    return {"path": str(path), "slug": Path(path).stem, "title": title,
+    return {"path": str(path), "slug": Path(path).name.removesuffix(".tmp").removesuffix(".md"), "title": title,
             "meta": meta, "segments": segs,
             "named": [x.strip() for x in meta.get("named", "").split(",") if x.strip()],
             "kind": meta.get("kind", "sleep"), "status": meta.get("status", "")}
