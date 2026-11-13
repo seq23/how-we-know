@@ -141,6 +141,8 @@ def food_asset(rec: dict) -> dict:
     FF = _ff()
     a = {**rec, "seconds": float(rec.get("duration_s") or 0),
          "clean_windows": FF.clean_windows(rec),
+         # under 1.0: the clip is a little short of a shot and plays slowed
+         "speed": FF.speed_for(rec, SHOT_S + 1.0) or 1.0,
          "post_id": f"{rec.get('source')}:{rec.get('source_id')}"}
     if rec.get("source") in ("pixabay", "mixkit", "pexels") and rec.get("licence_text"):
         a["commercial_use_permitted"] = True
@@ -153,13 +155,15 @@ def food_pool(part: str, index: list[dict] | None = None, present=None) -> list[
     rights (food_footage.record_problems), long enough to hold a whole shot
     (a shorter clip is never placed, so it is never counted), and on this Mac
     (a clip this checkout does not hold is fetched first by
-    food_footage.fetch_long_missing, never counted on faith)."""
+    food_footage.fetch_long_missing, never counted on faith). A clip a little
+    short of a shot counts when it holds one at no less than two-thirds speed
+    (food_footage.speed_for; 13 Nov 2026)."""
     FF = _ff()
     index = FF.load().get("index") or [] if index is None else index
     present = present or (lambda r: (FF.IMAGERY / r["local_file"]).exists())
     return [food_asset(r) for r in index
             if r.get("segment") == part and not r.get("excluded")
-            and not FF.record_problems(r) and FF.holds(r, SHOT_S + 1.0) and present(r)]
+            and not FF.record_problems(r) and FF.speed_for(r, SHOT_S + 1.0) is not None and present(r)]
 
 
 def min_clips(shot_s: float = SHOT_S) -> int:
@@ -206,9 +210,10 @@ def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=Non
                     i = id(a)
                     if t - last_t.get(i, -1e9) < REPEAT_GAP_S + 1.0:
                         continue
-                    cut = F.place_cut(a, sec, uses.get(i, 0))
+                    src = sec * float(a.get("speed") or 1.0)   # the source seconds this shot shows
+                    cut = F.place_cut(a, src, uses.get(i, 0))
                     if cut is None:
-                        cut = F.place_cut(a, sec, 0) if uses.get(i, 0) else None
+                        cut = F.place_cut(a, src, 0) if uses.get(i, 0) else None
                     if cut is None:
                         continue
                     pick = (a, cut)
@@ -272,9 +277,14 @@ def render_reel(shots: list[dict], out: Path, audio: Path, workdir: Path) -> Pat
             for k, s in enumerate(x for x in shots if x["segment"] == si):
                 p = os.path.join(td, f"{k:04d}.mp4")
                 raw = os.path.join(td, f"{k:04d}-raw.mp4")
-                F.render_cut({**s["cut"], "asset": s["asset"]}, raw, s["seconds"], td, credit=False)
+                speed = float(s["asset"].get("speed") or 1.0)
+                src_s = s["seconds"] * speed
+                F.render_cut({**s["cut"], "asset": s["asset"]}, raw, src_s, td, credit=False)
+                # a slowed clip: its frames are spread over the full shot
+                slow = [f"setpts=PTS/{speed:.3f}", f"fps={F.FPS}"] if speed < 1.0 else []
                 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-vf",
-                                f"{dim_for(cut_luma(raw, s['seconds'], td))},scale=1280:720",
+                                ",".join(slow + [dim_for(cut_luma(raw, src_s, td)), "scale=1280:720"]),
+                                "-t", f"{s['seconds']:.3f}",
                                 "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-an", p],
                                check=True)
                 os.remove(raw)

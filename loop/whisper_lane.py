@@ -373,6 +373,8 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
     est = estimate_seconds(p, c)
     out += opening_problems(p, est, c)
     lo, hi = c["lengths"][kind]["min_s"], c["lengths"][kind]["max_s"]
+    if kind == "sleep":                # an episode of fewer parts may set its own floor
+        lo = episode_cfg(p, c).get("min_s", lo)
     if not lo <= est <= hi:
         out.append(f"LENGTH estimated {fmt_len(est)}, outside {fmt_len(lo)} to {fmt_len(hi)}")
     mine = spoken_text(p)

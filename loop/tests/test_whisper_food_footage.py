@@ -187,6 +187,93 @@ with tempfile.TemporaryDirectory() as td:
 check("7b a food harvest of the same food keeps the sleep clips",
       [r_["subject"] for r_ in out["index"]] == ["bread-long-pixabay-1"], out["index"])
 
+# ------------------------------------------------------------ 9. a clip a little short is slowed
+# 13 Nov 2026: the free libraries hold 4 chocolate clips of 21 s or more; the
+# part sat at 4 of 12 and the food-history video could not be made.
+check("9a a clip long enough plays as shot; 15 s plays slowed; 12 s is never placed",
+      FF.speed_for(rec("chocolate", 1, secs=40.0)) == 1.0
+      and 0.7 < (FF.speed_for(rec("chocolate", 2, secs=15.0)) or 0) < 0.8
+      and FF.speed_for(rec("chocolate", 3, secs=12.0)) is None,
+      [FF.speed_for(rec("chocolate", k, secs=x)) for k, x in ((1, 40.0), (2, 15.0), (3, 12.0))])
+check("9b nothing is ever slowed below two-thirds speed",
+      all((FF.speed_for(rec("chocolate", 4, secs=x / 10)) or 1.0) + 1e-3 >= 2 / 3 for x in range(100, 200)), "")
+mixed = [rec("chocolate", i) for i in range(4)] + [rec("chocolate", 10 + i, secs=15.5) for i in range(8)]
+check("9c four long clips and eight of 15 s make the 12 a part needs",
+      FF.long_count(mixed, "chocolate") == 12 and len(R.food_pool("chocolate", mixed, ON)) == 12,
+      FF.long_count(mixed, "chocolate"))
+slow_parts = {**parts, "chocolate": R.food_pool("chocolate", mixed, ON)}
+shots9 = R.plan_reel(segs, [], pool_of=lambda s: slow_parts[R.food_part(s)])
+slowed = [s for s in shots9 if s["asset"].get("speed", 1.0) < 1.0]
+check("9d a slowed clip still fills a whole 18 s shot, from source seconds inside its own clip",
+      slowed and all(s["seconds"] == 18.0 or s["seconds"] < 20.0 for s in slowed)
+      and all(abs(s["cut"]["seconds"] - s["seconds"] * s["asset"]["speed"]) < 0.01
+              and 0 <= s["cut"]["start"] and s["cut"]["end"] <= s["asset"]["seconds"] for s in slowed),
+      [(s["seconds"], s["cut"]) for s in slowed[:2]])
+check("9e the repeat rule and the shot length hold with slowed clips in the reel",
+      not R.reel_problems(shots9, 3600.0) and (R.SHOT_S, R.REPEAT_GAP_S) == (18.0, 180.0),
+      R.reel_problems(shots9, 3600.0)[:3])
+
+
+class FakeLib:
+    name = "mixkit"
+
+    def __init__(self):
+        self.downloaded = []
+
+    def enabled(self):
+        return True, "usable"
+
+    def search(self, q):
+        return [{"id": k, "title": "chocolate, cocoa, sweet", "item_url": ""} for k in ("text", "short", "retry")]
+
+    def download(self, c):
+        self.downloaded.append(c["id"])
+        raise RuntimeError("stop here: the test only counts what is fetched")
+
+
+lib = FakeLib()
+old_rej = [{"subject": "chocolate-long-mixkit-text", "source": "mixkit", "reason": "whisper-long: text on screen: 'x'"},
+           {"subject": "chocolate-long-mixkit-short", "source": "mixkit",
+            "reason": "whisper-long: 9 s / 1920 px: too short or small"},
+           {"subject": "chocolate-long-mixkit-retry", "source": "mixkit",
+            "reason": "whisper-long: 15 s / 1920 px: too short or small"}]
+real9 = FF.CHAIN, FF.load, FF.save
+saved = []
+try:
+    FF.CHAIN = [lib]
+    FF.load = lambda: {"index": [], "rejected": list(old_rej)}
+    FF.save = lambda *a, **k: saved.append(a)
+    FF.harvest_long(["chocolate"], text_check=lambda p, d: [])
+finally:
+    FF.CHAIN, FF.load, FF.save = real9
+check("9f a clip refused for good is never fetched again; one the slow-down now admits is tried once more",
+      set(lib.downloaded) == {"retry"}, lib.downloaded)
+check("9g a night that fetched and refused nothing rewrites nothing", saved == [], len(saved))
+
+# ------------------------------------------------------------ 10. the three-part episode's length
+# The food episode is three parts of one script (about 1 h 39 min at the
+# longest pauses); the 2-hour floor for five-part episodes refused it every run.
+import whisper_lane as WL  # noqa: E402
+
+C10 = WL.cfg()
+ocean = next(e["slug"] for e in C10["episodes"] if (WL.SCRIPTS / f"{e['slug']}.md").exists())
+real_est, real_open = WL.estimate_seconds, WL.opening_problems
+try:
+    WL.estimate_seconds = lambda p, c=None: 5940.0
+    WL.opening_problems = lambda p, est, c: []
+    plain = [x for x in WL.script_problems(WL.SCRIPTS / f"{ocean}.md", others=[], c=C10) if x.startswith("LENGTH")]
+    own = {**C10, "episodes": [{**e, "min_s": 5400} if e["slug"] == ocean else e for e in C10["episodes"]]}
+    floor = [x for x in WL.script_problems(WL.SCRIPTS / f"{ocean}.md", others=[], c=own) if x.startswith("LENGTH")]
+    WL.estimate_seconds = lambda p, c=None: 5000.0
+    under = [x for x in WL.script_problems(WL.SCRIPTS / f"{ocean}.md", others=[], c=own) if x.startswith("LENGTH")]
+finally:
+    WL.estimate_seconds, WL.opening_problems = real_est, real_open
+food_ep = next(e for e in C10["episodes"] if e.get("lane") == "food")
+check("10a a 1 h 39 min episode is refused by the 2-hour floor, passes with its own 1.5-hour floor, "
+      "and is still refused under that", bool(plain) and not floor and bool(under), (plain, floor, under))
+check("10b the food episode carries its own floor, and only it", food_ep.get("min_s") == 5400
+      and sum(1 for e in C10["episodes"] if "min_s" in e) == 1, food_ep.get("min_s"))
+
 print(f"examined {examined} case(s), {len(fails)} failed")
 if examined == 0:
     sys.exit("examined zero cases")
