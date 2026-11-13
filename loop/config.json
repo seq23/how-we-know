@@ -42,7 +42,7 @@
       "slot_times_local": [
         "10:00"
       ],
-      "_why": "Owner decision 13 Oct 2026 (docs/CHANNEL-PLAN.md, Three-niche schedule): six long-form a week, one a day at 10:00 local, each weekday owned by one domain; Sunday none (compilations later). food-science is mapped ahead of its registration in the taxonomy - until then its Wednesday and Saturday stay EMPTY, never borrowed by another domain. per_day is the owner's (default 1; LONG_FORM_PER_DAY overrides for a run). loop/backfill.py rotation_days()/domain_weekdays() read it; V20 holds every scheduled long-form video to it."
+      "_why": "Owner decision 13 Oct 2026 (docs/CHANNEL-PLAN.md, Three-niche schedule): six long-form a week, one a day at 10:00 local, each weekday owned by one domain; Sunday none (compilations later). Since 10 Nov 2026 (the Money test, domains.money_test) Wednesday and Saturday are money-and-business's: food long-forms are paused, so its two days carry the Money videos; deep sea keeps Monday and Thursday and materials Tuesday and Friday for the episodes already made. A domain's day with no video of its own stays EMPTY, never borrowed by another domain. per_day is the owner's (default 1; LONG_FORM_PER_DAY overrides for a run). loop/backfill.py rotation_days()/domain_weekdays() read it; V20 holds every scheduled long-form video to it."
     },
     "shorts_drain": {
       "per_day": 2,
