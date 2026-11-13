@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-11-13T22:05:54+00:00",
+  "cause": "domain",
+  "detail": "3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair.",
   "history": [
     {
       "event": "trip",
@@ -123,6 +123,12 @@
       "at": "2026-11-04T22:53:59+00:00",
       "note": "hostile-review fixes landed (#320 footage fix, #319 the 8 owner-approved cuts); lifted by coordinator 4 Nov so the approved 8 publish",
       "held_since": "2026-11-02T20:29:17+00:00"
+    },
+    {
+      "event": "trip",
+      "at": "2026-11-13T22:05:54+00:00",
+      "cause": "domain",
+      "detail": "3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair."
     }
   ],
   "longform_owner_approval_required": true
