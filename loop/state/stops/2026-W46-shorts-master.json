@@ -1,14 +1,14 @@
 {
   "stage": "shorts-master",
   "week": "2026-W46",
-  "at": "2026-11-13T05:06:03+00:00",
+  "at": "2026-11-14T13:10:31+00:00",
   "code": "SHORT_MASTER_NO_FOOTAGE",
   "message": "Masters without moving footage: how-deep-can-a-sperm-whale-go",
   "detail": null,
   "unblock": "The nightly batch retries and re-cuts after a new footage master exists.",
   "disposition": "self_resolving",
-  "disposition_why": "The master has no verified moving footage; no Short is cut or uploaded. (run 4 of at most 400 before this escalates to a human.)",
-  "consecutive": 4,
+  "disposition_why": "The master has no verified moving footage; no Short is cut or uploaded. (run 5 of at most 400 before this escalates to a human.)",
+  "consecutive": 5,
   "held_items": [
     "how-deep-can-a-sperm-whale-go"
   ],

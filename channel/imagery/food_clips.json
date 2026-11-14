@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T05:29:25+00:00",
+  "generated": "2026-11-14T13:43:54+00:00",
   "domain": "food-science",
   "module": "research/food_footage.py",
   "policy": "Real video only, through the free fallback chain (Pixabay, Pexels, Mixkit, [Coverr disabled by its terms], Commons PD/CC0, Internet Archive PD collections, NASA). Licences allow commercial reuse without attribution; every clip is still credited on screen.",
@@ -16,7 +16,7 @@
     "depicts",
     "subject_basis"
   ],
-  "asset_count": 140,
+  "asset_count": 144,
   "chain": [
     "pixabay",
     "pexels",
@@ -940,6 +940,11 @@
       "subject": "chocolate-long-commons-File:Bear enters Californian home and allegedly eats chocolate cake (4 September 2022).webm",
       "source": "commons",
       "reason": "whisper-long: text on screen: 'aswns 2022-09-04 10:17:05 -0700 AXON BODY 3 X60A60472 ey Police Department /BODY'"
+    },
+    {
+      "subject": "chocolate-long-pixabay-62196",
+      "source": "pixabay",
+      "reason": "whisper-long: text on screen: '* Country Kitchen * Counlry Kildhbon TCEI'"
     }
   ],
   "index": [
@@ -3533,6 +3538,46 @@
       "hands_basis": "Apple Vision hand pose: 0/5 frames show a hand"
     },
     {
+      "subject": "chocolate-long-mixkit-10380",
+      "key": "chocolate-long-mixkit-10380",
+      "label": "CHOCOLATE",
+      "source": "mixkit",
+      "source_id": "10380",
+      "title": "chocolate syrup covering a green background",
+      "item_url": "https://mixkit.co/free-stock-video/chocolate-syrup-covering-a-green-background-10380/",
+      "download_url": "https://assets.mixkit.co/videos/10380/10380-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-14T13:42:45+00:00",
+      "sha256": "60e10a7726e29b153f85b021eb676ce7a47c2a60145c7c2770ddd2a8884bc4b8",
+      "local_file": "clips/food_clip__chocolate-long-mixkit-10380__mixkit-10380__chocolate-syrup-covering-a-green-background.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'chocolate syrup covering a green background')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1080,
+      "height": 1920,
+      "fps": 24.0,
+      "duration_s": 15.0,
+      "black": {
+        "spans": [],
+        "sha256": "60e10a7726e29b153f85b021eb676ce7a47c2a60145c7c2770ddd2a8884bc4b8"
+      },
+      "lane": "whisper-long"
+    },
+    {
       "subject": "chocolate-long-mixkit-41111",
       "key": "chocolate-long-mixkit-41111",
       "label": "CHOCOLATE",
@@ -3569,6 +3614,126 @@
       "black": {
         "spans": [],
         "sha256": "a33f1971a91f66e176058833fec6c900bb4e5174638ce7d484d9c6ded2fc47f9"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "key": "chocolate-long-mixkit-41123",
+      "label": "CHOCOLATE",
+      "source": "mixkit",
+      "source_id": "41123",
+      "title": "little chocolate cake slowly rotating",
+      "item_url": "https://mixkit.co/free-stock-video/little-chocolate-cake-slowly-rotating-41123/",
+      "download_url": "https://assets.mixkit.co/videos/41123/41123-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-14T13:43:18+00:00",
+      "sha256": "a8568448e2b0be1123328d0c25da413559fccd0ac8fd378a778dc98eb3af485f",
+      "local_file": "clips/food_clip__chocolate-long-mixkit-41123__mixkit-41123__little-chocolate-cake-slowly-rotating.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'little chocolate cake slowly rotating')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1080,
+      "height": 1920,
+      "fps": 24.0,
+      "duration_s": 14.042,
+      "black": {
+        "spans": [],
+        "sha256": "a8568448e2b0be1123328d0c25da413559fccd0ac8fd378a778dc98eb3af485f"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "key": "chocolate-long-mixkit-41125",
+      "label": "CHOCOLATE",
+      "source": "mixkit",
+      "source_id": "41125",
+      "title": "covering a strawberry with liquid chocolate on a lilac background",
+      "item_url": "https://mixkit.co/free-stock-video/covering-a-strawberry-with-liquid-chocolate-on-a-lilac-background-41125/",
+      "download_url": "https://assets.mixkit.co/videos/41125/41125-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-14T13:43:06+00:00",
+      "sha256": "7175a903ea142c8865b1d6705f01083702069aeb19b1d4c5c2c4114ac702c64c",
+      "local_file": "clips/food_clip__chocolate-long-mixkit-41125__mixkit-41125__covering-a-strawberry-with-liquid-chocolate-on-a.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'covering a strawberry with liquid chocolate on a lilac background')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1080,
+      "height": 1920,
+      "fps": 24.0,
+      "duration_s": 13.042,
+      "black": {
+        "spans": [],
+        "sha256": "7175a903ea142c8865b1d6705f01083702069aeb19b1d4c5c2c4114ac702c64c"
+      },
+      "lane": "whisper-long"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "key": "chocolate-long-mixkit-41135",
+      "label": "CHOCOLATE",
+      "source": "mixkit",
+      "source_id": "41135",
+      "title": "pouring milk into a bowl with chocolate flavored cereal",
+      "item_url": "https://mixkit.co/free-stock-video/pouring-milk-into-a-bowl-with-chocolate-flavored-cereal-41135/",
+      "download_url": "https://assets.mixkit.co/videos/41135/41135-1080.mp4",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "terms_url": "https://mixkit.co/terms/",
+      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
+      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
+      "attribution_required": false,
+      "fetched_at": "2026-11-14T13:43:51+00:00",
+      "sha256": "fcd27ef130a0d8061a1e1ca3af09ecfc43f2086b7866c4025632fcdc62c1e946",
+      "local_file": "clips/food_clip__chocolate-long-mixkit-41135__mixkit-41135__pouring-milk-into-a-bowl-with-chocolate-flavored.mp4",
+      "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+      "source_org": "Mixkit",
+      "depicts": "video",
+      "subject_basis": "Chocolate, filmed: a long take for the Whisper Almanac food-history sleep reel (first tag: 'pouring milk into a bowl with chocolate flavored cereal')",
+      "uses": [
+        "sleep",
+        "scale"
+      ],
+      "sound": null,
+      "segment": "chocolate",
+      "ai_generated": false,
+      "width": 1920,
+      "height": 1080,
+      "fps": 23.976,
+      "duration_s": 15.015,
+      "black": {
+        "spans": [],
+        "sha256": "fcd27ef130a0d8061a1e1ca3af09ecfc43f2086b7866c4025632fcdc62c1e946"
       },
       "lane": "whisper-long"
     },
