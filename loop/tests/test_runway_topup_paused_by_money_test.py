@@ -97,8 +97,12 @@ def rebuild(level: str, queue: list[dict]) -> St:
         with contextlib.redirect_stdout(io.StringIO()):
             try:
                 draft.rebuild_runway_if_short(st, CFG, 6, [], set())
-            except common.NamedStop:
-                pass
+            except common.NamedStop as stop:
+                # The stop IS the outcome under test: St.named_stop recorded it
+                # in st.stops before raising, and the cases below assert on it.
+                # The raised code must be the one recorded, never a different one.
+                if not st.stops or st.stops[-1][0] != stop.code:
+                    fails.append(f"raised {stop.code!r} but recorded {st.stops}")
     finally:
         (draft.ROOT, draft.cadence.runway, draft.batch_queue.unwritten_entries,
          draft.domains.by_slug, draft.domains.allocation, draft.author.draft,
