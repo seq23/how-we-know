@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { activeMethods } from '~/lib/method-index'
 import { pageMeta } from '~/lib/seo'
+import { methodHeading } from '~/lib/hub-headings'
 
 export const Route = createFileRoute('/methods/')({
   head: () =>
@@ -30,7 +31,7 @@ function MethodsIndex() {
             <span>
               {entry.pages.length} {entry.pages.length === 1 ? 'answer' : 'answers'}
             </span>
-            <h2>{entry.name}</h2>
+            <h2>{methodHeading(entry.name)}</h2>
             <p>{entry.blurb}</p>
           </a>
         ))}

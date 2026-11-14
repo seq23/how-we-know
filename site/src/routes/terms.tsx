@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { pageMeta } from '~/lib/seo'
 import { privacyContactEmail } from '~/lib/site'
+import { PlainEmail } from '~/components/PlainEmail'
 
 export const Route = createFileRoute('/terms')({
   head: () =>
@@ -122,7 +123,7 @@ function Terms() {
         {privacyContactEmail ? (
           <p>
             Questions about these terms can be sent to{' '}
-            <a href={`mailto:${privacyContactEmail}`}>{privacyContactEmail}</a>.
+            <PlainEmail address={privacyContactEmail} />.
           </p>
         ) : (
           <p>

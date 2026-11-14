@@ -30,7 +30,7 @@ function About() {
         the same words, so the two surfaces cannot drift apart.
       </p>
       <section>
-        <h2>Who publishes it</h2>
+        <h2>Who publishes it?</h2>
         <p>
           {site.name} is the publisher of both this site and the{' '}
           <a href={site.youtubeUrl} rel="noopener">
@@ -46,7 +46,7 @@ function About() {
         </p>
       </section>
       <section>
-        <h2>Who researches the videos</h2>
+        <h2>Who researches the videos?</h2>
         <p>
           The {entity.parentOrganization.name} editorial team. Questions, sources and scripts are
           researched and drafted with AI assistance from named public research, then checked
@@ -59,7 +59,7 @@ function About() {
         </p>
       </section>
       <section>
-        <h2>Where the evidence comes from</h2>
+        <h2>Where does the evidence come from?</h2>
         <p>
           Figures are traced to named public research — NOAA, MBARI, Woods Hole Oceanographic
           Institution, the Smithsonian and the published literature those bodies cite. A source is
@@ -69,7 +69,7 @@ function About() {
         </p>
       </section>
       <section>
-        <h2>How an answer is checked</h2>
+        <h2>How is an answer checked?</h2>
         <p>
           Questions are admitted, sourced and reviewed under a written process, not an editor&rsquo;s
           judgement on the day. <a href="/methodology/">The methodology</a> sets out how a question
@@ -81,7 +81,7 @@ function About() {
         </p>
       </section>
       <section>
-        <h2>What the site will not do</h2>
+        <h2>What will the site not do?</h2>
         <p>
           It will not convert an unknown cause into a confident one, and it will not turn a single
           viral sighting into a trend. Unusual claims stay labelled as single observations until
@@ -92,7 +92,7 @@ function About() {
         </p>
       </section>
       <section>
-        <h2>Corrections and questions</h2>
+        <h2>How do corrections and questions reach us?</h2>
         <p>
           If a figure here is wrong, the page that carries it is the thing that changes, along with
           every other surface that repeats it. Review dates are carried on the pages themselves, and
