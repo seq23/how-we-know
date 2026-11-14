@@ -54,6 +54,17 @@
     "reports": 1,
     "stage": "money-author"
   },
+  "shorts-cloud::BREAKER_TRIPPED": {
+    "code": "BREAKER_TRIPPED",
+    "first_reported_at": "2026-11-14T00:09:48+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-14T00:09:48+00:00",
+    "last_seen_at": "2026-11-14T00:09:48+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "shorts-cloud"
+  },
   "shorts-cloud::ZERO_WORK": {
     "code": "ZERO_WORK",
     "first_reported_at": "2026-11-13T00:13:14+00:00",

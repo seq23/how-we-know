@@ -1,24 +1,156 @@
 {
   "stage": "shorts-cloud",
   "week": "2026-W46",
-  "at": "2026-11-13T00:13:14+00:00",
-  "code": "ZERO_WORK",
-  "message": "stage 'shorts-cloud' completed without doing anything",
+  "at": "2026-11-14T00:09:48+00:00",
+  "code": "BREAKER_TRIPPED",
+  "message": "publishing is halted: domain \u2014 3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair.",
   "detail": {
-    "notes": [
-      "shelf: r2://how-we-know-renders",
-      "shorts mode: normal 9/week - verified backlog 2 cut(s) = 0.2 week(s) at 9/week (drain at >= 2 weeks)"
-    ]
+    "state": "tripped",
+    "tripped_at": "2026-11-13T22:05:54+00:00",
+    "cause": "domain",
+    "detail": "3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair.",
+    "history": [
+      {
+        "event": "trip",
+        "at": "2026-08-30T20:36:12+00:00",
+        "cause": "validator",
+        "detail": "V5 sources-present=FAIL(24)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T20:37:07+00:00",
+        "cleared_cause": "validator",
+        "note": "V5 sources_block bug fixed"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T20:49:00+00:00",
+        "cleared_cause": null,
+        "note": "clean state after rework"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T21:13:28+00:00",
+        "cleared_cause": null,
+        "note": "clean state"
+      },
+      {
+        "event": "trip",
+        "at": "2026-08-31T16:34:03+00:00",
+        "cause": "manual",
+        "detail": "MANUAL LAUNCH IN PROGRESS. The owner is publishing the first four videos by hand (2026-08-31). The loop must not publish while she does: YouTube cannot replace a video file, so an autonomous publish landing mid-session creates a video that can only be deleted and re-uploaded, losing its URL and any watch time. Reset only when she says the manual session is finished. Deliberate hold, not a fault."
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-31T19:48:53+00:00",
+        "cleared_cause": "manual",
+        "note": "Manual launch is not happening. The 2026-08-31 API test upload landed PUBLIC and read back public - the unaudited-project private lock does not fire on this project, so there is no manual Studio session for an autonomous publish to collide with. Video 1 (qBeLl0z4s54) is live and recorded in the ledger. Handing publishing to the loop."
+      },
+      {
+        "event": "trip",
+        "at": "2026-09-05T01:58:07+00:00",
+        "cause": "validator",
+        "detail": "V1 directive-truth=FAIL(1); V9 footage-window=FAIL(examined 0); V10 footage-crop=FAIL(examined 0); V11 footage-hash=FAIL(examined 0); V12 footage-scope=FAIL(examined 0); V13 render-not-clipped=FAIL(examined 0); V14 shorts-attribution=FAIL(examined 0); V15 shorts-caption-crop=FAIL(examined 0); V29 material-image rights=FAIL(11)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-09-05T02:12:45+00:00",
+        "cleared_cause": "validator",
+        "note": "V1 directive-truth: the two scripts now speak their on-screen figures (#25). V9-V15: visuals/footage.py, shorts.py and captions.py were never committed and are now in the repo (#27). V29: the twelve materials images were never committed and are now in the repo (#28). Fonts resolve per machine, so the render check works off a Mac too."
+      },
+      {
+        "event": "trip",
+        "at": "2026-09-05T02:40:06+00:00",
+        "cause": "validator",
+        "detail": "V13 render-not-clipped=FAIL(examined 0); V14 shorts-attribution=FAIL(examined 0); V15 shorts-caption-crop=FAIL(examined 0)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-09-05T02:58:39+00:00",
+        "cleared_cause": "validator",
+        "note": "V13/V14/V15 exempt when renders and Shorts are absent, as they always are in the cloud (#30). With V1 (#25), the seven missing modules (#27) and the twelve materials images (#28), every cause in the 02:39 trip detail is now closed."
+      },
+      {
+        "event": "trip",
+        "at": "2026-09-06T13:24:08+00:00",
+        "cause": "validator",
+        "detail": "V32 scheduled-pov=FAIL(3)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-09-07T14:28:34+00:00",
+        "cleared_cause": "validator",
+        "note": "V32 scheduled-pov: the owner read the three [HUMAN] lines for tempered-glass, titanium and damascus-steel on 2026-09-07 and approved them; they are recorded in pov/pov-assignments.json as hers. Cleared through breaker.reset() so the history entry is written the same way every other reset was."
+      },
+      {
+        "event": "trip",
+        "at": "2026-09-14T10:10:00+00:00",
+        "cause": "validator",
+        "detail": "V27 lanes-see-domains=FAIL(1); V37 runtime-target=FAIL(1)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-09-14T12:04:53+00:00",
+        "cleared_cause": "validator",
+        "note": "automatic: all 35 validators pass again (cause was validator: V27 lanes-see-domains=FAIL(1); V37 runtime-target=FAIL(1))"
+      },
+      {
+        "event": "trip",
+        "at": "2026-09-18T21:14:15+00:00",
+        "cause": "retention",
+        "detail": "every measured domain (deep-sea-ocean-science, materials-and-manufacturing) is below the duration floor for 3 consecutive videos. A problem in all of them at once is the format."
+      },
+      {
+        "event": "reset",
+        "at": "2026-09-18T23:50:51+00:00",
+        "cleared_cause": "retention",
+        "note": "2026-09-18 trip was on 8 videos with 2-40 views each; no domain had the 8 measured episodes CHANNEL-PLAN.md requires to be judged. breaker_cause() now honours min_episodes_to_judge (loop/tests/test_breaker_honours_judgeability.py). Reset with the fix, not instead of it."
+      },
+      {
+        "event": "trip",
+        "at": "2026-10-12T15:53:50+00:00",
+        "cause": "validator",
+        "detail": "V21 no-boilerplate=FAIL(1)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-10-12T18:04:40+00:00",
+        "cleared_cause": "validator",
+        "note": "automatic: all 40 validators pass again in the drafting run that re-ran the check"
+      },
+      {
+        "event": "longform_hold",
+        "at": "2026-11-02T20:29:17+00:00",
+        "detail": "owner hold 2 Nov: until hostile-review fixes land",
+        "by": "owner"
+      },
+      {
+        "event": "longform_lift",
+        "at": "2026-11-04T22:53:59+00:00",
+        "note": "hostile-review fixes landed (#320 footage fix, #319 the 8 owner-approved cuts); lifted by coordinator 4 Nov so the approved 8 publish",
+        "held_since": "2026-11-02T20:29:17+00:00"
+      },
+      {
+        "event": "trip",
+        "at": "2026-11-13T22:05:54+00:00",
+        "cause": "domain",
+        "detail": "3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair."
+      }
+    ],
+    "longform_owner_approval_required": true,
+    "reported_by": {
+      "stage": "shorts-cloud",
+      "at": "2026-11-14T00:09:48+00:00",
+      "tripped_at": "2026-11-13T22:05:54+00:00"
+    },
+    "recheck": "retention and domain trips are cleared by the weekly measurement lane the moment its own breaker_cause() stops returning a cause; no measurement since the trip has done so"
   },
-  "unblock": "No verified Short is shelved in R2 that is not already in loop/state/shorts_ledger.json. On the Mac: bin/make-shorts.sh --all && bin/push-to-r2.sh",
+  "unblock": "This clears itself: the breaker is re-tested at the top of every guarded lane and closes the moment the cause has passed. A validator trip closes as soon as the validators pass; a retention or domain trip closes on the next weekly measurement that no longer sees the breach. It stays open only for a strike or a manual trip \u2014 for those: python loop/breaker.py reset --note \"<what you fixed>\"",
   "disposition": "needs_human",
-  "disposition_why": "'ZERO_WORK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'ZERO_WORK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "disposition_why": "'BREAKER_TRIPPED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'BREAKER_TRIPPED' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
   "consecutive": 1,
   "held_items": [],
   "exit_code": 3,
   "work_done_before_stop": [],
-  "notes": [
-    "shelf: r2://how-we-know-renders",
-    "shorts mode: normal 9/week - verified backlog 2 cut(s) = 0.2 week(s) at 9/week (drain at >= 2 weeks)"
-  ]
+  "notes": []
 }
