@@ -66,7 +66,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:04+00:00",
-      "verified_at": "2026-10-29T15:08:10+00:00",
+      "verified_at": "2026-11-14T16:02:07+00:00",
       "previous_sha256": "eaa3524f0b85824526e23c0edf000eed5c97ca1a1271783c93edc6c81b84b3d9",
       "replaced_at": "2026-10-17T15:08:35+00:00"
     },
@@ -310,7 +310,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-14T15:11:29+00:00",
-      "verified_at": "2026-10-28T15:08:49+00:00"
+      "verified_at": "2026-11-14T16:02:07+00:00"
     },
     "VDFFur-xYUU": {
       "slug": "how-is-3d-printed-metal-made",
@@ -321,7 +321,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-14T15:11:30+00:00",
-      "verified_at": "2026-10-28T15:08:49+00:00"
+      "verified_at": "2026-11-14T16:02:07+00:00"
     },
     "Eueb6oHEbMs": {
       "slug": "why-is-carbon-fiber-so-strong",
@@ -687,11 +687,11 @@
     }
   },
   "blocked": {},
-  "updated": "2026-11-13T16:03:00+00:00",
+  "updated": "2026-11-14T16:02:07+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-13T16:03:00+00:00",
+    "at": "2026-11-14T16:02:06+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
