@@ -1994,6 +1994,33 @@
         "applied_at": "2026-11-14T00:09:58+00:00",
         "result": "posted (UgzUvPjILo8eK7lbAZF4AaABAg)"
       }
+    },
+    "UgyAcvukNrVtYnZ-Oxd4AaABAg": {
+      "comment_id": "UgyAcvukNrVtYnZ-Oxd4AaABAg",
+      "video_id": "tbKynCHfU-c",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why are deep sea creatures so big? Full episode: https://youtu.be/VUeFHBIXoRc",
+      "published_at": "2026-11-14T19:54:13+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-14T19:54:13+00:00",
+      "acted": {
+        "comment_id": "UgyAcvukNrVtYnZ-Oxd4AaABAg",
+        "video_id": "tbKynCHfU-c",
+        "action": "channel_comment",
+        "reply_text": "Why are deep sea creatures so big? Full episode: https://youtu.be/VUeFHBIXoRc",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-14T19:54:13+00:00",
+        "result": "posted (UgyAcvukNrVtYnZ-Oxd4AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -2834,6 +2861,18 @@
       "note": null,
       "applied_at": "2026-11-14T00:09:58+00:00",
       "result": "posted (UgzUvPjILo8eK7lbAZF4AaABAg)"
+    },
+    {
+      "comment_id": "UgyAcvukNrVtYnZ-Oxd4AaABAg",
+      "video_id": "tbKynCHfU-c",
+      "action": "channel_comment",
+      "reply_text": "Why are deep sea creatures so big? Full episode: https://youtu.be/VUeFHBIXoRc",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-14T19:54:13+00:00",
+      "result": "posted (UgyAcvukNrVtYnZ-Oxd4AaABAg)"
     }
   ],
   "sweeps": [
@@ -3463,7 +3502,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "tbKynCHfU-c": {
+      "comment_id": "UgyAcvukNrVtYnZ-Oxd4AaABAg",
+      "text": "Why are deep sea creatures so big? Full episode: https://youtu.be/VUeFHBIXoRc",
+      "posted_at": "2026-11-14T19:54:13+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-11-14T00:09:58+00:00"
+  "updated": "2026-11-14T19:54:13+00:00"
 }
