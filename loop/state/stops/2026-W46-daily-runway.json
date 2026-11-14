@@ -1,7 +1,7 @@
 {
   "stage": "daily-runway",
   "week": "2026-W46",
-  "at": "2026-11-13T01:12:27+00:00",
+  "at": "2026-11-14T01:12:57+00:00",
   "code": "RUNWAY_AUTHORING_FALLBACK",
   "message": "runway is ok for any and the authoring lane could not add a single script to cover it. no candidate topics were queued for the short domain(s) in research/publish_order.json",
   "detail": {
@@ -12,10 +12,10 @@
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 11,
-        "scheduled_ahead": 2,
-        "weeks": 6.5,
+        "scheduled_ahead": 1,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.5 week(s) at 2/week (11 queued, 2 already dated)"
+        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (11 queued, 1 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
@@ -43,19 +43,19 @@
       }
     },
     "goes_dark_by": {
-      "any": "2026-12-22"
+      "any": "2026-12-23"
     },
     "failures": []
   },
-  "unblock": "This week's own queue already shipped and is unaffected. any needs more scored topics in research/publish_order.json (or a working OPENROUTER_API_KEY if authoring itself is what failed) before 2026-12-22 or it goes dark",
+  "unblock": "This week's own queue already shipped and is unaffected. any needs more scored topics in research/publish_order.json (or a working OPENROUTER_API_KEY if authoring itself is what failed) before 2026-12-23 or it goes dark",
   "disposition": "needs_human",
   "disposition_why": "'RUNWAY_AUTHORING_FALLBACK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'RUNWAY_AUTHORING_FALLBACK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
-  "consecutive": 2,
+  "consecutive": 3,
   "held_items": [],
   "exit_code": 3,
   "work_done_before_stop": [],
   "notes": [
-    "runway 5.7 weeks of queue at 6/week (30 publishable of 42 on disk). By domain: deep-sea-ocean-science: 6.5 week(s) at 2/week (11 queued, 2 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).; the Mac has 28 written script(s) to make (buffer 8)",
+    "runway 5.7 weeks of queue at 6/week (31 publishable of 43 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (11 queued, 1 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).; the Mac has 29 written script(s) to make (buffer 8)",
     "runway rebuild: why-does-metal-shock-you (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
     "runway rebuild: how-anodizing-works (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
     "runway rebuild: why-does-metal-rust-in-water (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
@@ -63,7 +63,6 @@
     "runway rebuild: why-are-metals-ductile (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
     "runway rebuild: why-is-metal-cold (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
     "runway rebuild: why-does-metal-smell (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
-    "runway rebuild: why-did-ftx-collapse (money-and-business) not authored here: loop/money_author.py",
     "runway rebuild: how-did-theranos-work (money-and-business) not authored here: loop/money_author.py",
     "runway rebuild: how-does-the-federal-reserve-create-money (money-and-business) not authored here: loop/money_author.py",
     "runway rebuild: how-does-the-fed-control-interest-rates (money-and-business) not authored here: loop/money_author.py",
