@@ -370,6 +370,13 @@ def guard(stage_name: str) -> None:
                f"already raised; one flag halts every publishing lane and it is one "
                f"problem, not four."),
             detail={**b, "recheck": (healed or {}).get("why")},
+            # THE TRIP IS THE ITEM. The alarm-owning lane re-raised
+            # BREAKER_TRIPPED on every run with nothing to identify it by, so
+            # loop/held.py could never tell a repeat from a new trip and one
+            # trip paged her every day (shorts-cloud, issue #378, 2026-11-14).
+            # Naming the trip lets the second run of the SAME trip be held;
+            # a new trip has a new tripped_at, so it is new news and pages.
+            held_items=[f"breaker:{b.get('cause')}:{b.get('tripped_at')}"],
             unblock=("This clears itself: the breaker is re-tested at the top "
                      "of every guarded lane and closes the moment the cause "
                      "has passed. A validator trip closes as soon as the "

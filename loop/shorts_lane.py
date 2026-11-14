@@ -289,6 +289,17 @@ EPISODE_GAP_DAYS = 14
 MAX_EMPTY_SLOTS = 2
 
 
+def gap_clears_on(led: dict, slug: str):
+    """The first local day a Short of `slug` may air under plan()'s
+    EPISODE_GAP_DAYS rule (today's date if nothing of it is on the calendar)."""
+    days = [_local_day(r["scheduled_publish_at"]) for r in led.get("published", [])
+            if r.get("slug") == slug and r.get("scheduled_publish_at")]
+    today = datetime.now(SHORTS_TZ).date()
+    if not days:
+        return today
+    return max(today, max(days) + timedelta(days=EPISODE_GAP_DAYS))
+
+
 def plan(led: dict, picks: list, n: int,
          drain: bool = False) -> list[tuple[Pick, datetime]]:
     """Up to `n` of `picks` (in their mix order), each with its evening slot.
