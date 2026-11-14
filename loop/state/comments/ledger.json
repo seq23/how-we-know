@@ -1940,6 +1940,60 @@
         "applied_at": "2026-11-13T00:13:22+00:00",
         "result": "posted (UgwstECqCii-i0yXUNB4AaABAg)"
       }
+    },
+    "Ugw239etMwE0--cU9194AaABAg": {
+      "comment_id": "Ugw239etMwE0--cU9194AaABAg",
+      "video_id": "l8sjx720GhI",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+      "published_at": "2026-11-14T00:09:58+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-14T00:09:58+00:00",
+      "acted": {
+        "comment_id": "Ugw239etMwE0--cU9194AaABAg",
+        "video_id": "l8sjx720GhI",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-14T00:09:58+00:00",
+        "result": "posted (Ugw239etMwE0--cU9194AaABAg)"
+      }
+    },
+    "UgzUvPjILo8eK7lbAZF4AaABAg": {
+      "comment_id": "UgzUvPjILo8eK7lbAZF4AaABAg",
+      "video_id": "IEbq-U5_i5M",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+      "published_at": "2026-11-14T00:09:58+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-14T00:09:58+00:00",
+      "acted": {
+        "comment_id": "UgzUvPjILo8eK7lbAZF4AaABAg",
+        "video_id": "IEbq-U5_i5M",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-14T00:09:58+00:00",
+        "result": "posted (UgzUvPjILo8eK7lbAZF4AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -2756,6 +2810,30 @@
       "note": null,
       "applied_at": "2026-11-13T00:13:22+00:00",
       "result": "posted (UgwstECqCii-i0yXUNB4AaABAg)"
+    },
+    {
+      "comment_id": "Ugw239etMwE0--cU9194AaABAg",
+      "video_id": "l8sjx720GhI",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-14T00:09:58+00:00",
+      "result": "posted (Ugw239etMwE0--cU9194AaABAg)"
+    },
+    {
+      "comment_id": "UgzUvPjILo8eK7lbAZF4AaABAg",
+      "video_id": "IEbq-U5_i5M",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-14T00:09:58+00:00",
+      "result": "posted (UgzUvPjILo8eK7lbAZF4AaABAg)"
     }
   ],
   "sweeps": [
@@ -3369,7 +3447,23 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "l8sjx720GhI": {
+      "comment_id": "Ugw239etMwE0--cU9194AaABAg",
+      "text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+      "posted_at": "2026-11-14T00:09:58+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "IEbq-U5_i5M": {
+      "comment_id": "UgzUvPjILo8eK7lbAZF4AaABAg",
+      "text": "Why deep sea creatures are creepers? Full episode: https://youtu.be/N1mpUttSNd8",
+      "posted_at": "2026-11-14T00:09:58+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-11-13T00:13:22+00:00"
+  "updated": "2026-11-14T00:09:58+00:00"
 }
