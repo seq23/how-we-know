@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-10T14:36:13+00:00",
+  "generated": "2026-11-13T05:29:25+00:00",
   "domain": "food-science",
   "module": "research/food_footage.py",
   "policy": "Real video only, through the free fallback chain (Pixabay, Pexels, Mixkit, [Coverr disabled by its terms], Commons PD/CC0, Internet Archive PD collections, NASA). Licences allow commercial reuse without attribution; every clip is still credited on screen.",
@@ -665,6 +665,276 @@
       "subject": "chocolate-long-mixkit-10383",
       "source": "mixkit",
       "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-commons-File:Bear enters Californian home and allegedly eats chocolate cake (4 September 2022).webm",
+      "source": "commons",
+      "reason": "whisper-long: text on screen: 'aswns 2022-09-04 10:17:05 -0700 AXON BODY 3 X60A60472 ey Police Department /BODY'"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10380",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41120",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3797",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41116",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-2737",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-18323",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3229",
+      "source": "mixkit",
+      "reason": "whisper-long: 11 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10378",
+      "source": "mixkit",
+      "reason": "whisper-long: 18 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10384",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41124",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41106",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41114",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41118",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41122",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41113",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44100",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44091",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10367",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10375",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10377",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10383",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44187",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-42607",
+      "source": "mixkit",
+      "reason": "whisper-long: 3 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-commons-File:Bear enters Californian home and allegedly eats chocolate cake (4 September 2022).webm",
+      "source": "commons",
+      "reason": "whisper-long: text on screen: 'aswns 2022-09-04 10:17:05 -0700 AXON BODY 3 X60A60472 ey Police Department /BODY'"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10380",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41120",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41125",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3797",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41135",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41116",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-2737",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-18323",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-3229",
+      "source": "mixkit",
+      "reason": "whisper-long: 11 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10378",
+      "source": "mixkit",
+      "reason": "whisper-long: 18 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10384",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41123",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41124",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1080 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41106",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41114",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41118",
+      "source": "mixkit",
+      "reason": "whisper-long: 7 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41122",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-41113",
+      "source": "mixkit",
+      "reason": "whisper-long: 16 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44100",
+      "source": "mixkit",
+      "reason": "whisper-long: 14 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44091",
+      "source": "mixkit",
+      "reason": "whisper-long: 13 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10367",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10375",
+      "source": "mixkit",
+      "reason": "whisper-long: 12 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10377",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-10383",
+      "source": "mixkit",
+      "reason": "whisper-long: 10 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-44187",
+      "source": "mixkit",
+      "reason": "whisper-long: 15 s / 1920 px: too short or small"
+    },
+    {
+      "subject": "chocolate-long-mixkit-42607",
+      "source": "mixkit",
+      "reason": "whisper-long: 3 s / 1920 px: too short or small"
     },
     {
       "subject": "chocolate-long-commons-File:Bear enters Californian home and allegedly eats chocolate cake (4 September 2022).webm",

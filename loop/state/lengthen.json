@@ -135,6 +135,7 @@
     },
     "what-is-mid-ocean-ridge": {
       "attempts": 0,
+      "bound_at": "2026-11-14T05:00:19+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -144,14 +145,14 @@
       "kind": "extend",
       "minutes_after": 9.6,
       "minutes_before": 9.6,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": null,
       "new_script_sha256": "3991c78926b343d388013171fbe1589b7b1be7c514a56838e93bf6a0d92a5116",
       "old_render_sha256": null,
       "old_script_sha256": "3991c78926b343d388013171fbe1589b7b1be7c514a56838e93bf6a0d92a5116",
       "scripted_at": "2026-11-14T00:43:43+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "picture time requires the full visual timeline",
       "words_after": 1388,
       "words_before": 1388
     },
@@ -269,5 +270,5 @@
       "words_before": 1800
     }
   },
-  "updated": "2026-11-14T00:43:43+00:00"
+  "updated": "2026-11-14T05:00:19+00:00"
 }
