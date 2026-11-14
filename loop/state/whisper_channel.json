@@ -2,57 +2,59 @@
   "_why": "Whisper Almanac's numbers for the Boss OS scorecard row whisper-almanac-youtube (her ruling 6 Nov 2026: count subscribers per 1,000 views; day-30, day-60 and day-90 checks from the money case). Every field is null until the first upload: the row reads 'Too early until the first upload', never a made-up zero. Written by loop/whisper_scorecard.py (the nightly batch, after the upload step) from the @whisperalmanac grant; per-lane numbers (history, neville, money, rotating) over the last 30 days feed the weekly mix (loop/whisper_lane.weekly_mix), 9 Nov 2026.",
   "median_views_first_14_days_long": null,
   "median_views_first_28_days_long": null,
-  "first_upload_at": null,
+  "first_upload_at": "2026-11-14T02:00:00Z",
   "views": 0,
   "subscribers": 1,
   "subs_per_1000_views": null,
   "watch_hours_365d": 0.0,
   "lanes": {
     "food": {
-      "videos_30d": 0,
-      "views_30d": null,
-      "watch_hours_30d": null,
-      "subscribers_30d": null,
+      "videos_28d": 0,
+      "views_28d": null,
+      "watch_hours_28d": null,
+      "subscribers_28d": null,
       "watch_hours_per_video": null,
-      "first_public": null,
-      "check_30d_due": null
+      "first_public": null
     },
     "ocean": {
-      "videos_30d": 0,
-      "views_30d": null,
-      "watch_hours_30d": null,
-      "subscribers_30d": null,
-      "watch_hours_per_video": null,
-      "first_public": null,
-      "check_30d_due": null
+      "videos_28d": 1,
+      "views_28d": 0,
+      "watch_hours_28d": 0.0,
+      "subscribers_28d": 0,
+      "watch_hours_per_video": 0.0,
+      "first_public": "2026-11-14"
     },
     "neville": {
-      "videos_30d": 0,
-      "views_30d": null,
-      "watch_hours_30d": null,
-      "subscribers_30d": null,
+      "videos_28d": 0,
+      "views_28d": null,
+      "watch_hours_28d": null,
+      "subscribers_28d": null,
       "watch_hours_per_video": null,
-      "first_public": null,
-      "check_30d_due": null
+      "first_public": null
     },
     "money": {
-      "videos_30d": 0,
-      "views_30d": null,
-      "watch_hours_30d": null,
-      "subscribers_30d": null,
+      "videos_28d": 0,
+      "views_28d": null,
+      "watch_hours_28d": null,
+      "subscribers_28d": null,
       "watch_hours_per_video": null,
-      "first_public": null,
-      "check_30d_due": null
+      "first_public": null
     },
     "rotating": {
-      "videos_30d": 0,
-      "views_30d": null,
-      "watch_hours_30d": null,
-      "subscribers_30d": null,
+      "videos_28d": 0,
+      "views_28d": null,
+      "watch_hours_28d": null,
+      "subscribers_28d": null,
       "watch_hours_per_video": null,
-      "first_public": null,
-      "check_30d_due": null
+      "first_public": null
     }
   },
-  "at": "2026-11-13T05:00:22Z"
+  "at": "2026-11-14T05:00:26Z",
+  "click_rate": {
+    "job_id": "55ac692a-dd67-4001-ba7b-581ead6e7f9b",
+    "reports": {},
+    "videos": {},
+    "at": "2026-11-14T05:00:26Z",
+    "noticed": {}
+  }
 }

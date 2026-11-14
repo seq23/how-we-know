@@ -19,9 +19,9 @@
   },
   "pov-repair": {
     "code": "POV_ALL_TRACED",
-    "count": 14,
+    "count": 15,
     "first_at": "2026-10-21T04:00:09+00:00",
-    "last_at": "2026-11-13T05:00:21+00:00"
+    "last_at": "2026-11-14T05:00:25+00:00"
   },
   "food-author": {
     "code": "FOOD_LONGFORM_PAUSED",
@@ -101,10 +101,10 @@
     "first_at": "2026-11-14T00:09:48+00:00",
     "last_at": "2026-11-14T00:09:48+00:00"
   },
-  "whisper-voice": {
-    "code": "WHISPER_NOTHING_TO_VOICE",
+  "whisper-upload": {
+    "code": "BREAKER_TRIPPED_ALREADY_REPORTED",
     "count": 1,
-    "first_at": "2026-11-13T05:00:21+00:00",
-    "last_at": "2026-11-13T05:00:21+00:00"
+    "first_at": "2026-11-14T05:00:26+00:00",
+    "last_at": "2026-11-14T05:00:26+00:00"
   }
 }
