@@ -1,0 +1,88 @@
+{
+  "episode": "how-was-bernie-madoff-caught",
+  "beats": 58,
+  "plan_source": "plans/how-was-bernie-madoff-caught.json",
+  "timing": "audio",
+  "beats_measured": 58,
+  "durations_recorded": 58,
+  "duration_s": 681.139,
+  "cues": 172,
+  "chapters_real": 10,
+  "chapters_published": 9,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Producer POV (4.1s)"
+  ],
+  "drift": {
+    "mean_abs_s": 83.7,
+    "worst_abs_s": 158.4,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "The structural limits of early regulatory warnings",
+        "hand": "01:15",
+        "real": "0:52",
+        "drift_s": -22.1
+      },
+      {
+        "title": "The mechanics of the redemption demand",
+        "hand": "03:30",
+        "real": "2:34",
+        "drift_s": -55.8
+      },
+      {
+        "title": "The family confrontation and federal notification",
+        "hand": "05:45",
+        "real": "3:55",
+        "drift_s": -109.9
+      },
+      {
+        "title": "The documentary record compiled by the trustees",
+        "hand": "08:00",
+        "real": "5:24",
+        "drift_s": -155.1
+      },
+      {
+        "title": "What the public record established in court",
+        "hand": "09:45",
+        "real": "7:06",
+        "drift_s": -158.4
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:15",
+        "real": "9:50",
+        "drift_s": -84.5
+      }
+    ]
+  },
+  "ffprobe": null,
+  "text_checks": {
+    "beats_json": {
+      "checked": 58,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 58,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [],
+    "chapters_not_in_script": [
+      "What to notice in the edit",
+      "Closing"
+    ]
+  },
+  "artifacts": [
+    "captions/how-was-bernie-madoff-caught.vtt",
+    "captions/how-was-bernie-madoff-caught.srt",
+    "captions/how-was-bernie-madoff-caught.chapters.txt"
+  ]
+}

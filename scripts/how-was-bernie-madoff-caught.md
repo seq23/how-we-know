@@ -80,13 +80,13 @@ The primary source documents for this case are available in the public dockets o
 
 ## Chapters
 
-- 00:00 Cold open
-- 01:15 The structural limits of early regulatory warnings
-- 03:30 The mechanics of the redemption demand
-- 05:45 The family confrontation and federal notification
-- 08:00 The documentary record compiled by the trustees
-- 09:45 What the public record established in court
-- 11:15 Evidence limit
+- 0:00 Cold open
+- 0:52 The structural limits of early regulatory warnings
+- 2:34 The mechanics of the redemption demand
+- 3:55 The family confrontation and federal notification
+- 5:24 The documentary record compiled by the trustees
+- 7:06 What the public record established in court
+- 9:50 Evidence limit
 
 ## Sources
 
