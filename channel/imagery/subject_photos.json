@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T05:05:47+00:00",
+  "generated": "2026-11-14T13:09:57+00:00",
   "domain": "any",
   "policy": "Thumbnail and Short-opening stills: public domain or CC0 (Commons, imagery.pd_licence_ok), or Pixabay / Pexels / Mixkit under their free licences (owner ruling 2 Nov 2026), checked by research/food_footage.record_problems with the licence wording stored under licences/. Anything else, CC-BY included, is refused.",
   "rights_fields_required": [
@@ -10,7 +10,7 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 36,
+  "asset_count": 37,
   "subjects_total": 1,
   "subjects_covered": [
     "auto-15-how-do-people-reach-challenger-deep",
@@ -44,6 +44,7 @@
     "auto-why-are-deep-sea-creatures-so-big",
     "auto-why-bread-rises-steak-browns-chocolate-snaps",
     "auto-why-deep-sea-creatures-are-creepers",
+    "auto-why-did-ftx-collapse",
     "auto-why-does-chocolate-taste-so-good",
     "auto-why-does-meat-need-to-rest-after-cooking",
     "auto-why-does-steak-taste-better-seared",
@@ -53,7 +54,7 @@
   "subjects_unillustratable": {},
   "rejected": [
     {
-      "subject": "auto-how-was-bernie-madoff-caught",
+      "subject": "auto-why-did-ftx-collapse",
       "title": null,
       "reason": "no candidate passed both gates"
     }
@@ -689,12 +690,12 @@
       "terms_text": "licences/pixabay-api-terms-excerpt.txt",
       "matched_query": "bread rise steak brown",
       "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-      "download_url": "https://pixabay.com/get/g573584ee065b928d1437229c478a9e43d5f831bbb94674ee9df64a1faca8720d968f96c260fbf2f032490cd87a6e1bbae830e751da0125a0ab24b3dd6cba4a9a_1280.jpg",
+      "download_url": "https://pixabay.com/get/g2e8d06f38adf8b62a1fae532375135d06051be1b1e8ea256c28913c0c45dd96f79dfd91c17590dad6b25307ebba94e8f18c50a965cbefc1dd6d177d764c79aa5_1280.jpg",
       "local_file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
       "sha256": "8248a6ae47577b2964506e840746f4819fd34e7e64f3f7fde9dd93ea06dc7c34",
       "width": 1280,
       "height": 853,
-      "fetched_at": "2026-11-13T05:05:47+00:00",
+      "fetched_at": "2026-11-14T13:09:48+00:00",
       "licence_basis": "Pixabay Content License: API re-checked id 1077984 (type photo, not AI) at download"
     },
     {
@@ -716,6 +717,24 @@
       "height": 812,
       "licence_basis": "Commons item page asserts CC0 (CC0 dedication)",
       "owner_pick": "A"
+    },
+    {
+      "source": "drawn card",
+      "motif": "rings",
+      "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+      "credit_line": "ILLUSTRATION \u2014 DRAWN BY HOW WE KNOW",
+      "depicts": "drawing",
+      "treatment": "drawn",
+      "sha256": "144ab20b7a7fde8dc7850f2da60c550e4aed6d2aec8c5ad888b9063a83e431cb",
+      "width": 1600,
+      "height": 1600,
+      "item_url": "visuals/drawn_card.py",
+      "subject": "auto-why-did-ftx-collapse",
+      "label": "FTX COLLAPSE",
+      "local_file": "assets/auto__auto-why-did-ftx-collapse__drawn-card.jpg",
+      "title": "Drawn card (rings)",
+      "fetched_at": "2026-11-14T13:09:56+00:00",
+      "subject_basis": "No licence-checked photo of why-did-ftx-collapse's subject was found; a plain drawn schematic, pinned at once (owner rulings 2 Nov 2026)."
     },
     {
       "subject": "auto-why-does-chocolate-taste-so-good",
