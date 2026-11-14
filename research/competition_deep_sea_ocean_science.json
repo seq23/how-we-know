@@ -1,5 +1,5 @@
 {
-  "measured_at": "2026-11-07T11:20:20.825120+00:00",
+  "measured_at": "2026-11-14T11:26:08.885673+00:00",
   "generator": "research/competition.py",
   "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
   "key_source": "environment $YOUTUBE_API_KEY",
@@ -13,42 +13,42 @@
   "domain_summary": {},
   "results": [
     {
-      "query": "what is mid ocean ridge",
+      "query": "why greenland shark live so long",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.683,
+        "mean_coverage": 0.6,
         "max_coverage": 1.0,
-        "strong_match_count": 10,
-        "strong_match_rate": 0.5,
-        "loose_match_rate": 0.3,
-        "gap_signal": 0.5,
-        "interpretation": "10 of 20 ranking titles squarely answer the query"
+        "strong_match_count": 9,
+        "strong_match_rate": 0.45,
+        "loose_match_rate": 0.2,
+        "gap_signal": 0.55,
+        "interpretation": "9 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 29813.5,
-        "p90": 609729,
-        "max": 2072497,
+        "median": 135970.5,
+        "p90": 2005806,
+        "max": 23742742,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 1108.0,
-        "max_subscribers": 763000,
-        "under_100k_subs": 14,
+        "median_subscribers": 135350.0,
+        "max_subscribers": 3630000,
+        "under_100k_subs": 10,
         "n": 20
       },
       "recency": {
-        "median_age_days": 696,
+        "median_age_days": 584,
         "published_last_365d": 7,
         "n": 20
       },
-      "opportunity_score": 0.515,
+      "opportunity_score": 0.466,
       "opportunity_components": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.565,
-        "view_ceiling": 0.361,
+        "title_gap": 0.55,
+        "incumbent_subs": 0.267,
+        "view_ceiling": 0.267,
         "staleness": 0.65
       },
       "opportunity_weights": {
@@ -68,190 +68,190 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-11-07T11:20:19.653405+00:00"
+        "fetched_utc": "2026-11-14T11:26:08.885514+00:00"
       },
       "top_results": [
         {
-          "title": "What is a Mid Ocean Ridge? - Easy to Understand",
-          "views": 8719,
-          "subs": 686,
-          "published_at": "2025-07-22T05:47:40Z",
+          "title": "The Insane Biology of: The Greenland Shark",
+          "views": 2005806,
+          "subs": 2090000,
+          "published_at": "2025-01-25T14:00:30Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Greenland sharks can live 500 years\ud83e\udd88",
+          "views": 215287,
+          "subs": 1870,
+          "published_at": "2023-08-10T14:12:13Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Greenland sharks live to be 500 years old PART 2",
+          "views": 26722,
+          "subs": 2090000,
+          "published_at": "2025-01-30T15:15:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why it Sucks To Be Born As a Greenland Shark",
+          "views": 1941601,
+          "subs": 337000,
+          "published_at": "2025-03-23T21:31:31Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What&#39;s The REAL Reason Greenland Sharks Live So Long?",
+          "views": 1126,
+          "subs": 24500,
+          "published_at": "2024-12-16T16:36:55Z",
           "coverage": 1.0
         },
         {
-          "title": "The Mid Ocean Ridge",
-          "views": 780,
-          "subs": 137,
-          "published_at": "2026-01-13T19:46:57Z",
+          "title": "Why Do Greenland Sharks Live So Long?",
+          "views": 178,
+          "subs": 3,
+          "published_at": "2026-11-10T00:00:18Z",
           "coverage": 1.0
         },
         {
-          "title": "The Hidden Giant: Mid-Ocean Ridge",
-          "views": 1163,
-          "subs": 0,
-          "published_at": "2024-11-14T09:46:17Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Mid Ocean Ridges",
-          "views": 5691,
-          "subs": 9130,
-          "published_at": "2017-05-17T21:33:23Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Mid-Atlantic Ridge Part I",
-          "views": 151668,
-          "subs": 111,
-          "published_at": "2025-10-28T17:34:50Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Seafloor Spreading - How Plate Tectonics Shape the Ocean Floor",
-          "views": 294540,
-          "subs": 420000,
-          "published_at": "2022-11-24T11:00:06Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "What will researchers be studying along the mid-ocean ridge?",
-          "views": 76825,
-          "subs": 1530,
-          "published_at": "2013-01-16T00:08:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What is a Mid Ocean Ridge? - Easy to Understand",
-          "views": 116,
-          "subs": 686,
-          "published_at": "2026-10-13T05:54:39Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What is the Mid-ocean Ridge? | Oceanography for UPSC by Sudarshan Gurjar",
-          "views": 45141,
-          "subs": 763000,
-          "published_at": "2023-11-20T12:30:29Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "\ud83c\udf0aHow Mid-Ocean Ridges Create New Oceanic Crust | Seafloor Spreading Explained",
-          "views": 1186,
-          "subs": 15,
-          "published_at": "2026-09-15T16:43:22Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Seafloor Spreading",
-          "views": 733773,
-          "subs": 140000,
-          "published_at": "2021-01-07T20:02:35Z",
+          "title": "The Oldest Creature on Earth \ud83d\ude32",
+          "views": 23742742,
+          "subs": 1460000,
+          "published_at": "2024-02-28T15:12:44Z",
           "coverage": 0.0
         },
         {
-          "title": "&quot;The Magnificent Mid-Ocean Ridge: Exploring the World&#39;s Longest Mountain Range&quot;",
-          "views": 14486,
-          "subs": 2450,
-          "published_at": "2022-01-08T18:15:03Z",
+          "title": "Why Greenland Sharks Live 400 Years #shorts",
+          "views": 2687,
+          "subs": 34,
+          "published_at": "2026-11-04T12:24:22Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Greenland Shark: The Shark That\u2019s Twice As Old As America",
+          "views": 1045324,
+          "subs": 2150000,
+          "published_at": "2023-07-07T17:05:43Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "This is the worlds OLDEST SHARK #joerogan #jre #shorts #shark",
+          "views": 395463,
+          "subs": 212000,
+          "published_at": "2023-08-01T15:53:52Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "We Were Wrong About How Old Sharks Can Get",
+          "views": 593411,
+          "subs": 58700,
+          "published_at": "2026-09-30T12:35:14Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why it sucks to be a Greenland shark",
+          "views": 409191,
+          "subs": 2090000,
+          "published_at": "2025-01-29T14:45:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Nothing About The Greenland Shark Is Normal\u2026 Here\u2019s Why",
+          "views": 877215,
+          "subs": 268000,
+          "published_at": "2025-11-30T20:30:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The world&#39;s OLDEST SHARK",
+          "views": 15146785,
+          "subs": 3630000,
+          "published_at": "2025-09-26T15:43:44Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Marine Biologists Finally Know How Greenland Sharks Live 400 Years \u2014 And It&#39;s Weird",
+          "views": 704,
+          "subs": 59,
+          "published_at": "2026-10-09T21:45:16Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why This Shark Lives for 500 Years (And We Don&#39;t) | The Secret of Greenland Shark",
+          "views": 54,
+          "subs": 21,
+          "published_at": "2026-07-01T17:45:24Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "GREENLAND SHARK Lives LONGER Than America Has Existed",
+          "views": 963,
+          "subs": 163,
+          "published_at": "2026-05-14T14:04:52Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Greenland sharks live to be 500 years old PART 1",
+          "views": 56654,
+          "subs": 2090000,
+          "published_at": "2025-01-30T15:01:02Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why does the Greenland shark live so long? #greenlandshark #science #exploration #Zakhelpful",
+          "views": 4515,
+          "subs": 19300,
+          "published_at": "2025-04-26T22:20:28Z",
           "coverage": 1.0
         },
         {
-          "title": "The longest mountain range on earth\u2026 the mid ocean ridge #space #astronomy #nasa #science",
-          "views": 609729,
-          "subs": 719000,
-          "published_at": "2025-01-06T22:02:26Z",
+          "title": "Why does the Greenland shark live so long? #greenlandshark #science #exploration #Zakhelpful",
+          "views": 2403,
+          "subs": 19300,
+          "published_at": "2025-04-27T18:09:35Z",
           "coverage": 1.0
-        },
-        {
-          "title": "Birth of an Ocean Floor: The Secret Formation of Mid-Ocean Ridges",
-          "views": 7060,
-          "subs": 66,
-          "published_at": "2026-08-07T15:12:37Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Mid-Oceanic Ridge Explained \ud83c\udf0a | Formation of Ocean Ridges | UPSC geography | Class 9 Geography",
-          "views": 1906,
-          "subs": 332,
-          "published_at": "2026-10-10T13:04:28Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Mid Ocean Ridge Animation",
-          "views": 52434,
-          "subs": 42,
-          "published_at": "2020-08-11T10:36:54Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "We&#39;ve Never Found Anything Like This in the Ocean",
-          "views": 2072497,
-          "subs": 503000,
-          "published_at": "2026-07-06T16:32:18Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Seafloor Spreading - How the Ocean Floor Changes Over Time",
-          "views": 7307,
-          "subs": 420000,
-          "published_at": "2026-07-24T19:03:51Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Sea Floor Spreading &amp; Plate Tectonic Evidence",
-          "views": 478490,
-          "subs": 433,
-          "published_at": "2014-10-06T19:11:00Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Explanation of divergent plate boundaries and shield volcano&#39;s",
-          "views": 135545,
-          "subs": 14500,
-          "published_at": "2020-01-22T19:00:10Z",
-          "coverage": 0.0
         }
       ],
       "domain": null
     },
     {
-      "query": "where brine pool",
+      "query": "what is brine pool",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.9,
+        "mean_coverage": 0.875,
         "max_coverage": 1.0,
-        "strong_match_count": 16,
-        "strong_match_rate": 0.8,
-        "loose_match_rate": 0.0,
-        "gap_signal": 0.2,
-        "interpretation": "16 of 20 ranking titles squarely answer the query"
+        "strong_match_count": 17,
+        "strong_match_rate": 0.85,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.15,
+        "interpretation": "17 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 173645.5,
-        "p90": 744221,
-        "max": 7178941,
+        "median": 342537.5,
+        "p90": 1366355,
+        "max": 7183140,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 371000.0,
+        "median_subscribers": 372500.0,
         "max_subscribers": 15700000,
-        "under_100k_subs": 5,
+        "under_100k_subs": 7,
         "n": 20
       },
       "recency": {
-        "median_age_days": 532,
-        "published_last_365d": 8,
+        "median_age_days": 743,
+        "published_last_365d": 6,
         "n": 20
       },
-      "opportunity_score": 0.269,
+      "opportunity_score": 0.252,
       "opportunity_components": {
-        "title_gap": 0.2,
+        "title_gap": 0.15,
         "incumbent_subs": 0.204,
-        "view_ceiling": 0.251,
-        "staleness": 0.6
+        "view_ceiling": 0.209,
+        "staleness": 0.7
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -270,147 +270,147 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-11-07T11:20:20.824891+00:00"
+        "fetched_utc": "2026-11-14T11:26:07.709115+00:00"
       },
       "top_results": [
         {
-          "title": "How To Find Brine Pool Location In Fisch | Roblox #fisch #roblox #brinepool",
-          "views": 446864,
-          "subs": 138000,
-          "published_at": "2025-01-07T14:03:54Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How To UNLOCK BRINE POOL Fisch! How To FISH In Brine Pool! Brine Pool Location! (Fish)",
-          "views": 353318,
-          "subs": 381000,
-          "published_at": "2024-11-29T15:52:24Z",
-          "coverage": 1.0
-        },
-        {
           "title": "Brine Pools: The Real Life GOO LAGOON | Lindsay Nikole",
-          "views": 700520,
+          "views": 705461,
           "subs": 2080000,
           "published_at": "2024-06-08T15:15:09Z",
           "coverage": 1.0
         },
         {
-          "title": "Eel Suffers Toxic Shock From Brine Pool | Blue Planet II",
-          "views": 7178941,
-          "subs": 14600000,
-          "published_at": "2017-11-03T13:13:44Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How to Get to Brine Pool in Fisch (Roblox)",
-          "views": 2853,
-          "subs": 92700,
-          "published_at": "2026-03-06T19:00:53Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How To UNLOCK BRINE POOL in Fisch \u2013 How To Fish in Brine Pool! Brine Pool Location! (Roblox Fish)",
-          "views": 6929,
-          "subs": 178000,
-          "published_at": "2025-11-04T13:01:06Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How To Get To The Brine Pool In Roblox Fisch! || #shorts #fisch #roblox ||",
-          "views": 30721,
-          "subs": 417000,
-          "published_at": "2025-01-15T05:00:08Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "BRINE STORM FULL GUIDE #fisch",
-          "views": 744221,
-          "subs": 361000,
-          "published_at": "2026-01-24T19:39:15Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "FULL GUIDE To BRINE STORM UPDATE In Fisch Roblox!",
-          "views": 146530,
-          "subs": 709000,
-          "published_at": "2026-01-24T20:12:33Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Planet Earth: Blue Planet II | Brine Pool | Coming to BBC America 2018",
-          "views": 593314,
-          "subs": 1190000,
-          "published_at": "2017-11-03T12:09:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How To FIND BRINE POOL LOCATION In Fisch! Roblox",
-          "views": 157766,
-          "subs": 635000,
-          "published_at": "2024-10-28T19:29:19Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Level Up Your Cash  Brine Pool vs  Burst Money Making! #roblox #fisch #shorts",
-          "views": 1492,
-          "subs": 3670,
-          "published_at": "2026-09-27T11:00:34Z",
-          "coverage": 1.0
-        },
-        {
           "title": "The Secret Life of Brine Pools",
-          "views": 1363607,
+          "views": 1366355,
           "subs": 1080000,
           "published_at": "2022-04-05T11:00:15Z",
           "coverage": 1.0
         },
         {
-          "title": "How To Spawn Brine Storm In Fisch (Roblox)",
-          "views": 28384,
-          "subs": 120000,
-          "published_at": "2026-01-29T02:23:18Z",
-          "coverage": 0.5
+          "title": "The Terrifying Reality of an Underwater Brine Pool",
+          "views": 4419,
+          "subs": 3940,
+          "published_at": "2026-02-14T17:45:03Z",
+          "coverage": 1.0
         },
         {
-          "title": "FASTEST WAY to Unlock Brine Pool in Fisch! \u26a1 | Brine Storm Update Guide",
-          "views": 4792,
-          "subs": 26700,
-          "published_at": "2026-01-26T13:09:23Z",
+          "title": "Brine Pool Formation | Nautilus Live",
+          "views": 300595,
+          "subs": 707000,
+          "published_at": "2015-05-12T07:41:24Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Eel Suffers Toxic Shock From Brine Pool | Blue Planet II",
+          "views": 7183140,
+          "subs": 14600000,
+          "published_at": "2017-11-03T13:13:44Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Water Under Water: The Mystery of Brine Pools",
+          "views": 161268,
+          "subs": 294,
+          "published_at": "2025-09-06T10:30:13Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Do These Deadly Lakes Form on the Ocean Seafloor?",
+          "views": 2113892,
+          "subs": 613000,
+          "published_at": "2024-10-03T10:00:27Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "ROV Hercules Explores Below the Surface of Brine Pool | Nautilus Live",
+          "views": 430064,
+          "subs": 707000,
+          "published_at": "2015-05-31T19:18:10Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Underwater Lakes That Kill Everything It Touches",
+          "views": 397803,
+          "subs": 268000,
+          "published_at": "2025-12-16T21:27:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Fish Gets Toxic Shock From Brine Pool | Nautilus Live",
+          "views": 887696,
+          "subs": 707000,
+          "published_at": "2015-05-31T19:15:30Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Planet Earth: Blue Planet II | Brine Pool | Coming to BBC America 2018",
+          "views": 593516,
+          "subs": 1190000,
+          "published_at": "2017-11-03T12:09:05Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Brine Pools | The Deadly Lakes At The Bottom Of The Ocean | Nothing Survives",
+          "views": 1999,
+          "subs": 1170,
+          "published_at": "2026-05-26T22:45:30Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Osmotic Shock: What Happens When Fish Enter a Brine Pool",
+          "views": 168,
+          "subs": 83,
+          "published_at": "2026-04-27T12:57:29Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Brine pools #deepocean #ocean #oceanography",
+          "views": 14424,
+          "subs": 3210,
+          "published_at": "2025-09-03T22:13:39Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How To Find Brine Pool Location In Fisch | Roblox #fisch #roblox #brinepool",
+          "views": 450104,
+          "subs": 139000,
+          "published_at": "2025-01-07T14:03:54Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is a Brine Pool? The Deadliest Underwater Lake Explained",
+          "views": 361,
+          "subs": 2,
+          "published_at": "2026-09-28T23:06:33Z",
           "coverage": 1.0
         },
         {
           "title": "Brine pool of death - Blue Planet II: Episode 2 Preview - BBC",
-          "views": 330958,
+          "views": 331136,
           "subs": 15700000,
           "published_at": "2017-11-03T11:00:04Z",
           "coverage": 1.0
         },
         {
           "title": "IS THE DEPTHS BETTER THAN BRINE POOL NOW??? #fisch",
-          "views": 189388,
-          "subs": 361000,
+          "views": 191136,
+          "subs": 363000,
           "published_at": "2026-09-01T10:30:35Z",
           "coverage": 1.0
         },
         {
-          "title": "Water Under Water: The Mystery of Brine Pools",
-          "views": 157903,
-          "subs": 292,
-          "published_at": "2025-09-06T10:30:13Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Brine storm spawn #fisch #roblox #johngaming",
-          "views": 190807,
-          "subs": 20000,
-          "published_at": "2026-01-25T05:58:08Z",
+          "title": "Have you tried on a brine lake yet?",
+          "views": 76504,
+          "subs": 80,
+          "published_at": "2023-02-06T14:50:15Z",
           "coverage": 0.5
         },
         {
-          "title": "How To FISH IN BRINE POOL In Fisch! FULL GUIDE (Brine Pool Location) Roblox",
-          "views": 11933,
-          "subs": 635000,
-          "published_at": "2025-02-07T16:00:46Z",
+          "title": "How To UNLOCK BRINE POOL Fisch! How To FISH In Brine Pool! Brine Pool Location! (Fish)",
+          "views": 353939,
+          "subs": 382000,
+          "published_at": "2024-11-29T15:52:24Z",
           "coverage": 1.0
         }
       ],

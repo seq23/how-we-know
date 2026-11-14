@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-11-07T11:09:56.922213+00:00",
+  "generated_at": "2026-11-14T11:09:39.264571+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -312,6 +312,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "how-was-bernie-madoff-caught",
+      "query": "how was bernie madoff actually caught",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "is-aluminum-stronger-than-steel",
       "query": "is aluminum stronger than steel",
       "status": "no_competition_score"
@@ -397,6 +402,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "what-is-mid-ocean-ridge",
+      "query": "what is the mid-ocean ridge",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "what-lives-in-mariana-trench",
       "query": "what lives in the mariana trench",
       "status": "no_competition_score"
@@ -437,6 +447,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "why-did-ftx-collapse",
+      "query": "why did ftx collapse",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "why-does-chocolate-taste-so-good",
       "query": "why does chocolate taste so good",
       "status": "no_competition_score"
@@ -469,6 +484,11 @@
     {
       "slug": "why-is-glass-clear",
       "query": "why is glass clear",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-is-glass-see-through",
+      "query": "why is glass transparent",
       "status": "no_competition_score"
     },
     {
@@ -512,7 +532,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:47.441363+00:00"
+          "fetched_utc": "2026-11-14T11:09:29.962239+00:00"
         }
       },
       "competition": {
@@ -591,7 +611,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:51.242766+00:00"
+          "fetched_utc": "2026-11-14T11:09:33.666793+00:00"
         }
       },
       "competition": {
@@ -669,7 +689,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:38.808392+00:00"
+          "fetched_utc": "2026-11-14T11:09:21.536951+00:00"
         }
       },
       "competition": {
@@ -747,7 +767,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:42.644973+00:00"
+          "fetched_utc": "2026-11-14T11:09:25.309601+00:00"
         }
       },
       "competition": {
@@ -826,7 +846,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:56.921648+00:00"
+          "fetched_utc": "2026-11-14T11:09:39.264101+00:00"
         }
       },
       "competition": {
@@ -907,7 +927,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:44.549671+00:00"
+          "fetched_utc": "2026-11-14T11:09:27.134635+00:00"
         }
       },
       "competition": {
@@ -986,7 +1006,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:43.607508+00:00"
+          "fetched_utc": "2026-11-14T11:09:26.223985+00:00"
         }
       },
       "competition": {
@@ -1064,7 +1084,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:52.179235+00:00"
+          "fetched_utc": "2026-11-14T11:09:34.616360+00:00"
         }
       },
       "competition": {
@@ -1145,7 +1165,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:45.509889+00:00"
+          "fetched_utc": "2026-11-14T11:09:28.051586+00:00"
         }
       },
       "competition": {
@@ -1226,7 +1246,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:46.478282+00:00"
+          "fetched_utc": "2026-11-14T11:09:29.003951+00:00"
         }
       },
       "competition": {
@@ -1304,7 +1324,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:55.983801+00:00"
+          "fetched_utc": "2026-11-14T11:09:38.360887+00:00"
         }
       },
       "competition": {
@@ -1379,7 +1399,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:55.048274+00:00"
+          "fetched_utc": "2026-11-14T11:09:37.411071+00:00"
         }
       },
       "competition": {
@@ -1456,7 +1476,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:41.682076+00:00"
+          "fetched_utc": "2026-11-14T11:09:24.352733+00:00"
         }
       },
       "competition": {
@@ -1534,7 +1554,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:53.127128+00:00"
+          "fetched_utc": "2026-11-14T11:09:35.529990+00:00"
         }
       },
       "competition": {
@@ -1611,7 +1631,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:50.312428+00:00"
+          "fetched_utc": "2026-11-14T11:09:32.725382+00:00"
         }
       },
       "competition": {
@@ -1690,7 +1710,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-07T11:09:39.772119+00:00"
+          "fetched_utc": "2026-11-14T11:09:22.460488+00:00"
         }
       },
       "competition": {

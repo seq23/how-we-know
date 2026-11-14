@@ -1,11 +1,11 @@
 {
-  "mined_at": "2026-11-07T11:16:06.166122+00:00",
+  "mined_at": "2026-11-14T11:19:02.089019+00:00",
   "endpoint": "https://suggestqueries.google.com/complete/search",
   "surface": "youtube_autocomplete",
   "generator": "research/mine_domain.py",
-  "seeds_file": "/tmp/tmpg_odcnk_.json",
-  "seed_count": 30,
-  "unique_queries": 3410,
+  "seeds_file": "/tmp/tmp6zrc7ddl.json",
+  "seed_count": 32,
+  "unique_queries": 3465,
   "queries": [
     {
       "query": "what lives in the deep sea",
@@ -44,18 +44,6 @@
       ]
     },
     {
-      "query": "how deep are olympic pools",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 27,
-      "seeds": [
-        "how deep a",
-        "how deep are olympic pools",
-        "how deep are olympic pools a",
-        "how deep are olympic pools b"
-      ]
-    },
-    {
       "query": "where to find gulper eel dredge",
       "is_question": true,
       "words": 6,
@@ -65,6 +53,42 @@
         "where to find gulper eel dredge a",
         "where to find gulper eel dredge b",
         "where to find gulper eel dredge c"
+      ]
+    },
+    {
+      "query": "what is brine pool",
+      "is_question": true,
+      "words": 4,
+      "seed_hits": 26,
+      "seeds": [
+        "what is brine pool",
+        "what is brine pool b",
+        "what is brine pool c",
+        "what is brine pool d"
+      ]
+    },
+    {
+      "query": "how to get ocean monument trim",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 26,
+      "seeds": [
+        "how to get ocean monument trim",
+        "how to get ocean monument trim a",
+        "how to get ocean monument trim b",
+        "how to get ocean monument trim c"
+      ]
+    },
+    {
+      "query": "how deep are pools",
+      "is_question": true,
+      "words": 4,
+      "seed_hits": 25,
+      "seeds": [
+        "how deep are pools",
+        "how deep are pools a",
+        "how deep are pools b",
+        "how deep are pools c"
       ]
     },
     {
@@ -80,6 +104,18 @@
       ]
     },
     {
+      "query": "how to beat ocean monument bedrock",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 25,
+      "seeds": [
+        "how to beat ocean monument bedrock",
+        "how to beat ocean monument bedrock b",
+        "how to beat ocean monument bedrock c",
+        "how to beat ocean monument bedrock d"
+      ]
+    },
+    {
       "query": "hadal zone",
       "is_question": false,
       "words": 2,
@@ -92,27 +128,15 @@
       ]
     },
     {
-      "query": "what is mid ocean ridge",
+      "query": "how to get ocean monument armor trim",
       "is_question": true,
-      "words": 5,
+      "words": 7,
       "seed_hits": 24,
       "seeds": [
-        "what is mid ocean ridge",
-        "what is mid ocean ridge b",
-        "what is mid ocean ridge c",
-        "what is mid ocean ridge d"
-      ]
-    },
-    {
-      "query": "what is brine pool",
-      "is_question": true,
-      "words": 4,
-      "seed_hits": 23,
-      "seeds": [
-        "where brine pool a",
-        "where brine pool b",
-        "where brine pool c",
-        "where brine pool d"
+        "how to get ocean monument trim",
+        "how to get ocean monument trim a",
+        "how to get ocean monument trim b",
+        "how to get ocean monument trim c"
       ]
     },
     {
@@ -140,18 +164,6 @@
       ]
     },
     {
-      "query": "what is mid atlantic ridge",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 21,
-      "seeds": [
-        "what is mid ocean ridge",
-        "what is mid ocean ridge a",
-        "what is mid ocean ridge c",
-        "what is mid ocean ridge e"
-      ]
-    },
-    {
       "query": "deep ocean pressure",
       "is_question": false,
       "words": 3,
@@ -161,18 +173,6 @@
         "deep ocean pressure b",
         "deep ocean pressure c",
         "deep ocean pressure d"
-      ]
-    },
-    {
-      "query": "how to get private island bestiary hypixel skyblock",
-      "is_question": true,
-      "words": 8,
-      "seed_hits": 20,
-      "seeds": [
-        "how to complete brine pool bestiary a",
-        "how to complete brine pool bestiary b",
-        "how to complete brine pool bestiary c",
-        "how to complete brine pool bestiary f"
       ]
     },
     {
@@ -197,18 +197,6 @@
         "midnight zone b",
         "midnight zone c",
         "midnight zone e"
-      ]
-    },
-    {
-      "query": "how to complete bestiary hypixel skyblock",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 17,
-      "seeds": [
-        "how to complete brine pool bestiary",
-        "how to complete brine pool bestiary a",
-        "how to complete brine pool bestiary b",
-        "how to complete brine pool bestiary c"
       ]
     },
     {
@@ -269,6 +257,18 @@
         "hadal zone d",
         "hadal zone e",
         "hadal zone f"
+      ]
+    },
+    {
+      "query": "how deep fry fish",
+      "is_question": true,
+      "words": 4,
+      "seed_hits": 13,
+      "seeds": [
+        "how deep f",
+        "how deep fry fish",
+        "how deep fry fish c",
+        "how deep fry fish h"
       ]
     },
     {
@@ -464,6 +464,18 @@
       ]
     },
     {
+      "query": "how long to deep fry fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 7,
+      "seeds": [
+        "how deep fry fish a",
+        "how deep fry fish j",
+        "how deep fry fish l",
+        "how deep fry fish o"
+      ]
+    },
+    {
       "query": "why deep sea creatures are coming out",
       "is_question": true,
       "words": 7,
@@ -509,6 +521,18 @@
         "how do scientists know a",
         "how do scientists know e",
         "how do scientists know h"
+      ]
+    },
+    {
+      "query": "how to deep fry fish with flour and egg",
+      "is_question": true,
+      "words": 9,
+      "seed_hits": 7,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish a",
+        "how deep fry fish e",
+        "how deep fry fish f"
       ]
     },
     {
@@ -560,6 +584,18 @@
       ]
     },
     {
+      "query": "why greenland shark live so long",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 6,
+      "seeds": [
+        "why greenland shark live so long",
+        "why greenland shark live so long b",
+        "why greenland shark live so long d",
+        "why greenland shark live so long i"
+      ]
+    },
+    {
       "query": "what lives in the deep sea movie",
       "is_question": true,
       "words": 7,
@@ -593,6 +629,18 @@
         "how do scientists know a",
         "how do scientists know f",
         "how do scientists know o"
+      ]
+    },
+    {
+      "query": "how to deep fry fish in a pan",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 6,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish a",
+        "how deep fry fish i",
+        "how deep fry fish n"
       ]
     },
     {
@@ -713,6 +761,30 @@
         "how deep e",
         "how deep i",
         "how deep u"
+      ]
+    },
+    {
+      "query": "how to deep fry fish at home",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 5,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish a",
+        "how deep fry fish h",
+        "how deep fry fish n"
+      ]
+    },
+    {
+      "query": "how to deep fry fish without sticking",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 5,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish n",
+        "how deep fry fish s",
+        "how deep fry fish t"
       ]
     },
     {
@@ -848,18 +920,6 @@
       ]
     },
     {
-      "query": "brine pool in ocean",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 5,
-      "seeds": [
-        "where brine pool a",
-        "where brine pool f",
-        "where brine pool i",
-        "where brine pool p"
-      ]
-    },
-    {
       "query": "ocean science for viksit bharat quiz",
       "is_question": false,
       "words": 6,
@@ -920,15 +980,27 @@
       ]
     },
     {
-      "query": "where is the brine pool rod",
+      "query": "how to deep fry fish fillet",
       "is_question": true,
       "words": 6,
       "seed_hits": 4,
       "seeds": [
-        "where brine pool",
-        "where brine pool i",
-        "where brine pool r",
-        "where brine pool t"
+        "how deep fry fish",
+        "how deep fry fish f",
+        "how deep fry fish n",
+        "how deep fry fish t"
+      ]
+    },
+    {
+      "query": "how to deep fry fish outside",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 4,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish n",
+        "how deep fry fish o",
+        "how deep fry fish t"
       ]
     },
     {
@@ -968,15 +1040,27 @@
       ]
     },
     {
-      "query": "where is brine pool in fisch roblox",
+      "query": "how to defeat ocean monument minecraft bedrock",
       "is_question": true,
       "words": 7,
       "seed_hits": 4,
       "seeds": [
-        "where brine pool",
-        "where brine pool f",
-        "where brine pool i",
-        "where brine pool r"
+        "how to beat ocean monument bedrock d",
+        "how to beat ocean monument bedrock g",
+        "how to beat ocean monument bedrock r",
+        "how to beat ocean monument bedrock s"
+      ]
+    },
+    {
+      "query": "how to deep fry fish in oil",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 4,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish i",
+        "how deep fry fish n",
+        "how deep fry fish o"
       ]
     },
     {
@@ -1292,14 +1376,14 @@
       ]
     },
     {
-      "query": "how deep are pools",
+      "query": "how deep are olympic pools",
       "is_question": true,
-      "words": 4,
+      "words": 5,
       "seed_hits": 3,
       "seeds": [
-        "how deep are olympic pools l",
-        "how deep are olympic pools m",
-        "how deep are olympic pools t"
+        "how deep a",
+        "how deep are pools",
+        "how deep are pools o"
       ]
     },
     {
@@ -1333,6 +1417,28 @@
         "why deep sea",
         "why deep sea d",
         "why deep sea u"
+      ]
+    },
+    {
+      "query": "how deep should your pool be",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 3,
+      "seeds": [
+        "how deep are pools b",
+        "how deep are pools y",
+        "how deep s"
+      ]
+    },
+    {
+      "query": "how to deep fry fish egg",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 3,
+      "seeds": [
+        "how deep fry fish",
+        "how deep fry fish e",
+        "how deep fry fish n"
       ]
     },
     {
@@ -1399,6 +1505,28 @@
         "how do scientists know a",
         "how do scientists know o",
         "how do scientists know t"
+      ]
+    },
+    {
+      "query": "how to deep fry fish in deep fryer",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 3,
+      "seeds": [
+        "how deep fry fish d",
+        "how deep fry fish f",
+        "how deep fry fish i"
+      ]
+    },
+    {
+      "query": "how long to fry fish in deep fryer",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 3,
+      "seeds": [
+        "how deep fry fish f",
+        "how deep fry fish i",
+        "how deep fry fish l"
       ]
     },
     {
@@ -2550,23 +2678,13 @@
       ]
     },
     {
-      "query": "what is mid oceanic ridge",
+      "query": "how long to fry fish",
       "is_question": true,
       "words": 5,
       "seed_hits": 2,
       "seeds": [
-        "what is mid ocean ridge g",
-        "what is mid ocean ridge u"
-      ]
-    },
-    {
-      "query": "where to find brine pool",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 2,
-      "seeds": [
-        "where brine pool f",
-        "where brine pool t"
+        "how deep fry fish",
+        "how deep fry fish n"
       ]
     },
     {
@@ -2667,6 +2785,36 @@
       "seeds": [
         "how do scientists know a",
         "how do scientists know u"
+      ]
+    },
+    {
+      "query": "how deep should my pool be",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep are pools b",
+        "how deep are pools m"
+      ]
+    },
+    {
+      "query": "how deep is the deepest pool",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep are pools d",
+        "how deep are pools q"
+      ]
+    },
+    {
+      "query": "how do you deep fry fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep fry fish d",
+        "how deep fry fish y"
       ]
     },
     {
@@ -2890,23 +3038,33 @@
       ]
     },
     {
-      "query": "how to complete brine pool bestiary fisch",
+      "query": "why do greenland sharks live so long",
       "is_question": true,
       "words": 7,
       "seed_hits": 2,
       "seeds": [
-        "how to complete brine pool bestiary",
-        "how to complete brine pool bestiary f"
+        "why greenland shark live so long",
+        "why greenland shark live so long d"
       ]
     },
     {
-      "query": "how to complete the brine pool bestiary",
+      "query": "how to cook deep fry fish fillet",
       "is_question": true,
       "words": 7,
       "seed_hits": 2,
       "seeds": [
-        "how to complete brine pool bestiary a",
-        "how to complete brine pool bestiary t"
+        "how deep fry fish c",
+        "how deep fry fish f"
+      ]
+    },
+    {
+      "query": "how long do you deep fry fish",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep fry fish d",
+        "how deep fry fish y"
       ]
     },
     {
@@ -2957,6 +3115,26 @@
       "seeds": [
         "how deep is the ocean k",
         "how deep is the ocean n"
+      ]
+    },
+    {
+      "query": "how to deep fry tilapia fish at home",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep fry fish a",
+        "how deep fry fish h"
+      ]
+    },
+    {
+      "query": "how to deep fry fish in air fryer",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep fry fish a",
+        "how deep fry fish i"
       ]
     },
     {
@@ -3027,6 +3205,16 @@
       "seeds": [
         "deepest part of the ocean l",
         "deepest part of the ocean w"
+      ]
+    },
+    {
+      "query": "how long does it take to deep fry fish",
+      "is_question": true,
+      "words": 9,
+      "seed_hits": 2,
+      "seeds": [
+        "how deep fry fish d",
+        "how deep fry fish l"
       ]
     },
     {
@@ -3370,6 +3558,16 @@
       ]
     },
     {
+      "query": "mariana trench creatures",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench c"
+      ]
+    },
+    {
       "query": "mariana trench productions",
       "is_question": false,
       "words": 3,
@@ -3380,13 +3578,13 @@
       ]
     },
     {
-      "query": "mariana trench creatures",
+      "query": "mariana trench documentary",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "mariana trench",
-        "mariana trench c"
+        "mariana trench d"
       ]
     },
     {
@@ -3407,16 +3605,6 @@
       "seeds": [
         "mariana trench",
         "mariana trench s"
-      ]
-    },
-    {
-      "query": "mariana trench documentary",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench d"
       ]
     },
     {
@@ -3701,6 +3889,16 @@
     },
     {
       "query": "colossal squid fishing",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "colossal squid",
+        "colossal squid f"
+      ]
+    },
+    {
+      "query": "colossal squid found",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
@@ -6240,16 +6438,6 @@
       ]
     },
     {
-      "query": "colossal squid vs sperm whale",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 2,
-      "seeds": [
-        "colossal squid",
-        "colossal squid v"
-      ]
-    },
-    {
       "query": "colossal squid vs giant squid",
       "is_question": false,
       "words": 5,
@@ -7340,15 +7528,6 @@
       ]
     },
     {
-      "query": "where brine pool",
-      "is_question": true,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "where brine pool"
-      ]
-    },
-    {
       "query": "how deep by jeezy",
       "is_question": true,
       "words": 4,
@@ -7431,15 +7610,6 @@
     },
     {
       "query": "how deep fat joe",
-      "is_question": true,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep f"
-      ]
-    },
-    {
-      "query": "how deep fry fish",
       "is_question": true,
       "words": 4,
       "seed_hits": 1,
@@ -7898,21 +8068,21 @@
       ]
     },
     {
-      "query": "where is brine pool",
+      "query": "what is brine water",
       "is_question": true,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool i"
+        "what is brine pool b"
       ]
     },
     {
-      "query": "where's the brine pool",
+      "query": "is brine pool good",
       "is_question": true,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool t"
+        "what is brine pool g"
       ]
     },
     {
@@ -8402,12 +8572,21 @@
       ]
     },
     {
-      "query": "where brine pool in fisch",
+      "query": "how deep water in earth",
       "is_question": true,
       "words": 5,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool i"
+        "how deep are pools l"
+      ]
+    },
+    {
+      "query": "how deep is the pool",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep are pools t"
       ]
     },
     {
@@ -8416,16 +8595,16 @@
       "words": 5,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool l"
+        "what is brine pool a"
       ]
     },
     {
-      "query": "how deep is olympic pool",
+      "query": "how to deep fry fish",
       "is_question": true,
       "words": 5,
       "seed_hits": 1,
       "seeds": [
-        "how deep are olympic pools i"
+        "how deep fry fish t"
       ]
     },
     {
@@ -9095,6 +9274,15 @@
       ]
     },
     {
+      "query": "how deep is your love remix",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep i"
+      ]
+    },
+    {
       "query": "how deep love is your love",
       "is_question": true,
       "words": 6,
@@ -9191,15 +9379,6 @@
       "seed_hits": 1,
       "seeds": [
         "how deep r"
-      ]
-    },
-    {
-      "query": "how deep should your pool be",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep s"
       ]
     },
     {
@@ -9320,48 +9499,282 @@
       ]
     },
     {
-      "query": "what is a mid ocean ridge",
+      "query": "how deep should a pool be",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge a"
+        "how deep are pools b"
       ]
     },
     {
-      "query": "where to go to brine pool",
+      "query": "how deep can a pool get",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool g"
+        "how deep are pools g"
       ]
     },
     {
-      "query": "how to complete brine pool bestiary",
+      "query": "how deep can a pool go",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
       "seeds": [
-        "how to complete brine pool bestiary"
+        "how deep are pools g"
       ]
     },
     {
-      "query": "how to get ocean monument trim",
+      "query": "how deep is a diving pool",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
       "seeds": [
-        "how to complete brine pool bestiary o"
+        "how deep are pools j"
       ]
     },
     {
-      "query": "how to beat ocean monument bedrock",
+      "query": "is brine pool good for money",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
       "seeds": [
-        "how to complete brine pool bestiary v"
+        "what is brine pool g"
+      ]
+    },
+    {
+      "query": "how to deep fry a fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish a"
+      ]
+    },
+    {
+      "query": "how to deep fry battered fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish b"
+      ]
+    },
+    {
+      "query": "how to deep fry basa fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish b"
+      ]
+    },
+    {
+      "query": "how to deep fry cod fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish c"
+      ]
+    },
+    {
+      "query": "how to deep fry crispy fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish c"
+      ]
+    },
+    {
+      "query": "how long to fry cod fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish c"
+      ]
+    },
+    {
+      "query": "how to cook deep fry fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish c"
+      ]
+    },
+    {
+      "query": "how to do fish deep fry",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish d"
+      ]
+    },
+    {
+      "query": "how to deep fry fresh fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish f"
+      ]
+    },
+    {
+      "query": "how to deep fry frozen fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish f"
+      ]
+    },
+    {
+      "query": "how long to fry fish for",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish f"
+      ]
+    },
+    {
+      "query": "how to deep fry hake fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish h"
+      ]
+    },
+    {
+      "query": "how to deep fry mackerel fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish m"
+      ]
+    },
+    {
+      "query": "how to make deep fry fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish m"
+      ]
+    },
+    {
+      "query": "how to deep fry pompano fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish p"
+      ]
+    },
+    {
+      "query": "how to deep fry pollock fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish p"
+      ]
+    },
+    {
+      "query": "how to prepare fish deep fry",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish p"
+      ]
+    },
+    {
+      "query": "how to deep fry swai fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish s"
+      ]
+    },
+    {
+      "query": "how to deep fry small fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish s"
+      ]
+    },
+    {
+      "query": "how to deep fry salmon fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish s"
+      ]
+    },
+    {
+      "query": "how to deep fry tilapia fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish t"
+      ]
+    },
+    {
+      "query": "how to deep fry tuna fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish t"
+      ]
+    },
+    {
+      "query": "how to deep fry trout fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish t"
+      ]
+    },
+    {
+      "query": "how to deep fry whole fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish w"
+      ]
+    },
+    {
+      "query": "how to deep fry whiting fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish w"
+      ]
+    },
+    {
+      "query": "how long to fry whiting fish",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish w"
       ]
     },
     {
@@ -10130,15 +10543,6 @@
       ]
     },
     {
-      "query": "how deep is your love dru hill",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep i"
-      ]
-    },
-    {
       "query": "how deep in your love bee gees",
       "is_question": true,
       "words": 7,
@@ -10238,21 +10642,111 @@
       ]
     },
     {
-      "query": "where is desolate brine pool in fisch",
+      "query": "how to beat an ocean monument bedrock",
       "is_question": true,
       "words": 7,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool d"
+        "how to beat ocean monument bedrock a"
       ]
     },
     {
-      "query": "how to get to underwater islands subnautica",
+      "query": "how to beat ocean monument minecraft bedrock",
       "is_question": true,
       "words": 7,
       "seed_hits": 1,
       "seeds": [
-        "how to complete brine pool bestiary u"
+        "how to beat ocean monument bedrock m"
+      ]
+    },
+    {
+      "query": "how to beat the ocean monument bedrock",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how to beat ocean monument bedrock t"
+      ]
+    },
+    {
+      "query": "how to get trim from ocean monument",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how to get ocean monument trim f"
+      ]
+    },
+    {
+      "query": "how to deep fry a whole fish",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish a"
+      ]
+    },
+    {
+      "query": "how to deep fry beer battered fish",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish b"
+      ]
+    },
+    {
+      "query": "how to make deep fried fish crispy",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish c"
+      ]
+    },
+    {
+      "query": "how long do you fry fish for",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish f"
+      ]
+    },
+    {
+      "query": "how long to fry fish in pan",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish i"
+      ]
+    },
+    {
+      "query": "how to deep fry fish in kenya",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish k"
+      ]
+    },
+    {
+      "query": "how to deep fry frozen fish sticks",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish s"
+      ]
+    },
+    {
+      "query": "how to deep fry red snapper fish",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish s"
       ]
     },
     {
@@ -10598,21 +11092,57 @@
       ]
     },
     {
-      "query": "where is the brine pool located in fisch",
+      "query": "how to get the ocean monument armor trim",
       "is_question": true,
       "words": 8,
       "seed_hits": 1,
       "seeds": [
-        "where brine pool l"
+        "how to get ocean monument trim t"
       ]
     },
     {
-      "query": "how to complete brine pool bestiary in fisch",
+      "query": "how to fry fish in a deep fryer",
       "is_question": true,
       "words": 8,
       "seed_hits": 1,
       "seeds": [
-        "how to complete brine pool bestiary i"
+        "how deep fry fish a"
+      ]
+    },
+    {
+      "query": "how to make fish deep fry in telugu",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish i"
+      ]
+    },
+    {
+      "query": "how long to fry fish on each side",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish o"
+      ]
+    },
+    {
+      "query": "how to prepare fish deep fry in telugu",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish p"
+      ]
+    },
+    {
+      "query": "how to use deep fryer to fry fish",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish u"
       ]
     },
     {
@@ -10676,15 +11206,6 @@
       "seed_hits": 1,
       "seeds": [
         "how deep t"
-      ]
-    },
-    {
-      "query": "how to get to crystal caverns subnautica below zero",
-      "is_question": true,
-      "words": 9,
-      "seed_hits": 1,
-      "seeds": [
-        "how to complete brine pool bestiary t"
       ]
     },
     {
@@ -12209,12 +12730,30 @@
       ]
     },
     {
+      "query": "whalefall ending",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall e"
+      ]
+    },
+    {
       "query": "whalefall english",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
       "seeds": [
         "whale fall e"
+      ]
+    },
+    {
+      "query": "whalefall hd",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall h"
       ]
     },
     {
@@ -13343,7 +13882,7 @@
       ]
     },
     {
-      "query": "deep sea hunter",
+      "query": "deep sea horror",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13352,7 +13891,7 @@
       ]
     },
     {
-      "query": "deep sea horror",
+      "query": "deep sea hunter",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13505,7 +14044,7 @@
       ]
     },
     {
-      "query": "deep sea mysteries",
+      "query": "deep sea monsters",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13514,7 +14053,7 @@
       ]
     },
     {
-      "query": "deep sea monsters",
+      "query": "deep sea mysteries",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -17762,15 +18301,6 @@
       ]
     },
     {
-      "query": "colossal squid found",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "colossal squid f"
-      ]
-    },
-    {
       "query": "colossal squid fisch",
       "is_question": false,
       "words": 3,
@@ -18734,15 +19264,6 @@
       ]
     },
     {
-      "query": "whale fall el\u0151zetes",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall e"
-      ]
-    },
-    {
       "query": "whale fall film",
       "is_question": false,
       "words": 3,
@@ -18834,15 +19355,6 @@
     },
     {
       "query": "whalefall hindi explanation",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall h"
-      ]
-    },
-    {
-      "query": "whalefall hindi movie",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -20147,6 +20659,15 @@
       ]
     },
     {
+      "query": "submersible pump repair",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "submersible p"
+      ]
+    },
+    {
       "query": "submersible pool lights",
       "is_question": false,
       "words": 3,
@@ -21191,15 +21712,6 @@
       ]
     },
     {
-      "query": "underwater brine pools",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "where brine pool u"
-      ]
-    },
-    {
       "query": "deep sea adventure legoland",
       "is_question": false,
       "words": 4,
@@ -21354,6 +21866,15 @@
     },
     {
       "query": "deep sea guide rust",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea g"
+      ]
+    },
+    {
+      "query": "deep sea giant squid",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -21920,7 +22441,7 @@
       ]
     },
     {
-      "query": "marine science as level",
+      "query": "marine science a level",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -27689,84 +28210,66 @@
       ]
     },
     {
-      "query": "mid ocean ridge explained",
+      "query": "deep end swimming pools",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge e"
+        "how deep are pools x"
       ]
     },
     {
-      "query": "mid ocean ridge explanation",
+      "query": "deep frying fish alive",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge e"
+        "how deep fry fish a"
       ]
     },
     {
-      "query": "mid ocean ridge eruption",
+      "query": "deep fry fish bone",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge e"
+        "how deep fry fish b"
       ]
     },
     {
-      "query": "mid ocean ridge formation",
+      "query": "deep fry fish curry",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge f"
+        "how deep fry fish c"
       ]
     },
     {
-      "query": "mid ocean ridge iceland",
+      "query": "deep fry fish masala",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge i"
+        "how deep fry fish m"
       ]
     },
     {
-      "query": "mid ocean ridge model",
+      "query": "deep fry fish recipe",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge m"
+        "how deep fry fish r"
       ]
     },
     {
-      "query": "mid ocean ridge system",
+      "query": "deep fry fish skin",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge s"
-      ]
-    },
-    {
-      "query": "mid ocean ridge volcano",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "what is mid ocean ridge v"
-      ]
-    },
-    {
-      "query": "mid ocean ridge video",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "what is mid ocean ridge v"
+        "how deep fry fish s"
       ]
     },
     {
@@ -27785,15 +28288,6 @@
       "seed_hits": 1,
       "seeds": [
         "deep sea e"
-      ]
-    },
-    {
-      "query": "deep sea golds spooky terror",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea g"
       ]
     },
     {
@@ -28850,6 +29344,15 @@
       ]
     },
     {
+      "query": "colossal squid versus giant squid",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "colossal squid v"
+      ]
+    },
+    {
       "query": "giant squid with crab legs",
       "is_question": false,
       "words": 5,
@@ -29315,15 +29818,6 @@
       "seed_hits": 1,
       "seeds": [
         "submersible n"
-      ]
-    },
-    {
-      "query": "submersible pump 2 in. rental",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "submersible p"
       ]
     },
     {
@@ -29966,30 +30460,39 @@
       ]
     },
     {
-      "query": "mid ocean ridge and trench",
+      "query": "deep fry fish chinese style",
       "is_question": false,
       "words": 5,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge a"
+        "how deep fry fish c"
       ]
     },
     {
-      "query": "mid ocean ridge formation animation",
+      "query": "deep fry fish fillet recipe",
       "is_question": false,
       "words": 5,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge f"
+        "how deep fry fish f"
       ]
     },
     {
-      "query": "mid ocean ridge seafloor spreading",
+      "query": "deep fry fish street food",
       "is_question": false,
       "words": 5,
       "seed_hits": 1,
       "seeds": [
-        "what is mid ocean ridge s"
+        "how deep fry fish s"
+      ]
+    },
+    {
+      "query": "deep fry fish with flour",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish w"
       ]
     },
     {
@@ -31061,6 +31564,33 @@
       "seed_hits": 1,
       "seeds": [
         "deepest part of the ocean v"
+      ]
+    },
+    {
+      "query": "deep frying fish on blackstone griddle",
+      "is_question": false,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish o"
+      ]
+    },
+    {
+      "query": "best way to deep fry fish",
+      "is_question": false,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish r"
+      ]
+    },
+    {
+      "query": "deep fry fish with soy sauce",
+      "is_question": false,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep fry fish w"
       ]
     },
     {
