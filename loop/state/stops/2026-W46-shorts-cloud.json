@@ -1,7 +1,7 @@
 {
   "stage": "shorts-cloud",
   "week": "2026-W46",
-  "at": "2026-11-14T00:09:48+00:00",
+  "at": "2026-11-14T19:54:07+00:00",
   "code": "BREAKER_TRIPPED",
   "message": "publishing is halted: domain \u2014 3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair.",
   "detail": {
@@ -147,9 +147,11 @@
   },
   "unblock": "This clears itself: the breaker is re-tested at the top of every guarded lane and closes the moment the cause has passed. A validator trip closes as soon as the validators pass; a retention or domain trip closes on the next weekly measurement that no longer sees the breach. It stays open only for a strike or a manual trip \u2014 for those: python loop/breaker.py reset --note \"<what you fixed>\"",
   "disposition": "needs_human",
-  "disposition_why": "'BREAKER_TRIPPED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'BREAKER_TRIPPED' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
-  "consecutive": 1,
-  "held_items": [],
+  "disposition_why": "'BREAKER_TRIPPED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'BREAKER_TRIPPED' is now holding on 1 item(s) nobody has been told about (breaker:domain:2026-11-13T22:05:54+00:00). A hold that grows is new news.",
+  "consecutive": 2,
+  "held_items": [
+    "breaker:domain:2026-11-13T22:05:54+00:00"
+  ],
   "exit_code": 3,
   "work_done_before_stop": [],
   "notes": []
