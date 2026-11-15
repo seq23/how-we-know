@@ -2,10 +2,24 @@
   "_why": "Whisper Almanac's numbers for the Boss OS scorecard row whisper-almanac-youtube (her ruling 6 Nov 2026: count subscribers per 1,000 views; day-30, day-60 and day-90 checks from the money case). Every field is null until the first upload: the row reads 'Too early until the first upload', never a made-up zero. Written by loop/whisper_scorecard.py (the nightly batch, after the upload step) from the @whisperalmanac grant; per-lane numbers (history, neville, money, rotating) over the last 30 days feed the weekly mix (loop/whisper_lane.weekly_mix), 9 Nov 2026.",
   "median_views_first_14_days_long": null,
   "median_views_first_28_days_long": null,
+  "click_rate": {
+    "job_id": "55ac692a-dd67-4001-ba7b-581ead6e7f9b",
+    "reports": {
+      "17796027585": {
+        "start": "2026-11-11T08:00:00Z",
+        "end": "2026-11-12T08:00:00Z",
+        "created": "2026-11-15T08:38:35.308896Z",
+        "videos": {}
+      }
+    },
+    "videos": {},
+    "at": "2026-11-15T09:47:54Z",
+    "noticed": {}
+  },
   "first_upload_at": "2026-11-14T02:00:00Z",
-  "views": 0,
+  "views": 4,
   "subscribers": 1,
-  "subs_per_1000_views": null,
+  "subs_per_1000_views": 250.0,
   "watch_hours_365d": 0.0,
   "lanes": {
     "food": {
@@ -49,12 +63,5 @@
       "first_public": null
     }
   },
-  "at": "2026-11-14T05:00:26Z",
-  "click_rate": {
-    "job_id": "55ac692a-dd67-4001-ba7b-581ead6e7f9b",
-    "reports": {},
-    "videos": {},
-    "at": "2026-11-14T05:00:26Z",
-    "noticed": {}
-  }
+  "at": "2026-11-15T09:47:54Z"
 }
