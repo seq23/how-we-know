@@ -1,61 +1,26 @@
 {
   "stage": "daily-runway",
   "week": "2026-W46",
-  "at": "2026-11-14T01:12:57+00:00",
-  "code": "RUNWAY_AUTHORING_FALLBACK",
-  "message": "runway is ok for any and the authoring lane could not add a single script to cover it. no candidate topics were queued for the short domain(s) in research/publish_order.json",
+  "at": "2026-11-15T01:12:39+00:00",
+  "code": "RUNWAY_TOPUP_PAUSED_BY_MONEY_TEST",
+  "message": "runway is ok (5.7 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).) and below the 6-week target, but all 17 queued topic(s) are in domains the Money test pauses or authors elsewhere: materials-and-manufacturing, money-and-business",
   "detail": {
-    "short_domains": [
-      "any"
-    ],
-    "by_domain": {
-      "deep-sea-ocean-science": {
-        "slots_per_week": 2,
-        "queued": 11,
-        "scheduled_ahead": 1,
-        "weeks": 6.0,
-        "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (11 queued, 1 already dated)"
-      },
-      "materials-and-manufacturing": {
-        "slots_per_week": 2,
-        "queued": 20,
-        "scheduled_ahead": 2,
-        "weeks": 11.0,
-        "level": "ok",
-        "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
-      },
-      "food-science": {
-        "slots_per_week": 0,
-        "queued": 11,
-        "scheduled_ahead": 0,
-        "weeks": null,
-        "level": "not_active",
-        "message": "food-science: 0 slots/week this week, not drawing from its queue"
-      },
-      "money-and-business": {
-        "slots_per_week": 2,
-        "queued": 12,
-        "scheduled_ahead": 0,
-        "weeks": 6.0,
-        "level": "ok",
-        "message": "money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
-      }
+    "resolves_at": "2026-12-10",
+    "paused": {
+      "materials-and-manufacturing": "no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
+      "money-and-business": "loop/money_author.py"
     },
-    "goes_dark_by": {
-      "any": "2026-12-23"
-    },
-    "failures": []
+    "weeks_remaining": 5.7
   },
-  "unblock": "This week's own queue already shipped and is unaffected. any needs more scored topics in research/publish_order.json (or a working OPENROUTER_API_KEY if authoring itself is what failed) before 2026-12-23 or it goes dark",
-  "disposition": "needs_human",
-  "disposition_why": "'RUNWAY_AUTHORING_FALLBACK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'RUNWAY_AUTHORING_FALLBACK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
-  "consecutive": 3,
+  "unblock": "Nothing to do: the Money test is judged on its end date; a runway that falls to warn raises RUNWAY_AUTHORING_FALLBACK instead.",
+  "disposition": "self_resolving",
+  "disposition_why": "loop/draft.py rebuild_runway_if_short: the runway is ok but under runway.target_weeks, and every queued topic belongs to a domain her Money-test call (9 Nov 2026, loop/config.json domains.money_test) pauses or leaves to loop/money_author.py. Topping up is opportunistic; nothing is going dark. Resolves when the test is judged (started + check_days). A runway at warn or critical never takes this path: it stays RUNWAY_AUTHORING_FALLBACK and pages. (run 1 of at most 35 before this escalates to a human.)",
+  "consecutive": 1,
   "held_items": [],
-  "exit_code": 3,
+  "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
-    "runway 5.7 weeks of queue at 6/week (31 publishable of 43 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (11 queued, 1 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).; the Mac has 29 written script(s) to make (buffer 8)",
+    "runway 5.7 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).; the Mac has 30 written script(s) to make (buffer 8)",
     "runway rebuild: why-does-metal-shock-you (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
     "runway rebuild: how-anodizing-works (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
     "runway rebuild: why-does-metal-rust-in-water (materials-and-manufacturing) not authored here: no new materials long-forms during the Money test (owner, 9 Nov 2026); its Shorts continue",
