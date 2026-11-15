@@ -1,0 +1,1130 @@
+[
+  {
+    "segment": "species_image",
+    "seconds": 5.79,
+    "heading": "Cold open",
+    "narration": "The Greenland shark lives for at least 272 years, the longest of any vertebrate.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 7,
+      "zoom": 1.15
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "The Greenland shark lives for centuries because it inhabits the cold, deep waters of the North Atlantic and Arctic Oceans.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 0,
+      "zoom": 1.0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "This extreme environment slows its metabolism, growth rate, and biological processes to an extraordinary degree.",
+    "args": {
+      "value": "272",
+      "unit": "YEARS",
+      "caption": "MINIMUM AGE",
+      "source": "SCIENCE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "Scientists at Science determined this minimum age by radiocarbon dating the core of their eye lenses, which remain inert after formation.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.28,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "The Greenland shark, known scientifically as *Somniosus microcephalus*, represents one of the most remarkable evolutionary adaptations to the ocean depths.",
+    "args": {
+      "items": [
+        [
+          "GREENLAND SHARK",
+          6.0
+        ],
+        [
+          "GREAT WHITE SHARK",
+          6.0
+        ],
+        [
+          "BOWHEAD WHALE",
+          18.0
+        ],
+        [
+          "HUMAN",
+          2.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "For decades, marine biologists struggled to understand how a large predator could survive in such nutrient-scarce regions.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.69,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "A mature Greenland shark can reach a length of 6 meters, matching the length of a 6 meter great white shark.",
+    "args": {
+      "items": [
+        [
+          "GREENLAND SHARK",
+          6.0
+        ],
+        [
+          "GREAT WHITE SHARK",
+          6.0
+        ],
+        [
+          "BOWHEAD WHALE",
+          18.0
+        ],
+        [
+          "HUMAN",
+          2.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "By comparison, a bowhead whale can grow to 18 meters, while an average human stands around 2 meters tall.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "For a long time, the maximum lifespan of cold-water sharks was assumed to be similar to temperate species, but field observations consistently contradicted those early models.",
+    "args": {
+      "items": [
+        [
+          "GREENLAND SHARK",
+          6.0
+        ],
+        [
+          "GREAT WHITE SHARK",
+          6.0
+        ],
+        [
+          "BOWHEAD WHALE",
+          18.0
+        ],
+        [
+          "HUMAN",
+          2.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "Fishery records from the early twentieth century hinted that individuals tagged and released grew at rates so slow they seemed almost stationary in time.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "In aquatic ecology, determining how a species balances energy expenditure is fundamental to understanding its life history.",
+    "args": {
+      "term": "LONG-LIVED",
+      "includes": [
+        "SLOW METABOLISM"
+      ],
+      "excludes": [
+        "RAPID GROWTH"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "For a long-lived species, survival depends on a slow metabolism rather than rapid growth.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "Most predatory fish rely on burst speed and high caloric intake to survive, consuming prey rapidly to fuel quick development.",
+    "args": {
+      "term": "LONG-LIVED",
+      "includes": [
+        "SLOW METABOLISM"
+      ],
+      "excludes": [
+        "RAPID GROWTH"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "The Greenland shark flips this strategy entirely. By maintaining an extremely low metabolic rate, it reduces the accumulation of oxidative cellular damage over time.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 1,
+      "zoom": 1.15
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "This slow biological pace allows tissue repair mechanisms to keep up with metabolic waste, preventing the rapid aging typical of warm-water species.",
+    "args": {
+      "term": "LONG-LIVED",
+      "includes": [
+        "SLOW METABOLISM"
+      ],
+      "excludes": [
+        "RAPID GROWTH"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The extraordinary lifespan of a deep-sea predator",
+    "narration": "To prove this hypothesis, however, researchers needed a robust method to measure age directly in living or preserved specimens without relying on surface growth bands that do not form clearly in deep-sea cartilage.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "The breakthrough in age determination came from examining the structure of the shark's eye.",
+    "args": {
+      "title": "AGE DETERMINATION",
+      "stages": [
+        "EYE LENS NUCLEUS",
+        "RADIOCARBON DATING"
+      ],
+      "conclusion": "LIFESPAN ESTIMATE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "The eye lens nucleus is composed of specialized proteins called crystallins that are synthesized during early embryonic development.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "Once formed, these central proteins are isolated from the rest of the body's metabolic pathways.",
+    "args": {
+      "title": "AGE DETERMINATION",
+      "stages": [
+        "EYE LENS NUCLEUS",
+        "RADIOCARBON DATING"
+      ],
+      "conclusion": "LIFESPAN ESTIMATE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "They are not replaced, repaired, or recycled throughout the shark's life. Therefore, performing radiocarbon dating on the central core of the eye lens provides a direct chemical timestamp of the year the shark was born.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "This yields a reliable lifespan estimate that does not rely on measuring calcified hard parts, which are absent in cartilaginous skeletons.",
+    "args": {
+      "title": "AGE DETERMINATION",
+      "stages": [
+        "EYE LENS NUCLEUS",
+        "RADIOCARBON DATING"
+      ],
+      "conclusion": "LIFESPAN ESTIMATE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "The laboratory process requires extreme precision to isolate the oldest tissue without contamination.",
+    "args": {
+      "title": "RADIOCARBON DATING",
+      "steps": [
+        [
+          "TISSUE PREPARATION",
+          ""
+        ],
+        [
+          "ISOTOPE MEASUREMENT",
+          ""
+        ],
+        [
+          "CALIBRATION",
+          ""
+        ]
+      ],
+      "note": "AGE ESTIMATE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "During tissue preparation, technicians carefully dissect the outer layers of the eye lens to extract only the dense inner nucleus.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.86,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "Next, isotope measurement quantifies the ratio of carbon-14 to carbon-12 isotopes within the crystallin proteins using accelerator mass spectrometry.",
+    "args": {
+      "title": "RADIOCARBON DATING",
+      "steps": [
+        [
+          "TISSUE PREPARATION",
+          ""
+        ],
+        [
+          "ISOTOPE MEASUREMENT",
+          ""
+        ],
+        [
+          "CALIBRATION",
+          ""
+        ]
+      ],
+      "note": "AGE ESTIMATE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "Calibration then converts these isotopic ratios into a definitive calendar age estimate by matching them against established historical ocean carbon curves.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "This analytical sequence transformed deep-sea shark biology by substituting indirect physical estimates with verifiable physical chemistry.",
+    "args": {
+      "title": "RADIOCARBON DATING",
+      "steps": [
+        [
+          "TISSUE PREPARATION",
+          ""
+        ],
+        [
+          "ISOTOPE MEASUREMENT",
+          ""
+        ],
+        [
+          "CALIBRATION",
+          ""
+        ]
+      ],
+      "note": "AGE ESTIMATE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "A critical reference point for calibrating these carbon signatures is the bomb pulse.",
+    "args": {
+      "term": "BOMB PULSE",
+      "meaning": "INCREASE IN ATMOSPHERIC CARBON-14",
+      "boundary": "MID-20TH CENTURY",
+      "source": "SCIENCE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "The bomb pulse refers to the dramatic increase in atmospheric carbon-14 caused by surface nuclear weapons testing in the mid-20th century.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "This elevated radioisotope concentration entered the marine food web and was absorbed by living organisms worldwide.",
+    "args": {
+      "term": "BOMB PULSE",
+      "meaning": "INCREASE IN ATMOSPHERIC CARBON-14",
+      "boundary": "MID-20TH CENTURY",
+      "source": "SCIENCE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "In research published by Science, scientists used this atmospheric signal to validate their lens dating.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Radiocarbon dating the eye lens nucleus",
+    "narration": "If an eye lens nucleus contained elevated bomb pulse carbon, the shark was born after the mid-20th century; if it lacked this pulse, the shark was unambiguously born before nuclear testing began, establishing a definitive baseline for older specimens.",
+    "args": {
+      "term": "BOMB PULSE",
+      "meaning": "INCREASE IN ATMOSPHERIC CARBON-14",
+      "boundary": "MID-20TH CENTURY",
+      "source": "SCIENCE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "The environmental conditions of the bathypelagic zone play a central role in sustaining this extreme longevity.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Greenland sharks spend much of their lives in deep basins where water temperatures remain constantly near freezing, typically ranging between minus one and two degrees Celsius.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 2,
+      "zoom": 1.3
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "At these low temperatures, chemical reaction rates inside cells drop significantly. Enzymes function at a fraction of the speed observed in tropical species, slowing down cell division, protein turnover, and muscle contraction.",
+    "args": {
+      "highlight": "BATHYPELAGIC"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Living in near-freezing water essentially forces the animal's physiology into a state of continuous, slow motion.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Depth introduces another major physical force: hydrostatic pressure. At depths reaching 1000 meters, the ambient pressure is approximately one hundred times greater than at the surface.",
+    "args": {
+      "depth_m": 1000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "High pressure alters protein folding and membrane fluidity, requiring specialized cellular adaptations to keep metabolic pathways stable.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 8.28,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Greenland sharks produce high concentrations of trimethylamine N-oxide and urea within their tissues, which stabilize cellular structures against pressure-induced destabilization.",
+    "args": {
+      "depth_m": 1000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "This biochemical adaptation allows their enzymes to function smoothly without requiring high energy expenditure, reinforcing their low-energy lifestyle.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 6.21,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "The absolute darkness of the deep ocean eliminates the visual reliance seen in surface predators.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Sunlight is entirely absorbed within the upper few hundred meters of the water column, leaving the deep ocean in perpetual blackness.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 7.03,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Without sunlight, primary productivity cannot occur, meaning food resources in the deep sea are scarce and unpredictable.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "Greenland sharks have adapted by becoming opportunistic scavengers and slow-velocity hunters, relying heavily on olfaction and electroreception to locate carrion or resting prey.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 3,
+      "zoom": 1.0
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "Cold, dark, and slow: the deep-sea environment",
+    "narration": "By avoiding the high energy costs of active pursuit hunting in illuminated surface waters, they preserve energy reserves over months or even years.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.79,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "The consequence of this cold, low-energy existence is reflected directly in physical growth measurements.",
+    "args": {
+      "title": "GROWTH RATE",
+      "unit": "CENTIMETERS PER YEAR",
+      "items": [
+        [
+          "GREENLAND SHARK",
+          "1"
+        ],
+        [
+          "GREAT WHITE SHARK",
+          "15"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.86,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "Studies tracking recaptured individuals show that the growth rate of a Greenland shark is approximately 1 centimeters per year.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 4,
+      "zoom": 1.15
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.86,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "In stark contrast, a juvenile great white shark can grow 15 centimeters per year during its early life stage.",
+    "args": {
+      "title": "GROWTH RATE",
+      "unit": "CENTIMETERS PER YEAR",
+      "items": [
+        [
+          "GREENLAND SHARK",
+          "1"
+        ],
+        [
+          "GREAT WHITE SHARK",
+          "15"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "Measuring growth at 1 centimeters per year confirms that reaching a body length of several meters requires centuries of continuous, uninterrupted development.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.03,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "This slow accumulation of biomass is one of the clearest physical manifestations of their reduced metabolic rate.",
+    "args": {
+      "title": "GROWTH RATE",
+      "unit": "CENTIMETERS PER YEAR",
+      "items": [
+        [
+          "GREENLAND SHARK",
+          "1"
+        ],
+        [
+          "GREAT WHITE SHARK",
+          "15"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "Every organ system within the Greenland shark reflects this low-energy design. The large liver, which occupies a significant portion of the body cavity, is rich in low-density lipids that provide neutral buoyancy, allowing the shark to drift effortlessly through the water column without spending energy swimming against gravity.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 8,
+      "zoom": 1.3
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "Their gills are adapted for efficient oxygen extraction from cold, dense water with minimal ventilatory movement.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Metabolism and growth: a life in slow motion",
+    "narration": "Heart contraction rates are among the slowest recorded in aquatic vertebrates, pumping blood at a measured, unhurried pace that minimizes mechanical wear on cardiac tissue over centuries.",
+    "args": {
+      "title": "GREENLAND SHARK",
+      "parts": [
+        [
+          "LIVER",
+          0.7,
+          0.5
+        ],
+        [
+          "GILLS",
+          0.2,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 5.79,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "Because their growth rate is so slow, Greenland sharks experience a prolonged juvenile period.",
+    "args": {
+      "events": [
+        [
+          100,
+          "SEXUAL MATURITY"
+        ],
+        [
+          272,
+          "MINIMUM AGE"
+        ],
+        [
+          392,
+          "ESTIMATED MAXIMUM"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "Research indicates that females reach sexual maturity only after reaching a age of approximately 100 years.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 9.0,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "The minimum age of 272 years established by radiocarbon dating means an individual spends its first century simply growing to reproductive size.",
+    "args": {
+      "events": [
+        [
+          100,
+          "SEXUAL MATURITY"
+        ],
+        [
+          272,
+          "MINIMUM AGE"
+        ],
+        [
+          392,
+          "ESTIMATED MAXIMUM"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "The estimated maximum lifespan extends even further, reaching up to 392 years.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 8.28,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "This extended timeline means that multiple human generations pass while a single Greenland shark transitions from birth to reproductive capability.",
+    "args": {
+      "events": [
+        [
+          100,
+          "SEXUAL MATURITY"
+        ],
+        [
+          272,
+          "MINIMUM AGE"
+        ],
+        [
+          392,
+          "ESTIMATED MAXIMUM"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "When reviewing the overall strategy of the species, several clear traits emerge.",
+    "args": {
+      "title": "ADAPTATIONS FOR LONGEVITY",
+      "items": [
+        "+COLD HABITAT",
+        "+SLOW METABOLISM",
+        "+SLOW GROWTH",
+        "+LATE MATURITY",
+        "-RAPID REPRODUCTION"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "Key adaptations for longevity include a cold habitat, a slow metabolism, slow growth, and late maturity.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "Conversely, the species lacks rapid reproduction, producing small litters after long gestation periods.",
+    "args": {
+      "title": "ADAPTATIONS FOR LONGEVITY",
+      "items": [
+        "+COLD HABITAT",
+        "+SLOW METABOLISM",
+        "+SLOW GROWTH",
+        "+LATE MATURITY",
+        "-RAPID REPRODUCTION"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "This evolutionary trade-off works exceptionally well in stable, undisturbed deep-sea environments where adult mortality is extremely low.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Reproduction and maturity: a long wait",
+    "narration": "However, it leaves the species highly susceptible to modern pressures such as commercial deep-sea trawling, as replacing lost adult females can take over a hundred years.",
+    "args": {
+      "title": "ADAPTATIONS FOR LONGEVITY",
+      "items": [
+        "+COLD HABITAT",
+        "+SLOW METABOLISM",
+        "+SLOW GROWTH",
+        "+LATE MATURITY",
+        "-RAPID REPRODUCTION"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I trust documentation over reputation. A respected institution can still publish weak work, and someone with no name at all can uncover something real if they document it properly.",
+    "args": {
+      "text": "I trust documentation over reputation. A respected institution can still publish weak work, and someone with no name at all can uncover something real if they document it properly.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Conducting empirical research on deep-sea organisms requires navigating severe technical limitations. Greenland sharks inhabit remote Arctic waters and great depths that are inaccessible to standard marine biology equipment for most of the year.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland sharks",
+      "pick": 5,
+      "zoom": 1.3
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Historically, specimens were only collected as accidental bycatch in commercial fisheries, limiting sample sizes and preventing long-term observational studies of healthy individuals in their natural habitat.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.21,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Modern deep sea research relies on multi-institutional collaboration and advanced technology to gather empirical data.",
+    "args": {
+      "title": "DEEP SEA RESEARCH",
+      "sources": [
+        [
+          "NOAA OCEAN EXPLORATION",
+          "HABITAT DATA"
+        ],
+        [
+          "MBARI",
+          "REMOTE VEHICLES"
+        ],
+        [
+          "SCIENCE",
+          "RADIOCARBON DATING"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Organizations such as NOAA Ocean Exploration provide essential habitat data through wide-area oceanographic surveys.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.86,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Deep-sea institutes like MBARI deploy high-resolution remote vehicles to observe shark behavior directly at depth without disturbing the environment.",
+    "args": {
+      "title": "DEEP SEA RESEARCH",
+      "sources": [
+        [
+          "NOAA OCEAN EXPLORATION",
+          "HABITAT DATA"
+        ],
+        [
+          "MBARI",
+          "REMOTE VEHICLES"
+        ],
+        [
+          "SCIENCE",
+          "RADIOCARBON DATING"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Meanwhile, peer-reviewed journals such as Science publish the rigorous radiocarbon dating studies that anchor our understanding of their physiology.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.38,
+    "heading": "Challenges of studying deep-sea sharks",
+    "narration": "Together, these complementary tools bridge the gap between deep-ocean observation and laboratory analysis.",
+    "args": {
+      "title": "DEEP SEA RESEARCH",
+      "sources": [
+        [
+          "NOAA OCEAN EXPLORATION",
+          "HABITAT DATA"
+        ],
+        [
+          "MBARI",
+          "REMOTE VEHICLES"
+        ],
+        [
+          "SCIENCE",
+          "RADIOCARBON DATING"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Notice how the visual edit systematically links environmental physical parameters\u2014such as ambient temperature, pressure, and radiocarbon isotope ratios\u2014to cellular and organism-level traits.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The sequencing moves deliberately from the macroscopic environment down to microscopic chemical analysis, demonstrating how multiple lines of evidence converge on a single conclusion.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "Despite the success of radiocarbon dating, precise upper age limits carry inherent statistical boundaries.",
+    "args": {
+      "value": "392",
+      "unit": "YEARS",
+      "plus": "120",
+      "minus": null,
+      "confidence": "SCIENTIFIC ESTIMATE",
+      "caption": "MAXIMUM AGE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "In published models, the oldest individual sampled yielded a calculated age of 392 years, with an uncertainty half-width of 120 years in the scientific estimate of its maximum age.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "This means the individual could reasonably be between 272 and 512 years old.",
+    "args": {
+      "value": "392",
+      "unit": "YEARS",
+      "plus": "120",
+      "minus": null,
+      "confidence": "SCIENTIFIC ESTIMATE",
+      "caption": "MAXIMUM AGE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "This uncertainty stems from potential variations in deep-water radiocarbon reservoir effects and the challenge of calibrating radiocarbon levels in pre-industrial oceanic water masses.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive-rhythm+picture"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "Stating this margin clearly reflects scientific rigor, acknowledging that while extreme longevity is proven, exact individual ages remain bounded estimates.",
+    "args": {
+      "value": "392",
+      "unit": "YEARS",
+      "plus": "120",
+      "minus": null,
+      "confidence": "SCIENTIFIC ESTIMATE",
+      "caption": "MAXIMUM AGE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.45,
+    "heading": "Closing",
+    "narration": "The Greenland shark demonstrates that life in the deep sea operates on timescales vastly different from our own.",
+    "args": {
+      "subject": "greenland_shark",
+      "label": "Greenland shark",
+      "pick": 6,
+      "zoom": 1.0
+    },
+    "from": "directive+picture"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "By adapting to cold temperatures, high pressure, and limited resources with an extremely slow metabolism, this predator has achieved a lifespan unparalleled among vertebrates.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "As deep-sea exploration technologies continue to advance, documenting these ancient animals reminds us how much remains to be learned about life in the ocean's depths.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate+picture"
+  }
+]
