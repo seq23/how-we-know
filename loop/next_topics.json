@@ -1,6 +1,6 @@
 {
-  "week": "2026-W45",
-  "generated": "2026-11-08T11:05:59+00:00",
+  "week": "2026-W46",
+  "generated": "2026-11-15T11:05:53+00:00",
   "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
@@ -35,34 +35,6 @@
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
-      "slug": "why-are-deep-sea-creatures-so-big",
-      "question": "Why are deep sea creatures so big?",
-      "script": "scripts/why-are-deep-sea-creatures-so-big.md",
-      "source": "authored-inventory",
-      "publish_rank": 25,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-021",
-      "pov_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
-      "pov_tag": "unknown",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "is-damascus-steel-better",
-      "question": "Is Damascus steel better?",
-      "script": "scripts/is-damascus-steel-better.md",
-      "source": "authored-inventory",
-      "publish_rank": 27,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-042",
-      "pov_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
-      "pov_tag": "evidence",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
       "slug": "are-sea-pigs-real",
       "question": "Are sea pigs real?",
       "script": "scripts/are-sea-pigs-real.md",
@@ -77,16 +49,44 @@
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
-      "slug": "does-damascus-steel-rust",
-      "question": "Does Damascus steel rust?",
-      "script": "scripts/does-damascus-steel-rust.md",
+      "slug": "what-does-a-greenland-shark-look-like",
+      "question": "What does a Greenland shark look like?",
+      "script": "scripts/what-does-a-greenland-shark-look-like.md",
       "source": "authored-inventory",
-      "publish_rank": 29,
+      "publish_rank": 33,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-064",
-      "pov_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
-      "pov_tag": "failure",
+      "pov_id": "pov-062",
+      "pov_line": "It becomes a cop-out when uncertainty is used selectively \u2014 enough evidence to make a dramatic claim, and suddenly not enough when someone asks them to defend it.",
+      "pov_tag": "uncertainty",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "where-does-chemosynthesis-occur",
+      "question": "Where does chemosynthesis occur?",
+      "script": "scripts/where-does-chemosynthesis-occur.md",
+      "source": "authored-inventory",
+      "publish_rank": 34,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-063",
+      "pov_line": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know.",
+      "pov_tag": "uncertainty",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+    },
+    {
+      "slug": "is-giant-isopod-edible",
+      "question": "Is the giant isopod edible?",
+      "script": "scripts/is-giant-isopod-edible.md",
+      "source": "authored-inventory",
+      "publish_rank": 35,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-105",
+      "pov_line": "Honest expertise has edges. It can tell you what is known, what is inferred, and what is still unproven.",
+      "pov_tag": "uncertainty",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     }
@@ -116,9 +116,9 @@
       "17-what-is-a-yeti-crab"
     ],
     "queued_despite_kill": [],
-    "order_entries": 91,
+    "order_entries": 104,
     "source": "research/publish_order.json",
-    "generated_at": "2026-11-07T11:09:56.922213+00:00",
+    "generated_at": "2026-11-14T11:09:39.264571+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -128,42 +128,50 @@
   "runway": {
     "unpublished_scripts": 44,
     "publishable": 32,
-    "scheduled_not_yet_aired": 5,
+    "scheduled_not_yet_aired": 2,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 6.2,
+    "weeks_remaining": 5.7,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 11,
-        "scheduled_ahead": 5,
-        "weeks": 8.0,
+        "queued": 12,
+        "scheduled_ahead": 0,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated)"
+        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 20,
-        "scheduled_ahead": 0,
-        "weeks": 10.0,
+        "scheduled_ahead": 2,
+        "weeks": 11.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated)"
+        "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
       },
       "food-science": {
-        "slots_per_week": 2,
+        "slots_per_week": 0,
         "queued": 11,
         "scheduled_ahead": 0,
-        "weeks": 5.5,
+        "weeks": null,
+        "level": "not_active",
+        "message": "food-science: 0 slots/week this week, not drawing from its queue"
+      },
+      "money-and-business": {
+        "slots_per_week": 2,
+        "queued": 12,
+        "scheduled_ahead": 0,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
+        "message": "money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "6.2 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (11 queued, 5 already dated); materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "5.7 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
