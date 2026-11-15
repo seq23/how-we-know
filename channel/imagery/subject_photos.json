@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T13:09:57+00:00",
+  "generated": "2026-11-15T09:51:44+00:00",
   "domain": "any",
   "policy": "Thumbnail and Short-opening stills: public domain or CC0 (Commons, imagery.pd_licence_ok), or Pixabay / Pexels / Mixkit under their free licences (owner ruling 2 Nov 2026), checked by research/food_footage.record_problems with the licence wording stored under licences/. Anything else, CC-BY included, is refused.",
   "rights_fields_required": [
@@ -10,7 +10,7 @@
     "licence",
     "sha256"
   ],
-  "asset_count": 37,
+  "asset_count": 38,
   "subjects_total": 1,
   "subjects_covered": [
     "auto-15-how-do-people-reach-challenger-deep",
@@ -48,6 +48,7 @@
     "auto-why-does-chocolate-taste-so-good",
     "auto-why-does-meat-need-to-rest-after-cooking",
     "auto-why-does-steak-taste-better-seared",
+    "auto-why-greenland-shark-live-so-long",
     "auto-why-is-glass-clear",
     "auto-why-is-my-bread-not-rising"
   ],
@@ -690,12 +691,12 @@
       "terms_text": "licences/pixabay-api-terms-excerpt.txt",
       "matched_query": "bread rise steak brown",
       "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-      "download_url": "https://pixabay.com/get/g2e8d06f38adf8b62a1fae532375135d06051be1b1e8ea256c28913c0c45dd96f79dfd91c17590dad6b25307ebba94e8f18c50a965cbefc1dd6d177d764c79aa5_1280.jpg",
+      "download_url": "https://pixabay.com/get/g4a2d72d9e8b13354c1557ab3dd95b5fb1c6c09b1bad42bd28692c6af65b44cc76e533866436f50ac1dbdda5e7a3fcc9c7415ad43dc9a6a9b620a4051cf2f553d_1280.jpg",
       "local_file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
       "sha256": "8248a6ae47577b2964506e840746f4819fd34e7e64f3f7fde9dd93ea06dc7c34",
       "width": 1280,
       "height": 853,
-      "fetched_at": "2026-11-14T13:09:48+00:00",
+      "fetched_at": "2026-11-15T09:51:40+00:00",
       "licence_basis": "Pixabay Content License: API re-checked id 1077984 (type photo, not AI) at download"
     },
     {
@@ -804,6 +805,31 @@
       "height": 853,
       "fetched_at": "2026-11-02T12:28:16+00:00",
       "licence_basis": "Pixabay Content License: API re-checked id 4342500 (type photo, not AI) at download"
+    },
+    {
+      "subject": "auto-why-greenland-shark-live-so-long",
+      "label": "GREENLAND SHARK",
+      "title": "greenland, iceberg, fjord, sermilik, ice, arctic, sea, landscape, polar",
+      "depicts": "photograph",
+      "subject_basis": "Found automatically for why-greenland-shark-live-so-long by its subject words ['greenland', 'shark']: the file title names one of them, the item page licence is PD/CC0 (research/subject_photo.py).",
+      "credit_line": "GREENLAND SHARK \u2014 PHOTOGRAPH, JCHRISTOPHE_ANDRE / PIXABAY",
+      "treatment": "photo",
+      "source": "pixabay",
+      "source_id": "3925547",
+      "source_org": "JChristophe_Andre",
+      "licence": "Pixabay Content License",
+      "licence_url": "https://pixabay.com/service/license-summary/",
+      "licence_text": "licences/pixabay-content-license-summary.txt",
+      "terms_text": "licences/pixabay-api-terms-excerpt.txt",
+      "matched_query": "greenland",
+      "item_url": "https://pixabay.com/photos/greenland-iceberg-fjord-sermilik-3925547/",
+      "download_url": "https://pixabay.com/get/gcf539aa5b4d7847120c2b9b30014cdee2d6df95b238fb508a6e8ac1fca5ddc3bf693e179b8e8e3299a6a4a4948bc96f30d0c2c5879737f0965ab6c065806dff6_1280.jpg",
+      "local_file": "assets/auto__auto-why-greenland-shark-live-so-long__pixabay-3925547.jpg",
+      "sha256": "8deb1a98610d444d724fcdc25e3c654f8c3e32cf9bf7190715ecb7d8d4c8ea6d",
+      "width": 1280,
+      "height": 827,
+      "fetched_at": "2026-11-15T09:51:44+00:00",
+      "licence_basis": "Pixabay Content License: API re-checked id 3925547 (type photo, not AI) at download"
     },
     {
       "subject": "auto-why-is-glass-clear",

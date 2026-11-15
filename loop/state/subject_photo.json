@@ -420,9 +420,9 @@
   "why-bread-rises-steak-browns-chocolate-snaps": {
     "chosen_by": "auto",
     "file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
-    "found_at": "2026-11-14T13:09:48+00:00",
+    "found_at": "2026-11-15T09:51:40+00:00",
     "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-    "last_tried": "2026-11-14",
+    "last_tried": "2026-11-15",
     "licence": "Pixabay Content License",
     "queries": [
       "bread rise steak brown",
@@ -433,7 +433,7 @@
       "chocolate snap"
     ],
     "status": "found",
-    "tries": 9
+    "tries": 10
   },
   "why-deep-sea-creatures-are-creepers": {
     "chosen_by": "owner",
@@ -505,6 +505,21 @@
     "status": "found",
     "tries": 2,
     "why": "item page marks the work as copyrighted (cc by 2.0); item page marks the work as copyrighted (cc by 2.0); item page marks the work as copyrighted (cc by 2.0); no candidate passed both gates"
+  },
+  "why-greenland-shark-live-so-long": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-why-greenland-shark-live-so-long__pixabay-3925547.jpg",
+    "found_at": "2026-11-15T09:51:44+00:00",
+    "item_url": "https://pixabay.com/photos/greenland-iceberg-fjord-sermilik-3925547/",
+    "last_tried": "2026-11-15",
+    "licence": "Pixabay Content License",
+    "queries": [
+      "greenland shark",
+      "greenland",
+      "shark"
+    ],
+    "status": "found",
+    "tries": 1
   },
   "why-is-glass-clear": {
     "chosen_by": "auto",
