@@ -530,6 +530,12 @@ def lost(yt, slug: str, k: dict, s: dict | None, now: _dt.datetime, st) -> str:
     return f"{slug}: YouTube no longer lists {vid} (it was removed after the upload); {again}"
 
 
+def WS_pending(k: dict) -> bool:
+    """Its Shorts are still to be cut from this render (loop/whisper_shorts.py)."""
+    import whisper_shorts as WS                             # noqa: PLC0415
+    return WS.pending(k)
+
+
 def prune_confirmed(yt, ks: dict[str, dict], st, now: _dt.datetime | None = None) -> tuple[int, list[str], int]:
     """Delete the local render and voice wavs of every upload YouTube
     reports `processed` with no rejection. Returns (how many were deleted,
@@ -548,6 +554,9 @@ def prune_confirmed(yt, ks: dict[str, dict], st, now: _dt.datetime | None = None
         if not s or s.get("uploadStatus") in ("rejected", "failed", "deleted") \
                 or s.get("rejectionReason") or s.get("failureReason"):
             gone.append(lost(yt, slug, k, s, now, st))
+            continue
+        if s.get("uploadStatus") == "processed" and WS_pending(k):
+            st.note(f"{slug}: render kept until it is cut into Shorts (loop/whisper_shorts.py)")
             continue
         if s.get("uploadStatus") != "processed":
             processing += 1

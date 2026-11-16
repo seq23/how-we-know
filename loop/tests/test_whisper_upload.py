@@ -189,8 +189,15 @@ try:
           WL.video_path("ep-b").exists() and (WL.audio_dir("ep-b") / "0000.wav").exists())
     check("b. the uploaded episode is never voiced again", WL.handed_on("ep-b"))
 
-    # c. a later night: processed -> the local render and wavs go
+    # c. a later night: processed -> the local render and wavs go, once its
+    # Short is made (loop/whisper_shorts.py; tested in test_whisper_shorts.py)
     yt2 = FakeYT(upload_status="processed")
+    rc, rec, lines = run(yt2)
+    check("c. processed but not yet cut into Shorts: the render is kept",
+          WL.video_path("ep-b").exists() and not WU.read_kit("ep-b").get("pruned"))
+    kb = WU.read_kit("ep-b")
+    kb["shorts_cut"] = "2026-11-08T05:00:00Z"
+    WU.write_kit("ep-b", kb)
     rc, rec, lines = run(yt2)
     check("c. nothing uploaded twice", yt2.inserted == [], yt2.inserted)
     check("c. deleted only once YouTube reports it processed",

@@ -1068,6 +1068,8 @@ phase_whisper() {
 phase_whisper_upload() {
   echo; echo "--- whisper almanac: upload, scheduled ---"
   $PY loop/whisper_upload.py run 2>&1 | sed 's/^/  /' || true
+  # one vertical Short from each uploaded episode, before its render is pruned
+  $PY loop/whisper_shorts.py run 2>&1 | sed 's/^/  /' || true
   # the channel's own numbers per lane (views, watch hours, subscribers):
   # the weekly mix and the 30-day check read them (loop/whisper_scorecard.py)
   $PY loop/whisper_scorecard.py run 2>&1 | sed 's/^/  /' || true
