@@ -68,12 +68,6 @@
     "gemini/gemini-2.5-flash": [
       {
         "lane": "whisper-author",
-        "latency_s": 16.5,
-        "outcome": "answered",
-        "ts": "2026-11-15T20:09:21Z"
-      },
-      {
-        "lane": "whisper-author",
         "latency_s": 12.7,
         "outcome": "answered",
         "ts": "2026-11-15T20:09:33Z"
@@ -185,6 +179,12 @@
         "latency_s": 0.1,
         "outcome": "rate_limited",
         "ts": "2026-11-16T01:05:36Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 10.4,
+        "outcome": "answered",
+        "ts": "2026-11-16T14:53:10Z"
       }
     ],
     "gemini/gemini-2.5-flash-lite": [
@@ -475,18 +475,6 @@
     ],
     "gemini/gemini-3.6-flash": [
       {
-        "lane": "whisper-author",
-        "latency_s": 90.0,
-        "outcome": "answered",
-        "ts": "2026-11-14T20:20:13Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 30.4,
-        "outcome": "answered",
-        "ts": "2026-11-15T00:50:31Z"
-      },
-      {
         "lane": "describe",
         "latency_s": 26.2,
         "outcome": "answered",
@@ -593,21 +581,21 @@
         "latency_s": 31.8,
         "outcome": "answered",
         "ts": "2026-11-16T01:06:31Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 0.5,
+        "outcome": "error",
+        "ts": "2026-11-16T14:53:00Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 61.8,
+        "outcome": "answered",
+        "ts": "2026-11-16T14:58:13Z"
       }
     ],
     "gemini/gemini-3.8-flash": [
-      {
-        "lane": "whisper-author",
-        "latency_s": 11.5,
-        "outcome": "error",
-        "ts": "2026-11-14T20:05:18Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 240.1,
-        "outcome": "timeout",
-        "ts": "2026-11-14T20:12:52Z"
-      },
       {
         "lane": "whisper-author",
         "latency_s": 240.0,
@@ -715,6 +703,18 @@
         "latency_s": 0.1,
         "outcome": "rate_limited",
         "ts": "2026-11-16T01:05:59Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 8.6,
+        "outcome": "error",
+        "ts": "2026-11-16T14:52:59Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 240.1,
+        "outcome": "timeout",
+        "ts": "2026-11-16T14:57:11Z"
       }
     ],
     "google/gemma-4-26b-a4b-it:free": [
