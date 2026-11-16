@@ -58,10 +58,14 @@ def duration(video: str) -> float:
 
 
 def sample(video: str, workdir: str, every: float = SAMPLE_EVERY) -> list[tuple[float, str]]:
-    """[(seconds, jpg)] - one frame per `every` seconds, from 1 s in."""
+    """[(seconds, jpg)] - one frame per `every` seconds, from 1 s in, never
+    within the last second: the container duration counts the audio, which
+    can run past the last video frame, and a seek there decodes no frame
+    (16 Nov 2026: a 3041.1 s Almanac render sampled at 3041.0 crashed the
+    upload stage)."""
     total = duration(video)
     out, t = [], 1.0
-    while t < total:
+    while t < total - 1.0:
         p = os.path.join(workdir, f"f{int(t):05d}.jpg")
         subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel", "error",
                         "-y", "-ss", f"{t:.2f}", "-i", video, "-frames:v", "1",
