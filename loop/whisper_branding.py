@@ -96,29 +96,42 @@ def build_avatar(b: dict, out: Path = AVATAR) -> Path:
     return out
 
 
+def _fit(d, text: str, name: str, size: int, maxw: int):
+    font = WL._font(name, size)
+    while d.textlength(text, font=font) > maxw and size > 20:
+        size -= 2
+        font = WL._font(name, size)
+    return font
+
+
 def build_banner(b: dict, about: dict, out: Path = BANNER) -> Path:
-    """2560x1440: the wordmark with its flame over the end, one line under it."""
+    """2560x1440: the wordmark with its flame over the end, then what the
+    channel is ("Nightly ASMR for sleep", her ask 16 Nov 2026), then what is
+    in it, all inside the safe area and big enough to read on a phone (the
+    safe area shows at about a quarter size there)."""
     from PIL import Image, ImageDraw                       # noqa: PLC0415
     img = _glow_ground((BW, BH), (BW // 2, BH // 2), 620, b).convert("RGBA")
     d = ImageDraw.Draw(img)
     word = "whisper almanac"
-    size = 190
+    size = 130
     font = WL._font("DMSerifDisplay-Italic.ttf", size)
     tw = d.textlength(word, font=font)
     x = (BW - tw) / 2
-    base_y = SAFE[1] + 250
+    base_y = SAFE[1] + 178
     d.text((x, base_y), word, font=font, fill=b["ink"], anchor="ls")
     # the flame over the end: above the final letter, as the logo is drawn
     last = d.textlength(word[:-1], font=font)
     cw = d.textlength(word[-1], font=font)
-    f, (x0, y0, x1, y1) = flame(96, b)
+    f, (x0, y0, x1, y1) = flame(84, b)
     fx = int(x + last + cw * 0.55 - (x0 + x1) / 2)
-    fy = int(base_y - size * 0.62 - (y1 - y0) - y0 - 8)
+    fy = int(base_y - size * 0.62 - (y1 - y0) - y0 - 6)
     img.alpha_composite(f, (fx, fy))
     d = ImageDraw.Draw(img)
-    small = WL._font("Jost-Light.ttf", 52)
-    line = about["banner_line"]
-    d.text((BW / 2, base_y + 92), line, font=small, fill="#CDBFA6", anchor="ma")
+    maxw = SAFE[2] - SAFE[0] - 40
+    big = _fit(d, about["banner_line"], "Jost.ttf", 100, maxw)
+    d.text((BW / 2, base_y + 44), about["banner_line"], font=big, fill=b["ink"], anchor="ma")
+    sub = _fit(d, about["banner_sub"], "Jost-Light.ttf", 58, maxw)
+    d.text((BW / 2, base_y + 44 + big.size + 22), about["banner_sub"], font=sub, fill="#CDBFA6", anchor="ma")
     out.parent.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(out, "PNG", optimize=True)
     return out
