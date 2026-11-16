@@ -53,33 +53,13 @@
       "selfDeclaredMadeForKids": false
     }
   },
-  "uploaded": false,
+  "uploaded": true,
   "problems": [],
   "frame_check": {
-    "passed": false,
-    "file": "190462958:1794736073",
-    "at": "2026-11-16T13:56:55Z",
-    "why": "PICTURE_CHECK_FAILED at 18:21 (black pillarbox bars at the sides), 41:41 (text, graphic or filler: The stars appear to be a computer-generated starfield, making the image not entirely real footage. M), 50:01 (text, graphic or filler: The moon and starfield appear to be computer-generated or composited elements, not entirely real cam)",
-    "failures": [
-      [
-        1101.0,
-        "black pillarbox bars at the sides"
-      ],
-      [
-        2501.0,
-        "text, graphic or filler: The stars appear to be a computer-generated starfield, making the image not entirely real footage. M"
-      ],
-      [
-        3001.0,
-        "text, graphic or filler: The moon and starfield appear to be computer-generated or composited elements, not entirely real cam"
-      ]
-    ],
-    "repaired_at": "2026-11-16T13:56:55Z",
-    "refused_clips": [
-      "pixabay:148098",
-      "pixabay:148100",
-      "pixabay:32635"
-    ]
+    "passed": true,
+    "file": "184471234:1794842618",
+    "at": "2026-11-16T15:23:39Z",
+    "frames": 152
   },
   "repairs": 1,
   "thumbnails": [
@@ -940,5 +920,49 @@
       10.094,
       "pixabay:4006"
     ]
-  ]
+  ],
+  "video_id": "duitvJNx1vY",
+  "uploaded_at": "2026-11-16T15:23:39Z",
+  "privacy": "private",
+  "scheduled_publish_at": "2026-11-20T02:00:00Z",
+  "publish_at_ct": "Thu 19 Nov 2026 20:00 CT",
+  "youtube_confirmed": {
+    "at": "2026-11-16T15:37:10Z",
+    "upload_status": "uploaded",
+    "processing": "processing"
+  },
+  "short_tries": 1,
+  "shorts": [
+    {
+      "n": 1,
+      "at_s": 1.0,
+      "label": "An hour of Neville Goddard's law of assumption, whispered sl",
+      "file": "neville-law-of-assumption-01-s1.mp4",
+      "video_id": "gQwt0HK0qyY",
+      "publish_at": "2026-11-17T01:00:00Z",
+      "title": "An hour of Neville Goddard's law of assumption, whispered sl · Law of assumption sleep me #shorts",
+      "uploaded_at": "2026-11-16T15:37:10Z"
+    },
+    {
+      "n": 2,
+      "at_s": 569.0,
+      "label": "Gently settle into your bed now",
+      "file": "neville-law-of-assumption-01-s2.mp4",
+      "video_id": "WQ0vr87ZozY",
+      "publish_at": "2026-11-18T01:00:00Z",
+      "title": "Gently settle into your bed now · Law of assumption sleep meditation #shorts",
+      "uploaded_at": "2026-11-16T15:37:10Z"
+    },
+    {
+      "n": 3,
+      "at_s": 1989.0,
+      "label": "In Out of This World, Neville wrote this",
+      "file": "neville-law-of-assumption-01-s3.mp4",
+      "video_id": "grdeYhVAB0g",
+      "publish_at": "2026-11-19T01:00:00Z",
+      "title": "In Out of This World, Neville wrote this · Law of assumption sleep meditation #shorts",
+      "uploaded_at": "2026-11-16T15:37:10Z"
+    }
+  ],
+  "shorts_cut": "2026-11-16T15:37:10Z"
 }
