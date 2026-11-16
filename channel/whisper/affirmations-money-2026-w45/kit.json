@@ -60,6 +60,12 @@
     "passed": false,
     "file": "195831202:1794468029",
     "at": "2026-11-12T07:20:30Z",
-    "why": "PICTURE_CHECK_FAILED at 4:41 (not real footage: This is a 3D render of jewelry, not real camera footage, but the 'gold and jewelry close-ups' subjec), 11:21 (not real footage: The jewelry (rings) appears to be a 3D render, not real camera footage, but 'gold and jewelry close-), 18:01 (not real footage: Computer-generated 3D render of diamond jewelry rings.), 24:41 (not real footage: 3D computer-generated render of diamond rings on a reflective surface.), 29:41 (black pillarbox bars at the sides), 35:01 (not real footage: 3D render of diamond rings on a reflective surface representing gold and "
-  }
+    "why": "PICTURE_CHECK_FAILED at 4:41 (not real footage: This is a 3D render of jewelry, not real camera footage, but the 'gold and jewelry close-ups' subjec), 11:21 (not real footage: The jewelry (rings) appears to be a 3D render, not real camera footage, but 'gold and jewelry close-), 18:01 (not real footage: Computer-generated 3D render of diamond jewelry rings.), 24:41 (not real footage: 3D computer-generated render of diamond rings on a reflective surface.), 29:41 (black pillarbox bars at the sides), 35:01 (not real footage: 3D render of diamond rings on a reflective surface representing gold and ",
+    "repaired_at": "2026-11-16T13:24:04Z",
+    "refused_clips": [
+      "pixabay:317800",
+      "pixabay:8703"
+    ]
+  },
+  "repairs": 1
 }

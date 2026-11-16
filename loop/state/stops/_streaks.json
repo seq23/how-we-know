@@ -31,9 +31,9 @@
   },
   "backfill": {
     "code": "BREAKER_TRIPPED_ALREADY_REPORTED",
-    "count": 2,
+    "count": 3,
     "first_at": "2026-11-14T15:00:49+00:00",
-    "last_at": "2026-11-15T15:00:45+00:00"
+    "last_at": "2026-11-16T15:02:57+00:00"
   },
   "daily-runway": {
     "code": "RUNWAY_TOPUP_PAUSED_BY_MONEY_TEST",
@@ -95,12 +95,6 @@
     "first_at": "2026-11-14T00:09:48+00:00",
     "last_at": "2026-11-16T00:11:56+00:00"
   },
-  "whisper-upload": {
-    "code": "BREAKER_TRIPPED_ALREADY_REPORTED",
-    "count": 2,
-    "first_at": "2026-11-14T05:00:26+00:00",
-    "last_at": "2026-11-15T09:47:54+00:00"
-  },
   "handoff": {
     "code": "HANDOFF_UP_TO_DATE",
     "count": 4,
@@ -112,5 +106,11 @@
     "count": 1,
     "first_at": "2026-11-15T09:51:34+00:00",
     "last_at": "2026-11-15T09:51:34+00:00"
+  },
+  "whisper-shorts": {
+    "code": "WHISPER_SHORTS_QUEUE_EMPTY",
+    "count": 1,
+    "first_at": "2026-11-16T14:11:06+00:00",
+    "last_at": "2026-11-16T14:11:06+00:00"
   }
 }
