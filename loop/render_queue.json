@@ -1,12 +1,12 @@
 {
-  "week": "2026-W46",
-  "generated": "2026-11-09T06:26:10+00:00",
+  "week": "2026-W47",
+  "generated": "2026-11-16T06:28:46+00:00",
   "videos_per_week": 6,
-  "breaker": "closed",
+  "breaker": "tripped",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 911,
+      "examined": 939,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -26,7 +26,7 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -34,7 +34,7 @@
     },
     {
       "validator": "V4 pov",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -42,7 +42,7 @@
     },
     {
       "validator": "V5 sources-present",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -50,7 +50,7 @@
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -58,7 +58,7 @@
     },
     {
       "validator": "V7 plans",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -146,17 +146,17 @@
     },
     {
       "validator": "V20 cadence-schedule",
-      "examined": 54,
+      "examined": 42,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "8 episode(s) dated through 2026-11-18; 3 domain(s) allocating on disjoint days {'materials-and-manufacturing': (1, 4), 'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3)} at 6/week"
+        "2 episode(s) dated through 2026-11-18; 3 domain(s) allocating on disjoint days {'money-and-business': (2, 5), 'materials-and-manufacturing': (1, 4), 'deep-sea-ocean-science': (0, 3)} at 6/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 75,
+      "examined": 78,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -166,7 +166,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 86,
+      "examined": 89,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -184,7 +184,7 @@
     },
     {
       "validator": "V25 domain-abstraction",
-      "examined": 3,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -216,11 +216,11 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 613,
+      "examined": 641,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "channel/imagery/food_clips.json: 126 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest",
+        "channel/imagery/food_clips.json: 144 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest",
         "channel/sound/food.json: 3 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest"
       ],
       "stops": []
@@ -237,7 +237,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 10,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -245,21 +245,21 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 88,
+      "examined": 91,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "88 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "91 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
     {
       "validator": "V71 queued-pov-traced",
-      "examined": 27,
+      "examined": 30,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "examined 27 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
+        "examined 30 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
       ],
       "stops": []
     },
@@ -273,7 +273,7 @@
     },
     {
       "validator": "V73 every-lane-has-a-runner",
-      "examined": 52,
+      "examined": 54,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -333,7 +333,7 @@
     },
     {
       "validator": "V42 authored-domain-allocated",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -341,7 +341,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 48,
+      "examined": 62,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -351,7 +351,7 @@
     },
     {
       "validator": "V44 opening-payoff-first",
-      "examined": 6,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -359,11 +359,11 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 208,
+      "examined": 221,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 86, automated/error 1, error 103, owner_secret 18"
+        "stop kinds by class: automated 96, automated/error 1, error 104, owner_secret 20"
       ],
       "stops": []
     },
@@ -379,7 +379,7 @@
     },
     {
       "validator": "V46 shorts-handoff",
-      "examined": 117,
+      "examined": 127,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -398,7 +398,7 @@
     },
     {
       "validator": "V47 longform-title",
-      "examined": 71,
+      "examined": 69,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -430,7 +430,7 @@
     },
     {
       "validator": "V50 repackage-state",
-      "examined": 103,
+      "examined": 112,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -442,33 +442,29 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "3 channel domains checked against the read-back of 2026-10-13T13:35:35+00:00"
+        "4 channel domains checked against the read-back of 2026-11-10T14:34:18+00:00"
       ],
       "stops": []
     },
     {
       "validator": "V60 description-search-block",
-      "examined": 76,
+      "examined": 79,
       "status": "PASS(STOP:DESCRIPTION_PENDING)",
       "failures": [],
       "notes": [],
       "stops": [
         {
           "code": "DESCRIPTION_PENDING",
-          "message": "14 live long-form video(s) do not carry today's search block yet; loop-repackage prepares and applies it daily",
+          "message": "10 live long-form video(s) do not carry today's search block yet; loop-repackage prepares and applies it daily",
           "items": [
             "09-what-is-the-scariest-deep-sea-creature",
             "18-why-does-black-smoker-water-not-boil",
             "20-what-is-the-midnight-zone",
-            "does-damascus-steel-rust",
             "how-deep-can-whales-dive",
             "how-do-self-healing-materials-work",
-            "how-does-quenching-harden-steel",
             "is-damascus-steel-better",
-            "what-is-concrete-made-of",
             "what-is-hydrothermal-vents",
             "what-lives-in-mariana-trench",
-            "why-are-deep-sea-creatures-so-big",
             "why-deep-sea-creatures-are-creepers",
             "why-deep-sea-fish-die-when-brought-to-surface"
           ]
@@ -513,17 +509,17 @@
     },
     {
       "validator": "V70 demand-verdict",
-      "examined": 37,
+      "examined": 43,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "pull 2026-11-08: {'PASS': 0, 'WATCH': 7, 'FAIL': 9, 'INSUFFICIENT': 21}"
+        "pull 2026-11-15: {'PASS': 1, 'WATCH': 6, 'FAIL': 5, 'INSUFFICIENT': 31}"
       ],
       "stops": []
     },
     {
       "validator": "V75 plan-domain",
-      "examined": 85,
+      "examined": 88,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -535,7 +531,7 @@
     },
     {
       "validator": "V76 one-question",
-      "examined": 161,
+      "examined": 175,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -555,23 +551,23 @@
     "why": "configured default (6/week)"
   },
   "runway": {
-    "unpublished_scripts": 41,
-    "publishable": 29,
-    "scheduled_not_yet_aired": 8,
+    "unpublished_scripts": 44,
+    "publishable": 32,
+    "scheduled_not_yet_aired": 2,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 6.2,
+    "weeks_remaining": 5.7,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 11,
-        "scheduled_ahead": 6,
-        "weeks": 8.5,
+        "queued": 12,
+        "scheduled_ahead": 0,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated)"
+        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
@@ -582,17 +578,25 @@
         "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
       },
       "food-science": {
-        "slots_per_week": 2,
+        "slots_per_week": 0,
         "queued": 11,
         "scheduled_ahead": 0,
-        "weeks": 5.5,
+        "weeks": null,
+        "level": "not_active",
+        "message": "food-science: 0 slots/week this week, not drawing from its queue"
+      },
+      "money-and-business": {
+        "slots_per_week": 2,
+        "queued": 12,
+        "scheduled_ahead": 0,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
+        "message": "money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "6.2 weeks of queue at 6/week (29 publishable of 41 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (11 queued, 6 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "5.7 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
@@ -600,128 +604,6 @@
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
   },
   "items": [
-    {
-      "slug": "what-is-carbon-fiber-made-of",
-      "question": "What is carbon fiber made of?",
-      "script": "scripts/what-is-carbon-fiber-made-of.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-110",
-      "pov_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/what-is-carbon-fiber-made-of.md",
-      "audio_dir": "audio/what-is-carbon-fiber-made-of",
-      "plan": "loop/plans/what-is-carbon-fiber-made-of.json",
-      "render": "renders/what-is-carbon-fiber-made-of.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
-      "pov_script_line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
-      "source_count": 4,
-      "sources_cited": [
-        "ASTM International"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 72
-    },
-    {
-      "slug": "how-are-microchips-designed",
-      "question": "How are microchips designed?",
-      "script": "scripts/how-are-microchips-designed.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-041",
-      "pov_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/how-are-microchips-designed.md",
-      "audio_dir": "audio/how-are-microchips-designed",
-      "plan": "loop/plans/how-are-microchips-designed.json",
-      "render": "renders/how-are-microchips-designed.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
-      "pov_script_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
-      "source_count": 4,
-      "sources_cited": [
-        "NIST",
-        "IEEE",
-        "SEMI",
-        "SEMI International Standards"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 72
-    },
-    {
-      "slug": "why-are-deep-sea-creatures-so-big",
-      "question": "Why are deep sea creatures so big?",
-      "script": "scripts/why-are-deep-sea-creatures-so-big.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-021",
-      "pov_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-are-deep-sea-creatures-so-big.md",
-      "audio_dir": "audio/why-are-deep-sea-creatures-so-big",
-      "plan": "loop/plans/why-are-deep-sea-creatures-so-big.json",
-      "render": "renders/why-are-deep-sea-creatures-so-big.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
-      "pov_script_line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
-      "source_count": 7,
-      "sources_cited": [
-        "NOAA",
-        "NOAA Ocean Exploration",
-        "Smithsonian",
-        "Smithsonian Ocean",
-        "Schmidt Ocean Institute",
-        "Ocean Census",
-        "Nature",
-        "British Antarctic Survey"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 84
-    },
-    {
-      "slug": "is-damascus-steel-better",
-      "question": "Is Damascus steel better?",
-      "script": "scripts/is-damascus-steel-better.md",
-      "generated": false,
-      "carried_draft": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-042",
-      "pov_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/is-damascus-steel-better.md",
-      "audio_dir": "audio/is-damascus-steel-better",
-      "plan": "loop/plans/is-damascus-steel-better.json",
-      "render": "renders/is-damascus-steel-better.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
-      "pov_script_line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
-      "source_count": 5,
-      "sources_cited": [
-        "NIST",
-        "ASM International",
-        "ASTM International",
-        "Nature",
-        "British Museum"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 83
-    },
     {
       "slug": "are-sea-pigs-real",
       "question": "Are sea pigs real?",
@@ -753,34 +635,94 @@
       "planned_beats": 80
     },
     {
-      "slug": "does-damascus-steel-rust",
-      "question": "Does Damascus steel rust?",
-      "script": "scripts/does-damascus-steel-rust.md",
+      "slug": "what-does-a-greenland-shark-look-like",
+      "question": "What does a Greenland shark look like?",
+      "script": "scripts/what-does-a-greenland-shark-look-like.md",
       "generated": false,
       "carried_draft": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-064",
-      "pov_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+      "pov_id": "pov-062",
+      "pov_line": "It becomes a cop-out when uncertainty is used selectively \u2014 enough evidence to make a dramatic claim, and suddenly not enough when someone asks them to defend it.",
       "pov_tier": "transferable",
       "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/does-damascus-steel-rust.md",
-      "audio_dir": "audio/does-damascus-steel-rust",
-      "plan": "loop/plans/does-damascus-steel-rust.json",
-      "render": "renders/does-damascus-steel-rust.mp4",
+      "work_copy": "loop/work/what-does-a-greenland-shark-look-like.md",
+      "audio_dir": "audio/what-does-a-greenland-shark-look-like",
+      "plan": "loop/plans/what-does-a-greenland-shark-look-like.json",
+      "render": "renders/what-does-a-greenland-shark-look-like.mp4",
       "source": "authored-inventory",
       "status": "queued",
-      "pov_bank_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
-      "pov_script_line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions.",
+      "pov_bank_line": "It becomes a cop-out when uncertainty is used selectively \u2014 enough evidence to make a dramatic claim, and suddenly not enough when someone asks them to defend it.",
+      "pov_script_line": "It becomes a cop-out when uncertainty is used selectively \u2014 enough evidence to make a dramatic claim, and suddenly not enough when someone asks them to defend it.",
       "source_count": 4,
       "sources_cited": [
-        "NIST",
-        "ASM International",
-        "ASTM International",
+        "Smithsonian",
+        "Smithsonian Ocean",
+        "Science"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 75
+    },
+    {
+      "slug": "where-does-chemosynthesis-occur",
+      "question": "Where does chemosynthesis occur?",
+      "script": "scripts/where-does-chemosynthesis-occur.md",
+      "generated": false,
+      "carried_draft": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-063",
+      "pov_line": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/where-does-chemosynthesis-occur.md",
+      "audio_dir": "audio/where-does-chemosynthesis-occur",
+      "plan": "loop/plans/where-does-chemosynthesis-occur.json",
+      "render": "renders/where-does-chemosynthesis-occur.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know.",
+      "pov_script_line": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know.",
+      "source_count": 5,
+      "sources_cited": [
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "MBARI",
+        "Woods Hole Oceanographic Institution",
+        "Woods Hole",
+        "Smithsonian"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 70
+    },
+    {
+      "slug": "is-giant-isopod-edible",
+      "question": "Is the giant isopod edible?",
+      "script": "scripts/is-giant-isopod-edible.md",
+      "generated": false,
+      "carried_draft": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-105",
+      "pov_line": "Honest expertise has edges. It can tell you what is known, what is inferred, and what is still unproven.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/is-giant-isopod-edible.md",
+      "audio_dir": "audio/is-giant-isopod-edible",
+      "plan": "loop/plans/is-giant-isopod-edible.json",
+      "render": "renders/is-giant-isopod-edible.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "Honest expertise has edges. It can tell you what is known, what is inferred, and what is still unproven.",
+      "pov_script_line": "Honest expertise has edges. It can tell you what is known, what is inferred, and what is still unproven.",
+      "source_count": 5,
+      "sources_cited": [
+        "NOAA",
+        "NOAA Ocean Exploration",
         "Nature"
       ],
       "attribution_gaps": [],
-      "planned_beats": 92
+      "planned_beats": 71
     }
   ],
   "unauthored": []
