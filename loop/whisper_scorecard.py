@@ -213,6 +213,84 @@ def click_notices(nums: dict, rates: dict[str, dict], kits: dict[str, dict], c: 
     return lines
 
 
+# THE PAINT TRIAL (her ruling 16 Nov 2026, config `paint`): new manifesting
+# videos are painted for judge_after_days from the first paint video going
+# public, then judged once on the channel's own numbers. Footage comes back
+# only if paint clearly underperforms (under worse_than x footage on BOTH
+# average % viewed and average view duration); otherwise paint stays. The
+# verdict is read by loop/whisper_lane.picture_for for every later render.
+def _group(ids: list[str], lengths: dict[str, float], token: str, start: str, end: str, get) -> dict:
+    """View-weighted average % viewed, average view duration (s) and the share
+    still watching at 5 minutes, over these videos."""
+    if not ids:
+        return {}
+    rows = _rows(get(ANALYTICS, token, ids="channel==MINE", startDate=start, endDate=end,
+                     metrics="views,averageViewPercentage,averageViewDuration",
+                     dimensions="video", filters="video==" + ",".join(ids)))
+    views = sum(float(r.get("views") or 0) for r in rows)
+    if not views:
+        return {"videos": len(ids), "views": 0}
+    w = lambda key: sum(float(r.get(key) or 0) * float(r.get("views") or 0) for r in rows) / views  # noqa: E731
+    at5, wsum = 0.0, 0.0
+    for r in rows:
+        vid, n = r["video"], float(r.get("views") or 0)
+        ln = lengths.get(vid) or 0
+        if not n or ln <= 300:
+            continue
+        curve = _rows(get(ANALYTICS, token, ids="channel==MINE", startDate=start, endDate=end,
+                          metrics="audienceWatchRatio", dimensions="elapsedVideoTimeRatio",
+                          filters=f"video=={vid}"))
+        if curve:
+            pt = min(curve, key=lambda x: abs(float(x["elapsedVideoTimeRatio"]) - 300 / ln))
+            at5 += float(pt["audienceWatchRatio"]) * n
+            wsum += n
+    return {"videos": len(ids), "views": int(views), "avg_pct_viewed": round(w("averageViewPercentage"), 1),
+            "avg_view_s": round(w("averageViewDuration"), 1),
+            "still_watching_5min": round(at5 / wsum, 3) if wsum else None}
+
+
+def paint_verdict(token: str, now: _dt.datetime, c: dict, kits: dict, old: dict | None, get=None) -> dict | None:
+    """The paint trial's record: started, still running, or judged once."""
+    get = get or _get
+    pc = c.get("paint") or {}
+    if old and old.get("verdict"):
+        return old                         # judged once; never re-judged
+    lanes = set(pc.get("lanes") or [])
+    paint, foot, lengths = [], [], {}
+    for k in kits.values():
+        when = _public(k, now)
+        if not when or k.get("lane") not in lanes:
+            continue
+        lengths[k["video_id"]] = float(k.get("length_s") or 0)
+        (paint if k.get("picture") == "paint" else foot).append((k["video_id"], when))
+    if not paint:
+        return old
+    start = min(t for _, t in paint)
+    rec = {"start": start.strftime("%Y-%m-%dT%H:%M:%SZ"), "paint_videos": len(paint), "verdict": None}
+    if now - start < _dt.timedelta(days=int(pc.get("judge_after_days", 30))):
+        return rec
+    a, e = "2026-11-01", now.strftime("%Y-%m-%d")
+    pn = _group([v for v, _ in paint], lengths, token, a, e, get)
+    fn = _group([v for v, _ in foot], lengths, token, a, e, get)
+    k = float(pc.get("worse_than", 0.8))
+    worse = bool(fn.get("views") and pn.get("views")
+                 and pn["avg_pct_viewed"] < k * fn["avg_pct_viewed"]
+                 and pn["avg_view_s"] < k * fn["avg_view_s"])
+    rec.update({"verdict": "footage" if worse else "paint", "judged_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "paint": pn, "footage": fn})
+    return rec
+
+
+def paint_line(rec: dict) -> str:
+    p, f = rec.get("paint") or {}, rec.get("footage") or {}
+    fmt = lambda g: (f"{g.get('avg_pct_viewed', 'not read')}% viewed, {g.get('avg_view_s', 'not read')} s "  # noqa: E731
+                     f"average, {g.get('still_watching_5min', 'not read')} still watching at 5 min "
+                     f"({g.get('videos', 0)} videos, {g.get('views', 0)} views)")
+    keep = ("paint stays for new manifesting videos" if rec["verdict"] == "paint"
+            else "paint clearly underperformed: new manifesting videos go back to footage")
+    return f"Whisper Almanac paint test, day 30: {keep}. Paint {fmt(p)}; footage {fmt(f)}."
+
+
 def report_lines(nums: dict, c: dict, now: _dt.datetime | None = None) -> list[str]:
     now = now or _dt.datetime.now(_dt.timezone.utc)
     mix, why = WL.weekly_mix(c, nums)
@@ -258,7 +336,8 @@ def run(now: _dt.datetime | None = None, token: str | None = None, reach=None, n
                           unblock="Nothing to do: the next nightly batch reads them.")
         old = WL.channel_numbers()
         new = {"_why": old.get("_why", ""),
-               **{k: old.get(k) for k in old if k.startswith("median") or k in ("reweight", "click_rate")},
+               **{k: old.get(k) for k in old
+                  if k.startswith("median") or k in ("reweight", "click_rate", "paint_trial")},
                **got}
         st.work(f"read the channel: {sum((v.get('videos_28d') or 0) for v in got['lanes'].values())} public videos")
         st.note(decide(new, c, now))
@@ -275,6 +354,14 @@ def run(now: _dt.datetime | None = None, token: str | None = None, reach=None, n
                 st.work(f"click rate under the bar: {notify(line)} - {line}")
         except Exception as e:                              # noqa: BLE001
             cr["not_read"] = f"{type(e).__name__}: {str(e)[:140]}"
+        try:                               # the paint trial: never fails the read above
+            pt = paint_verdict(token, now, c, U.kits(), new.get("paint_trial"))
+            if pt and pt.get("verdict") and not (new.get("paint_trial") or {}).get("verdict"):
+                st.work(f"paint trial judged: {notify(paint_line(pt))} - {paint_line(pt)}")
+            if pt:
+                new["paint_trial"] = pt
+        except Exception as e:                              # noqa: BLE001
+            st.note(f"paint trial not read tonight: {type(e).__name__}: {str(e)[:140]}")
         WL.CHANNEL_STATE.write_text(json.dumps(new, indent=2, ensure_ascii=False) + "\n")
         for ln in report_lines(new, c, now):
             print(f"  {ln}")

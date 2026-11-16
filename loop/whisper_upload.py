@@ -157,7 +157,7 @@ def lane_problems(slug: str, k: dict, c: dict) -> list[str]:
     st = (k.get("body") or {}).get("status") or {}
     if st.get("selfDeclaredMadeForKids") is not False:
         out.append("MADE_FOR_KIDS_NOT_NO")
-    if k.get("kind", "sleep") != "sleep":
+    if k.get("kind", "sleep") != "sleep" and k.get("picture") != "paint":
         # Her call 9 Nov 2026: a manifesting video never goes up with deep-sea
         # footage. visuals/whisper_render.py records the set it rendered with.
         want = c["calm_footage"]["lanes"].get(k.get("lane") or "")
@@ -195,6 +195,8 @@ def frame_check(video: Path, slug: str, c: dict) -> dict:
     picture gate, not How We Know's every-frame documentary gate. Raises
     frame_check's PictureCheckFailed / FrameCheckUnavailable."""
     import whisper_frame_check as WFC                       # noqa: PLC0415
+    if read_kit(slug).get("picture") == "paint":            # its own gate (16 Nov 2026)
+        return WFC.check_paint(str(video))
     return WFC.check(str(video), subject(slug, c))
 
 
