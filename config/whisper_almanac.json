@@ -453,6 +453,15 @@
     "token_env": "WHISPER_YT_TOKEN_JSON",
     "why": "Read by loop/whisper_upload.py (the Mac, nightly batch step whisper-upload). Every episode is uploaded PRIVATE with a publish date, as How We Know does: 20:00 Central so it is live before bedtime in every US zone (master plan, 6 Nov 2026). 2 sleep episodes (Tue, Fri) and 1 affirmation (Sun) a week, the plan's starting cadence. The supply gate (her 12 Oct rule): no new upload of a format while 14+ days of it already wait on YouTube. min_lead_hours: a 2-hour video's processing time before its publish moment. 9 Nov 2026: days for the four lanes (history Tue/Thu/Fri, Neville Mon, affirmations Wed/Sun, Shinn Sat); a free slot is the first unused one, so a lane with spare days just publishes sooner."
   },
+  "shorts": {
+    "_why": "Her rulings: Shorts from each video (9 Nov 2026) and one Short every day (16 Nov 2026). Read by loop/whisper_shorts.py: each uploaded long video is cut into per_video distinct moments; one is dated per day at publish_time_ct, never more than max_days_ahead out. 5 long videos a week x 3 = 15 Shorts for 7 days.",
+    "per_video": 3,
+    "per_day": 1,
+    "publish_time_ct": "19:00",
+    "max_days_ahead": 14,
+    "max_per_run": 3,
+    "min_lead_hours": 2
+  },
   "teachings": {
     "why": "Her rulings 9 Nov 2026: guided whispered sessions BUILT ON a teacher's techniques, never a straight reading: a short plain explanation in our own words, a few of the teacher's own lines (only from titles cleared in config/teacher_rights.json), then a long guided section to fall asleep in the wish fulfilled. Every script differs in structure (shape + scene), not only topic. Read by loop/teachings.py and loop/whisper_author.py.",
     "shapes": {

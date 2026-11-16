@@ -193,10 +193,10 @@ try:
     # Short is made (loop/whisper_shorts.py; tested in test_whisper_shorts.py)
     yt2 = FakeYT(upload_status="processed")
     rc, rec, lines = run(yt2)
-    check("c. processed but no Short yet: the render is kept for the Short",
+    check("c. processed but not yet cut into Shorts: the render is kept",
           WL.video_path("ep-b").exists() and not WU.read_kit("ep-b").get("pruned"))
     kb = WU.read_kit("ep-b")
-    kb["short"] = {"video_id": "short1"}
+    kb["shorts_cut"] = "2026-11-08T05:00:00Z"
     WU.write_kit("ep-b", kb)
     rc, rec, lines = run(yt2)
     check("c. nothing uploaded twice", yt2.inserted == [], yt2.inserted)
