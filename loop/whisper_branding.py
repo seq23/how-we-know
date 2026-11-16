@@ -186,7 +186,7 @@ def apply() -> int:
     if ch["id"] != c["channel"]["id"]:
         print(f"NAMED STOP WHISPER_WRONG_CHANNEL: token is for {ch['id']}")
         return 3
-    if quota.units_affordable(100, 1, reserve=quota.deferrable_reserve()) < 1:
+    if not WU.afford_units(100, quota.deferrable_reserve):
         print(f"NAMED STOP UPLOAD_QUOTA: no room for 100 units today. {WU.quota_line()}")
         return 3
     url = _call(tok, "POST", f"{UPLOAD_API}/channelBanners/insert?uploadType=media",
@@ -197,7 +197,7 @@ def apply() -> int:
     bs.setdefault("image", {})["bannerExternalUrl"] = url
     _call(tok, "PUT", f"{API}/channels?part=brandingSettings",
           json.dumps({"id": ch["id"], "brandingSettings": bs}).encode())
-    quota.spend(100, "whisper-branding")
+    WU.book(100, "whisper-branding")
     got = _call(tok, "GET", f"{API}/channels?part=brandingSettings&mine=true")["items"][0]["brandingSettings"]
     ok = (got["channel"].get("description", "").strip() == c["about"]["description"].strip()
           and (got.get("image") or {}).get("bannerExternalUrl"))

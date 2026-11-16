@@ -1073,7 +1073,7 @@ phase_whisper_upload() {
   # the channel's own numbers per lane (views, watch hours, subscribers):
   # the weekly mix and the 30-day check read them (loop/whisper_scorecard.py)
   $PY loop/whisper_scorecard.py run 2>&1 | sed 's/^/  /' || true
-  $PY loop/mac_sync.py push --lane whisper-upload loop/state/quota.json loop/state/whisper_channel.json \
+  $PY loop/mac_sync.py push --lane whisper-upload loop/state/quota.json $(ls loop/state/whisper_quota.json 2>/dev/null) loop/state/whisper_channel.json \
     $(ls channel/whisper/*/kit.json 2>/dev/null) 2>&1 | tail -1 | sed 's/^/  /' || true
 }
 
