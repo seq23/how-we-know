@@ -304,7 +304,8 @@ try:
     check("j. the failed render is out of the way and the episode is back in line",
           not WU.set_aside("ep-j").exists() and not WL.video_path("ep-j").exists()
           and not WL.handed_on("ep-j") and k.get("repairs") == 1, k.get("repairs"))
-    calm = [{"post_id": f"pixabay:{i}", "calm_set": "calm-night", "seconds": 30.0, "subject": f"s{i}"}
+    calm = [{"post_id": f"pixabay:{i}", "calm_set": "calm-night", "seconds": 30.0,
+             "subject": C["calm_footage"]["sets"]["calm-night"][i % 6]["subject"]}
             for i in (1, 2, 3)]
     shown = [a["post_id"] for a in R.pool("calm:calm-night", calm, C)]
     check("j. the reel never places a refused clip again", shown == ["pixabay:1", "pixabay:3"], shown)

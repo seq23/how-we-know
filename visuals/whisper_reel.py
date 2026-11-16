@@ -100,12 +100,16 @@ def _pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
         import whisper_lane as WL                          # noqa: PLC0415
         c = WL.cfg()
     refused = c["calm_footage"].get("refused") or {}
+    # Only the set's CURRENT subjects (16 Nov 2026): a subject taken out of
+    # config (the night sky and stars: the brand says no starfields, and two
+    # Neville renders failed on one) takes its harvested clips out with it.
+    allowed = {e["subject"].lower() for e in c["calm_footage"]["sets"].get(name, [])}
     by: dict[str, list[dict]] = {}
     for a in assets:
         # Only clips that hold a whole shot: a shorter one is never placed,
         # and counting it would let the long ones crowd the screen.
         if (a.get("calm_set") == name and float(a.get("seconds") or 0) >= SHOT_S + 1.0
-                and a.get("post_id") not in refused):
+                and a.get("post_id") not in refused and subject(a) in allowed):
             by.setdefault(subject(a), []).append(a)
     out, k = [], 0
     while any(k < len(v) for v in by.values()):
