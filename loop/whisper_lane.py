@@ -446,10 +446,12 @@ def description(p: dict, seconds: float, c: dict | None = None,
     c = c or cfg()
     e = episode_cfg(p, c)
     lane = lane_of(p, c)
+    painted = any("slow painting" in x for x in (credits or []))   # visuals/whisper_render.PAINT_CREDIT
+    picture = ("a slow, dim painting that grows stroke by stroke" if painted else
+               f"dim, slow footage{' of the real thing' if p['kind'] == 'sleep' else ''}")
     lines = [e["hook"],
              c["channel"]["ai_voice_line"],
-             f"{length_label(seconds)} of soft whispering over dim, slow footage"
-             f"{' of the real thing' if p['kind'] == 'sleep' else ''}, no music.",
+             f"{length_label(seconds)} of soft whispering over {picture}, no music.",
              ""]
     ch = chapters(p, seg_starts)
     if ch:
@@ -661,7 +663,8 @@ def thumbnail_problems(paths: list[Path], c: dict | None = None) -> list[str]:
 
 
 UPLOAD_KEYS = ("uploaded", "video_id", "uploaded_at", "privacy", "scheduled_publish_at",
-               "publish_at_ct", "youtube_confirmed", "frame_check", "pruned", "repairs")
+               "publish_at_ct", "youtube_confirmed", "frame_check", "pruned", "repairs",
+               "picture", "render_s")
 
 
 def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | None = None,
@@ -844,6 +847,28 @@ def footage_set(p: dict, c: dict | None = None) -> str | None:
     return c["calm_footage"]["lanes"][lane_of(p, c)]
 
 
+def picture_for(slug: str, p: dict, c: dict | None = None) -> str:
+    """"paint" or "footage" for the next render of SLUG (her ruling 16 Nov
+    2026, config `paint`). Forward only: a kit that already names its picture
+    keeps it, and a script rendered before (a frame check, a reel, a repair,
+    a render or a set-aside file on disk) keeps footage. A new manifesting
+    video in a paint lane is painted until the day-30 verdict says footage."""
+    c = c or cfg()
+    k = KITS / slug / "kit.json"
+    prev = json.loads(k.read_text()) if k.exists() else {}
+    if prev.get("picture"):
+        return prev["picture"]
+    pc = c.get("paint") or {}
+    v = video_path(slug)
+    made_before = (any(prev.get(x) for x in ("frame_check", "reel", "repairs", "video_id"))
+                   or v.exists() or v.with_name(v.name + ".frame-check-failed").exists())
+    verdict = ((channel_numbers().get("paint_trial") or {}).get("verdict"))
+    if p["kind"] == "sleep" or made_before or verdict == "footage" \
+            or lane_of(p, c) not in pc.get("lanes", []):
+        return "footage"
+    return "paint"
+
+
 def wrong_footage(p: dict, c: dict | None = None) -> bool:
     """A manifesting render made without its lane's footage set (before
     9 Nov 2026 they took deep-sea footage): it goes back in the queue and is
@@ -852,6 +877,8 @@ def wrong_footage(p: dict, c: dict | None = None) -> bool:
     if not want or not video_path(p["slug"]).exists():
         return False
     k = KITS / p["slug"] / "kit.json"
+    if k.exists() and json.loads(k.read_text()).get("picture") == "paint":
+        return False                       # a painted video has no footage set
     return not k.exists() or json.loads(k.read_text()).get("footage_set") != want
 
 

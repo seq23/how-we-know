@@ -462,6 +462,12 @@
     "max_per_run": 3,
     "min_lead_hours": 2
   },
+  "paint": {
+    "_why": "Her ruling 16 Nov 2026: every NEW manifesting video (Neville, Money) shows a slow abstract painting made in code (visuals/whisper_paint.py) for judge_after_days from the first paint upload, then it is judged on the channel's own numbers (average % viewed, average view duration, share still watching at 5 min); footage returns only if paint clearly underperforms (worse_than below, on both % viewed and view duration). Forward only: a video already rendered keeps its picture, nothing is re-rendered ('we wont go back and redo anything if it passes the test only move forward'). Sleep history, ocean and food keep their subject footage. Read by loop/whisper_lane.picture_for and loop/whisper_scorecard.paint_verdict.",
+    "lanes": ["neville", "money"],
+    "judge_after_days": 30,
+    "worse_than": 0.8
+  },
   "teachings": {
     "why": "Her rulings 9 Nov 2026: guided whispered sessions BUILT ON a teacher's techniques, never a straight reading: a short plain explanation in our own words, a few of the teacher's own lines (only from titles cleared in config/teacher_rights.json), then a long guided section to fall asleep in the wish fulfilled. Every script differs in structure (shape + scene), not only topic. Read by loop/teachings.py and loop/whisper_author.py.",
     "shapes": {

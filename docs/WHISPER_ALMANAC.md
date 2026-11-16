@@ -59,6 +59,13 @@
 - `python loop/whisper_scorecard.py report` prints the lanes, the week's mix and the click rates from the last read.
 - **Once monetised** (her channel reads 1,000+ subscribers and 4,000+ watch hours): the mix moves to **ocean 2 + food 1 + money 2** (ocean takes Thu, which Neville frees); the watch-hour rule still applies.
 
+### The slow painting (her ruling 16 Nov 2026)
+
+- **Every NEW manifesting video (Neville, Money) shows a slow abstract painting** made in code (`visuals/whisper_paint.py`, $0): one soft warm stroke every 4–8 s fading in over 2–3 s, no cuts, 10–20 % brightness, amber/ochre/umber/deep rose, no blue, no pure white; a different painting per video, seeded by its topic; our own marks, never copied from anyone's paintings.
+- **Forward only:** a video already rendered keeps its picture; nothing is re-rendered (her words: "we wont go back and redo anything if it passes the test only move forward"). Sleep history, ocean and food keep their subject footage. `loop/whisper_lane.picture_for` decides; the kit records `picture` and the measured `render_s`.
+- **Its own frame gate** (`visuals/whisper_frame_check.check_paint`): no words, no black bars, brightness band, no white, no blue, all measured in code.
+- **Day 30** from the first paint video going public, `loop/whisper_scorecard.paint_verdict` judges once on the channel's own numbers (average % viewed, average view duration, share still watching at 5 min, paint vs footage manifesting videos) and puts one line in her morning email. Footage returns for new videos only if paint is under 0.8× footage on both % viewed and view duration (config `paint`).
+
 ### Channel face (16 Nov 2026)
 
 - **Avatar, banner, About, keywords:** `loop/whisper_branding.py build` draws the avatar (800×800, the flame in a dark circle) and banner (2560×1440, the wordmark with its flame inside the 1546×423 safe area) from the approved brand; `apply` sets the banner, About text and keywords (`config/whisper_almanac.json` `about`) by API. The profile picture has no API: uploaded once in YouTube Studio from `channel/whisper/branding/avatar.png`.

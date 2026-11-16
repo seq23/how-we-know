@@ -183,6 +183,63 @@ def check(video: str, subject: str, judge=None, reader=None, luma=None,
         shutil.rmtree(work, ignore_errors=True)
 
 
+# THE PAINT GATE (her ruling 16 Nov 2026). A painted manifesting video is a
+# graphic by design, so the judge's "real footage" question cannot apply; its
+# own rules, every one measured in code (no model, never unavailable):
+#   * no word on screen (OCR) and no black bars, as above;
+#   * mean luma inside PAINT_LUMA (10-20 % of 255): dim, never a dark screen;
+#   * no pure white: under PAINT_WHITE_MAX of pixels at 240+ on every channel;
+#   * warm only: under PAINT_BLUE_MAX of lit pixels blue-dominant.
+PAINT_LUMA = (0.10, 0.20)
+PAINT_WHITE_MAX = 0.001
+PAINT_BLUE_MAX = 0.01
+
+
+def paint_frame_problem(path: str) -> str | None:
+    """The first paint rule this frame breaks, or None."""
+    import numpy as np                                      # noqa: PLC0415
+    from PIL import Image                                   # noqa: PLC0415
+    a = np.asarray(Image.open(path).convert("RGB"), dtype=np.float32)
+    r, g, b = a[..., 0], a[..., 1], a[..., 2]
+    y = float((r * 0.299 + g * 0.587 + b * 0.114).mean() / 255.0)
+    if not PAINT_LUMA[0] <= y <= PAINT_LUMA[1]:
+        return f"brightness {y:.1%} outside {PAINT_LUMA[0]:.0%}-{PAINT_LUMA[1]:.0%}"
+    white = float(((r >= 240) & (g >= 240) & (b >= 240)).mean())
+    if white > PAINT_WHITE_MAX:
+        return f"pure white on {white:.2%} of the frame"
+    lit = (r + g + b) > 60
+    blue = float(((b > r + 8) & (b > g + 8) & lit).sum() / max(1, lit.sum()))
+    if blue > PAINT_BLUE_MAX:
+        return f"blue on {blue:.1%} of the painted area"
+    return None
+
+
+def check_paint_frames(frames: list[tuple[float, str]], reader=None) -> dict:
+    if not frames:
+        raise PictureCheckFailed("PICTURE_CHECK_FAILED: no frame was sampled", [])
+    reader = reader or FC.text_on_screen
+    paths = [p for _, p in frames]
+    texts, bars = reader(paths), FC.black_bars(paths)
+    hard: list[tuple[float, str]] = []
+    for t, p in frames:
+        why = (f"text on screen: {texts[p]!r}" if p in texts else bars.get(p) if p in bars
+               else paint_frame_problem(p))
+        if why:
+            hard.append((t, why))
+    if hard:
+        raise PictureCheckFailed("PICTURE_CHECK_FAILED (paint gate) at "
+                                 + ", ".join(f"{FC.stamp(t)} ({w})" for t, w in hard[:6]), hard)
+    return {"frames": len(frames), "gate": "paint"}
+
+
+def check_paint(video: str, reader=None, every: float = FC.SAMPLE_EVERY) -> dict:
+    work = tempfile.mkdtemp(prefix="whisper-paint-frames-")
+    try:
+        return check_paint_frames(FC.sample(video, work, every), reader)
+    finally:
+        shutil.rmtree(work, ignore_errors=True)
+
+
 def main(argv: list[str]) -> int:
     """SLUG [--restore]: check the render; with --restore, a render set aside
     by a failed check goes back in line when it now passes (the upload step
@@ -199,7 +256,8 @@ def main(argv: list[str]) -> int:
         print(f"NAMED STOP WHISPER_RENDER_MISSING: {src} does not exist")
         return 3
     try:
-        r = check(str(src), WU.subject(slug, c))
+        r = (check_paint(str(src)) if WU.read_kit(slug).get("picture") == "paint"
+             else check(str(src), WU.subject(slug, c)))
     except (PictureCheckFailed, FrameCheckUnavailable) as e:
         print(f"NAMED STOP {e}"[:1500])
         return 3
@@ -208,8 +266,8 @@ def main(argv: list[str]) -> int:
         k = WU.read_kit(slug)
         k["frame_check"] = {"passed": True, "file": WU.fingerprint(video),
                             "at": WU.stamp(dt.datetime.now(dt.timezone.utc)),
-                            "frames": r["frames"], "subject_share": r["subject_share"],
-                            "gate": "whisper"}
+                            "frames": r["frames"], "subject_share": r.get("subject_share"),
+                            "gate": r.get("gate", "whisper")}
         WU.write_kit(slug, k)
         r["restored"] = str(video)
     print(json.dumps(r))

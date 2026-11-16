@@ -104,6 +104,8 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     dur = min(total, proof_seconds) if proof_seconds else total
     out = WL.video_path(slug) if not proof_seconds else WL.WORK / slug / f"{slug}-proof.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
+    if WL.picture_for(slug, p, c) == "paint":
+        return render_paint(slug, p, c, wavs, total, seg_starts, dur, out, proof_seconds)
     fset = WL.footage_set(p, c)
     segs = segments(p, c, seg_secs, dur)
     import footage as F                                     # noqa: PLC0415
@@ -146,6 +148,43 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
         tmp.replace(out)
     print(f"rendered {out.relative_to(ROOT)}: {WL.fmt_len(dur)}, "
           f"{out.stat().st_size / 2**20:.0f} MiB; title: {kit['title']}")
+    return out
+
+
+PAINT_CREDIT = "Picture: a slow painting made for this video by Whisper Almanac."
+
+
+def render_paint(slug: str, p: dict, c: dict, wavs: list[Path], total: float,
+                 seg_starts: list[float], dur: float, out: Path, proof_seconds: float | None) -> Path:
+    """Her ruling 16 Nov 2026: a NEW manifesting video shows a slow painting
+    (visuals/whisper_paint.py), seeded by its own slug. The kit records
+    picture=paint (so it is never re-rendered with anything else) and the
+    measured render time."""
+    import time                                             # noqa: PLC0415
+    import whisper_paint as WP                              # noqa: PLC0415
+    kit = WL.kit(slug, measured_s=total, seg_starts=seg_starts, c=c,
+                 footage_credits=None if proof_seconds else [PAINT_CREDIT])
+    t0 = time.monotonic()
+    with tempfile.TemporaryDirectory(dir=out.parent) as td:
+        lst = Path(td) / "beats.txt"
+        lst.write_text("".join(f"file '{w}'\n" for w in wavs))
+        voice = Path(td) / "voice.wav"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
+                        "-t", f"{dur:.3f}", str(voice)], check=True)
+        tmp = out.with_suffix(".tmp.mp4")
+        WP.render(slug, dur, tmp, voice)
+        got = WL._probe_seconds(tmp)
+        if abs(got - dur) > 2.0:
+            tmp.unlink()
+            raise SystemExit(f"NAMED STOP [WHISPER_RENDER_SHORT] rendered {got:.1f}s of {dur:.1f}s")
+        tmp.replace(out)
+    took = round(time.monotonic() - t0, 1)
+    if not proof_seconds:
+        kit.update({"picture": "paint", "render_s": took})
+        kit.pop("footage_set", None)
+        (WL.KITS / slug / "kit.json").write_text(json.dumps(kit, indent=2, ensure_ascii=False) + "\n")
+    print(f"rendered {out.relative_to(ROOT)}: {WL.fmt_len(dur)}, slow painting, "
+          f"{out.stat().st_size / 2**20:.0f} MiB in {took / 60:.1f} min; title: {kit['title']}")
     return out
 
 
