@@ -611,6 +611,10 @@ narrating and rendering carry on, so nothing has to be rebuilt when it closes.
   retention below the floor for consecutive videos (`retention`), one subject
   area below its floor while others hold (`domain`), a channel strike
   (`strike`), or you by hand (`manual`).
+- **One channel per trip (16 Nov 2026).** A trip belongs to How We Know unless
+  thrown with `--channel whisper-almanac`; it halts only that channel's lanes.
+  A How We Know trip never stops Whisper Almanac's `whisper-upload`
+  (`loop/tests/test_breaker_channel_scope.py`).
 - **Every cause halts every lane below, Shorts included.** The breaker has no
   per-cause exemption, so a retention trip holds the daily Shorts as well as
   the episodes (decided 2026-10-12: `loop/breaker.py` says publishing halts

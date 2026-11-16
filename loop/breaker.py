@@ -21,7 +21,9 @@ YouTube or flips a video public, plus the old weekly render script.
 loop/tests/test_cloud_lanes_honour_breaker.py proves each file really calls
 guard() with that stage name and that RUNBOOK.md "The circuit breaker" lists
 every one. Every cause halts every one of them: the breaker has no per-cause exemption,
-so a retention trip holds Shorts as well as episodes. Already-scheduled
+so a retention trip holds Shorts as well as episodes. A trip is scoped to ONE
+channel (16 Nov 2026, STAGE_CHANNEL): a How We Know trip never halts Whisper
+Almanac's whisper-upload, and an Almanac trip never halts How We Know. Already-scheduled
 YouTube items are left alone; nothing is un-scheduled.
 """
 from __future__ import annotations
@@ -75,6 +77,33 @@ GUARDED = {
     "shorts": "loop/shorts_lane.py",          # Mac, bin/loop-shorts-daily.sh
     "tue-render": "bin/loop-tuesday.sh",      # Mac, old weekly render
 }
+
+# WHICH CHANNEL A TRIP BELONGS TO (16 Nov 2026). Every cause above is
+# measured on, or protects, ONE channel: measure.py reads How We Know's own
+# retention, domains and strikes, and draft.py's validators check How We Know
+# scripts. A How We Know domain trip (materials-and-manufacturing, 13 Nov)
+# halted Whisper Almanac's upload on 14 and 15 Nov while a finished Almanac
+# render waited. A trip now records its channel (default How We Know, which
+# every trip before this date was) and halts only the stages that publish to
+# that channel. loop/tests/test_breaker_channel_scope.py proves it both ways.
+DEFAULT_CHANNEL = "how-we-know"
+CHANNELS = (DEFAULT_CHANNEL, "whisper-almanac")
+STAGE_CHANNEL = {"whisper-upload": "whisper-almanac", "whisper-shorts": "whisper-almanac"}
+
+
+def channel_of(stage_name: str) -> str:
+    return STAGE_CHANNEL.get(stage_name, DEFAULT_CHANNEL)
+
+
+def halts(b: dict, stage_name: str) -> bool:
+    """Does this tripped record halt this stage? Only a trip (or an extra
+    cause in `also`) for the channel the stage publishes to."""
+    if b.get("state") != "tripped":
+        return False
+    ch = channel_of(stage_name)
+    return any((t.get("channel") or DEFAULT_CHANNEL) == ch
+               for t in [b, *b.get("also", [])] if t.get("cause"))
+
 
 CLOSED = {"state": "closed", "tripped_at": None, "cause": None,
           "detail": None, "history": []}
@@ -158,19 +187,22 @@ def is_tripped() -> bool:
     return load().get("state") == "tripped"
 
 
-def trip(cause: str, detail: str) -> dict:
+def trip(cause: str, detail: str, channel: str = DEFAULT_CHANNEL) -> dict:
     if cause not in CAUSES:
         raise SystemExit(f"unknown cause {cause!r}; one of {sorted(CAUSES)}")
+    if channel not in CHANNELS:
+        raise SystemExit(f"unknown channel {channel!r}; one of {list(CHANNELS)}")
     b = load()
     if b["state"] == "tripped":
         # Already open. Record the additional cause; do not lose the first one.
         b.setdefault("also", []).append(
-            {"at": now(), "cause": cause, "detail": detail})
+            {"at": now(), "cause": cause, "detail": detail, "channel": channel})
     else:
         b.update({"state": "tripped", "tripped_at": now(),
-                  "cause": cause, "detail": detail})
+                  "cause": cause, "detail": detail, "channel": channel})
         b.setdefault("history", []).append(
-            {"event": "trip", "at": now(), "cause": cause, "detail": detail})
+            {"event": "trip", "at": now(), "cause": cause, "detail": detail,
+             "channel": channel})
     write_json(FLAG, b)
     return b
 
@@ -182,6 +214,7 @@ def reset(note: str) -> dict:
         {"event": "reset", "at": now(), "cleared_cause": was, "note": note})
     b.update({"state": "closed", "tripped_at": None, "cause": None,
               "detail": None})
+    b.pop("channel", None)
     b.pop("also", None)
     b.pop("reported_by", None)      # the cascade owner belongs to one trip only
     write_json(FLAG, b)
@@ -341,6 +374,11 @@ def guard(stage_name: str) -> None:
                         "--note ...` once the work it waits for is on main.")
     if b.get("state") != "tripped":
         return
+    if not halts(b, stage_name):
+        print(f"  [note] breaker tripped for {b.get('channel') or DEFAULT_CHANNEL} "
+              f"({b.get('cause')}); {stage_name} publishes to "
+              f"{channel_of(stage_name)} and is not halted by it", flush=True)
+        return
     healed = autoreset()
     if healed and healed.get("reset"):
         return
@@ -396,6 +434,7 @@ def main() -> int:
     t = sub.add_parser("trip")
     t.add_argument("--cause", required=True, choices=sorted(CAUSES))
     t.add_argument("--detail", required=True)
+    t.add_argument("--channel", default=DEFAULT_CHANNEL, choices=CHANNELS)
     r = sub.add_parser("reset")
     r.add_argument("--note", required=True)
     g = sub.add_parser("guard")
@@ -447,7 +486,7 @@ def main() -> int:
         return EXIT_OK
 
     if a.cmd == "trip":
-        b = trip(a.cause, a.detail)
+        b = trip(a.cause, a.detail, a.channel)
         print(f"breaker TRIPPED: {b['cause']} — {b['detail']}")
         print("publishing is halted. Drafting and rendering are unaffected.")
         summary(f"### ⛔ Circuit breaker TRIPPED — {a.cause}\n{a.detail}\n")

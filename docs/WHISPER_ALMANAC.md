@@ -18,7 +18,7 @@
 | **Food history** (Tue) | 1 (floor 1) | 2 h | How We Know's fact-checked food scripts told as history; title e.g. "ASMR whispered food history for deep sleep · how we learned why bread rises (2 hr)" |
 | **Ocean documentary** (Fri) | 1 (floor 1) | 2 h | How We Know's deep-sea scripts framed around a PLACE (midnight zone, ocean floor, trench), never single-animal facts; title says "deep sea documentary"; NOAA Ocean Exploration footage first |
 | **Materials** | 0, not in rotation | 2 h | One test later (history of an everyday thing), then judge |
-| **Shorts** | none yet | — | **No Almanac Shorts path exists** (How We Know's Shorts cutter is not wired for the Almanac); a later build |
+| **Shorts** | 1 per video | ≤ 58 s | Built 16 Nov 2026 (`loop/whisper_shorts.py`, in the batch right after `whisper-upload`): the episode's opening, centre-cropped to 1080×1920, private with the episode's own publish date, altered-content box ticked, the AI line first and a link to the full video. 1,600 units, only from what is left above How We Know's reserves (`quota.deferrable_reserve`); the render is kept until its Short exists (3 nights at most). OUTPUT line every run; WHISPER_SHORTS_NOTHING_TO_CUT (green), WHISPER_SHORT_FAILED (red) |
 
 - **Where it lives:** `config/whisper_almanac.json` (`lanes`, `mix`, `teachings`, `affirmations.topics`), read by `loop/whisper_lane.py` (which script the Mac voices next) and `loop/whisper_author.py` (what gets written). No new job: the 23:00 batch and the Wednesday author.
 
@@ -58,6 +58,11 @@
 - **48-hour click-rate check** (same yes): a video public 48+ hours with a thumbnail click rate under 4% on 100+ impressions gets one line in her morning email's Notices, once: swap the thumbnail in Test & Compare (`click_rate`; impressions come from the YouTube Reporting API, whose first reports arrive up to 48 hours after the first run).
 - `python loop/whisper_scorecard.py report` prints the lanes, the week's mix and the click rates from the last read.
 - **Once monetised** (her channel reads 1,000+ subscribers and 4,000+ watch hours): the mix moves to **ocean 2 + food 1 + money 2** (ocean takes Thu, which Neville frees); the watch-hour rule still applies.
+
+### Channel face (16 Nov 2026)
+
+- **Avatar, banner, About, keywords:** `loop/whisper_branding.py build` draws the avatar (800×800, the flame in a dark circle) and banner (2560×1440, the wordmark with its flame inside the 1546×423 safe area) from the approved brand; `apply` sets the banner, About text and keywords (`config/whisper_almanac.json` `about`) by API. The profile picture has no API: uploaded once in YouTube Studio from `channel/whisper/branding/avatar.png`.
+- **Breaker:** How We Know's circuit breaker no longer halts the Almanac (a trip names its channel; `loop/tests/test_breaker_channel_scope.py`). On 14 and 15 Nov a How We Know domain trip had stopped `whisper-upload`.
 
 ### Description links
 
