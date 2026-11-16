@@ -177,6 +177,19 @@ check("b. the older episode's queue goes first",
       yt2.inserted and "LONG1" in yt2.inserted[0]["snippet"]["description"].split("\n")[1] if
       S["per_video"] > S["max_per_run"] else True)
 
+# b2. a Short never goes public before the day after its parent video
+sandbox("b2")
+thu = "2026-11-20T02:00:00Z"                                         # Thu 19 Nov 20:00 CT
+episode("ep-thu", scheduled_publish_at=thu)
+yt = FakeYT()
+rc, rec = run(yt)                                                   # Mon 16 Nov
+days = sorted(ct(b["status"]["publishAt"]).date() for b in yt.inserted)
+check("b2. a Thursday video's Shorts start Friday, never Mon-Wed",
+      days and days[0] == dt.date(2026, 11, 20) and all(d > dt.date(2026, 11, 19) for d in days), days)
+check("b2. still one a day at 19:00 CT",
+      len(set(days)) == len(days) and all(ct(b["status"]["publishAt"]).strftime("%H:%M") == "19:00"
+                                           for b in yt.inserted), days)
+
 # c. prune waits for the cut
 sandbox("c")
 episode("ep-c")
