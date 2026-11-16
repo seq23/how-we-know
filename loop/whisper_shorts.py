@@ -21,7 +21,8 @@ config/whisper_almanac.json.
   * THE QUEUE: the cut files wait on the Mac (renders/whisper/<slug>/shorts/,
     recorded in the kit's `shorts`), oldest first.
   * THE CALENDAR: each Short goes up private with its own publish date,
-    `per_day` a day at `publish_time_ct`, the next day that has none; altered
+    `per_day` a day at `publish_time_ct`, the next day that has none and
+    never before the day after its parent video goes public; altered
     content = yes, made for kids = no, the AI-voice line first and a link to
     the full video.
   * THE SUPPLY GATE: nothing is dated more than `max_days_ahead` days out
@@ -181,8 +182,11 @@ def dated(ks: dict) -> list[_dt.datetime]:
             if r.get("publish_at")]
 
 
-def next_slot(ks: dict, now: _dt.datetime, s: dict) -> _dt.datetime:
-    """The first day from now (with the lead) holding fewer than per_day Shorts."""
+def next_slot(ks: dict, now: _dt.datetime, s: dict, parent_at: _dt.datetime | None = None) -> _dt.datetime:
+    """The first day from now (with the lead) holding fewer than per_day
+    Shorts, and never before the day AFTER its parent video goes public
+    (16 Nov 2026: three Shorts were dated Mon-Wed for a Thursday video, so
+    their "full video" link pointed at a private video)."""
     hh, mm = (int(x) for x in s["publish_time_ct"].split(":"))
     taken: dict[_dt.date, int] = {}
     for t in dated(ks):
@@ -190,6 +194,8 @@ def next_slot(ks: dict, now: _dt.datetime, s: dict) -> _dt.datetime:
         taken[d] = taken.get(d, 0) + 1
     earliest = now + _dt.timedelta(hours=s["min_lead_hours"])
     day = earliest.astimezone(WU.CT).date()
+    if parent_at:
+        day = max(day, parent_at.astimezone(WU.CT).date() + _dt.timedelta(days=1))
     for _ in range(400):
         slot = _dt.datetime(day.year, day.month, day.day, hh, mm, tzinfo=WU.CT)
         if slot >= earliest and taken.get(day, 0) < s["per_day"]:
@@ -263,7 +269,8 @@ def run(now: _dt.datetime | None = None, yt=None, cutter=None) -> int:
                               unblock=WU.REAUTH)
             yt = WU.YouTube(creds)
         for slug, row in todo[:s["max_per_run"]]:           # 2. date them, one a day
-            slot = next_slot(ks, now, s)
+            k = ks[slug]
+            slot = next_slot(ks, now, s, WU._utc(k.get("scheduled_publish_at")))
             if slot > now + _dt.timedelta(days=s["max_days_ahead"]):
                 hold = (f"Shorts are dated through {_through(ks)}, the {s['max_days_ahead']}-day "
                         f"limit; {len(todo) - made} wait on the Mac")
@@ -271,7 +278,6 @@ def run(now: _dt.datetime | None = None, yt=None, cutter=None) -> int:
             if not afford():
                 hold = hold or f"no quota above How We Know's reserve tonight. {WU.quota_line()}"
                 break
-            k = ks[slug]
             f = shorts_dir(slug) / row["file"]
             b = body(k, row, c)
             when = WU.stamp(slot)
