@@ -103,15 +103,35 @@ def next_reset() -> str:
     return midnight.isoformat(timespec="seconds")
 
 
-def _load() -> dict:
-    if not STATE.exists():
+# WHISPER ALMANAC'S OWN DAY (16 Nov 2026, her call): its uploads bill Google
+# Cloud project whisper-almanac-uploads, a separate 10,000 units, once its
+# token was granted through that project's client (token field "project",
+# written by auth/whisper_youtube_auth.py). Its spends then go to this ledger
+# and never count against How We Know's, and How We Know's reserves no longer
+# apply to it. loop/tests/test_whisper_own_quota.py.
+WHISPER_STATE = STATE.with_name("whisper_quota.json")
+WHISPER_PROJECT = "whisper-almanac-uploads"
+
+
+def own_affordable(units: int) -> bool:
+    """Whisper Almanac's own day: room for `units` more (HEADROOM kept)."""
+    return DAILY - HEADROOM - _load(WHISPER_STATE)["spent"] >= units
+
+
+def own_spend(units: int, lane: str) -> None:
+    spend(units, lane, WHISPER_STATE)
+
+
+def _load(path: Path | None = None) -> dict:
+    STATE_ = path or STATE
+    if not STATE_.exists():
         return {"day": _today(), "spent": 0, "by_lane": {}}
     # Through common.read_json, NOT json.loads, so that an unreadable
     # quota.json raises CorruptState and Stage turns it into a named stop that
     # says WHICH FILE. This bare json.loads is the line that crashed the
     # localize lane on 2026-09-03 (run 33783829147) with a traceback naming
     # neither the file nor the git conflict that caused it.
-    d = read_json(STATE, default={"day": _today(), "spent": 0, "by_lane": {}})
+    d = read_json(STATE_, default={"day": _today(), "spent": 0, "by_lane": {}})
     if d.get("day") != _today():                  # a new quota day
         return {"day": _today(), "spent": 0, "by_lane": {}}
     return d
@@ -229,13 +249,14 @@ def units_affordable(unit_cost: int, want: int, reserve: int = 0) -> int:
     return max(0, min(want, (remaining() - max(0, reserve)) // unit_cost))
 
 
-def spend(units: int, lane: str) -> None:
+def spend(units: int, lane: str, path: Path | None = None) -> None:
     """Record units actually spent. Called AFTER the work, never before."""
-    d = _load()
+    path = path or STATE
+    d = _load(path)
     d["spent"] += units
     d["by_lane"][lane] = d["by_lane"].get(lane, 0) + units
-    STATE.parent.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps(d, indent=2) + "\n")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(d, indent=2) + "\n")
 
 
 def report() -> str:

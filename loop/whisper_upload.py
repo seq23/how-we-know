@@ -453,14 +453,35 @@ class YouTube:
         urllib.request.urlopen(req, timeout=120).read()
 
 
+def own_quota(c: dict | None = None) -> bool:
+    """The token was granted through the Almanac's own Google Cloud project,
+    so its uploads bill their own 10,000 units (loop/quota.WHISPER_STATE)."""
+    import quota                                            # noqa: PLC0415
+    creds = credentials(c or WL.cfg())
+    return bool(creds and creds.get("project") == quota.WHISPER_PROJECT)
+
+
+def afford_units(units: int, shared_reserve) -> bool:
+    """Room for `units` today: on the Almanac's own day when its token is on
+    its own project, else above How We Know's `shared_reserve()`."""
+    import quota                                            # noqa: PLC0415
+    if own_quota():
+        return quota.own_affordable(units)
+    return quota.units_affordable(units, 1, reserve=shared_reserve()) > 0
+
+
+def book(units: int, lane: str) -> None:
+    import quota                                            # noqa: PLC0415
+    (quota.own_spend if own_quota() else quota.spend)(units, lane)
+
+
 def afford() -> bool:
     import quota                                            # noqa: PLC0415
-    return quota.videos_affordable(1, reserve=quota.shorts_reserve()) > 0
+    return afford_units(quota.PER_VIDEO, quota.shorts_reserve)
 
 
 def spend(units: int) -> None:
-    import quota                                            # noqa: PLC0415
-    quota.spend(units, LANE)
+    book(units, LANE)
 
 
 def quota_line() -> str:

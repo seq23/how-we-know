@@ -3,9 +3,12 @@
 
     .venv/bin/python auth/whisper_youtube_auth.py
 
-Reuses the How We Know OAuth client (.secrets/client_secret.json; its
-scheduled uploads go public, measured 6 Nov 2026) with the same YouTube
-scopes. Sign in with the Google account that owns both channels and, when Google asks which
+Uses the Almanac's OWN OAuth client (.secrets/client_secret_whisper.json,
+Google Cloud project whisper-almanac-uploads, in production since 16 Nov
+2026), so its uploads bill their own 10,000-unit daily quota, never How We
+Know's; same YouTube scopes. The project is unverified: Google shows "Google
+hasn't verified this app" - click Advanced, then "Go to Whisper Almanac
+Uploader". Sign in with the Google account that owns both channels and, when Google asks which
 channel, pick Whisper Almanac (@whisperalmanac) - NOT How We Know Deep.
 
 Saves .secrets/whisper_youtube_token.json (gitignored) and, when `gh` is
@@ -33,9 +36,10 @@ HANDLE = "@whisperalmanac"
 
 
 def main() -> int:
-    client = T.load_client()
+    client = T.load_client(T.WHISPER_CLIENT_FILE)
     if not client:
-        print("NAMED STOP [OAUTH_CLIENT_MISSING] no .secrets/client_secret.json on this Mac")
+        print(f"NAMED STOP [OAUTH_CLIENT_MISSING] no {T.WHISPER_CLIENT_FILE} on this Mac "
+              f"(the Desktop client of Google Cloud project whisper-almanac-uploads)")
         return 3
     T.EXPECTED_HANDLE = f"{HANDLE} (pick Whisper Almanac on the channel screen)"
     got = Y.consent(client)
@@ -52,7 +56,8 @@ def main() -> int:
               f"{HANDLE}; nothing saved. Run it again and pick Whisper Almanac.")
         return 3
     tok = {"client_id": client["client_id"], "client_secret": client["client_secret"],
-           "refresh_token": got["refresh_token"], "scopes": T.SCOPES, "channel": HANDLE}
+           "refresh_token": got["refresh_token"], "scopes": T.SCOPES, "channel": HANDLE,
+           "project": "whisper-almanac-uploads"}     # loop/quota.WHISPER_PROJECT: its own quota day
     T.safe_write(OUT, tok)
     print(f"saved {OUT.relative_to(ROOT)} for {HANDLE}")
     r = subprocess.run(["gh", "secret", "set", "WHISPER_YT_TOKEN_JSON", "-R", "seq23/how-we-know"],

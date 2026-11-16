@@ -26,9 +26,10 @@ config/whisper_almanac.json.
     the full video.
   * THE SUPPLY GATE: nothing is dated more than `max_days_ahead` days out
     (WHISPER_SHORTS_HOLD, green); the cut files wait.
-  * QUOTA: the shared 10,000-unit day. A Short spends 1,601 units and only from
-    what is left above loop/quota.deferrable_reserve() (How We Know's episode
-    and Shorts slots stay whole); short of that it is UPLOAD_QUOTA and the
+  * QUOTA: 1,601 units a Short. On the Almanac's own Google Cloud project
+    (whisper-almanac-uploads, 16 Nov 2026) from its own 10,000-unit day;
+    before its token moves there, only above How We Know's
+    loop/quota.deferrable_reserve(). Short of that it is UPLOAD_QUOTA and the
     next night goes on.
   * OUTPUT line every run (scheduled, queued, dated through). An empty queue is
     NAMED STOP WHISPER_SHORTS_QUEUE_EMPTY (a day may go without a Short); a
@@ -206,12 +207,11 @@ def queue(ks: dict) -> list[tuple[str, dict]]:
 
 def afford() -> bool:
     import quota                                            # noqa: PLC0415
-    return quota.units_affordable(UNITS, 1, reserve=quota.deferrable_reserve()) > 0
+    return WU.afford_units(UNITS, quota.deferrable_reserve)
 
 
 def spend(units: int) -> None:
-    import quota                                            # noqa: PLC0415
-    quota.spend(units, LANE)
+    WU.book(units, LANE)
 
 
 def _through(ks: dict) -> str:

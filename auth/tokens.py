@@ -122,12 +122,20 @@ def safe_write(path: Path, obj: dict) -> None:
 
 # ------------------------------------------------------------ client config
 
-def load_client() -> dict | None:
-    """The Desktop-app OAuth client she downloads. None if absent."""
-    if not CLIENT_FILE.exists():
+# Whisper Almanac's own Google Cloud project (whisper-almanac-uploads, her
+# call 16 Nov 2026): its uploads bill their own 10,000-unit day, never How We
+# Know's. auth/whisper_youtube_auth.py reads this client and nothing else.
+WHISPER_CLIENT_FILE = SECRETS / "client_secret_whisper.json"
+
+
+def load_client(path: Path | None = None) -> dict | None:
+    """The Desktop-app OAuth client she downloads (How We Know's by default;
+    a channel with its own project passes its own file). None if absent."""
+    path = path or CLIENT_FILE
+    if not path.exists():
         return None
     try:
-        raw = json.loads(CLIENT_FILE.read_text())
+        raw = json.loads(path.read_text())
     except json.JSONDecodeError:
         return None
     c = raw.get("installed") or raw.get("web") or raw
