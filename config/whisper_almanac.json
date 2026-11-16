@@ -793,6 +793,7 @@
     "why": "Her yes 11 Nov 2026: a long video public 48+ hours whose thumbnail click rate is under 4% (on at least 100 impressions) gets ONE line in her morning email's Notices: swap the thumbnail in Test & Compare. YouTube Studio's Test & Compare has no API, so it is a notice, never an action. Read nightly by loop/whisper_scorecard.py from the YouTube Reporting API (channel_reach_basic_a1, the report How We Know's loop/reach.py reads; the Analytics API does not serve impressions). A number YouTube has not reported reads 'not read', never 0."
   },
   "calm_footage": {
+    "_why_no_starfield": "16 Nov 2026: 'the night sky and stars' removed. The brand says no starfields, and every Neville render that failed the frame check failed on a starfield the judge read as computer-generated (inner-conversation-01 on 10 Nov, law-of-assumption-01 on 16 Nov).",
     "lanes": {
       "neville": "calm-night",
       "rotating": "calm-night",
@@ -801,20 +802,6 @@
     "per_subject": 5,
     "sets": {
       "calm-night": [
-        {
-          "subject": "the night sky and stars",
-          "queries": [
-            "night sky stars",
-            "starry sky",
-            "milky way"
-          ],
-          "accept": [
-            "star",
-            "starry sky",
-            "milky way",
-            "night sky"
-          ]
-        },
         {
           "subject": "moonlight on water",
           "queries": [
