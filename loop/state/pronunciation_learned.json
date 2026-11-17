@@ -3507,6 +3507,26 @@
     }
    ]
   },
+  "reconciliations": {
+   "at": "2026-11-17T00:04:48-06:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied reconciliations for decades.",
+     "spoken_text": "Scientists have studied reconciliations for decades.",
+     "heard": "Scientists have studied reconciliation for decades.",
+     "ratio": 0.966,
+     "ok": true
+    },
+    {
+     "carrier": "The reconciliations is what the survey measured first.",
+     "spoken_text": "The reconciliations is what the survey measured first.",
+     "heard": "The reconciliation is what the survey measured first.",
+     "ratio": 0.968,
+     "ok": true
+    }
+   ]
+  },
   "reconstruction": {
    "at": "2026-11-02T00:41:21-06:00",
    "ok": true,
