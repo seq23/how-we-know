@@ -1,0 +1,16 @@
+{
+  "stage": "mac-batch",
+  "week": "2026-W47",
+  "at": "2026-11-17T08:11:59+00:00",
+  "code": "DISK_LOW",
+  "message": "5.2 GiB free on the Mac, below the 6 GiB floor after pruning everything safe (was 5.2). No render was started. Free space on the Mac (anything outside renders/ that is not hers to keep), then the next batch renders on its own. disk guard: 5.2 GiB free (floor 6); deleted 0 uploaded render(s) proven on YouTube and R2 (0.00 GiB), moved 0 aside copies; kept 0; uploaded-render prune skipped (R2Unavailable: R2_CREDENTIALS_MISSING: R2 is not configured: CLOUDFLARE_ACCOUNT_ID is not set)",
+  "detail": null,
+  "unblock": "Read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log on the Mac.",
+  "disposition": "needs_human",
+  "disposition_why": "'DISK_LOW' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'DISK_LOW' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": []
+}

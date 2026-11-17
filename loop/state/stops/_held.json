@@ -10,6 +10,17 @@
     "reports": 3,
     "stage": "daily-runway"
   },
+  "mac-batch::DISK_LOW": {
+    "code": "DISK_LOW",
+    "first_reported_at": "2026-11-17T08:11:59+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-11-17T08:11:59+00:00",
+    "last_seen_at": "2026-11-17T08:11:59+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "mac-batch"
+  },
   "mon-draft::AUTHOR_REQUIRED": {
     "code": "AUTHOR_REQUIRED",
     "first_reported_at": "2026-09-25T17:07:24+00:00",
