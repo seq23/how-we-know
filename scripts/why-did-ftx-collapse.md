@@ -112,16 +112,15 @@ The downfall of FTX demonstrates how structural governance failures, software ba
 
 ## Chapters
 
-- 00:00 Cold open
-- 01:10 FTX customer deposits were secretly transferred to Alameda Research
-- 02:45 Alameda Research operated with unique software privileges
-- 04:15 Producer POV
-- 04:25 The valuation of FTT tokens created false solvency
-- 05:55 A withdrawal surge exposed the hidden liquidity deficit
-- 07:30 Offshore corporate structures exploited regulatory gaps
-- 09:05 What to notice in the edit
-- 09:30 Evidence limit
-- 09:55 Closing
+- 0:00 Cold open
+- 0:36 FTX customer deposits were secretly transferred to Alameda Research
+- 2:31 Alameda Research operated with unique software privileges
+- 4:15 The valuation of FTT tokens created false solvency
+- 6:07 A withdrawal surge exposed the hidden liquidity deficit
+- 7:50 Offshore corporate structures exploited regulatory gaps
+- 9:34 What to notice in the edit
+- 9:51 Evidence limit
+- 10:15 Closing
 
 ## Sources
 

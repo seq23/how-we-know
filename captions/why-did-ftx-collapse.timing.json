@@ -1,0 +1,105 @@
+{
+  "episode": "why-did-ftx-collapse",
+  "beats": 64,
+  "plan_source": "plans/why-did-ftx-collapse.json",
+  "timing": "audio",
+  "beats_measured": 64,
+  "durations_recorded": 40,
+  "duration_s": 637.525,
+  "cues": 161,
+  "chapters_real": 10,
+  "chapters_published": 9,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Producer POV (7.7s)"
+  ],
+  "drift": {
+    "mean_abs_s": 16.7,
+    "worst_abs_s": 33.5,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "FTX customer deposits were secretly transferred to Alameda Research",
+        "hand": "01:10",
+        "real": "0:36",
+        "drift_s": -33.5
+      },
+      {
+        "title": "Alameda Research operated with unique software privileges",
+        "hand": "02:45",
+        "real": "2:31",
+        "drift_s": -13.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:15",
+        "real": "4:08",
+        "drift_s": -6.8
+      },
+      {
+        "title": "The valuation of FTT tokens created false solvency",
+        "hand": "04:25",
+        "real": "4:15",
+        "drift_s": -9.1
+      },
+      {
+        "title": "A withdrawal surge exposed the hidden liquidity deficit",
+        "hand": "05:55",
+        "real": "6:07",
+        "drift_s": 12.1
+      },
+      {
+        "title": "Offshore corporate structures exploited regulatory gaps",
+        "hand": "07:30",
+        "real": "7:50",
+        "drift_s": 20.3
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:05",
+        "real": "9:34",
+        "drift_s": 29.4
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "09:30",
+        "real": "9:51",
+        "drift_s": 21.4
+      },
+      {
+        "title": "Closing",
+        "hand": "09:55",
+        "real": "10:15",
+        "drift_s": 20.6
+      }
+    ]
+  },
+  "ffprobe": null,
+  "text_checks": {
+    "beats_json": {
+      "checked": 64,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 64,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/why-did-ftx-collapse.vtt",
+    "captions/why-did-ftx-collapse.srt",
+    "captions/why-did-ftx-collapse.chapters.txt"
+  ]
+}
