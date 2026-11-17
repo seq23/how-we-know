@@ -1,23 +1,23 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-16T10:47:11.030Z",
+  "collected_at": "2026-11-17T10:43:22.410Z",
   "window_days": 28,
   "window": {
-    "start": "2026-10-17",
-    "end": "2026-11-14"
+    "start": "2026-10-18",
+    "end": "2026-11-15"
   },
   "totals": {
     "clicks": 0,
-    "impressions": 47,
-    "queries": 28,
+    "impressions": 49,
+    "queries": 30,
     "pages": 22
   },
   "sitemaps": [
     {
       "path": "https://howweknowdeep.com/sitemap.xml",
       "last_submitted": "2026-10-26T00:38:07.266Z",
-      "last_downloaded": "2026-11-05T22:33:06.890Z",
+      "last_downloaded": "2026-11-17T07:39:51.761Z",
       "errors": 0,
       "warnings": 0,
       "submitted_urls": 45
@@ -81,6 +81,13 @@
       "position": 76
     },
     {
+      "key": "greenland shark",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 1
+    },
+    {
       "key": "hadal",
       "clicks": 0,
       "impressions": 2,
@@ -97,9 +104,9 @@
     {
       "key": "hadal zone",
       "clicks": 0,
-      "impressions": 6,
+      "impressions": 8,
       "ctr": 0,
-      "position": 86.7
+      "position": 88.9
     },
     {
       "key": "hadal zone facts",
@@ -193,6 +200,13 @@
       "position": 42
     },
     {
+      "key": "the hadal zone",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 91
+    },
+    {
       "key": "things i can see",
       "clicks": 0,
       "impressions": 1,
@@ -202,16 +216,16 @@
     {
       "key": "twilight zone ocean",
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 2,
       "ctr": 0,
-      "position": 82
+      "position": 81
     },
     {
       "key": "twilight zone sea",
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 2,
       "ctr": 0,
-      "position": 73
+      "position": 75.5
     },
     {
       "key": "what lives in the deepest part of the ocean",
@@ -225,9 +239,9 @@
     {
       "key": "https://howweknowdeep.com/creatures/hadal-snailfish/",
       "clicks": 1,
-      "impressions": 12,
-      "ctr": 0.0833,
-      "position": 34.6
+      "impressions": 11,
+      "ctr": 0.0909,
+      "position": 30.6
     },
     {
       "key": "https://howweknowdeep.com/",
@@ -351,16 +365,16 @@
     {
       "key": "https://howweknowdeep.com/zones/hadal/",
       "clicks": 0,
-      "impressions": 41,
+      "impressions": 42,
       "ctr": 0,
-      "position": 36.7
+      "position": 38.5
     },
     {
       "key": "https://howweknowdeep.com/zones/midnight/",
       "clicks": 0,
-      "impressions": 10,
+      "impressions": 11,
       "ctr": 0,
-      "position": 63.5
+      "position": 57.8
     },
     {
       "key": "https://howweknowdeep.com/zones/sunlight/",
@@ -372,9 +386,9 @@
     {
       "key": "https://howweknowdeep.com/zones/twilight/",
       "clicks": 0,
-      "impressions": 12,
+      "impressions": 10,
       "ctr": 0,
-      "position": 79.3
+      "position": 80
     }
   ]
 }
