@@ -1,7 +1,7 @@
 {
   "stage": "backfill",
   "week": "2026-W47",
-  "at": "2026-11-16T15:02:57+00:00",
+  "at": "2026-11-17T15:01:54+00:00",
   "code": "BREAKER_TRIPPED_ALREADY_REPORTED",
   "message": "publishing is halted: domain \u2014 3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair.. This is the SAME trip the 'shorts-cloud' stage already raised; one flag halts every publishing lane and it is one problem, not four.",
   "detail": {
@@ -147,8 +147,8 @@
   },
   "unblock": "This clears itself: the breaker is re-tested at the top of every guarded lane and closes the moment the cause has passed. A validator trip closes as soon as the validators pass; a retention or domain trip closes on the next weekly measurement that no longer sees the breach. It stays open only for a strike or a manual trip \u2014 for those: python loop/breaker.py reset --note \"<what you fixed>\"",
   "disposition": "self_resolving",
-  "disposition_why": "A second (or third, or fourth) guarded lane stopping on the SAME breaker trip another lane has already raised. It is just as halted - nothing publishes - but one flag is one problem, and four red jobs a day for it is how a real alarm gets tuned out. The breaker is re-tested at the top of every guarded lane and closes itself the moment the cause has passed, so this also disappears on its own. (run 3 of at most 14 before this escalates to a human.)",
-  "consecutive": 3,
+  "disposition_why": "A second (or third, or fourth) guarded lane stopping on the SAME breaker trip another lane has already raised. It is just as halted - nothing publishes - but one flag is one problem, and four red jobs a day for it is how a real alarm gets tuned out. The breaker is re-tested at the top of every guarded lane and closes itself the moment the cause has passed, so this also disappears on its own. (run 4 of at most 14 before this escalates to a human.)",
+  "consecutive": 4,
   "held_items": [
     "breaker:domain:2026-11-13T22:05:54+00:00"
   ],
