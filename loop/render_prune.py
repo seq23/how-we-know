@@ -185,7 +185,10 @@ def spare_copies(slug: str, renders: Path = RENDERS) -> list[Path]:
     out = []
     for p in renders.iterdir() if renders.exists() else []:
         m = ASIDE.match(p.name)
-        if m and m.group("slug") == slug and not p.name.endswith(MARK):
+        # the master's own records (.footage.json, .render.json) and the
+        # pruned marker stay: small, and what later readers look up by slug
+        if m and m.group("slug") == slug and not p.name.endswith(MARK) \
+                and p.name not in {f"{slug}-final.mp4{r}" for r in RECORDS}:
             out.append(p)
         elif p.is_dir() and p.name.startswith("superseded-"):
             out += [q for q in p.iterdir()
