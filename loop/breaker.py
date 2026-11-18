@@ -189,7 +189,10 @@ def hold_longform(detail: str, by: str = "owner") -> dict:
 def lift_longform(note: str) -> dict:
     b = load()
     was = b.pop("longform_hold", None)
-    b["longform_owner_approval_required"] = True
+    # A lift used to switch on longform_owner_approval_required by itself.
+    # No ruling of hers asks for that (docs/CHANNEL-PLAN.md: "Runs without the
+    # owner. No approval step"); it starved the channel once her 3 Nov cuts
+    # were out (18 Nov 2026). The gate stays available only if she sets it.
     b.setdefault("history", []).append(
         {"event": "longform_lift", "at": now(), "note": note,
          "held_since": (was or {}).get("since")})
@@ -223,10 +226,22 @@ def longform_dating_pending(record: dict | None = None, at=None) -> str | None:
     """
     from datetime import datetime, timezone, timedelta
     b = record if record is not None else read_json(STATE / "breaker.json", default={})
-    if b.get("longform_hold", {}).get("on") or b.get("state") != "closed":
+    if b.get("longform_hold", {}).get("on"):
         return None
     events = [e for e in b.get("history", [])
-              if e.get("event") in ("longform_hold", "longform_lift")]
+              if e.get("event") in ("longform_hold", "longform_lift", "longform_approval_off")]
+    # The approval gate switched off (18 Nov 2026): nothing could be dated
+    # while it held, so the next daily upload dates the eligible renders.
+    # Same 48h bound as a lift; the domain breaker may be open meanwhile.
+    if events and events[-1].get("event") == "longform_approval_off" \
+            and not b.get("longform_owner_approval_required"):
+        try:
+            age = (at or datetime.now(timezone.utc)) - datetime.fromisoformat(events[-1]["at"])
+        except (ValueError, KeyError, TypeError):
+            return None
+        return "LONGFORM_DATING_PENDING" if timedelta(0) <= age < timedelta(hours=48) else None
+    if b.get("state") != "closed":
+        return None
     if len(events) < 2:
         return None
     hold, lift = events[-2:]

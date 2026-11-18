@@ -1927,6 +1927,19 @@ the next four weeks of `gsc_truth.json` are the measurement.
 has zero copied FAQ sentences and `6d9aa92` introduced all 179; Search Console read live
 in this pass for all three windows, by date, page and query.
 
+## 2026-11-18 — Long-forms flow without her approval again
+
+`longform_owner_approval_required` had been on since the 6 Nov hold lift:
+`breaker.lift_longform` switched it on by itself. Her actual rulings: the 2 Nov
+hold until the hostile-review fixes landed (lifted 6 Nov, #321) and her 3 Nov yes
+to 8 specific cuts (#319). No brain line or doc asks her to approve every
+long-form; `docs/CHANNEL-PLAN.md` says the loop "Runs without the owner. No
+approval step". Once those cuts were out (18 Nov) nothing could be dated.
+The gate is off and a lift no longer re-arms it; the validators, the food
+contract, the POV gate and the breaker still judge every cut. The first
+daily upload after the switch gets the lift's 48h dating grace.
+`loop/tests/test_longform_flows_without_approval.py`.
+
 ## 2026-11-04 — Picture-less masters cannot produce Shorts; historical dates are not future slots
 
 Owner: Shorts inherit the master's moving footage. `visuals/shorts.py` now
