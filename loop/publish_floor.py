@@ -29,6 +29,12 @@ judged the channel. This judges the channel, from YouTube's own public feed
     the first check that finds the floor met.
   * A feed that cannot be read is NAMED STOP PUBLISH_FLOOR_NOT_READ, exit 2:
     the floor is never judged on no data.
+  * PAUSED FOR THE PEACE BE STILL LIBRARY FILL (her call, 18 Nov 2026): while
+    the Mac's fill file is on (mirrored to loop/state/pbs_fill.json by
+    loop/pbs_pause.py), neither channel gets a STOPPED issue; the daily line
+    says "Paused for the Peace Be Still library fill since <date>" and any open
+    issue is closed with that line. A pause older than 21 days is ignored and
+    STOPPED fires as usual.
 """
 from __future__ import annotations
 
@@ -208,14 +214,15 @@ def open_issue(channel: str, runner=subprocess.run) -> int | None:
     return None
 
 
-def deliver(channel: str, breach: tuple[str, str] | None, met_line: str, runner=subprocess.run) -> str:
-    """Open (or re-mention) the channel's STOPPED issue, or close it once met."""
+def deliver(channel: str, breach: tuple[str, str] | None, met_line: str, runner=subprocess.run,
+            close_note: str | None = None) -> str:
+    """Open (or re-mention) the channel's STOPPED issue, or close it once met (or paused)."""
     who = "@" + (os.environ.get("OWNER_HANDLE") or "seq23")
     num = open_issue(channel, runner)
     if breach is None:
         if num is None:
             return "met"
-        _gh(["issue", "close", str(num), "--comment", f"Floor met again: {met_line}"], runner)
+        _gh(["issue", "close", str(num), "--comment", close_note or f"Floor met again: {met_line}"], runner)
         return f"closed #{num}"
     title, body = breach
     if num is None:
@@ -238,6 +245,10 @@ def check(dry_run: bool = False, now: _dt.datetime | None = None, feed=read_feed
     c = cfg()
     now = now or _dt.datetime.now(_dt.timezone.utc)
     unread, breaches, n = [], 0, 0
+    import pbs_pause                                        # noqa: PLC0415
+    pause = pbs_pause.repo_status(root, now)
+    if pause["stale"]:
+        print(f"  {pause['line']}")
     for channel, ch in c["channels"].items():
         try:
             public = feed(ch["channel_id"])
@@ -250,6 +261,14 @@ def check(dry_run: bool = False, now: _dt.datetime | None = None, feed=read_feed
         line = (f"{ch.get('name', channel)}: {j['week']} of {j['per_week']} public in 7 days, "
                 f"next dated {_ct(j['next'])}"
                 + (f", nothing for {', '.join(_day(d) for d in j['empty_ahead'])}" if j["empty_ahead"] else ""))
+        if pause["paused"]:
+            print(f"  PAUSED  {ch.get('name', channel)}: {pause['line']} ({line})")
+            if not dry_run:
+                try:
+                    print(f"    {deliver(channel, None, line, runner, close_note=pause['line'])}")
+                except RuntimeError as e:
+                    unread.append(f"{channel}: the open issue could not be closed: {e}")
+            continue
         print(f"  {'OK     ' if j['ok'] else 'STOPPED'} {line}")
         breach = None
         if not j["ok"]:

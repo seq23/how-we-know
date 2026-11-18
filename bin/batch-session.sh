@@ -1018,7 +1018,7 @@ $PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pe
 # blocks: what passed is already on the shelf. See loop/mac_batch_stop.py.
 cat "$PUSH_OUT" "$GUARD_OUT" 2>/dev/null > "$PUSH_OUT.scan"
 $PY loop/mac_batch_stop.py scan "$PUSH_OUT.scan" 2>&1 | grep -E "mac-batch" || true
-$PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" $(ls loop/state/shelf.json 2>/dev/null) 2>&1 | tail -1
+$PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" $(ls loop/state/shelf.json 2>/dev/null) loop/state/pbs_fill.json 2>&1 | tail -1
 
 if [ "$batch_ok" -eq 0 ]; then
   echo; echo "=== batch complete WITH A CAPTIONS FAILURE (rc=$CAPRC) $(date '+%H:%M') ==="
@@ -1108,6 +1108,26 @@ RESUMED_FROM=$(BP resumed-from)
 [ -n "$RESUMED_FROM" ] || : > "$GUARD_OUT"
 touch "$PUSH_OUT" "$GUARD_OUT"
 CAPRC=$(BP get caprc 0)
+
+# PAUSED FOR THE PEACE BE STILL LIBRARY FILL (her call, 18 Nov 2026: "we can
+# put the YouTube videos on pause while we fill our library for the app").
+# While ~/.peace-be-still/library-fill.active exists (and is under 21 days
+# old), nothing new is voiced or rendered for either channel and the Mac is
+# the fill's. What costs no voice time still runs: the Almanac upload and its
+# Shorts, captions, cutting and shelving Shorts from finished renders, and the
+# report (which pushes the pause mirror the floor check reads). The night
+# ends exit 0 with the named line PAUSED_FOR_PBS_FILL - a note, not a failure.
+# Remove the file and the next 23:00 runs in full. loop/pbs_pause.py.
+pbs_line=$("$PYP" loop/pbs_pause.py gate 2>&1); pbs_rc=$?
+echo "--- $pbs_line"
+if [ "$pbs_rc" -eq 10 ]; then
+  hold_awake
+  step whisper-upload phase_whisper_upload
+  step captions phase_captions
+  step shelve shelve_shorts
+  phase_report
+  exit 0
+fi
 
 phase_selfheal
 phase_survey

@@ -102,6 +102,14 @@ else
   echo "=== food night $(date '+%F %H:%M') ==="
 fi
 
+# PAUSED FOR THE PEACE BE STILL LIBRARY FILL (her call, 18 Nov 2026): while
+# ~/.peace-be-still/library-fill.active exists (under 21 days old) the food
+# night voices and renders nothing. A note, exit 0. loop/pbs_pause.py.
+if [ -z "$STUBS" ]; then
+  pbs_line=$("$PYP" loop/pbs_pause.py gate 2>&1); pbs_rc=$?
+  echo "  $pbs_line"
+  [ "$pbs_rc" -eq 10 ] && exit 0
+fi
 if holder=$(lock_holder); then
   echo "NAMED STOP: a batch or food session is running (pid $holder); one narrator at a time."
   exit 0
