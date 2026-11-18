@@ -432,10 +432,17 @@ def library_pending(verbose: bool = False,
     import approved_renders
     approval_required = breaker.load().get("longform_owner_approval_required", False)
     approvals = approved_renders.load() if approval_required else {}
+    # a domain trip holds back ITS domain only (loop/breaker.py DOMAIN_SCOPED, 18 Nov 2026)
+    tripped = breaker.blocked_domains()
+    import domains                                         # noqa: PLC0415
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in done:
+            continue
+        if tripped and domains.domain_of_slug(slug) in tripped:
+            if verbose:
+                print(f"  HELD {slug}: its domain ({domains.domain_of_slug(slug)}) tripped the breaker")
             continue
         if slug in held:
             if verbose:

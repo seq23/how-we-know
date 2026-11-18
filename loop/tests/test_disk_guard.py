@@ -33,6 +33,9 @@ with tempfile.TemporaryDirectory() as td:
         # no R2 copy left, but the local file predates its upload: the uploaded cut
         "r2-gone-older": dict(up=True, shorts=True, yt="processed", shelf=None, uploaded_at="2099-01-01T00:00:00Z"),
         "swap-pending": dict(up=True, shorts=True, yt="processed", shelf="same"),
+        # proven in every way, but one cut Short is not published yet: V14/V15
+        # verify it against this master, so it stays (18 Nov 2026)
+        "short-waiting": dict(up=True, shorts=True, yt="processed", shelf="same"),
     }
     led = {"published": []}
     statuses = {}
@@ -91,8 +94,19 @@ with tempfile.TemporaryDirectory() as td:
     led["published"].append({"slug": "earlier", "video_id": "vid-earlier", "shorts_block": ["a"]})
     statuses["vid-earlier"] = {"uploadStatus": "processed"}
 
-    done, kept = RP.prune_uploaded(renders, led, bucket, yt, plans, swaps={"swap-pending"})
+    done, kept = RP.prune_uploaded(renders, led, bucket, yt, plans, swaps={"swap-pending"},
+                                   waiting={"short-waiting": ["short-waiting-short3.mp4"]})
     gone = {r["slug"] for r in done}
+    if not any(k.startswith("short-waiting: cut Short(s) not published yet") for k in kept):
+        fails.append(f"short-waiting: its master was not kept for its unpublished Short: {kept}")
+    # unpublished_shorts reads shorts/ against the Shorts ledger
+    sdir = td / "shorts"
+    sdir.mkdir()
+    for n in ("a-short.mp4", "a-short2.mp4", "b-short.mp4"):
+        (sdir / n).write_bytes(b"x")
+    got = RP.unpublished_shorts(sdir, published={("a", 1), ("b", 1)})
+    if got != {"a": ["a-short2.mp4"]}:
+        fails.append(f"unpublished_shorts read {got}, wanted a-short2.mp4 only")
     if gone != {"proven", "r2-gone-older", "earlier"}:
         fails.append(f"deleted {sorted(gone)}, wanted proven, r2-gone-older, earlier")
     for s in slugs:

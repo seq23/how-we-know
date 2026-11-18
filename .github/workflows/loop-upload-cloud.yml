@@ -148,3 +148,14 @@ jobs:
           YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
           YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
         run: bin/loop-stage.sh handoff loop/handoff.py
+      # HER PUBLISHING FLOOR (18 Nov 2026: "make sure 7 videos go out each week
+      # minimum for each channel"). After the day's uploads, both channels are
+      # judged from YouTube's own public feed: 7 public in the last 7 days and
+      # today + tomorrow covered. A breach is a red STOPPED issue that
+      # @-mentions her (GitHub emails it), re-mentioned every day it lasts and
+      # closed the first day the floor is met. An unreadable feed exits 2.
+      - name: Check her publishing floor on both channels
+        if: ${{ !cancelled() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 loop/publish_floor.py check

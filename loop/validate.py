@@ -3182,6 +3182,15 @@ def v32_scheduled_pov_is_hers() -> Result:
             r.note(f"nothing dated ahead: the owner's long-form hold is on since "
                    f"{str(hold.get('since'))[:10]} ({hold.get('detail')})")
             return r
+        # THE APPROVAL GATE EMPTIES IT TOO (18 Nov 2026): with
+        # longform_owner_approval_required on and every approved cut already
+        # out, nothing can be dated until she approves the next render. That
+        # is her decision, not a defect, and loop/publish_floor.py emails her
+        # the gap every day it lasts.
+        drained = _br.longform_approvals_drained()
+        if drained:
+            r.note(f"nothing dated ahead: {drained} (publish_floor emails the gap)")
+            return r
         transition = _br.longform_dating_pending()
         if transition:
             r.named_stop("LONGFORM_DATING_PENDING",

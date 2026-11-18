@@ -1,0 +1,20 @@
+{
+  "_why": "Her floor, 18 Nov 2026: \"make sure 7 videos go out each week minimum for each channel\" (coordinator's reading, decided: at least 7 PUBLIC videos per channel in any rolling 7 days AND at least one every day; Shorts count). Long-form targets stay as documented (How We Know 6 a week, Whisper Almanac per its lanes); Shorts fill the rest. Checked daily by loop/publish_floor.py in the 09:00 CT upload workflow, against YouTube's own public feed (never our ledger); the next days' schedule is read from the upload records. A breach is a red STOPPED email: a GitHub issue that @-mentions her, re-mentioned every day it lasts, closed by the first check that finds the floor met.",
+  "per_week": 7,
+  "per_day": 1,
+  "lookahead_days": 2,
+  "channels": {
+    "how-we-know": {
+      "name": "How We Know",
+      "channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "per_week": 7,
+      "lanes": ["cloud-upload", "shorts-cloud", "backfill", "mac-batch", "shorts-master", "render-gate", "captions-build"]
+    },
+    "whisper-almanac": {
+      "name": "Whisper Almanac",
+      "channel_id": "UCf8FJ4M34oYG2Pg8-QGVbtg",
+      "per_week": 7,
+      "lanes": ["whisper-upload", "whisper-shorts", "whisper-author", "whisper-voice"]
+    }
+  }
+}

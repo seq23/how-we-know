@@ -20,8 +20,11 @@ The lanes that call guard() are GUARDED below: every one that uploads to
 YouTube or flips a video public, plus the old weekly render script.
 loop/tests/test_cloud_lanes_honour_breaker.py proves each file really calls
 guard() with that stage name and that RUNBOOK.md "The circuit breaker" lists
-every one. Every cause halts every one of them: the breaker has no per-cause exemption,
-so a retention trip holds Shorts as well as episodes. A trip is scoped to ONE
+every one. Every cause halts every one of them, with ONE scope: a `domain` trip
+(one niche below the floor while others hold) halts only that domain's items
+in the DOMAIN_SCOPED lanes, which keep publishing every other domain (18 Nov
+2026, see DOMAIN_SCOPED). A retention trip still holds Shorts as well as
+episodes. A trip is scoped to ONE
 channel (16 Nov 2026, STAGE_CHANNEL): a How We Know trip never halts Whisper
 Almanac's whisper-upload, and an Almanac trip never halts How We Know. Already-scheduled
 YouTube items are left alone; nothing is un-scheduled.
@@ -30,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -95,14 +99,55 @@ def channel_of(stage_name: str) -> str:
     return STAGE_CHANNEL.get(stage_name, DEFAULT_CHANNEL)
 
 
+# A DOMAIN TRIP HALTS ITS DOMAIN, NOT THE CHANNEL (18 Nov 2026). The
+# materials-and-manufacturing trip of 13 Nov ("a NICHE that is not working,
+# not a format") halted every How We Know publishing lane: no Short and no
+# long-form went out for deep sea or food, which were holding, and the trip
+# could never clear, because a halted niche publishes nothing new for the
+# weekly measurement to see recover. The lanes below pick items by slug, so
+# they publish everything EXCEPT the tripped domain's items
+# (blocked_domains(), read by backfill.library_pending and
+# shorts_lane.pending); every other cause (strike, retention, validator,
+# manual) still halts every lane. Proven both ways by
+# loop/tests/test_breaker_domain_scope.py.
+DOMAIN_SCOPED = ("cloud-upload", "shorts-cloud", "backfill")
+_DOMAIN_RX = re.compile(r"consecutive (?P<d>[a-z0-9-]+) videos below")
+
+
+def trip_domain(t: dict) -> str | None:
+    """The domain a `domain` trip names: its `domain` field, else (a trip
+    recorded before 18 Nov 2026) the one its detail names."""
+    if t.get("cause") != "domain":
+        return None
+    if t.get("domain"):
+        return t["domain"]
+    m = _DOMAIN_RX.search(str(t.get("detail") or ""))
+    return m.group("d") if m else None
+
+
+def _trips(b: dict, ch: str) -> list[dict]:
+    if b.get("state") != "tripped":
+        return []
+    return [t for t in [b, *b.get("also", [])]
+            if t.get("cause") and (t.get("channel") or DEFAULT_CHANNEL) == ch]
+
+
+def blocked_domains(b: dict | None = None) -> set[str]:
+    """How We Know domains a live domain trip holds back (their items are
+    skipped by the scoped lanes; everything else publishes)."""
+    b = load() if b is None else b
+    return {d for t in _trips(b, DEFAULT_CHANNEL) if (d := trip_domain(t))}
+
+
 def halts(b: dict, stage_name: str) -> bool:
     """Does this tripped record halt this stage? Only a trip (or an extra
-    cause in `also`) for the channel the stage publishes to."""
-    if b.get("state") != "tripped":
-        return False
-    ch = channel_of(stage_name)
-    return any((t.get("channel") or DEFAULT_CHANNEL) == ch
-               for t in [b, *b.get("also", [])] if t.get("cause"))
+    cause in `also`) for the channel the stage publishes to, and, for the
+    DOMAIN_SCOPED lanes, only a trip that is not a domain trip naming its
+    domain (that one holds back the domain's items instead)."""
+    trips = _trips(b, channel_of(stage_name))
+    if stage_name in DOMAIN_SCOPED:
+        trips = [t for t in trips if not trip_domain(t)]
+    return bool(trips)
 
 
 CLOSED = {"state": "closed", "tripped_at": None, "cause": None,
@@ -152,6 +197,23 @@ def lift_longform(note: str) -> dict:
     return b
 
 
+def longform_approvals_drained(record: dict | None = None) -> str | None:
+    """The owner's approval gate is on and every approved long-form is
+    already uploaded: nothing can be dated until she approves the next render.
+    Her decision, not a defect (loop/publish_floor.py emails her the gap).
+    Reads the committed loop/state/breaker.json (like longform_hold
+    committed=True): the gate is a standing setting, not a test's trip."""
+    b = read_json(STATE / "breaker.json", default={}) if record is None else record
+    if not b.get("longform_owner_approval_required"):
+        return None
+    import approved_renders                                # noqa: PLC0415
+    import ledger                                          # noqa: PLC0415
+    out = {r.get("slug") for r in ledger.load()["published"] if r.get("video_id")}
+    if set(approved_renders.load()) - out:
+        return None
+    return "every approved long-form is out; the next waits on her approval"
+
+
 def longform_dating_pending(record: dict | None = None, at=None) -> str | None:
     """One daily upload opportunity after a genuine hold lift (48h maximum).
 
@@ -187,19 +249,22 @@ def is_tripped() -> bool:
     return load().get("state") == "tripped"
 
 
-def trip(cause: str, detail: str, channel: str = DEFAULT_CHANNEL) -> dict:
+def trip(cause: str, detail: str, channel: str = DEFAULT_CHANNEL,
+         domain: str | None = None) -> dict:
     if cause not in CAUSES:
         raise SystemExit(f"unknown cause {cause!r}; one of {sorted(CAUSES)}")
     if channel not in CHANNELS:
         raise SystemExit(f"unknown channel {channel!r}; one of {list(CHANNELS)}")
     b = load()
+    extra = {"domain": domain} if domain else {}
     if b["state"] == "tripped":
         # Already open. Record the additional cause; do not lose the first one.
         b.setdefault("also", []).append(
-            {"at": now(), "cause": cause, "detail": detail, "channel": channel})
+            {"at": now(), "cause": cause, "detail": detail, "channel": channel, **extra})
     else:
+        b.pop("domain", None)
         b.update({"state": "tripped", "tripped_at": now(),
-                  "cause": cause, "detail": detail, "channel": channel})
+                  "cause": cause, "detail": detail, "channel": channel, **extra})
         b.setdefault("history", []).append(
             {"event": "trip", "at": now(), "cause": cause, "detail": detail,
              "channel": channel})
@@ -215,6 +280,7 @@ def reset(note: str) -> dict:
     b.update({"state": "closed", "tripped_at": None, "cause": None,
               "detail": None})
     b.pop("channel", None)
+    b.pop("domain", None)
     b.pop("also", None)
     b.pop("reported_by", None)      # the cascade owner belongs to one trip only
     write_json(FLAG, b)
@@ -375,9 +441,14 @@ def guard(stage_name: str) -> None:
     if b.get("state") != "tripped":
         return
     if not halts(b, stage_name):
-        print(f"  [note] breaker tripped for {b.get('channel') or DEFAULT_CHANNEL} "
-              f"({b.get('cause')}); {stage_name} publishes to "
-              f"{channel_of(stage_name)} and is not halted by it", flush=True)
+        held = blocked_domains(b) if channel_of(stage_name) == DEFAULT_CHANNEL else set()
+        if held and stage_name in DOMAIN_SCOPED:
+            print(f"  [note] breaker tripped on the {', '.join(sorted(held))} domain only: "
+                  f"{stage_name} publishes every other domain and skips its items", flush=True)
+        else:
+            print(f"  [note] breaker tripped for {b.get('channel') or DEFAULT_CHANNEL} "
+                  f"({b.get('cause')}); {stage_name} publishes to "
+                  f"{channel_of(stage_name)} and is not halted by it", flush=True)
         return
     healed = autoreset()
     if healed and healed.get("reset"):
