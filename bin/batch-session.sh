@@ -1018,7 +1018,7 @@ $PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pe
 # blocks: what passed is already on the shelf. See loop/mac_batch_stop.py.
 cat "$PUSH_OUT" "$GUARD_OUT" 2>/dev/null > "$PUSH_OUT.scan"
 $PY loop/mac_batch_stop.py scan "$PUSH_OUT.scan" 2>&1 | grep -E "mac-batch" || true
-$PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" 2>&1 | tail -1
+$PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" $(ls loop/state/shelf.json 2>/dev/null) 2>&1 | tail -1
 
 if [ "$batch_ok" -eq 0 ]; then
   echo; echo "=== batch complete WITH A CAPTIONS FAILURE (rc=$CAPRC) $(date '+%H:%M') ==="

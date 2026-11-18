@@ -111,6 +111,12 @@
     }
   },
   "self_resolving": {
+    "SHELF_WAITS_FOR_RENDER": {
+      "why": "The daily clip shelf (loop/shelf.py) never moves a clip while a nightly render holds the lock or ffmpeg runs; nothing is deleted, and the next daily run shelves.",
+      "max_consecutive": 7,
+      "escalation": "A render running at 09:00 for a week means the nightly batch never finishes; investigate the batch, not the shelf.",
+      "plain": "the clip shelf waited for a render to finish; tomorrow's run shelves"
+    },
     "LONGFORM_DATING_PENDING": {
       "why": "A genuine owner hold was lifted less than 48 hours ago; the next owner-approved long-form upload assigns dates. Empty calendars outside that bounded transition remain failures.",
       "max_consecutive": 2,

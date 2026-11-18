@@ -181,11 +181,24 @@ def sha256_file(path: str) -> str:
 _VERIFIED: dict[str, str] = {}
 
 
-def verify(asset: dict) -> str:
+def _shelf():
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import shelf                                           # noqa: PLC0415
+    return shelf
+
+
+def verify(asset: dict, fetch: bool = False) -> str:
     """Return the clip's absolute path, or raise. Hashes once per process.
 
     This is the gate the whole module hangs off: a clip whose bytes are not the
     bytes the rights decision was made about is refused, not rendered.
+
+    THE CLIP SHELF (loop/shelf.py, 17 Nov 2026). A clip idle for 7 days lives
+    on Drive, recorded with the same sha256. For SELECTION (fetch=False) a
+    shelved clip whose shelf sha equals the manifest's is available, so the
+    pool never shrinks; every caller that READS the bytes passes fetch=True
+    and gets it back, sha-checked, or a NAMED STOP [SHELF_UNREACHABLE]
+    (shelf.ShelfStop) that fails the render loudly.
     """
     rel = asset.get("local_file") or ""
     path = os.path.join(IMAGERY_DIR, rel)
@@ -198,9 +211,15 @@ def verify(asset: dict) -> str:
                                 f"stock licence refused - {why}")
     if rel in _VERIFIED:
         return _VERIFIED[rel]
+    want = asset.get("sha256")
+    if rel and not os.path.exists(path):
+        e = _shelf().shelved(path)
+        if e and want and e.get("sha256") == want:
+            if not fetch:
+                return path                 # selectable; bytes come back before use
+            _shelf().need([path])           # raises ShelfStop when Drive cannot serve it
     if not rel or not os.path.exists(path):
         raise RightsRefusal(f"{asset.get('title')!r}: clip file missing ({rel})")
-    want = asset.get("sha256")
     if not want:
         raise RightsRefusal(f"{asset.get('title')!r}: manifest carries no sha256")
     got = sha256_file(path)
@@ -211,6 +230,16 @@ def verify(asset: dict) -> str:
             f"(manifest {want[:16]}…, disk {got[:16]}…)")
     _VERIFIED[rel] = path
     return path
+
+
+def prefetch(assets: list[dict]) -> int:
+    """JUST IN TIME: after a video's picture is chosen and before its first
+    frame renders, bring back every shelved clip it uses (and stamp each
+    used, so it stays warm for 7 days). Raises shelf.ShelfStop, which fails
+    the render, when Drive cannot serve one. Returns how many came back."""
+    paths = list(dict.fromkeys(os.path.join(IMAGERY_DIR, a["local_file"])
+                               for a in assets if a and a.get("local_file")))
+    return _shelf().need(paths) if paths else 0
 
 
 def usable_assets(manifest: dict | None = None) -> list[dict]:
@@ -490,7 +519,7 @@ def render_cut(cut: dict, out_clip: str, seconds: float, workdir: str,
     ffmpeg call. The check that matters is the one next to the thing it governs.
     """
     asset = cut["asset"]
-    src = verify(asset)                                   # sha256, every render
+    src = verify(asset, fetch=True)                       # sha256, every render
     if not inside_window(asset, cut["start"], cut["end"]):
         raise RightsRefusal(
             f"{asset.get('title')!r}: cut {cut['start']}-{cut['end']}s is not "

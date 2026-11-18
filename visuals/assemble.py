@@ -215,6 +215,10 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
                   f"spans dropped, reel rebuilt", flush=True)
             shots = LP.build(emitted / FPS, clips_, photos_, allowed)
     shot_frames = LP.allocate(shots, emitted)
+    # the clip shelf: every shelved clip this picture uses comes back now,
+    # before the first frame, or the render stops loudly (loop/shelf.py)
+    import footage as _FT                                 # noqa: PLC0415
+    _FT.prefetch([s.get("asset") for s in shots if s.get("kind") == "footage"])
     used = LP.summarise(shots)
     print(f"  picture: {used['footage_shots']} footage shot(s) "
           f"({used['footage_seconds']}s, {used['slowed_shots']} slowed), "

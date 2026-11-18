@@ -275,6 +275,12 @@ def candidates(slug: str, script_path: str | None = None) -> list[dict]:
                     out.append(_record(r, "subject_photos.json", r["subject"]))
     seen, uniq = set(), []
     for c in out:
+        if not os.path.exists(c["path"]) and c.get("sha256"):
+            sys.path.insert(0, os.path.join(ROOT, "loop"))
+            import shelf as _SH                                 # noqa: PLC0415
+            e = _SH.shelved(c["path"])
+            if e and e.get("sha256") == c["sha256"]:
+                _SH.need([c["path"]])        # a shelved clip is still a candidate
         if c["local_file"] in seen or not os.path.exists(c["path"]):
             continue
         if not c["sha256"] or _sha(c["path"]) != c["sha256"]:

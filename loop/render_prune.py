@@ -27,6 +27,20 @@ on the same disk. `guard` runs before every nightly render:
      batch does not re-render a pruned episode (pruned()) unless its plan
      changes - a remake re-plans, so it still renders. Nothing that is not
      uploaded is ever deleted;
+     DELETED EVERYWHERE ONCE ON YOUTUBE (her ruling 17 Nov 2026: "if its
+     already on youtube i dont want it nor do i need it"). At the same point
+     the R2 copy (renders/<slug>-final.mp4, its parts and sidecar) is deleted
+     too, and so are the episode's spare copies: renders/<slug>-final.mp4.<tag>
+     (.pre-footage-only, .below-picture-floor, .work ...) and
+     renders/superseded-*/<slug>-final*. Nothing reads those copies back (every
+     writer - extend, lengthen, pov_repair, render_gate, plan_domain - only
+     moves a copy aside; checked 17 Nov 2026). An episode with a superseded
+     swap still in flight (loop/state/superseded_swaps.json) is never touched,
+     and with no R2 copy left to compare, the local file must be older than
+     its upload (so it is the uploaded cut, not a newer remake). Episodes
+     pruned before this rule get the same R2 and spare-copy clean-up, still
+     only once YouTube says processed. The Shorts lane reads shorts/<slug>*
+     keys, never the master, so nothing it needs is removed;
   3. free space below the floor (DISK_FLOOR_GIB, default 6: three times the
      largest render on disk, 1.7 GiB, measured 6 Nov) after pruning is
      NAMED STOP [DISK_LOW], exit 3: the render is not started, so there is
@@ -146,47 +160,153 @@ def youtube_status(video_ids: list[str]) -> dict[str, dict]:
     return out
 
 
+def _pending_swaps(root: Path = ROOT) -> set[str]:
+    p = root / "loop" / "state" / "superseded_swaps.json"
+    if not p.exists():
+        return set()
+    return {s for s, w in json.loads(p.read_text()).get("swaps", {}).items()
+            if w.get("phase") != "done"}
+
+
+def _ts(s: str | None) -> float | None:
+    if not s:
+        return None
+    import datetime as _dt                                 # noqa: PLC0415
+    try:
+        t = _dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    return (t if t.tzinfo else t.replace(tzinfo=_dt.timezone.utc)).timestamp()
+
+
+def spare_copies(slug: str, renders: Path = RENDERS) -> list[Path]:
+    """Every spare copy of an episode's master: aside copies beside it (and
+    their records and .work folders) and copies kept under superseded-*/."""
+    out = []
+    for p in renders.iterdir() if renders.exists() else []:
+        m = ASIDE.match(p.name)
+        if m and m.group("slug") == slug and not p.name.endswith(MARK):
+            out.append(p)
+        elif p.is_dir() and p.name.startswith("superseded-"):
+            out += [q for q in p.iterdir()
+                    if q.name.startswith(f"{slug}-final.") or q.name.startswith(f"{slug}-final-")]
+    return sorted(out)
+
+
+def _remove(paths: list[Path]) -> int:
+    n = 0
+    for p in paths:
+        if p.is_dir():
+            n += sum(f.stat().st_size for f in p.rglob("*") if f.is_file())
+            shutil.rmtree(p)
+        elif p.exists():
+            n += p.stat().st_size
+            p.unlink()
+    return n
+
+
 def prune_uploaded(renders: Path = RENDERS, led: dict | None = None, bucket=None,
-                   yt=youtube_status, plans: Path = PLANS,
+                   yt=youtube_status, plans: Path = PLANS, swaps: set[str] | None = None,
                    dry_run: bool = False) -> tuple[list[dict], list[str]]:
-    """Delete live renders whose upload is proven on YouTube AND in R2.
-    Returns (pruned records, kept reasons)."""
+    """Delete live renders whose upload YouTube reports processed and whose
+    Shorts are done, with their R2 copy and spare copies. Returns (pruned
+    records, kept reasons). Records carry `bytes` (freed on the Mac) and
+    `r2_bytes` (freed in R2)."""
     sys.path.insert(0, str(ROOT / "loop"))
     import r2                                              # noqa: PLC0415
     led = led if led is not None else json.loads(LEDGER.read_text())
+    swaps = swaps if swaps is not None else _pending_swaps()
     rows = uploaded_rows(led)
-    live = []
+    live, marked = [], []
     for p in sorted(renders.iterdir()) if renders.exists() else []:
         m = LIVE.match(p.name)
         if m and p.is_file():
             live.append((m.group("slug"), p))
-    cands = [(s, p) for s, p in live if s in rows and rows[s].get("shorts_block")]
+        elif p.name.endswith("-final.mp4" + MARK):
+            s = p.name[: -len("-final.mp4" + MARK)]
+            if not (renders / f"{s}-final.mp4").exists():
+                marked.append(s)
     kept = [f"{s}: not uploaded" for s, _ in live if s not in rows]
     kept += [f"{s}: Shorts not cut yet" for s, _ in live if s in rows and not rows[s].get("shorts_block")]
-    if not cands:
+    kept += [f"{s}: a superseded swap is in flight" for s, _ in live if s in rows and s in swaps]
+    cands = [(s, p) for s, p in live if s in rows and rows[s].get("shorts_block") and s not in swaps]
+    # already pruned: their R2 copy and spare copies go too, plan unchanged
+    olds = [s for s in marked if s in rows and rows[s].get("shorts_block") and s not in swaps
+            and pruned(s, renders, plans)]
+    if not cands and not olds:
         return [], kept
-    statuses = yt([rows[s]["video_id"] for s, _ in cands])
+    statuses = yt([rows[s]["video_id"] for s in [c[0] for c in cands] + olds])
     if bucket is None:
         bucket = r2.require()
+
+    def processed(slug: str) -> bool:
+        st = statuses.get(rows[slug]["video_id"])
+        if not st or st.get("uploadStatus") != "processed" or st.get("rejectionReason"):
+            kept.append(f"{slug}: YouTube does not confirm {rows[slug]['video_id']} as processed ({st})")
+            return False
+        return True
+
     done = []
     for slug, p in cands:
-        vid = rows[slug]["video_id"]
-        st = statuses.get(vid)
-        if not st or st.get("uploadStatus") != "processed" or st.get("rejectionReason"):
-            kept.append(f"{slug}: YouTube does not confirm {vid} as processed ({st})")
+        if not processed(slug):
             continue
-        same, why = bucket.same_as(p, r2.render_key(slug))
-        if not same:
-            kept.append(f"{slug}: R2 copy not proven ({why})")
-            continue
-        rec = {"slug": slug, "video_id": vid, "upload_status": st.get("uploadStatus"),
-               "r2_key": r2.render_key(slug), "r2_proof": why, "bytes": p.stat().st_size,
+        key = r2.render_key(slug)
+        h = bucket.head(key)
+        if h is not None:
+            same, why = bucket.same_as(p, key)
+            if not same:
+                kept.append(f"{slug}: the local render is not the uploaded cut in R2 ({why})")
+                continue
+        else:
+            up = _ts(rows[slug].get("uploaded_at"))
+            if up is None or p.stat().st_mtime > up:
+                kept.append(f"{slug}: no R2 copy, and the local render is not older than its upload")
+                continue
+            why = "no R2 copy; local render older than its upload"
+        spares = spare_copies(slug, renders)
+        rec = {"slug": slug, "video_id": rows[slug]["video_id"], "upload_status": "processed",
+               "r2_key": key, "r2_proof": why, "bytes": p.stat().st_size,
+               "sha256": h.get("sha256") if h else None,
+               "r2_deleted": h is not None, "r2_bytes": (h or {}).get("size", 0),
+               "spares": [q.name for q in spares],
                "plan_sha256": _sha(plans / f"{slug}.json"),
                "pruned_at": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
         if not dry_run:
             (renders / f"{p.name}{MARK}").write_text(json.dumps(rec, indent=2) + "\n")
             p.unlink()
+            rec["bytes"] += _remove(spares)
+            if h is not None:
+                bucket.delete(key)
         done.append(rec)
+    for slug in olds:
+        if not processed(slug):
+            continue
+        mk = renders / f"{slug}-final.mp4{MARK}"
+        rec = json.loads(mk.read_text())
+        key = r2.render_key(slug)
+        h = bucket.head(key)
+        spares = spare_copies(slug, renders)
+        # the R2 object is the uploaded cut only if it is the one the marker proved
+        same_r2 = bool(h) and h.get("size") == rec.get("bytes") and (
+            (rec.get("sha256") and h.get("sha256") == rec["sha256"])
+            or (h.get("sha256") or "x")[:12] in (rec.get("r2_proof") or ""))
+        if not spares and not same_r2:
+            continue
+        out = {"slug": slug, "video_id": rows[slug]["video_id"], "bytes": 0,
+               "r2_bytes": h["size"] if same_r2 else 0, "spares": [q.name for q in spares],
+               "r2_deleted": same_r2, "earlier_prune": True}
+        if not dry_run:
+            out["bytes"] = _remove(spares)
+            if same_r2:
+                bucket.delete(key)
+            rec.update({"r2_deleted": rec.get("r2_deleted") or same_r2,
+                        "spares_deleted_at": time.strftime("%Y-%m-%dT%H:%M:%S%z")})
+            mk.write_text(json.dumps(rec, indent=2) + "\n")
+        else:
+            out["bytes"] = sum((q.stat().st_size if q.is_file() else
+                                sum(f.stat().st_size for f in q.rglob("*") if f.is_file()))
+                               for q in spares)
+        done.append(out)
     return done, kept
 
 
@@ -196,17 +316,20 @@ def guard(floor_gib: float = FLOOR_GIB, renders: Path = RENDERS, free=free_gib,
     (3, NAMED STOP [DISK_LOW] line). An unreachable YouTube or R2 never
     deletes anything; it is reported and the floor still decides."""
     before = free()
-    moved = prune(renders, dry_run=dry_run) if renders == RENDERS else []
+    # uploaded episodes first, so their spare copies are DELETED, not moved
+    # to the Trash on the same disk by the aside prune below
     try:
         done, kept = prune_uploaded(renders, dry_run=dry_run, **kw)
         note = ""
     except Exception as e:                                 # noqa: BLE001
         done, kept, note = [], [], f"; uploaded-render prune skipped ({type(e).__name__}: {str(e)[:120]})"
+    moved = prune(renders, dry_run=dry_run) if renders == RENDERS else []
     freed = sum(r["bytes"] for r in done) / 2 ** 30
+    r2_freed = sum(r.get("r2_bytes", 0) for r in done) / 1e9
     after = free()
     line = (f"disk guard: {after:.1f} GiB free (floor {floor_gib:g}); deleted {len(done)} uploaded "
-            f"render(s) proven on YouTube and R2 ({freed:.2f} GiB), moved {len(moved)} aside "
-            f"copies; kept {len(kept)}{note}")
+            f"episode(s) YouTube reports processed ({freed:.2f} GiB on the Mac, {r2_freed:.2f} GB "
+            f"in R2), moved {len(moved)} aside copies; kept {len(kept)}{note}")
     if after >= floor_gib:
         return 0, line
     return 3, (f"NAMED STOP [DISK_LOW] {after:.1f} GiB free on the Mac, below the {floor_gib:g} GiB "

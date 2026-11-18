@@ -1157,7 +1157,8 @@ def harvest(only_missing: bool = True, segments: list[str] | None = None) -> dic
         shot = shot_by[pick["need"]]
         old = prior.get(shot["need"])
         if only_missing and old and old.get("source_id") == pick["id"] \
-                and (IMAGERY / old["local_file"]).exists():
+                and ((IMAGERY / old["local_file"]).exists()
+                     or _on_shelf(IMAGERY / old["local_file"], old.get("sha256"))):
             index[shot["need"]] = {**old, **shot_extras(shot, f"{pick['source']}:{pick['id']}")}
             continue
         if fetched >= MAX_PER_RUN:
@@ -1387,6 +1388,16 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
     return report
 
 
+def _on_shelf(path, sha256=None) -> bool:
+    """A clip idle 7+ days lives on the clip shelf (loop/shelf.py) with the
+    same sha256: it is still in the pool, never "file gone"."""
+    import importlib, os as _os, sys as _sys                  # noqa: E401
+    _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "loop"))
+    sh = importlib.import_module("shelf")
+    e = sh.shelved(path)
+    return bool(e) and (sha256 is None or e.get("sha256") == sha256)
+
+
 def fetch_long_missing(index: list[dict] | None = None, get=None) -> dict:
     """This Mac's copy of every recorded long clip: a record whose file is not
     in this checkout's clips/ (the nightly batch runs in its own checkout) is
@@ -1399,8 +1410,8 @@ def fetch_long_missing(index: list[dict] | None = None, get=None) -> dict:
         if r.get("lane") != LONG_LANE or r.get("excluded"):
             continue
         path = IMAGERY / r["local_file"]
-        if path.exists():
-            continue
+        if path.exists() or _on_shelf(path, r.get("sha256")):
+            continue                     # a shelved clip comes back from the shelf at render time
         try:
             blob = get(r["download_url"])
         except Exception as e:                                 # noqa: BLE001
@@ -1449,6 +1460,9 @@ def verify(check_bytes: bool = True) -> int:
                 raise AssertionError(f"{rec['subject']}: {rec[k]} is not committed")
         if check_bytes:
             path = IMAGERY / rec["local_file"]
+            if not path.exists() and _on_shelf(path, rec["sha256"]):
+                n += 1                   # on the clip shelf with the recorded sha256
+                continue
             if not path.exists():
                 raise AssertionError(f"{rec['subject']}: {rec['local_file']} is not on disk")
             if hashlib.sha256(path.read_bytes()).hexdigest() != rec["sha256"]:

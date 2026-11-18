@@ -25,7 +25,8 @@ Context she gave: How We Know Deep has 113 videos, 31 subscribers and mostly
     Tuesday's night.
 
 The Whisper Almanac's own supply gate is the same rule from day one: made and
-not uploaded (rendered or fully voiced) over 14 days of its upload rate.
+not uploaded (rendered or fully voiced) over 7 days of its upload rate
+(14 until her 17 Nov 2026 cap: "we dont have to produce videos so far in advance").
 Before its first upload the rate is the planned one (one sleep episode and one
 affirmations script a week).
 """

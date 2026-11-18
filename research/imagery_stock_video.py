@@ -126,6 +126,16 @@ REFUSE_WORDING = re.compile(
     re.I)
 
 
+def _on_shelf(path, sha256=None) -> bool:
+    """A clip idle 7+ days lives on the clip shelf (loop/shelf.py) with the
+    same sha256: it is still in the pool, never "file gone"."""
+    import importlib, os as _os, sys as _sys                  # noqa: E401
+    _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "loop"))
+    sh = importlib.import_module("shelf")
+    e = sh.shelved(path)
+    return bool(e) and (sha256 is None or e.get("sha256") == sha256)
+
+
 def stock_licence_ok(rec: dict) -> tuple[bool, str]:
     """(cleared, why) for one stock record. No network, no bytes: the rights
     fields and the committed licence wording only, so a render and CI run it."""
@@ -402,6 +412,8 @@ def merge(new: list[dict], stops: list[dict], status: dict) -> dict:
         elif not phrase_in(str(a.get("matched") or a.get("subject") or ""), a.get("title", "")):
             dropped.append(f"{a['post_id']}: its tags no longer show {a.get('subject')!r} "
                            f"under the subject gate")
+        elif not path.exists() and _on_shelf(path, a.get("sha256")):
+            kept.append(a)                       # on the clip shelf, same bytes
         elif not path.exists():
             dropped.append(f"{a['post_id']}: file gone")
         elif hashlib.sha256(path.read_bytes()).hexdigest() != a.get("sha256"):
@@ -626,6 +638,8 @@ def verify() -> int:
         if not ok:
             bad.append(f"{a['post_id']}: {why}")
         p = IMAGERY / a.get("local_file", "")
+        if not p.exists() and _on_shelf(p, a.get("sha256")):
+            continue                             # on the clip shelf, recorded sha256
         if not p.exists() or hashlib.sha256(p.read_bytes()).hexdigest() != a.get("sha256"):
             bad.append(f"{a['post_id']}: bytes missing or changed")
     if bad:

@@ -1,12 +1,12 @@
-"""The supply gate: over 14 days of a format made and waiting, make none; reopen
-on its own under 14 (her 12 Oct rule, in code 6 Nov 2026).
+"""The supply gate: 7+ days of a format made and waiting, make none; reopen
+on its own under 7 (her 12 Oct rule, in code 6 Nov 2026; 14 cut to 7 on 17 Nov).
 
   a. 90 queued episodes, all made, 12 uploads in 28 days -> HOLD (the old
      code started production anyway: no gate existed);
   b. as uploads drain the shelf the SAME gate opens, with no human;
   c. a shelf that uploaded nothing in 28 days uses the one-a-week floor, so a
      small shelf still opens (no deadlock) and a big one still holds;
-  d. Shorts: cut-and-unpublished over 14 days holds, under opens;
+  d. Shorts: cut-and-unpublished over 7 days holds, under opens;
   e. the sessions obey it: the batch skips narration and the Shorts cut on
      HOLD, the food night exits 0 (a note, never a red), and the CLI exit
      code is the HOLD signal (10), not a failure.
@@ -53,7 +53,7 @@ with tempfile.TemporaryDirectory() as td:
 
     # a. 90 made, 12 uploads / 28 days = 0.43/day -> ~210 days: HOLD
     v = G.check("longform", NOW, r, queued=queued, ledger=led)
-    check(v["hold"] and v["made"] == 90 and v["line"].startswith("HOLD:"),
+    check(v["hold"] and v["made"] == 90 and v["line"].startswith("HOLD [SUPPLY_FULL]:"),
           f"(a) 90 made and waiting did not hold: {v['line']}")
     check("making none" in v["line"], f"(a) the hold line does not say so: {v['line']}")
 
@@ -62,20 +62,21 @@ with tempfile.TemporaryDirectory() as td:
     v2 = G.check("longform", NOW, r, queued=queued + ["script-only"], ledger=led)
     check(v2["made"] == 90, f"(a) a script with no audio counted as supply: {v2['made']}")
 
-    # b. uploads drain it: 85 of the 90 uploaded -> 5 / 0.43 = 11.7 days: open
-    led2 = {"published": led["published"] + [{"slug": s, "uploaded_at": ago(1)} for s in queued[:85]]}
+    # b. uploads drain it: 88 of the 90 uploaded -> 2 / 0.43 = 4.7 days: open
+    led2 = {"published": led["published"] + [{"slug": s, "uploaded_at": ago(1)} for s in queued[:88]]}
     v = G.check("longform", NOW, r, queued=queued, ledger=led2)
-    check(not v["hold"] and v["days"] < 14, f"(b) under 14 days did not reopen: {v['line']}")
+    check(not v["hold"] and v["days"] < 7, f"(b) under 7 days did not reopen: {v['line']}")
     # a retired upload is not an upload: it is supply again
     led3 = {"published": led2["published"][:-1] + [dict(led2["published"][-1], retired_at="x")]}
-    check(G.check("longform", NOW, r, queued=queued, ledger=led3)["made"] == 6,
+    check(G.check("longform", NOW, r, queued=queued, ledger=led3)["made"] == 3,
           "(b) a retired upload still counted as uploaded")
 
     # c. nothing uploaded in 28 days: floor of one a week
     stale = {"published": [{"slug": "x", "uploaded_at": ago(40)}]}
-    one = G.check("longform", NOW, r, queued=queued[:1], ledger=stale)
-    many = G.check("longform", NOW, r, queued=queued[:3], ledger=stale)
-    check(not one["hold"] and many["hold"], f"(c) floor rate wrong: {one['line']} / {many['line']}")
+    none = G.check("longform", NOW, r, queued=[], ledger=stale)
+    one = G.check("longform", NOW, r, queued=queued[:1], ledger=stale)   # 1 at 1/7 a day = 7 days
+    check(not none["hold"] and one["hold"] and one["days"] == 7.0,
+          f"(c) floor rate wrong: {none['line']} / {one['line']}")
 
     # d. Shorts
     for k in range(30):
@@ -98,13 +99,23 @@ with tempfile.TemporaryDirectory() as td:
           f"(f) other topics' shelf holds the Money lane: {v_all['line']} / {v_money['line']}")
     for k in range(6):
         (r / "renders" / f"money-{k}-final.mp4").write_bytes(b"x")
-    some = G.check("longform", NOW, r, queued=old12 + [f"money-{k}" for k in range(3)], ledger=led,
-                   lane="money", per_week=2, domain_of=dom)   # 3 at 2 a week = 10.5 days
+    some = G.check("longform", NOW, r, queued=old12 + [f"money-{k}" for k in range(1)], ledger=led,
+                   lane="money", per_week=2, domain_of=dom)   # 1 at 2 a week = 3.5 days
     full = G.check("longform", NOW, r, queued=old12 + [f"money-{k}" for k in range(6)], ledger=led,
                    lane="money", per_week=2, domain_of=dom)   # 6 at 2 a week = 21 days
-    check(not some["hold"] and some["made"] == 3 and full["hold"] and full["made"] == 6,
-          f"(f) the lane's own 14-day rule is wrong: {some['line']} / {full['line']}")
+    check(not some["hold"] and some["made"] == 1 and full["hold"] and full["made"] == 6,
+          f"(f) the lane's own 7-day rule is wrong: {some['line']} / {full['line']}")
     check("money" in full["line"], f"(f) the line does not name the lane: {full['line']}")
+
+    # h. THE 7-DAY CAP (her 17 Nov 2026: "we dont have to produce videos so far
+    # in advance"): 3 made at 3/7 a day = 7 days holds (the nightly starts
+    # nothing new: SUPPLY_FULL); 2 made = 4.7 days stays open
+    wk = {"published": [{"slug": f"w-{k}", "uploaded_at": ago(k * 2 + 1)} for k in range(12)]}
+    seven = G.check("longform", NOW, r, queued=queued[1:7:2], ledger=wk)
+    under = G.check("longform", NOW, r, queued=queued[1:5:2], ledger=wk)
+    check(seven["hold"] and "SUPPLY_FULL" in seven["line"] and seven["days"] >= 7,
+          f"(h) 7 days of finished, unpublished video did not hold: {seven['line']}")
+    check(not under["hold"], f"(h) under 7 days held: {under['line']}")
 
 # g. the gate a How We Know night obeys: Money's own while a Money script
 # waits for voice, the whole channel's otherwise; `gate` exits 10 on HOLD
