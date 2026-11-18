@@ -734,6 +734,19 @@ def run(dry_run: bool = False, host: str = DEFAULT_HOST) -> int:
                         "or the host it runs on; then let its next scheduled "
                         "run stamp a success.")
 
+        # PAUSED FOR THE PEACE BE STILL FILL (loop/pbs_pause.py, the mirror
+        # the Mac pushes): the Mac's harvest rests on purpose while the fill
+        # runs, so a stamp gone stale then is a note, not "start the Mac" in
+        # her digest (hostile review 18 Nov 2026). Over 21 days the mirror is
+        # ignored and the stop below is back.
+        if stale:
+            import pbs_pause                                # noqa: PLC0415
+            pause = pbs_pause.repo_status()
+            if pause["paused"]:
+                st.note(f"{len(stale)} delegated harvester(s) not run inside the "
+                        f"{policy['delegated_max_age_days']}-day cap: {pause['line']}; "
+                        "the Mac harvests again the first night after")
+                stale = []
         if stale:
             st.named_stop(
                 "DELEGATED_HARVEST_STALE",

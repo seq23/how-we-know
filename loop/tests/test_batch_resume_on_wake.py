@@ -42,6 +42,9 @@ TMP = Path(tempfile.mkdtemp(prefix="batch-resume-"))
 fails: list[str] = []
 cases = 0
 
+# hermetic: never this Mac's real Peace Be Still fill file (a live pause would
+# send every case down the paused branch)
+os.environ["PBS_FILL_FILE"] = str(TMP / "no-library-fill.active")
 STUBS = TMP / "stubs.sh"
 STUBS.write_text(r'''
 L() { echo "$*" >> "$BATCH_TEST_LOG"; }
@@ -244,6 +247,19 @@ check("| grep" not in _lh and 'case "$cmd" in *batch-session*|*food-session*)' i
       "(d) lock_holder() pipes ps into grep again - the pipefail/SIGPIPE race is back")
 check('if [ -n "${pending_audio// }" ] && ! narration_allowed; then' in src,
       "(e) phase_narrate no longer consults narration_allowed")
+
+# -- h. an idle How We Know night still uploads the Almanac and reports ---
+# (hostile review 18 Nov 2026: phase_idle exited before both)
+IDLE_STUBS = TMP / "stubs-idle.sh"
+IDLE_STUBS.write_text(STUBS.read_text().replace("phase_idle(){ return 0; }\n", "")
+                      .replace('pending_audio="slug-a:3/9"', 'pending_audio=""'))
+cases += 1
+r, log, prog, _ = run("2026-10-13T01:00", "--resume-if-interrupted", name="h_idle",
+                      extra_env={"BATCH_TEST_STUBS": str(IDLE_STUBS)})
+check(r.returncode == 0, f"(h) exit {r.returncode}: {r.stderr}")
+check("nothing to do" in r.stdout, f"(h) the idle night did not take the idle path: {r.stdout[-400:]!r}")
+check("whisper-upload" in log and any(x.startswith("report") for x in log),
+      f"(h) an idle night skipped the Almanac upload or the report: {log}")
 
 # -- f. the plist ---------------------------------------------------------
 cases += 1

@@ -298,7 +298,18 @@ def render_ready(st, renderer=None) -> int:
     """Render every fully voiced script that has no render (a repaired one,
     or one whose footage pool was thin the night it was voiced). It needs no
     narrator, so it runs every night whoever's night it is. A render that
-    fails is a note here: the script stays in line for the next night."""
+    fails is a note here: the script stays in line for the next night.
+    PAUSED FOR THE PEACE BE STILL FILL (loop/pbs_pause.py): nothing is
+    rendered while the fill runs - the voice is kept and the first night after
+    renders it (hostile review 18 Nov 2026: the paused batch still ran this and
+    would have spent an hour of ffmpeg and a Drive pull beside the fill)."""
+    import pbs_pause                                        # noqa: PLC0415
+    if pbs_pause.paused():
+        waiting = WL.ready_to_render()
+        if waiting:
+            st.note(f"PAUSED_FOR_PBS_FILL: {len(waiting)} voiced episode(s) not rendered while the "
+                    f"Peace Be Still fill runs ({', '.join(waiting)}); the first night after renders them")
+        return 0
     if renderer is None:
         if dry_run():
             return 0

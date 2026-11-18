@@ -57,6 +57,9 @@ LANE_SRC = os.path.join(LOOP, "footage_lane.py")
 PY = sys.executable
 sys.path.insert(0, LOOP)
 
+# a real Peace Be Still pause mirrored on main must not turn the stale case
+# below into a note; case 2b plants its own mirror
+os.environ["PBS_FILL_MIRROR"] = os.path.join(tempfile.gettempdir(), "hwk-no-pbs-mirror.json")
 import footage_lane as FL   # noqa: E402
 import host_tools           # noqa: E402
 
@@ -213,6 +216,20 @@ def main() -> int:
         check("2: a stamp older than the cap yields DELEGATED_HARVEST_STALE",
               rec.get("code") == "DELEGATED_HARVEST_STALE",
               f"rc={rc} code={rec.get('code')} tail={out[-400:]!r}")
+        # 2b. the same stale stamp while the Mac is paused for the Peace Be
+        # Still fill (the mirror says so): a note, never "start the Mac"
+        stops_p = tempfile.mkdtemp(prefix="hwk-deleg-2b-")
+        mirror_p = os.path.join(stops_p, "pbs_fill.json")
+        json.dump({"started": iso(cap + 2), "expected_end": ""}, open(mirror_p, "w"))
+        os.environ["PBS_FILL_MIRROR"] = mirror_p
+        try:
+            rc_p, out_p, rec_p = run_lane("ci", stamps, stops_p, path=no_tools)
+        finally:
+            os.environ["PBS_FILL_MIRROR"] = os.path.join(tempfile.gettempdir(), "hwk-no-pbs-mirror.json")
+        check("2b: a stale Mac stamp during the Peace Be Still pause is a note, not DELEGATED_HARVEST_STALE",
+              rec_p.get("code") != "DELEGATED_HARVEST_STALE" and "Paused for the Peace Be Still" in out_p,
+              f"rc={rc_p} code={rec_p.get('code')} tail={out_p[-400:]!r}")
+        shutil.rmtree(stops_p, ignore_errors=True)
         check("2: which is owner_action - green, recorded, never a red build "
               "for a Mac that is off", rc == 0
               and rec.get("disposition") == "owner_action"

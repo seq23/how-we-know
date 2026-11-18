@@ -89,7 +89,8 @@ Her words: "we can put the YouTube videos on pause while we fill our library for
 - **While it exists:** no new How We Know or Whisper Almanac video is voiced or rendered. The 23:00 batch prints `PAUSED_FOR_PBS_FILL` and runs only what costs no voice time: the Almanac upload and its Shorts, captions, cutting and shelving Shorts from finished renders, the report. The food night stops at its start. The 09:00 backfill upload and the cloud upload lanes run unchanged. Exit 0 every time: a note, not a failure.
 - **The floor alarm:** the daily publishing-floor check files no STOPPED issue for either channel; its line says "Paused for the Peace Be Still library fill since <date>" and an open STOPPED issue is closed with that line. The Mac mirrors the pause to `loop/state/pbs_fill.json` (dates only) so the cloud check can see it.
 - **A stuck fill cannot silence the channels:** a file older than 21 days is ignored everywhere; voicing resumes and STOPPED fires (`loop/tests/test_pbs_pause.py`).
-- **When the file is removed** everything resumes the next night, with no other change. Code: `loop/pbs_pause.py`.
+- **While paused, no Almanac render either:** a voiced script waits; the upload of renders already finished and their Shorts still run (`loop/whisper_upload.render_ready`). The Mac's footage harvest rests too, so a stale harvest stamp is a note, not `DELEGATED_HARVEST_STALE`.
+- **When the file is removed** everything resumes the next night. The fill job keeps running every 15 minutes (content scripts, Hush Harbor), so each unpaused 23:00 batch and food night holds the fill's own lock (`~/.peace-be-still/library-fill.lock`) until it ends: a fill run already going finishes, later ones wait for morning, and Chatterbox never voices beside it on the 8 GB Mac (`loop/pbs_pause.py hold`). Code: `loop/pbs_pause.py`.
 
 ### PROPOSED, not active: the cadence after the Peace Be Still launch
 

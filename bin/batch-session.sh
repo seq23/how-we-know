@@ -650,6 +650,11 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   step harvest harvest_footage
   # Idle for How We Know is the Almanac's whole window (the Mac never idles).
   step whisper phase_whisper idle
+  # The Almanac upload and the report are not How We Know work either: an idle
+  # How We Know night still uploads the Almanac and pushes its heartbeat
+  # (hostile review 18 Nov 2026: both were only on the busy path).
+  step whisper-upload phase_whisper_upload
+  phase_report
   exit 0
 fi
 }
@@ -1128,6 +1133,10 @@ if [ "$pbs_rc" -eq 10 ]; then
   phase_report
   exit 0
 fi
+# NOT PAUSED: ONE HEAVY JOB AT A TIME. The fill job keeps running every 15 min
+# after its file is gone; this background hold takes its lock (the flock it
+# already yields to) for as long as this night runs. loop/pbs_pause.py hold.
+[ -n "${BATCH_TEST_STUBS:-}" ] || { "$PYP" loop/pbs_pause.py hold --pid $$ 2>&1 | sed 's/^/  /' & }
 
 phase_selfheal
 phase_survey
