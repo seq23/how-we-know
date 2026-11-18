@@ -67,7 +67,12 @@
       "max_s": 4500,
       "goal_s": 3780
     },
-    "_why": "Manifesting videos 1 hour (the '1 hr' search term; about half the Mac time of a history episode), history 2 hours (coordinator's correction 9 Nov 2026 from the measured night: 6.8 h of voice + 2.7 h of render for one 1 h 43 min history episode). goal_s: the pause scale the author fits a new script to."
+    "psalm": {
+      "min_s": 3600,
+      "max_s": 4500,
+      "goal_s": 3780
+    },
+    "_why": "Psalm Nights 1 hour like the manifesting videos (her spec 18 Nov 2026: '60 min'). Manifesting videos 1 hour (the '1 hr' search term; about half the Mac time of a history episode), history 2 hours (coordinator's correction 9 Nov 2026 from the measured night: 6.8 h of voice + 2.7 h of render for one 1 h 43 min history episode). goal_s: the pause scale the author fits a new script to."
   },
   "distinct": {
     "max_overlap": 0.15,
@@ -133,6 +138,16 @@
         "asmr manifest love",
         "specific person",
         "self-concept affirmations"
+      ],
+      "psalm": [
+        "psalm 91 for sleep",
+        "psalms for sleep",
+        "bible verses for sleep",
+        "scripture for sleep",
+        "kjv",
+        "psalm 23 for sleep",
+        "whispered bible",
+        "bible asmr"
       ]
     },
     "banned": [
@@ -168,7 +183,24 @@
           "fish"
         ]
       },
-      "why": "Her decision 9 Nov 2026 (option a): a food video's title reads as HISTORY (food history for sleep borrows history's demand; 'food science for sleep' is a weak search on its own), and an ocean video's title says 'deep sea documentary' and names a place or big question, never single-animal facts (those titles underperform: Deep Sea Slumber's animal facts 197-1K views vs 'The Mariana Trench Explained' 4K). Read by loop/whisper_lane.meta_problems on every kit. 'no ai' / 'human voiced' banned: the voice IS a clone of her own; the description says so (channel.ai_voice_line)."
+      "psalm": {
+        "must": [
+          "(kjv)"
+        ],
+        "never": [
+          "niv",
+          "esv",
+          "nlt",
+          "nkjv",
+          "nasb",
+          "csb",
+          "heal",
+          "healing",
+          "insomnia",
+          "protection"
+        ]
+      },
+      "why": "Her spec 18 Nov 2026: a Psalm Nights title says (KJV) and never names a copyrighted translation or makes a health or protection claim. Her decision 9 Nov 2026 (option a): a food video's title reads as HISTORY (food history for sleep borrows history's demand; 'food science for sleep' is a weak search on its own), and an ocean video's title says 'deep sea documentary' and names a place or big question, never single-animal facts (those titles underperform: Deep Sea Slumber's animal facts 197-1K views vs 'The Mariana Trench Explained' 4K). Read by loop/whisper_lane.meta_problems on every kit. 'no ai' / 'human voiced' banned: the voice IS a clone of her own; the description says so (channel.ai_voice_line)."
     },
     "why": "Benefit, trigger, moment, real length; never 'no ads' (we monetise) and never a promise (risk brain ADV). Lead keywords from free YouTube autocomplete, 9 Nov 2026; 'neville goddard asmr' is a tag, not a lead."
   },
@@ -421,6 +453,9 @@
         "tue"
       ],
       "ocean": [
+        "tue"
+      ],
+      "psalm": [
         "fri"
       ],
       "sleep": [
@@ -445,7 +480,7 @@
       ]
     ],
     "share_when_idle_why": "Her decision 9 Nov 2026 (option a), coordinator's ruling the same day: a finished video never waits for a planned one. A food or ocean video also takes the other lane's day while that lane has no rendered video waiting (loop/whisper_upload.days_for), so the rendered deep-sea episode takes Tue 10 Nov rather than Fri 13 Nov. The Mac's queue already voices a lane with no ready script last, never idle.",
-    "days_why": "One upload day per video the mix makes each week (9 Nov 2026, her catch: 3 sleep days for 2 sleep videos a week made the schedule drift). Sleep science 2 a week: Tue and Fri. When the mix moves to 3 history after monetising, add Thu back. Her decision 9 Nov 2026 (option a): Mon Neville, Tue food history, Wed Money, Thu Neville, Fri ocean documentary. A lane key (food, ocean) wins over the kind key (loop/whisper_upload.days_for); other sleep lanes keep Tue/Fri. Shinn Sat stays but the rotating lane makes nothing now. After monetising (ocean 2 a week) ocean takes Thu, which Neville frees.",
+    "days_why": "One upload day per video the mix makes each week (9 Nov 2026, her catch: 3 sleep days for 2 sleep videos a week made the schedule drift). Sleep science 2 a week: Tue and Fri. When the mix moves to 3 history after monetising, add Thu back. Her decision 9 Nov 2026 (option a): Mon Neville, Tue food history, Wed Money, Thu Neville, Fri ocean documentary. A lane key (food, ocean) wins over the kind key (loop/whisper_upload.days_for); other sleep lanes keep Tue/Fri. Shinn Sat stays but the rotating lane makes nothing now. Her yes 18 Nov 2026 (PSALM NIGHTS LANE): Psalm Nights takes the FRIDAY slot from the ocean documentary; the week is Mon Neville, Tue food history, Wed Money, Thu Neville, Fri Psalm Nights. Ocean has no weekly slot now; a finished ocean video still goes up, on a free Tuesday (it shares Tuesday with food), never waiting for a planned one. After monetising, ocean takes Thu, which Neville frees.",
     "max_days_waiting": 7,
     "min_lead_hours": 12,
     "max_per_run": 2,
@@ -678,6 +713,140 @@
       }
     }
   },
+  "psalms": {
+    "why": "Her yes 18 Nov 2026 (spry brain, Settled decisions, PSALM NIGHTS LANE): whispered scripture for sleep in her cloned whisper, built like the Neville lane, on the Friday 8 PM CT slot. TEXT IS KING JAMES VERSION ONLY (public domain in the US): every verse is read word for word from config/kjv/kjv.json (loop/tools/kjv_bundle.py), never from a model's memory, never NIV/ESV/NLT or any copyrighted translation. Each night: a welcome, the main passage, a reflection, the companion passages, a second reflection, the main passage again, and a closing rest (loop/psalms.plan); only the framing is written by the free-model author, with no health claim and no promised result. The rotation never repeats a night within the last 12 Psalm scripts (loop/psalms.next_night); 14 nights, so about 14 weeks before any night returns. Verses that read as threats or as a healing promise are left out of the ranges (e.g. Psalm 3:7, 63:9-11, 139:19-22, 103:3). Titles lead with the psalm and 'for sleep', say whispered and (KJV), as the searches read ('psalm 91 for sleep', 'psalm 23 for sleep', 'bible verses for sleep'). Read by loop/psalms.py, loop/whisper_lane.py and loop/whisper_author.py.",
+    "reflect_words": 600,
+    "welcome_words": 320,
+    "rest_words": 520,
+    "nights": {
+      "psalm-91": {
+        "main": ["PSA.91.1-16"],
+        "companions": ["PSA.4.8", "PRO.3.24", "PSA.121.1-8"],
+        "title": "Psalm 91 whispered for sleep (KJV) · under his wings, Bible verses for sleep ({length})",
+        "topic": "Psalm 91",
+        "thumb_words": "psalm 91, softly",
+        "promise": "Psalm ninety-one from the King James Bible",
+        "hashtag": "#psalm91"
+      },
+      "psalm-23": {
+        "main": ["PSA.23.1-6"],
+        "companions": ["PSA.27.1", "PSA.27.4-5", "PSA.27.13-14", "JOH.14.27", "PSA.4.8"],
+        "title": "Psalm 23 for sleep, whispered (KJV) · the Lord is my shepherd ({length})",
+        "topic": "Psalm 23",
+        "thumb_words": "the lord is my shepherd",
+        "promise": "Psalm twenty-three from the King James Bible",
+        "hashtag": "#psalm23"
+      },
+      "psalm-121": {
+        "main": ["PSA.121.1-8"],
+        "companions": ["PSA.3.3-5", "PSA.46.1-3", "PSA.46.10-11"],
+        "title": "Psalm 121 whispered for sleep (KJV) · he that keepeth thee will not slumber ({length})",
+        "topic": "Psalm 121",
+        "thumb_words": "he will not slumber",
+        "promise": "Psalm one hundred and twenty-one from the King James Bible",
+        "hashtag": "#psalm121"
+      },
+      "psalm-139": {
+        "main": ["PSA.139.1-12"],
+        "companions": ["PSA.139.14", "PSA.139.17-18", "PSA.63.6-8"],
+        "title": "Psalm 139 whispered for sleep (KJV) · the night shineth as the day ({length})",
+        "topic": "Psalm 139",
+        "thumb_words": "the night shines",
+        "promise": "Psalm one hundred and thirty-nine from the King James Bible",
+        "hashtag": "#psalm139"
+      },
+      "psalm-46": {
+        "main": ["PSA.46.1-11"],
+        "companions": ["ISA.26.3-4", "PSA.62.1-2", "PSA.62.5-8"],
+        "title": "Psalm 46 for sleep, whispered (KJV) · be still, and know ({length})",
+        "topic": "Psalm 46",
+        "thumb_words": "be still",
+        "promise": "Psalm forty-six from the King James Bible",
+        "hashtag": "#psalm46"
+      },
+      "psalm-27": {
+        "main": ["PSA.27.1", "PSA.27.3-5", "PSA.27.13-14"],
+        "companions": ["PSA.4.8", "NUM.6.24-26"],
+        "title": "Psalm 27 whispered for sleep (KJV) · the Lord is my light ({length})",
+        "topic": "Psalm 27",
+        "thumb_words": "the lord is my light",
+        "promise": "Psalm twenty-seven from the King James Bible",
+        "hashtag": "#psalm27"
+      },
+      "psalm-63": {
+        "main": ["PSA.63.1-8"],
+        "companions": ["PSA.16.7-9", "PSA.16.11", "PSA.42.8"],
+        "title": "Psalm 63 whispered for sleep (KJV) · upon my bed, in the night watches ({length})",
+        "topic": "Psalm 63",
+        "thumb_words": "in the night watches",
+        "promise": "Psalm sixty-three from the King James Bible",
+        "hashtag": "#psalm63"
+      },
+      "evening-psalms": {
+        "main": ["PSA.4.1-8"],
+        "companions": ["PSA.134.1-3", "PSA.3.3-5"],
+        "title": "Evening psalms for sleep, whispered (KJV) · Psalm 4 and Psalm 134 ({length})",
+        "topic": "Psalm 4",
+        "thumb_words": "lay me down in peace",
+        "promise": "the evening psalms from the King James Bible",
+        "hashtag": "#psalm4"
+      },
+      "come-unto-me": {
+        "main": ["MAT.11.28-30"],
+        "companions": ["ISA.40.28-31", "PHI.4.6-8", "JOH.14.1-3", "JOH.14.27"],
+        "title": "Bible verses for sleep, whispered (KJV) · come unto me, and I will give you rest ({length})",
+        "topic": "Bible verses",
+        "thumb_words": "i will give you rest",
+        "promise": "Bible verses on rest from the King James Bible",
+        "hashtag": "#bibleversesforsleep"
+      },
+      "psalm-34": {
+        "main": ["PSA.34.1-10"],
+        "companions": ["PSA.34.15", "PSA.34.17-18", "LAM.3.22-26"],
+        "title": "Psalm 34 whispered for sleep (KJV) · taste and see that the Lord is good ({length})",
+        "topic": "Psalm 34",
+        "thumb_words": "taste and see",
+        "promise": "Psalm thirty-four from the King James Bible",
+        "hashtag": "#psalm34"
+      },
+      "psalm-103": {
+        "main": ["PSA.103.1-2", "PSA.103.8-14"],
+        "companions": ["PSA.103.17", "PSA.103.20-22", "NUM.6.24-26"],
+        "title": "Psalm 103 whispered for sleep (KJV) · bless the Lord, O my soul ({length})",
+        "topic": "Psalm 103",
+        "thumb_words": "bless the lord, my soul",
+        "promise": "the hundred and third psalm, from the King James Bible",
+        "hashtag": "#psalm103"
+      },
+      "psalm-84": {
+        "main": ["PSA.84.1-12"],
+        "companions": ["PSA.27.4", "PSA.4.8"],
+        "title": "Psalm 84 whispered for sleep (KJV) · how amiable are thy tabernacles ({length})",
+        "topic": "Psalm 84",
+        "thumb_words": "a nest for herself",
+        "promise": "Psalm eighty-four from the King James Bible",
+        "hashtag": "#psalm84"
+      },
+      "psalm-127": {
+        "main": ["PSA.127.1-2"],
+        "companions": ["PSA.131.1-3", "PRO.3.5-6", "PRO.3.21-26", "PSA.116.7", "PSA.4.8"],
+        "title": "He giveth his beloved sleep · Psalm 127 whispered for sleep (KJV) ({length})",
+        "topic": "Psalm 127",
+        "thumb_words": "his beloved sleep",
+        "promise": "Psalm one hundred and twenty-seven from the King James Bible",
+        "hashtag": "#psalm127"
+      },
+      "psalm-8": {
+        "main": ["PSA.8.1-9"],
+        "companions": ["PSA.19.1-6", "PSA.121.3-4"],
+        "title": "Psalm 8 whispered for sleep (KJV) · the moon and the stars ({length})",
+        "topic": "Psalm 8",
+        "thumb_words": "the moon and the stars",
+        "promise": "Psalm eight from the King James Bible",
+        "hashtag": "#psalm8"
+      }
+    }
+  },
   "lanes": {
     "why": "Her plan 9 Nov 2026: four lanes until monetised; then Her decision 9 Nov 2026 (option a): the sleep lane splits into food history and ocean documentary (a sleep script's lane is its episode's `lane`; science and materials are paused). Neville is the only teacher with slots; pairing a love or specific-person wish inside a Neville video is NOT built (the Neville author has no wish input), so those wishes wait with the paused rotating lane. Each script belongs to one lane (loop/whisper_lane.lane_of). Money's description carries one plain line to her own products (her ruling 9 Nov: no affiliate framing).",
     "food": {
@@ -750,6 +919,12 @@
         "self-concept"
       ],
       "name": "Shinn / love / specific person / self-concept"
+    },
+    "psalm": {
+      "kinds": [
+        "psalm"
+      ],
+      "name": "Psalm Nights (KJV scripture for sleep)"
     }
   },
   "mix": {
@@ -759,20 +934,24 @@
       "money": 1,
       "rotating": 0,
       "food": 1,
-      "ocean": 1
+      "ocean": 0,
+      "psalm": 1
     },
-    "before_monetized_why": "Her decision 9 Nov 2026 (option a): 2 Neville + 1 Money + 1 food history + 1 ocean documentary; the rotating lane gets 0 slots for now. Since 11 Nov 2026 the weekly Monday re-weighting (`reweight`) moves the spare night by the channel's own watch hours.",
+    "before_monetized_why": "Her yes 18 Nov 2026: Psalm Nights takes the ocean documentary's Friday, so the week is 2 Neville + 1 Money + 1 food history + 1 Psalm Nights; ocean 0 (its written scripts are still voiced, after the others). Her decision 9 Nov 2026 (option a): 2 Neville + 1 Money + 1 food history + 1 ocean documentary; the rotating lane gets 0 slots for now. Since 11 Nov 2026 the weekly Monday re-weighting (`reweight`) moves the spare night by the channel's own watch hours.",
     "after_monetized": {
-      "ocean": 2,
+      "ocean": 1,
       "food": 1,
       "money": 2,
       "neville": 0,
-      "rotating": 0
+      "rotating": 0,
+      "psalm": 1
     },
+    "after_monetized_why": "18 Nov 2026: Psalm Nights keeps its Friday after monetising, so ocean's planned 2 a week becomes 1 (on the Thursday Neville frees); the Mac's 5 nights stay 5.",
     "floors": {
       "neville": 1,
       "food": 1,
-      "ocean": 1
+      "ocean": 1,
+      "psalm": 1
     },
     "floors_why": "Her decision 9 Nov 2026 (option a) and her yes 11 Nov 2026: the weekly re-weighting never takes a lane below these; every lane with a slot in the week keeps at least 1 night and Neville stays at 1 or more.",
     "monetized_when": {
@@ -797,8 +976,10 @@
     "lanes": {
       "neville": "calm-night",
       "rotating": "calm-night",
-      "money": "money-luxury"
+      "money": "money-luxury",
+      "psalm": "calm-night"
     },
+    "lanes_why": "18 Nov 2026: Psalm Nights takes the calm night footage (moonlight on water, candlelight, rain on a window, a forest at dawn) and is NOT in the paint trial (config `paint.lanes`), so her day-30 paint verdict stays a test of the manifesting lanes only.",
     "per_subject": 5,
     "sets": {
       "calm-night": [

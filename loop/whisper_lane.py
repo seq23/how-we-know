@@ -57,7 +57,8 @@ STAGE = "whisper-voice"
 
 READY = "READY FOR VOICE"
 TEACHING = ("neville", "shinn")                 # loop/teachings.py: guided sessions built on a teacher
-KINDS = ("sleep", "affirmations") + TEACHING
+PSALM = "psalm"                                # loop/psalms.py: KJV scripture for sleep (her yes 18 Nov 2026)
+KINDS = ("sleep", "affirmations") + TEACHING + (PSALM,)
 STATUSES = (READY, "VOICED", "RENDERED")
 
 
@@ -161,6 +162,16 @@ def spoken_text(p: dict) -> str:
     return "\n\n".join(x for s in p["segments"] for x in s["paragraphs"])
 
 
+def distinct_text(p: dict) -> str:
+    """What makes a script distinct from the others: all of it, except a
+    Psalm script's scripture, which another night may read again (the same
+    KJV words); its framing must still be its own."""
+    if p.get("kind") == PSALM:
+        import psalms as PS                                 # noqa: PLC0415
+        return PS.framing_text(p)
+    return spoken_text(p)
+
+
 def sentences(text: str) -> list[str]:
     return [s for s in re.split(r"(?<=[.!?])\s+|(?<=[.!?][”\"’])\s+", text.strip()) if s]
 
@@ -245,6 +256,9 @@ def promise_subject(p: dict, c: dict) -> str:
     if p.get("kind") in TEACHING:
         t = c["teachings"][p["kind"]]["topics"].get(p.get("meta", {}).get("technique", ""), {})
         return t.get("promise") or t.get("name") or "a guided meditation"
+    if p.get("kind") == PSALM:
+        n = c["psalms"]["nights"].get(p.get("meta", {}).get("night", ""), {})
+        return n.get("promise") or "psalms from the King James Bible"
     for e in c["episodes"]:
         if e["slug"] == p.get("slug"):
             return e.get("promise") or e["topic"]
@@ -350,14 +364,16 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
     for s in p["segments"]:
         where = f"segment {s['n']} ({s['source']})"
         text = "\n\n".join(s["paragraphs"])
+        if kind == PSALM and s["source"].startswith("kjv:"):
+            continue                       # scripture is read as written: loop/psalms checks it word for word
         out += W.text_problems(text, p["named"], where)
         for sent in sentences(text):
             n = len(W.WORD.findall(sent))
             if n > c["pacing"]["max_sentence_words"]:
                 out.append(f"{where}: LONG_SENTENCE {n} words (at most "
                            f"{c['pacing']['max_sentence_words']}): {sent[:60]!r}")
-        if kind in TEACHING:
-            pass                           # loop/teachings.teaching_problems, below
+        if kind in TEACHING or kind == PSALM:
+            pass                           # loop/teachings.teaching_problems or loop/psalms.psalm_problems, below
         elif kind == "sleep":
             if base_slug(s["source"]) not in checked:
                 out.append(f"{where}: SOURCE_NOT_FACT_CHECKED {s['source']} was never uploaded by How We Know")
@@ -370,6 +386,11 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
         mates = [parse(o) for o in (others if others is not None else all_scripts())
                  if Path(o).resolve() != Path(path).resolve()]
         out += TG.teaching_problems(p, mates, c)
+    if kind == PSALM:
+        import psalms as PS                                 # noqa: PLC0415
+        mates = [parse(o) for o in (others if others is not None else all_scripts())
+                 if Path(o).resolve() != Path(path).resolve()]
+        out += PS.psalm_problems(p, mates, c)
     est = estimate_seconds(p, c)
     out += opening_problems(p, est, c)
     lo, hi = c["lengths"][kind]["min_s"], c["lengths"][kind]["max_s"]
@@ -377,11 +398,11 @@ def script_problems(path: Path | str, others: list[Path] | None = None,
         lo = episode_cfg(p, c).get("min_s", lo)
     if not lo <= est <= hi:
         out.append(f"LENGTH estimated {fmt_len(est)}, outside {fmt_len(lo)} to {fmt_len(hi)}")
-    mine = spoken_text(p)
+    mine = distinct_text(p)
     for o in (others if others is not None else all_scripts()):
         if Path(o).resolve() == Path(path).resolve():
             continue
-        ov = W.overlap(mine, spoken_text(parse(o)))
+        ov = W.overlap(mine, distinct_text(parse(o)))
         if ov > c["distinct"]["max_overlap"]:
             out.append(f"NOT_DISTINCT {ov:.0%} of its eight-word runs are in {Path(o).name}")
     return out
@@ -413,6 +434,12 @@ def episode_cfg(p: dict, c: dict) -> dict:
                          f"{re.sub(r'^the ', '', t['name'])}: a short plain "
                          f"explanation, a few lines from the public-domain books, then a long, quiet "
                          f"stretch to fall asleep in the wish fulfilled."),
+                "still_slots": []}
+    if p["kind"] == PSALM:
+        n = c["psalms"]["nights"][p["meta"].get("night", "")]
+        return {**n, "slug": p["slug"], "kind": PSALM, "moment": "",
+                "hook": (f"{n['topic']} and other scripture from the King James Bible, whispered slowly "
+                         f"for sleep, with quiet words of rest between the readings."),
                 "still_slots": []}
     for e in c["episodes"]:
         if e["slug"] == p["slug"]:
@@ -461,6 +488,9 @@ def description(p: dict, seconds: float, c: dict | None = None,
     elif p["kind"] in TEACHING:
         import teachings as TG                              # noqa: PLC0415
         lines += [*TG.credits(p), "A practice for rest and imagination, not a promise of any outcome.", ""]
+    elif p["kind"] == PSALM:
+        import psalms as PS                                 # noqa: PLC0415
+        lines += [*PS.credits(p, c), ""]
     else:
         lines += ["Affirmations are words to rest with, not a promise of any outcome.", ""]
     if c["lanes"].get(lane, {}).get("products_line"):
@@ -472,7 +502,9 @@ def description(p: dict, seconds: float, c: dict | None = None,
                "money": "#sleep #asmr #moneyaffirmations #affirmations",
                "rotating": "#sleep #asmr #affirmations",
                "food": "#sleep #asmr #foodhistory #historyforsleep",
-               "ocean": "#sleep #asmr #deepsea #documentary"}.get(lane, "#sleep #asmr #whisper")]
+               "ocean": "#sleep #asmr #deepsea #documentary",
+               "psalm": f"#sleep #asmr {e.get('hashtag', '#psalms')} #bibleversesforsleep #kjv"}.get(
+                   lane, "#sleep #asmr #whisper")]
     return "\n".join(lines).strip() + "\n"
 
 
@@ -616,7 +648,7 @@ def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None,
     small = _font("Jost-Light.ttf", 40)
     sx = tx + 4 if anchor == "l" else tx
     sub = {"sleep": "sleep science", "neville": "neville goddard", "shinn": "florence scovel shinn",
-           "affirmations": "affirmations"}.get(p["kind"], "sleep")
+           "affirmations": "affirmations", PSALM: "psalms · kjv"}.get(p["kind"], "sleep")
     d.text((sx, y + 30), f"{length_label(seconds)} · whispered · {sub}", font=small,
            fill=b["ember"], anchor=a)
     d.text((sx, 640) if variant != "c" else (84, 640), "whisper almanac",
@@ -832,6 +864,8 @@ def lane_of(p: dict, c: dict | None = None) -> str:
         return "science"
     if p["kind"] == "neville":
         return "neville"
+    if p["kind"] == PSALM:
+        return "psalm"
     if p["kind"] == "affirmations" and p.get("meta", {}).get("theme", "money") in c["lanes"]["money"]["themes"]:
         return "money"
     return "rotating"

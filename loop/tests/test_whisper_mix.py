@@ -2,7 +2,7 @@
 
 Five videos a week before monetisation: 2 Neville Goddard, 1 Money, 1 food
 history, 1 ocean documentary, 0 rotating; uploads Mon Neville, Tue food
-history, Wed Money, Thu Neville, Fri ocean documentary. Each check fails on
+history, Wed Money, Thu Neville, Fri Psalm Nights (18 Nov). Each check fails on
 the code before that decision:
 
   a. a fresh week's queue (nothing made, every lane stocked) voices exactly
@@ -10,7 +10,7 @@ the code before that decision:
   b. a food script's title reads as history; a deep-sea script's title says
      "deep sea documentary" and names a place; an animal-facts ocean title,
      and a food title without history, are refused by the kit check;
-  c. Neville uploads land on Mon and Thu; food on Tue, ocean on Fri, Money on Wed;
+  c. Neville uploads land on Mon and Thu; food and ocean on Tue, Psalm on Fri, Money on Wed;
   c2. a finished food or ocean video takes the other lane's day while that
       lane has no render waiting (a finished video never waits for a planned one);
   d. a food episode's parts are the food script's own sections (no part
@@ -134,8 +134,9 @@ first = slot_day(nev)
 second = slot_day(nev, [WU.stamp(first)])
 check((first.strftime("%a"), second.strftime("%a")) == ("Thu", "Mon"),
       f"(c) Neville uploads land on {first:%a} then {second:%a}, not Thu then Mon")
-for k, want in (({"kind": "sleep", "lane": "food"}, "Tue"), ({"kind": "sleep", "lane": "ocean"}, "Fri"),
-                ({"kind": "affirmations", "lane": "money"}, "Wed")):
+# her yes 18 Nov 2026: Fri is Psalm Nights; a finished ocean video goes up on a Tuesday
+for k, want in (({"kind": "sleep", "lane": "food"}, "Tue"), ({"kind": "sleep", "lane": "ocean"}, "Tue"),
+                ({"kind": "psalm", "lane": "psalm"}, "Fri"), ({"kind": "affirmations", "lane": "money"}, "Wed")):
     got = slot_day(k).strftime("%a")
     check(got == want, f"(c) a {k['lane']} upload lands on {got}, not {want}")
 
@@ -147,7 +148,10 @@ got = WU.next_slot(WU.days_for(ocean_k, c, {}), {}, MON_LATE, c).strftime("%a")
 check(got == "Tue", f"(c2) a rendered ocean video with no food render waiting lands on {got}, not Tue")
 food_waits = {"f": {"lane": "food", "length_basis": "measured"}}
 got = WU.next_slot(WU.days_for(ocean_k, c, food_waits), food_waits, MON_LATE, c).strftime("%a")
-check(got == "Fri", f"(c2) with a food render waiting, the ocean video took {got}, not its own Fri")
+check(got == "Tue", f"(c2) with a food render waiting, the ocean video took {got}, not its own Tue")
+fri = {"x": {"scheduled_publish_at": WU.stamp(WU.next_slot(["psalm"], {}, MON_LATE, c))}}
+got = WU.next_slot(WU.days_for(ocean_k, c, food_waits), fri, MON_LATE, c).strftime("%a")
+check(got != "Fri", "(c2) an ocean video took a Friday, which is Psalm Nights' slot")
 nev_days = WU.days_for({"kind": "neville", "lane": "neville"}, c, {})
 check(nev_days == ["neville"], f"(c2) a manifesting lane borrows sleep days: {nev_days}")
 
@@ -194,5 +198,5 @@ if fails:
     for f in fails:
         print("  " + f)
     sys.exit(1)
-print(f"ok test_whisper_mix: {examined} checks; 2 Neville + 1 Money + 1 food history + 1 ocean documentary, "
+print(f"ok test_whisper_mix: {examined} checks; 2 Neville + 1 Money + 1 food history + 1 Psalm Nights (ocean 0), "
       "lane titles, Mon/Thu Neville")

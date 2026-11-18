@@ -2,7 +2,7 @@
 
 **Current plan: 9 Nov 2026, option "a"** (her rulings: "i want to reach monetization fastest", "build the neville lane", then her option "a" the same day: 2 Neville, 1 Money, food history and ocean documentary from How We Know's own fact-checked scripts, the rotating lane paused). **Re-check on 9 Dec 2026** (day 30) with real views per lane. The 6 Nov plan below it is kept for the how-it-works detail; its cadence is **Superseded**.
 
-**The week:** **Mon Neville · Tue food history · Wed Money · Thu Neville · Fri ocean documentary.** Rotating lane paused. Never "no AI" or "human voiced" in a title or description (the voice is her own voice, cloned; the description says so). Evidence: [demand research, 9 Nov 2026](https://claude.ai/artifact/Ja6ppnQDz2JJTgQWVwacmB).
+**The week (18 Nov 2026):** **Mon Neville · Tue food history · Wed Money · Thu Neville · Fri Psalm Nights.** Psalm Nights took the ocean documentary's Friday (her yes 18 Nov 2026, spry brain "PSALM NIGHTS LANE"); ocean has no weekly slot, and a finished ocean video goes up on a free Tuesday. Rotating lane paused. Never "no AI" or "human voiced" in a title or description (the voice is her own voice, cloned; the description says so). Evidence: [demand research, 9 Nov 2026](https://claude.ai/artifact/Ja6ppnQDz2JJTgQWVwacmB).
 
 ## The plan (9 Nov 2026)
 
@@ -16,7 +16,8 @@
 | **Money** (Wed) | 1 | 1 h | Affirmations in her whisper: billionaire, rich woman, manifest money while you sleep; steady/monthly income as lines inside them |
 | **Rotating** | **0, paused** | 1 h | In turn: Florence Scovel Shinn, specific person, Shinn, love, Shinn, self-concept. A love or specific-person wish inside a Neville video is **not built** (the Neville author has no wish input) |
 | **Food history** (Tue) | 1 (floor 1) | 2 h | How We Know's fact-checked food scripts told as history; title e.g. "ASMR whispered food history for deep sleep · how we learned why bread rises (2 hr)" |
-| **Ocean documentary** (Fri) | 1 (floor 1) | 2 h | How We Know's deep-sea scripts framed around a PLACE (midnight zone, ocean floor, trench), never single-animal facts; title says "deep sea documentary"; NOAA Ocean Exploration footage first |
+| **Psalm Nights** (Fri) | 1 (floor 1) | 1 h | Whispered King James scripture for sleep (Psalm 91, Psalm 23, other psalms and scripture for sleep). **KJV only, word for word from the bundled public-domain text `config/kjv/kjv.json`** (`loop/tools/kjv_bundle.py`, from eBible.org), never from a model's memory, never NIV/ESV/NLT. A night = welcome, main passage, reflection, companion passages, reflection, main passage again, rest; only the framing is written by the free model, with no health claim and no promised result. 14 nights in `psalms.nights`, never one repeated within 12 Psalm scripts. Titles e.g. "Psalm 91 whispered for sleep (KJV) · under his wings, Bible verses for sleep (1 hr)". Calm night footage, outside the paint trial. Rules in `loop/psalms.py`, guarded by `loop/tests/test_psalm_lane.py` |
+| **Ocean documentary** (no slot since 18 Nov; finished videos on a free Tue) | 0 | 2 h | How We Know's deep-sea scripts framed around a PLACE (midnight zone, ocean floor, trench), never single-animal facts; title says "deep sea documentary"; NOAA Ocean Exploration footage first |
 | **Materials** | 0, not in rotation | 2 h | One test later (history of an everyday thing), then judge |
 | **Shorts** | **1 a day** (3 cut per long video) | ≤ 58 s | Her rulings 9 Nov ("Shorts from each") and 16 Nov (daily). `loop/whisper_shorts.py`, in the batch right after `whisper-upload`: each uploaded long video is cut into 3 distinct moments (chapter starts first), centre-cropped 1080×1920, no words on screen; the cut files queue on the Mac and one is dated per day at 19:00 CT, never more than 14 days out (WHISPER_SHORTS_HOLD). Private with a publish date, altered-content box ticked, the AI line first, a link to the full video. 1,601 units each, only above How We Know's reserves (`quota.deferrable_reserve`). A render is kept until it is cut. OUTPUT line every run; WHISPER_SHORTS_QUEUE_EMPTY, WHISPER_SHORT_FAILED (red). Config `shorts` |
 
@@ -41,7 +42,7 @@
 2. **Checks in code:** plain words, no promise, length, distinct; teaching adds the rights and straight-reading checks (`loop/teachings.py`).
 3. **Voice:** her cloned whisper (Chatterbox) on the Mac, the lane furthest behind its weekly count first.
 4. **Picture:** dim moving footage (food and ocean: each part's own subject, NOAA first for ocean; manifesting: the calm night or Money set).
-5. **Upload:** private with a 20:00 CT publish date (Mon Neville, Tue food history, Wed Money, Thu Neville, Fri ocean documentary; Shinn Sat unused while rotating is paused; a finished food or ocean video takes the other lane's day when that lane has nothing rendered, so a finished video never waits for a planned one), altered-content box ticked. Only one food script is fact-checked today; more come with the How We Know restart on Fri 13 Nov 2026.
+5. **Upload:** private with a 20:00 CT publish date (Mon Neville, Tue food history, Wed Money, Thu Neville, Fri Psalm Nights since 18 Nov 2026; a finished ocean video on a free Tuesday; Shinn Sat unused while rotating is paused; a finished food or ocean video takes the other lane's day when that lane has nothing rendered, so a finished video never waits for a planned one), altered-content box ticked. Only one food script is fact-checked today; more come with the How We Know restart on Fri 13 Nov 2026.
 
 ### Monetisation-safe rules (all in code)
 
@@ -177,7 +178,7 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 
 - **Altered content:** every upload body sets `status.containsSyntheticMedia = true`; the kit check fails without it, and without the AI-voice line in the first 3 description lines.
 
-- **Publish time:** 20:00 Central, so it is live before bedtime in every US zone (21:00 Eastern, 18:00 Pacific); uploaded private with a publish date, as How We Know does. Since 9 Nov 2026: Mon Neville, Tue food history, Wed Money, Thu Neville, Fri ocean documentary (`config/whisper_almanac.json` `upload.days`; a lane key wins over the kind key).
+- **Publish time:** 20:00 Central, so it is live before bedtime in every US zone (21:00 Eastern, 18:00 Pacific); uploaded private with a publish date, as How We Know does. Since 18 Nov 2026: Mon Neville, Tue food history, Wed Money, Thu Neville, Fri Psalm Nights (ocean on a free Tuesday; `config/whisper_almanac.json` `upload.days`; a lane key wins over the kind key).
 
 ### The upload step (`loop/whisper_upload.py`, built 7 Nov 2026)
 

@@ -194,21 +194,26 @@ for teacher, tc in c["teachings"].items():
 
 # h. the mix and the queue
 mix, _ = WL.weekly_mix(c, {})
-check(mix == {"neville": 2, "money": 1, "rotating": 0, "food": 1, "ocean": 1}, f"(h) the mix before monetisation: {mix}")
+# her yes 18 Nov 2026: Psalm Nights takes the ocean documentary's Friday
+check(mix == {"neville": 2, "money": 1, "rotating": 0, "food": 1, "ocean": 0, "psalm": 1},
+      f"(h) the mix before monetisation: {mix}")
 mix, _ = WL.weekly_mix(c, {"subscribers": 1200, "watch_hours_365d": 4100})
-check(mix["food"] + mix["ocean"] > 2 and mix["money"] >= 1 and sum(mix.values()) == 5,
-      f"(h) monetised did not shift to the sleep lanes and money: {mix}")
+check(mix["food"] + mix["ocean"] >= 2 and mix["money"] == 2 and mix["neville"] == 0 and mix["psalm"] == 1
+      and sum(mix.values()) == 5,
+      f"(h) monetised did not shift to the sleep lanes and money, keeping Psalm Nights: {mix}")
 # h2. the weekly Monday re-weighting (her yes 11 Nov 2026): the lane with the
 # most watch hours per video over 28 days gets the week's spare night; 5 a
 # week, every lane with a slot keeps 1, Neville 1 or more; no numbers, no move
 base = WL.base_mix(c, {})
 lanes = {"neville": {"videos_28d": 3, "watch_hours_per_video": 2.0},
          "money": {"videos_28d": 3, "watch_hours_per_video": 1.0},
-         "ocean": {"videos_28d": 4, "watch_hours_per_video": 9.0}}
+         "psalm": {"videos_28d": 4, "watch_hours_per_video": 9.0}}
 got = WL.reweight(base, lanes, c)
-check(got is not None and got[0] == {"neville": 1, "money": 1, "rotating": 0, "food": 1, "ocean": 2},
+check(got is not None and got[0] == {"neville": 1, "money": 1, "rotating": 0, "food": 1, "ocean": 0, "psalm": 2},
       f"(h2) the spare night did not go to the lane with the most watch hours per video: {got}")
-for top in ("neville", "money", "food", "ocean"):
+check(WL.reweight(base, {"ocean": {"videos_28d": 5, "watch_hours_per_video": 50.0}}, c) is None,
+      "(h2) ocean, with no slot in the plan since 18 Nov, took the spare night")
+for top in ("neville", "money", "food", "psalm"):
     one = {ln: {"videos_28d": 2, "watch_hours_per_video": 9.0 if ln == top else 0.1} for ln in base}
     mix, _ = WL.reweight(base, one, c)
     check(sum(mix.values()) == 5 and mix["neville"] >= 1 and mix["rotating"] == 0
