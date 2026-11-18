@@ -203,6 +203,57 @@
        "penthouse",
        "luxury"
       ]
+     },
+     {
+      "subject": "cryptocurrency coins",
+      "queries": [
+       "bitcoin",
+       "cryptocurrency",
+       "crypto coin"
+      ],
+      "accept": [
+       "bitcoin",
+       "cryptocurrency",
+       "crypto"
+      ]
+     },
+     {
+      "subject": "a city skyline of office towers",
+      "queries": [
+       "city skyline",
+       "office towers",
+       "skyscrapers"
+      ],
+      "accept": [
+       "skyline",
+       "skyscraper",
+       "office tower"
+      ]
+     },
+     {
+      "subject": "people working in an office",
+      "queries": [
+       "office work",
+       "business meeting",
+       "office workers"
+      ],
+      "accept": [
+       "office",
+       "business meeting",
+       "businessman",
+       "businesswoman"
+      ]
+     },
+     {
+      "subject": "a credit card payment",
+      "queries": [
+       "credit card",
+       "card payment"
+      ],
+      "accept": [
+       "credit card",
+       "card payment"
+      ]
      }
     ]
    }

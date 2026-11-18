@@ -172,6 +172,48 @@ def make(slug: str, force: bool = False, complete=None) -> list[str]:
     return subs
 
 
+def related_prompt(title: str, have: list[str]) -> str:
+    return (prompt(title).split("Answer with JSON")[0]
+            + "These subjects are already listed and their footage ran short: "
+            + ", ".join(have) + ". List OTHER concrete, filmable subjects that "
+            "ARE the same subject or a closely related one a documentary on this "
+            "title would also show (related species, the same object or process "
+            "at another stage). Same rules: no places, no settings, no abstract "
+            'ideas.\n\nAnswer with JSON and nothing else: {"subjects": [6-12 phrases], '
+            '"library_words": [2-6 words]}, all lowercase.')
+
+
+def widen(slug: str, complete=None) -> list[str]:
+    """RELATED-SUBJECT widening (loop/picture_park.py, 18 Nov 2026): an
+    episode whose footage ran short asks the free route for more filmable
+    subjects of the same title and keeps the old ones. At most once a week
+    per episode; returns the subjects it added."""
+    store = load()
+    ent = store.get(slug) or {}
+    have = list(ent.get("subjects") or [])
+    last = ent.get("widened")
+    if last and (datetime.now(timezone.utc).date()
+                 - datetime.fromisoformat(last).date()).days < 7:
+        return []
+    if complete is None:
+        sys.path.insert(0, str(ROOT / "loop"))
+        import llm_router                                   # noqa: PLC0415
+        key = _keys()
+        complete = lambda msgs: llm_router.complete(msgs, key, timeout=120,  # noqa: E731
+                                                     temperature=0.4)
+    resp = complete([{"role": "user", "content": related_prompt(title_of(slug), have)}])
+    text = (((resp.get("choices") or [{}])[0].get("message") or {}).get("content") or "")
+    added = [x for x in keep(slug, parse(text)) if x not in have]
+    ent = store.get(slug) or {"title": title_of(slug)}
+    ent["subjects"] = have + added
+    ent.setdefault("related_subjects", [])
+    ent["related_subjects"] += added
+    ent["widened"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    store[slug] = ent
+    STORE.write_text(json.dumps(store, indent=2, sort_keys=True) + "\n")
+    return added
+
+
 def main(argv: list[str]) -> int:
     if argv[:2] == ["make", "--pending"]:
         sys.path.insert(0, str(ROOT / "research"))

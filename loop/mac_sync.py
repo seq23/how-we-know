@@ -439,6 +439,8 @@ MAC_OWNED_GLOBS = (
     "loop/state/whisper_refused_clips.json",
     # the Peace Be Still library-fill pause mirror (loop/pbs_pause.py, 18 Nov 2026)
     "loop/state/pbs_fill.json",
+    # footage self-heal and parking (loop/picture_park.py, 18 Nov 2026)
+    "loop/state/picture_park.json",
 )
 
 

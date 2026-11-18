@@ -12,7 +12,7 @@ and was still narrating more every night.
 
 SUPPLY is what is MADE and not yet uploaded - never scripts alone:
   * longform: queued episodes (loop/batch_queue) not in the published ledger
-    whose render exists, or whose narration is complete (every plan beat has
+    and not parked for footage (loop/picture_park.py) whose render exists, or whose narration is complete (every plan beat has
     a wav). Counting scripts would deadlock: a held night uploads nothing, the
     measured rate falls toward zero, and the gate would never reopen.
   * shorts: Shorts cut into shorts/ and not in loop/state/shorts_ledger.json.
@@ -67,6 +67,10 @@ def longform_made(root: Path = ROOT, queued: list[str] | None = None,
         queued = batch_queue.queued_slugs()
     ledger = ledger if ledger is not None else json.loads((root / "loop/state/ledger.json").read_text())
     up = {e["slug"] for e in ledger.get("published", []) if not e.get("retired_at")}
+    # PARKED episodes can never render (not enough cleared footage of their
+    # subject, loop/picture_park.py, 18 Nov 2026): voiced, but not supply.
+    import picture_park                                     # noqa: PLC0415
+    up |= picture_park.parked()
     made = []
     for s in queued:
         if s in up:

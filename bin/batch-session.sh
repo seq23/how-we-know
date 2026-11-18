@@ -243,6 +243,9 @@ import json, glob, os, shutil, sys
 sys.path.insert(0, "loop")
 import batch_queue
 import render_prune
+import picture_park
+# PARKED for footage (loop/picture_park.py): left alone until its weekly retry
+parked = set(picture_park.skip())
 # EVERY BEAT HAS A WAV -- not "the counts are equal".
 #
 # Counting conflated two different facts, and the difference is a permanent
@@ -258,7 +261,7 @@ import render_prune
 out = []
 for slug in batch_queue.queued_slugs():
     plan = f"plans/{slug}.json"
-    if not os.path.exists(plan):
+    if not os.path.exists(plan) or slug in parked:
         continue
     n = len(json.load(open(plan)))
     have = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
@@ -705,8 +708,10 @@ import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science
   HWK_DOMAIN="$dom" $PY visuals/assemble.py "plans/$slug.json" "renders/${slug}-final.mp4" \
       --audio-dir "audio/$slug" \
       > "/tmp/asm-$slug.log" 2>&1 \
-    && { echo "    ok"; RENDERED=$((RENDERED+1)); BP unit render "$slug"; thumb_one "$slug" "$dom"; } \
-    || { echo "    FAILED"; tail -8 "/tmp/asm-$slug.log"; }
+    && { echo "    ok"; RENDERED=$((RENDERED+1)); BP unit render "$slug"; thumb_one "$slug" "$dom"
+         $PY loop/picture_park.py ok "$slug" || true; } \
+    || { echo "    FAILED"; tail -8 "/tmp/asm-$slug.log"
+         $PY loop/picture_park.py record "$slug" "/tmp/asm-$slug.log" || true; }
   BP rendering ""
   return 0
 }
@@ -846,6 +851,11 @@ echo; echo "--- render (final sweep) ---"
   # subject already holding its clips searches nothing.
   nice -n 10 $PY research/imagery_stock_video.py --money 2>&1 | grep -E "money footage|calm footage|verified|NAMED STOP|Traceback" | tail -3 \
     || echo "  money footage step exited $? - Money renders from what is on record"
+  # FOOTAGE SELF-HEAL (18 Nov 2026, loop/picture_park.py): each episode that
+  # failed for want of cleared footage widens its own search before the sweep;
+  # a parked one does so on its weekly retry.
+  nice -n 10 $PY loop/picture_park.py heal 2>&1 | grep -E "heal |OUTPUT|Traceback" | tail -12 \
+    || echo "  picture heal exited $? - the sweep renders from what is on record"
 for slug in $(renderable); do
   render_one "$slug" || { echo "  --max-episodes $MAX_EPISODES reached; stopping"; break; }
 done
@@ -1021,6 +1031,9 @@ $PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pe
 # Every named stop the push ended on reaches the repository (stop file,
 # committed just below) and, when it pages, ONE deduped GitHub issue. Never
 # blocks: what passed is already on the shelf. See loop/mac_batch_stop.py.
+# PARK what failed for footage 3 nights running, retire what sat parked 60
+# days; one morning line each (loop/picture_park.py). Paused nights too.
+$PY loop/picture_park.py settle 2>&1 | tail -12 || echo "  picture park settle exited $?"
 cat "$PUSH_OUT" "$GUARD_OUT" 2>/dev/null > "$PUSH_OUT.scan"
 $PY loop/mac_batch_stop.py scan "$PUSH_OUT.scan" 2>&1 | grep -E "mac-batch" || true
 $PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" $(ls loop/state/shelf.json 2>/dev/null) loop/state/pbs_fill.json 2>&1 | tail -1

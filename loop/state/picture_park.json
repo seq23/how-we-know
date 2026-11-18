@@ -1,0 +1,127 @@
+{
+  "_why": "Footage self-heal and parking (loop/picture_park.py). Mac-owned; seeded 18 Nov 2026 from the batch logs.",
+  "episodes": {
+    "are-sea-pigs-real": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: need 9 distinct subjects and 32 vetted source moments; widen the harvest",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-are-microchips-designed": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: need 9 distinct subjects and 32 vetted source moments; widen the harvest",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-does-3d-printing-metal-work": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: no rights-cleared footage and no photograph of this episode's subject; the footage lane widens the harvest (research/imagery_stock_video.py, research/imagery.py) and the next batch renders",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-does-chemosynthesis-work": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: need 10 distinct subjects and 37 vetted source moments; widen the harvest",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-does-photolithography-work": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: need 10 distinct subjects and 34 vetted source moments; widen the harvest",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-does-thermohaline-circulation-work": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: need 9 distinct subjects and 33 vetted source moments; widen the harvest",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-mid-oceanic-ridge-is-formed": {
+      "fails": [
+        "2026-11-03",
+        "2026-11-07",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: need 9 distinct subjects and 34 vetted source moments; widen the harvest",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "how-was-bernie-madoff-caught": {
+      "fails": [
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: no rights-cleared footage and no photograph of this episode's subject; the footage lane widens the harvest (research/imagery_stock_video.py, research/imagery.py) and the next batch renders",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    },
+    "why-did-ftx-collapse": {
+      "fails": [
+        "2026-11-17"
+      ],
+      "reason": "NAMED STOP [NO_SUBJECT_PICTURE] NO_SUBJECT_PICTURE: no rights-cleared footage and no photograph of this episode's subject; the footage lane widens the harvest (research/imagery_stock_video.py, research/imagery.py) and the next batch renders",
+      "seeded_from": "~/Library/Logs/how-we-know/batch*.log FAILED nights since 3 Nov + /tmp/asm-<slug>.log of 18 Nov"
+    }
+  },
+  "pending_notes": []
+}
