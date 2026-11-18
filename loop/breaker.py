@@ -197,6 +197,21 @@ def lift_longform(note: str) -> dict:
     return b
 
 
+def longform_approvals_drained(record: dict | None = None) -> str | None:
+    """The owner's approval gate is on and every approved long-form is
+    already uploaded: nothing can be dated until she approves the next render.
+    Her decision, not a defect (loop/publish_floor.py emails her the gap)."""
+    b = load() if record is None else record
+    if not b.get("longform_owner_approval_required"):
+        return None
+    import approved_renders                                # noqa: PLC0415
+    import ledger                                          # noqa: PLC0415
+    out = {r.get("slug") for r in ledger.load()["published"] if r.get("video_id")}
+    if set(approved_renders.load()) - out:
+        return None
+    return "every approved long-form is out; the next waits on her approval"
+
+
 def longform_dating_pending(record: dict | None = None, at=None) -> str | None:
     """One daily upload opportunity after a genuine hold lift (48h maximum).
 

@@ -3187,14 +3187,10 @@ def v32_scheduled_pov_is_hers() -> Result:
         # out, nothing can be dated until she approves the next render. That
         # is her decision, not a defect, and loop/publish_floor.py emails her
         # the gap every day it lasts.
-        b = _br.load()
-        if b.get("longform_owner_approval_required"):
-            import approved_renders as _ap                   # noqa: PLC0415
-            out = {row.get("slug") for row in _led.load()["published"] if row.get("video_id")}
-            if not set(_ap.load()) - out:
-                r.note("nothing dated ahead: every approved long-form is out; the next one "
-                       "waits on her approval (publish_floor emails the gap)")
-                return r
+        drained = _br.longform_approvals_drained()
+        if drained:
+            r.note(f"nothing dated ahead: {drained} (publish_floor emails the gap)")
+            return r
         transition = _br.longform_dating_pending()
         if transition:
             r.named_stop("LONGFORM_DATING_PENDING",

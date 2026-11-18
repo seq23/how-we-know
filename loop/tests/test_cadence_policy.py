@@ -457,7 +457,8 @@ def check() -> list[str]:
     import ledger as _led                                    # noqa: PLC0415
     tail = cadence.scheduled_tail()
     import breaker as _br                                    # noqa: PLC0415
-    pending = _br.longform_dating_pending()
+    # the approval gate drained (18 Nov 2026) empties the calendar on purpose too
+    pending = _br.longform_dating_pending() or _br.longform_approvals_drained()
     fixture = None
     if not tail and pending:
         print(f"STATE: {pending}: next daily upload assigns dates; proving occupied slots on fixture")
