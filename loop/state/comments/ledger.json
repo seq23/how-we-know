@@ -2021,6 +2021,33 @@
         "applied_at": "2026-11-14T19:54:13+00:00",
         "result": "posted (UgyAcvukNrVtYnZ-Oxd4AaABAg)"
       }
+    },
+    "Ugx49uSAdNFY5pxf6Tl4AaABAg": {
+      "comment_id": "Ugx49uSAdNFY5pxf6Tl4AaABAg",
+      "video_id": "rHjyomS0aZo",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Is damascus steel better? Full episode: https://youtu.be/HWJ16RxXhH0",
+      "published_at": "2026-11-18T00:10:33+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-11-18T00:10:33+00:00",
+      "acted": {
+        "comment_id": "Ugx49uSAdNFY5pxf6Tl4AaABAg",
+        "video_id": "rHjyomS0aZo",
+        "action": "channel_comment",
+        "reply_text": "Is damascus steel better? Full episode: https://youtu.be/HWJ16RxXhH0",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-11-18T00:10:33+00:00",
+        "result": "posted (Ugx49uSAdNFY5pxf6Tl4AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -2873,6 +2900,18 @@
       "note": null,
       "applied_at": "2026-11-14T19:54:13+00:00",
       "result": "posted (UgyAcvukNrVtYnZ-Oxd4AaABAg)"
+    },
+    {
+      "comment_id": "Ugx49uSAdNFY5pxf6Tl4AaABAg",
+      "video_id": "rHjyomS0aZo",
+      "action": "channel_comment",
+      "reply_text": "Is damascus steel better? Full episode: https://youtu.be/HWJ16RxXhH0",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-11-18T00:10:33+00:00",
+      "result": "posted (Ugx49uSAdNFY5pxf6Tl4AaABAg)"
     }
   ],
   "sweeps": [
@@ -3510,7 +3549,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "rHjyomS0aZo": {
+      "comment_id": "Ugx49uSAdNFY5pxf6Tl4AaABAg",
+      "text": "Is damascus steel better? Full episode: https://youtu.be/HWJ16RxXhH0",
+      "posted_at": "2026-11-18T00:10:33+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-11-14T19:54:13+00:00"
+  "updated": "2026-11-18T00:10:33+00:00"
 }
