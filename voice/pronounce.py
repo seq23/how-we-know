@@ -61,8 +61,22 @@ LEGACY = HERE / "lexicon_legacy.json"
 # download from the whisper.cpp HuggingFace repo, cached outside the repo.
 WHISPER_CLI = os.environ.get("HWK_WHISPER_CLI") or shutil.which("whisper-cli") \
     or "/opt/homebrew/bin/whisper-cli"
-WHISPER_MODEL = Path(os.environ.get("HWK_WHISPER_MODEL") or
-                     Path.home() / "Library/Caches/how-we-know/ggml-small.en.bin")
+# NOT ~/Library/Caches: a disk clean-up empties it (18 Nov 2026), and the
+# model then re-downloaded (466 MB) mid-night. The shared whisper.cpp cache
+# wins when it already holds the same file; a download lands in ~/.cache.
+def _whisper_model() -> Path:
+    if os.environ.get("HWK_WHISPER_MODEL"):
+        return Path(os.environ["HWK_WHISPER_MODEL"])
+    home = Path.home()
+    for p in (home / ".cache/whisper/ggml-small.en.bin",
+              home / ".cache/how-we-know/ggml-small.en.bin",
+              home / "Library/Caches/how-we-know/ggml-small.en.bin"):
+        if p.exists() and p.stat().st_size > 400_000_000:
+            return p
+    return home / ".cache/how-we-know/ggml-small.en.bin"
+
+
+WHISPER_MODEL = _whisper_model()
 WHISPER_URL = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin"
 
 CARRIERS = (

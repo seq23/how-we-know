@@ -135,6 +135,9 @@ trap on_exit EXIT
 trap 'on_signal TERM 143' TERM
 trap 'on_signal HUP 129' HUP
 trap 'on_signal INT 130' INT
+# not paused: hold the Peace Be Still fill's lock while this night runs, so
+# its 15-minute runs never voice beside the food narrator (loop/pbs_pause.py hold)
+[ -z "$STUBS" ] && { "$PYP" loop/pbs_pause.py hold --pid $$ 2>&1 | sed 's/^/  /' & }
 FL run-begin --pid "$$" --until "$NARRATION_UNTIL" \
   || echo "  could not write the run record; an interruption tonight would not be resumed"
 

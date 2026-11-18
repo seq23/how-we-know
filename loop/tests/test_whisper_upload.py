@@ -43,6 +43,8 @@ ROOT = HERE.parent.parent
 sys.path.insert(0, str(ROOT / "loop"))
 sys.path.insert(0, str(ROOT / "visuals"))
 os.environ["LOOP_DRY_RUN"] = "1"
+# never this Mac's real Peace Be Still fill file: render_ready honours the pause
+os.environ["PBS_FILL_FILE"] = str(Path(tempfile.gettempdir()) / "no-such-library-fill.active")
 
 TMP = Path(tempfile.mkdtemp(prefix="whisper-upload-"))
 import breaker                                              # noqa: E402

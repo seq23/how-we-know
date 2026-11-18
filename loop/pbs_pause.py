@@ -3,6 +3,7 @@
 
     python loop/pbs_pause.py gate     # the Mac jobs: exit 10 + PAUSED_FOR_PBS_FILL while paused, else 0
     python loop/pbs_pause.py status   # the same judgement, always exit 0
+    python loop/pbs_pause.py hold --pid N   # after the pause: hold the fill's lock while N lives
 
 Her call, 18 Nov 2026: "we can put the YouTube videos on pause while we fill
 our library for the app and then add the app into the cadence".
@@ -27,13 +28,29 @@ removes it; nothing in this repo does.
     channels forever). loop/tests/test_pbs_pause.py.
   * The file removed: the next gate deletes the mirror and everything runs
     that night, with no other change.
+  * AFTER THE PAUSE, ONE HEAVY JOB AT A TIME (hostile review 18 Nov 2026): the
+    fill job keeps running every 15 minutes after the file is gone (content
+    scripts, then Hush Harbor; ~850 MB and four cores each run), and nothing
+    stopped it voicing beside Chatterbox on this 8 GB Mac - the swap that cut
+    nights to 1-16 beats in Sep/Oct 2026. So a How We Know or Almanac night
+    that is NOT paused runs `hold --pid $$`: a background process that takes
+    the fill's own lock (~/.peace-be-still/library-fill.lock, the flock
+    audio/fill.py and audio/hush_harbor.py already yield to) and keeps it
+    until the night's process exits. A fill run already going finishes first
+    (the hold waits for it); every later one steps aside until morning.
+    While paused the hold takes nothing: the Mac is the fill's.
+  * While paused, no Almanac render either: loop/whisper_upload.render_ready
+    asks `paused()` (a voiced script waits; the upload of finished renders
+    and the Short cuts still run).
 """
 from __future__ import annotations
 
 import datetime as _dt
+import fcntl
 import json
 import os
 import sys
+import time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -56,6 +73,52 @@ def _t(x) -> _dt.datetime | None:
         return t if t.tzinfo else t.replace(tzinfo=CT)
     except (TypeError, ValueError):
         return None
+
+
+def lock_file() -> Path:
+    return Path(os.environ.get("PBS_FILL_LOCK") or fill_file().parent / "library-fill.lock")
+
+
+def paused() -> bool:
+    """Is the Mac paused for the fill right now (the local file, under 21 days)?"""
+    return bool(judge(read_local())["paused"])
+
+
+def hold(pid: int, poll: float | None = None) -> int:
+    """Take the fill's lock and keep it while PID lives (see the docstring).
+    A note on every path, exit 0: preparation, never a failure of the night."""
+    if paused():
+        print("pbs hold: paused for the fill - the lock stays the fill's")
+        return 0
+    lf = lock_file()
+    if not lf.parent.is_dir():
+        print(f"pbs hold: no {lf.parent} on this Mac - nothing to hold")
+        return 0
+    poll = float(os.environ.get("PBS_HOLD_POLL") or 20) if poll is None else poll
+    fh = lf.open("a")
+    try:
+        fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        print("pbs hold: a Peace Be Still fill run is mid-way; it finishes, then this night holds "
+              "the lock and the next fill runs step aside", flush=True)
+        while True:                       # wait for that run, but never outlive the night
+            try:
+                os.kill(pid, 0)
+            except OSError:
+                return 0
+            try:
+                fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                break
+            except BlockingIOError:
+                time.sleep(poll)
+    print(f"pbs hold: holding {lf.name} while pid {pid} runs (Peace Be Still fill runs wait for morning)",
+          flush=True)
+    while True:
+        try:
+            os.kill(pid, 0)
+        except OSError:
+            return 0
+        time.sleep(poll)
 
 
 def read_local(path: Path | None = None) -> dict | None:
@@ -103,15 +166,19 @@ def mirror(rec: dict | None, root: Path = ROOT) -> None:
 
 
 def repo_status(root: Path = ROOT, now: _dt.datetime | None = None) -> dict:
-    """The cloud's view: the mirror the Mac last pushed."""
+    """The cloud's view: the mirror the Mac last pushed (PBS_FILL_MIRROR: a
+    test's own copy, so a real pause on main never leaks into a test)."""
+    mp = Path(os.environ["PBS_FILL_MIRROR"]) if os.environ.get("PBS_FILL_MIRROR") else root / MIRROR_REL
     try:
-        rec = json.loads((root / MIRROR_REL).read_text())
+        rec = json.loads(mp.read_text())
     except (OSError, ValueError):
         rec = None
     return judge(rec, now)
 
 
 def main(argv: list[str]) -> int:
+    if argv[:1] == ["hold"] and len(argv) == 3 and argv[1] == "--pid" and argv[2].isdigit():
+        return hold(int(argv[2]))
     if argv[:1] not in (["gate"], ["status"]):
         print(__doc__)
         return 2
