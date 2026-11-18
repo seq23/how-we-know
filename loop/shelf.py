@@ -402,6 +402,11 @@ def main(argv: list[str]) -> int:
             try:
                 r = shelve()
             except ShelfStop as e:
+                if e.code == "SHELF_UNREACHABLE":       # self-resolving, escalates after 3 days
+                    st.named_stop("SHELF_UNREACHABLE", str(e).split("] ", 1)[-1],
+                                  unblock="No local clip is deleted before its Drive copy verifies, "
+                                          "so nothing is lost; the next daily run retries. Repeating: "
+                                          "check `rclone about gdrive:` on the Mac.")
                 st.named_stop(e.code, str(e).split("] ", 1)[-1],
                               unblock="No local clip is deleted before its Drive copy verifies, so "
                                       "nothing is lost; the next daily run retries. Repeating: check "
