@@ -93,8 +93,12 @@ def ledger(*rows) -> dict:
             "updated": None}
 
 
-# a. both waiting cuts inside their gap
-res = lane_run(ledger(("vents", 2, stamp(-1)), ("creepers", 2, stamp(-11))),
+# a. both waiting cuts inside their gap. Each must clear AFTER the slots plan()
+# looks at before it gives up (MAX_EMPTY_SLOTS + 1 evenings, up to 6 days at
+# 4 a week): at -11 days creepers cleared in 3 days, so on some evenings plan()
+# rightly scheduled it and this read as a failure (red main 18 Nov 2026,
+# run 44214093594). -5 clears in 9 days, past any 3-slot window.
+res = lane_run(ledger(("vents", 2, stamp(-1)), ("creepers", 2, stamp(-5))),
                [("vents", 3), ("creepers", 3)])
 stop = (res["stops"] or [{}])[-1]
 check(res["exit"] == 0, f"(a) a shelf waiting out the episode gap exited {res['exit']}: {res}")
