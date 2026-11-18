@@ -199,8 +199,8 @@ check("9b nothing is ever slowed below two-thirds speed",
       all((FF.speed_for(rec("chocolate", 4, secs=x / 10)) or 1.0) + 1e-3 >= 2 / 3 for x in range(100, 200)), "")
 mixed = [rec("chocolate", i) for i in range(4)] + [rec("chocolate", 10 + i, secs=15.5) for i in range(8)]
 check("9c four long clips and eight of 15 s make the 12 a part needs",
-      FF.long_count(mixed, "chocolate") == 12 and len(R.food_pool("chocolate", mixed, ON)) == 12,
-      FF.long_count(mixed, "chocolate"))
+      FF.long_count(mixed, "chocolate", ON) == 12 and len(R.food_pool("chocolate", mixed, ON)) == 12,
+      FF.long_count(mixed, "chocolate", ON))
 slow_parts = {**parts, "chocolate": R.food_pool("chocolate", mixed, ON)}
 shots9 = R.plan_reel(segs, [], pool_of=lambda s: slow_parts[R.food_part(s)])
 slowed = [s for s in shots9 if s["asset"].get("speed", 1.0) < 1.0]
@@ -281,6 +281,39 @@ check("10a a 1 h 39 min episode is refused by the 2-hour floor, passes with its 
 check("10c the author's draft file gets its episode's floor too", not as_draft, as_draft)
 check("10b the food episode carries its own floor, and only it", food_ep.get("min_s") == 4500
       and sum(1 for e in C10["episodes"] if "min_s" in e) == 1, food_ep.get("min_s"))
+
+# ------------------------------------------------------------ 11. recover before measuring
+with tempfile.TemporaryDirectory() as td:
+    img = Path(td)
+    records = [rec("bread", i, sha256=hashlib.sha256(blob).hexdigest(),
+                   download_url="https://example.invalid/clip") for i in range(12)]
+    class NoSearch:
+        name = "mixkit"
+        searches = 0
+        def enabled(self):
+            return True, "usable"
+        def search(self, q):
+            self.searches += 1
+            return []
+    source = NoSearch()
+    old = FF.IMAGERY, FF.load, FF.CHAIN, FF._get
+    FF.IMAGERY = img
+    FF.load = lambda: {"index": records, "rejected": []}
+    FF.CHAIN = [source]
+    FF._get = lambda *a, **kw: blob
+    try:
+        before = FF.long_count(records, "bread")
+        pool_before = len(R.food_pool("bread", records))
+        result = FF.harvest_long(["bread"], text_check=lambda p, d: [])
+        after = FF.long_count(records, "bread")
+        pool_after = len(R.food_pool("bread", records))
+        pictureable = R.pictureable(f"{FOOD_EP}#Bread", [])
+    finally:
+        FF.IMAGERY, FF.load, FF.CHAIN, FF._get = old
+    check("11a missing recorded clips are recovered and pictureable", result["bread"] == 12 and pictureable, result)
+    check("11b count matches the selectable pool before and after recovery",
+          before == pool_before == 0 and after == pool_after == 12, (before, pool_before, after, pool_after))
+    check("11c recovery precedes the count and avoids searches", source.searches == 0, source.searches)
 
 print(f"examined {examined} case(s), {len(fails)} failed")
 if examined == 0:
