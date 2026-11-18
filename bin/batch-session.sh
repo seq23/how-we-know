@@ -432,6 +432,11 @@ echo; echo "--- a domain's graphics never appear in another domain's video ---"
 # holds the identical file, then refuses to render below the floor with NAMED
 # STOP [DISK_LOW] (loop/render_prune.py). Its output joins the push's for the
 # end-of-night stop scan, so the stop is filed where someone sees it.
+# The guard reads R2 to prove a render is safe to delete, and wrangler needs
+# the (non-secret) account id or every R2 call fails as "credentials missing"
+# (17 Nov 2026: the prune skipped with R2_CREDENTIALS_MISSING and the night
+# stopped at DISK_LOW). Same default as bin/food-session.sh and push-to-r2.sh.
+export CLOUDFLARE_ACCOUNT_ID="${CLOUDFLARE_ACCOUNT_ID:-8d147e242033699dd37c6f5a451f48d2}"
 $PY loop/render_prune.py guard 2>&1 | tee -a "$GUARD_OUT" | sed 's/^/  /' || true
 # visuals/plan_domain.py (2026-11-01): re-plans any not-yet-uploaded plan that
 # draws another domain's graphics (the depth gauge on the rice episode) and
