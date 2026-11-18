@@ -73,6 +73,8 @@ with tempfile.TemporaryDirectory() as td:
     for fs in spares.values():
         for f in fs:
             f.write_bytes(b"spare" * 100)
+    for r in RP.RECORDS:
+        (renders / f"proven-final.mp4{r}").write_text("{}")
     (renders / "proven-final.mp4.work").mkdir()
     (renders / "proven-final.mp4.work" / "0001.mp4").write_bytes(b"w" * 10)
     # pruned before this rule: its R2 copy and spare copies are still around
@@ -109,6 +111,8 @@ with tempfile.TemporaryDirectory() as td:
         fails.append("spare copies of an uploaded episode were kept")
     if not all(f.exists() for s in ("not-uploaded", "no-shorts") for f in spares[s]):
         fails.append("spare copies of an episode not yet done on YouTube were deleted")
+    if not all((renders / f"proven-final.mp4{r}").exists() for r in RP.RECORDS):
+        fails.append("the master's own records were deleted with its spare copies")
     if not (renders / "earlier-final.mp4.pruned.json").exists():
         fails.append("the pruned marker was removed: the batch would re-render it")
     if len(asked) != 1:
