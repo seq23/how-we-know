@@ -539,7 +539,7 @@ def vet(clips: list[dict], photos: list[dict], subject: str, judge=None,
                         continue
                     jpg = os.path.join(work, f"{len(todo):04d}.jpg")
                     subprocess.run(["nice", "-n", "10", "ffmpeg", "-hide_banner", "-loglevel",
-                                    "error", "-y", "-ss", f"{t:.2f}", "-i", FT.verify(a),
+                                    "error", "-y", "-ss", f"{t:.2f}", "-i", FT.verify(a, fetch=True),
                                     "-frames:v", "1", "-vf", f"{FT.crop_filter(a)}scale=512:-2",
                                     "-q:v", "4", jpg], check=True)
                     todo.append((vid, jpg))
@@ -606,7 +606,7 @@ def precheck(shots: list[dict], subject: str, judge=None, every: float = 20.0
             asset = sh["asset"]
             if sh["kind"] == "footage":
                 src_t = float(sh["start"]) + (x - a) * float(sh.get("speed") or 1)
-                cmd = ["-ss", f"{src_t:.2f}", "-i", FT.verify(asset), "-frames:v", "1",
+                cmd = ["-ss", f"{src_t:.2f}", "-i", FT.verify(asset, fetch=True), "-frames:v", "1",
                        "-vf", f"{FT.crop_filter(asset)}scale=512:-2"]
             else:
                 cmd = ["-i", os.path.join(IMAGERY_DIR, asset["local_file"]), "-frames:v", "1",
@@ -688,7 +688,7 @@ def render_shot(shot: dict, out_clip: str, frames: int) -> str:
     secs = frames / FPS
     if shot["kind"] == "footage":
         import footage as FT             # noqa: PLC0415
-        src = FT.verify(a)               # sha256 + stock licence, every render
+        src = FT.verify(a, fetch=True)   # sha256 + stock licence, every render
         end = shot["start"] + shot["src_seconds"]
         if not FT.inside_window(a, shot["start"], end):
             raise FT.RightsRefusal(f"{a.get('title')!r}: {shot['start']}-{end}s "

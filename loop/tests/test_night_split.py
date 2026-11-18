@@ -62,7 +62,8 @@ check(k == "hwk", "(c) an open How We Know night was taken by the Almanac")
 
 # d. the Whisper gate before any upload: planned rate
 check(G.verdict("whisper", 15, 2 / 7, 0, NOW)["hold"], "(d) 15 made at two a week does not hold")
-check(not G.verdict("whisper", 3, 2 / 7, 0, NOW)["hold"], "(d) 3 made at two a week holds")
+check(not G.verdict("whisper", 1, 2 / 7, 0, NOW)["hold"], "(d) 1 made at two a week holds")
+check(G.verdict("whisper", 2, 2 / 7, 0, NOW)["hold"], "(d) 2 made at two a week (7 days) does not hold")
 
 # d2. one upload never drags the pace below the plan (11 Nov 2026: 1 upload in
 # 28 days read as 1/28 a day held the Almanac with a single video waiting)

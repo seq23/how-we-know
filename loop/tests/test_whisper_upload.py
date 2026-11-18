@@ -192,9 +192,12 @@ try:
     # c. a later night: processed -> the local render and wavs go, once its
     # Short is made (loop/whisper_shorts.py; tested in test_whisper_shorts.py)
     yt2 = FakeYT(upload_status="processed")
+    spare = WL.video_path("ep-b").with_name(WL.video_path("ep-b").name + ".frame-check-failed")
+    spare.write_bytes(b"an earlier set-aside copy")
     rc, rec, lines = run(yt2)
     check("c. processed but not yet cut into Shorts: the render is kept",
           WL.video_path("ep-b").exists() and not WU.read_kit("ep-b").get("pruned"))
+    check("c. a spare copy is kept until the Shorts are cut", spare.exists())
     kb = WU.read_kit("ep-b")
     kb["shorts_cut"] = "2026-11-08T05:00:00Z"
     WU.write_kit("ep-b", kb)
@@ -203,6 +206,7 @@ try:
     check("c. deleted only once YouTube reports it processed",
           not WL.video_path("ep-b").exists() and not (WL.audio_dir("ep-b") / "0000.wav").exists()
           and WU.read_kit("ep-b").get("pruned"), WU.read_kit("ep-b"))
+    check("c. its spare copies go with it (her 17 Nov 2026: on YouTube, not wanted)", not spare.exists())
 
     # d. the supply gate: 14+ days of the format already waiting
     sandbox("d")

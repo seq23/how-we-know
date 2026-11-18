@@ -69,7 +69,8 @@ PYEOF
 report() {   # report OK UPLOADED HELD PENDING
   $PY loop/mac_sync.py heartbeat --lane $LANE --ok "$1" --uploaded "$2" \
       --held "$3" --pending "$4" 2>&1 | tail -1
-  $PY loop/mac_sync.py push --lane $LANE loop/state/ledger.json loop/state/quota.json 2>&1 | tail -1
+  $PY loop/mac_sync.py push --lane $LANE loop/state/ledger.json loop/state/quota.json \
+      $(ls loop/state/shelf.json loop/state/stops/$WEEK-clip-shelf.json 2>/dev/null) 2>&1 | tail -1
 }
 
 # A LEFT-OVER REBASE BLOCKS EVERY FUTURE RUN, FOR EVER. `git pull --rebase`
@@ -128,6 +129,14 @@ rc=$?
 after=$($PY -c "import sys,json; sys.path.insert(0,'loop'); import ledger; print(len([r for r in ledger.load()['published'] if not r.get('retired_at')]))")
 uploaded=$(( after - before ))
 pending=$($PY -c "import sys; sys.path.insert(0,'loop'); import backfill; print(len(backfill.library_pending()))" 2>/dev/null || echo "")
+
+# THE CLIP SHELF (loop/shelf.py, her rulings 17 Nov 2026): footage clips no
+# render has used for 7 days move to gdrive:Mac-Shelf/clips/, Drive's size +
+# sha256 verified before the local copy is deleted; each render pulls its own
+# shelved clips back just before it starts. Never while a render runs (a
+# note); a Drive that cannot be reached or is full is a named stop recorded
+# in loop/state/stops/ and nothing is deleted.
+$PY loop/shelf.py shelve 2>&1 | tail -4 | sed 's/^/  /'
 
 ok=1; [ "$rc" -eq 0 ] || ok=0
 [ "$uploaded" -gt 0 ] && echo "  ledger pushed so the cloud lane sees these uploads"

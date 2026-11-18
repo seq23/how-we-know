@@ -797,6 +797,36 @@
         "latency_s": 0.1,
         "outcome": "rate_limited",
         "ts": "2026-11-03T01:33:15Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "error",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "rate_limited",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "empty",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:54:41Z"
       }
     ],
     "nvidia/nemotron-3-super-120b-a12b:free": [
@@ -881,72 +911,6 @@
     ],
     "nvidia/nemotron-3-ultra-550b-a55b:free": [
       {
-        "lane": "shot_list.py",
-        "latency_s": 17.3,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:23:08Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 14.3,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:23:24Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 21.8,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:23:46Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 12.9,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:24:00Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 33.2,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:24:34Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 27.2,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:25:02Z"
-      },
-      {
-        "lane": "shot_list.py",
-        "latency_s": 57.5,
-        "outcome": "answered",
-        "ts": "2026-11-04T02:26:01Z"
-      },
-      {
-        "lane": "localize",
-        "latency_s": 6.5,
-        "outcome": "answered",
-        "ts": "2026-11-08T16:07:52Z"
-      },
-      {
-        "lane": "localize",
-        "latency_s": 30.0,
-        "outcome": "answered",
-        "ts": "2026-11-08T16:08:50Z"
-      },
-      {
-        "lane": "localize",
-        "latency_s": 5.4,
-        "outcome": "answered",
-        "ts": "2026-11-08T16:10:26Z"
-      },
-      {
-        "lane": "money-author",
-        "latency_s": 38.6,
-        "outcome": "answered",
-        "ts": "2026-11-12T20:03:59Z"
-      },
-      {
         "lane": "money-author",
         "latency_s": null,
         "outcome": "failed_validation",
@@ -999,6 +963,72 @@
         "latency_s": 20.3,
         "outcome": "answered",
         "ts": "2026-11-17T20:10:15Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "rate_limited",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "error",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "rate_limited",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "empty",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:55:03Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:55:03Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:55:03Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:55:03Z"
+      },
+      {
+        "lane": "test_mon_draft_authoring_budget.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:55:03Z"
       }
     ],
     "nvidia/nemotron-3.5-lightning:free": [
@@ -1028,12 +1058,6 @@
       }
     ],
     "nvidia/nemotron-3.5-super-vl:free": [
-      {
-        "lane": "bench",
-        "latency_s": 14.1,
-        "outcome": "failed_validation",
-        "ts": "2026-11-02T14:00:04Z"
-      },
       {
         "lane": "bench",
         "latency_s": 12.9,
@@ -1105,6 +1129,54 @@
         "latency_s": 48.4,
         "outcome": "answered",
         "ts": "2026-11-13T15:46:32Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "error",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "error",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "rate_limited",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "empty",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-11-18T01:54:41Z"
+      },
+      {
+        "lane": "test_llm_routing.py",
+        "latency_s": 0.0,
+        "outcome": "error",
+        "ts": "2026-11-18T01:54:41Z"
       }
     ],
     "thinkingmachines/inkling:free": [

@@ -124,6 +124,8 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
     probs = R.reel_problems(shots, sum(x for _, x in segs))
     if probs:
         raise SystemExit(f"NAMED STOP [WHISPER_REEL_REFUSED] {slug}: {len(probs)} footage rule(s) broken: {probs[:3]}")
+    # the clip shelf (loop/shelf.py): this reel's shelved clips come back before the first frame
+    F.prefetch([s.get("asset") for s in shots])
     kit = WL.kit(slug, measured_s=total, seg_starts=seg_starts, c=c,
                  footage_credits=None if proof_seconds else R.credits(shots))
     if not proof_seconds:

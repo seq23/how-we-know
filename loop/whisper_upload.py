@@ -26,7 +26,7 @@ sit in R2 (docs/WHISPER_ALMANAC.md, Storage). How We Know's rules, reused:
     videos.insert body itself, so the altered-content answer
     (status.containsSyntheticMedia = true: the voice is a clone of hers) and
     made-for-kids = no are never reset by a second status write.
-  * THE SUPPLY GATE: no new upload of a format while 14+ days of it already
+  * THE SUPPLY GATE: no new upload of a format while 7+ days of it already
     wait on YouTube (her 12 Oct rule). A HOLD is a note, never a red; the
     render waits on the Mac.
   * YOUTUBE CONFIRMS BEFORE ANYTHING IS DELETED: the upload is recorded only
@@ -559,11 +559,39 @@ def WS_pending(k: dict) -> bool:
     return WS.pending(k)
 
 
+def spare_files(slug: str, k: dict) -> list[Path]:
+    """What is left of an uploaded, pruned episode on the Mac: set-aside
+    copies of its render (<slug>.mp4.<tag>, e.g. .frame-check-failed) and the
+    Short files already uploaded (their kit row has a video id). Her ruling 17
+    Nov 2026: "if its already on youtube i dont want it nor do i need it"."""
+    v = WL.video_path(slug)
+    out = [p for p in v.parent.glob(f"{v.name}.*") if p.is_file()] if v.parent.exists() else []
+    import whisper_shorts as WS                             # noqa: PLC0415
+    for r in k.get("shorts") or []:
+        f = WS.shorts_dir(slug) / r.get("file", "")
+        if r.get("video_id") and r.get("file") and f.is_file():
+            out.append(f)
+    return sorted(out)
+
+
+def clear_spares(slug: str, k: dict, st) -> int:
+    gone = spare_files(slug, k)
+    freed = sum(p.stat().st_size for p in gone)
+    for p in gone:
+        p.unlink()
+    if gone:
+        st.work(f"deleted {len(gone)} spare file(s) of uploaded {slug} ({freed / 2**30:.2f} GiB)")
+    return freed
+
+
 def prune_confirmed(yt, ks: dict[str, dict], st, now: _dt.datetime | None = None) -> tuple[int, list[str], int]:
     """Delete the local render and voice wavs of every upload YouTube
     reports `processed` with no rejection. Returns (how many were deleted,
     the lost uploads (lost), how many YouTube is still processing)."""
     now = now or _dt.datetime.now(_dt.timezone.utc)
+    for slug, k in ks.items():             # pruned earlier: their spares go too
+        if k.get("pruned") and k.get("video_id") and not WS_pending(k):
+            clear_spares(slug, k, st)
     rows = {s: k for s, k in ks.items() if k.get("video_id") and not k.get("pruned")}
     if not rows:
         return 0, [], 0
@@ -594,6 +622,7 @@ def prune_confirmed(yt, ks: dict[str, dict], st, now: _dt.datetime | None = None
         k["pruned"] = {"at": stamp(_dt.datetime.now(_dt.timezone.utc)), "upload_status": "processed",
                        "bytes": freed}
         write_kit(slug, k)
+        clear_spares(slug, k, st)
         st.work(f"deleted {slug}'s local render and voice ({freed / 2**30:.2f} GiB): "
                 f"YouTube reports {k['video_id']} processed")
         n += 1

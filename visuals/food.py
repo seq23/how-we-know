@@ -265,8 +265,8 @@ def catalogue() -> dict[str, dict]:
                 continue                    # Whisper Almanac's sleep-reel clips only
             key = r.get("subject") or r.get("key")
             path = IMAGERY / r["local_file"]
-            if not path.exists():
-                continue
+            if not path.exists() and not _shelf().present(path, r.get("sha256")):
+                continue                    # a shelved clip (loop/shelf.py) stays selectable
             cat[key] = {**r, "kind": kind, "path": str(path),
                         "credit": ("AI-GENERATED IMAGE" if kind == "ai"
                                    else (r.get("credit_line") or "")),
@@ -295,8 +295,18 @@ def hands_of(rec: dict) -> bool:  # noqa: D401
     return any(w in words for w in _ff.HAND_WORDS)
 
 
+def _shelf():
+    sys.path.insert(0, str(ROOT / "loop"))
+    import shelf                                              # noqa: PLC0415
+    return shelf
+
+
 def verify_asset(rec: dict) -> None:
-    """The bytes on screen are the bytes the rights/provenance record names."""
+    """The bytes on screen are the bytes the rights/provenance record names.
+    A shelved clip comes back from the shelf first, sha-checked, or the
+    render stops loudly (NAMED STOP [SHELF_UNREACHABLE])."""
+    if not Path(rec["path"]).exists():
+        _shelf().need([rec["path"]])
     h = hashlib.sha256(Path(rec["path"]).read_bytes()).hexdigest()
     if h != rec.get("sha256"):
         raise ValueError(f"{rec['path']}: sha256 differs from its manifest record")
@@ -956,6 +966,8 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
                              f"are ONE voice start to finish (owner, 2026-10-13)")
     cat = catalogue()
     tl = build_timeline(paras, beats, cat)
+    # the clip shelf: this video's shelved clips come back before its render
+    _shelf().need([cat[s["asset"]]["path"] for s in tl["shots"] if s.get("asset")])
     for s in tl["shots"]:
         if s.get("asset"):
             verify_asset(cat[s["asset"]])

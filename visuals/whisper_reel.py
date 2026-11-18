@@ -164,7 +164,11 @@ def food_pool(part: str, index: list[dict] | None = None, present=None) -> list[
     (food_footage.speed_for; 13 Nov 2026)."""
     FF = _ff()
     index = FF.load().get("index") or [] if index is None else index
-    present = present or (lambda r: (FF.IMAGERY / r["local_file"]).exists())
+    if present is None:
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "loop"))
+        import shelf as SH                                  # noqa: PLC0415
+        # a shelved clip (loop/shelf.py) stays a candidate; it comes back before the render
+        present = lambda r: SH.present(FF.IMAGERY / r["local_file"], r.get("sha256"))  # noqa: E731
     return [food_asset(r) for r in index
             if r.get("segment") == part and not r.get("excluded")
             and not FF.record_problems(r) and FF.speed_for(r, SHOT_S + 1.0) is not None and present(r)]

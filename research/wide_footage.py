@@ -60,6 +60,16 @@ MIN_WIDTH = 640
 PD_LICENCES = re.compile(r"^(public domain|pd|cc0|cc0 1\.0|pdm)", re.I)
 
 
+def _on_shelf(path, sha256=None) -> bool:
+    """A clip idle 7+ days lives on the clip shelf (loop/shelf.py) with the
+    same sha256: it is still in the pool, never "file gone"."""
+    import importlib, os as _os, sys as _sys                  # noqa: E401
+    _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "loop"))
+    sh = importlib.import_module("shelf")
+    e = sh.shelved(path)
+    return bool(e) and (sha256 is None or e.get("sha256") == sha256)
+
+
 def _json(url: str, body: dict | None = None, tries: int = 4):
     for k in range(tries):
         try:
@@ -121,8 +131,9 @@ def repair(man: dict, download=None, clips: str | None = None) -> dict:
         lf = a.get("local_file") or ""
         path = os.path.join(os.path.dirname(clips), lf)
         wide = os.path.basename(lf).startswith("wide__")
-        ok = (wide and shared[lf] == 1 and os.path.exists(path)
-              and os.path.getsize(path) == a.get("bytes"))
+        ok = (wide and shared[lf] == 1 and (
+              (os.path.exists(path) and os.path.getsize(path) == a.get("bytes"))
+              or (not os.path.exists(path) and _on_shelf(path, a.get("sha256")))))
         if not wide or ok:
             kept.append(a)
             continue

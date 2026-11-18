@@ -802,6 +802,9 @@ def _write(assets: list[dict], rejected: list[dict],
             if a["post_id"] in fresh:
                 continue                       # re-screened this run; new wins
             path = os.path.join(OUT, a["local_file"])
+            if not os.path.exists(path) and _on_shelf(path, a.get("sha256")):
+                carried.append(a)              # on the clip shelf, same bytes
+                continue
             if not os.path.exists(path):
                 dropped.append(f"{a['title']}: file gone")
                 continue
@@ -830,6 +833,16 @@ def _write(assets: list[dict], rejected: list[dict],
     }, open(MANIFEST, "w"), indent=2)
 
 
+def _on_shelf(path, sha256=None) -> bool:
+    """A clip idle 7+ days lives on the clip shelf (loop/shelf.py) with the
+    same sha256: it is still in the pool, never "file gone"."""
+    import importlib, os as _os, sys as _sys                  # noqa: E401
+    _sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "loop"))
+    sh = importlib.import_module("shelf")
+    e = sh.shelved(path)
+    return bool(e) and (sha256 is None or e.get("sha256") == sha256)
+
+
 def verify() -> int:
     """Re-hash every clip on disk against the manifest. Hard-fails on drift."""
     if not os.path.exists(MANIFEST):
@@ -842,6 +855,8 @@ def verify() -> int:
     bad = []
     for a in assets:
         p = os.path.join(OUT, a["local_file"])
+        if not os.path.exists(p) and _on_shelf(p, a.get("sha256")):
+            continue                           # on the clip shelf, recorded sha256
         if not os.path.exists(p):
             bad.append(f"{a['title']}: file missing ({a['local_file']})")
             continue

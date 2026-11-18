@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""THE SUPPLY GATE: no new video of a format while 14+ days of it wait to upload.
+"""THE SUPPLY GATE: no new video of a format while 7+ days of it wait to upload.
 
     python loop/supply_gate.py check longform|shorts   # exit 0 open, 10 HOLD; one line
     python loop/supply_gate.py report                  # every format: supply, rate, days, opens on
 
-Her rule (12 Oct 2026; enforced in code 6 Nov 2026): over 14 days of supply,
+Her rule (12 Oct 2026; enforced in code 6 Nov 2026; 14 days cut to 7 on 17 Nov
+2026, a HOLD line reads SUPPLY_FULL - a note, never an error): over 7 days of supply,
 make none of that format; free the Mac's night for the other work. On 6 Nov
 the Mac had 33 days of long-form waiting (14 renders at 0.43 uploads a day)
 and was still narrating more every night.
@@ -38,7 +39,7 @@ LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
-MAX_DAYS = 14.0
+MAX_DAYS = 7.0      # her 17 Nov 2026: "we dont have to produce videos so far in advance" (was 14)
 WINDOW_DAYS = 28
 FLOOR_RATE = 1 / 7          # per day, when nothing uploaded in the window
 HOLD_EXIT = 10
@@ -97,7 +98,7 @@ def verdict(fmt: str, made: int, per_day: float, uploads: int, now: _dt.datetime
         # supply drains at per_day: under max_days once made < max_days * per_day
         need = made - max_days * per_day
         opens = (now + _dt.timedelta(days=need / per_day + 1)).date().isoformat()
-    line = (f"HOLD: {days:.0f} days of {fmt} supply, making none "
+    line = (f"HOLD [SUPPLY_FULL]: {days:.0f} days of {fmt} supply, making none "
             f"({made} made and waiting, {uploads} uploaded in {WINDOW_DAYS} days; "
             f"opens about {opens})" if opens else
             f"open: {days:.1f} days of {fmt} supply ({made} waiting at {per_day:.2f}/day), "
