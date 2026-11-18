@@ -54,20 +54,20 @@
   },
   "research/imagery_video.py": {
     "host": "mac-batch",
-    "last_run_at": "2026-11-10T13:50:17+00:00",
+    "last_run_at": "2026-11-18T11:36:32+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W46",
-    "records": 430,
+    "week": "2026-W47",
+    "records": 472,
     "tail": [
       "  rejected   42  gate 0-size",
       "  rejected    1  gate C-window",
-      "  carried forward 264 previously-accepted clip(s)",
-      "downloaded 166 clips -> /Users/sequoiataylor/GitHub/.hwk-runner/channel/imagery/clips",
+      "  carried forward 304 previously-accepted clip(s)",
+      "downloaded 168 clips -> /Users/sequoiataylor/GitHub/.hwk-runner/channel/imagery/clips",
       "manifest -> /Users/sequoiataylor/GitHub/.hwk-runner/channel/imagery/video_rights.json",
-      "verified 430 clips: sha256 matches, clean window present, commercial use cleared"
+      "verified 472 clips: sha256 matches, clean window present, commercial use cleared"
     ],
-    "last_success_at": "2026-11-10T13:50:17+00:00"
+    "last_success_at": "2026-11-18T11:36:32+00:00"
   },
   "research/imagery_food.py": {
     "host": "ci",
@@ -88,18 +88,13 @@
   },
   "research/imagery_stock_video.py": {
     "host": "mac-batch",
-    "last_run_at": "2026-11-10T12:48:11+00:00",
-    "ok": true,
-    "exit": 0,
-    "week": "2026-W46",
-    "records": 430,
+    "last_run_at": "2026-11-18T10:43:11+00:00",
+    "ok": false,
+    "exit": 124,
+    "week": "2026-W47",
+    "records": 471,
     "tail": [
-      "  money-luxury: gold bars handled slowly: 0 clip(s)",
-      "  money-luxury: a luxury car interior: 0 clip(s)",
-      "  money-luxury: designer shopping bags: 0 clip(s)",
-      "  money-luxury: a calm infinity pool at dusk: 5 clip(s)",
-      "calm footage: 1 new clip(s); 87 on record",
-      "verified 141 stock clip(s): licence wording re-checked, sha256 matches"
+      "research/imagery_stock_video.py exceeded its 3600s harvest budget (HARVESTER timeout_seconds)"
     ],
     "last_success_at": "2026-11-10T12:48:11+00:00"
   }
