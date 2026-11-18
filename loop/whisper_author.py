@@ -5,6 +5,7 @@
     python loop/whisper_author.py sleep SLUG   # one planned episode (config/whisper_almanac.json)
     python loop/whisper_author.py affirmations [--theme THEME]
     python loop/whisper_author.py teaching neville|shinn [--topic TOPIC]
+    python loop/whisper_author.py psalm [--night NIGHT]   # Psalm Nights (KJV only, loop/psalms.py)
 
 Sleep: every segment is ONE fact-checked How We Know script (uploaded by
 that machine, loop/whisper_lane.fact_checked) rewritten for sleep by a free
@@ -303,15 +304,19 @@ def _own_problems(paras: list[str], allowed: str, want: int, c: dict) -> list[st
     return probs
 
 
-def write_own(prompt: str, allowed: str, want: int, c: dict) -> tuple[list[str], str]:
-    """One explanation or guided part from a free model, sent back with its
+def write_own(prompt: str, allowed: str, want: int, c: dict, style: str = TEACH_STYLE,
+              extra=None) -> tuple[list[str], str]:
+    """One explanation or guided part (or a Psalm night's framing, with its
+    own `style` and `extra` rules) from a free model, sent back with its
     named problems until it passes (ATTEMPTS)."""
-    base = [{"role": "system", "content": TEACH_STYLE}, {"role": "user", "content": prompt}]
+    base = [{"role": "system", "content": style}, {"role": "user", "content": prompt}]
     msgs, rejected, last = list(base), set(), []
     for _ in range(ATTEMPTS):
         text, model = _complete(msgs, rejected)
         paras = clean(text)
         last = _own_problems(paras, allowed, want, c) if paras else ["EMPTY answer"]
+        if paras and extra:
+            last += [x for x in extra("\n\n".join(paras)) if x not in last]
         if not last:
             return paras, model
         if model:
@@ -418,6 +423,78 @@ def author_teaching(teacher: str, topic: str, c: dict) -> Path:
     return _commit(out, text)
 
 
+PSALM_STYLE = """You write the quiet spoken words BETWEEN scripture readings in a WHISPERED BIBLE READING FOR SLEEP.
+The listener is lying in bed. Write for the ear, slow, soft and warm, in plain everyday words.
+
+Rules you must follow exactly:
+- NEVER quote or retell scripture: the verses are read separately, word for word from the King James Bible. You may name a gentle image from the passage you are given (still waters, wings, a shepherd) in your own plain words.
+- Never add a fact, a date, a place, a person, a doctrine or a story. No sermon, no teaching, no altar call.
+- Never promise a result: nothing about healing, health, insomnia, anxiety, protection or what will happen. Never say the scripture will make her sleep or keep her safe. It is a time of rest and quiet reading.
+- No numerals, acronyms, all-capital words, brackets, lists, headings, emojis, exclamation marks or quotation marks.
+- Short sentences: at most 22 words each, most of them 8 to 14. Paragraphs of three to five sentences, one blank line between them.
+- Second person, present tense, gentle ("let your shoulders soften...", "you might notice...").
+- Write only the text. No title, no notes."""
+
+
+def _psalm_extra(night: dict):
+    import psalms as PS                                     # noqa: PLC0415
+    return lambda text: PS.framing_problems(text, night)
+
+
+def author_psalm(night_key: str, c: dict) -> Path:
+    """One Psalm Nights script (her yes 18 Nov 2026): the night's KJV passages
+    read word for word from config/kjv/kjv.json (loop/psalms.py), and only the
+    welcome, reflections and rest written by a free model."""
+    import psalms as PS                                     # noqa: PLC0415
+    pc = c["psalms"]
+    night = pc["nights"][night_key]
+    done = sum(1 for p in WL.all_scripts() if WL.parse(p)["kind"] == WL.PSALM
+               and WL.parse(p)["meta"].get("night") == night_key)
+    slug = f"psalm-nights-{night_key}-{done + 1:02d}"
+    allowed = PS.allowed_names(night)
+    labels = ", ".join(PS.label(r) for r in PS.night_refs(night))
+    main_text = "\n".join(PS.spoken(v) for r in night["main"] for v in PS.verses(r))
+    comp_text = "\n".join(PS.spoken(v) for r in night["companions"] for v in PS.verses(r))
+    parts, models = [], set()
+    extra = _psalm_extra(night)
+    for src in PS.plan(night):
+        if PS.is_passage(src):
+            parts.append((src, [PS.spoken(v) for v in PS.verses(src[len(PS.PREFIX):])]))
+            continue
+        if src == "welcome":
+            want = pc["welcome_words"]
+            prompt = (f"Write the WELCOME. Help her settle her body for sleep, and say gently that tonight "
+                      f"she will hear {night['topic']} and a few other passages from the King James Bible, "
+                      f"read slowly, with quiet pauses between them. Say nothing about what the reading "
+                      f"will do for her. Write about {want} words.")
+        elif src == "rest":
+            want = pc["rest_words"]
+            prompt = (f"Write the closing REST, after the last reading: fewer words, slower, longer "
+                      f"silences between short sentences, letting her drift into sleep. End with a soft "
+                      f"goodnight. Write about {want} words.\n\nThe last passage read (do not quote it):\n{main_text}")
+        else:
+            want = pc["reflect_words"]
+            which = main_text if src == "reflect-1" else comp_text
+            prompt = (f"Write a short, quiet REFLECTION after the passage below has been read: in your own "
+                      f"plain words, rest on one or two of its gentle images, then ease her back toward "
+                      f"stillness before the next reading. Do not quote it. Write about {want} words.\n\n"
+                      f"The passage just read (King James Bible; do not quote it):\n{which}")
+        paras, model = write_own(prompt, allowed, want, c, style=PSALM_STYLE, extra=extra)
+        models.add(model)
+        parts.append((src, paras))
+        print(f"  {src}: {sum(len(p.split()) for p in paras)} words ({model})", flush=True)
+    out = WL.SCRIPTS / f"{slug}.md"
+    text = WL.render_script(slug, WL.PSALM, f"Psalm Nights: {night['topic']}, whispered for sleep (KJV)",
+                            [], [], parts, {"Night": night_key, "Passages": labels,
+                                            "Models": ", ".join(sorted(models))})
+    return _commit(out, text)
+
+
+def next_night(c: dict) -> str:
+    import psalms as PS                                     # noqa: PLC0415
+    return PS.next_night(c, [WL.parse(p) for p in WL.all_scripts()])
+
+
 def waiting(kind: str) -> list[str]:
     return [p.stem for p in WL.all_scripts()
             if WL.parse(p)["kind"] == kind and WL.parse(p)["status"] == WL.READY
@@ -435,6 +512,8 @@ def next_in_lane(lane: str, c: dict) -> tuple[str, str]:
     lane's rotation and how many of its scripts exist."""
     if lane == "neville":
         return "teaching", "neville"
+    if lane == "psalm":
+        return "psalm", next_night(c)
     rot = c["lanes"][lane]["rotation"]
     n = sum(1 for p in WL.all_scripts() if WL.lane_of(WL.parse(p), c) == lane)
     pick = rot[n % len(rot)]
@@ -465,6 +544,8 @@ def write_next(lane: str, c: dict) -> Path:
     what, which = next_in_lane(lane, c)
     if what == "teaching":
         return author_teaching(which, next_topic(which, c), c)
+    if what == "psalm":
+        return author_psalm(which, c)
     return author_affirmations(which, c)
 
 
@@ -480,6 +561,8 @@ def run(args, c: dict) -> int:
                 st.work(f"wrote {author_affirmations(args.theme or next_in_lane('money', c)[1], c).relative_to(WL.ROOT)}")
             elif args.cmd == "teaching":
                 st.work(f"wrote {author_teaching(args.teacher, args.topic or next_topic(args.teacher, c), c).relative_to(WL.ROOT)}")
+            elif args.cmd == "psalm":
+                st.work(f"wrote {author_psalm(args.night or next_night(c), c).relative_to(WL.ROOT)}")
             else:
                 # every lane with slots, the furthest behind its weekly count
                 # first; at most one long sleep episode a run (her decision
@@ -552,6 +635,8 @@ def main(argv: list[str] | None = None) -> int:
     t = sub.add_parser("teaching")
     t.add_argument("teacher", choices=list(WL.TEACHING))
     t.add_argument("--topic")
+    ps = sub.add_parser("psalm")
+    ps.add_argument("--night", choices=sorted(WL.cfg()["psalms"]["nights"]))
     return run(ap.parse_args(argv), WL.cfg())
 
 

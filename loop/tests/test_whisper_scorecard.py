@@ -34,7 +34,7 @@ if out.get("subscribers") != 12 or out.get("views") != 3400:
 import whisper_lane as WL  # noqa: E402
 C = WL.cfg()
 UTC = dt.timezone.utc
-lanes = {"ocean": {"videos_28d": 2, "watch_hours_per_video": 8.0},
+lanes = {"psalm": {"videos_28d": 2, "watch_hours_per_video": 8.0},
          "neville": {"videos_28d": 3, "watch_hours_per_video": 3.0}}
 nums = {"first_upload_at": "2026-11-14T02:00:00Z", "lanes": lanes}
 S.decide(nums, C, dt.datetime(2026, 11, 24, 5, 0, tzinfo=UTC))            # Mon 23 Nov 23:00 CT: day 10
@@ -42,11 +42,11 @@ if "reweight" in nums:
     fails.append(f"re-weighted before 14 days of numbers: {nums['reweight']}")
 S.decide(nums, C, dt.datetime(2026, 12, 1, 5, 0, tzinfo=UTC))             # Mon 30 Nov 23:00 CT
 rw = nums.get("reweight") or {}
-if rw.get("week") != "2026-W49" or rw.get("mix", {}).get("ocean") != 2 or sum(rw.get("mix", {}).values()) != 5:
-    fails.append(f"Monday of week 3 did not give ocean the spare night: {rw}")
+if rw.get("week") != "2026-W49" or rw.get("mix", {}).get("psalm") != 2 or sum(rw.get("mix", {}).values()) != 5:
+    fails.append(f"Monday of week 3 did not give psalm (most watch hours per video) the spare night: {rw}")
 nums["lanes"] = {"neville": {"videos_28d": 3, "watch_hours_per_video": 99.0}}
 S.decide(nums, C, dt.datetime(2026, 12, 3, 5, 0, tzinfo=UTC))             # Wed of the same week
-if (nums.get("reweight") or {}).get("mix", {}).get("ocean") != 2:
+if (nums.get("reweight") or {}).get("mix", {}).get("psalm") != 2:
     fails.append(f"the week's mix was decided twice: {nums.get('reweight')}")
 S.decide(nums, C, dt.datetime(2026, 12, 8, 5, 0, tzinfo=UTC))             # the next Monday
 if (nums.get("reweight") or {}).get("week") != "2026-W50" or nums["reweight"]["mix"].get("neville") != 2:

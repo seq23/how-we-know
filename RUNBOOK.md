@@ -577,8 +577,10 @@ footage, and the same checks. How it works: [`docs/WHISPER_ALMANAC.md`](docs/WHI
   6 Dec 2026 with both channels' real views.
 - **Uploads:** every night the Mac uploads a finished, checked episode as
   private with a 20:00 Central publish date: **Mon Neville · Tue food history
-  · Wed Money · Thu Neville · Fri ocean documentary** (your option "a", 9 Nov
-  2026; rotating lane paused; re-check 9 Dec 2026). Titles never say "no AI"
+  · Wed Money · Thu Neville · Fri Psalm Nights** (Psalm Nights took the ocean
+  documentary's Friday on 18 Nov 2026: whispered King James scripture, KJV
+  only, word for word from `config/kjv/kjv.json`; a finished ocean video goes
+  up on a free Tuesday; rotating lane paused; re-check 9 Dec 2026). Titles never say "no AI"
   or "human voiced"; the description says the voice is your own, cloned. If the sign-in ever stops working you get one morning line; the fix is
   `.venv/bin/python auth/whisper_youtube_auth.py`, pick Whisper Almanac.
 - **Until the sample exists** the digest shows `WHISPER_SAMPLE_MISSING`

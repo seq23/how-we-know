@@ -48,7 +48,7 @@ import whisper_lane as WL                                   # noqa: E402
 STAGE = "whisper-scorecard"
 ANALYTICS = "https://youtubeanalytics.googleapis.com/v2/reports"
 DATA = "https://www.googleapis.com/youtube/v3"
-LANES = ("food", "ocean", "neville", "money", "rotating")   # her decision 9 Nov 2026
+LANES = ("food", "ocean", "neville", "money", "rotating", "psalm")   # her decision 9 Nov 2026; Psalm Nights 18 Nov
 WINDOW = 28                        # config mix.reweight.window_days
 CT = ZoneInfo("America/Chicago")
 
