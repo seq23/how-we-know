@@ -153,6 +153,41 @@ with tempfile.TemporaryDirectory() as td:
     check((clips / "warm.mp4").exists(), "(c) a clip was deleted though Drive had no room")
     os.environ.pop("SHELF_FREE_BYTES", None)
 
+    # d. a render stamping a clip while a shelve runs: neither overwrites the
+    # other (the shelve reads and writes shelf.json under one lock per change)
+    os.environ.pop("SHELF_FREE_BYTES", None)
+    (clips / "late.mp4").write_bytes(b"late clip" * 300)
+    late = {"title": "late.mp4", "local_file": "clips/late.mp4", "sha256": sha(b"late clip" * 300),
+            "source_org": "NOAA"}
+    (imagery / "video_rights.json").write_text(json.dumps({"assets": assets + [late]}))
+    age(clips / "late.mp4", 30)
+    age(clips / "warm.mp4", 30)
+    real_put = SH.remote_put
+
+    def put_while_rendering(src, name):                       # a render stamps a clip mid-shelve
+        SH.need([clips / "used-lately.mp4"], now=NOW)
+        return real_put(src, name)
+    SH.remote_put = put_while_rendering
+    try:
+        SH.shelve(NOW, busy=None)
+    finally:
+        SH.remote_put = real_put
+    m = SH.load()
+    check(m["used"].get("used-lately.mp4") == NOW.strftime("%Y-%m-%dT%H:%M:%SZ"),
+          "(d) a render's used-stamp was lost to a concurrent shelve")
+    check({"late.mp4", "warm.mp4"} <= set(m["clips"]) and "idle.mp4" in m["clips"],
+          f"(d) shelf entries lost: {sorted(m['clips'])}")
+    # and a render starting mid-shelve stops the shelve at the next clip
+    (clips / "late.mp4").exists() or SH.fetch(clips / "late.mp4")
+    age(clips / "late.mp4", 30)
+    seq = iter([None])                                       # free at the start, busy after
+
+    def starts_rendering():
+        return next(seq, "ffmpeg is running")
+    r2 = SH.shelve(NOW, busy=starts_rendering)
+    check((clips / "late.mp4").exists() and any("stopped early" in x for x in r2["skipped"]),
+          f"(d) the shelve went on after a render started: {r2}")
+
     # pull-all brings every shelved clip back by hand
     n = SH.pull_all(log=lambda *_: None)
     check(n >= 1 and (clips / "idle.mp4").exists(), "(pull-all) not every shelved clip came back")
