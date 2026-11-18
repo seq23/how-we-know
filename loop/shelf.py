@@ -174,13 +174,20 @@ def save(m: dict, path: Path | None = None) -> None:
     tmp.replace(p)
 
 
+def _lockfile() -> Path:
+    """Beside the manifest, in the machine-local folder git ignores."""
+    p = MANIFEST.parent / "_local" / "shelf.lock"
+    p.parent.mkdir(parents=True, exist_ok=True)
+    return p
+
+
 def update(change) -> dict:
     """Read-change-write shelf.json under an exclusive lock, so a render's
     used-stamps and the daily shelve never overwrite each other's entries
     (they can run at once: a shelve that started before a render)."""
     import fcntl                                            # noqa: PLC0415
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
-    with open(MANIFEST.with_suffix(".lock"), "w") as lk:
+    with open(_lockfile(), "w") as lk:
         fcntl.flock(lk, fcntl.LOCK_EX)
         m = load()
         change(m)
