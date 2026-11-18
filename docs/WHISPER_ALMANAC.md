@@ -81,6 +81,23 @@
 - **Nothing per video.**
 - **Once eligible:** apply for the YouTube Partner Program in YouTube Studio (her account).
 
+### Paused for the Peace Be Still library fill (18 Nov 2026, active while the fill runs)
+
+Her words: "we can put the YouTube videos on pause while we fill our library for the app and then add the app into the cadence".
+
+- **The switch is one file** on her Mac: `~/.peace-be-still/library-fill.active` (JSON: started, expected_end, reason). The Peace Be Still fill job creates and removes it; this repo never does.
+- **While it exists:** no new How We Know or Whisper Almanac video is voiced or rendered. The 23:00 batch prints `PAUSED_FOR_PBS_FILL` and runs only what costs no voice time: the Almanac upload and its Shorts, captions, cutting and shelving Shorts from finished renders, the report. The food night stops at its start. The 09:00 backfill upload and the cloud upload lanes run unchanged. Exit 0 every time: a note, not a failure.
+- **The floor alarm:** the daily publishing-floor check files no STOPPED issue for either channel; its line says "Paused for the Peace Be Still library fill since <date>" and an open STOPPED issue is closed with that line. The Mac mirrors the pause to `loop/state/pbs_fill.json` (dates only) so the cloud check can see it.
+- **A stuck fill cannot silence the channels:** a file older than 21 days is ignored everywhere; voicing resumes and STOPPED fires (`loop/tests/test_pbs_pause.py`).
+- **When the file is removed** everything resumes the next night, with no other change. Code: `loop/pbs_pause.py`.
+
+### PROPOSED, not active: the cadence after the Peace Be Still launch
+
+- **Mac narrator nights, 7 a week:** Whisper Almanac 3, Peace Be Still app 3, How We Know long-form 1.
+- **How We Know Shorts:** daily, unchanged (cut from finished renders, no narrator).
+- **Re-check at day 30** after the app joins the cadence, with real views and app numbers.
+- Not in code: `config/whisper_almanac.json` `split` stays at the 5:2 ruling until she approves this and the app's lane exists on the Mac.
+
 ---
 
 _Below: the 6 Nov 2026 master plan (how the flow, the Mac, storage and uploads work)._
