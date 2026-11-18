@@ -118,6 +118,14 @@ def remote_stat(name: str) -> dict | None:
     return None
 
 
+def remote_mkdir() -> None:
+    loc = _local_remote()
+    if loc is not None:
+        loc.mkdir(parents=True, exist_ok=True)
+        return
+    _rclone(["mkdir", remote()], timeout=120)
+
+
 def remote_put(src: Path, name: str) -> None:
     loc = _local_remote()
     if loc is not None:
@@ -319,6 +327,7 @@ def shelve(now: _dt.datetime | None = None, dry_run: bool = False, busy=render_r
         out["bytes"] = sum(p.stat().st_size for p in cands)
         return out
     room = remote_free() - DRIVE_MARGIN
+    remote_mkdir()                # the first run finds no folder to list
     for p in cands:
         size = p.stat().st_size
         local = sha256_file(p)
@@ -394,8 +403,9 @@ def main(argv: list[str]) -> int:
                 r = shelve()
             except ShelfStop as e:
                 st.named_stop(e.code, str(e).split("] ", 1)[-1],
-                              unblock="Nothing is lost: no local clip is deleted before its Drive copy "
-                                      "verifies. The next daily run retries.")
+                              unblock="No local clip is deleted before its Drive copy verifies, so "
+                                      "nothing is lost; the next daily run retries. Repeating: check "
+                                      "`rclone about gdrive:` on the Mac (the Drive sign-in or space).")
             if r.get("waited"):
                 st.named_stop("SHELF_WAITS_FOR_RENDER", f"shelving waits: {r['waited']}",
                               unblock="Nothing to do: the next daily run shelves.")

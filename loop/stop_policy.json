@@ -111,6 +111,12 @@
     }
   },
   "self_resolving": {
+    "SHELF_UNREACHABLE": {
+      "why": "The daily clip shelf could not reach Drive; nothing was deleted and the next daily run retries. Three days in a row means the Drive sign-in or the network needs a look.",
+      "max_consecutive": 3,
+      "escalation": "Run `rclone about gdrive:` on the Mac; re-authorise the remote if it fails.",
+      "plain": "the clip shelf could not reach Drive today; nothing was deleted and it retries tomorrow"
+    },
     "SHELF_WAITS_FOR_RENDER": {
       "why": "The daily clip shelf (loop/shelf.py) never moves a clip while a nightly render holds the lock or ffmpeg runs; nothing is deleted, and the next daily run shelves.",
       "max_consecutive": 7,
