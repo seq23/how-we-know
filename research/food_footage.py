@@ -1268,10 +1268,14 @@ def speed_for(rec: dict, seconds: float = LONG_HOLD_S) -> float | None:
     return speed if speed + 1e-3 >= SLOW_MIN else None
 
 
-def long_count(index: list[dict], part: str) -> int:
-    """Clips of `part` that can hold a sleep shot, with clean rights."""
+def long_count(index: list[dict], part: str, present=None) -> int:
+    """Selectable clips of `part` that can hold a sleep shot, with clean rights."""
+    if present is None:
+        sys.path.insert(0, str(HERE.parent / "loop"))
+        import shelf  # noqa: PLC0415
+        present = lambda r: shelf.present(IMAGERY / r["local_file"], r.get("sha256"))
     return sum(1 for r in index if r.get("segment") == part and not r.get("excluded")
-               and not record_problems(r) and speed_for(r) is not None)
+               and not record_problems(r) and speed_for(r) is not None and present(r))
 
 
 def _refused_for_good(rejected: list[dict]) -> set[str]:
@@ -1316,6 +1320,8 @@ def harvest_long(parts: list[str] | None = None, need: int = LONG_NEED,
         text_check = STOCK.clip_problems
     man = load()
     index = list(man.get("index") or [])
+    recovery = fetch_long_missing(index)
+    print(f"  long clip recovery: fetched {recovery['fetched']}; refused: {recovery['refused']}")
     rejected = list(man.get("rejected") or [])
     kept = {"by_source": man.get("resolved_by_source")}       # the shot list's own tally
     used = {f"{r.get('source')}:{r.get('source_id')}" for r in index}

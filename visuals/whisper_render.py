@@ -197,6 +197,9 @@ def plan(slug: str) -> int:
     fset = WL.footage_set(p, c)
     import footage as F                                     # noqa: PLC0415
     import whisper_reel as R                                # noqa: PLC0415
+    if any(R.food_part(s["source"]) for s in p["segments"]):
+        got = R._ff().fetch_long_missing()
+        print(f"  food clip recovery: fetched {got['fetched']}; refused: {got['refused']}")
     assets = F.usable_assets()
     srcs = [f"calm:{fset}"] if fset else list(dict.fromkeys(s["source"] for s in p["segments"]))
     for s in srcs:
@@ -204,6 +207,7 @@ def plan(slug: str) -> int:
         subs = sorted({R.subject(a) for a in pool})
         print(f"{slug} ({p['kind']}, footage {s}): {len(pool)} clip(s) of {len(subs)} subject(s): "
               f"{'; '.join(subs)}")
+    print(f"footage gaps: {WL.footage_gaps(p)}")
     return 0
 
 
