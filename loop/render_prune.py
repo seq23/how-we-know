@@ -208,9 +208,42 @@ def _remove(paths: list[Path]) -> int:
     return n
 
 
+SHORT_RX = re.compile(r"^(?P<slug>.+)-short(?P<rank>\d*)\.mp4$")
+
+
+def unpublished_shorts(shorts: Path | None = None, published: set | None = None) -> dict[str, list[str]]:
+    """slug -> its cut Short files that are not published yet (and not
+    dropped by the Shorts lane). A master is never pruned while this names it."""
+    shorts = shorts or (ROOT / "shorts")
+    if not shorts.exists():
+        return {}
+    if published is None:
+        try:
+            led = json.loads((ROOT / "loop" / "state" / "shorts_ledger.json").read_text())
+        except (OSError, ValueError):
+            led = {}
+        published = {(r.get("slug"), int(r.get("rank") or 1)) for r in led.get("published", [])
+                     if not r.get("withdrawn_at")}
+    try:
+        sys.path.insert(0, str(ROOT / "loop"))
+        import shorts_lane                                 # noqa: PLC0415
+        dropped = set(shorts_lane.dropped_cuts(shorts))
+    except Exception:                                      # noqa: BLE001
+        dropped = set()
+    out: dict[str, list[str]] = {}
+    for f in sorted(shorts.glob("*-short*.mp4")):
+        m = SHORT_RX.match(f.name)
+        if not m or f.name in dropped:
+            continue
+        rank = int(m.group("rank") or 1)
+        if (m.group("slug"), rank) not in published:
+            out.setdefault(m.group("slug"), []).append(f.name)
+    return out
+
+
 def prune_uploaded(renders: Path = RENDERS, led: dict | None = None, bucket=None,
                    yt=youtube_status, plans: Path = PLANS, swaps: set[str] | None = None,
-                   dry_run: bool = False) -> tuple[list[dict], list[str]]:
+                   dry_run: bool = False, waiting: dict | None = None) -> tuple[list[dict], list[str]]:
     """Delete live renders whose upload YouTube reports processed and whose
     Shorts are done, with their R2 copy and spare copies. Returns (pruned
     records, kept reasons). Records carry `bytes` (freed on the Mac) and
@@ -232,7 +265,15 @@ def prune_uploaded(renders: Path = RENDERS, led: dict | None = None, bucket=None
     kept = [f"{s}: not uploaded" for s, _ in live if s not in rows]
     kept += [f"{s}: Shorts not cut yet" for s, _ in live if s in rows and not rows[s].get("shorts_block")]
     kept += [f"{s}: a superseded swap is in flight" for s, _ in live if s in rows and s in swaps]
-    cands = [(s, p) for s, p in live if s in rows and rows[s].get("shorts_block") and s not in swaps]
+    # A CUT SHORT IS VERIFIED AGAINST ITS MASTER (V14 reads the burned credit,
+    # V15 the crop): pruning the master before every cut Short is published
+    # left what-is-hydrothermal-vents and why-deep-sea-creatures-are-creepers
+    # Shorts unverifiable for good (17-18 Nov 2026). Kept until they are out.
+    waiting = unpublished_shorts() if waiting is None else waiting
+    kept += [f"{s}: cut Short(s) not published yet: {', '.join(waiting[s])}"
+             for s, _ in live if s in rows and s in waiting]
+    cands = [(s, p) for s, p in live if s in rows and rows[s].get("shorts_block") and s not in swaps
+             and s not in waiting]
     # already pruned: their R2 copy and spare copies go too, plan unchanged
     olds = [s for s in marked if s in rows and rows[s].get("shorts_block") and s not in swaps
             and pruned(s, renders, plans)]

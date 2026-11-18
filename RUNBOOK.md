@@ -617,10 +617,21 @@ narrating and rendering carry on, so nothing has to be rebuilt when it closes.
   thrown with `--channel whisper-almanac`; it halts only that channel's lanes.
   A How We Know trip never stops Whisper Almanac's `whisper-upload`
   (`loop/tests/test_breaker_channel_scope.py`).
-- **Every cause halts every lane below, Shorts included.** The breaker has no
-  per-cause exemption, so a retention trip holds the daily Shorts as well as
-  the episodes (decided 2026-10-12: `loop/breaker.py` says publishing halts
-  for every cause, and nothing says otherwise).
+- **Every cause halts every lane below, Shorts included, with one scope.** A
+  retention trip holds the daily Shorts as well as the episodes (decided
+  2026-10-12). A `domain` trip (one subject area below its floor while others
+  hold) holds back only THAT domain's episodes and Shorts in `cloud-upload`,
+  `shorts-cloud` and `backfill`; every other domain keeps publishing (18 Nov
+  2026: the materials trip of 13 Nov had stopped deep sea and food for five
+  days, and a halted niche could never be re-measured to clear it).
+  `breaker.DOMAIN_SCOPED`, `loop/tests/test_breaker_domain_scope.py`.
+- **Your publishing floor (18 Nov 2026).** Every channel: at least 7 public
+  videos in any 7 days and one every day, Shorts included
+  (`config/publish_floor.json`). Checked every day after the 09:00 CT upload
+  against YouTube's own public feed (`loop/publish_floor.py`). Below it, you
+  get one red **STOPPED** issue per channel (GitHub emails it) naming the gap
+  and what is stopping it; it mentions you again every day it lasts and
+  closes itself the day the floor is met.
 - **What it leaves alone:** anything already uploaded and scheduled on YouTube
   still goes public at its slot. Nothing is un-scheduled.
 - **The lanes that honour it** — each calls `breaker.guard()` before it

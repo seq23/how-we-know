@@ -772,10 +772,14 @@ def pending(have=None, cfg: dict | None = None) -> list[Pick]:
     import domains
     dated = {r["slug"] for r in ledger.load()["published"]
              if r.get("scheduled_publish_at") and not r.get("withdrawn_at")}
+    import breaker                                         # noqa: PLC0415
+    tripped = breaker.blocked_domains()    # a domain trip holds back ITS domain only (18 Nov 2026)
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in held:
+            continue
+        if tripped and domains.domain_of_slug(slug) in tripped:
             continue
         if domains.domain_of_slug(slug) == "food-science" and slug not in dated:
             continue

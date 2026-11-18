@@ -3182,6 +3182,19 @@ def v32_scheduled_pov_is_hers() -> Result:
             r.note(f"nothing dated ahead: the owner's long-form hold is on since "
                    f"{str(hold.get('since'))[:10]} ({hold.get('detail')})")
             return r
+        # THE APPROVAL GATE EMPTIES IT TOO (18 Nov 2026): with
+        # longform_owner_approval_required on and every approved cut already
+        # out, nothing can be dated until she approves the next render. That
+        # is her decision, not a defect, and loop/publish_floor.py emails her
+        # the gap every day it lasts.
+        b = _br.load()
+        if b.get("longform_owner_approval_required"):
+            import approved_renders as _ap                   # noqa: PLC0415
+            out = {row.get("slug") for row in _led.load()["published"] if row.get("video_id")}
+            if not set(_ap.load()) - out:
+                r.note("nothing dated ahead: every approved long-form is out; the next one "
+                       "waits on her approval (publish_floor emails the gap)")
+                return r
         transition = _br.longform_dating_pending()
         if transition:
             r.named_stop("LONGFORM_DATING_PENDING",

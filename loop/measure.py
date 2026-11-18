@@ -769,7 +769,7 @@ def main() -> None:
         cause = breaker_cause(per_domain, need, judgeable)
         if cause:
             breaker.trip("retention" if cause["cause"] == "format"
-                         else "domain", cause["why"])
+                         else "domain", cause["why"], domain=cause.get("domain"))
             st.work(f"tripped the circuit breaker on {cause['cause']}: "
                     f"{cause['why'][:120]}")
         else:
@@ -915,7 +915,7 @@ def main() -> None:
         cause = breaker_cause(per_domain, need, judgeable)
         if cause:
             breaker.trip("retention" if cause["cause"] == "format"
-                         else "domain", cause["why"])
+                         else "domain", cause["why"], domain=cause.get("domain"))
             st.work(f"tripped the circuit breaker on {cause['cause']}")
         else:
             # See the note at the other call site: trip and reset belong to the
