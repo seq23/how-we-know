@@ -200,8 +200,10 @@ def lift_longform(note: str) -> dict:
 def longform_approvals_drained(record: dict | None = None) -> str | None:
     """The owner's approval gate is on and every approved long-form is
     already uploaded: nothing can be dated until she approves the next render.
-    Her decision, not a defect (loop/publish_floor.py emails her the gap)."""
-    b = load() if record is None else record
+    Her decision, not a defect (loop/publish_floor.py emails her the gap).
+    Reads the committed loop/state/breaker.json (like longform_hold
+    committed=True): the gate is a standing setting, not a test's trip."""
+    b = read_json(STATE / "breaker.json", default={}) if record is None else record
     if not b.get("longform_owner_approval_required"):
         return None
     import approved_renders                                # noqa: PLC0415
