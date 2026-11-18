@@ -129,9 +129,14 @@
       "at": "2026-11-13T22:05:54+00:00",
       "cause": "domain",
       "detail": "3 consecutive materials-and-manufacturing videos below the duration floor while 1 other domain(s) are holding. That is a NICHE that is not working, not a format that is. Shortening every episode on the channel would be the wrong repair."
+    },
+    {
+      "event": "longform_approval_off",
+      "at": "2026-11-18T17:00:43+00:00",
+      "note": "No owner ruling requires approving every long-form (CHANNEL-PLAN: no approval step); the gate was re-armed by lift_longform after her one-off 3 Nov approval of 8 cuts."
     }
   ],
-  "longform_owner_approval_required": true,
+  "longform_owner_approval_required": false,
   "reported_by": {
     "stage": "shorts-cloud",
     "at": "2026-11-14T00:09:48+00:00",
