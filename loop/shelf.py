@@ -174,6 +174,20 @@ def save(m: dict, path: Path | None = None) -> None:
     tmp.replace(p)
 
 
+def update(change) -> dict:
+    """Read-change-write shelf.json under an exclusive lock, so a render's
+    used-stamps and the daily shelve never overwrite each other's entries
+    (they can run at once: a shelve that started before a render)."""
+    import fcntl                                            # noqa: PLC0415
+    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
+    with open(MANIFEST.with_suffix(".lock"), "w") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        m = load()
+        change(m)
+        save(m)
+        return m
+
+
 def _abs(path) -> Path:
     p = Path(path)
     return p if p.is_absolute() else IMAGERY / p
@@ -265,9 +279,7 @@ def need(paths: list, now: _dt.datetime | None = None) -> int:
             fetch(p, m)
             got += 1
     stamp = (now or _dt.datetime.now(_dt.timezone.utc)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    for p in names:
-        m["used"][p.name] = stamp
-    save(m)
+    update(lambda mm: mm["used"].update({p.name: stamp for p in names}))
     if got:
         print(f"  shelf: pulled {got} clip(s) back from {remote()} for this render", flush=True)
     return got
@@ -329,6 +341,12 @@ def shelve(now: _dt.datetime | None = None, dry_run: bool = False, busy=render_r
     room = remote_free() - DRIVE_MARGIN
     remote_mkdir()                # the first run finds no folder to list
     for p in cands:
+        why = busy() if busy else None
+        if why:                   # a render started meanwhile: the rest waits for tomorrow
+            out["skipped"].append(f"stopped early ({why}); the rest is shelved tomorrow")
+            break
+        if not p.exists() or last_used(p, load()) > cut:
+            continue              # pulled back or used by a render since the list was made
         size = p.stat().st_size
         local = sha256_file(p)
         if local != recs[p.name]:
@@ -337,7 +355,6 @@ def shelve(now: _dt.datetime | None = None, dry_run: bool = False, busy=render_r
         r = remote_stat(p.name)
         if not (r and r["size"] == size and r["sha256"] == local):
             if size > room:
-                save(m)
                 raise ShelfStop("SHELF_DRIVE_FULL", f"{remote()} has {room / 1e9:.1f} GB to spare, "
                                 f"{p.name} needs {size / 1e9:.2f} GB; shelved {out['shelved']} so far. "
                                 f"Never spilled to another Drive.")
@@ -347,13 +364,12 @@ def shelve(now: _dt.datetime | None = None, dry_run: bool = False, busy=render_r
         if not (r and r["size"] == size and r["sha256"] == local):
             out["skipped"].append(f"{p.name}: the Drive copy did not verify ({r}); stays")
             continue
-        m["clips"][p.name] = {"remote": remote(), "size": size, "sha256": local,
-                              "shelved_at": now.strftime("%Y-%m-%dT%H:%M:%SZ")}
-        save(m)                   # the record lands before the local copy goes
-        p.unlink()
+        entry = {"remote": remote(), "size": size, "sha256": local,
+                 "shelved_at": now.strftime("%Y-%m-%dT%H:%M:%SZ")}
+        update(lambda mm, n=p.name, e=entry: mm["clips"].__setitem__(n, e))
+        p.unlink()                # the record landed first
         out["shelved"] += 1
         out["bytes"] += size
-    save(m)
     return out
 
 
@@ -370,19 +386,21 @@ def pull_all(log=print) -> int:
     its rights record's sha256."""
     m = load()
     recs = records()
+    found = {}
     for name in remote_names():
         if name in recs and name not in m["clips"] and not (CLIPS / name).exists():
             r = remote_stat(name) or {}
             if r.get("sha256") == recs[name]:
-                m["clips"][name] = {"remote": remote(), "size": r["size"], "sha256": r["sha256"],
-                                    "shelved_at": "recovered"}
+                found[name] = {"remote": remote(), "size": r["size"], "sha256": r["sha256"],
+                               "shelved_at": "recovered"}
+    if found:
+        m = update(lambda mm: mm["clips"].update(found))
     n = 0
     for name in sorted(m["clips"]):
         p = CLIPS / name
         if not p.exists():
             fetch(p, m)
             n += 1
-    save(m)
     log(f"OUTPUT pulled {n} clip(s) back from {remote()}")
     return n
 
