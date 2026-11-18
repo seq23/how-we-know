@@ -28,3 +28,10 @@ the week?"; "maybe we just put clips on seq.taylor and videos on cryptoclearr".
 - **See what is shelved:** `.venv/bin/python loop/shelf.py status`.
 - Not-yet-uploaded renders are **not** shelved: with the 7-day cap nothing
   waits long enough to need it.
+- **Voiced episodes that cannot get their picture are parked, not counted**
+  (18 Nov 2026, `loop/picture_park.py`): an episode that fails
+  `NO_SUBJECT_PICTURE` widens its own footage search each night; after 3
+  failed nights in a row it is parked - out of the 7-day cap's count and the
+  render sweep, voice kept, nothing deleted, one morning-email line - and is
+  retried weekly; one that renders rejoins the queue. Parked 60 days: retired
+  (a note, still kept).

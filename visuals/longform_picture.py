@@ -111,6 +111,13 @@ def subject_clips(slug: str, assets: list[dict] | None = None) -> list[dict]:
     pool += [a for a in assets if a.get("source") in ("noaa-ncei-oer", "commons")
              and a.get("subject") in wanted]
     pool += FT.stock_pool(slug, assets)
+    # A MONEY episode's picture is the Money set and nothing else (her call
+    # 9 Nov 2026; visuals/footage.money_pool). Until 18 Nov 2026 this path
+    # never read it, so no Money long-form could render: madoff and FTX
+    # failed NO_SUBJECT_PICTURE "no rights-cleared footage" every night
+    # with 36 cleared Money clips on record.
+    if FT.episode_domain(slug) == FT.STOCK.MONEY:
+        pool += FT.money_pool(assets)
     pool = list({_key(a): a for a in pool}.values())
     return [a for a in pool if FT.windows(a)]
 

@@ -304,6 +304,13 @@ def subject_of(slug: str) -> str:
     import shot_list                                    # noqa: PLC0415
     subs = shot_list.subjects(slug)
     title = shot_list.title_of(slug)
+    if not subs:
+        # a Money episode shows the Money set (longform_picture.subject_clips):
+        # judge its frames against those subjects, not a person's name
+        import footage as FT                            # noqa: PLC0415
+        if FT.episode_domain(slug) == FT.STOCK.MONEY:
+            cfg = json.loads(FT.STOCK.MONEY_CONFIG.read_text())["footage"]["sets"]
+            subs = [e["subject"] for ents in cfg.values() for e in ents]
     return f"{', '.join(subs)} (the video is titled {title!r})" if subs else title
 
 

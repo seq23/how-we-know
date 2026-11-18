@@ -550,11 +550,13 @@ def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
                          episode=lambda name: f"whisper:{name}")
 
 
-def harvest_money(cap: int | None = None) -> dict:
+def harvest_money(cap: int | None = None, per: int | None = None) -> dict:
     """Fill How We Know's Money footage set (config/money_topics.json
     `footage`) with the same gates as the calm sets: real footage, the
     subject's own words, the licence wording, no word on screen."""
     cfgc = json.loads(MONEY_CONFIG.read_text())["footage"]
+    if per:                 # loop/picture_park.py: a Money episode short of footage widens
+        cfgc = {**cfgc, "per_subject": max(int(cfgc["per_subject"]), int(per))}
     return _harvest_sets(cfgc, None, cap, tag="money_set", domain=MONEY,
                          episode=lambda name: MONEY)
 
