@@ -1,17 +1,17 @@
 {
   "stage": "comment-watch",
   "week": "2026-W47",
-  "at": "2026-11-18T20:05:38+00:00",
+  "at": "2026-11-19T01:05:39+00:00",
   "code": "NO_NEW_COMMENTS",
   "message": "every comment on 144 upload(s) was already in the ledger",
   "detail": {
     "videos": 144,
-    "digest": "/var/folders/_d/tfpq896n7sx2j9m97sfmjdy00000gn/T/comment-sweep-1umlog/digest.json"
+    "digest": "/var/folders/_d/tfpq896n7sx2j9m97sfmjdy00000gn/T/comment-sweep-KxtPT6/digest.json"
   },
   "unblock": "Nothing to do; the next weekly sweep reads again.",
   "disposition": "self_resolving",
-  "disposition_why": "The weekly comment sweep found nothing newer than its per-video cursors. The lane is FINISHED for the week, not blocked: it classifies again the moment a viewer writes something. The digest file is written empty so the Mac job that emails the owner can record NOTHING_TO_REPORT by name instead of sending nothing. (run 3 of at most 8 before this escalates to a human.)",
-  "consecutive": 3,
+  "disposition_why": "The weekly comment sweep found nothing newer than its per-video cursors. The lane is FINISHED for the week, not blocked: it classifies again the moment a viewer writes something. The digest file is written empty so the Mac job that emails the owner can record NOTHING_TO_REPORT by name instead of sending nothing. (run 4 of at most 8 before this escalates to a human.)",
+  "consecutive": 4,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
