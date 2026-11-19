@@ -59,7 +59,10 @@ sh(TMP, "git", "clone", "-q", str(origin), str(mac))
 sh(mac, "git", "config", "user.email", "t@t"); sh(mac, "git", "config", "user.name", "t")
 
 STOPS = TMP / "stops"
-ENV = {**os.environ, "MAC_SYNC_REPO": str(mac), "LOOP_STOPS_DIR": str(STOPS)}
+# never the real fill file or the committed mirror (loop/pbs_pause.mirror): the real
+# batch-session.sh runs its Peace Be Still gate, which removed the repo mirror on CI
+ENV = {**os.environ, "MAC_SYNC_REPO": str(mac), "LOOP_STOPS_DIR": str(STOPS),
+       "PBS_FILL_FILE": str(STOPS / "no-library-fill.active"), "PBS_FILL_MIRROR": str(STOPS / "pbs_fill.json")}
 PY = sys.executable
 
 

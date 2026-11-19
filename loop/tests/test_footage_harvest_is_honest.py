@@ -63,6 +63,10 @@ VIDEO_SRC = os.path.join(RESEARCH, "imagery_video.py")
 LANE_SRC = os.path.join(LOOP, "footage_lane.py")
 PY = sys.executable
 
+# hermetic: never the committed Peace Be Still mirror (a real pause on main sends the
+# ci lane down the paused branch; it passed only while another test deleted the mirror)
+os.environ["PBS_FILL_MIRROR"] = os.path.join(tempfile.gettempdir(), "hwk-no-pbs-mirror.json")
+
 for p in (LOOP, RESEARCH):
     if p not in sys.path:
         sys.path.insert(0, p)

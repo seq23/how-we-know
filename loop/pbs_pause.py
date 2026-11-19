@@ -153,8 +153,17 @@ def judge(rec: dict | None, now: _dt.datetime | None = None) -> dict:
 
 
 def mirror(rec: dict | None, root: Path = ROOT) -> None:
-    """Write (or remove) the repo copy the cloud reads. Unchanged is not rewritten."""
+    """Write (or remove) the repo copy the cloud reads. Unchanged is not rewritten.
+    PBS_FILL_MIRROR (a test's own copy, as repo_status reads) redirects it, and a
+    test's own PBS_FILL_FILE puts it beside that file: tests running the real
+    batch-session.sh on CI, which has no fill file, removed the committed mirror
+    on 19 Nov 2026 and turned main red."""
     p = root / MIRROR_REL
+    if root == ROOT and os.environ.get("PBS_FILL_MIRROR"):
+        p = Path(os.environ["PBS_FILL_MIRROR"])
+    elif root == ROOT and os.environ.get("PBS_FILL_FILE"):
+        # a test's own fill file (the Mac's jobs never set it): its mirror sits beside it
+        p = fill_file().parent / "pbs_fill.mirror.json"
     if rec is None:
         p.unlink(missing_ok=True)
         return

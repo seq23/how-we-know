@@ -104,13 +104,24 @@ def _pool(source: str, assets: list[dict], c: dict | None = None) -> list[dict]:
     # config (the night sky and stars: the brand says no starfields, and two
     # Neville renders failed on one) takes its harvested clips out with it.
     allowed = {e["subject"].lower() for e in c["calm_footage"]["sets"].get(name, [])}
+    rules = set_rules(c, name)
+    mw, mh = rules.get("min_size") or (0, 0)
     by: dict[str, list[dict]] = {}
     for a in assets:
         # Only clips that hold a whole shot: a shorter one is never placed,
         # and counting it would let the long ones crowd the screen.
         if (a.get("calm_set") == name and float(a.get("seconds") or 0) >= SHOT_S + 1.0
-                and a.get("post_id") not in refused and subject(a) in allowed):
+                and a.get("post_id") not in refused and subject(a) in allowed
+                and int(a.get("width") or mw) >= mw and int(a.get("height") or mh) >= mh):
             by.setdefault(subject(a), []).append(a)
+    # The subject floor (19 Nov 2026, her "not luxury enough": five subjects
+    # carried a whole Money video). Short of it the reel stops by name; it is
+    # never filled with weak clips. The weekly harvest fills the missing subjects.
+    floor = int(rules.get("min_subjects") or 0)
+    if len(by) < floor:
+        missing = sorted(allowed - set(by))
+        raise FootageThin(f"WHISPER_SUBJECTS_SHORT {name}: {len(by)} distinct subject(s) in the pool, "
+                          f"the reel needs {floor}; none yet for: {'; '.join(missing)[:300]}")
     out, k = [], 0
     while any(k < len(v) for v in by.values()):
         out += [v[k] for v in by.values() if k < len(v)]
@@ -180,7 +191,16 @@ def min_clips(shot_s: float = SHOT_S) -> int:
 
 
 def pictureable(source: str, assets: list[dict]) -> bool:
-    return len(pool(source, assets)) >= min_clips()
+    try:
+        return len(pool(source, assets)) >= min_clips()
+    except FootageThin:                    # short of its subject floor: not pictureable
+        return False
+
+
+def set_rules(c: dict, name: str) -> dict:
+    """A calm set's harvest and reel rules (config calm_footage.set_rules):
+    reject, min_size, min_subjects, look. {} for a set with none."""
+    return (c["calm_footage"].get("set_rules") or {}).get(name) or {}
 
 
 def plan_reel(segments: list[tuple[str, float]], assets: list[dict], pool_of=None,
