@@ -1,13 +1,13 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-18T10:43:25.857Z",
+  "collected_at": "2026-11-19T19:08:50.672Z",
   "window_days": 28,
   "sitemap_total": 45,
-  "inspected_today": 45,
+  "inspected_today": 7,
   "per_day": 150,
   "parallel": 8,
-  "refused_because": null,
+  "refused_because": "503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"The service is currently unavailable.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
   "buckets": {
     "indexed": 41,
     "crawled_not_indexed": 0,
@@ -20,35 +20,35 @@
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-06T09:41:44Z",
       "google_canonical": "https://howweknowdeep.com/methodology/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/zones/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-05T14:06:22Z",
       "google_canonical": "https://howweknowdeep.com/zones/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/explore/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-10-27T11:02:50Z",
       "google_canonical": "https://howweknowdeep.com/explore/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/watch/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-03T18:24:21Z",
       "google_canonical": "https://howweknowdeep.com/watch/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-08T10:04:13Z",
       "google_canonical": "https://howweknowdeep.com/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/creatures/": {
       "bucket": "indexed",
@@ -60,16 +60,16 @@
     "https://howweknowdeep.com/questions/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
-      "last_crawled": "2026-11-08T17:34:14Z",
+      "last_crawled": "2026-11-18T14:15:07Z",
       "google_canonical": "https://howweknowdeep.com/questions/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/methods/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-10-16T03:56:22Z",
       "google_canonical": "https://howweknowdeep.com/methods/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-19"
     },
     "https://howweknowdeep.com/editorial-policy/": {
       "bucket": "indexed",
