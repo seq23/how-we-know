@@ -354,24 +354,6 @@
     "gemini/gemini-3.5-flash-lite": [
       {
         "lane": "whisper-author",
-        "latency_s": 1.7,
-        "outcome": "error",
-        "ts": "2026-11-18T16:28:22Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 17.0,
-        "outcome": "answered",
-        "ts": "2026-11-18T16:29:42Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 8.8,
-        "outcome": "answered",
-        "ts": "2026-11-18T16:30:31Z"
-      },
-      {
-        "lane": "whisper-author",
         "latency_s": 1.8,
         "outcome": "answered",
         "ts": "2026-11-19T01:43:17Z"
@@ -471,6 +453,24 @@
         "latency_s": 5.3,
         "outcome": "answered",
         "ts": "2026-11-19T07:50:04Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 0.7,
+        "outcome": "answered",
+        "ts": "2026-11-19T22:27:34Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 0.6,
+        "outcome": "answered",
+        "ts": "2026-11-19T22:27:39Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 0.6,
+        "outcome": "answered",
+        "ts": "2026-11-19T22:27:43Z"
       }
     ],
     "gemini/gemini-3.6-flash": [
