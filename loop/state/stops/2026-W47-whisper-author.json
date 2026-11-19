@@ -1,0 +1,22 @@
+{
+  "stage": "whisper-author",
+  "week": "2026-W47",
+  "at": "2026-11-19T01:47:31+00:00",
+  "code": "WHISPER_SEGMENT_REFUSED",
+  "message": "movement 6 still broke the script rules after 4 free-model attempts: only 11 usable lines",
+  "detail": {
+    "problems": [
+      "only 11 usable lines"
+    ]
+  },
+  "unblock": "Nothing to do: the next daily run retries from the cached good segments.",
+  "disposition": "self_resolving",
+  "disposition_why": "A free model's sleep rewrite still broke the plain-words or fact rules after every attempt, so no script was written (a refused script is never kept). Good segments are cached; the next daily run retries the rest with the problems fed back. Since 13 Nov 2026 it stops the run only when NO lane's script was written; a refused lane beside written ones is a note. (run 1 of at most 2 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "WHISPER_SEGMENT_REFUSED money: movement 6 still broke the script rules after 4 free-model attempts: only 11 usable lines"
+  ]
+}
