@@ -197,7 +197,78 @@ def frame_check(video: Path, slug: str, c: dict) -> dict:
     import whisper_frame_check as WFC                       # noqa: PLC0415
     if read_kit(slug).get("picture") == "paint":            # its own gate (16 Nov 2026)
         return WFC.check_paint(str(video))
-    return WFC.check(str(video), subject(slug, c))
+    r = WFC.check(str(video), subject(slug, c))
+    look_check(video, slug, read_kit(slug), c)
+    return r
+
+
+def _grab(video: Path, t: float, out: Path) -> Path | None:
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{t:.2f}", "-i", str(video), "-frames:v", "1",
+                    "-vf", "scale=768:-2", "-q:v", "4", str(out)], check=False)
+    return out if out.exists() else None
+
+
+def contact_sheet(frames: list[tuple[str, Path]], out: Path) -> Path:
+    """One tile per distinct clip, its id under it, written next to the kit."""
+    from PIL import Image, ImageDraw                        # noqa: PLC0415
+    cols, tw = 4, 384
+    tiles = []
+    for pid, f in frames:
+        im = Image.open(f).convert("RGB")
+        im = im.resize((tw, max(1, int(tw * im.height / im.width))))
+        tiles.append((pid, im))
+    th = max(im.height for _, im in tiles) + 20
+    sheet = Image.new("RGB", (cols * tw, th * ((len(tiles) + cols - 1) // cols)), (18, 14, 11))
+    d = ImageDraw.Draw(sheet)
+    for i, (pid, im) in enumerate(tiles):
+        x, y = (i % cols) * tw, (i // cols) * th
+        sheet.paste(im, (x, y))
+        d.text((x + 4, y + im.height + 4), pid, fill=(243, 230, 207))
+    sheet.save(out, quality=82)
+    return out
+
+
+def look_check(video: Path, slug: str, k: dict, c: dict, judge=None, grab=None) -> dict:
+    """Her question 19 Nov 2026 ("why wasn't this caught before upload?"): every
+    gate checked licence, words, darkness and share; none judged whether the
+    footage LOOKS like its set. Before a footage kit goes up, one frame of each
+    distinct clip (mid-shot, from the finished render) is put on a contact sheet
+    next to the kit and judged by the free vision route against the set's
+    `look` (config calm_footage.set_rules). Any no raises PictureCheckFailed
+    "LOOK_CHECK_FAILED" naming each clip's time, so repair() refuses those
+    clips and it renders again; the run names WHISPER_LOOK_REFUSED. No model
+    answering is FrameCheckUnavailable: nothing goes up unjudged."""
+    import whisper_frame_check as WFC                       # noqa: PLC0415
+    import whisper_reel as R                                # noqa: PLC0415
+    fset = k.get("footage_set")
+    look = R.set_rules(c, fset).get("look") if fset else None
+    if not look or not k.get("reel"):
+        return {"look": "not a footage set with a look rule"}
+    grab = grab or _grab
+    first: dict[str, float] = {}
+    for t0, secs, pid in k["reel"]:
+        if pid and pid not in first:
+            first[pid] = float(t0) + float(secs) / 2
+    work = WL.WORK / slug / "look"
+    work.mkdir(parents=True, exist_ok=True)
+    frames = [(pid, f) for pid, t in first.items()
+              if (f := grab(video, t, work / f"{re.sub(r'[^A-Za-z0-9]+', '-', pid)}.jpg"))]
+    if not frames:
+        raise WFC.FrameCheckUnavailable(f"LOOK_CHECK_UNAVAILABLE {slug}: no frame could be read from the render")
+    sheet = contact_sheet(frames, WL.KITS / slug / "contact-sheet.jpg")
+    subj = "; ".join(WL.footage_subjects(fset, c))
+    bad = WFC.look_failures([str(f) for _, f in frames], subj, look, judge)
+    if bad is None:
+        raise WFC.FrameCheckUnavailable(
+            f"LOOK_CHECK_UNAVAILABLE {slug}: no free vision model answered the contact-sheet check; "
+            "nothing goes up unjudged, the next night asks again")
+    if bad:
+        named = [(first[pid], pid, bad[str(f)]) for pid, f in frames if str(f) in bad]
+        raise WFC.PictureCheckFailed(
+            f"LOOK_CHECK_FAILED {len(named)} of {len(frames)} clip(s) on {sheet.name} do not look like "
+            f"{fset}: " + "; ".join(f"{pid} at {int(t) // 60}:{int(t) % 60:02d} ({w[:80]})" for t, pid, w in named),
+            [(t, f"looks: {w}") for t, _, w in named])
+    return {"look": "passed", "clips": len(frames), "sheet": str(sheet)}
 
 
 # ------------------------------------------------- a failed frame check repairs itself
@@ -730,7 +801,7 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
             ks = kits()
             todo = candidates(ks)
 
-        refused, failed, holds, unavailable = [], [], [], []
+        refused, failed, holds, unavailable, looked = [], [], [], [], []
         uploaded = 0
         for slug in todo[:ucfg(c)["max_per_run"]]:
             k = ks[slug]
@@ -750,6 +821,8 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                 try:
                     r = checker(video, slug, c)
                 except FC.PictureCheckFailed as e:
+                    if str(e).startswith("LOOK_CHECK_FAILED"):
+                        looked.append(f"{slug}: {str(e)[:300]}")
                     k["frame_check"] = {"passed": False, "file": fingerprint(video),
                                         "at": stamp(now), "why": str(e)[:600],
                                         "failures": [[t, w] for t, w in e.failures]}
@@ -854,6 +927,15 @@ def run(now: _dt.datetime | None = None, yt=None, checker=None, notify=morning_l
                  detail={"lost": gone, "uploaded_this_run": uploaded},
                  unblock="Read the line: a removed upload is sent again by itself (twice at most); a "
                          "rejected one names YouTube's reason - open it in YouTube Studio.")
+        if looked:
+            out.named_stop("WHISPER_LOOK_REFUSED",
+                 f"{len(looked)} finished episode(s) show footage that does not look like its set and "
+                 f"were not uploaded: {'; '.join(looked)}"
+                 + (f". Also failed the frame check: {'; '.join(f for f in failed if 'LOOK_CHECK_FAILED' not in f)}"
+                    if any('LOOK_CHECK_FAILED' not in f for f in failed) else ""),
+                 detail={"looked": looked, "failed": failed},
+                 unblock="Nothing to do: the clips named are refused for every video and the episode "
+                         "renders again from its kept voice; the contact sheet sits next to its kit.")
         if failed:
             out.named_stop("FRAME_CHECK_FAILED",
                  f"{len(failed)} finished episode(s) failed the final frame check and were not "

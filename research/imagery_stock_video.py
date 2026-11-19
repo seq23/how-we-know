@@ -537,6 +537,90 @@ def clip_problems(path: Path, seconds: float) -> list[str]:
     return out
 
 
+def _letterboxed(frames: list[str]) -> bool:
+    """Black bars top AND bottom on a majority of frames (1920x746 inside 1080)."""
+    from PIL import Image, ImageStat                    # noqa: PLC0415
+    hits = 0
+    for j in frames:
+        im = Image.open(j).convert("RGB")
+        w, h = im.size
+        k = max(2, int(h * 0.08))
+        top, bot = ImageStat.Stat(im.crop((0, 0, w, k))), ImageStat.Stat(im.crop((0, h - k, w, h)))
+        mid = ImageStat.Stat(im.crop((0, k, w, h - k)).convert("L"))
+        if (max(top.mean) <= 12 and max(bot.mean) <= 12 and max(top.stddev) < 6
+                and max(bot.stddev) < 6 and mid.mean[0] > 20):
+            hits += 1
+    return hits * 2 > len(frames)
+
+
+def _letterboxed_clip(path: Path, seconds: float) -> bool:
+    import subprocess                                   # noqa: PLC0415
+    import tempfile                                     # noqa: PLC0415
+    with tempfile.TemporaryDirectory() as td:
+        frames = []
+        for k in range(5):
+            j = os.path.join(td, f"b{k}.jpg")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{seconds * (k + 0.5) / 5:.2f}",
+                            "-i", str(path), "-frames:v", "1", "-vf", "scale=768:-2", j], check=True)
+            if os.path.exists(j):
+                frames.append(j)
+        return _letterboxed(frames)
+
+
+def harvest_refusal(rules: dict, ent: dict, cand: dict) -> str | None:
+    """Why a search result is refused before download, or None (19 Nov 2026,
+    her "not luxury enough": a tag word alone took a Kyiv tour boat as a yacht).
+    Any reject word (the set's, plus its subject's own) anywhere in the clip's
+    tags or title refuses it; so does a size under the set's min_size."""
+    ws = _words(str(cand.get("title") or ""))
+    for phrase in list(rules.get("reject") or []) + list(ent.get("reject") or []):
+        want = _words(phrase)
+        n = len(want)
+        if n and any(ws[i:i + n] == want for i in range(len(ws) - n + 1)):
+            return f"tag: {phrase}"
+    mw, mh = rules.get("min_size") or (0, 0)
+    w, h = int(cand.get("width") or mw), int(cand.get("height") or mh)
+    if w < mw or h < mh:
+        return f"size: {w}x{h} under {mw}x{mh}"
+    return None
+
+
+def clip_look(path: Path, seconds: float, subject: str, look: str, judge=None) -> str | None | bool:
+    """Three frames judged by the free vision route against the set's `look`:
+    None = it looks right, a str = why not, False = no model answered."""
+    import subprocess                                   # noqa: PLC0415
+    import tempfile                                     # noqa: PLC0415
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import whisper_frame_check as WFC                   # noqa: PLC0415
+    with tempfile.TemporaryDirectory() as td:
+        frames = []
+        for k in range(3):
+            j = os.path.join(td, f"l{k}.jpg")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{seconds * (k + 0.5) / 3:.2f}",
+                            "-i", str(path), "-frames:v", "1", "-vf", "scale=768:-2", j], check=True)
+            if os.path.exists(j):
+                frames.append(j)
+        bad = WFC.look_failures(frames, subject, look, judge)
+    if bad is None:
+        return False
+    return f"looks: {next(iter(bad.values()))}" if bad else None
+
+
+def _remember_refusal(uid: str, why: str) -> None:
+    """A clip the look check refused at harvest is never fetched again: it goes
+    on the same list the final frame check writes (visuals/whisper_reel.pool)."""
+    sys.path.insert(0, str(ROOT / "loop"))
+    import whisper_lane as WL                           # noqa: PLC0415
+    try:
+        doc = json.loads(WL.REFUSED_CLIPS.read_text())
+    except (OSError, ValueError):
+        doc = {}
+    doc.setdefault("clips", {})[uid] = {"why": why[:160], "slug": "harvest",
+                                        "at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+    WL.REFUSED_CLIPS.parent.mkdir(parents=True, exist_ok=True)
+    WL.REFUSED_CLIPS.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
+
+
 def harvest_calm(sets: list[str] | None = None, cap: int | None = None) -> dict:
     """Fill each Whisper Almanac calm footage set (config `calm_footage`, her
     call 9 Nov 2026) up to `per_subject` clips per subject: real footage only
@@ -562,10 +646,15 @@ def harvest_money(cap: int | None = None, per: int | None = None) -> dict:
 
 
 def _harvest_sets(cfgc: dict, sets: list[str] | None, cap: int | None, tag: str,
-                  domain: str, episode) -> dict:
+                  domain: str, episode, judge=None) -> dict:
     per = int(cfgc["per_subject"])
     min_s = float(cfgc["min_seconds"])
-    refused = cfgc.get("refused") or {}
+    refused = dict(cfgc.get("refused") or {})
+    if tag == "calm_set":                  # what the look check or a final frame check refused
+        sys.path.insert(0, str(ROOT / "loop"))
+        import whisper_lane as WL                        # noqa: PLC0415
+        refused.update(WL.refused_clips())
+    looks_down = False
     cap = cap if cap is not None else MAX_PER_RUN
     FF = _ff()
     status, stops = source_status()
@@ -576,6 +665,7 @@ def _harvest_sets(cfgc: dict, sets: list[str] | None, cap: int | None, tag: str,
     used = {a["post_id"] for a in have}
     new, fetched, report = [], 0, {}
     for name in sets or list(cfgc["sets"]):
+        rules = (cfgc.get("set_rules") or {}).get(name) or {}
         for ent in cfgc["sets"][name]:
             n_have = sum(1 for a in have + new
                          if a.get(tag) == name and a.get("subject") == ent["subject"]
@@ -595,6 +685,12 @@ def _harvest_sets(cfgc: dict, sets: list[str] | None, cap: int | None, tag: str,
                             or fetched >= cap
                             or (c.get("duration") and float(c["duration"]) < min_s)):
                         continue
+                    why_not = harvest_refusal(rules, ent, c)
+                    if why_not:
+                        print(f"  refused {uid}: {why_not}")
+                        continue
+                    if rules.get("look") and looks_down:
+                        continue                         # held: no model to judge it this run
                     try:
                         meta, blob = FF.BY_NAME[src].download(c)
                     except Exception as e:               # noqa: BLE001
@@ -611,6 +707,24 @@ def _harvest_sets(cfgc: dict, sets: list[str] | None, cap: int | None, tag: str,
                     probs = ([] if info["duration_s"] >= min_s and info["width"] >= 1280
                              else ["too short or too small"])
                     probs = probs or clip_problems(path, info["duration_s"])
+                    mw, mh = rules.get("min_size") or (0, 0)
+                    if not probs and (info["width"] < mw or info["height"] < mh):
+                        probs = [f"size: {info['width']}x{info['height']} under {mw}x{mh}"]
+                    if not probs and mw:
+                        probs = ["letterboxed: black bars top and bottom"] if _letterboxed_clip(
+                            path, info["duration_s"]) else []
+                    if not probs and rules.get("look"):
+                        seen = clip_look(path, info["duration_s"], ent["subject"], rules["look"], judge)
+                        if seen is False:
+                            # fail closed: never into the pool unjudged; the next run asks again
+                            looks_down = True
+                            print(f"  NOTE LOOK_CHECK_UNAVAILABLE {uid}: no free vision model answered; "
+                                  f"held out of the pool, the next harvest judges it")
+                            path.unlink()
+                            continue
+                        if seen:
+                            _remember_refusal(uid, seen)
+                            probs = [seen]
                     rec = record(c, ent["subject"], episode(name), meta, blob, info)
                     rec.update({tag: name, "domain": domain, "matched": hit,
                                 "episodes": [episode(name)]})

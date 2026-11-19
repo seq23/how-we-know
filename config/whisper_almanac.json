@@ -500,6 +500,55 @@
   "paint": {
     "_why": "Her ruling 16 Nov 2026: every NEW manifesting video (Neville, Money) shows a slow abstract painting made in code (visuals/whisper_paint.py) for judge_after_days from the first paint upload, then it is judged on the channel's own numbers (average % viewed, average view duration, share still watching at 5 min); footage returns only if paint clearly underperforms (worse_than below, on both % viewed and view duration). Forward only: a video already rendered keeps its picture, nothing is re-rendered ('we wont go back and redo anything if it passes the test only move forward'). Sleep history, ocean and food keep their subject footage. Read by loop/whisper_lane.picture_for and loop/whisper_scorecard.paint_verdict.",
     "lanes": ["neville", "money"],
+    "palettes": {
+      "_why": "Her complaint 19 Nov 2026 ('not luxury enough'): Money's painting gets its own luxury palette (deep black ground, gold, champagne, a touch of deep wine); a lane not named here (Neville) keeps the shared warm amber/ochre/umber in visuals/whisper_paint.PALETTE. Read by visuals/whisper_paint.palette_for. Every colour stays warm (no blue) and under pure white; the painter still holds every frame at 10-20 % luma.",
+      "money": {
+        "ground": [
+          9,
+          7,
+          6
+        ],
+        "wash": [
+          92,
+          68,
+          30
+        ],
+        "colours": {
+          "gold": [
+            200,
+            154,
+            60
+          ],
+          "antique gold": [
+            148,
+            108,
+            42
+          ],
+          "champagne": [
+            214,
+            190,
+            142
+          ],
+          "deep wine": [
+            104,
+            28,
+            44
+          ],
+          "black lacquer": [
+            30,
+            22,
+            16
+          ]
+        },
+        "weights": {
+          "gold": 1.0,
+          "antique gold": 0.8,
+          "champagne": 0.55,
+          "deep wine": 0.25,
+          "black lacquer": 0.6
+        }
+      }
+    },
     "judge_after_days": 30,
     "worse_than": 0.8
   },
@@ -981,6 +1030,34 @@
     },
     "lanes_why": "18 Nov 2026: Psalm Nights takes the calm night footage (moonlight on water, candlelight, rain on a window, a forest at dawn) and is NOT in the paint trial (config `paint.lanes`), so her day-30 paint verdict stays a test of the manifesting lanes only.",
     "per_subject": 5,
+    "set_rules": {
+      "_why": "Her complaint 19 Nov 2026 on the Money video (affirmations-money-2026-w45): 'inferior images - not luxury enough'. Measured: the money-luxury harvest took a clip on one tag word ('yacht' took a tourist boat in Kyiv, 'pool' resort pools with swimmers, 'penthouse' a Prague office), so 5 subjects carried the video. Per set, read by research/imagery_stock_video._harvest_sets (harvest) and visuals/whisper_reel._pool (the reel): reject = tag words that refuse a clip at harvest (a subject's own `reject` adds to it); min_size = width x height a clip must reach (no letterbox: measured on 5 frames at harvest); min_subjects = distinct subjects the reel needs, else the NAMED STOP WHISPER_SUBJECTS_SHORT (never filled with weak clips); look = what a free vision model (Gemini free tier first, then $0 OpenRouter vision; never paid) must say yes to on 3 frames at harvest and on the kit's contact sheet before upload (loop/whisper_upload.look_check); no = refused with its reason, no answer = held out (fail closed).",
+      "money-luxury": {
+        "look": "real wealth and luxury at a glance: a penthouse at night, a superyacht, a private jet cabin, a champagne pour, fine jewelry or gold, a luxury car interior, a designer boutique, a private villa pool with nobody swimming, a skyline from a high window. Ordinary, tourist, public, crowded, office, construction, traffic or plain hotel scenes are NOT luxury: a hotel or resort pool (with or without people), a street, road or town seen from above, an office tower, a blurred city, a plain room or bathroom all answer false",
+        "reject": [
+          "tourism",
+          "tourist",
+          "beach",
+          "crowd",
+          "traffic",
+          "highway",
+          "construction",
+          "office",
+          "motorboat",
+          "ferry",
+          "public",
+          "street"
+        ],
+        "min_size": [
+          1920,
+          1080
+        ],
+        "min_subjects": 6
+      },
+      "calm-night": {
+        "look": "a calm, restful, real night or nature scene for sleep (moonlight on water, waves at dusk, rain on a window, candlelight, golden-hour clouds, a forest at dawn). Busy, urban, crowded, bright daytime or CG scenes are NOT calm"
+      }
+    },
     "sets": {
       "calm-night": [
         {
@@ -1061,143 +1138,195 @@
         {
           "subject": "a luxury interior at night",
           "queries": [
-            "luxury interior",
-            "luxury apartment",
-            "luxury hotel room",
-            "penthouse"
+            "penthouse night",
+            "luxury penthouse interior",
+            "luxury living room night",
+            "luxury apartment night"
           ],
           "accept": [
-            "luxury interior",
-            "hotel",
-            "interior",
-            "living room",
-            "luxury apartment",
-            "apartment",
-            "hotel room",
             "penthouse",
-            "bedroom"
+            "luxury interior",
+            "luxury apartment",
+            "luxury living room",
+            "luxury home",
+            "luxury villa"
+          ],
+          "reject": [
+            "hotel",
+            "holiday",
+            "room with terrace"
           ]
         },
         {
           "subject": "a penthouse view over city lights",
           "queries": [
-            "city lights night",
+            "skyline night window",
+            "penthouse view night",
             "city skyline night",
-            "night city"
+            "skyscraper night"
           ],
           "accept": [
-            "city light",
-            "cityscape",
             "skyline",
-            "night city",
-            "city skyline"
+            "city skyline",
+            "skyscraper",
+            "penthouse"
+          ],
+          "reject": [
+            "road",
+            "aerial",
+            "drone",
+            "construction"
           ]
         },
         {
           "subject": "a yacht at sunset",
           "queries": [
-            "yacht sunset",
-            "yacht",
-            "luxury yacht"
+            "superyacht",
+            "luxury yacht sunset",
+            "mega yacht",
+            "superyacht sunset"
           ],
           "accept": [
-            "yacht",
-            "sailing yacht"
+            "superyacht",
+            "mega yacht",
+            "luxury yacht",
+            "yacht"
+          ],
+          "reject": [
+            "motorboat",
+            "vessel",
+            "boat trip",
+            "river"
           ]
         },
         {
           "subject": "a private jet cabin",
           "queries": [
-            "private jet",
             "private jet interior",
-            "business jet"
+            "private jet",
+            "business jet cabin"
           ],
           "accept": [
             "private jet",
-            "small private jet",
-            "business jet"
+            "business jet",
+            "jet interior"
           ]
         },
         {
           "subject": "champagne and fine dining in soft light",
           "queries": [
-            "champagne",
-            "fine dining",
-            "champagne glass"
+            "champagne pour",
+            "champagne glass",
+            "champagne toast"
           ],
           "accept": [
             "champagne",
-            "sparkling wine",
-            "champagne bottle",
             "champagne glass",
-            "fine dining"
+            "champagne bottle"
+          ],
+          "reject": [
+            "tablet",
+            "vitamin",
+            "restaurant terrace"
           ]
         },
         {
           "subject": "gold and jewelry close-ups",
           "queries": [
-            "jewelry",
-            "gold jewelry",
-            "diamond"
+            "fine jewelry macro",
+            "diamond ring macro",
+            "gold necklace macro",
+            "diamond necklace"
           ],
           "accept": [
             "jewelry",
             "jewellery",
-            "diamond ring",
-            "ring",
-            "gold",
             "diamond",
-            "necklace",
-            "earring"
+            "diamond ring",
+            "gold ring",
+            "necklace"
+          ],
+          "reject": [
+            "treasure chest",
+            "costume",
+            "kitchen"
           ]
         },
         {
           "subject": "gold bars handled slowly",
           "queries": [
-            "gold bullion",
             "gold bars",
-            "gold coins"
+            "gold bullion",
+            "gold bar"
           ],
           "accept": [
-            "gold bullion",
             "gold bar",
-            "gold",
-            "gold coin"
+            "gold bullion",
+            "gold bars"
+          ],
+          "reject": [
+            "foundry",
+            "molten",
+            "factory"
           ]
         },
         {
           "subject": "a luxury car interior",
           "queries": [
+            "luxury car interior night",
             "luxury car interior",
-            "car interior",
-            "car dashboard night"
+            "sports car interior"
           ],
           "accept": [
-            "car interior",
-            "luxury car"
+            "luxury car",
+            "sports car interior",
+            "car interior"
+          ],
+          "reject": [
+            "dashboard screen",
+            "road",
+            "highway",
+            "traffic"
           ]
         },
         {
-          "subject": "designer shopping bags",
+          "subject": "a designer boutique",
           "queries": [
-            "shopping bags",
-            "shopping"
+            "designer boutique",
+            "luxury boutique",
+            "luxury shopping"
           ],
           "accept": [
-            "shopping bag",
-            "shopping"
+            "boutique",
+            "luxury shopping",
+            "luxury store",
+            "designer"
           ]
         },
         {
           "subject": "a calm infinity pool at dusk",
           "queries": [
-            "infinity pool",
-            "pool sunset"
+            "villa infinity pool dusk",
+            "infinity pool sunset",
+            "luxury villa pool"
           ],
           "accept": [
-            "infinity pool",
-            "swimming pool",
-            "pool"
+            "infinity pool"
+          ],
+          "reject": [
+            "swim",
+            "swimming",
+            "people",
+            "woman",
+            "man",
+            "family",
+            "kid",
+            "child",
+            "fun",
+            "sport",
+            "holiday",
+            "resort",
+            "hotel"
           ]
         }
       ]
@@ -1212,7 +1341,30 @@
       "pixabay:25907": "daytime aerial of hotel buildings, not a luxury interior at night",
       "pixabay:36944": "daytime aerial of a town, not city lights",
       "pixabay:13963": "an unreadable close-up, not champagne",
-      "pixabay:19255": "blown-out white frame, no jewelry visible"
+      "pixabay:19255": "blown-out white frame, no jewelry visible",
+      "mixkit:4029": "plain: an ordinary hotel room with a terrace",
+      "mixkit:1147": "ordinary: a flat aerial of a city's street grid, not a view from a high window",
+      "pixabay:3323": "costume: silver costume jewellery spilling from a treasure chest on white",
+      "pixabay:40289": "tourist: a woman floating in a resort pool",
+      "pixabay:119437": "tourist: a river tour boat on the Dnieper in Kyiv",
+      "pixabay:119436": "tourist: a river tour boat on the Dnieper in Kyiv",
+      "pixabay:119442": "tourist: a motor cruiser with passengers on a grey river",
+      "pixabay:1188": "letterboxed: 1920x746 hotel montage with black bars",
+      "pixabay:43518": "public: a resort pool with a swimmer on a float",
+      "mixkit:40075": "public: motorboats near a town beach at dusk",
+      "pixabay:25905": "plain: an ordinary hotel pool by day",
+      "pixabay:26307": "ordinary: a blurred aerial of a city with construction",
+      "pixabay:122523": "public: rows of resort loungers and parasols by a pool",
+      "pixabay:172350": "traffic: a road through a new town, aerial",
+      "pixabay:40288": "public: a resort pool with people swimming",
+      "pixabay:24136": "office: a Prague office tower at dusk",
+      "mixkit:3126": "ordinary: a town's lights on a hillside",
+      "pixabay:219228": "plain: a ring on a hand in a kitchen",
+      "pixabay:3261": "public: a glass on a busy restaurant terrace",
+      "mixkit:2861": "industrial: molten metal poured in a foundry, not gold bars",
+      "mixkit:40175": "plain: a woman in a face mask lifting bags from a car",
+      "pixabay:3134": "ordinary: office towers and a street from a drone at night (the look check said no, 19 Nov)",
+      "pixabay:78557": "swimmer: a person in the villa pool (the look check said no, 19 Nov)"
     }
   },
   "picture_gate": {

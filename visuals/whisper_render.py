@@ -174,7 +174,7 @@ def render_paint(slug: str, p: dict, c: dict, wavs: list[Path], total: float,
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
                         "-t", f"{dur:.3f}", str(voice)], check=True)
         tmp = out.with_suffix(".tmp.mp4")
-        WP.render(slug, dur, tmp, voice)
+        WP.render(slug, dur, tmp, voice, lane=WL.lane_of(p, c))
         got = WL._probe_seconds(tmp)
         if abs(got - dur) > 2.0:
             tmp.unlink()
@@ -203,7 +203,11 @@ def plan(slug: str) -> int:
     assets = F.usable_assets()
     srcs = [f"calm:{fset}"] if fset else list(dict.fromkeys(s["source"] for s in p["segments"]))
     for s in srcs:
-        pool = R.pool(s, assets, c)
+        try:
+            pool = R.pool(s, assets, c)
+        except R.FootageThin as e:
+            print(f"NAMED STOP [WHISPER_FOOTAGE_THIN] {slug}: {e}")
+            continue
         subs = sorted({R.subject(a) for a in pool})
         print(f"{slug} ({p['kind']}, footage {s}): {len(pool)} clip(s) of {len(subs)} subject(s): "
               f"{'; '.join(subs)}")

@@ -239,6 +239,11 @@ try:
                 "seconds": 30.0} for i in range(3)]
               + [{"local_file": f"j{i}", "subject": "gold and jewelry close-ups", "calm_set": "money-luxury",
                   "seconds": 30.0} for i in range(3)]
+              # the subject floor (19 Nov 2026): the Money reel needs its min_subjects distinct subjects
+              + [{"local_file": f"s{n}", "subject": e["subject"], "calm_set": "money-luxury", "seconds": 30.0}
+                 for n, e in enumerate([e for e in C["calm_footage"]["sets"]["money-luxury"]
+                                        if e["subject"] not in ("a yacht at sunset", "gold and jewelry close-ups")]
+                                       [:int(C["calm_footage"]["set_rules"]["money-luxury"]["min_subjects"]) - 2])]
               + [{"local_file": "short", "subject": "a yacht at sunset", "calm_set": "money-luxury",
                   "seconds": 9.0},
                  {"local_file": "traffic", "post_id": "pixabay:2165", "subject": "a luxury car interior",
@@ -247,7 +252,7 @@ try:
                  {"local_file": "deep", "subject": "isopod", "title": "isopod", "source": "pixabay"}])
     pool = REEL.pool("calm:money-luxury", assets, C)
     check("the Money reel pool is only money-luxury clips that hold a shot and are not refused, interleaved",
-          [a["local_file"] for a in pool] == ["y0", "j0", "y1", "j1", "y2", "j2"],
+          [a["local_file"] for a in pool] == ["y0", "j0", "s0", "s1", "s2", "s3", "y1", "j1", "y2", "j2"],
           [a["local_file"] for a in pool])
 
     base = {"kind": "affirmations", "lane": "money", "length_basis": "measured",

@@ -71,6 +71,18 @@ same = next(iter(WP.frames("neville-sats-01", 20)))[0]
 other = next(iter(WP.frames("affirmations-money-2026-w47", 20)))[0]
 check("a. the topic seeds the painting", same == runs[0][0] and other != runs[0][0])
 
+money = next(iter(WP.frames("affirmations-money-2026-w47", 20, lane="money")))[0]
+pal = WP.palette_for("money")
+check("a. Money paints in its own luxury palette from config; Neville keeps the shared one",
+      money != other and pal["colours"] != WP.PALETTE and WP.palette_for("neville")["colours"] == WP.PALETTE
+      and "gold" in pal["colours"] and "champagne" in pal["colours"])
+mrun = list(WP.frames("affirmations-money-2026-w47", 60, lane="money"))
+marr = [np.frombuffer(b, np.uint8).reshape(WP.H, WP.W, 3) for b, _ in mrun][::5]
+check("a. the Money palette stays 10-20 % luma, warm, never white",
+      all(WP.LUMA_BAND[0] <= WP.luma(a.astype(np.float32)) <= WP.LUMA_BAND[1] for a in marr)
+      and all(float(((a[..., 2].astype(int) > a[..., 0] + 8) & (a[..., 2].astype(int) > a[..., 1] + 8)).mean()) < 0.01
+              and not ((a >= 240).all(axis=2)).any() for a in marr))
+
 # b. the paint gate
 def frame(rgb=None, arr=None) -> str:
     p = TMP / f"f{len(list(TMP.glob('f*.png')))}.png"

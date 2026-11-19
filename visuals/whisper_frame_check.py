@@ -91,6 +91,48 @@ def gemini_judge(frames: list[str], subject: str) -> list[dict] | None:
     return FC.ask_vision(frames, question(subject, len(frames)), valid=_valid)
 
 
+# ------------------------------------------- does it LOOK like its set? (19 Nov 2026)
+# Her question after the "not luxury enough" Money video: why was it not caught?
+# Every gate checked licence, words, darkness, length and share - none judged
+# whether a clip LOOKS like its set. A tag word was the only test. This is that
+# judgement, by the free vision route only (frame_check.ask_vision), asked at
+# harvest (research/imagery_stock_video) and on a kit's contact sheet before
+# upload (loop/whisper_upload.look_check). The question is config
+# (calm_footage.set_rules.<set>.look), never code per lane.
+
+def look_question(look: str, subject: str, n: int) -> str:
+    return (
+        f"These {n} images are frames of stock footage chosen for a sleep video. "
+        f"Each must read, at a glance, as: {look}. The footage is meant to show: {subject}.\n"
+        "For each frame answer looks (true only when a viewer would see exactly that "
+        "at a glance; false for anything ordinary, plain, tourist, public, crowded or "
+        "off-subject) and a short why.\n"
+        'Answer with a JSON array, one object per frame in order: '
+        '[{"frame": 1, "looks": true, "why": "short reason"}, ...] and nothing else.')
+
+
+def look_judge(frames: list[str], subject: str, look: str) -> list[dict] | None:
+    """[{looks, why}] per frame from the free vision route, or None when none answered."""
+    return FC.ask_vision(frames, look_question(look, subject, len(frames)),
+                         valid=lambda rows: all(isinstance(r.get("looks"), bool) for r in rows))
+
+
+def look_failures(frames: list[str], subject: str, look: str, judge=None) -> dict[str, str] | None:
+    """{frame path: why} for every frame judged NOT to look like its set; {} when
+    all do; None when no free model answered (the caller fails closed)."""
+    judge = judge or look_judge
+    out: dict[str, str] = {}
+    for i in range(0, len(frames), FC.BATCH):
+        chunk = frames[i:i + FC.BATCH]
+        rows = judge(chunk, subject, look)
+        if rows is None or len(rows) != len(chunk):
+            return None
+        for p, r in zip(chunk, rows):
+            if r.get("looks") is not True:
+                out[p] = str(r.get("why") or "does not look like its set")[:160]
+    return out
+
+
 def check_frames(frames: list[tuple[float, str]], subject: str, judge=None, reader=None,
                  luma=None, cfg: dict | None = None, second_look=None) -> dict:
     """Pass the sleep picture, or raise PictureCheckFailed naming each failing time."""

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Whisper Almanac's slow painting: the picture for NEW manifesting videos.
 
-    .venv/bin/python visuals/whisper_paint.py SLUG --seconds 60 OUT.mp4   # a silent proof
+    .venv/bin/python visuals/whisper_paint.py SLUG --seconds 60 OUT.mp4 [--lane money]  # a silent proof
 
 Her ruling 16 Nov 2026: every NEW manifesting video (Neville, Money) shows a
 slow abstract painting made here in code ($0) for 30 days from the first
@@ -16,6 +16,9 @@ The spec (research, 16 Nov 2026), each line enforced below or in the gate:
   * the frame stays dim: mean luma 10-20 % (LUMA_BAND); a stroke that would
     lift it out of the band is glazed down toward the ground as it fades in;
   * warm only: amber, ochre, umber, deep rose (PALETTE); no blue, no pure white;
+    a lane may have its own warm palette in config `paint.palettes` (19 Nov
+    2026: Money paints in deep black, gold, champagne and a touch of deep
+    wine; Neville keeps PALETTE) - palette_for(lane);
   * a different painting per video: the seed is the video's topic (slug),
     which picks the palette weights, the stroke direction and the composition;
   * our own marks: bristle strokes along random curves. Nothing is copied or
@@ -50,6 +53,23 @@ PALETTE = {                       # warm only: hue 0-50 degrees, never white
 }
 
 
+CONFIG = Path(__file__).resolve().parent.parent / "config" / "whisper_almanac.json"
+
+
+def palette_for(lane: str | None) -> dict:
+    """{ground, wash, colours, weights} for a lane: its config palette, else the shared one."""
+    import json                                            # noqa: PLC0415
+    try:
+        pal = (json.loads(CONFIG.read_text()).get("paint") or {}).get("palettes", {}).get(lane or "")
+    except (OSError, ValueError):
+        pal = None
+    if not pal:
+        return {"ground": GROUND, "wash": PALETTE["umber"], "colours": PALETTE, "weights": None}
+    return {"ground": tuple(pal["ground"]), "wash": tuple(pal["wash"]),
+            "colours": {k: tuple(v) for k, v in pal["colours"].items()},
+            "weights": pal.get("weights")}
+
+
 def seed_of(slug: str) -> int:
     return int(hashlib.sha256(slug.encode()).hexdigest()[:12], 16)
 
@@ -62,11 +82,14 @@ def luma(a: np.ndarray) -> float:
 class Painter:
     """One painting: a seeded composition that gains a stroke at a time."""
 
-    def __init__(self, slug: str):
+    def __init__(self, slug: str, lane: str | None = None):
         self.rng = random.Random(seed_of(slug))
         r = self.rng
-        names = list(PALETTE)
-        self.weights = [r.uniform(0.3, 1.0) for _ in names]
+        pal = palette_for(lane)
+        self.colours, self.ground, self.wash = pal["colours"], pal["ground"], pal["wash"]
+        names = list(self.colours)
+        base = pal["weights"] or {}
+        self.weights = [float(base.get(n, 1.0)) * r.uniform(0.3, 1.0) for n in names]
         self.names = names
         self.angle = r.uniform(-math.pi, math.pi)          # the painting's prevailing direction
         self.centre = (r.uniform(0.3, 0.7) * W, r.uniform(0.35, 0.65) * H)
@@ -78,14 +101,14 @@ class Painter:
         cx, cy = self.centre
         d = np.sqrt(((xx - cx) / W) ** 2 + ((yy - cy) / H) ** 2)
         glow = np.clip(1.0 - d * 1.6, 0, 1)[..., None]
-        warm = np.array(PALETTE["umber"], np.float32)
-        base = np.array(GROUND, np.float32)
+        warm = np.array(self.wash, np.float32)
+        base = np.array(self.ground, np.float32)
         c = base + (warm - base) * (0.25 + 0.75 * glow)
         return self.fit(c)
 
     def fit(self, c: np.ndarray) -> np.ndarray:
         """Glaze toward the ground (or lift) until mean luma sits in TARGET."""
-        base = np.array(GROUND, np.float32)
+        base = np.array(self.ground, np.float32)
         yb = luma(base[None, None, :])
         for _ in range(4):                     # luma is linear in c; the clip makes it near-linear
             y = luma(c)
@@ -98,7 +121,7 @@ class Painter:
     def colour(self) -> np.ndarray:
         name = self.rng.choices(self.names, weights=self.weights)[0]
         v = self.rng.uniform(0.75, 1.1)
-        return np.clip(np.array(PALETTE[name], np.float32) * v, 0, 220)
+        return np.clip(np.array(self.colours[name], np.float32) * v, 0, 220)
 
     def stroke_mask(self) -> np.ndarray:
         """Alpha 0-1 of one bristle stroke along a random curve."""
@@ -146,9 +169,9 @@ class Painter:
         return self.fit(c)
 
 
-def frames(slug: str, seconds: float):
+def frames(slug: str, seconds: float, lane: str | None = None):
     """Yield (bytes, repeat) for each run of identical frames, in order."""
-    p = Painter(slug)
+    p = Painter(slug, lane)
     t = 0.0
     total = int(round(seconds * FPS))
     sent = 0
@@ -174,7 +197,8 @@ def frames(slug: str, seconds: float):
         t += gap
 
 
-def render(slug: str, seconds: float, out: Path, audio: Path | None = None) -> Path:
+def render(slug: str, seconds: float, out: Path, audio: Path | None = None,
+           lane: str | None = None) -> Path:
     """The painting, `seconds` long, muxed with `audio` when given."""
     out.parent.mkdir(parents=True, exist_ok=True)
     cmd = ["ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
@@ -185,7 +209,7 @@ def render(slug: str, seconds: float, out: Path, audio: Path | None = None) -> P
             "-pix_fmt", "yuv420p", "-g", str(FPS * 10), "-movflags", "+faststart", str(out)]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     try:
-        for buf, n in frames(slug, seconds):
+        for buf, n in frames(slug, seconds, lane):
             for _ in range(n):
                 proc.stdin.write(buf)
     finally:
@@ -200,8 +224,9 @@ def main(argv: list[str]) -> int:
     ap.add_argument("slug")
     ap.add_argument("out")
     ap.add_argument("--seconds", type=float, default=60)
+    ap.add_argument("--lane", help="the lane whose palette to paint in (config paint.palettes)")
     a = ap.parse_args(argv)
-    print(render(a.slug, a.seconds, Path(a.out)))
+    print(render(a.slug, a.seconds, Path(a.out), lane=a.lane))
     return 0
 
 
