@@ -143,9 +143,95 @@ for label, drive in (("(4) Drive full", FakeDrive(free=SC.DRIVE_MARGIN)), ("(5) 
         safe(shelf, drive, body, label)
 SC.DEPS = {}
 
+# 6. the cap reads the WHOLE ACCOUNT (R2's free 10 GB is per account): 20 Nov
+#    2026 the account held 11.17 GB while this bucket alone read 2.87 GB.
+def fake_api(buckets, broken=None):
+    def fetch(url):
+        if url.endswith("/usage"):
+            n = url.rsplit("/", 2)[-2]
+            return {"result": {} if n == broken else {"payloadSize": str(buckets[n]), "metadataSize": "0"}}
+        return {"result": {"buckets": [{"name": n} for n in buckets]}}
+    return fetch
+
+
+acct = {"how-we-know-renders": 2_870_000_000, "creator-studios-hadiyah-files": 5_384_000_000,
+        "boss-os-documents": 795_000_000}
+got = r2.account_usage_bytes("a", "t", fetch=fake_api(acct))
+check(got == sum(acct.values()), f"(6) account usage {got} is not the sum of every bucket {sum(acct.values())}")
+for label, f in (("one bucket unreadable", fake_api(acct, broken="boss-os-documents")),
+                 ("no buckets listed", fake_api({}))):
+    try:
+        r2.account_usage_bytes("a", "t", fetch=f)
+        check(False, f"(6) {label}: judged on a partial or guessed total")
+    except r2.R2Unavailable as e:
+        check(e.code == "R2_USAGE_UNREADABLE", f"(6) {label}: wrong code {e.code}")
+check(SC.R2_FLOOR <= 9_000_000_000, f"(6) the floor {SC.R2_FLOOR} is above her 9 GB line")
+
+
+# 7. the daily check: alarm (issue @-mentioning her) at the line, close when under,
+#    NAMED STOP when the total cannot be read.
+class GH:
+    def __init__(self, open_=()):
+        self.calls, self.open_ = [], list(open_)
+
+    def __call__(self, argv, **_):
+        self.calls.append(argv[1:3])
+        out = json.dumps([{"number": n, "body": SC.MARKER} for n in self.open_]) if argv[1:3] == ["issue", "list"] else ""
+        return type("R", (), {"returncode": 0, "stdout": out, "stderr": ""})()
+
+
+gh = GH()
+SC.check(usage=lambda: 9_000_000_000, runner=gh)
+check(["issue", "create"] in gh.calls, f"(7) 9.00 GB did not open the alarm issue: {gh.calls}")
+gh = GH(open_=[42])
+SC.check(usage=lambda: 9_400_000_000, runner=gh)
+check(["issue", "comment"] in gh.calls and ["issue", "create"] not in gh.calls, f"(7) an open alarm was not re-mentioned: {gh.calls}")
+gh = GH(open_=[42])
+SC.check(usage=lambda: 8_200_000_000, runner=gh)
+check(["issue", "close"] in gh.calls, f"(7) back under 9 GB did not close the alarm: {gh.calls}")
+gh = GH()
+SC.check(usage=lambda: 8_200_000_000, runner=gh)
+check(not [c for c in gh.calls if c[1] in ("create", "comment")], f"(7) under the line still alarmed: {gh.calls}")
+
+
+def unreadable():
+    raise r2.R2Unavailable("R2_USAGE_UNREADABLE", "x")
+
+
+check(SC.check(usage=unreadable, runner=GH()) == 2, "(7) an unreadable total was not NAMED STOP exit 2")
+
+
+# 8. the nightly push never re-shelves what the cap just cleared: the uploaded
+#    cut (Damascus, re-shelved 18 Nov after its 8 Nov upload) or a superseded cut.
+with tempfile.TemporaryDirectory() as td:
+    root = Path(td)
+    st = root / "loop" / "state"
+    st.mkdir(parents=True)
+    st.joinpath("ledger.json").write_text(json.dumps({"published": [
+        {"slug": "up", "video_id": "v1", "uploaded_at": "2026-11-08T15:06:08+00:00"},
+        {"slug": "gone", "video_id": "v2", "uploaded_at": "2026-11-08T15:06:08+00:00", "retired_at": "2026-11-09"},
+        {"slug": "swapping", "video_id": "v3", "uploaded_at": "2026-11-08T15:06:08+00:00"}]}))
+    st.joinpath("superseded_swaps.json").write_text(json.dumps({"swaps": {"swapping": {"phase": "uploading"}}}))
+    old = root / "old.mp4"
+    old.write_bytes(b"superseded-cut")
+    st.joinpath("superseded_renders.json").write_text(json.dumps({"retired-ep": {
+        "sha256": "0" * 64, "bytes": 1, "also": [{"sha256": hashlib.sha256(old.read_bytes()).hexdigest(),
+                                                 "bytes": old.stat().st_size}]}}))
+    done = r2.uploaded_renders(root)
+    check(set(done) == {"up"}, f"(8) live uploads {sorted(done)}, wanted only ['up'] (retired and mid-swap excluded)")
+    f = root / "r.mp4"
+    f.write_bytes(b"cut")
+    os.utime(f, (1762560000, 1762560000))                  # 8 Nov 2025: before the upload
+    check(bool(r2._not_needed("up", f, done, root)), "(8) the uploaded cut would be re-shelved")
+    os.utime(f, (1795000000, 1795000000))                  # after the upload: a remake
+    check(not r2._not_needed("up", f, done, root), "(8) a remake newer than the upload would NOT ship")
+    check(not r2._not_needed("swapping", f, done, root), "(8) a mid-swap cut would not be shelved")
+    check(bool(r2._not_needed("retired-ep", old, done, root)), "(8) a superseded cut would be re-shelved")
+    check(not r2._not_needed("retired-ep", f, done, root), "(8) a new cut of a superseded episode would not ship")
+
 if fails:
     print("FAIL test_storage_cap")
     for f in fails:
         print("  " + f)
     sys.exit(1)
-print("ok test_storage_cap: confirmed uploads first, then Drive (last in line, verified), then STORAGE_FREE_CAP; nothing unsafe deleted")
+print("ok test_storage_cap: account-wide total, 9 GB floor; confirmed uploads first, then Drive, then STORAGE_FREE_CAP; daily alarm opens/closes; the push never re-shelves an uploaded or superseded cut")

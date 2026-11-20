@@ -159,3 +159,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 loop/publish_floor.py check
+      - name: Check the Cloudflare account's R2 total (alarm at 9 GB of the free 10)
+        if: ${{ !cancelled() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 8d147e242033699dd37c6f5a451f48d2
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: python3 loop/storage_cap.py check

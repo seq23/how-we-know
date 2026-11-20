@@ -260,8 +260,8 @@ class _Backend:
         raise NotImplementedError
 
     def _cap(self, path, key: str) -> None:
-        """THE FREE-STORAGE CAP (loop/storage_cap.py): no write past the 9.5 GB
-        floor under R2's free 10 GB; room is made the safe way first, and a
+        """THE FREE-STORAGE CAP (loop/storage_cap.py): no write past the 9 GB
+        account-wide floor under R2's free 10 GB; room is made the safe way first, and a
         write that still does not fit is NAMED STOP [STORAGE_FREE_CAP], never
         a bill. The local stub is capped only when a test sets the floor."""
         floor = os.environ.get("R2_FREE_FLOOR_BYTES")
@@ -594,13 +594,31 @@ class WranglerBackend(_Backend):
                 return None
 
     def usage_bytes(self) -> int:
-        """`wrangler r2 bucket info` -> bucket_size (decimal units, as R2 bills)."""
-        r = self._run(["r2", "bucket", "info", self.bucket])
-        m = re.search(r"bucket_size:\s*([\d.]+)\s*([KMGT]?B)", (r.stdout or "") + (r.stderr or ""))
-        if not m:
-            raise R2Unavailable("R2_USAGE_UNREADABLE", "wrangler r2 bucket info printed no bucket_size",
+        """Bytes stored in EVERY bucket of the account, as R2 bills them.
+
+        R2's free 10 GB is per ACCOUNT, not per bucket. Until 20 Nov 2026 this
+        read only how-we-know-renders, so the 9.5 GB cap passed while the
+        account held 11.17 GB (creator studios, Boss OS documents and the rest
+        share the allowance). The token path is the REST usage endpoint per
+        bucket; without a token (a Mac on its wrangler login) the same figure
+        comes from `wrangler r2 bucket list` + `bucket info` per bucket.
+        """
+        if self._token:
+            return account_usage_bytes(self.account_id, self._token)
+        r = self._run(["r2", "bucket", "list"])
+        names = re.findall(r"^name:\s*(\S+)", (r.stdout or ""), re.M)
+        if not names:
+            raise R2Unavailable("R2_USAGE_UNREADABLE", "wrangler r2 bucket list printed no buckets",
                                 unblock="Upgrade wrangler; nothing is written while the size is unknown.")
-        return int(float(m.group(1)) * {"B": 1, "KB": 1e3, "MB": 1e6, "GB": 1e9, "TB": 1e12}[m.group(2)])
+        total = 0
+        for name in names:
+            r = self._run(["r2", "bucket", "info", name])
+            m = re.search(r"bucket_size:\s*([\d.]+)\s*([KMGT]?B)", (r.stdout or "") + (r.stderr or ""))
+            if not m:
+                raise R2Unavailable("R2_USAGE_UNREADABLE", f"wrangler r2 bucket info {name} printed no bucket_size",
+                                    unblock="Upgrade wrangler; nothing is written while the size is unknown.")
+            total += int(float(m.group(1)) * {"B": 1, "KB": 1e3, "MB": 1e6, "GB": 1e9, "TB": 1e12}[m.group(2)])
+        return total
 
     def replace_with_marker(self, key: str, marker: dict) -> None:
         self._refuse_write(key)
@@ -757,6 +775,39 @@ def vault_token(env=None) -> str:
     return r.stdout.strip() if r.returncode == 0 else ""
 
 
+def account_usage_bytes(account_id: str, token: str, fetch=None) -> int:
+    """Payload + metadata bytes across every R2 bucket of the account (REST).
+
+    Any unreadable answer raises R2_USAGE_UNREADABLE: the free-storage cap and
+    the daily check never judge on a guessed zero.
+    """
+    import urllib.request                                   # noqa: PLC0415
+    base = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/r2/buckets"
+
+    def _get(url: str) -> dict:
+        if fetch is not None:
+            return fetch(url)
+        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read())
+    try:
+        names = [b["name"] for b in (_get(f"{base}?per_page=1000").get("result") or {}).get("buckets") or []]
+        if not names:
+            raise ValueError("no buckets listed")
+        total = 0
+        for n in names:
+            u = _get(f"{base}/{n}/usage").get("result") or {}
+            if "payloadSize" not in u:
+                raise ValueError(f"no payloadSize for {n}")
+            total += int(u["payloadSize"]) + int(u.get("metadataSize") or 0)
+        return total
+    except Exception as e:                                  # noqa: BLE001
+        raise R2Unavailable("R2_USAGE_UNREADABLE", f"the account's R2 usage could not be read "
+                            f"({type(e).__name__}: {str(e)[:120]})",
+                            unblock="Nothing is written while the size is unknown; the token "
+                                    "needs R2 read on the account.") from None
+
+
 def have_assets(backend: _Backend, slug: str) -> bool:
     """Is this episode fully shelved — render AND thumbnail?
 
@@ -805,6 +856,52 @@ def _publish_slugs() -> list[str]:
     return batch_queue.queued_slugs()
 
 
+def uploaded_renders(root: Path | None = None) -> dict[str, str]:
+    """{slug: uploaded_at} for live uploads (video id, not retired, not
+    superseded) with no supersede swap in flight - the episodes whose master
+    the shelf no longer needs (her ruling 17 Nov 2026: "if its already on
+    youtube i dont want it nor do i need it")."""
+    root = root or ROOT
+    st = root / "loop" / "state"
+    lp = st / "ledger.json"
+    led = json.loads(lp.read_text()) if lp.exists() else {"published": []}
+    sw = st / "superseded_swaps.json"
+    swaps = json.loads(sw.read_text()).get("swaps", {}) if sw.exists() else {}
+    busy = {s for s, w in swaps.items() if w.get("phase") != "done"}
+    return {r["slug"]: r.get("uploaded_at") or "" for r in led.get("published", [])
+            if r.get("video_id") and not r.get("retired_at") and not r.get("superseded_by")
+            and not r.get("withdrawn_at") and r["slug"] not in busy}
+
+
+def _not_needed(slug: str, local: Path, done: dict[str, str], root: Path | None = None) -> str:
+    """Why this local render must NOT be shelved, or "" when it may be.
+
+    THE REGROWTH (20 Nov 2026). The cap deleted a confirmed upload's R2 copy
+    and the next nightly push put the same bytes straight back (Damascus:
+    uploaded 8 Nov, re-shelved 18 Nov). Two cases are never shelved:
+      * the uploaded cut itself: the slug has a live upload and this file is
+        not newer than it (a remake re-renders later, so it still ships);
+      * a cut recorded as superseded (cloud_upload refuses to publish it).
+    """
+    import datetime as _dt                                  # noqa: PLC0415
+    up = done.get(slug)
+    if up is not None:
+        try:
+            t = _dt.datetime.fromisoformat(up.replace("Z", "+00:00")).timestamp()
+        except ValueError:
+            t = None
+        if t is not None and local.stat().st_mtime <= t:
+            return "already on YouTube (this is the uploaded cut), not re-shelved"
+    p = (root or ROOT) / "loop" / "state" / "superseded_renders.json"
+    rec = (json.loads(p.read_text()).get(slug) if p.exists() else None) or {}
+    old = [x for x in [rec, *(rec.get("also") or [])] if x.get("sha256")]
+    if old and any(x.get("bytes") == local.stat().st_size for x in old):
+        sha = sha256_file(local)
+        if any(x["sha256"] == sha for x in old):
+            return "a superseded cut (loop/state/superseded_renders.json), never published"
+    return ""
+
+
 def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
     """Shelve every finished render and thumbnail that is not already up there.
 
@@ -830,12 +927,18 @@ def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
         print(f"  HELD {h}: refused by the render gate, not shelved")
     slugs = [x for x in slugs if x not in held]
     sent, skipped, absent = [], [], []
+    done = uploaded_renders()
 
     for slug in slugs:
         for local, key, what in ((renders / f"{slug}-final.mp4",
                                   render_key(slug), "render"),
                                  (thumbs / f"{slug}.jpg",
                                   thumb_key(slug), "thumbnail")):
+            gone = what == "render" and local.exists() and _not_needed(slug, local, done)
+            if gone:
+                skipped.append(f"{slug} {what}: {gone}")
+                print(f"  =  skip {slug} {what}: {gone}")
+                continue
             if not local.exists():
                 absent.append(f"{slug} {what}: not built on this Mac yet")
                 print(f"  ·  skip {slug} {what}: not built yet")
@@ -988,6 +1091,12 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
                 how = shorts_lane.heal_held_cut(name, slug, shorts, ROOT / "renders")
                 held.append(name)
                 print(f"  held {name}: {how}; V14/V15 remain required")
+    # A Short already on YouTube is never shelved again: nothing reads its
+    # cut back (shorts_lane.pending skips the ledger), and re-pushing it every
+    # night is what kept R2 over its free 10 GB (20 Nov 2026).
+    sl = ROOT / "loop" / "state" / "shorts_ledger.json"
+    on_youtube = {r.get("file") for r in (json.loads(sl.read_text()) if sl.exists() else {}).get("published", [])
+                  if r.get("video_id") and not r.get("withdrawn_at") and not r.get("retired_at")}
     for slug, rank in ((s_, r_) for s_ in slugs
                        for r_ in range(1, shorts_lane.cuts_for(s_) + 1)):
         name = shorts_lane.short_file(slug, rank)
@@ -1003,6 +1112,9 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
             # one self-contained idea has no rank 2 (visuals/shorts.py).
             continue
         slug_label = shorts_lane.Pick(slug, rank).label
+        if name in on_youtube:
+            skipped.append(f"{slug_label} short: already on YouTube, not re-shelved")
+            continue
         if name in held_files:
             held.append(slug_label)
             how = shorts_lane.heal_held_cut(name, slug, shorts, ROOT / "renders")

@@ -176,7 +176,7 @@ Ongoing human steps per video: **0**. One-time steps: the sample, two Allow clic
 | R2 bucket now | 9.99 GB of the free 10 GB (680 objects) | wrangler r2 bucket info |
 | Google Drive free | 15 GB shared with Gmail and Photos | Google |
 
-- **Finished files:** R2 shelf for upload (as How We Know), under a hard 9.5 GB cap of the free 10 GB.
+- **Finished files:** R2 shelf for upload (as How We Know), under a hard 9 GB cap on the whole Cloudflare account (R2's free 10 GB is per account; loop/storage_cap.py).
 
 - **At the cap:** delete R2 copies YouTube confirms are uploaded; then move the renders last in line to Drive (md5-verified, pulled back when next); then NAMED STOP [STORAGE_FREE_CAP]. Never billed.
 
