@@ -1,9 +1,12 @@
-"""THE FREE-STORAGE CAP: no job ever writes R2 past 9.5 GB, and nothing is billed.
+"""THE FREE-STORAGE CAP: no job ever writes R2 past 9 GB, and nothing is billed.
 
-R2's free tier is 10 GB; on 6 Nov 2026 the bucket held 9.99 GB (680 objects).
+R2's free tier is 10 GB PER ACCOUNT. On 6 Nov 2026 this bucket held 9.99 GB;
+on 20 Nov the account held 11.17 GB while the cap, reading this bucket alone,
+still passed. `used` is now the whole account (r2.account_usage_bytes) and the
+floor is 9 GB (her ruling 20 Nov 2026: the main account stays under 9 GB).
 Every R2 write goes through loop/r2.py `put`, which calls ensure_room() first:
 
-  1. room needed = used - (the key's current size) + new size - 9.5 GB floor;
+  1. room needed = used - (the key's current size) + new size - 9 GB floor;
   2. DELETE R2 copies whose YouTube upload is confirmed: a non-retired ledger
      upload with a video id that YouTube reports `processed`, not superseded
      and with no swap in flight (an R2 object is never the only copy of an
@@ -18,10 +21,17 @@ Every R2 write goes through loop/r2.py `put`, which calls ensure_room() first:
      does not happen, so nothing is ever billed.
 
 Nothing that is not uploaded or safely copied is ever deleted.
+
+THE DAILY CHECK (`python loop/storage_cap.py check`, the 09:00 CT upload
+workflow): reads the account total; at or over the floor it opens (or
+re-mentions daily) a GitHub issue that @-mentions her, so GitHub emails it,
+and closes it the first day the account is back under. An unreadable total
+is NAMED STOP [R2_USAGE_UNREADABLE], exit 2, never a guessed zero.
 """
 from __future__ import annotations
 
 import json
+import os
 import sys
 import tempfile
 from pathlib import Path
@@ -30,7 +40,7 @@ LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
-R2_FLOOR = int(9.5e9)
+R2_FLOOR = int(9.0e9)        # account-wide, her ruling 20 Nov 2026
 DRIVE_MARGIN = int(1.0e9)       # keep 1 GB of her free 15 GB untouched
 MARK = "drive-overflow"
 
@@ -150,3 +160,63 @@ def ensure_room(bucket, key: str, add: int, *, floor: int = R2_FLOOR, ledger=Non
         log(f"  storage cap: {a}")
     return acts
 DEPS: dict = {}
+
+
+# ------------------------------------------------------------- daily check
+LABEL = "r2-free-storage"
+MARKER = "<!-- r2-free-storage -->"
+
+
+def check(usage=None, runner=None, dry_run: bool = False, floor: int = R2_FLOOR) -> int:
+    import subprocess                                       # noqa: PLC0415
+    import r2                                               # noqa: PLC0415
+    import publish_floor as PF                              # noqa: PLC0415
+    runner = runner or subprocess.run
+    try:
+        used = usage() if usage else r2.require().usage_bytes()
+    except r2.R2Unavailable as e:
+        print(f"NAMED STOP [R2_USAGE_UNREADABLE] {e}")
+        return 2
+    line = f"R2 account total {used / 1e9:.2f} GB (alarm at {floor / 1e9:g} GB of the free 10 GB)"
+    print(f"OUTPUT: {line}")
+    if dry_run:
+        return 0
+    try:
+        out = PF._gh(["issue", "list", "--state", "open", "--label", LABEL, "--json", "number,body",
+                      "--limit", "20"], runner)
+    except RuntimeError:
+        out = "[]"                                          # the label does not exist yet
+    num = next((int(r["number"]) for r in json.loads(out or "[]") if MARKER in (r.get("body") or "")), None)
+    if used < floor:
+        if num is not None:
+            PF._gh(["issue", "close", str(num), "--comment", f"Back under: {line}."], runner)
+        return 0
+    who = "@" + (os.environ.get("OWNER_HANDLE") or "seq23")
+    title = f"R2 at {used / 1e9:.2f} GB: over the 9 GB line of the free 10 GB"
+    body = (f"**{line}.** The main Cloudflare account must stay under 9 GB (her ruling 20 Nov 2026). "
+            "How We Know writes stop at the floor by themselves (NAMED STOP [STORAGE_FREE_CAP]); the "
+            "rest of the account (creator studios, Boss OS documents, other buckets) is not capped by "
+            "this repo, so the fix is to clear or move whichever bucket grew. Per-bucket sizes: "
+            "`wrangler r2 bucket info <name>`. This issue is re-mentioned daily and closes itself "
+            "the first day the account is back under (loop/storage_cap.py check).")
+    if num is None:
+        text = f"{who}\n\n{body}\n\n{MARKER}"
+        try:
+            PF._gh(["issue", "create", "--title", title, "--body", text, "--label", LABEL], runner)
+        except RuntimeError:
+            PF._gh(["label", "create", LABEL, "--color", "B60205", "--description",
+                    "the Cloudflare account's R2 storage is over 9 GB"], runner)
+            PF._gh(["issue", "create", "--title", title, "--body", text, "--label", LABEL], runner)
+        print("alarm: issue opened")
+        return 0
+    PF._gh(["issue", "comment", str(num), "--body", f"{who} still over.\n\n{body}"], runner)
+    PF._gh(["issue", "edit", str(num), "--title", title], runner)
+    print(f"alarm: re-mentioned #{num}")
+    return 0
+
+
+if __name__ == "__main__":
+    if sys.argv[1:2] == ["check"]:
+        sys.exit(check(dry_run="--dry-run" in sys.argv))
+    print("usage: python loop/storage_cap.py check [--dry-run]")
+    sys.exit(64)
