@@ -1,0 +1,1 @@
+{ "kind": "site", "build": "cd site && npm ci --no-audit --no-fund && npm run generate && npx vite build && node scripts/finalize-404.mjs", "serve": "cd site && PORT=4173 node .output/server/index.mjs", "base_url": "http://127.0.0.1:4173" }
