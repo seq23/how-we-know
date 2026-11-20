@@ -11,6 +11,7 @@ It hard-fails when it finds zero workflows.
 from __future__ import annotations
 
 import glob
+import re
 import os
 import sys
 
@@ -115,6 +116,12 @@ def check() -> list[str]:
         if "on" not in doc and True not in doc:
             fails.append(f"{name}: has no trigger (`on:`)")
         for jname, job in jobs.items():
+            # A job that calls a reusable workflow runs that workflow's steps on its runner; it
+            # must name a pinned seq23 workflow instead.
+            if "uses" in job:
+                if not re.match(r"^seq23/[\w.-]+/\.github/workflows/[\w.-]+\.ya?ml@v\d", str(job["uses"])):
+                    fails.append(f"{name}:{jname}: calls {job['uses']}, not a pinned seq23 workflow")
+                continue
             if "runs-on" not in job:
                 fails.append(f"{name}:{jname}: no runs-on")
             steps = job.get("steps")
