@@ -1,15 +1,15 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-19T19:08:50.672Z",
+  "collected_at": "2026-11-20T18:48:06.341Z",
   "window_days": 28,
   "window": {
-    "start": "2026-10-20",
-    "end": "2026-11-17"
+    "start": "2026-10-21",
+    "end": "2026-11-18"
   },
   "totals": {
     "clicks": 0,
-    "impressions": 50,
+    "impressions": 53,
     "queries": 29,
     "pages": 22
   },
@@ -90,16 +90,16 @@
     {
       "key": "hadal snailfish",
       "clicks": 0,
-      "impressions": 6,
+      "impressions": 8,
       "ctr": 0,
-      "position": 77.2
+      "position": 80.3
     },
     {
       "key": "hadal zone",
       "clicks": 0,
-      "impressions": 8,
+      "impressions": 9,
       "ctr": 0,
-      "position": 88.9
+      "position": 89.1
     },
     {
       "key": "hadal zone facts",
@@ -110,6 +110,13 @@
     },
     {
       "key": "hadalpelagic zone",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 89
+    },
+    {
+      "key": "hadopelagic",
       "clicks": 0,
       "impressions": 1,
       "ctr": 0,
@@ -219,22 +226,15 @@
       "impressions": 2,
       "ctr": 0,
       "position": 75.5
-    },
-    {
-      "key": "what lives in the deepest part of the ocean",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 1
     }
   ],
   "pages": [
     {
       "key": "https://howweknowdeep.com/creatures/hadal-snailfish/",
       "clicks": 1,
-      "impressions": 12,
-      "ctr": 0.0833,
-      "position": 41.5
+      "impressions": 14,
+      "ctr": 0.0714,
+      "position": 48.4
     },
     {
       "key": "https://howweknowdeep.com/",
@@ -358,9 +358,9 @@
     {
       "key": "https://howweknowdeep.com/zones/hadal/",
       "clicks": 0,
-      "impressions": 41,
+      "impressions": 40,
       "ctr": 0,
-      "position": 37.2
+      "position": 42.5
     },
     {
       "key": "https://howweknowdeep.com/zones/midnight/",

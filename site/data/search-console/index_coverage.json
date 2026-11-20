@@ -1,18 +1,18 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-19T19:08:50.672Z",
+  "collected_at": "2026-11-20T18:48:06.341Z",
   "window_days": 28,
   "sitemap_total": 45,
-  "inspected_today": 7,
+  "inspected_today": 15,
   "per_day": 150,
   "parallel": 8,
   "refused_because": "503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"The service is currently unavailable.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
   "buckets": {
     "indexed": 41,
     "crawled_not_indexed": 0,
-    "discovered": 4,
-    "unknown": 0
+    "discovered": 3,
+    "unknown": 1
   },
   "pages": {
     "https://howweknowdeep.com/methodology/": {
@@ -53,9 +53,9 @@
     "https://howweknowdeep.com/creatures/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
-      "last_crawled": "2026-11-04T23:54:23Z",
+      "last_crawled": "2026-11-20T08:56:24Z",
       "google_canonical": "https://howweknowdeep.com/creatures/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/": {
       "bucket": "indexed",
@@ -74,79 +74,79 @@
     "https://howweknowdeep.com/editorial-policy/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
-      "last_crawled": "2026-11-08T12:34:12Z",
+      "last_crawled": "2026-11-18T14:30:09Z",
       "google_canonical": "https://howweknowdeep.com/editorial-policy/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/about/": {
       "bucket": "discovered",
       "coverage_state": "Discovered - currently not indexed",
       "last_crawled": null,
       "google_canonical": null,
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/privacy/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-06T17:18:51Z",
       "google_canonical": "https://howweknowdeep.com/privacy/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/terms/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-16T12:20:00Z",
       "google_canonical": "https://howweknowdeep.com/terms/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/methods/inferred-from-proxy/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-10-22T08:33:36Z",
       "google_canonical": "https://howweknowdeep.com/methods/inferred-from-proxy/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/methods/measured-by-instrument/": {
-      "bucket": "discovered",
-      "coverage_state": "Discovered - currently not indexed",
+      "bucket": "unknown",
+      "coverage_state": "URL is unknown to Google",
       "last_crawled": null,
       "google_canonical": null,
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/methods/reconstructed-from-fragments/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-06T11:54:39Z",
       "google_canonical": "https://howweknowdeep.com/methods/reconstructed-from-fragments/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/methods/observed-once/": {
       "bucket": "discovered",
       "coverage_state": "Discovered - currently not indexed",
       "last_crawled": null,
       "google_canonical": null,
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/why-deep-sea-creatures-look-so-weird/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-04T09:38:54Z",
       "google_canonical": "https://howweknowdeep.com/questions/why-deep-sea-creatures-look-so-weird/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/how-deep-sea-creatures-survive-pressure/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-11-16T20:28:28Z",
       "google_canonical": "https://howweknowdeep.com/questions/how-deep-sea-creatures-survive-pressure/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/why-deep-sea-creatures-are-surfacing/": {
       "bucket": "discovered",
       "coverage_state": "Discovered - currently not indexed",
       "last_crawled": null,
       "google_canonical": null,
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/why-deep-sea-creatures-are-so-scary/": {
       "bucket": "indexed",
@@ -160,14 +160,14 @@
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-10-16T01:26:25Z",
       "google_canonical": "https://howweknowdeep.com/questions/why-many-deep-sea-creatures-are-red/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/why-some-deep-sea-creatures-are-transparent/": {
       "bucket": "indexed",
       "coverage_state": "Submitted and indexed",
-      "last_crawled": "2026-11-05T13:16:22Z",
+      "last_crawled": "2026-11-20T16:19:59Z",
       "google_canonical": "https://howweknowdeep.com/questions/why-some-deep-sea-creatures-are-transparent/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/why-deep-sea-creatures-get-creepier-deeper/": {
       "bucket": "indexed",
@@ -181,7 +181,7 @@
       "coverage_state": "Submitted and indexed",
       "last_crawled": "2026-10-12T01:11:49Z",
       "google_canonical": "https://howweknowdeep.com/questions/what-creatures-live-in-the-deep-sea/",
-      "checked_at": "2026-11-18"
+      "checked_at": "2026-11-20"
     },
     "https://howweknowdeep.com/questions/what-is-the-scariest-deep-sea-creature/": {
       "bucket": "indexed",
