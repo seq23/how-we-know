@@ -164,7 +164,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:11+00:00",
-      "verified_at": "2026-11-05T16:02:37+00:00",
+      "verified_at": "2026-11-20T22:25:28+00:00",
       "previous_sha256": "8d2bbd0bb99250232e90378802f62421c3114643ff403c0238ce9c4c2a0738c8",
       "replaced_at": "2026-10-18T15:09:45+00:00"
     },
@@ -299,7 +299,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-09T15:09:43+00:00",
-      "verified_at": "2026-11-04T16:02:39+00:00"
+      "verified_at": "2026-11-20T22:25:28+00:00"
     },
     "7tdvXATeeng": {
       "slug": "why-does-old-iron-not-rust",
@@ -409,7 +409,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-10-05T15:11:45+00:00",
-      "verified_at": "2026-11-05T16:02:37+00:00",
+      "verified_at": "2026-11-20T22:25:29+00:00",
       "previous_sha256": "e4da2e3be44755ae9c8bf7fc47d41acdb9e7b29887b05bfb6ba9dc50da12b4b4",
       "replaced_at": "2026-10-19T20:21:28+00:00"
     },
@@ -687,11 +687,11 @@
     }
   },
   "blocked": {},
-  "updated": "2026-11-19T22:48:17+00:00",
+  "updated": "2026-11-20T22:25:29+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-11-19T22:48:17+00:00",
+    "at": "2026-11-20T22:25:28+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
