@@ -1,10 +1,10 @@
 # Retention checkpoint
 
-**1m59s average view duration** across 39 measured video(s), against a 146.0s floor. That is 19.8% of each video's own measured duration (38 of 39 measured).
+**1m53s average view duration** across 43 measured video(s), against a 146.0s floor. That is 18.7% of each video's own measured duration (42 of 43 measured).
 
 ## The format is wrong, not the topics
 
-24 of 39 videos lose the average viewer inside the first 2.0 minutes.
+27 of 43 videos lose the average viewer inside the first 2.0 minutes.
 
 Viewers are leaving before the first real explanation lands. That is not a topic-selection problem and better ranking will not fix it - the same thing will happen to the next four videos.
 
@@ -20,5 +20,5 @@ Measurement: stake-then-payoff vs pre-rule by average view duration, compared on
 
 | opening | measured videos | average view duration |
 |---|---|---|
-| pre-rule | 37 | 115.3s |
-| stake-then-payoff | 3 | 126.7s |
+| pre-rule | 37 | 114.2s |
+| stake-then-payoff | 8 | 80.2s |
