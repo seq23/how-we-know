@@ -353,66 +353,6 @@
     ],
     "gemini/gemini-3.5-flash-lite": [
       {
-        "lane": "whisper-author",
-        "latency_s": 1.8,
-        "outcome": "answered",
-        "ts": "2026-11-19T01:43:17Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 2.0,
-        "outcome": "answered",
-        "ts": "2026-11-19T01:44:04Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 1.7,
-        "outcome": "answered",
-        "ts": "2026-11-19T01:45:01Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 1.7,
-        "outcome": "answered",
-        "ts": "2026-11-19T01:45:04Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 1.6,
-        "outcome": "answered",
-        "ts": "2026-11-19T01:47:28Z"
-      },
-      {
-        "lane": "whisper-author",
-        "latency_s": 2.0,
-        "outcome": "answered",
-        "ts": "2026-11-19T01:47:30Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 1.0,
-        "outcome": "answered",
-        "ts": "2026-11-19T07:45:54Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 3.3,
-        "outcome": "answered",
-        "ts": "2026-11-19T07:46:19Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 1.2,
-        "outcome": "answered",
-        "ts": "2026-11-19T07:46:41Z"
-      },
-      {
-        "lane": "describe",
-        "latency_s": 1.3,
-        "outcome": "answered",
-        "ts": "2026-11-19T07:47:04Z"
-      },
-      {
         "lane": "describe",
         "latency_s": 6.2,
         "outcome": "answered",
@@ -471,6 +411,66 @@
         "latency_s": 0.6,
         "outcome": "answered",
         "ts": "2026-11-19T22:27:43Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.4,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:33:58Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.2,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:01Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.3,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:03Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.1,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:05Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.6,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:08Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 1.7,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:10Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.4,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:12Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 1.9,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:14Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 2.3,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:16Z"
+      },
+      {
+        "lane": "whisper-author",
+        "latency_s": 1.9,
+        "outcome": "answered",
+        "ts": "2026-11-20T01:34:18Z"
       }
     ],
     "gemini/gemini-3.6-flash": [
