@@ -301,6 +301,29 @@ print("CALLS", json.dumps(CALLS))
         if not ins or _T.one_question_problems(ins[0][1]):
             fails.append("with no titles.json row the lane did not upload under "
                          f"one plain question (the episode's own): {ins[:1]}")
+        # Every ready episode on a domain with no rotation day (2026-11-19:
+        # the only shelved episode was food, paused for the Money test). The
+        # lane must stop by name, upload nothing, and NOT record zero-episode
+        # "proof" in lane_evidence.json.
+        examined += 1
+        r_nr = run("""
+arming.EVIDENCE.unlink(missing_ok=True)
+backfill.schedule_slugs = lambda led, slugs, per_week: [None] * len(slugs)
+rc = 0
+try:
+    cloud_upload.run(limit=1)
+except SystemExit as e:
+    rc = e.code
+print("CALLS", json.dumps(CALLS))
+print("EVIDENCE", arming.EVIDENCE.exists())
+""", stub_env, tmp)
+        if ('"insert"' in r_nr.stdout
+                or "NO_ROTATION_DAY" not in (r_nr.stdout + r_nr.stderr)
+                or "EVIDENCE False" not in r_nr.stdout):
+            fails.append("with no rotation day for any ready episode the lane "
+                         "uploaded, did not name NO_ROTATION_DAY, or recorded "
+                         f"evidence for zero uploads: {r_nr.stdout.strip()[-500:]}"
+                         f" {r_nr.stderr[-300:]}")
         for want, why in (('"insert"', "no videos.insert was attempted"),
                           ('"privacy"', "the privacy/publishAt call was not made"),
                           ('"thumb"', "the thumbnail was not set")):

@@ -398,6 +398,12 @@
       "escalation": "Eight weekly sweeps with no new comment on a channel publishing 4/week is longer than silence explains. Check that list_uploads() still returns the whole uploads playlist and that the cursors in loop/state/comments/ledger.json are not ahead of real time.",
       "plain": "no new viewer comments this week"
     },
+    "NO_ROTATION_DAY": {
+      "why": "Every episode ready to upload belongs to a domain that holds no rotation day (loop/backfill.py schedule_slugs returns None: the domain is paused, e.g. food for the Money test, or not registered). They wait on the R2 shelf and upload the first run their domain has a day again. Raised instead of uploading nothing and recording zero-episode evidence in loop/state/lane_evidence.json, which happened on 2026-11-19.",
+      "max_consecutive": 26,
+      "escalation": "Thirteen weeks with the only ready episodes on a dayless domain: either that domain's pause has outlived its test (read the digest's 30-day lane check) or the Mac has stopped shelving episodes from the live domains (check NOTHING_SHELVED history).",
+      "plain": "the only episodes ready belong to a paused topic, so none uploaded today"
+    },
     "INSTRUCTIONS_ALREADY_APPLIED": {
       "why": "Every instruction in the file was already applied and recorded on an earlier run; the ledger holds each action. Re-running act with the same file is idempotent by design so a retried tick cannot reply twice.",
       "max_consecutive": 3,

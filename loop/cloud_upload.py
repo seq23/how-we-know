@@ -906,6 +906,18 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
             st.note(f"no rotation day for {', '.join(skipped)}; left on the shelf")
         take = [t for t, w in zip(take, when_all) if w is not None]
         when = [w for w in when_all if w is not None]
+        if skipped and not take:
+            # Every ready episode belongs to a domain that holds no rotation
+            # day (paused, e.g. food for the Money test, or unregistered).
+            # Stop here: going on would fetch a credential, upload nothing and
+            # record "proven" evidence for zero episodes (2026-11-19).
+            st.named_stop(
+                "NO_ROTATION_DAY",
+                f"every episode ready to upload today belongs to a domain "
+                f"with no rotation day: {', '.join(skipped)}. They stay on "
+                f"the shelf and upload the first run their domain holds a "
+                f"day again; nothing is deleted.",
+                detail={"skipped": skipped})
 
         for (slug, _, _), t in zip(take, when):
             print(f"  plan  {t:%a %d %b %H:%M UTC}  {slug}")
