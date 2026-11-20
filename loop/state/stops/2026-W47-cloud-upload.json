@@ -1,28 +1,24 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W47",
-  "at": "2026-11-19T22:33:05+00:00",
-  "code": "ZERO_WORK",
-  "message": "stage 'cloud-upload' completed without doing anything",
+  "at": "2026-11-20T22:05:19+00:00",
+  "code": "NO_ROTATION_DAY",
+  "message": "every episode ready to upload today belongs to a domain with no rotation day: what-is-inside-chili-coffee-honey. They stay on the shelf and upload the first run their domain holds a day again; nothing is deleted.",
   "detail": {
-    "notes": [
-      "shelf: r2://how-we-know-renders",
-      "quota allows 3 of 4 today. quota day 2026-11-19 (PT): spent 304 of 10000, 9296 usable after 400 headroom; lanes: demand 304",
-      "no rotation day for what-is-inside-chili-coffee-honey; left on the shelf",
-      "credential source: env"
+    "skipped": [
+      "what-is-inside-chili-coffee-honey"
     ]
   },
-  "unblock": "Nothing was shelved in R2 that is not already in loop/state/ledger.json. Run bin/push-to-r2.sh on the Mac once a render finishes.",
-  "disposition": "needs_human",
-  "disposition_why": "'ZERO_WORK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'ZERO_WORK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "unblock": "",
+  "disposition": "self_resolving",
+  "disposition_why": "Every episode ready to upload belongs to a domain that holds no rotation day (loop/backfill.py schedule_slugs returns None: the domain is paused, e.g. food for the Money test, or not registered). They wait on the R2 shelf and upload the first run their domain has a day again. Raised instead of uploading nothing and recording zero-episode evidence in loop/state/lane_evidence.json, which happened on 2026-11-19. (run 1 of at most 26 before this escalates to a human.)",
   "consecutive": 1,
   "held_items": [],
-  "exit_code": 3,
+  "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
     "shelf: r2://how-we-know-renders",
-    "quota allows 3 of 4 today. quota day 2026-11-19 (PT): spent 304 of 10000, 9296 usable after 400 headroom; lanes: demand 304",
-    "no rotation day for what-is-inside-chili-coffee-honey; left on the shelf",
-    "credential source: env"
+    "quota allows 3 of 4 today. quota day 2026-11-20 (PT): spent 102 of 10000, 9498 usable after 400 headroom; lanes: demand 102",
+    "no rotation day for what-is-inside-chili-coffee-honey; left on the shelf"
   ]
 }
