@@ -1,5 +1,5 @@
 {
-  "measured_at": "2026-11-14T11:26:08.885673+00:00",
+  "measured_at": "2026-11-21T11:20:16.128137+00:00",
   "generator": "research/competition.py",
   "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
   "key_source": "environment $YOUTUBE_API_KEY",
@@ -13,43 +13,43 @@
   "domain_summary": {},
   "results": [
     {
-      "query": "why greenland shark live so long",
+      "query": "what is brine water",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.6,
+        "mean_coverage": 0.55,
         "max_coverage": 1.0,
-        "strong_match_count": 9,
-        "strong_match_rate": 0.45,
-        "loose_match_rate": 0.2,
-        "gap_signal": 0.55,
-        "interpretation": "9 of 20 ranking titles squarely answer the query"
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 135970.5,
-        "p90": 2005806,
-        "max": 23742742,
+        "median": 153903.5,
+        "p90": 1370162,
+        "max": 2466478,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 135350.0,
-        "max_subscribers": 3630000,
+        "median_subscribers": 89600.0,
+        "max_subscribers": 21200000,
         "under_100k_subs": 10,
         "n": 20
       },
       "recency": {
-        "median_age_days": 584,
-        "published_last_365d": 7,
+        "median_age_days": 932,
+        "published_last_365d": 2,
         "n": 20
       },
-      "opportunity_score": 0.466,
+      "opportunity_score": 0.632,
       "opportunity_components": {
-        "title_gap": 0.55,
-        "incumbent_subs": 0.267,
-        "view_ceiling": 0.267,
-        "staleness": 0.65
+        "title_gap": 0.8,
+        "incumbent_subs": 0.293,
+        "view_ceiling": 0.259,
+        "staleness": 0.9
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -68,190 +68,190 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-11-14T11:26:08.885514+00:00"
+        "fetched_utc": "2026-11-21T11:20:14.969851+00:00"
       },
       "top_results": [
         {
-          "title": "The Insane Biology of: The Greenland Shark",
-          "views": 2005806,
-          "subs": 2090000,
-          "published_at": "2025-01-25T14:00:30Z",
+          "title": "What is Brine\ud83d\ude44\ud83d\ude28\u274c#shorts #ytshorts #chemistry #jee #jeeadvanced",
+          "views": 7408,
+          "subs": 2830000,
+          "published_at": "2023-05-17T13:00:42Z",
           "coverage": 0.5
         },
         {
-          "title": "Why Greenland sharks can live 500 years\ud83e\udd88",
-          "views": 215287,
-          "subs": 1870,
-          "published_at": "2023-08-10T14:12:13Z",
-          "coverage": 0.75
+          "title": "Water Under Water: The Mystery of Brine Pools",
+          "views": 164768,
+          "subs": 296,
+          "published_at": "2025-09-06T10:30:13Z",
+          "coverage": 1.0
         },
         {
-          "title": "How Greenland sharks live to be 500 years old PART 2",
-          "views": 26722,
-          "subs": 2090000,
-          "published_at": "2025-01-30T15:15:00Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why it Sucks To Be Born As a Greenland Shark",
-          "views": 1941601,
-          "subs": 337000,
-          "published_at": "2025-03-23T21:31:31Z",
+          "title": "Wet Brine Is The Secret For Perfect Chicken Wings",
+          "views": 416425,
+          "subs": 21200000,
+          "published_at": "2025-10-12T17:01:20Z",
           "coverage": 0.5
         },
         {
-          "title": "What&#39;s The REAL Reason Greenland Sharks Live So Long?",
-          "views": 1126,
-          "subs": 24500,
-          "published_at": "2024-12-16T16:36:55Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Greenland Sharks Live So Long?",
-          "views": 178,
-          "subs": 3,
-          "published_at": "2026-11-10T00:00:18Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Oldest Creature on Earth \ud83d\ude32",
-          "views": 23742742,
-          "subs": 1460000,
-          "published_at": "2024-02-28T15:12:44Z",
+          "title": "Brining chicken \ud83d\udc14",
+          "views": 2466478,
+          "subs": 6380000,
+          "published_at": "2024-05-06T10:47:15Z",
           "coverage": 0.0
         },
         {
-          "title": "Why Greenland Sharks Live 400 Years #shorts",
-          "views": 2687,
-          "subs": 34,
-          "published_at": "2026-11-04T12:24:22Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Greenland Shark: The Shark That\u2019s Twice As Old As America",
-          "views": 1045324,
-          "subs": 2150000,
-          "published_at": "2023-07-07T17:05:43Z",
+          "title": "The Secret Life of Brine Pools",
+          "views": 1370162,
+          "subs": 1080000,
+          "published_at": "2022-04-05T11:00:15Z",
           "coverage": 0.5
         },
         {
-          "title": "This is the worlds OLDEST SHARK #joerogan #jre #shorts #shark",
-          "views": 395463,
-          "subs": 212000,
-          "published_at": "2023-08-01T15:53:52Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "We Were Wrong About How Old Sharks Can Get",
-          "views": 593411,
-          "subs": 58700,
-          "published_at": "2026-09-30T12:35:14Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why it sucks to be a Greenland shark",
-          "views": 409191,
-          "subs": 2090000,
-          "published_at": "2025-01-29T14:45:01Z",
+          "title": "Turning Seawater Brine Into Opportunity in Tenerife",
+          "views": 10930,
+          "subs": 7320,
+          "published_at": "2024-09-17T13:00:06Z",
           "coverage": 0.5
         },
         {
-          "title": "Nothing About The Greenland Shark Is Normal\u2026 Here\u2019s Why",
-          "views": 877215,
-          "subs": 268000,
-          "published_at": "2025-11-30T20:30:34Z",
+          "title": "Watching a Salt Well Give Up Its Water",
+          "views": 12157,
+          "subs": 715000,
+          "published_at": "2026-11-20T05:00:46Z",
           "coverage": 0.5
         },
         {
-          "title": "The world&#39;s OLDEST SHARK",
-          "views": 15146785,
-          "subs": 3630000,
-          "published_at": "2025-09-26T15:43:44Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Marine Biologists Finally Know How Greenland Sharks Live 400 Years \u2014 And It&#39;s Weird",
-          "views": 704,
-          "subs": 59,
-          "published_at": "2026-10-09T21:45:16Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why This Shark Lives for 500 Years (And We Don&#39;t) | The Secret of Greenland Shark",
-          "views": 54,
-          "subs": 21,
-          "published_at": "2026-07-01T17:45:24Z",
+          "title": "Desalination: Turning brine into a resource?",
+          "views": 17566,
+          "subs": 1930,
+          "published_at": "2022-07-27T14:24:19Z",
           "coverage": 0.5
         },
         {
-          "title": "GREENLAND SHARK Lives LONGER Than America Has Existed",
-          "views": 963,
-          "subs": 163,
-          "published_at": "2026-05-14T14:04:52Z",
+          "title": "Turkey Brine Recipe \ud83e\udd83 #food #foodie #shorts",
+          "views": 229139,
+          "subs": 495000,
+          "published_at": "2026-11-15T22:40:07Z",
           "coverage": 0.5
         },
         {
-          "title": "How Greenland sharks live to be 500 years old PART 1",
-          "views": 56654,
-          "subs": 2090000,
-          "published_at": "2025-01-30T15:01:02Z",
-          "coverage": 0.75
+          "title": "You need to be doing this: brine your chicken (trust me)",
+          "views": 404192,
+          "subs": 150000,
+          "published_at": "2024-07-05T16:01:03Z",
+          "coverage": 0.5
         },
         {
-          "title": "Why does the Greenland shark live so long? #greenlandshark #science #exploration #Zakhelpful",
-          "views": 4515,
-          "subs": 19300,
-          "published_at": "2025-04-26T22:20:28Z",
+          "title": "The Perfect Brine For Chicken",
+          "views": 818778,
+          "subs": 2550000,
+          "published_at": "2025-08-17T16:53:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HOW \u2502 Saudi Arabia Plans to Solve the Brine Challenge for the World\u2019s Largest Artificial River",
+          "views": 2041,
+          "subs": 1450,
+          "published_at": "2024-05-30T16:00:43Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Have you tried on a brine lake yet?",
+          "views": 76945,
+          "subs": 80,
+          "published_at": "2023-02-06T14:50:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Do These Deadly Lakes Form on the Ocean Seafloor?",
+          "views": 2115898,
+          "subs": 613000,
+          "published_at": "2024-10-03T10:00:27Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "HOW MUCH WATER should be in my WATER SOFTENER BRINE TANK?",
+          "views": 381611,
+          "subs": 104000,
+          "published_at": "2020-11-07T10:00:26Z",
           "coverage": 1.0
         },
         {
-          "title": "Why does the Greenland shark live so long? #greenlandshark #science #exploration #Zakhelpful",
-          "views": 2403,
-          "subs": 19300,
-          "published_at": "2025-04-27T18:09:35Z",
+          "title": "Nasty Brine Tank For A Water Softener - What Does The Inside Of An Empty Water Softener Brine Tank",
+          "views": 259607,
+          "subs": 11300,
+          "published_at": "2023-12-18T00:00:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How To Brine: The Secret To Moist, Flavorful Food",
+          "views": 10163,
+          "subs": 75200,
+          "published_at": "2023-11-18T20:40:21Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Chicken Brine \ud83e\udd10\ud83d\udc14\ud83d\udca6 #shorts",
+          "views": 121526,
+          "subs": 6310,
+          "published_at": "2024-01-09T19:07:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Brine Pools are Basically Underwater Lakes #shorts #interestingfacts #nature",
+          "views": 143039,
+          "subs": 4110,
+          "published_at": "2024-04-30T19:35:24Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How a water softener works : brine tank fill",
+          "views": 113928,
+          "subs": 1080,
+          "published_at": "2019-01-13T14:50:15Z",
           "coverage": 1.0
         }
       ],
       "domain": null
     },
     {
-      "query": "what is brine pool",
+      "query": "what is brine solution",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.875,
+        "mean_coverage": 0.625,
         "max_coverage": 1.0,
-        "strong_match_count": 17,
-        "strong_match_rate": 0.85,
+        "strong_match_count": 7,
+        "strong_match_rate": 0.35,
         "loose_match_rate": 0.1,
-        "gap_signal": 0.15,
-        "interpretation": "17 of 20 ranking titles squarely answer the query"
+        "gap_signal": 0.65,
+        "interpretation": "7 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 342537.5,
-        "p90": 1366355,
-        "max": 7183140,
+        "median": 20591.5,
+        "p90": 632784,
+        "max": 1340582,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 372500.0,
-        "max_subscribers": 15700000,
-        "under_100k_subs": 7,
+        "median_subscribers": 27500.0,
+        "max_subscribers": 3080000,
+        "under_100k_subs": 12,
         "n": 20
       },
       "recency": {
-        "median_age_days": 743,
-        "published_last_365d": 6,
+        "median_age_days": 1187,
+        "published_last_365d": 1,
         "n": 20
       },
-      "opportunity_score": 0.252,
+      "opportunity_score": 0.598,
       "opportunity_components": {
-        "title_gap": 0.15,
-        "incumbent_subs": 0.204,
-        "view_ceiling": 0.209,
-        "staleness": 0.7
+        "title_gap": 0.65,
+        "incumbent_subs": 0.366,
+        "view_ceiling": 0.384,
+        "staleness": 0.95
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -270,147 +270,147 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-11-14T11:26:07.709115+00:00"
+        "fetched_utc": "2026-11-21T11:20:16.128014+00:00"
       },
       "top_results": [
         {
-          "title": "Brine Pools: The Real Life GOO LAGOON | Lindsay Nikole",
-          "views": 705461,
-          "subs": 2080000,
-          "published_at": "2024-06-08T15:15:09Z",
+          "title": "Understanding &quot;Brine Solution&quot;: A Guide for English Learners",
+          "views": 76,
+          "subs": 17800,
+          "published_at": "2023-12-24T20:25:31Z",
           "coverage": 1.0
         },
         {
-          "title": "The Secret Life of Brine Pools",
-          "views": 1366355,
-          "subs": 1080000,
-          "published_at": "2022-04-05T11:00:15Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Terrifying Reality of an Underwater Brine Pool",
-          "views": 4419,
-          "subs": 3940,
-          "published_at": "2026-02-14T17:45:03Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Brine Pool Formation | Nautilus Live",
-          "views": 300595,
-          "subs": 707000,
-          "published_at": "2015-05-12T07:41:24Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Eel Suffers Toxic Shock From Brine Pool | Blue Planet II",
-          "views": 7183140,
-          "subs": 14600000,
-          "published_at": "2017-11-03T13:13:44Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Water Under Water: The Mystery of Brine Pools",
-          "views": 161268,
-          "subs": 294,
-          "published_at": "2025-09-06T10:30:13Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How Do These Deadly Lakes Form on the Ocean Seafloor?",
-          "views": 2113892,
-          "subs": 613000,
-          "published_at": "2024-10-03T10:00:27Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "ROV Hercules Explores Below the Surface of Brine Pool | Nautilus Live",
-          "views": 430064,
-          "subs": 707000,
-          "published_at": "2015-05-31T19:18:10Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Underwater Lakes That Kill Everything It Touches",
-          "views": 397803,
-          "subs": 268000,
-          "published_at": "2025-12-16T21:27:34Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Fish Gets Toxic Shock From Brine Pool | Nautilus Live",
-          "views": 887696,
-          "subs": 707000,
-          "published_at": "2015-05-31T19:15:30Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Planet Earth: Blue Planet II | Brine Pool | Coming to BBC America 2018",
-          "views": 593516,
-          "subs": 1190000,
-          "published_at": "2017-11-03T12:09:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Brine Pools | The Deadly Lakes At The Bottom Of The Ocean | Nothing Survives",
-          "views": 1999,
-          "subs": 1170,
-          "published_at": "2026-05-26T22:45:30Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Osmotic Shock: What Happens When Fish Enter a Brine Pool",
-          "views": 168,
-          "subs": 83,
-          "published_at": "2026-04-27T12:57:29Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Brine pools #deepocean #ocean #oceanography",
-          "views": 14424,
-          "subs": 3210,
-          "published_at": "2025-09-03T22:13:39Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How To Find Brine Pool Location In Fisch | Roblox #fisch #roblox #brinepool",
-          "views": 450104,
-          "subs": 139000,
-          "published_at": "2025-01-07T14:03:54Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What is a Brine Pool? The Deadliest Underwater Lake Explained",
-          "views": 361,
-          "subs": 2,
-          "published_at": "2026-09-28T23:06:33Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Brine pool of death - Blue Planet II: Episode 2 Preview - BBC",
-          "views": 331136,
-          "subs": 15700000,
-          "published_at": "2017-11-03T11:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "IS THE DEPTHS BETTER THAN BRINE POOL NOW??? #fisch",
-          "views": 191136,
-          "subs": 363000,
-          "published_at": "2026-09-01T10:30:35Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Have you tried on a brine lake yet?",
-          "views": 76504,
-          "subs": 80,
-          "published_at": "2023-02-06T14:50:15Z",
+          "title": "Electrolysis of Brine | Reactions | Chemistry | FuseSchool",
+          "views": 632784,
+          "subs": 934000,
+          "published_at": "2015-12-07T13:10:37Z",
           "coverage": 0.5
         },
         {
-          "title": "How To UNLOCK BRINE POOL Fisch! How To FISH In Brine Pool! Brine Pool Location! (Fish)",
-          "views": 353939,
-          "subs": 382000,
-          "published_at": "2024-11-29T15:52:24Z",
+          "title": "Desalination: Turning brine into a resource?",
+          "views": 17566,
+          "subs": 1930,
+          "published_at": "2022-07-27T14:24:19Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is Brine Solution?",
+          "views": 3784,
+          "subs": 4370,
+          "published_at": "2024-12-10T16:19:43Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "HOW TO MAKE A QUICK BRINE SOLUTION USING 4 INGREDIENTS FOR FRIED CHICKEN | HOW TO BRINE CHICKEN",
+          "views": 22535,
+          "subs": 1020,
+          "published_at": "2024-09-28T03:55:26Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Electrolysis of Brine",
+          "views": 83655,
+          "subs": 24900,
+          "published_at": "2017-09-11T13:10:49Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Electrolysis of Brine Solution #shortsfeed #experiements #practical #chemistry #electrolysis #viral",
+          "views": 19834,
+          "subs": 30100,
+          "published_at": "2025-04-30T17:42:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why you should (almost) always brine your chicken",
+          "views": 505269,
+          "subs": 208000,
+          "published_at": "2022-11-09T15:37:51Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "You need to be doing this: brine your chicken (trust me)",
+          "views": 404192,
+          "subs": 150000,
+          "published_at": "2024-07-05T16:01:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is Brine\ud83d\ude44\ud83d\ude28\u274c#shorts #ytshorts #chemistry #jee #jeeadvanced",
+          "views": 7408,
+          "subs": 2830000,
+          "published_at": "2023-05-17T13:00:42Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Tender Meat Guaranteed? Here&#39;s How to Brine Like a Pro",
+          "views": 1340582,
+          "subs": 662000,
+          "published_at": "2020-07-10T16:55:41Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "what is brine solution class 10",
+          "views": 254,
+          "subs": 55,
+          "published_at": "2026-11-01T13:27:11Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is brining and why should you do it? \ud83e\uddc2\ud83d\udca7\ud83c\udf57",
+          "views": 71092,
+          "subs": 662000,
+          "published_at": "2023-10-25T20:57:40Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Is Brining Worth It? #Shorts",
+          "views": 434168,
+          "subs": 3080000,
+          "published_at": "2023-06-18T17:00:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "what is brine?",
+          "views": 3283,
+          "subs": 446,
+          "published_at": "2021-10-19T08:27:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Fermentation: how to figure brine %",
+          "views": 21349,
+          "subs": 13500,
+          "published_at": "2022-09-26T07:00:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Brine Solution I Acid Base &amp; Salt I Chemistry for Defence Exams I Science 10 min Show | Sameer Khan",
+          "views": 347,
+          "subs": 46800,
+          "published_at": "2024-06-25T09:00:18Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Lacto Fermentation Salt Ratio Explained: Dry Salt vs. Brine Methods \ud83c\udf31",
+          "views": 17614,
+          "subs": 672,
+          "published_at": "2024-12-04T20:15:53Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Perfect Brine For Chicken",
+          "views": 818778,
+          "subs": 2550000,
+          "published_at": "2025-08-17T16:53:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "what is brine solution?",
+          "views": 10349,
+          "subs": 299,
+          "published_at": "2022-07-07T16:35:11Z",
           "coverage": 1.0
         }
       ],

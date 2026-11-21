@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-11-14T11:09:39.264571+00:00",
+  "generated_at": "2026-11-21T11:09:54.446578+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -477,6 +477,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "why-greenland-shark-live-so-long",
+      "query": "why do greenland sharks live so long",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "why-is-carbon-fiber-so-strong",
       "query": "why is carbon fiber so strong",
       "status": "no_competition_score"
@@ -532,7 +537,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:29.962239+00:00"
+          "fetched_utc": "2026-11-21T11:09:45.121638+00:00"
         }
       },
       "competition": {
@@ -611,7 +616,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:33.666793+00:00"
+          "fetched_utc": "2026-11-21T11:09:48.864791+00:00"
         }
       },
       "competition": {
@@ -689,7 +694,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:21.536951+00:00"
+          "fetched_utc": "2026-11-21T11:09:36.741097+00:00"
         }
       },
       "competition": {
@@ -767,7 +772,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:25.309601+00:00"
+          "fetched_utc": "2026-11-21T11:09:40.464239+00:00"
         }
       },
       "competition": {
@@ -846,7 +851,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:39.264101+00:00"
+          "fetched_utc": "2026-11-21T11:09:54.446110+00:00"
         }
       },
       "competition": {
@@ -927,7 +932,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:27.134635+00:00"
+          "fetched_utc": "2026-11-21T11:09:42.318887+00:00"
         }
       },
       "competition": {
@@ -1006,7 +1011,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:26.223985+00:00"
+          "fetched_utc": "2026-11-21T11:09:41.390344+00:00"
         }
       },
       "competition": {
@@ -1084,7 +1089,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:34.616360+00:00"
+          "fetched_utc": "2026-11-21T11:09:49.800243+00:00"
         }
       },
       "competition": {
@@ -1165,7 +1170,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:28.051586+00:00"
+          "fetched_utc": "2026-11-21T11:09:43.245261+00:00"
         }
       },
       "competition": {
@@ -1246,7 +1251,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:29.003951+00:00"
+          "fetched_utc": "2026-11-21T11:09:44.186316+00:00"
         }
       },
       "competition": {
@@ -1324,7 +1329,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:38.360887+00:00"
+          "fetched_utc": "2026-11-21T11:09:53.518811+00:00"
         }
       },
       "competition": {
@@ -1399,7 +1404,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:37.411071+00:00"
+          "fetched_utc": "2026-11-21T11:09:52.592561+00:00"
         }
       },
       "competition": {
@@ -1476,7 +1481,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:24.352733+00:00"
+          "fetched_utc": "2026-11-21T11:09:39.529762+00:00"
         }
       },
       "competition": {
@@ -1554,7 +1559,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:35.529990+00:00"
+          "fetched_utc": "2026-11-21T11:09:50.722107+00:00"
         }
       },
       "competition": {
@@ -1631,7 +1636,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:32.725382+00:00"
+          "fetched_utc": "2026-11-21T11:09:47.926407+00:00"
         }
       },
       "competition": {
@@ -1710,7 +1715,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-11-14T11:09:22.460488+00:00"
+          "fetched_utc": "2026-11-21T11:09:37.671940+00:00"
         }
       },
       "competition": {
