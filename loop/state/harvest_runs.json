@@ -3,11 +3,11 @@
   "_seeded": "2026-09-19: the three ci-hosted stamps below record run 35420734439 (loop \u00b7 Sat 04:00 UTC, 2026-09-19T04:14Z-04:35Z), in which research/imagery.py, imagery_materials.py and imagery_species.py ran and committed their pools (rights.json 100, materials.json 12, species.json 33). research/imagery_video.py has NO stamp on purpose: no scheduled host has ever run it. Its first stamp is written by the Mac's batch.",
   "research/imagery.py": {
     "host": "ci",
-    "last_run_at": "2026-11-14T05:09:29+00:00",
-    "last_success_at": "2026-11-14T05:09:29+00:00",
+    "last_run_at": "2026-11-21T05:09:53+00:00",
+    "last_success_at": "2026-11-21T05:09:53+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W46",
+    "week": "2026-W47",
     "records": 157,
     "tail": [
       "by slot: {'trench': 5, 'frilled_shark': 6, 'vehicle': 12, 'column': 5, 'anglerfish': 6, 'jelly': 3, 'sponge': 9, 'coral': 5, 'cucumber': 6, 'star': 7, 'red_animal': 5, 'siphonophore': 2, 'squid': 5, 'vent': 4, 'crab': 6, 'seafloor': 4, 'eyes': 4, 'transparent': 5, 'giants': 16, 'sl_deep_surface': 8, 'sl_is_vents': 8, 'sl_deep_dive': 6, 'sl_deep_creepers': 8, 'octopus': 3, 'fish': 3, 'snailfish': 3, 'biolum': 3}",
@@ -20,11 +20,11 @@
   },
   "research/imagery_materials.py": {
     "host": "ci",
-    "last_run_at": "2026-11-14T05:23:11+00:00",
-    "last_success_at": "2026-11-14T05:23:11+00:00",
+    "last_run_at": "2026-11-21T05:24:10+00:00",
+    "last_success_at": "2026-11-21T05:24:10+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W46",
+    "week": "2026-W47",
     "records": 15,
     "tail": [
       "  DROP titanium           no candidate passed both gates",
@@ -37,11 +37,11 @@
   },
   "research/imagery_species.py": {
     "host": "ci",
-    "last_run_at": "2026-11-14T05:27:10+00:00",
-    "last_success_at": "2026-11-14T05:27:10+00:00",
+    "last_run_at": "2026-11-21T05:27:35+00:00",
+    "last_success_at": "2026-11-21T05:27:35+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W46",
+    "week": "2026-W47",
     "records": 43,
     "tail": [
       "  uncovered         0  Krill                      ep 08",
@@ -71,10 +71,10 @@
   },
   "research/imagery_food.py": {
     "host": "ci",
-    "last_run_at": "2026-11-14T05:14:21+00:00",
+    "last_run_at": "2026-11-21T05:15:13+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W46",
+    "week": "2026-W47",
     "records": 12,
     "tail": [
       "  DROP melted-chocolate   no candidate passed both gates",
@@ -84,7 +84,7 @@
       "12/15 still subjects -> /home/runner/work/how-we-know/how-we-know/channel/imagery/food.json",
       "rights verified: 12 assets, sha256 matched on every file"
     ],
-    "last_success_at": "2026-11-14T05:14:21+00:00"
+    "last_success_at": "2026-11-21T05:15:13+00:00"
   },
   "research/imagery_stock_video.py": {
     "host": "mac-batch",
