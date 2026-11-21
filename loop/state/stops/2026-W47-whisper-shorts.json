@@ -1,0 +1,18 @@
+{
+  "stage": "whisper-shorts",
+  "week": "2026-W47",
+  "at": "2026-11-21T05:00:06+00:00",
+  "code": "WHISPER_SHORTS_QUEUE_EMPTY",
+  "message": "no cut Whisper Almanac Short is waiting; Shorts are dated through Fri 27 Nov",
+  "detail": {
+    "through": "Fri 27 Nov"
+  },
+  "unblock": "Nothing to do: each uploaded long video is cut into 3 Shorts the same night.",
+  "disposition": "self_resolving",
+  "disposition_why": "No cut Whisper Almanac Short is waiting on the Mac (loop/whisper_shorts.py); each uploaded long video is cut into its Shorts the same night. Days already dated still go out. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": []
+}
