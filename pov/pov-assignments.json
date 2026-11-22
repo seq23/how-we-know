@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T19:53:38Z",
+  "generated": "2026-11-22T08:00:50Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -710,6 +710,20 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "I trust documentation over reputation. A respected institution can still publish weak work, and someone with no name at all can uncover something real if they document it properly."
+    },
+    {
+      "video": "what-is-brine-water",
+      "pov_id": "pov-054",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "I look for whether independent sources reached the same conclusion, or whether everybody is just citing each other in a circle."
+    },
+    {
+      "video": "what-is-brine-solution",
+      "pov_id": "pov-137",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "The goal isn't to distrust everything. It's to understand what deserves trust, why, and under what conditions that trust should change."
     }
   ]
 }
