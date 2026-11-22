@@ -1,7 +1,7 @@
 {
   "stage": "shorts-cloud",
   "week": "2026-W47",
-  "at": "2026-11-21T05:02:18+00:00",
+  "at": "2026-11-22T04:26:04+00:00",
   "code": "SHORTS_WAITING_EPISODE_GAP",
   "message": "1 verified Short(s) are shelved, but each is a cut of an episode that already has a Short within 14 days: what-is-hydrothermal-vents (cut 3) (clear 2026-11-25)",
   "detail": {
@@ -12,8 +12,8 @@
   },
   "unblock": "Nothing to do: the first cut is scheduled on the first run after its gap clears. A new episode's Short on the shelf is scheduled at once.",
   "disposition": "self_resolving",
-  "disposition_why": "loop/shorts_cloud.py: verified Shorts are on the shelf, but every one is a later cut of an episode that already has a Short within EPISODE_GAP_DAYS (14, owner build 2026-10-14). The rule is doing its job; the first cut is scheduled on the run after its gap clears (detail.clears_on). Raised only when every waiting cut's clear date is in the future; anything else stays ZERO_WORK. Added 2026-11-13 after run 43334821894 paged for exactly this. (run 2 of at most 15 before this escalates to a human.)",
-  "consecutive": 2,
+  "disposition_why": "loop/shorts_cloud.py: verified Shorts are on the shelf, but every one is a later cut of an episode that already has a Short within EPISODE_GAP_DAYS (14, owner build 2026-10-14). The rule is doing its job; the first cut is scheduled on the run after its gap clears (detail.clears_on). Raised only when every waiting cut's clear date is in the future; anything else stays ZERO_WORK. Added 2026-11-13 after run 43334821894 paged for exactly this. (run 3 of at most 15 before this escalates to a human.)",
+  "consecutive": 3,
   "held_items": [
     "what-is-hydrothermal-vents (cut 3)"
   ],
