@@ -1,6 +1,6 @@
 {
-  "week": "2026-W46",
-  "generated": "2026-11-15T11:05:53+00:00",
+  "week": "2026-W47",
+  "generated": "2026-11-22T11:05:49+00:00",
   "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
@@ -92,13 +92,13 @@
     }
   ],
   "to_author": 0,
-  "inventory_remaining": 27,
+  "inventory_remaining": 29,
   "cadence": {
     "videos_per_week": 6,
     "why": "configured default (6/week)"
   },
   "publish_order": {
-    "ranked": 33,
+    "ranked": 35,
     "unranked": 7,
     "unranked_slugs": [
       "how-deep-mariana-trench",
@@ -116,9 +116,9 @@
       "17-what-is-a-yeti-crab"
     ],
     "queued_despite_kill": [],
-    "order_entries": 104,
+    "order_entries": 106,
     "source": "research/publish_order.json",
-    "generated_at": "2026-11-14T11:09:39.264571+00:00",
+    "generated_at": "2026-11-21T11:09:54.446578+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -126,9 +126,9 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 44,
-    "publishable": 32,
-    "scheduled_not_yet_aired": 2,
+    "unpublished_scripts": 46,
+    "publishable": 34,
+    "scheduled_not_yet_aired": 0,
     "basis": "publish queue",
     "videos_per_week": 6,
     "weeks_remaining": 5.7,
@@ -138,19 +138,19 @@
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 12,
+        "queued": 14,
         "scheduled_ahead": 0,
-        "weeks": 6.0,
+        "weeks": 7.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
+        "message": "deep-sea-ocean-science: 7.0 week(s) at 2/week (14 queued, 0 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 20,
-        "scheduled_ahead": 2,
-        "weeks": 11.0,
+        "scheduled_ahead": 0,
+        "weeks": 10.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
+        "message": "materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated)"
       },
       "food-science": {
         "slots_per_week": 0,
@@ -171,7 +171,7 @@
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "5.7 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)."
+    "message": "5.7 weeks of queue at 6/week (34 publishable of 46 on disk). By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (14 queued, 0 already dated); materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
