@@ -97,9 +97,9 @@
   },
   "whisper-scorecard": {
     "code": "WHISPER_ANALYTICS_NOT_READ",
-    "count": 5,
+    "count": 6,
     "first_at": "2026-11-17T06:03:41+00:00",
-    "last_at": "2026-11-21T05:00:07+00:00"
+    "last_at": "2026-11-22T05:00:07+00:00"
   },
   "captions-build": {
     "code": "CAPTIONS_UNBUILDABLE",
@@ -121,9 +121,9 @@
   },
   "whisper-upload": {
     "code": "WHISPER_NOTHING_TO_UPLOAD",
-    "count": 2,
+    "count": 3,
     "first_at": "2026-11-20T08:42:42+00:00",
-    "last_at": "2026-11-21T05:00:06+00:00"
+    "last_at": "2026-11-22T05:00:06+00:00"
   },
   "fri-publish": {
     "code": "BREAKER_TRIPPED_ALREADY_REPORTED",
@@ -145,9 +145,9 @@
   },
   "whisper-shorts": {
     "code": "WHISPER_SHORTS_QUEUE_EMPTY",
-    "count": 1,
+    "count": 2,
     "first_at": "2026-11-21T05:00:06+00:00",
-    "last_at": "2026-11-21T05:00:06+00:00"
+    "last_at": "2026-11-22T05:00:06+00:00"
   },
   "imagery-harvest": {
     "code": "DELEGATED_HARVEST_FAILING",
