@@ -466,8 +466,12 @@ def check() -> list[str]:
     _pause = _pb.repo_status()
     pending = pending or (_pause["line"] if _pause["paused"] else None)
     fixture = None
-    if not tail and pending:
-        print(f"STATE: {pending}: next daily upload assigns dates; proving occupied slots on fixture")
+    # An empty live calendar is a state, not a defect of this code: loop/publish_floor.py reports
+    # the gap to her (20 Nov 2026: the calendar emptied and this proof failed every PR). The
+    # allocation proof still runs, on a fixture, unless the owner's hold empties it on purpose.
+    if not tail and not _br.longform_hold(committed=True):
+        why = pending or "nothing is dated ahead (loop/publish_floor.py reports the gap)"
+        print(f"STATE: {why}: proving occupied slots on fixture")
         # Real dates in an isolated ledger: the allocation proof below still
         # examines rows, including collision and mutation checks.
         future = _bf.schedule_for({"published": []}, 3, live)
@@ -486,10 +490,6 @@ def check() -> list[str]:
         if dated:
             fails.append(f"the long-form hold is on but these live rows are still "
                          f"dated ahead and the tail reader missed them: {dated}")
-    elif not tail:
-        examined += 1
-        fails.append("no episode is scheduled ahead, so the 'nothing already "
-                     "dated may move' proof examined ZERO rows")
     else:
         taken = {t["scheduled_publish_at"] for t in tail}
         last = tail[-1]["when"]
