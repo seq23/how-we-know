@@ -69,7 +69,7 @@ PY_TTS=.venv-tts/bin/python
 # during one, and a beat whose wav already exists is skipped on the next run,
 # so the following night resumes exactly where this one stopped. What it costs
 # is calendar time, and what it buys is a Mac that is hers during the day.
-NARRATION_UNTIL="${NARRATION_UNTIL:-07:00}"
+NARRATION_UNTIL="${NARRATION_UNTIL:-06:30}"   # the Mac's day (21 Nov 2026): no new narration after 06:30; mac-window stops the rest at 06:55
 DRY=""
 OVERLAP=1
 MAX_EPISODES=0            # 0 = no bound

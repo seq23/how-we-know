@@ -48,7 +48,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 PY=.venv/bin/python
 PYP="$PY"; [ -x "$PYP" ] || PYP=python3
-NARRATION_UNTIL="${NARRATION_UNTIL:-07:00}"
+NARRATION_UNTIL="${NARRATION_UNTIL:-06:30}"   # the Mac's day (21 Nov 2026): no new narration after 06:30; mac-window stops the rest at 06:55
 BATCH_LOCK="${BATCH_LOCK:-$ROOT/loop/state/_local/batch.lock}"
 # No bash arrays: launchd runs /bin/bash 3.2, where an EMPTY array under
 # `set -u` is an "unbound variable" and kills the night (2026-10-25, the first

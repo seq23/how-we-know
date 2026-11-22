@@ -19,7 +19,7 @@ a temporary run record, lock and food log, and a fake clock (FOOD_NOW):
   c. the dead run's session is still alive -> no-op, lane not run;
   d. the batch holds the narration lock -> no-op, lane not run, the death kept
      for the next tick (never two narrators);
-  e. the window (07:00, less RESUME_MARGIN_S) has closed -> reported ONCE in
+  e. the window (06:30 since the Mac's day, 21 Nov 2026; less RESUME_MARGIN_S) has closed -> reported ONCE in
      the food log, not run; MAX_RESUMES reached -> FOOD_RESUME_EXHAUSTED;
      resume-cancel -> never resumed;
   f. a lane killed by SIGKILL -> FOOD_LANE_KILLED named, the record "died",
@@ -92,7 +92,7 @@ def died_record(**kw) -> None:
     import food_lane                                           # noqa: PLC0415
     os.environ["FOOD_NOW"] = ENV["FOOD_NOW"]
     r = {"state": "running", "pid": dead_pid(), "started": "2026-10-25T16:40",
-         "until": "07:00", "deadline": food_lane.deadline("07:00"), "resumes": 0, **kw}
+         "until": "06:30", "deadline": food_lane.deadline("06:30"), "resumes": 0, **kw}
     RUN.write_text(json.dumps(r))
 
 
@@ -240,18 +240,23 @@ try:
                         "fi\nexit 0\n")
         fake.chmod(0o755)
         # The Central-time mover (boss-os plist-central.mjs) is faked too: it records each plist.
+        # launchd-reload (seq-bin) is faked too: it records each plist it is handed.
+        reload_fake = td / "launchd-reload"
+        reload_fake.write_text("#!/bin/bash\n"
+                               f"[ \"$1\" = --seed ] && exit 0\necho \"reload $*\" >> {calls_f}\necho \"RELOADED $1\"\n")
+        reload_fake.chmod(0o755)
         moved_f = td / "moved.calls"
         mover = td / "plist-central.mjs"
         mover.write_text(f"import fs from 'node:fs'; fs.appendFileSync({str(moved_f)!r}, process.argv[2] + '\\n');\n")
         out = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
                              capture_output=True, text=True, timeout=60,
-                             env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "HWK_PLIST_CENTRAL": str(mover)})
+                             env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "LAUNCHD_RELOAD": str(reload_fake), "HWK_PLIST_CENTRAL": str(mover)})
         moved = moved_f.read_text() if moved_f.exists() else ""
         check("h. every agent is moved to Central before it is loaded",
               all(f"com.howweknow.{n}.plist" in moved for n in ("batch", "nightquit", "food", "backfill", "batch-resume", "food-resume")), moved)
         no_mover = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
                                   capture_output=True, text=True, timeout=60,
-                                  env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "HWK_PLIST_CENTRAL": str(td / "missing.mjs")})
+                                  env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "LAUNCHD_RELOAD": str(reload_fake), "HWK_PLIST_CENTRAL": str(td / "missing.mjs")})
         check("h. NEGATIVE: no mover, nothing loaded (named stop)", no_mover.returncode == 4 and "NO_PLIST_CENTRAL" in no_mover.stderr, no_mover.stderr[-200:])
         calls_txt = calls_f.read_text() if calls_f.exists() else ""
         check("h. installer ran", out.returncode == 0, out.stdout[-200:] + out.stderr[-200:])
@@ -259,7 +264,7 @@ try:
               "unload" not in "".join(ln for ln in calls_txt.splitlines(True)
                                       if ln.rstrip().endswith("com.howweknow.food.plist"))
               and "DEFERRED com.howweknow.food" in out.stdout, calls_txt + out.stdout[-300:])
-        check("h. food-resume is loaded", "load " + str(home / "Library" / "LaunchAgents"
+        check("h. food-resume goes through launchd-reload", "reload " + str(home / "Library" / "LaunchAgents"
                                                         / "com.howweknow.food-resume.plist") in calls_txt,
               calls_txt[-300:])
     else:
