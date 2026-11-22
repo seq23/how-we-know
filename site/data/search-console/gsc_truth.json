@@ -1,16 +1,16 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-21T17:46:19.194Z",
+  "collected_at": "2026-11-22T18:02:39.383Z",
   "window_days": 28,
   "window": {
-    "start": "2026-10-22",
-    "end": "2026-11-19"
+    "start": "2026-10-23",
+    "end": "2026-11-20"
   },
   "totals": {
     "clicks": 0,
-    "impressions": 53,
-    "queries": 27,
+    "impressions": 55,
+    "queries": 28,
     "pages": 22
   },
   "sitemaps": [
@@ -55,9 +55,16 @@
     {
       "key": "dumbo fish",
       "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 79.5
+    },
+    {
+      "key": "dumbo jellyfish",
+      "clicks": 0,
       "impressions": 1,
       "ctr": 0,
-      "position": 73
+      "position": 65
     },
     {
       "key": "fish in the midnight zone",
@@ -83,9 +90,9 @@
     {
       "key": "hadal snailfish",
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 10,
       "ctr": 0,
-      "position": 79
+      "position": 79.1
     },
     {
       "key": "hadal zone",
@@ -104,9 +111,9 @@
     {
       "key": "hadalpelagic zone",
       "clicks": 0,
-      "impressions": 1,
+      "impressions": 2,
       "ctr": 0,
-      "position": 89
+      "position": 86
     },
     {
       "key": "hadopelagic",
@@ -158,13 +165,6 @@
       "position": 61
     },
     {
-      "key": "ocean zones twilight",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 89
-    },
-    {
       "key": "sea animals in the sunlight zone",
       "clicks": 0,
       "impressions": 2,
@@ -177,6 +177,13 @@
       "impressions": 1,
       "ctr": 0,
       "position": 42
+    },
+    {
+      "key": "the deep website",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 72
     },
     {
       "key": "the hadal zone",
@@ -202,32 +209,32 @@
     {
       "key": "twilight zone ocean",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 81
+      "position": 77
     },
     {
       "key": "twilight zone sea",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 1,
       "ctr": 0,
-      "position": 75.5
+      "position": 75
     }
   ],
   "pages": [
     {
       "key": "https://howweknowdeep.com/creatures/hadal-snailfish/",
       "clicks": 1,
-      "impressions": 15,
-      "ctr": 0.0667,
-      "position": 49.7
+      "impressions": 16,
+      "ctr": 0.0625,
+      "position": 51.6
     },
     {
       "key": "https://howweknowdeep.com/",
       "clicks": 0,
-      "impressions": 8,
+      "impressions": 9,
       "ctr": 0,
-      "position": 2.1
+      "position": 9.9
     },
     {
       "key": "https://howweknowdeep.com/creatures/",
@@ -295,9 +302,9 @@
     {
       "key": "https://howweknowdeep.com/questions/what-is-a-dumbo-octopus/",
       "clicks": 0,
-      "impressions": 5,
+      "impressions": 7,
       "ctr": 0,
-      "position": 31.6
+      "position": 44.1
     },
     {
       "key": "https://howweknowdeep.com/questions/why-deep-sea-creatures-get-creepier-deeper/",
@@ -344,9 +351,9 @@
     {
       "key": "https://howweknowdeep.com/zones/hadal/",
       "clicks": 0,
-      "impressions": 40,
+      "impressions": 39,
       "ctr": 0,
-      "position": 42.5
+      "position": 45.6
     },
     {
       "key": "https://howweknowdeep.com/zones/midnight/",
@@ -365,9 +372,9 @@
     {
       "key": "https://howweknowdeep.com/zones/twilight/",
       "clicks": 0,
-      "impressions": 13,
+      "impressions": 9,
       "ctr": 0,
-      "position": 58.9
+      "position": 48.3
     }
   ]
 }
