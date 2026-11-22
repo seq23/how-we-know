@@ -61,7 +61,7 @@ PY=.venv/bin/python
 PY_TTS=.venv-tts/bin/python
 
 # NARRATION HANDS THE MAC BACK IN THE MORNING. Owner decision 2026-09-05: the
-# job starts at 23:00 and stops at 07:00, rather than running until the backlog
+# job starts at 23:00 and stops at 06:30 (07:00 until the Mac's day, 21 Nov 2026), rather than running until the backlog
 # is finished -- which on 2026-09-05 meant it was still generating audio at
 # four in the afternoon on a Saturday.
 #
@@ -106,11 +106,11 @@ done
 # killed mid-mux - which leaves a TRUNCATED renders/<slug>-final.mp4 that
 # render_one would otherwise treat as finished - is moved aside and redone.
 #
-# THE CAPS ARE UNCHANGED. Narration's cap is a WALL CLOCK (--until 07:00), not
-# a duration, so a resume at 03:00 stops at the same 07:00 the 23:00 start
+# THE CAPS ARE UNCHANGED. Narration's cap is a WALL CLOCK (--until 06:30), not
+# a duration, so a resume at 03:00 stops at the same 06:30 the 23:00 start
 # would have; a resumed session never gets a fresh allowance. And a resume (or
-# a launchd start fired late) after 07:00 does not narrate at all - otherwise
-# --until 07:00 would roll to TOMORROW 07:00 and narrate through her day. What
+# a launchd start fired late) after 06:30 does not narrate at all - otherwise
+# --until 06:30 would roll to TOMORROW 06:30 and narrate through her day. What
 # a resumed session holds awake (caffeinate -w) is its own process from the
 # moment it resumed, which is all it can hold: the interrupted one is gone.
 # ---------------------------------------------------------------------------
@@ -576,11 +576,11 @@ harvest_footage() {
   echo; echo "--- footage: harvest what is delegated to this Mac, verify the rest ---"
   # The cloud's stamps are read from THIS checkout, so bring it up to date
   # first (loop/mac_sync.py pull takes upstream for loop-state files, the way
-  # the 09:00 backfill lane does). A failed pull is said and not fatal: the
+  # the 10:05 backfill lane does). A failed pull is said and not fatal: the
   # harvest is still worth doing against yesterday's stamps.
   $PY loop/mac_sync.py pull 2>&1 | tail -1
   # nice: a weekly ~2.3 h OCR pass (measured 2026-09-19: 16 clips in 5m44s,
-  # 8 workers, ~190% CPU) that on a busy night lands after 07:00, when the
+  # 8 workers, ~190% CPU) that on a busy night lands after 06:30, when the
   # Mac is hers. It yields to anything she is doing rather than competing.
   # PICTURE FIRST (owner 2026-11-03): every episode waiting for a render gets
   # its shot list (the filmable subjects of its title, free model route) BEFORE

@@ -23,7 +23,7 @@
 # Two food episodes a week, each rendered over two nights: the cadence is 6
 # a week (the owner's rotation) and food owns Wednesday and Saturday, so one
 # a week left a food day empty every week (#271). A 30-minute episode is
-# ~25-30 minutes of new narration - most of one 23:00-07:00 window on this
+# ~25-30 minutes of new narration - most of one 23:00-06:30 window on this
 # Mac - plus five pieces. Sunday + Monday: Thursday's cloud author lane has
 # the script ready, and Monday night's finish is shelved Tuesday morning,
 # >= 24 h ahead of Wednesday's slot. Wednesday + Thursday: Monday's script,

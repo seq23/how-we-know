@@ -240,33 +240,53 @@ try:
                         "fi\nexit 0\n")
         fake.chmod(0o755)
         # The Central-time mover (boss-os plist-central.mjs) is faked too: it records each plist.
-        # launchd-reload (seq-bin) is faked too: it records each plist it is handed.
+        # launchd-reload (seq-bin) is faked too. It records each call; --seed records whether the plists
+        # in LaunchAgents were still the OLD ones (a seed after the writes would keep the new file as
+        # "last good" and the reload would never happen). The running food job answers DEFERRED_RUNNING,
+        # as the real one does; FAKE_RELOAD_FAIL makes one reload fail.
+        agents = home / "Library" / "LaunchAgents"
+        (agents / "com.howweknow.backfill.plist").write_text("OLD-BACKFILL")
         reload_fake = td / "launchd-reload"
         reload_fake.write_text("#!/bin/bash\n"
-                               f"[ \"$1\" = --seed ] && exit 0\necho \"reload $*\" >> {calls_f}\necho \"RELOADED $1\"\n")
+                               f"if [ \"$1\" = --seed ]; then grep -q OLD-BACKFILL {agents}/com.howweknow.backfill.plist && echo seed-before-write >> {calls_f} || echo seed-after-write >> {calls_f}; exit 0; fi\n"
+                               f"echo \"reload $*\" >> {calls_f}\n"
+                               "case \"$1\" in *food.plist) echo \"DEFERRED_RUNNING com.howweknow.food: new file written\"; exit 0 ;; esac\n"
+                               "[ -n \"${FAKE_RELOAD_FAIL:-}\" ] && case \"$1\" in *$FAKE_RELOAD_FAIL*) echo \"RELOAD_FAILED $1\"; exit 1 ;; esac\n"
+                               "echo \"RELOADED $1\"\n")
         reload_fake.chmod(0o755)
         moved_f = td / "moved.calls"
         mover = td / "plist-central.mjs"
         mover.write_text(f"import fs from 'node:fs'; fs.appendFileSync({str(moved_f)!r}, process.argv[2] + '\\n');\n")
-        out = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
-                             capture_output=True, text=True, timeout=60,
-                             env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "LAUNCHD_RELOAD": str(reload_fake), "HWK_PLIST_CENTRAL": str(mover)})
+        base = {**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "LAUNCHD_RELOAD": str(reload_fake)}
+        inst = lambda **kw: subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
+                                           capture_output=True, text=True, timeout=60, env={**base, "HWK_PLIST_CENTRAL": str(mover), **kw})
+        out = inst()
         moved = moved_f.read_text() if moved_f.exists() else ""
-        check("h. every agent is moved to Central before it is loaded",
-              all(f"com.howweknow.{n}.plist" in moved for n in ("batch", "nightquit", "food", "backfill", "batch-resume", "food-resume")), moved)
-        no_mover = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--install"],
-                                  capture_output=True, text=True, timeout=60,
-                                  env={**os.environ, "HOME": str(home), "LAUNCHCTL": str(fake), "LAUNCHD_RELOAD": str(reload_fake), "HWK_PLIST_CENTRAL": str(td / "missing.mjs")})
-        check("h. NEGATIVE: no mover, nothing loaded (named stop)", no_mover.returncode == 4 and "NO_PLIST_CENTRAL" in no_mover.stderr, no_mover.stderr[-200:])
         calls_txt = calls_f.read_text() if calls_f.exists() else ""
         check("h. installer ran", out.returncode == 0, out.stdout[-200:] + out.stderr[-200:])
-        check("h. a running job is never unloaded",
-              "unload" not in "".join(ln for ln in calls_txt.splitlines(True)
-                                      if ln.rstrip().endswith("com.howweknow.food.plist"))
-              and "DEFERRED com.howweknow.food" in out.stdout, calls_txt + out.stdout[-300:])
-        check("h. food-resume goes through launchd-reload", "reload " + str(home / "Library" / "LaunchAgents"
-                                                        / "com.howweknow.food-resume.plist") in calls_txt,
+        check("h. every agent is moved to Central before it is loaded",
+              all(f"com.howweknow.{n}.plist" in moved for n in ("batch", "nightquit", "food", "backfill", "batch-resume", "food-resume")), moved)
+        check("h. the last-good seed is taken BEFORE any plist is written", calls_txt.startswith("seed-before-write"), calls_txt[:200])
+        check("h. every agent goes through launchd-reload",
+              all(f"reload {agents}/com.howweknow.{n}.plist" in calls_txt for n in ("batch", "nightquit", "food", "backfill", "batch-resume", "food-resume")),
+              calls_txt[-400:])
+        check("h. the installer itself never loads, unloads, boots out or bootstraps",
+              not any(w in ln.split()[:1] for ln in calls_txt.splitlines() for w in ("load", "unload", "bootout", "bootstrap")),
               calls_txt[-300:])
+        check("h. a running job is deferred, never reloaded mid-night, and the line is shown",
+              "DEFERRED_RUNNING com.howweknow.food" in out.stdout, out.stdout[-300:])
+        failed = inst(FAKE_RELOAD_FAIL="backfill")
+        check("h. NEGATIVE: a reload that fails exits 1 with a named stop",
+              failed.returncode == 1 and "RELOAD_FAILED" in failed.stdout + failed.stderr, failed.stdout[-200:] + failed.stderr[-200:])
+        no_mover = inst(HWK_PLIST_CENTRAL=str(td / "missing.mjs"))
+        check("h. NEGATIVE: no mover, nothing loaded (named stop)", no_mover.returncode == 4 and "NO_PLIST_CENTRAL" in no_mover.stderr, no_mover.stderr[-200:])
+        calls_f.write_text("")
+        (agents / "com.howweknow.backfill.plist").write_text("OLD-BACKFILL")
+        no_reload = inst(LAUNCHD_RELOAD=str(td / "missing-reload"))
+        check("h. NEGATIVE: no launchd-reload, nothing written or loaded (named stop)",
+              no_reload.returncode == 4 and "NO_LAUNCHD_RELOAD" in no_reload.stderr
+              and (agents / "com.howweknow.backfill.plist").read_text() == "OLD-BACKFILL" and calls_f.read_text() == "",
+              no_reload.stderr[-200:])
     else:
         print("  (h. skipped: no plutil here - the installer is macOS-only)")
 finally:

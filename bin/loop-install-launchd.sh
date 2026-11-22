@@ -242,6 +242,11 @@ case "${1:-}" in
   --install)
     prepare_runner
     mkdir -p "$AGENTS" "$LOGDIR"
+    # FIRST, before any plist is written: keep each loaded job's current file as its last good version,
+    # so a reload that fails has the old schedule to go back to (seq-bin launchd-reload --seed).
+    RELOAD="${LAUNCHD_RELOAD:-$HOME/bin/launchd-reload}"
+    [ -x "$RELOAD" ] || { echo "NAMED STOP [NO_LAUNCHD_RELOAD] $RELOAD is missing (seq-bin). Nothing written or loaded." >&2; exit 4; }
+    "$RELOAD" --seed >/dev/null || { echo "NAMED STOP [RELOAD_SEED_FAILED] could not keep the last good plists. Nothing written or loaded." >&2; exit 4; }
     # ONLY THE BATCH. tuesday and thursday are NOT installed, and that is the
     # whole point of this comment.
     #
@@ -284,48 +289,15 @@ case "${1:-}" in
       plutil -lint "$AGENTS/com.howweknow.$n.plist" >/dev/null \
         || { echo "NAMED STOP: com.howweknow.$n.plist is not valid XML; not loading it." >&2; exit 4; }
     done
-    # NEVER KILL A RUNNING NIGHT. `launchctl unload` stops a job that is
-    # running: re-installing during a batch or a food night used to end it
-    # mid-narration with no line in its log. An agent whose plist did not
-    # change is left loaded as it is; a changed one whose job is running is
-    # NOT reloaded now - it says so, and the next --install (after the run)
-    # loads it. LAUNCHCTL lets loop/tests/test_food_resume_on_death.py fake it.
-    # The copy of what was last loaded lives OUTSIDE LaunchAgents: launchd
-    # reads every file in that folder at login.
-    LCTL="${LAUNCHCTL:-launchctl}"
-    # THE ONE RELOAD (seq-bin launchd-reload, 21 Nov 2026): a paused (disabled) job keeps its pause and
-    # is never loaded or started while the Peace Be Still fill holds the channel; a reload that fails
-    # puts the old schedule back. Never `unload; load` here again.
-    RELOAD="${LAUNCHD_RELOAD:-$HOME/bin/launchd-reload}"
-    [ -x "$RELOAD" ] || { echo "NAMED STOP [NO_LAUNCHD_RELOAD] $RELOAD is missing (seq-bin). Nothing loaded." >&2; exit 4; }
-    "$RELOAD" --seed >/dev/null || true
+    # THE ONE RELOAD (seq-bin launchd-reload, 21 Nov 2026). It decides everything this used to decide
+    # itself: a RUNNING job is not reloaded mid-night (DEFERRED_RUNNING), an unchanged one is left
+    # (UNCHANGED), a paused (disabled) job keeps its pause, a job held by the Peace Be Still fill is not
+    # loaded (DEFERRED_PAUSED), and a reload that fails puts the old schedule back (RELOAD_FAILED).
+    # A deferred one is applied by `launchd-reload --pending` (seq-bin tz-watch, hourly).
     RC=0
-    LOADED="$LOGDIR/loaded-plists"
-    mkdir -p "$LOADED"
     for n in $AGENT_NAMES; do
-      f="$AGENTS/com.howweknow.$n.plist"
-      was="$LOADED/com.howweknow.$n.plist"
-      pid=$("$LCTL" list "com.howweknow.$n" 2>/dev/null | awk -F'= ' '/"PID"/{gsub(/;/,"",$2); print $2}' || true)
-      if [ -n "$pid" ]; then
-        if cmp -s "$f" "$was" 2>/dev/null; then
-          echo "kept   com.howweknow.$n  (running, pid $pid; plist unchanged)"
-        else
-          echo "DEFERRED com.howweknow.$n: its job is running (pid $pid); not reloading it" \
-               "mid-run. Run bin/loop-install-launchd.sh --install again after it ends."
-        fi
-        continue
-      fi
-      if "$LCTL" list "com.howweknow.$n" >/dev/null 2>&1 && cmp -s "$f" "$was" 2>/dev/null; then
-        echo "kept   com.howweknow.$n  (plist unchanged)"
-        continue
-      fi
-      if out=$("$RELOAD" "$f"); then
-        echo "$out"
-        # a deferred one (paused, held) is applied later by `launchd-reload --pending`; keep the old copy
-        echo "$out" | grep -q '^DEFERRED' || { cp "$f" "$was"; echo "loaded com.howweknow.$n  (logs: $LOGDIR/$n.log)"; }
-      else
-        echo "$out"; RC=1
-      fi
+      out=$("$RELOAD" "$AGENTS/com.howweknow.$n.plist") || RC=1
+      echo "$out"
     done
     [ "$RC" = 0 ] || { echo "NAMED STOP [RELOAD_FAILED] a how-we-know job kept its OLD schedule (lines above)." >&2; exit 1; }
     ;;

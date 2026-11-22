@@ -46,7 +46,7 @@ DEFAULT = ROOT / "loop" / "state" / "_local" / "batch_progress.json"
 NIGHT_BEGINS = 22        # a batch started at or after this hour is "tonight"
 START_FROM = 23          # the scheduled start; a never-started night starts
 START_UNTIL = 6          # ... between 23:00 and 06:00 only
-CUTOFF = 9               # 09:00: com.howweknow.backfill and the cloud lanes
+CUTOFF = 9               # 09:00: the cloud lanes (the Mac is off 07:00-10:00 and mac-window starts no heavy work after 06:30; the backfill runs 10:05)
 
 # gate() exit codes, read by bin/batch-session.sh
 GO = 0
@@ -212,7 +212,7 @@ def main(argv=None) -> int:
         write(p)
         return 0
     if cmd == "narration-window":       # exit 0 if narration may run now
-        until = os.environ.get("NARRATION_UNTIL", "07:00")
+        until = os.environ.get("NARRATION_UNTIL", "06:30")   # the Mac's day, 21 Nov 2026
         hh, mm = (int(x) for x in until.split(":"))
         t = now()
         return 0 if t.hour >= NIGHT_BEGINS or t.time() < _dt.time(hh, mm) else 1
