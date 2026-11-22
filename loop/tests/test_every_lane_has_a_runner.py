@@ -113,7 +113,7 @@ for args in ([], ["--slug", "some-episode"], ["--resume-if-interrupted"]):
         fails.append("food-session.sh drops --slug")
     elif args == ["--resume-if-interrupted"] and "DRY: resume gate, then" not in out.stdout:
         fails.append(f"food-session.sh --resume-if-interrupted skips the gate: {out.stdout!r}")
-    elif not args and "food_lane.py run --until 07:00" not in out.stdout:
+    elif not args and "food_lane.py run --until 06:30" not in out.stdout:
         fails.append(f"food-session.sh runs the wrong lane command: {out.stdout!r}")
 if "[@]" in (ROOT / "bin" / "food-session.sh").read_text():
     fails.append("food-session.sh uses a bash array again (empty arrays are unbound under "

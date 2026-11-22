@@ -25,7 +25,10 @@
 # --install now moves each Hour to the Mac's zone with boss-os
 # scripts/ops/plist-central.mjs, the one mover Boss OS and ~/bin use, and each
 # agent runs with TZ=America/Chicago so the scripts' own clock windows
-# (NARRATION_UNTIL=07:00) are Central too: the night is still 23:00-07:00.
+# (NARRATION_UNTIL=06:30) are Central too. THE MAC'S DAY (owner, 21 Nov 2026): heavy work runs
+# 22:00-06:55 and the Mac is off 07:00-10:00, so narration stops starting new work at 06:30 and
+# seq-bin's mac-window (put in front of every job by plist-central) stops what is left at 06:55;
+# the daily backfill moved 09:00 -> 10:05.
 # The quit stays at 22:55, three minutes BEFORE the Tue/Thu food session (22:58):
 # freeing memory for the voice model is its whole job, and a food night runs
 # until ~05:00, so "after the session" would quit her apps in the morning.
@@ -174,11 +177,11 @@ print_one(){
     # Mac went down mid-narration and nothing re-ran it). The decision is
     # loop/food_lane.py resume-gate's; it exits in well under a second otherwise.
     food-resume)  plist_interval food-resume 300 food-session.sh --resume-if-interrupted ;;
-    # DAILY 09:00: the Mac's upload lane (bin/loop-backfill-daily.sh), sharing
+    # DAILY 10:05 (09:00 until the Mac's day, 21 Nov 2026): the Mac's upload lane (bin/loop-backfill-daily.sh), sharing
     # one ledger with loop-upload-cloud.yml (pull before, push after). It was
     # loaded on this Mac from a hand-written plist the installer did not know;
     # written here since 2026-10-25 so loop/lanes.py has ONE source for it.
-    backfill)     plist backfill loop-backfill-daily.sh - 9 ;;
+    backfill)     plist backfill loop-backfill-daily.sh - 10 5 ;;   # 10:05: the Mac is off 07:00-10:00 (the Mac's day, 21 Nov 2026)
     *) echo "unknown agent: $1 (one of: $AGENT_NAMES)" >&2; return 2 ;;
   esac
 }
@@ -239,6 +242,11 @@ case "${1:-}" in
   --install)
     prepare_runner
     mkdir -p "$AGENTS" "$LOGDIR"
+    # FIRST, before any plist is written: keep each loaded job's current file as its last good version,
+    # so a reload that fails has the old schedule to go back to (seq-bin launchd-reload --seed).
+    RELOAD="${LAUNCHD_RELOAD:-$HOME/bin/launchd-reload}"
+    [ -x "$RELOAD" ] || { echo "NAMED STOP [NO_LAUNCHD_RELOAD] $RELOAD is missing (seq-bin). Nothing written or loaded." >&2; exit 4; }
+    "$RELOAD" --seed >/dev/null || { echo "NAMED STOP [RELOAD_SEED_FAILED] could not keep the last good plists. Nothing written or loaded." >&2; exit 4; }
     # ONLY THE BATCH. tuesday and thursday are NOT installed, and that is the
     # whole point of this comment.
     #
@@ -281,39 +289,17 @@ case "${1:-}" in
       plutil -lint "$AGENTS/com.howweknow.$n.plist" >/dev/null \
         || { echo "NAMED STOP: com.howweknow.$n.plist is not valid XML; not loading it." >&2; exit 4; }
     done
-    # NEVER KILL A RUNNING NIGHT. `launchctl unload` stops a job that is
-    # running: re-installing during a batch or a food night used to end it
-    # mid-narration with no line in its log. An agent whose plist did not
-    # change is left loaded as it is; a changed one whose job is running is
-    # NOT reloaded now - it says so, and the next --install (after the run)
-    # loads it. LAUNCHCTL lets loop/tests/test_food_resume_on_death.py fake it.
-    # The copy of what was last loaded lives OUTSIDE LaunchAgents: launchd
-    # reads every file in that folder at login.
-    LCTL="${LAUNCHCTL:-launchctl}"
-    LOADED="$LOGDIR/loaded-plists"
-    mkdir -p "$LOADED"
+    # THE ONE RELOAD (seq-bin launchd-reload, 21 Nov 2026). It decides everything this used to decide
+    # itself: a RUNNING job is not reloaded mid-night (DEFERRED_RUNNING), an unchanged one is left
+    # (UNCHANGED), a paused (disabled) job keeps its pause, a job held by the Peace Be Still fill is not
+    # loaded (DEFERRED_PAUSED), and a reload that fails puts the old schedule back (RELOAD_FAILED).
+    # A deferred one is applied by `launchd-reload --pending` (seq-bin tz-watch, hourly).
+    RC=0
     for n in $AGENT_NAMES; do
-      f="$AGENTS/com.howweknow.$n.plist"
-      was="$LOADED/com.howweknow.$n.plist"
-      pid=$("$LCTL" list "com.howweknow.$n" 2>/dev/null | awk -F'= ' '/"PID"/{gsub(/;/,"",$2); print $2}' || true)
-      if [ -n "$pid" ]; then
-        if cmp -s "$f" "$was" 2>/dev/null; then
-          echo "kept   com.howweknow.$n  (running, pid $pid; plist unchanged)"
-        else
-          echo "DEFERRED com.howweknow.$n: its job is running (pid $pid); not reloading it" \
-               "mid-run. Run bin/loop-install-launchd.sh --install again after it ends."
-        fi
-        continue
-      fi
-      if "$LCTL" list "com.howweknow.$n" >/dev/null 2>&1 && cmp -s "$f" "$was" 2>/dev/null; then
-        echo "kept   com.howweknow.$n  (plist unchanged)"
-        continue
-      fi
-      "$LCTL" unload "$f" 2>/dev/null || true
-      "$LCTL" load  "$f"
-      cp "$f" "$was"
-      echo "loaded com.howweknow.$n  (logs: $LOGDIR/$n.log)"
+      out=$("$RELOAD" "$AGENTS/com.howweknow.$n.plist") || RC=1
+      echo "$out"
     done
+    [ "$RC" = 0 ] || { echo "NAMED STOP [RELOAD_FAILED] a how-we-know job kept its OLD schedule (lines above)." >&2; exit 1; }
     ;;
   --uninstall)
     for n in $AGENT_NAMES tuesday thursday; do

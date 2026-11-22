@@ -23,7 +23,7 @@
 # Two food episodes a week, each rendered over two nights: the cadence is 6
 # a week (the owner's rotation) and food owns Wednesday and Saturday, so one
 # a week left a food day empty every week (#271). A 30-minute episode is
-# ~25-30 minutes of new narration - most of one 23:00-07:00 window on this
+# ~25-30 minutes of new narration - most of one 23:00-06:30 window on this
 # Mac - plus five pieces. Sunday + Monday: Thursday's cloud author lane has
 # the script ready, and Monday night's finish is shelved Tuesday morning,
 # >= 24 h ahead of Wednesday's slot. Wednesday + Thursday: Monday's script,
@@ -48,7 +48,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 PY=.venv/bin/python
 PYP="$PY"; [ -x "$PYP" ] || PYP=python3
-NARRATION_UNTIL="${NARRATION_UNTIL:-07:00}"
+NARRATION_UNTIL="${NARRATION_UNTIL:-06:30}"   # the Mac's day (21 Nov 2026): no new narration after 06:30; mac-window stops the rest at 06:55
 BATCH_LOCK="${BATCH_LOCK:-$ROOT/loop/state/_local/batch.lock}"
 # No bash arrays: launchd runs /bin/bash 3.2, where an EMPTY array under
 # `set -u` is an "unbound variable" and kills the night (2026-10-25, the first

@@ -1,6 +1,6 @@
 """The food lane's Mac half: footage, voice, render, stitch - then shelve.
 
-    .venv/bin/python loop/food_lane.py run [--until 07:00] [--slug S]
+    .venv/bin/python loop/food_lane.py run [--until 06:30] [--slug S]
     .venv/bin/python loop/food_lane.py status
     .venv/bin/python loop/food_lane.py resume-gate      # com.howweknow.food-resume
     .venv/bin/python loop/food_lane.py resume-cancel    # a deliberate stop: never resume it
@@ -40,7 +40,7 @@ bin/food-session.sh writes it "running" once it holds the narration lock and
 leaves it "died"). com.howweknow.food-resume (every 300 s, and at login) asks
 `resume-gate`: a "running" record whose session is gone is a death - the line
 saying so, and the boot time when the Mac restarted, goes into the food log -
-and it is resumed while the dead run's own --until window (07:00) has at least
+and it is resumed while the dead run's own --until window (06:30) has at least
 RESUME_MARGIN_S left, at most MAX_RESUMES times per window, always through the
 same lock as the batch, so there is never a second narrator.
 

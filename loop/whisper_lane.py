@@ -4,7 +4,7 @@
     python loop/whisper_lane.py status            # one line per script
     python loop/whisper_lane.py check [SLUG ...]  # plain words, facts, length, distinct
     python loop/whisper_lane.py kit SLUG          # title, description, thumbnail
-    python loop/whisper_lane.py night --until 07:00 [--budget-min N]
+    python loop/whisper_lane.py night --until 06:30 [--budget-min N]
                                                   # the Mac: voice + render, in the batch lock
 
 Whisper Almanac (@whisperalmanac) is a faceless YouTube channel voiced by the
@@ -1226,7 +1226,7 @@ def main(argv: list[str] | None = None) -> int:
     kt = sub.add_parser("kit")
     kt.add_argument("slug")
     nt = sub.add_parser("night")
-    nt.add_argument("--until", default="07:00")
+    nt.add_argument("--until", default="06:30")   # the Mac's day, 21 Nov 2026
     nt.add_argument("--py-tts", default=str(ROOT / ".venv-tts" / "bin" / "python"))
     nt.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
