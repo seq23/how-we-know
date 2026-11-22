@@ -1129,9 +1129,10 @@ CAPRC=$(BP get caprc 0)
 
 # PAUSED FOR THE PEACE BE STILL LIBRARY FILL (her call, 18 Nov 2026: "we can
 # put the YouTube videos on pause while we fill our library for the app").
-# While ~/.peace-be-still/library-fill.active exists (and is under 21 days
-# old), nothing new is voiced or rendered for either channel and the Mac is
-# the fill's. What costs no voice time still runs: the Almanac upload and its
+# While ~/.peace-be-still/library-fill.active exists - any age, until the fill
+# finishes and removes it (her ruling 21 Nov 2026: "YT channels still on pause
+# until PBS audio fills are done!!!") - nothing new is voiced or rendered for
+# either channel and the Mac is the fill's. What costs no voice time still runs: the Almanac upload and its
 # Shorts, captions, cutting and shelving Shorts from finished renders, and the
 # report (which pushes the pause mirror the floor check reads). The night
 # ends exit 0 with the named line PAUSED_FOR_PBS_FILL - a note, not a failure.

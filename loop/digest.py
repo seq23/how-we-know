@@ -676,6 +676,20 @@ def lanes_block(cfg: dict, led: dict, now: dt.datetime) -> list[str]:
     return out + [""]
 
 
+def pause_lines(now: dt.datetime, root: Path = ROOT) -> list[str]:
+    """THE PEACE BE STILL FILL PAUSE, named every week it is on (her ruling 21
+    Nov 2026: "YT channels still on pause until PBS audio fills are done!!!").
+    The pause has no age limit, so the digest is where a long one stays seen.
+    Read from the mirror the Mac pushes (loop/pbs_pause.repo_status)."""
+    import pbs_pause                                       # noqa: PLC0415
+    p = pbs_pause.repo_status(root, now)
+    if not p["paused"]:
+        return []
+    return [f"> ⏸ **{p['line']}.** No new How We Know or Whisper Almanac video is voiced or "
+            "rendered until the fill finishes and removes its file; finished renders still "
+            "upload. The floor alarm stays quiet for both channels meanwhile.", ""]
+
+
 def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     """The digest, and the counts it was built from."""
     cfg = config()
@@ -726,6 +740,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
 
     L = [f"# How We Know — week of {week}", "",
          f"## {mark} {headline}", ""]
+    L += pause_lines(now)
     for r in reasons[1:]:
         L.append(f"- {r}")
     if len(reasons) > 1:

@@ -23,9 +23,19 @@ removes it; nothing in this repo does.
     loop/publish_floor.py reads the mirror: while paused it files no STOPPED
     issue for either channel and says "Paused for the Peace Be Still library
     fill since <date>" in its daily line instead.
-  * A pause older than 21 days is IGNORED everywhere: the jobs voice and
-    render again and STOPPED fires (a stuck fill must not silence the
-    channels forever). loop/tests/test_pbs_pause.py.
+  * THE PAUSE HOLDS FOR AS LONG AS THE FILL IS UNFINISHED (her ruling, 21 Nov
+    2026: "YT channels still on pause until PBS audio fills are done!!!").
+    There is no age limit: it ends only when the file is removed - by the
+    fill itself, the run that finds every priority 1-2 file shelved
+    (peace-be-still audio/fill.py), or by her say-so. A 21-day auto-expiry
+    used to un-pause on its own while the fill was far from done. Instead of
+    silence, the line always names it ("Paused for the Peace Be Still library
+    fill since <date>, <n> days"), past LONG_DAYS it says it is long-running,
+    and the Sunday digest (loop/digest.py) names it every week.
+  * A record that cannot be read (bad JSON, no usable `started`) still
+    PAUSES and says so loudly (NAMED STOP [PBS_FILL_RECORD_CORRUPT] in the
+    line, start date from the file's mtime); never "not paused". Same for a
+    corrupt mirror in the cloud. loop/tests/test_pbs_pause.py.
   * The file removed: the next gate deletes the mirror and everything runs
     that night, with no other change.
   * AFTER THE PAUSE, ONE HEAVY JOB AT A TIME (hostile review 18 Nov 2026): the
@@ -57,7 +67,7 @@ from zoneinfo import ZoneInfo
 LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 MIRROR_REL = "loop/state/pbs_fill.json"
-MAX_DAYS = 21
+LONG_DAYS = 21          # past this the line says the pause is long-running; it never expires
 PAUSED_EXIT = 10
 CODE = "PAUSED_FOR_PBS_FILL"
 CT = ZoneInfo("America/Chicago")
@@ -80,7 +90,7 @@ def lock_file() -> Path:
 
 
 def paused() -> bool:
-    """Is the Mac paused for the fill right now (the local file, under 21 days)?"""
+    """Is the Mac paused for the fill right now (the local file exists, any age)?"""
     return bool(judge(read_local())["paused"])
 
 
@@ -122,34 +132,53 @@ def hold(pid: int, poll: float | None = None) -> int:
 
 
 def read_local(path: Path | None = None) -> dict | None:
-    """The fill file as {started, expected_end}, or None when there is none.
-    The file existing is the signal: unreadable JSON still pauses, from its mtime."""
+    """The fill file as {started, expected_end[, corrupt]}, or None when there is none.
+    The file existing is the signal: an unreadable one still pauses, from its
+    mtime, and is marked corrupt so every line names it."""
     p = path or fill_file()
     if not p.exists():
         return None
     try:
         d = json.loads(p.read_text())
+        corrupt = not isinstance(d, dict)
         d = d if isinstance(d, dict) else {}
     except (OSError, ValueError):
-        d = {}
-    started = _t(d.get("started")) or _dt.datetime.fromtimestamp(p.stat().st_mtime, _dt.timezone.utc)
-    return {"started": started.isoformat(), "expected_end": str(d.get("expected_end") or "")[:40]}
+        d, corrupt = {}, True
+    started = _t(d.get("started"))
+    if started is None:
+        corrupt = True
+        started = _dt.datetime.fromtimestamp(p.stat().st_mtime, _dt.timezone.utc)
+    rec = {"started": started.isoformat(), "expected_end": str(d.get("expected_end") or "")[:40]}
+    if corrupt:
+        rec["corrupt"] = True
+    return rec
+
+
+CORRUPT = "PBS_FILL_RECORD_CORRUPT"
 
 
 def judge(rec: dict | None, now: _dt.datetime | None = None) -> dict:
-    """{paused, stale, line}. A record older than MAX_DAYS is stale: not paused."""
+    """{paused, days, long, corrupt, line}. Any record pauses, whatever its age;
+    only no record at all is "not paused"."""
     now = now or _dt.datetime.now(_dt.timezone.utc)
-    if not rec:
-        return {"paused": False, "stale": False, "line": "not paused for the Peace Be Still library fill"}
-    started = _t(rec.get("started")) or now
-    since = f"{started.astimezone(CT):%a %d %b %Y}"
-    days = (now - started).total_seconds() / 86400
-    if days > MAX_DAYS:
-        return {"paused": False, "stale": True,
-                "line": f"note: the Peace Be Still library-fill pause has been on since {since} "
-                        f"({int(days)} days, over {MAX_DAYS}): ignored - every job runs and the floor alarm is live"}
-    end = f", expected to end {rec['expected_end']}" if rec.get("expected_end") else ""
-    return {"paused": True, "stale": False, "line": f"Paused for the Peace Be Still library fill since {since}{end}"}
+    if rec is None:
+        return {"paused": False, "days": 0, "long": False, "corrupt": False,
+                "line": "not paused for the Peace Be Still library fill"}
+    started = _t(rec.get("started") if isinstance(rec, dict) else None)
+    corrupt = not isinstance(rec, dict) or bool(rec.get("corrupt")) or started is None
+    started = started or now
+    days = max(0, int((now - started).total_seconds() // 86400))
+    line = (f"Paused for the Peace Be Still library fill since {started.astimezone(CT):%a %d %b %Y}, "
+            f"{days} day{'' if days == 1 else 's'}")
+    if isinstance(rec, dict) and rec.get("expected_end"):
+        line += f", expected to end {rec['expected_end']}"
+    if days > LONG_DAYS:
+        line += (f" (over {LONG_DAYS} days: still paused until the fill finishes and removes "
+                 f"~/.peace-be-still/library-fill.active)")
+    if corrupt:
+        line += (f". NAMED STOP [{CORRUPT}]: the fill record could not be read; still paused - "
+                 f"check ~/.peace-be-still/library-fill.active on the Mac")
+    return {"paused": True, "days": days, "long": days > LONG_DAYS, "corrupt": corrupt, "line": line}
 
 
 def mirror(rec: dict | None, root: Path = ROOT) -> None:
@@ -178,11 +207,13 @@ def repo_status(root: Path = ROOT, now: _dt.datetime | None = None) -> dict:
     """The cloud's view: the mirror the Mac last pushed (PBS_FILL_MIRROR: a
     test's own copy, so a real pause on main never leaks into a test)."""
     mp = Path(os.environ["PBS_FILL_MIRROR"]) if os.environ.get("PBS_FILL_MIRROR") else root / MIRROR_REL
+    if not mp.exists():
+        return judge(None, now)
     try:
         rec = json.loads(mp.read_text())
     except (OSError, ValueError):
-        rec = None
-    return judge(rec, now)
+        rec = {"corrupt": True}                 # a mirror that cannot be read still pauses, loudly
+    return judge(rec if isinstance(rec, dict) else {"corrupt": True}, now)
 
 
 def main(argv: list[str]) -> int:
