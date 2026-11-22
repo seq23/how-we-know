@@ -33,8 +33,9 @@ judged the channel. This judges the channel, from YouTube's own public feed
     the Mac's fill file is on (mirrored to loop/state/pbs_fill.json by
     loop/pbs_pause.py), neither channel gets a STOPPED issue; the daily line
     says "Paused for the Peace Be Still library fill since <date>" and any open
-    issue is closed with that line. A pause older than 21 days is ignored and
-    STOPPED fires as usual.
+    issue is closed with that line. The pause has no age limit (her ruling 21
+    Nov 2026: "YT channels still on pause until PBS audio fills are done!!!");
+    the line names its start and its days, and the Sunday digest names it.
 """
 from __future__ import annotations
 
@@ -247,8 +248,6 @@ def check(dry_run: bool = False, now: _dt.datetime | None = None, feed=read_feed
     unread, breaches, n = [], 0, 0
     import pbs_pause                                        # noqa: PLC0415
     pause = pbs_pause.repo_status(root, now)
-    if pause["stale"]:
-        print(f"  {pause['line']}")
     for channel, ch in c["channels"].items():
         try:
             public = feed(ch["channel_id"])

@@ -1,11 +1,17 @@
-"""The Peace Be Still library-fill pause (her call, 18 Nov 2026) and its 21-day limit.
+"""The Peace Be Still library-fill pause (her call, 18 Nov 2026), held until the fill is done
+(her ruling 21 Nov 2026: "YT channels still on pause until PBS audio fills are done!!!").
 
   a. a fill file 3 days old pauses the Mac jobs (exit 10) and the floor check
      files NO STOPPED issue for either channel, saying "Paused for the Peace Be
      Still library fill since <date>" instead, and closes an open one;
-  b. a fill file 22 days old is IGNORED: the Mac jobs run (exit 0) and the
-     floor check opens its STOPPED issue as if there were no pause;
+  b. a fill file 30 days old STILL pauses (no auto-expiry): the gate exits 10,
+     the floor check files no STOPPED issue, and the line names the pause, its
+     start date and its days, and says it is long-running; the Sunday digest
+     names it too;
   c. no file: not paused, and the mirror the cloud reads is removed;
+  g. a corrupt record (bad JSON locally, or a corrupt mirror in the cloud)
+     still pauses and says NAMED STOP [PBS_FILL_RECORD_CORRUPT]: never
+     "not paused";
   d. while paused the Almanac upload step renders nothing (a voiced script
      waits); with no pause the same call renders it;
   e. not paused, `hold --pid` takes the fill's own flock (a fill run started
@@ -33,8 +39,10 @@ os.environ["OWNER_HANDLE"] = "owner"
 
 import pbs_pause as PB  # noqa: E402
 import publish_floor as PF  # noqa: E402
+import digest as DG  # noqa: E402
 
 fails: list[str] = []
+CORRUPT = "PBS_FILL_RECORD_CORRUPT"
 
 
 def check(ok, msg):
@@ -102,14 +110,25 @@ check(len(gh.closed) == 2 and all("Paused for the Peace Be Still" in c for c in 
       f"(a) an open STOPPED issue was not closed with the pause line: {gh.closed}")
 td.cleanup()
 
-# b. a stuck fill (22 days): ignored, the alarm fires
-root, fill, td = setup(22)
+# b. a long fill (30 days): still paused, still named, the alarm stays quiet
+root, fill, td = setup(30)
 j = PB.judge(PB.read_local(fill), NOW)
-check(not j["paused"] and j["stale"], f"(b) a 22-day-old fill file still pauses the Mac jobs: {j}")
-gh = FakeGH()
+check(j["paused"], f"(b) a 30-day-old fill file no longer pauses the Mac jobs: {j}")
+check("since Mon 19 Oct 2026, 30 days" in j["line"] and "still paused until the fill finishes" in j["line"],
+      f"(b) a 30-day pause is not named with its start, days and long-running note: {j['line']}")
+r = subprocess.run([sys.executable, str(HERE.parent / "pbs_pause.py"), "gate"],
+                   env=dict(os.environ, PBS_FILL_FILE=str(fill), PBS_FILL_MIRROR=str(root / "m.json")),
+                   capture_output=True, text=True, timeout=30)
+check(r.returncode == PB.PAUSED_EXIT and PB.CODE in r.stdout,
+      f"(b) the gate let a long-running fill voice and render: rc {r.returncode} {r.stdout}{r.stderr}")
+gh = FakeGH(open_issue=True)
 out = floor_run(root, gh)
-check(len(gh.created) == 2 and all(t.startswith("STOPPED") for t in gh.created),
-      f"(b) a 22-day-old pause silenced the STOPPED alarm: {gh.created} {out}")
+check(not gh.created and "STOPPED" not in out.replace("STOPPED issue", ""),
+      f"(b) a 30-day pause fired the STOPPED alarm: {gh.created} {out}")
+check(out.count("30 days") >= 2, f"(b) the floor line did not name the 30-day pause: {out}")
+dl = "\n".join(DG.pause_lines(NOW, root))
+check("Paused for the Peace Be Still library fill since" in dl and "30 days" in dl,
+      f"(b) the Sunday digest does not name the pause: {dl!r}")
 td.cleanup()
 
 # c. no file: not paused, mirror removed
@@ -117,6 +136,25 @@ root, fill, td = setup(3)
 PB.mirror(PB.read_local(root / "absent"), root)
 check(not (root / PB.MIRROR_REL).exists(), "(c) the mirror outlived the fill file")
 check(not PB.judge(PB.read_local(root / "absent"), NOW)["paused"], "(c) no fill file still pauses")
+check(not PB.repo_status(root, NOW)["paused"], "(c) no mirror still pauses the cloud")
+check(DG.pause_lines(NOW, root) == [], "(c) the digest names a pause that is not on")
+td.cleanup()
+
+# g. a corrupt record pauses, loudly
+root, fill, td = setup(3)
+fill.write_text("{not json")
+j = PB.judge(PB.read_local(fill), NOW)
+check(j["paused"] and CORRUPT in j["line"],
+      f"(g) a corrupt fill file did not pause loudly: {j}")
+fill.write_text(json.dumps({"reason": "no started"}))
+j = PB.judge(PB.read_local(fill), NOW)
+check(j["paused"] and CORRUPT in j["line"], f"(g) a fill file with no started did not pause loudly: {j}")
+(root / PB.MIRROR_REL).write_text("{half a mirr")
+j = PB.repo_status(root, NOW)
+check(j["paused"] and CORRUPT in j["line"], f"(g) a corrupt mirror read as not paused in the cloud: {j}")
+gh = FakeGH()
+out = floor_run(root, gh)
+check(not gh.created and CORRUPT in out, f"(g) a corrupt mirror un-paused the floor alarm or hid itself: {out}")
 td.cleanup()
 
 # d. no Almanac render while paused (loop/whisper_upload.render_ready)
@@ -214,5 +252,5 @@ if fails:
     for f in fails:
         print("  " + f)
     sys.exit(1)
-print("ok test_pbs_pause: a fill under 21 days pauses voice/render and the STOPPED alarm; "
-      "over 21 days it is ignored and STOPPED fires; no file, no pause")
+print("ok test_pbs_pause: a fill pauses voice/render and the STOPPED alarm at any age (30 days "
+      "still paused and named, digest too); no file, no pause; a corrupt record pauses loudly")

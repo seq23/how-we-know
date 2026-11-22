@@ -103,8 +103,9 @@ else
 fi
 
 # PAUSED FOR THE PEACE BE STILL LIBRARY FILL (her call, 18 Nov 2026): while
-# ~/.peace-be-still/library-fill.active exists (under 21 days old) the food
-# night voices and renders nothing. A note, exit 0. loop/pbs_pause.py.
+# ~/.peace-be-still/library-fill.active exists (any age: her ruling 21 Nov
+# 2026, "YT channels still on pause until PBS audio fills are done!!!") the
+# food night voices and renders nothing. A note, exit 0. loop/pbs_pause.py.
 if [ -z "$STUBS" ]; then
   pbs_line=$("$PYP" loop/pbs_pause.py gate 2>&1); pbs_rc=$?
   echo "  $pbs_line"

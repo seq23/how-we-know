@@ -737,8 +737,8 @@ def run(dry_run: bool = False, host: str = DEFAULT_HOST) -> int:
         # PAUSED FOR THE PEACE BE STILL FILL (loop/pbs_pause.py, the mirror
         # the Mac pushes): the Mac's harvest rests on purpose while the fill
         # runs, so a stamp gone stale then is a note, not "start the Mac" in
-        # her digest (hostile review 18 Nov 2026). Over 21 days the mirror is
-        # ignored and the stop below is back.
+        # her digest (hostile review 18 Nov 2026). The pause has no age limit
+        # (her ruling 21 Nov 2026); the stop below is back once the fill ends.
         if stale:
             import pbs_pause                                # noqa: PLC0415
             pause = pbs_pause.repo_status()
