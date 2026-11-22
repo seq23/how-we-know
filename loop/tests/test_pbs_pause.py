@@ -12,6 +12,8 @@
   g. a corrupt record (bad JSON locally, or a corrupt mirror in the cloud)
      still pauses and says NAMED STOP [PBS_FILL_RECORD_CORRUPT]: never
      "not paused";
+  h. V32 (scheduled-pov) notes the pause on the calendar it emptied; with no
+     pause an empty calendar still hard-fails;
   d. while paused the Almanac upload step renders nothing (a voiced script
      waits); with no pause the same call renders it;
   e. not paused, `hold --pid` takes the fill's own flock (a fill run started
@@ -228,6 +230,30 @@ check(r.returncode == 0 and "stays the fill's" in r.stdout,
       f"(e) while paused the hold did not leave the lock to the fill: {r.stdout}{r.stderr}")
 os.environ.pop("PBS_FILL_FILE", None)
 td.cleanup()
+
+# h. V32 (scheduled-pov): the pause empties the calendar on purpose - a note, never a red
+# main; with no pause an empty calendar still hard-fails
+import ledger as LG  # noqa: E402
+import breaker as BR  # noqa: E402
+import validate as VA  # noqa: E402
+orig = (LG.load, BR.longform_hold, BR.longform_approvals_drained, BR.longform_dating_pending)
+LG.load = lambda *a, **k: {"published": []}
+BR.longform_hold = lambda *a, **k: None
+BR.longform_approvals_drained = lambda *a, **k: None
+BR.longform_dating_pending = lambda *a, **k: None
+with tempfile.TemporaryDirectory() as h:
+    m = Path(h) / "pbs_fill.json"
+    m.write_text(json.dumps({"started": dt.datetime.now(UTC).isoformat()}))
+    os.environ["PBS_FILL_MIRROR"] = str(m)
+    r = VA.v32_scheduled_pov_is_hers()
+    check(not r.failures and any("Paused for the Peace Be Still" in n for n in r.notes),
+          f"(h) V32 went red on the calendar the pause emptied: {r.failures} {r.notes}")
+    m.unlink()
+    r = VA.v32_scheduled_pov_is_hers()
+    check(any("examined nothing" in f for f in r.failures),
+          f"(h) with no pause V32 let an empty calendar pass: {r.failures} {r.notes}")
+    os.environ.pop("PBS_FILL_MIRROR", None)
+LG.load, BR.longform_hold, BR.longform_approvals_drained, BR.longform_dating_pending = orig
 
 # f. the whisper.cpp model outside ~/Library/Caches
 with tempfile.TemporaryDirectory() as h:

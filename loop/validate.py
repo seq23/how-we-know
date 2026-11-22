@@ -3191,6 +3191,15 @@ def v32_scheduled_pov_is_hers() -> Result:
         if drained:
             r.note(f"nothing dated ahead: {drained} (publish_floor emails the gap)")
             return r
+        # THE PEACE BE STILL FILL PAUSE (loop/pbs_pause.py; held until the fill
+        # is done, her ruling 21 Nov 2026): nothing new is voiced or rendered,
+        # so the dated run drains to zero on purpose. A corrupt record still
+        # pauses and its line carries the named stop.
+        import pbs_pause as _pb                              # noqa: PLC0415
+        pause = _pb.repo_status()
+        if pause["paused"]:
+            r.note(f"nothing dated ahead: {pause['line']}")
+            return r
         transition = _br.longform_dating_pending()
         if transition:
             r.named_stop("LONGFORM_DATING_PENDING",
