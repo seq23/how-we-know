@@ -459,6 +459,12 @@ def check() -> list[str]:
     import breaker as _br                                    # noqa: PLC0415
     # the approval gate drained (18 Nov 2026) empties the calendar on purpose too
     pending = _br.longform_dating_pending() or _br.longform_approvals_drained()
+    # the Peace Be Still library-fill pause (loop/pbs_pause.py, held until the
+    # fill is done: her ruling 21 Nov 2026) empties the calendar on purpose too:
+    # nothing new is voiced or rendered, so the dated run drains to zero.
+    import pbs_pause as _pb                                  # noqa: PLC0415
+    _pause = _pb.repo_status()
+    pending = pending or (_pause["line"] if _pause["paused"] else None)
     fixture = None
     if not tail and pending:
         print(f"STATE: {pending}: next daily upload assigns dates; proving occupied slots on fixture")
