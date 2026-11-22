@@ -25,6 +25,10 @@ LOOP = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(LOOP, ".."))
 sys.path.insert(0, LOOP)
 
+# The empty-calendar cases below are about the owner's hold and the dating
+# transition, so a real Peace Be Still fill pause on main (the committed mirror
+# loop/state/pbs_fill.json, which V32 also names) must not leak in: no mirror.
+os.environ["PBS_FILL_MIRROR"] = os.path.join(tempfile.mkdtemp(prefix="hold-pbs-"), "absent.json")
 import breaker  # noqa: E402
 import quota  # noqa: E402
 
