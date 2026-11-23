@@ -1,15 +1,15 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-11-22T18:02:39.383Z",
+  "collected_at": "2026-11-23T22:13:02.052Z",
   "window_days": 28,
   "window": {
-    "start": "2026-10-23",
-    "end": "2026-11-20"
+    "start": "2026-10-24",
+    "end": "2026-11-21"
   },
   "totals": {
     "clicks": 0,
-    "impressions": 55,
+    "impressions": 58,
     "queries": 28,
     "pages": 22
   },
@@ -55,9 +55,9 @@
     {
       "key": "dumbo fish",
       "clicks": 0,
-      "impressions": 2,
+      "impressions": 3,
       "ctr": 0,
-      "position": 79.5
+      "position": 79
     },
     {
       "key": "dumbo jellyfish",
@@ -97,16 +97,9 @@
     {
       "key": "hadal zone",
       "clicks": 0,
-      "impressions": 9,
+      "impressions": 11,
       "ctr": 0,
-      "position": 89.1
-    },
-    {
-      "key": "hadal zone facts",
-      "clicks": 0,
-      "impressions": 1,
-      "ctr": 0,
-      "position": 90
+      "position": 89.6
     },
     {
       "key": "hadalpelagic zone",
@@ -142,6 +135,13 @@
       "impressions": 1,
       "ctr": 0,
       "position": 5
+    },
+    {
+      "key": "macropinna microstoma",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 79
     },
     {
       "key": "midnight zone fish",
@@ -223,13 +223,6 @@
   ],
   "pages": [
     {
-      "key": "https://howweknowdeep.com/creatures/hadal-snailfish/",
-      "clicks": 1,
-      "impressions": 16,
-      "ctr": 0.0625,
-      "position": 51.6
-    },
-    {
       "key": "https://howweknowdeep.com/",
       "clicks": 0,
       "impressions": 9,
@@ -246,9 +239,16 @@
     {
       "key": "https://howweknowdeep.com/creatures/barreleye/",
       "clicks": 0,
-      "impressions": 3,
+      "impressions": 4,
       "ctr": 0,
-      "position": 4
+      "position": 22.8
+    },
+    {
+      "key": "https://howweknowdeep.com/creatures/hadal-snailfish/",
+      "clicks": 0,
+      "impressions": 15,
+      "ctr": 0,
+      "position": 55
     },
     {
       "key": "https://howweknowdeep.com/editorial-policy/",
@@ -302,9 +302,9 @@
     {
       "key": "https://howweknowdeep.com/questions/what-is-a-dumbo-octopus/",
       "clicks": 0,
-      "impressions": 7,
+      "impressions": 8,
       "ctr": 0,
-      "position": 44.1
+      "position": 48.4
     },
     {
       "key": "https://howweknowdeep.com/questions/why-deep-sea-creatures-get-creepier-deeper/",
@@ -351,9 +351,9 @@
     {
       "key": "https://howweknowdeep.com/zones/hadal/",
       "clicks": 0,
-      "impressions": 39,
+      "impressions": 41,
       "ctr": 0,
-      "position": 45.6
+      "position": 46.3
     },
     {
       "key": "https://howweknowdeep.com/zones/midnight/",
