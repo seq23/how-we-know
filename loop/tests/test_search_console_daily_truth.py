@@ -66,8 +66,9 @@ if not WORKFLOW.exists():
 else:
     wf = WORKFLOW.read_text()
     examined += 1
-    if not re.search(r"cron:\s*'[^']*\*\s*\*\s*\*'", wf):
-        fails.append("the workflow has no daily cron schedule")
+    # Weekly since 23 Nov 2026 (owner rule: daily only when someone acts on it daily).
+    if not re.search(r"cron:\s*[\"'][0-9]+ [0-9]+ \* \* [0-6][\"']", wf):
+        fails.append("the workflow has no weekly cron schedule")
     examined += 1
     if "contents: write" not in wf:
         fails.append("the workflow cannot commit what it collected")
