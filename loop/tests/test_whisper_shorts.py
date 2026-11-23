@@ -126,6 +126,7 @@ ms = WS.moments(k, 3041.0, 3)
 check("a. three distinct moments, chapter starts first",
       len(ms) == 3 and all(b[0] - a[0] >= WS.MIN_GAP_S for a, b in zip(ms, ms[1:]))
       and ms[1][1] == "Gently settle into your bed now", ms)
+check("a. the 0:00 moment (the welcome, which promises the full length) names no chapter", ms[0][1] is None, ms)
 check("a. every moment leaves room for a whole Short", all(t + WS.SHORT_MAX_S < 3041 for t, _ in ms), ms)
 check("a. a short video still gets distinct moments", len(WS.moments({}, 400.0, 3)) >= 2)
 src = WL.video_path("ep-a")
@@ -158,11 +159,28 @@ sn0 = yt.inserted[0]["snippet"]
 check("b. private, altered content = yes, made for kids = no",
       st0.get("privacyStatus") == "private" and st0.get("containsSyntheticMedia") is True
       and st0.get("selfDeclaredMadeForKids") is False, st0)
-check("b. #shorts title, distinct per Short, AI line first, link to the full video",
-      all("#shorts" in b["snippet"]["title"] and len(b["snippet"]["title"]) <= 100 for b in yt.inserted)
-      and len({b["snippet"]["title"] for b in yt.inserted}) == len(yt.inserted)
-      and sn0["description"].startswith(C["channel"]["ai_voice_line"])
-      and "https://youtu.be/LONG1" in sn0["description"].split("\n")[1], [b["snippet"]["title"] for b in yt.inserted])
+titles = [b["snippet"]["title"] for b in yt.inserted]
+name = "Law of assumption sleep meditation"
+check("b. each title is the video's name plus its moment: no #shorts, no ' · ', <= 100, whole words, distinct",
+      all(t.startswith(name) and "#shorts" not in t.lower() and " · " not in t and len(t) <= 100
+          and not t.rstrip().endswith((",", ";", ":", "-", "·")) for t in titles)
+      and len(set(titles)) == len(titles), titles)
+check("b. a chapter moment is named in its title, whole words",
+      any(t == f"{name}: gently settle into your bed now" for t in titles), titles)
+ai = C["channel"]["ai_voice_line"]
+check("b. the AI line first and exactly once, the full video's link on line 2",
+      all(b["snippet"]["description"].startswith(ai) and b["snippet"]["description"].count(ai) == 1
+          and "https://youtu.be/LONG1" in b["snippet"]["description"].split("\n")[1] for b in yt.inserted),
+      [b["snippet"]["description"][:200] for b in yt.inserted])
+kb = {"title": "Money sleep · a calm mindset (44 min)", "length_s": 2640, "video_id": "LONGM",
+      "description": "", "body": {"snippet": {"title": "x", "tags": []}}}
+tt = {lab: WS.body(kb, {"n": 2, "label": lab}, C)["snippet"]["title"]
+      for lab in ("I am allowed to rest", "I'm safe tonight", "Ideas come slowly", "You open your hands")}
+check("b. a moment keeps the pronoun I, and other first words go lowercase after the name",
+      list(tt.values()) == ["Money sleep: I am allowed to rest", "Money sleep: I'm safe tonight",
+                            "Money sleep: ideas come slowly", "Money sleep: you open your hands"], tt)
+check("b. 'shorts' stays a tag", all("shorts" in (b["snippet"].get("tags") or []) for b in yt.inserted),
+      [b["snippet"].get("tags") for b in yt.inserted])
 check("b. quota spent per Short", SPENT == [WS.UNITS] * n_first, SPENT)
 check("b. uploaded cut files are removed, the rest wait",
       len(list(WS.shorts_dir("ep-b").glob("*.mp4"))) == S["per_video"] - n_first)

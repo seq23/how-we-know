@@ -101,9 +101,12 @@ def moments(k: dict, length_s: float, n: int) -> list[tuple[float, str | None]]:
         return 1.0 <= t <= last and all(abs(t - p) >= MIN_GAP_S for p, _ in picks)
 
     for t, title in chapters(k):
+        # the 0:00 chapter is the welcome, whose words promise the FULL
+        # length: a Short starting there takes no name from it
+        label = title if t > 0 else None
         t = max(1.0, t + 1.0)
         if len(picks) < n and free(t):
-            picks.append((t, title))
+            picks.append((t, label))
     for f in (0.2, 0.5, 0.8, 0.35, 0.65, 0.1, 0.9):
         t = round(length_s * f, 1)
         if len(picks) < n and free(t):
@@ -162,13 +165,21 @@ def cut(slug: str, k: dict, n: int) -> list[dict]:
 
 # ------------------------------------------------------------------ the calendar
 def body(k: dict, row: dict, c: dict) -> dict:
-    """The Short's videos.insert body, from the episode's own kit."""
-    name = k["title"].split(" · ")[0].strip()
-    head = f"{row['label']} · {name}" if row.get("label") else f"{name} · whispered, part {row['n']}"
-    title = (head[:89].rstrip() + " #shorts")
+    """The Short's videos.insert body, from the episode's own kit. One title a
+    person would write (the episode's name, then the moment the Short is cut
+    from), cut only at a word, no length (a Short is under a minute) and no
+    visible #shorts (YouTube files a vertical video under a minute as a Short
+    by itself; the tag stays). The AI-voice line opens the description once."""
+    name = WL.clip_words(k["title"].split(" · ")[0].split(" (")[0], 70)
+    label = WL.clip_words(row.get("label") or "", 99 - len(name) - 2)
+    first = label.split(" ")[0] if label else ""
+    if label and first != "I" and not first.startswith("I'"):      # "I am..." keeps its capital
+        label = label[:1].lower() + label[1:]
+    title = f"{name}: {label}" if label else f"{name}, part {row['n']}"
     full = WL.length_label(float(k.get("length_s") or 0))
-    desc = (f"{c['channel']['ai_voice_line']}\n"
-            f"The full {full} video: https://youtu.be/{k['video_id']}\n\n{k['description']}")[:4900]
+    ai = c["channel"]["ai_voice_line"]
+    rest = "\n".join(ln for ln in (k.get("description") or "").splitlines() if not ln.startswith(ai))
+    desc = f"{ai}\nThe full {full} video: https://youtu.be/{k['video_id']}\n\n{rest.strip()}\n"[:4900]
     b = json.loads(json.dumps(k["body"]))
     b["snippet"].update({"title": title, "description": desc})
     b["snippet"]["tags"] = list(dict.fromkeys((b["snippet"].get("tags") or []) + ["shorts"]))

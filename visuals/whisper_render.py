@@ -148,6 +148,9 @@ def render(slug: str, proof_seconds: float | None = None) -> Path:
             tmp.unlink()
             raise SystemExit(f"NAMED STOP [WHISPER_RENDER_SHORT] rendered {got:.1f}s of {dur:.1f}s")
         tmp.replace(out)
+    # the kit's thumbnails were drawn before this footage existed: remake them on
+    # frames of it (a proof writes no full video, so nothing changes for one)
+    WL.refresh_thumbnails(slug, c)
     print(f"rendered {out.relative_to(ROOT)}: {WL.fmt_len(dur)}, "
           f"{out.stat().st_size / 2**20:.0f} MiB; title: {kit['title']}")
     return out

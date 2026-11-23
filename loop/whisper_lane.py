@@ -455,14 +455,34 @@ def title(p: dict, seconds: float, c: dict | None = None) -> str:
     return pat.format(topic=e["topic"], moment=e["moment"], length=length_label(seconds))
 
 
+def clip_words(text: str, n: int) -> str:
+    """`text` cut to at most n characters at a word boundary, with no dangling
+    punctuation (the 23 Nov 2026 review found "whispered sl" and "affirm,")."""
+    text = " ".join(text.split())
+    if len(text) > n:
+        cut = text[:n + 1]
+        text = cut[:cut.rfind(" ")] if " " in cut else text[:n]
+    return text.rstrip(" ,;:·-–—").rstrip(".")
+
+
 def chapters(p: dict, seg_starts: list[float] | None) -> list[str]:
+    """YouTube chapters: each segment's start and the first sentence it says.
+    Segment 1 opens with the length promise (add_opening), so its chapter is
+    named from the paragraph after it; a chapter whose name repeats an earlier
+    one is folded into the chapter before it."""
     if not seg_starts:
         return []
-    out = []
-    for s, t in zip(p["segments"], seg_starts):
-        first = sentences(s["paragraphs"][0])[0] if s["paragraphs"] else s["source"]
+    out, seen = [], set()
+    for i, (s, t) in enumerate(zip(p["segments"], seg_starts)):
+        paras = list(s["paragraphs"])
+        if i == 0 and len(paras) > 1 and _is_opening(paras[0]):
+            paras = paras[1:]
+        name = clip_words(sentences(paras[0])[0] if paras else s["source"], 60)
+        if not name or name.lower() in seen:
+            continue
+        seen.add(name.lower())
         h, rem = divmod(int(t), 3600)
-        out.append(f"{h}:{rem // 60:02d}:{rem % 60:02d} {first[:60].rstrip('.')}")
+        out.append(f"{h}:{rem // 60:02d}:{rem % 60:02d} {name}")
     if out:
         out[0] = "0:00:00" + out[0][7:]
     return out
@@ -581,10 +601,10 @@ def credit_line(a: dict) -> str:
 
 def _font(name: str, size: int):
     from PIL import ImageFont                               # noqa: PLC0415
-    if name == "Jost-Light.ttf":                            # the variable font, Light axis
+    if name in ("Jost-Light.ttf", "Jost-Regular.ttf"):       # the variable font, at that weight
         f = ImageFont.truetype(str(FONTS / "Jost.ttf"), size)
         try:
-            f.set_variation_by_name("Light")
+            f.set_variation_by_name(name[5:-4])
         except (OSError, ValueError):
             pass
         return f
@@ -593,74 +613,174 @@ def _font(name: str, size: int):
 
 # The owner's ruling 8 Nov 2026: three thumbnail variants per episode, the
 # same brand, beside each other in the kit. A (thumbnail.png) is uploaded.
-# Each variant: (candle x, candle y, words x, words anchor "l"/"m", words top y).
-VARIANTS = {"a": (980, 430, 80, "l", 250),
-            "b": (300, 430, 1200, "r", 250),
-            "c": (640, 500, 640, "m", 110)}
+# The 23 Nov 2026 ship-review (sr_mwtanahb9otk) failed the old drawn-candle
+# template: the same flat candle on every lane (a candle on a deep sea video),
+# a subline too small to read and "sleep science" on every history lane, a
+# wordmark invisible at feed size and the left of the frame empty. Each
+# variant now shows the video's OWN picture (the painting it grows, or a frame
+# of the rendered footage), dimmed, with big words over a dark scrim, a
+# lane-true subline and the wordmark with its flame. Only a footage video not
+# rendered yet has no picture of its own; it gets the candle glow until
+# refresh_thumbnails() runs after its render.
+# Each variant: (where the words sit "bottom"/"top", the share of the video
+# its picture is taken at, how close the picture is cropped).
+VARIANTS = {"a": ("bottom", 0.30, 1.0),
+            "b": ("top", 0.55, 1.0),
+            "c": ("bottom", 0.80, 1.45)}
 VARIANT_FILES = {"a": "thumbnail.png", "b": "thumbnail-b.png", "c": "thumbnail-c.png"}
+THUMB_WORDS_PX = (150, 96)          # the headline starts here and shrinks no further than this
+THUMB_SUB_PX = 56                   # the subline: readable on a phone feed (the old 40 px Light was not)
+THUMB_MARK_PX = 60                  # the wordmark, DM Serif italic, with its flame
+PAINT_STILL_MAX_S = 1200            # how far into a painting a thumbnail looks (CPU: ~8 ms per video second)
+LANE_SUBLINE = {"neville": "neville goddard", "shinn": "florence scovel shinn",
+                "money": "money affirmations", "rotating": "affirmations", "food": "food history",
+                "ocean": "deep sea", "materials": "sleepy science", "science": "sleepy science",
+                "psalm": "psalms · kjv"}
+
+
+def subline(p: dict, seconds: float, c: dict | None = None) -> str:
+    """The small line under the words: the real length and what the video is, by its lane."""
+    c = c or cfg()
+    return f"{length_label(seconds)} · whispered · {LANE_SUBLINE.get(lane_of(p, c), 'for sleep')}"
+
+
+def _frame_at(video: Path, at_s: float):
+    """One frame of a rendered video (PIL RGB, 1280x720), or None if ffmpeg cannot read it."""
+    from PIL import Image                                   # noqa: PLC0415
+    r = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{at_s:.1f}", "-i", str(video), "-frames:v", "1",
+                        "-vf", "scale=1280:720", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
+                       capture_output=True)
+    if r.returncode != 0 or len(r.stdout) != 1280 * 720 * 3:
+        return None
+    return Image.frombytes("RGB", (1280, 720), r.stdout)
+
+
+def backdrops(p: dict, seconds: float, c: dict | None = None) -> dict:
+    """{variant: PIL RGB 1280x720 or None}: the video's own picture for each
+    variant. A painted video: its painting (visuals/whisper_paint.stills, the
+    same seed the render uses), at three points of the painting's growth. A
+    footage video already rendered: a frame of it. Otherwise None."""
+    from PIL import Image                                   # noqa: PLC0415
+    c = c or cfg()
+    slug = p.get("slug") or ""
+    if slug and picture_for(slug, p, c) == "paint":
+        sys.path.insert(0, str(ROOT / "visuals"))
+        import whisper_paint as WP                          # noqa: PLC0415
+        span = min(max(seconds, 60.0), PAINT_STILL_MAX_S)
+        times = [span * v[1] for v in VARIANTS.values()]
+        pics = WP.stills(slug, times, lane_of(p, c))
+        return {v: Image.fromarray(a).resize((1280, 720)) for v, a in zip(VARIANTS, pics)}
+    v = video_path(slug) if slug else None
+    if v is not None and v.exists():
+        return {k: _frame_at(v, seconds * x[1]) for k, x in VARIANTS.items()}
+    return {k: None for k in VARIANTS}
+
+
+def _candle_ground(b: dict, variant: str):
+    """The no-picture-yet ground: one candle flame in its glow, in a dark room
+    (placed a little differently per variant)."""
+    from PIL import Image, ImageDraw, ImageFilter          # noqa: PLC0415
+    import whisper_branding as WB                           # noqa: PLC0415
+    cx, cy, h = {"a": (960, 250, 170), "b": (1010, 470, 150), "c": (880, 230, 200)}[variant]
+    img = Image.new("RGB", (1280, 720), b["ground"])
+    g = ImageDraw.Draw(img)
+    for r, col in ((330, b["glow"]), (190, "#5A3A1E"), (90, "#8A5A2A")):
+        g.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
+    img = img.filter(ImageFilter.GaussianBlur(90)).convert("RGBA")
+    fl, (x0, y0, x1, y1) = WB.flame(h, b)
+    img.alpha_composite(fl, (cx - (x0 + x1) // 2, cy - (y0 + y1) // 2))
+    return img.convert("RGB")
 
 
 def thumbnail(p: dict, seconds: float, out: Path, c: dict | None = None,
-              variant: str = "a") -> Path:
-    """1280x720: one candle in a dark room (the approved brand). An ember glow
-    drawn in code, lowercase italic words, the real length. No faces, no
-    starfields, no pastel purple, no flashes. `variant` moves the candle and
-    the words (VARIANTS); the palette, fonts and words stay the brand's."""
-    from PIL import Image, ImageDraw, ImageFilter          # noqa: PLC0415
+              variant: str = "a", picture=None) -> Path:
+    """1280x720 in the approved brand (dark only, one candle in a dark room):
+    the video's own picture dimmed (`picture`, PIL RGB; None draws the candle
+    glow), the thumb words big in DM Serif italic lowercase over a dark scrim,
+    a lane-true subline in ember and the wordmark with its flame. No faces,
+    no starfields, no pastel purple, no flashes."""
+    from PIL import Image, ImageDraw, ImageEnhance          # noqa: PLC0415
+    import whisper_branding as WB                           # noqa: PLC0415
     c = c or cfg()
     b = c["brand"]
     e = episode_cfg(p, c)
     W_, H_ = 1280, 720
-    cx, cy, tx, anchor, ty = VARIANTS[variant]
-    img = Image.new("RGB", (W_, H_), b["ground"])
-    glow = Image.new("RGB", (W_, H_), b["ground"])
-    g = ImageDraw.Draw(glow)
-    for r, col in ((330, b["glow"]), (190, "#5A3A1E"), (90, "#8A5A2A")):
-        g.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
-    glow = glow.filter(ImageFilter.GaussianBlur(90))
-    img = Image.blend(img, glow, 0.9)
-    d = ImageDraw.Draw(img)
-    # the candle and its flame
-    d.rounded_rectangle((cx - 34, cy + 20, cx + 34, cy + 230), radius=8, fill="#E9D9BC")
-    d.line((cx, cy + 20, cx, cy - 4), fill="#2A1E14", width=4)
-    flame = Image.new("RGBA", (W_, H_), (0, 0, 0, 0))
-    f = ImageDraw.Draw(flame)
-    f.ellipse((cx - 22, cy - 92, cx + 22, cy - 2), fill=b["ember"])
-    f.ellipse((cx - 10, cy - 58, cx + 10, cy - 8), fill="#FBE3B0")
-    flame = flame.filter(ImageFilter.GaussianBlur(3))
-    img.paste(flame, (0, 0), flame)
+    where, _, zoom = VARIANTS[variant]
+    if picture is not None:
+        pic = picture.convert("RGB").resize((W_, H_))
+        if zoom > 1:
+            cw, ch = int(W_ / zoom), int(H_ / zoom)
+            pic = pic.crop(((W_ - cw) // 2, (H_ - ch) // 2, (W_ + cw) // 2, (H_ + ch) // 2)).resize((W_, H_))
+        img = ImageEnhance.Brightness(pic).enhance(0.8)
+    else:
+        img = _candle_ground(b, variant)
+    # the scrim: the ground colour, fading from the words' edge into the picture
+    ground = tuple(int(b["ground"][i:i + 2], 16) for i in (1, 3, 5))
+    mask = Image.new("L", (1, H_))
+    for y in range(H_):
+        t = (H_ - y) / H_ if where == "bottom" else y / H_     # 0 at the words' edge
+        mask.putpixel((0, y), int(235 * max(0.0, 1 - t / 0.62) ** 1.4))
+    img = Image.composite(Image.new("RGB", (W_, H_), ground), img, mask.resize((W_, H_)))
     d = ImageDraw.Draw(img)
     words = e["thumb_words"].lower()
-    size = 118
+    size, floor = THUMB_WORDS_PX
     font = _font("DMSerifDisplay-Italic.ttf", size)
-    while d.textlength(words, font=font) > 760 and size > 70:
+    lines = [words]
+    while True:
+        if d.textlength(words, font=font) <= 1120:
+            lines = [words]
+            break
+        mid = words.rfind(" ", 0, len(words) // 2 + 4)
+        two = [words[:mid], words[mid + 1:]] if mid > 0 else [words]
+        if max(d.textlength(x, font=font) for x in two) <= 1120 or size <= floor:
+            lines = two
+            break
         size -= 6
         font = _font("DMSerifDisplay-Italic.ttf", size)
-    lines = [words]
-    if d.textlength(words, font=font) > 760:
-        mid = words.rfind(" ", 0, len(words) // 2 + 4)
-        lines = [words[:mid], words[mid + 1:]]
-    y = ty - (len(lines) - 1) * size // 2 if variant != "c" else ty
-    a = {"l": "la", "r": "ra", "m": "ma"}[anchor]
+    sub_font = _font("Jost-Regular.ttf", THUMB_SUB_PX)
+    step = int(size * 1.02)
+    block = step * len(lines) + 24 + THUMB_SUB_PX
+    y = H_ - 64 - block if where == "bottom" else 64
     for ln in lines:
-        d.text((tx, y), ln, font=font, fill=b["ink"], anchor=a)
-        y += int(size * 1.05)
-    small = _font("Jost-Light.ttf", 40)
-    sx = tx + 4 if anchor == "l" else tx
-    sub = {"sleep": "sleep science", "neville": "neville goddard", "shinn": "florence scovel shinn",
-           "affirmations": "affirmations", PSALM: "psalms · kjv"}.get(p["kind"], "sleep")
-    d.text((sx, y + 30), f"{length_label(seconds)} · whispered · {sub}", font=small,
-           fill=b["ember"], anchor=a)
-    d.text((sx, 640) if variant != "c" else (84, 640), "whisper almanac",
-           font=_font("Jost-Light.ttf", 30), fill="#BFAF95", anchor=a if variant != "c" else "la")
+        d.text((72, y), ln, font=font, fill=b["ink"], anchor="la")
+        y += step
+    d.text((76, y + 24), subline(p, seconds, c), font=sub_font, fill=b["ember"], anchor="la")
+    # the wordmark with its flame, in the corner away from the words
+    mark = _font("DMSerifDisplay-Italic.ttf", THUMB_MARK_PX)
+    mw = int(d.textlength("whisper almanac", font=mark))
+    my = 40 if where == "bottom" else H_ - 40 - THUMB_MARK_PX
+    mx = W_ - 56 - mw
+    d.text((mx, my), "whisper almanac", font=mark, fill=b["ink"], anchor="la")
+    fl, (x0, y0, x1, y1) = WB.flame(int(THUMB_MARK_PX * 0.62), b)
+    img.paste(fl, (mx + mw - x1 + 2, my - y1 + int(THUMB_MARK_PX * 0.22)), fl)
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out, "PNG", optimize=True)
     return out
 
 
 def thumbnails(p: dict, seconds: float, d: Path, c: dict | None = None) -> list[Path]:
-    """The three variants, A (the uploaded thumbnail.png), B and C, in d."""
-    return [thumbnail(p, seconds, d / VARIANT_FILES[v], c, v) for v in VARIANTS]
+    """The three variants, A (the uploaded thumbnail.png), B and C, in d, each
+    on the video's own picture (backdrops) where it has one."""
+    c = c or cfg()
+    pics = backdrops(p, seconds, c)
+    return [thumbnail(p, seconds, d / VARIANT_FILES[v], c, v, pics.get(v)) for v in VARIANTS]
+
+
+def refresh_thumbnails(slug: str, c: dict | None = None) -> list[Path]:
+    """After a footage render: remake the kit's thumbnails from frames of the
+    rendered video (they were drawn before it existed). Forward only: an
+    uploaded kit keeps the thumbnail it was published with."""
+    c = c or cfg()
+    k = KITS / slug / "kit.json"
+    meta = json.loads(k.read_text())
+    if meta.get("video_id"):
+        return []
+    p = parse(SCRIPTS / f"{slug}.md")
+    thumbs = thumbnails(p, float(meta.get("length_s") or estimate_seconds(p, c)), KITS / slug, c)
+    meta["thumbnails"] = [x.name for x in thumbs]
+    meta["thumbnail_problems"] = thumbnail_problems(thumbs, c)
+    k.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n")
+    return thumbs
 
 
 def thumbnail_problems(paths: list[Path], c: dict | None = None) -> list[str]:
@@ -733,7 +853,11 @@ def kit(slug: str, measured_s: float | None = None, seg_starts: list[float] | No
             meta.update({k: prev[k] for k in UPLOAD_KEYS if k in prev})
     d = KITS / slug
     d.mkdir(parents=True, exist_ok=True)
-    thumbs = thumbnails(p, secs, d, c)
+    published = [d / f for f in VARIANT_FILES.values()]
+    if meta.get("video_id") and all(f.exists() for f in published):
+        thumbs = published                # forward-only: the thumbnails it was published with
+    else:
+        thumbs = thumbnails(p, secs, d, c)
     meta["thumbnails"] = [x.name for x in thumbs]
     meta["thumbnail_problems"] = thumbnail_problems(thumbs, c)
     (d / "kit.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n")
