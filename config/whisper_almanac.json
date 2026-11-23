@@ -11,7 +11,7 @@
     "handle": "@whisperalmanac",
     "id": "UCf8FJ4M34oYG2Pg8-QGVbtg",
     "id_why": "The channel's public id (channels.list forHandle=@whisperalmanac, read 11 Nov 2026). loop/whisper_upload.py uploads only when the signed-in channel's id equals it (NAMED STOP WHISPER_WRONG_CHANNEL).",
-    "ai_voice_line": "The voice is AI: a clone of the creator's own whisper, made with Chatterbox. The facts come from checked public sources.",
+    "ai_voice_line": "The voice is AI: a clone of the creator's own whisper, made with Chatterbox.",
     "altered_content": true,
     "made_for_kids": false,
     "category_id": "27",
@@ -383,8 +383,8 @@
     "topics": {
       "money": {
         "topic": "money affirmations",
-        "moment": "it's already yours",
-        "thumb_words": "it's already yours",
+        "moment": "a calm money mindset",
+        "thumb_words": "a calm money mindset",
         "promise": "money affirmations"
       },
       "love": {
@@ -412,7 +412,7 @@
       "money-fast": {
         "topic": "money affirmations",
         "moment": "manifest money while you sleep",
-        "thumb_words": "money flows to me",
+        "thumb_words": "let money feel easy",
         "promise": "money affirmations",
         "title": "Manifest money fast while you sleep · whispered ASMR money affirmations ({length})",
         "guide": "Money flowing in easily and often; open to new income and steady monthly income; noticing opportunities; grateful. Present tense and calm. Never a date, a speed, an amount or a promise."
@@ -1374,10 +1374,10 @@
     "why": "Whisper Almanac's own final frame check (visuals/whisper_frame_check.py), 9 Nov 2026: How We Know's gate failed every dimmed sleep video because ONE frame of open water out of ~300 failed it. Any frame still hard-fails on text, black bars, a diagram/graphic/CG filler, or a near-black frame (her 6 Nov rule: dim moving footage, never a dark screen; the Sep 2026 demonetisation hit dark-screen sleep compilations). near_black_luma: mean luma (0-255) of the sampled, dimmed frame, measured in code; measured 9 Nov on the held 1 h 43 min render, 42 of 310 frames sat under 6 (black to the eye, e.g. 2.1 at 1:01) while dim footage with a visible animal read 12+. subject_share_min: at least half the sampled frames must show real footage of the named subject; ambient open water, seabed or sky may fill the rest. Start at 0.5; raise it if the subject reads as missing."
   },
   "about": {
-    "_why": "The channel's About text, keywords and banner line (loop/whisper_branding.py apply). Written 16 Nov 2026 to the 9 Nov plan; the banner says \"Nightly ASMR\" (her ask, 16 Nov); tagline 'Whisper yourself to sleep: manifest, learn, or just let go.' (her pick B, 16 Nov) opens the About and its last clause is the banner's third line. Add 'slow paintings to switch off to' to the second About line only once paint videos are live (option a): the old About still said science and history over a dark screen. AI-voice line kept; no promises; Neville credited as public domain, no endorsement.",
+    "_why": "The channel's About text, keywords and banner line (loop/whisper_branding.py apply). Written 16 Nov 2026 to the 9 Nov plan; the banner says \"Nightly ASMR\" (her ask, 16 Nov); tagline 'Whisper yourself to sleep: manifest, learn, or just let go.' (her pick B, 16 Nov) opens the About and its last clause is the banner's third line. Add 'slow paintings to switch off to' to the second About line only once paint videos are live (option a). 23 Nov 2026 (ship-review sr_mwtamczxhd2c): Friday is Psalm Nights since 18 Nov, not the deep sea documentary; the facts sentence names the history and science, the only lanes with facts: the old About still said science and history over a dark screen. AI-voice line kept; no promises; Neville credited as public domain, no endorsement.",
     "banner_line": "Nightly ASMR for sleep",
     "banner_sub": "manifest, learn, or just let go",
-    "description": "Whisper yourself to sleep: manifest, learn, or just let go.\n\nWhispered manifesting · sleepy history & science.\n\nEvery week: guided whispers built on Neville Goddard's techniques (Monday and Thursday), whispered food history (Tuesday), money affirmations (Wednesday) and a deep sea documentary (Friday). New videos at 8 pm Central.\n\nThe voice is AI: a clone of the creator's own whisper, made with Chatterbox. The facts come from checked public sources.\n\nNeville Goddard's words are quoted only from his public-domain books. Not affiliated with or endorsed by any estate, publisher or organisation.\n\nSoft whispering over dim, slow footage.",
+    "description": "Whisper yourself to sleep: manifest, learn, or just let go.\n\nWhispered manifesting · sleepy history & science.\n\nEvery week: guided whispers built on Neville Goddard's techniques (Monday and Thursday), whispered food history (Tuesday), money affirmations (Wednesday) and Psalm Nights, scripture from the King James Bible (Friday). New videos at 8 pm Central.\n\nThe voice is AI: a clone of the creator's own whisper, made with Chatterbox. The history and science come from checked public sources.\n\nNeville Goddard's words are quoted only from his public-domain books. Not affiliated with or endorsed by any estate, publisher or organisation.\n\nSoft whispering over dim, slow footage.",
     "keywords": "\"whisper asmr\" \"sleep meditation\" \"guided sleep meditation\" \"neville goddard\" \"law of assumption\" \"affirmations for sleep\" \"money affirmations\" \"sleep story\" \"asmr for sleep\" \"deep sea documentary\" \"food history\" \"whispered\""
   }
 }

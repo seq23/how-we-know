@@ -197,6 +197,25 @@ def frames(slug: str, seconds: float, lane: str | None = None):
         t += gap
 
 
+def stills(slug: str, times: list[float], lane: str | None = None) -> list[np.ndarray]:
+    """The painting as it stands at each of `times` (seconds; H x W x 3 uint8
+    each), in one pass: the same seed and the same draws in the same order as
+    frames(), skipping the fades, so each is the frame the video shows once the
+    stroke under way at that moment has landed. The thumbnails show the
+    video's own painting with this."""
+    p = Painter(slug, lane)
+    t = 0.0
+    out = {}
+    for at in sorted(set(times)):
+        while t < at:
+            gap = p.rng.uniform(*STROKE_EVERY)
+            p.rng.uniform(*FADE_S)                         # frames() draws the fade here
+            p.canvas = p.next_target()
+            t += gap
+        out[at] = p.canvas.astype(np.uint8)
+    return [out[x] for x in times]
+
+
 def render(slug: str, seconds: float, out: Path, audio: Path | None = None,
            lane: str | None = None) -> Path:
     """The painting, `seconds` long, muxed with `audio` when given."""
