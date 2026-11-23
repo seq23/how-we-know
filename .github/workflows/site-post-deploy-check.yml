@@ -24,7 +24,8 @@ on:
   schedule:
     # 06:20 CT daily. Off the hour: scheduled runs bunch on the hour and are
     # dropped under load, and nothing here needs a particular minute.
-    - cron: '20 6 * * *'  # America/Chicago, all year
+    # Weekly since 23 Nov 2026 (owner rule: daily only when something changes daily AND someone acts on it daily).
+    - cron: "20 6 * * 3"
       timezone: America/Chicago
   workflow_dispatch:
 

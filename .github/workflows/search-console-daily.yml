@@ -27,7 +27,8 @@ on:
   schedule:
     # 04:40 CT daily, after Google has finalised the previous day. Off the hour:
     # scheduled runs bunch on the hour and are dropped under load.
-    - cron: '40 4 * * *'  # America/Chicago, all year
+    # Weekly since 23 Nov 2026 (owner rule: daily only when something changes daily AND someone acts on it daily).
+    - cron: "40 4 * * 1"
       timezone: America/Chicago
   workflow_dispatch:
 
