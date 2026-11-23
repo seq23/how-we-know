@@ -1,12 +1,12 @@
 {
-  "week": "2026-W47",
-  "generated": "2026-11-16T06:28:46+00:00",
+  "week": "2026-W48",
+  "generated": "2026-11-23T06:27:17+00:00",
   "videos_per_week": 6,
-  "breaker": "tripped",
+  "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 939,
+      "examined": 954,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -146,17 +146,17 @@
     },
     {
       "validator": "V20 cadence-schedule",
-      "examined": 42,
+      "examined": 14,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "2 episode(s) dated through 2026-11-18; 3 domain(s) allocating on disjoint days {'money-and-business': (2, 5), 'materials-and-manufacturing': (1, 4), 'deep-sea-ocean-science': (0, 3)} at 6/week"
+        "no episode is currently scheduled ahead"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 78,
+      "examined": 80,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -166,7 +166,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 89,
+      "examined": 91,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -200,7 +200,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 38,
+      "examined": 42,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -216,7 +216,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 641,
+      "examined": 651,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -237,29 +237,33 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
-      "notes": [],
+      "notes": [
+        "nothing dated ahead: Paused for the Peace Be Still library fill since Wed 18 Nov 2026, 4 days, expected to end 2026-11-24T19:09:30-06:00"
+      ],
       "stops": []
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 91,
+      "examined": 93,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "91 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "93 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
     {
       "validator": "V71 queued-pov-traced",
-      "examined": 30,
+      "examined": 32,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "examined 30 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
+        "what-is-brine-water: no plan yet - the batch freezes one before it narrates",
+        "what-is-brine-solution: no plan yet - the batch freezes one before it narrates",
+        "examined 32 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
       ],
       "stops": []
     },
@@ -273,7 +277,7 @@
     },
     {
       "validator": "V73 every-lane-has-a-runner",
-      "examined": 54,
+      "examined": 55,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -341,7 +345,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 62,
+      "examined": 64,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -359,11 +363,11 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 221,
+      "examined": 228,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 96, automated/error 1, error 104, owner_secret 20"
+        "stop kinds by class: automated 102, automated/error 1, error 105, owner_secret 20"
       ],
       "stops": []
     },
@@ -379,7 +383,7 @@
     },
     {
       "validator": "V46 shorts-handoff",
-      "examined": 127,
+      "examined": 130,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -509,11 +513,11 @@
     },
     {
       "validator": "V70 demand-verdict",
-      "examined": 43,
+      "examined": 45,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "pull 2026-11-15: {'PASS': 1, 'WATCH': 6, 'FAIL': 5, 'INSUFFICIENT': 31}"
+        "pull 2026-11-22: {'PASS': 1, 'WATCH': 6, 'FAIL': 8, 'INSUFFICIENT': 30}"
       ],
       "stops": []
     },
@@ -531,7 +535,7 @@
     },
     {
       "validator": "V76 one-question",
-      "examined": 175,
+      "examined": 179,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -551,9 +555,9 @@
     "why": "configured default (6/week)"
   },
   "runway": {
-    "unpublished_scripts": 44,
-    "publishable": 32,
-    "scheduled_not_yet_aired": 2,
+    "unpublished_scripts": 46,
+    "publishable": 34,
+    "scheduled_not_yet_aired": 0,
     "basis": "publish queue",
     "videos_per_week": 6,
     "weeks_remaining": 5.7,
@@ -563,19 +567,19 @@
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 12,
+        "queued": 14,
         "scheduled_ahead": 0,
-        "weeks": 6.0,
+        "weeks": 7.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated)"
+        "message": "deep-sea-ocean-science: 7.0 week(s) at 2/week (14 queued, 0 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 20,
-        "scheduled_ahead": 2,
-        "weeks": 11.0,
+        "scheduled_ahead": 0,
+        "weeks": 10.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated)"
+        "message": "materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated)"
       },
       "food-science": {
         "slots_per_week": 0,
@@ -596,7 +600,7 @@
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "5.7 weeks of queue at 6/week (32 publishable of 44 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (12 queued, 0 already dated); materials-and-manufacturing: 11.0 week(s) at 2/week (20 queued, 2 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)."
+    "message": "5.7 weeks of queue at 6/week (34 publishable of 46 on disk). By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (14 queued, 0 already dated); materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
