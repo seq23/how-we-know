@@ -357,6 +357,36 @@
     "status": "found",
     "tries": 1
   },
+  "what-is-brine-solution": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-is-brine-solution__drawn-card.jpg",
+    "found_at": "2026-11-23T05:00:43+00:00",
+    "last_tried": "2026-11-22",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+    "queries": [
+      "brine solution",
+      "brine",
+      "solution"
+    ],
+    "status": "drawn card",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; item page marks the work as copyrighted (cc by-sa 4.0); no candidate passed both gates"
+  },
+  "what-is-brine-water": {
+    "chosen_by": "auto",
+    "file": "assets/auto__auto-what-is-brine-water__drawn-card.jpg",
+    "found_at": "2026-11-23T05:01:03+00:00",
+    "last_tried": "2026-11-22",
+    "licence": "Own work: drawn in-repo by visuals/drawn_card.py (no image model)",
+    "queries": [
+      "brine water",
+      "brine",
+      "water"
+    ],
+    "status": "drawn card",
+    "tries": 1,
+    "why": "pixabay: no photo whose tags name the subject; no candidate passed both gates"
+  },
   "what-is-inside-butter-rice-meat": {
     "chosen_by": "auto",
     "file": "assets/auto__auto-what-is-inside-butter-rice-meat__pixabay-7317384.jpg",
@@ -420,9 +450,9 @@
   "why-bread-rises-steak-browns-chocolate-snaps": {
     "chosen_by": "auto",
     "file": "assets/auto__auto-why-bread-rises-steak-browns-chocolate-snaps__pixabay-1077984.jpg",
-    "found_at": "2026-11-22T05:00:39+00:00",
+    "found_at": "2026-11-23T05:01:07+00:00",
     "item_url": "https://pixabay.com/photos/bread-toaster-food-toast-1077984/",
-    "last_tried": "2026-11-21",
+    "last_tried": "2026-11-22",
     "licence": "Pixabay Content License",
     "queries": [
       "bread rise steak brown",
@@ -433,7 +463,7 @@
       "chocolate snap"
     ],
     "status": "found",
-    "tries": 16
+    "tries": 17
   },
   "why-deep-sea-creatures-are-creepers": {
     "chosen_by": "owner",
