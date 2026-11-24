@@ -476,12 +476,6 @@
     "gemini/gemini-3.6-flash": [
       {
         "lane": "describe",
-        "latency_s": 14.4,
-        "outcome": "answered",
-        "ts": "2026-11-22T07:16:33Z"
-      },
-      {
-        "lane": "describe",
         "latency_s": 10.0,
         "outcome": "answered",
         "ts": "2026-11-22T07:22:17Z"
@@ -593,6 +587,12 @@
         "latency_s": 18.1,
         "outcome": "answered",
         "ts": "2026-11-23T08:07:50Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 20.3,
+        "outcome": "answered",
+        "ts": "2026-11-24T01:57:44Z"
       }
     ],
     "gemini/gemini-3.8-flash": [
