@@ -1,0 +1,24 @@
+{
+  "stage": "cloud-upload",
+  "week": "2026-W48",
+  "at": "2026-11-24T01:59:25+00:00",
+  "code": "NO_ROTATION_DAY",
+  "message": "every episode ready to upload today belongs to a domain with no rotation day: what-is-inside-chili-coffee-honey. They stay on the shelf and upload the first run their domain holds a day again; nothing is deleted.",
+  "detail": {
+    "skipped": [
+      "what-is-inside-chili-coffee-honey"
+    ]
+  },
+  "unblock": "",
+  "disposition": "self_resolving",
+  "disposition_why": "Every episode ready to upload belongs to a domain that holds no rotation day (loop/backfill.py schedule_slugs returns None: the domain is paused, e.g. food for the Money test, or not registered). They wait on the R2 shelf and upload the first run their domain has a day again. Raised instead of uploading nothing and recording zero-episode evidence in loop/state/lane_evidence.json, which happened on 2026-11-19. (run 4 of at most 26 before this escalates to a human.)",
+  "consecutive": 4,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders",
+    "quota allows 3 of 4 today. quota day 2026-11-23 (PT): spent 102 of 10000, 9498 usable after 400 headroom; lanes: demand 102",
+    "no rotation day for what-is-inside-chili-coffee-honey; left on the shelf"
+  ]
+}
