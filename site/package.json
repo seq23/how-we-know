@@ -34,8 +34,8 @@
     "deploy:pages": "npm run build && wrangler pages deploy .output/public --project-name how-we-know --branch main --commit-dirty=true && npm run validate:live"
   },
   "dependencies": {
-    "@tanstack/react-router": "1.170.18",
-    "@tanstack/react-start": "1.168.30",
+    "@tanstack/react-router": "1.170.41",
+    "@tanstack/react-start": "1.168.60",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
@@ -46,7 +46,7 @@
     "@vitejs/plugin-react": "6.0.4",
     "nitro": "3.0.260610-beta",
     "typescript": "6.0.3",
-    "vite": "8.1.5",
+    "vite": "8.1.7",
     "wrangler": "4.113.0"
   },
   "allowScripts": {
