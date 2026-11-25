@@ -535,7 +535,7 @@ def next_episode(lane: str, c: dict) -> dict | None:
     checked = WL.fact_checked()
     for e in c["episodes"]:
         if (e.get("lane") == lane and e["slug"] not in have
-                and all(WL.base_slug(s) in checked for s in e["sources"])):
+                and e["sources"] and all(WL.base_slug(s) in checked for s in e["sources"])):
             return e
     return None
 
@@ -568,10 +568,10 @@ def run(args, c: dict) -> int:
                 # first; at most one long sleep episode a run (her decision
                 # 9 Nov 2026: food history and ocean documentary are lanes)
                 mix, _ = WL.weekly_mix(c)
-                sleepy, unplanned, sleep_done = sleep_lanes(c), [], False
+                sleepy, unavailable, sleep_done = sleep_lanes(c), {}, False
                 refused: dict[str, WL_SegmentRefused] = {}
                 for _ in range(MAX_WRITES + 2 * len(mix)):
-                    short = [ln for ln in mix if mix.get(ln, 0) > 0 and ln not in unplanned
+                    short = [ln for ln in mix if mix.get(ln, 0) > 0 and ln not in unavailable
                              and ln not in refused
                              and not (sleep_done and ln in sleepy) and len(waiting_in(ln, c)) < RUNWAY]
                     if not short or len(st.units) >= MAX_WRITES:
@@ -585,7 +585,7 @@ def run(args, c: dict) -> int:
                         if ln in sleepy:
                             e = next_episode(ln, c)
                             if e is None:
-                                unplanned.append(ln)
+                                unavailable[ln] = [ep["slug"] for ep in c["episodes"] if ep.get("lane") == ln]
                                 continue
                             out = author_sleep(e, c)
                             sleep_done = True
@@ -599,16 +599,20 @@ def run(args, c: dict) -> int:
                     st.work(f"wrote {out.relative_to(WL.ROOT)} ({ln})")
                 if refused and not st.units:
                     raise next(iter(refused.values()))
-                for ln in unplanned:
-                    st.note(f"WHISPER_EPISODES_UNPLANNED {ln}: no planned episode with every source "
-                            f"fact-checked is left to write")
+                written = {p.stem for p in WL.all_scripts()} if unavailable else set()
+                blocked = [ln for ln, slugs in unavailable.items()
+                           if not slugs or any(slug not in written for slug in slugs)]
+                for ln in unavailable:
+                    st.note(f"{ln}: no unwritten episode with fact-checked sources is available")
                 if not st.units:
-                    if unplanned:
+                    if blocked:
                         st.named_stop("WHISPER_EPISODES_UNPLANNED",
-                                      f"no planned {', '.join(unplanned)} episode is left to write (every "
-                                      "source fact-checked); plan the next ones in "
-                                      "config/whisper_almanac.json `episodes`",
-                                      unblock="Add the next episodes (unused fact-checked sources, with the lane).")
+                                      f"missing plan or unchecked sources for {', '.join(blocked)}",
+                                      unblock="Supply a plan with fact-checked sources in config/whisper_almanac.json.")
+                    if unavailable:
+                        st.named_stop("WHISPER_EPISODE_PLAN_COMPLETE",
+                                      f"all planned episodes for {', '.join(unavailable)} already have scripts",
+                                      unblock="Nothing to author until another episode enters the plan.")
                     st.named_stop("WHISPER_RUNWAY_FULL",
                                   "scripts waiting for the Mac, by lane: " + ", ".join(
                                       f"{ln} {len(waiting_in(ln, c))}" for ln in mix if mix[ln] > 0),

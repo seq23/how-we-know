@@ -20,7 +20,11 @@ the code before that decision:
 """
 import datetime as dt
 import os
+import json
 import sys
+from argparse import Namespace
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -171,6 +175,28 @@ for lane in ("food", "ocean"):
 check(set(WA.sleep_lanes(c)) >= {"food", "ocean"}, f"(d) the author does not write food and ocean: {WA.sleep_lanes(c)}")
 unchecked = {**c, "episodes": [{**food_ep, "sources": ["never-uploaded-script"]}]}
 check(WA.next_episode("food", unchecked) is None, "(d) the author would write from an unchecked source")
+
+# Exercise the real stage exit and stop record without writing live state.
+for label, episodes, scripts, expected_exit, expected_stop in (
+    ("exhausted", [food_ep], [Path(food_ep["slug"] + ".md")], 0, "WHISPER_EPISODE_PLAN_COMPLETE"),
+    ("unchecked", unchecked["episodes"], [], 3, "WHISPER_EPISODES_UNPLANNED"),
+    ("empty plan", [], [], 3, "WHISPER_EPISODES_UNPLANNED"),
+    ("empty sources", [{**food_ep, "sources": []}], [], 3, "WHISPER_EPISODES_UNPLANNED"),
+):
+    with TemporaryDirectory() as stops, patch.dict(os.environ, {"LOOP_STOPS_DIR": stops}), (
+        patch.object(WL, "weekly_mix", return_value=({"food": 1}, {}))
+    ), patch.object(WL, "all_scripts", return_value=scripts), (
+        patch.object(WA, "waiting_in", return_value=[])
+    ), patch.object(WA, "author_sleep", side_effect=AssertionError("called author on unavailable work")):
+        try:
+            WA.run(Namespace(cmd=None), {**c, "episodes": episodes})
+        except SystemExit as result:
+            check(result.code == expected_exit, f"(d) {label} exited {result.code}, expected {expected_exit}")
+        else:
+            check(False, f"(d) {label} did not emit a named stop")
+        records = list(Path(stops).glob(f"*-{WA.STAGE}.json"))
+        check(len(records) == 1 and json.loads(records[0].read_text())["code"] == expected_stop,
+              f"(d) {label} did not record {expected_stop}")
 
 # -- d2. a kit rendered under the retired "history" lane is retitled before upload
 stale = {"slug": ocean_ep["slug"], "kind": "sleep", "lane": "history", "length_s": secs,
