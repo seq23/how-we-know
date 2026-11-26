@@ -1,18 +1,18 @@
 {
   "stage": "whisper-author",
   "week": "2026-W48",
-  "at": "2026-11-25T03:16:25+00:00",
-  "code": "WHISPER_EPISODES_UNPLANNED",
-  "message": "no planned food episode is left to write (every source fact-checked); plan the next ones in config/whisper_almanac.json `episodes`",
+  "at": "2026-11-26T02:33:58+00:00",
+  "code": "WHISPER_EPISODE_PLAN_COMPLETE",
+  "message": "all planned episodes for food already have scripts",
   "detail": null,
-  "unblock": "Add the next episodes (unused fact-checked sources, with the lane).",
-  "disposition": "needs_human",
-  "disposition_why": "'WHISPER_EPISODES_UNPLANNED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'WHISPER_EPISODES_UNPLANNED' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
-  "consecutive": 5,
+  "unblock": "Nothing to author until another episode enters the plan.",
+  "disposition": "self_resolving",
+  "disposition_why": "The author examined a nonempty lane plan and every episode in it already has a script. There is no new queued work. (run 1 of at most 400 before this escalates to a human.)",
+  "consecutive": 1,
   "held_items": [],
-  "exit_code": 3,
+  "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
-    "WHISPER_EPISODES_UNPLANNED food: no planned episode with every source fact-checked is left to write"
+    "food: no unwritten episode with fact-checked sources is available"
   ]
 }
