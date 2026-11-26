@@ -21,8 +21,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 85,
-      "days_since_packaging": 22,
+      "days_public": 86,
+      "days_since_packaging": 23,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -48,7 +48,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -57,14 +57,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 9,
-        "as_of": "2026-11-25",
+        "impressions": 7,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -87,8 +87,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-03",
-      "days_public": 80,
-      "days_since_packaging": 22,
+      "days_public": 81,
+      "days_since_packaging": 23,
       "public": true,
       "lifetime": {
         "views": 6,
@@ -114,7 +114,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -123,14 +123,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 16,
-        "as_of": "2026-11-25",
+        "impressions": 13,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -155,8 +155,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 78,
-      "days_since_packaging": 42,
+      "days_public": 79,
+      "days_since_packaging": 43,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -182,23 +182,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
-        "ctr": "pass",
+        "ctr": "fail",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.058823529411764705,
-        "impressions": 17,
-        "as_of": "2026-11-25",
+        "pct": 0.0,
+        "impressions": 16,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -223,8 +223,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 73,
-      "days_since_packaging": 40,
+      "days_public": 74,
+      "days_since_packaging": 41,
       "public": true,
       "lifetime": {
         "views": 14,
@@ -250,7 +250,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -259,14 +259,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 26,
-        "as_of": "2026-11-25",
+        "impressions": 24,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -289,8 +289,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 71,
-      "days_since_packaging": 39,
+      "days_public": 72,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 13,
@@ -316,7 +316,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -325,14 +325,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 13,
-        "as_of": "2026-11-25",
+        "impressions": 12,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -357,8 +357,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 66,
-      "days_since_packaging": 40,
+      "days_public": 67,
+      "days_since_packaging": 41,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -384,7 +384,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -393,14 +393,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.047619047619047616,
-        "impressions": 21,
-        "as_of": "2026-11-25",
+        "pct": 0.05,
+        "impressions": 20,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -425,8 +425,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 64,
-      "days_since_packaging": 42,
+      "days_public": 65,
+      "days_since_packaging": 43,
       "public": true,
       "lifetime": {
         "views": 16,
@@ -452,7 +452,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -461,14 +461,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 13,
-        "as_of": "2026-11-25",
+        "impressions": 12,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -491,8 +491,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-16",
-      "days_public": 59,
-      "days_since_packaging": 40,
+      "days_public": 60,
+      "days_since_packaging": 41,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -518,7 +518,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -527,14 +527,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 14,
-        "as_of": "2026-11-25",
+        "impressions": 13,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -559,8 +559,8 @@
         "A"
       ],
       "packaging_since": "2026-11-03",
-      "days_public": 57,
-      "days_since_packaging": 22,
+      "days_public": 58,
+      "days_since_packaging": 23,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -586,7 +586,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -595,14 +595,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 14,
-        "as_of": "2026-11-25",
+        "impressions": 13,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -627,11 +627,11 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 52,
-      "days_since_packaging": 42,
+      "days_public": 53,
+      "days_since_packaging": 43,
       "public": true,
       "lifetime": {
-        "views": 10,
+        "views": 11,
         "watch_minutes": 21.0,
         "avd_s": 158.0,
         "avp_pct": 31.23,
@@ -641,12 +641,12 @@
           "suggested": 6,
           "search": 2,
           "external": 0,
-          "other": 2
+          "other": 3
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 2,
+        "views": 3,
         "watch_minutes": 0.0,
         "avd_s": 7.0,
         "avp_pct": 1.42,
@@ -654,7 +654,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -663,14 +663,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 17,
-        "as_of": "2026-11-25",
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -695,8 +695,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 50,
-      "days_since_packaging": 39,
+      "days_public": 51,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -722,7 +722,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -731,14 +731,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.058823529411764705,
         "impressions": 17,
-        "as_of": "2026-11-25",
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -763,8 +763,8 @@
         "A"
       ],
       "packaging_since": "2026-10-16",
-      "days_public": 45,
-      "days_since_packaging": 40,
+      "days_public": 46,
+      "days_since_packaging": 41,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -790,7 +790,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-16"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -799,14 +799,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.024390243902439025,
         "impressions": 41,
-        "as_of": "2026-11-25",
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -831,11 +831,11 @@
         "A"
       ],
       "packaging_since": "2026-10-15",
-      "days_public": 43,
-      "days_since_packaging": 41,
+      "days_public": 44,
+      "days_since_packaging": 42,
       "public": true,
       "lifetime": {
-        "views": 37,
+        "views": 38,
         "watch_minutes": 20.0,
         "avd_s": 75.0,
         "avp_pct": 16.55,
@@ -845,20 +845,20 @@
           "suggested": 7,
           "search": 12,
           "external": 0,
-          "other": 1
+          "other": 2
         },
         "retention_30s_pct": 52.3
       },
       "current": {
-        "views": 19,
-        "watch_minutes": 1.0,
+        "views": 20,
+        "watch_minutes": 2.0,
         "avd_s": 18.0,
         "avp_pct": 4.15,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-15"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -867,14 +867,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 27,
-        "as_of": "2026-11-25",
+        "impressions": 26,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -899,8 +899,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 79,
-      "days_since_packaging": 39,
+      "days_public": 80,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -926,7 +926,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -935,14 +935,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 18,
-        "as_of": "2026-11-25",
+        "impressions": 15,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -967,8 +967,8 @@
         "A"
       ],
       "packaging_since": "2026-11-10",
-      "days_public": 75,
-      "days_since_packaging": 15,
+      "days_public": 76,
+      "days_since_packaging": 16,
       "public": true,
       "lifetime": {
         "views": 47,
@@ -994,7 +994,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-10"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1003,14 +1003,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.058823529411764705,
-        "impressions": 17,
-        "as_of": "2026-11-25",
+        "pct": 0.0625,
+        "impressions": 16,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1035,8 +1035,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 72,
-      "days_since_packaging": 39,
+      "days_public": 73,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 23,
@@ -1062,7 +1062,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1071,14 +1071,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 23,
-        "as_of": "2026-11-25",
+        "impressions": 22,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1101,11 +1101,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 68,
-      "days_since_packaging": 39,
+      "days_public": 69,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
-        "views": 17,
+        "views": 19,
         "watch_minutes": 2.0,
         "avd_s": 18.0,
         "avp_pct": 3.11,
@@ -1113,14 +1113,14 @@
         "traffic": {
           "browse": 0,
           "suggested": 0,
-          "search": 11,
+          "search": 13,
           "external": 6,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 6,
+        "views": 8,
         "watch_minutes": 1.0,
         "avd_s": 99.0,
         "avp_pct": 16.52,
@@ -1128,7 +1128,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1137,14 +1137,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 23,
-        "as_of": "2026-11-25",
+        "impressions": 22,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1167,8 +1167,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 65,
-      "days_since_packaging": 39,
+      "days_public": 66,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1194,7 +1194,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1203,14 +1203,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 27,
-        "as_of": "2026-11-25",
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1233,8 +1233,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-03",
-      "days_public": 61,
-      "days_since_packaging": 22,
+      "days_public": 62,
+      "days_since_packaging": 23,
       "public": true,
       "lifetime": {
         "views": 6,
@@ -1260,7 +1260,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-03"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1269,14 +1269,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 16,
-        "as_of": "2026-11-25",
+        "impressions": 21,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1301,8 +1301,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 58,
-      "days_since_packaging": 39,
+      "days_public": 59,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 43,
@@ -1328,7 +1328,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1337,14 +1337,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.027777777777777776,
         "impressions": 36,
-        "as_of": "2026-11-25",
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1369,8 +1369,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 54,
-      "days_since_packaging": 39,
+      "days_public": 55,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -1396,7 +1396,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1405,14 +1405,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
         "impressions": 19,
-        "as_of": "2026-11-25",
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1435,8 +1435,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 51,
-      "days_since_packaging": 39,
+      "days_public": 52,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 22,
@@ -1462,23 +1462,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
-        "ctr": "fail",
+        "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.022222222222222223,
-        "impressions": 45,
-        "as_of": "2026-11-25",
+        "pct": 0.021739130434782608,
+        "impressions": 46,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1501,8 +1501,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 47,
-      "days_since_packaging": 39,
+      "days_public": 48,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 161,
@@ -1528,23 +1528,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
-        "ctr": "fail",
+        "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.022727272727272728,
-        "impressions": 44,
-        "as_of": "2026-11-25",
+        "pct": 0.025,
+        "impressions": 40,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1584,8 +1584,8 @@
         "B"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 44,
-      "days_since_packaging": 16,
+      "days_public": 45,
+      "days_since_packaging": 17,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -1611,7 +1611,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1620,14 +1620,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 39,
-        "as_of": "2026-11-25",
+        "impressions": 36,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1664,8 +1664,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-23",
-      "days_public": 41,
-      "days_since_packaging": 33,
+      "days_public": 42,
+      "days_since_packaging": 34,
       "public": true,
       "lifetime": {
         "views": 87,
@@ -1691,7 +1691,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-23"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1700,14 +1700,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.025,
-        "impressions": 40,
-        "as_of": "2026-11-25",
+        "pct": 0.027777777777777776,
+        "impressions": 36,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1732,8 +1732,8 @@
         "A"
       ],
       "packaging_since": "2026-10-17",
-      "days_public": 40,
-      "days_since_packaging": 39,
+      "days_public": 41,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -1759,7 +1759,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -1768,14 +1768,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 29,
-        "as_of": "2026-11-25",
+        "impressions": 28,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1798,8 +1798,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-17",
-      "days_public": 39,
-      "days_since_packaging": 39,
+      "days_public": 40,
+      "days_since_packaging": 40,
       "public": true,
       "lifetime": {
         "views": 21,
@@ -1825,23 +1825,23 @@
         "retention_30s_pct": 69.6,
         "since": "2026-10-17"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
-        "ctr": "pass",
+        "ctr": "fail",
         "retention_30s": "fail",
         "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.014970059880239521,
+        "pct": 0.01488095238095238,
         "group": "channel",
-        "n": 15
+        "n": 13
       },
       "ctr": {
-        "pct": 0.03333333333333333,
-        "impressions": 30,
-        "as_of": "2026-11-25",
+        "pct": 0.0,
+        "impressions": 28,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1895,8 +1895,8 @@
         "C"
       ],
       "packaging_since": "2026-11-11",
-      "days_public": 37,
-      "days_since_packaging": 14,
+      "days_public": 38,
+      "days_since_packaging": 15,
       "public": true,
       "lifetime": {
         "views": 89,
@@ -1922,7 +1922,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-11"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -1931,14 +1931,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.018518518518518517,
-        "impressions": 54,
-        "as_of": "2026-11-25",
+        "pct": 0.01818181818181818,
+        "impressions": 55,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -1963,8 +1963,8 @@
         "A"
       ],
       "packaging_since": "2026-10-20",
-      "days_public": 36,
-      "days_since_packaging": 36,
+      "days_public": 37,
+      "days_since_packaging": 37,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -1990,23 +1990,23 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-20"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
         "avp": "fail"
       },
-      "verdict": "WATCH",
+      "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.04,
-        "impressions": 100,
-        "as_of": "2026-11-25",
+        "pct": 0.04040404040404041,
+        "impressions": 99,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2056,11 +2056,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-09",
-      "days_public": 34,
-      "days_since_packaging": 16,
+      "days_public": 35,
+      "days_since_packaging": 17,
       "public": true,
       "lifetime": {
-        "views": 83,
+        "views": 84,
         "watch_minutes": 95.0,
         "avd_s": 93.0,
         "avp_pct": 20.69,
@@ -2070,12 +2070,12 @@
           "suggested": 56,
           "search": 12,
           "external": 0,
-          "other": 2
+          "other": 3
         },
         "retention_30s_pct": 51.0
       },
       "current": {
-        "views": 5,
+        "views": 6,
         "watch_minutes": 0.0,
         "avd_s": 55.0,
         "avp_pct": 12.34,
@@ -2083,7 +2083,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -2092,14 +2092,14 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.03571428571428571,
-        "impressions": 84,
-        "as_of": "2026-11-25",
+        "pct": 0.0375,
+        "impressions": 80,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2153,34 +2153,34 @@
         "C"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 33,
-      "days_since_packaging": 16,
+      "days_public": 34,
+      "days_since_packaging": 17,
       "public": true,
       "lifetime": {
-        "views": 242,
+        "views": 244,
         "watch_minutes": 286.0,
         "avd_s": 83.0,
-        "avp_pct": 10.72,
+        "avp_pct": 10.69,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 20,
           "suggested": 190,
           "search": 12,
           "external": 1,
-          "other": 19
+          "other": 21
         },
-        "retention_30s_pct": 47.3
+        "retention_30s_pct": 47.1
       },
       "current": {
-        "views": 11,
-        "watch_minutes": 12.0,
-        "avd_s": 106.0,
-        "avp_pct": 13.56,
+        "views": 13,
+        "watch_minutes": 13.0,
+        "avd_s": 95.0,
+        "avp_pct": 12.19,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "unknown",
@@ -2189,14 +2189,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.05405405405405406,
-        "impressions": 111,
-        "as_of": "2026-11-25",
+        "pct": 0.05357142857142857,
+        "impressions": 112,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2246,50 +2246,50 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-16",
-      "days_public": 30,
-      "days_since_packaging": 9,
+      "days_public": 31,
+      "days_since_packaging": 10,
       "public": true,
       "lifetime": {
-        "views": 18,
-        "watch_minutes": 13.0,
-        "avd_s": 75.0,
-        "avp_pct": 10.58,
+        "views": 19,
+        "watch_minutes": 14.0,
+        "avd_s": 69.0,
+        "avp_pct": 9.84,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
           "suggested": 14,
           "search": 2,
           "external": 0,
-          "other": 2
+          "other": 3
         },
-        "retention_30s_pct": 25.2
+        "retention_30s_pct": 23.1
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 12.0,
+        "avp_pct": 1.78,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-11-16"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
-      "verdict": "FAIL",
-      "needs_review": true,
+      "verdict": "INSUFFICIENT",
+      "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
         "pct": 0.0,
-        "impressions": 193,
-        "as_of": "2026-11-25",
+        "impressions": 49,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2326,11 +2326,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-04",
-      "days_public": 29,
-      "days_since_packaging": 21,
+      "days_public": 30,
+      "days_since_packaging": 22,
       "public": true,
       "lifetime": {
-        "views": 71,
+        "views": 72,
         "watch_minutes": 92.0,
         "avd_s": 140.0,
         "avp_pct": 20.41,
@@ -2340,12 +2340,12 @@
           "suggested": 22,
           "search": 28,
           "external": 2,
-          "other": 2
+          "other": 3
         },
         "retention_30s_pct": 48.7
       },
       "current": {
-        "views": 22,
+        "views": 23,
         "watch_minutes": 27.0,
         "avd_s": 149.0,
         "avp_pct": 21.67,
@@ -2353,7 +2353,7 @@
         "retention_30s_pct": 33.1,
         "since": "2026-11-04"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "fail",
@@ -2362,14 +2362,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.03459119496855346,
-        "impressions": 318,
-        "as_of": "2026-11-25",
+        "pct": 0.04059040590405904,
+        "impressions": 271,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2419,11 +2419,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-16",
-      "days_public": 27,
-      "days_since_packaging": 9,
+      "days_public": 28,
+      "days_since_packaging": 10,
       "public": true,
       "lifetime": {
-        "views": 13,
+        "views": 14,
         "watch_minutes": 1.0,
         "avd_s": 14.0,
         "avp_pct": 1.88,
@@ -2433,12 +2433,12 @@
           "suggested": 11,
           "search": 2,
           "external": 0,
-          "other": 0
+          "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 1,
+        "views": 2,
         "watch_minutes": 0.0,
         "avd_s": 0.0,
         "avp_pct": 0.0,
@@ -2446,7 +2446,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-16"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -2455,20 +2455,20 @@
       "verdict": "FAIL",
       "needs_review": true,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.002145922746781116,
-        "impressions": 932,
-        "as_of": "2026-11-25",
+        "pct": 0.002472187886279357,
+        "impressions": 809,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
     "k4OOYUrar30": {
       "video_id": "k4OOYUrar30",
-      "repackage_round": 1,
+      "repackage_round": 2,
       "repackages": [
         {
           "round": 1,
@@ -2482,10 +2482,23 @@
           "days_public": 20,
           "days_since_packaging": 16,
           "units": 101
+        },
+        {
+          "round": 2,
+          "at": "2026-11-26T23:22:46+00:00",
+          "old_title": "Why is a welding arc so hot?",
+          "new_title": "How Hot Is Arc Welding?",
+          "thumbnail": "C",
+          "title_only_reason": null,
+          "test_active_at_change": false,
+          "verdict_before": "FAIL",
+          "days_public": 27,
+          "days_since_packaging": 7,
+          "units": 101
         }
       ],
       "slug": "how-hot-does-a-welding-arc-get",
-      "title": "Why is a welding arc so hot?",
+      "title": "How Hot Is Arc Welding?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-10-30",
@@ -2499,11 +2512,12 @@
       },
       "thumbnails_used": [
         "A",
-        "B"
+        "B",
+        "C"
       ],
-      "packaging_since": "2026-11-19",
-      "days_public": 26,
-      "days_since_packaging": 6,
+      "packaging_since": "2026-11-26",
+      "days_public": 27,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 17,
@@ -2529,7 +2543,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-19"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
@@ -2538,14 +2552,14 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "ctr": {
-        "pct": 0.014970059880239521,
-        "impressions": 334,
-        "as_of": "2026-11-25",
+        "pct": 0.01488095238095238,
+        "impressions": 336,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2568,8 +2582,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-02",
-      "days_public": 23,
-      "days_since_packaging": 23,
+      "days_public": 24,
+      "days_since_packaging": 24,
       "public": true,
       "lifetime": {
         "views": 35,
@@ -2595,7 +2609,7 @@
         "retention_30s_pct": 44.8,
         "since": "2026-11-02"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "floors": {
         "ctr": "pass",
         "retention_30s": "fail",
@@ -2604,14 +2618,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "ctr": {
-        "pct": 0.038461538461538464,
-        "impressions": 286,
-        "as_of": "2026-11-25",
+        "pct": 0.03832752613240418,
+        "impressions": 287,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2632,11 +2646,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-11-10",
-      "days_public": 18,
-      "days_since_packaging": 15,
+      "days_public": 19,
+      "days_since_packaging": 16,
       "public": true,
       "lifetime": {
-        "views": 5,
+        "views": 6,
         "watch_minutes": 5.0,
         "avd_s": 66.0,
         "avp_pct": 10.75,
@@ -2646,12 +2660,12 @@
           "suggested": 2,
           "search": 0,
           "external": 2,
-          "other": 0
+          "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 2,
+        "views": 3,
         "watch_minutes": 0.0,
         "avd_s": 21.0,
         "avp_pct": 3.5,
@@ -2659,11 +2673,11 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-10"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "floors": {
         "ctr": "fail",
@@ -2673,9 +2687,9 @@
       "verdict": "INSUFFICIENT",
       "needs_review": false,
       "ctr": {
-        "pct": 0.011904761904761904,
-        "impressions": 84,
-        "as_of": "2026-11-25",
+        "pct": 0.011627906976744186,
+        "impressions": 86,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -2683,7 +2697,7 @@
       "video_id": "bjSlVIIDPsE",
       "public": true,
       "slug": "how-deep-can-whales-dive",
-      "title": "How deep can whales dive?",
+      "title": "Can whales dive so deep?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "stake-then-payoff",
       "public_since": "2026-11-12",
@@ -2696,11 +2710,12 @@
         "variants": []
       },
       "thumbnails_used": [
-        "B"
+        "B",
+        "C"
       ],
-      "packaging_since": "2026-11-19",
-      "days_public": 13,
-      "days_since_packaging": 6,
+      "packaging_since": "2026-11-26",
+      "days_public": 14,
+      "days_since_packaging": 0,
       "lifetime": {
         "views": 3,
         "watch_minutes": 3.0,
@@ -2725,11 +2740,11 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-19"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "floors": {
         "ctr": "fail",
@@ -2739,9 +2754,9 @@
       "verdict": "FAIL",
       "needs_review": false,
       "ctr": {
-        "pct": 0.013793103448275862,
-        "impressions": 145,
-        "as_of": "2026-11-25",
+        "pct": 0.013605442176870748,
+        "impressions": 147,
+        "as_of": "2026-11-26",
         "source": "reporting"
       },
       "repackages": [
@@ -2757,9 +2772,22 @@
           "days_public": 7,
           "days_since_packaging": 7,
           "units": 101
+        },
+        {
+          "round": 2,
+          "at": "2026-11-26T23:23:31+00:00",
+          "old_title": "How deep can whales dive?",
+          "new_title": "Can whales dive so deep?",
+          "thumbnail": "C",
+          "title_only_reason": null,
+          "test_active_at_change": false,
+          "verdict_before": "FAIL",
+          "days_public": 14,
+          "days_since_packaging": 7,
+          "units": 101
         }
       ],
-      "repackage_round": 1
+      "repackage_round": 2
     },
     "N1mpUttSNd8": {
       "video_id": "N1mpUttSNd8",
@@ -2781,10 +2809,10 @@
         "B"
       ],
       "packaging_since": "2026-11-20",
-      "days_public": 12,
-      "days_since_packaging": 5,
+      "days_public": 13,
+      "days_since_packaging": 6,
       "lifetime": {
-        "views": 8,
+        "views": 9,
         "watch_minutes": 2.0,
         "avd_s": 34.0,
         "avp_pct": 5.3,
@@ -2794,36 +2822,36 @@
           "suggested": 6,
           "search": 1,
           "external": 0,
-          "other": 1
+          "other": 2
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-11-20"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "FAIL",
       "needs_review": false,
       "ctr": {
-        "pct": 0.011834319526627219,
-        "impressions": 338,
-        "as_of": "2026-11-25",
+        "pct": 0.011764705882352941,
+        "impressions": 340,
+        "as_of": "2026-11-26",
         "source": "reporting"
       },
       "repackages": [
@@ -2864,49 +2892,49 @@
         "B"
       ],
       "packaging_since": "2026-11-25",
-      "days_public": 7,
-      "days_since_packaging": 0,
+      "days_public": 8,
+      "days_since_packaging": 1,
       "lifetime": {
-        "views": 13,
+        "views": 14,
         "watch_minutes": 14.0,
-        "avd_s": 162.0,
-        "avp_pct": 23.28,
+        "avd_s": 138.0,
+        "avp_pct": 19.74,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 2,
           "suggested": 8,
           "search": 3,
           "external": 0,
-          "other": 0
+          "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 13,
-        "watch_minutes": 14.0,
-        "avd_s": 162.0,
-        "avp_pct": 23.28,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-11-18"
+        "since": "2026-11-25"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "FAIL",
       "needs_review": false,
       "ctr": {
-        "pct": 0.0057306590257879654,
-        "impressions": 349,
-        "as_of": "2026-11-25",
+        "pct": 0.008522727272727272,
+        "impressions": 352,
+        "as_of": "2026-11-26",
         "source": "reporting"
       },
       "repackages": [
@@ -2946,8 +2974,8 @@
         "A"
       ],
       "packaging_since": "2026-11-14",
-      "days_public": 11,
-      "days_since_packaging": 11,
+      "days_public": 12,
+      "days_since_packaging": 12,
       "lifetime": {
         "views": 36,
         "watch_minutes": 29.0,
@@ -2972,11 +3000,11 @@
         "retention_30s_pct": 83.3,
         "since": "2026-11-14"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "floors": {
         "ctr": "pass",
@@ -2986,9 +3014,9 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr": {
-        "pct": 0.025594149908592323,
-        "impressions": 547,
-        "as_of": "2026-11-25",
+        "pct": 0.02527075812274368,
+        "impressions": 554,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -3013,10 +3041,10 @@
         "B"
       ],
       "packaging_since": "2026-11-24",
-      "days_public": 8,
-      "days_since_packaging": 1,
+      "days_public": 9,
+      "days_since_packaging": 2,
       "lifetime": {
-        "views": 9,
+        "views": 10,
         "watch_minutes": 16.0,
         "avd_s": 108.0,
         "avp_pct": 16.04,
@@ -3026,36 +3054,36 @@
           "suggested": 8,
           "search": 0,
           "external": 0,
-          "other": 1
+          "other": 2
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-11-24"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.02478062742439649,
+        "pct": 0.01488095238095238,
         "group": "materials-and-manufacturing",
-        "n": 6
+        "n": 5
       },
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "FAIL",
       "needs_review": false,
       "ctr": {
-        "pct": 0.014184397163120567,
-        "impressions": 564,
-        "as_of": "2026-11-25",
+        "pct": 0.014109347442680775,
+        "impressions": 567,
+        "as_of": "2026-11-26",
         "source": "reporting"
       },
       "repackages": [
@@ -3095,8 +3123,8 @@
         "A"
       ],
       "packaging_since": "2026-11-10",
-      "days_public": 15,
-      "days_since_packaging": 15,
+      "days_public": 16,
+      "days_since_packaging": 16,
       "lifetime": {
         "views": 7,
         "watch_minutes": 3.0,
@@ -3121,11 +3149,11 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-11-10"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "floors": {
         "ctr": "pass",
@@ -3135,9 +3163,9 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr": {
-        "pct": 0.017391304347826087,
-        "impressions": 115,
-        "as_of": "2026-11-25",
+        "pct": 0.017094017094017096,
+        "impressions": 117,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     },
@@ -3145,7 +3173,7 @@
       "video_id": "pT1BETTFbsY",
       "public": true,
       "slug": "what-lives-in-mariana-trench",
-      "title": "What Lives in the Mariana Trench?",
+      "title": "What lives in Mariana Trench?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "stake-then-payoff",
       "public_since": "2026-11-11",
@@ -3159,13 +3187,14 @@
       },
       "thumbnails_used": [
         "A",
-        "B"
+        "B",
+        "C"
       ],
-      "packaging_since": "2026-11-19",
-      "days_public": 14,
-      "days_since_packaging": 6,
+      "packaging_since": "2026-11-26",
+      "days_public": 15,
+      "days_since_packaging": 0,
       "lifetime": {
-        "views": 39,
+        "views": 40,
         "watch_minutes": 70.0,
         "avd_s": 175.0,
         "avp_pct": 26.4,
@@ -3175,36 +3204,36 @@
           "suggested": 20,
           "search": 2,
           "external": 0,
-          "other": 2
+          "other": 3
         },
         "retention_30s_pct": 60.2
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-11-19"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "floors": {
         "ctr": "fail",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "FAIL",
       "needs_review": false,
       "ctr": {
-        "pct": 0.013564431047475508,
-        "impressions": 1327,
-        "as_of": "2026-11-25",
+        "pct": 0.01348314606741573,
+        "impressions": 1335,
+        "as_of": "2026-11-26",
         "source": "reporting"
       },
       "repackages": [
@@ -3220,9 +3249,22 @@
           "days_public": 8,
           "days_since_packaging": 8,
           "units": 101
+        },
+        {
+          "round": 2,
+          "at": "2026-11-26T23:23:10+00:00",
+          "old_title": "What Lives in the Mariana Trench?",
+          "new_title": "What lives in Mariana Trench?",
+          "thumbnail": "C",
+          "title_only_reason": null,
+          "test_active_at_change": false,
+          "verdict_before": "FAIL",
+          "days_public": 15,
+          "days_since_packaging": 7,
+          "units": 101
         }
       ],
-      "repackage_round": 1
+      "repackage_round": 2
     },
     "TEmyz8h_DIA": {
       "video_id": "TEmyz8h_DIA",
@@ -3244,37 +3286,37 @@
         "A"
       ],
       "packaging_since": "2026-11-09",
-      "days_public": 16,
-      "days_since_packaging": 16,
+      "days_public": 17,
+      "days_since_packaging": 17,
       "lifetime": {
-        "views": 42,
+        "views": 44,
         "watch_minutes": 50.0,
-        "avd_s": 109.0,
-        "avp_pct": 15.69,
+        "avd_s": 102.0,
+        "avp_pct": 14.76,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 5,
-          "suggested": 19,
+          "suggested": 20,
           "search": 10,
           "external": 2,
-          "other": 6
+          "other": 7
         },
-        "retention_30s_pct": 53.8
+        "retention_30s_pct": 50.0
       },
       "current": {
-        "views": 42,
+        "views": 44,
         "watch_minutes": 50.0,
-        "avd_s": 109.0,
-        "avp_pct": 15.69,
+        "avd_s": 102.0,
+        "avp_pct": 14.76,
         "subscribers_gained": 0,
-        "retention_30s_pct": 53.8,
+        "retention_30s_pct": 50.0,
         "since": "2026-11-09"
       },
-      "measured_on": "2026-11-25",
+      "measured_on": "2026-11-26",
       "ctr_baseline": {
-        "pct": 0.013793103448275862,
+        "pct": 0.015349729635443923,
         "group": "deep-sea-ocean-science",
-        "n": 9
+        "n": 8
       },
       "floors": {
         "ctr": "pass",
@@ -3284,14 +3326,14 @@
       "verdict": "WATCH",
       "needs_review": false,
       "ctr": {
-        "pct": 0.019851116625310174,
-        "impressions": 806,
-        "as_of": "2026-11-25",
+        "pct": 0.02040816326530612,
+        "impressions": 833,
+        "as_of": "2026-11-26",
         "source": "reporting"
       }
     }
   },
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "config": {
     "floors": {
       "ctr_pct": 4.0,
@@ -3309,20 +3351,20 @@
   },
   "channel": {
     "week": "2026-W48",
-    "date": "2026-11-25",
+    "date": "2026-11-26",
     "public_longform": 45,
     "packaging_working": "no",
     "counts": {
       "PASS": 0,
-      "WATCH": 7,
-      "FAIL": 8,
-      "INSUFFICIENT": 30
+      "WATCH": 6,
+      "FAIL": 7,
+      "INSUFFICIENT": 32
     },
     "judged_medians": {
-      "n": 15,
+      "n": 13,
       "ctr_pct": 0.0,
-      "retention_30s_pct": 49.3,
-      "avp_pct": 13.6
+      "retention_30s_pct": 47.4,
+      "avp_pct": 8.6
     },
     "cohorts": {
       "pre-rule": {
@@ -3335,7 +3377,7 @@
         "n": 8,
         "ctr_pct": 0.0,
         "retention_30s_pct": 60.2,
-        "avp_pct": 15.4
+        "avp_pct": 14.9
       }
     },
     "best3": [
@@ -3360,22 +3402,22 @@
     ],
     "worst3": [
       {
+        "video_id": "T6XeND2qM4k",
+        "title": "How Do Scientists Measure Age?",
+        "views": 14,
+        "watch_minutes_per_view": 0.07
+      },
+      {
         "video_id": "kTBlLeWdi4g",
         "title": "Is a Semiconductor Just Silicon?",
         "views": 12,
         "watch_minutes_per_view": 0.08
       },
       {
-        "video_id": "T6XeND2qM4k",
-        "title": "How Do Scientists Measure Age?",
-        "views": 13,
-        "watch_minutes_per_view": 0.08
-      },
-      {
         "video_id": "TjrpzJE3utU",
         "title": "How Fast Does Glass Shatter?",
-        "views": 17,
-        "watch_minutes_per_view": 0.12
+        "views": 19,
+        "watch_minutes_per_view": 0.11
       }
     ],
     "repackaged_this_week": [
@@ -3389,12 +3431,30 @@
         "title_only_reason": null
       },
       {
+        "video_id": "k4OOYUrar30",
+        "round": 2,
+        "at": "2026-11-26",
+        "old_title": "Why is a welding arc so hot?",
+        "new_title": "How Hot Is Arc Welding?",
+        "thumbnail": "C",
+        "title_only_reason": null
+      },
+      {
         "video_id": "bjSlVIIDPsE",
         "round": 1,
         "at": "2026-11-19",
         "old_title": "How Deep Do Whales Go?",
         "new_title": "How deep can whales dive?",
         "thumbnail": "B",
+        "title_only_reason": null
+      },
+      {
+        "video_id": "bjSlVIIDPsE",
+        "round": 2,
+        "at": "2026-11-26",
+        "old_title": "How deep can whales dive?",
+        "new_title": "Can whales dive so deep?",
+        "thumbnail": "C",
         "title_only_reason": null
       },
       {
@@ -3432,13 +3492,18 @@
         "new_title": "What Lives in the Mariana Trench?",
         "thumbnail": "B",
         "title_only_reason": null
+      },
+      {
+        "video_id": "pT1BETTFbsY",
+        "round": 2,
+        "at": "2026-11-26",
+        "old_title": "What Lives in the Mariana Trench?",
+        "new_title": "What lives in Mariana Trench?",
+        "thumbnail": "C",
+        "title_only_reason": null
       }
     ],
     "needs_review": [
-      {
-        "video_id": "zs-gueHeX8k",
-        "title": "How is the deep ocean known?"
-      },
       {
         "video_id": "T6XeND2qM4k",
         "title": "How Do Scientists Measure Age?"
@@ -3448,7 +3513,7 @@
     "gate": {
       "first_repackaged": "2026-10-14",
       "gate_date": "2026-11-13",
-      "days_left": -12
+      "days_left": -13
     },
     "food": [
       {
@@ -3456,14 +3521,14 @@
         "title": "Bread, Steak, Chocolate: What's Inside?",
         "views": 21,
         "watch_minutes_per_view": 2.43,
-        "ctr_pct": 0.03333333333333333,
+        "ctr_pct": 0.0,
         "verdict": "INSUFFICIENT"
       }
     ]
   },
   "pull": {
-    "at": "2026-11-25T23:22:24+00:00",
-    "date": "2026-11-25",
+    "at": "2026-11-26T23:17:42+00:00",
+    "date": "2026-11-26",
     "public_ids": [
       "-8gyi8oq3zU",
       "2zQAc_ZSbMs",
@@ -3512,14 +3577,14 @@
       "zs-gueHeX8k"
     ],
     "ledger_longform": 45,
-    "analytics_calls": 133,
+    "analytics_calls": 138,
     "data_api_units": 1,
     "retention": {
       "returned": 23,
       "insufficient": 22
     }
   },
-  "updated": "2026-11-25T23:24:07+00:00",
+  "updated": "2026-11-26T23:23:31+00:00",
   "reach": {
     "reports": {
       "20730932358": {
@@ -16816,11 +16881,341 @@
             0.0
           ]
         }
+      },
+      "17847475886": {
+        "start": "2026-11-24T08:00:00Z",
+        "end": "2026-11-25T08:00:00Z",
+        "created": "2026-11-26T00:41:00.561085Z",
+        "daily": {
+          "2026-11-24/-8gyi8oq3zU": [
+            2,
+            0.0
+          ],
+          "2026-11-24/-LXdt8tsw9k": [
+            2,
+            0.0
+          ],
+          "2026-11-24/0BZkBylEZRo": [
+            1,
+            0.0
+          ],
+          "2026-11-24/7tdvXATeeng": [
+            1,
+            0.0
+          ],
+          "2026-11-24/8bVPoTWAfFQ": [
+            1,
+            0.0
+          ],
+          "2026-11-24/98ejztJsQNY": [
+            1,
+            0.0
+          ],
+          "2026-11-24/BPpmHWdQQ-w": [
+            1,
+            0.0
+          ],
+          "2026-11-24/EFimztjj_j8": [
+            2,
+            0.0
+          ],
+          "2026-11-24/Eueb6oHEbMs": [
+            1,
+            0.0
+          ],
+          "2026-11-24/G1TqXmf36Qo": [
+            1,
+            0.0
+          ],
+          "2026-11-24/GTvZFHQMMuQ": [
+            2,
+            0.0
+          ],
+          "2026-11-24/HWJ16RxXhH0": [
+            2,
+            0.0
+          ],
+          "2026-11-24/IbrSPKUK1IM": [
+            1,
+            0.0
+          ],
+          "2026-11-24/Kh2k6I4il3g": [
+            3,
+            0.0
+          ],
+          "2026-11-24/Mou_ltfkI1c": [
+            1,
+            0.0
+          ],
+          "2026-11-24/N1mpUttSNd8": [
+            2,
+            0.0
+          ],
+          "2026-11-24/OSEN-Uv7A0I": [
+            1,
+            0.0
+          ],
+          "2026-11-24/OdYunlbB73g": [
+            1,
+            0.0
+          ],
+          "2026-11-24/RPtB8FQhaA4": [
+            1,
+            0.0
+          ],
+          "2026-11-24/RlbR0qGmU0s": [
+            1,
+            0.0
+          ],
+          "2026-11-24/T6XeND2qM4k": [
+            1,
+            0.0
+          ],
+          "2026-11-24/TEmyz8h_DIA": [
+            16,
+            1.0
+          ],
+          "2026-11-24/TN0MquikEPM": [
+            2,
+            0.0
+          ],
+          "2026-11-24/TjrpzJE3utU": [
+            1,
+            0.0
+          ],
+          "2026-11-24/VDFFur-xYUU": [
+            1,
+            0.0
+          ],
+          "2026-11-24/VGWcX3Yskyg": [
+            1,
+            0.0
+          ],
+          "2026-11-24/VUeFHBIXoRc": [
+            3,
+            0.0
+          ],
+          "2026-11-24/Z-Z1FNVQXW0": [
+            1,
+            0.0
+          ],
+          "2026-11-24/ZeiCLj5WN28": [
+            1,
+            0.0
+          ],
+          "2026-11-24/_rK7dhwqe8w": [
+            1,
+            0.0
+          ],
+          "2026-11-24/bjSlVIIDPsE": [
+            1,
+            0.0
+          ],
+          "2026-11-24/bzUn_JhKSzA": [
+            1,
+            0.0
+          ],
+          "2026-11-24/debozzLtVRA": [
+            2,
+            0.0
+          ],
+          "2026-11-24/dpL6cNWnwe0": [
+            1,
+            0.0
+          ],
+          "2026-11-24/hBcqr4qpAv4": [
+            4,
+            0.0
+          ],
+          "2026-11-24/hC2id8ZsUEw": [
+            6,
+            0.0
+          ],
+          "2026-11-24/hm4tKu0sLj8": [
+            3,
+            0.0
+          ],
+          "2026-11-24/hxWh8S51SQw": [
+            1,
+            0.0
+          ],
+          "2026-11-24/k4OOYUrar30": [
+            1,
+            0.0
+          ],
+          "2026-11-24/kTBlLeWdi4g": [
+            1,
+            0.0
+          ],
+          "2026-11-24/l6HwRYGo-Nw": [
+            1,
+            0.0
+          ],
+          "2026-11-24/l8sjx720GhI": [
+            1,
+            0.0
+          ],
+          "2026-11-24/nv-M6q8h-Lk": [
+            1,
+            0.0
+          ],
+          "2026-11-24/nvggtLK6EZQ": [
+            1,
+            0.0
+          ],
+          "2026-11-24/pT1BETTFbsY": [
+            6,
+            0.0
+          ],
+          "2026-11-24/rDJ0lUO1Yf0": [
+            1,
+            0.0
+          ],
+          "2026-11-24/rY7t_VDz9sk": [
+            4,
+            0.0
+          ],
+          "2026-11-24/seSX8I52aag": [
+            3,
+            0.0
+          ],
+          "2026-11-24/tJz6_OYNoJE": [
+            1,
+            0.0
+          ],
+          "2026-11-24/tbKynCHfU-c": [
+            1,
+            0.0
+          ],
+          "2026-11-24/vrb83gWWaYw": [
+            4,
+            0.0
+          ],
+          "2026-11-24/wiKooxcrAV4": [
+            1,
+            0.0
+          ],
+          "2026-11-24/xyZ9xs7OF3g": [
+            1,
+            0.0
+          ],
+          "2026-11-24/zs-gueHeX8k": [
+            1,
+            0.0
+          ]
+        }
+      },
+      "20837942777": {
+        "start": "2026-11-23T08:00:00Z",
+        "end": "2026-11-24T08:00:00Z",
+        "created": "2026-11-26T20:35:59.937463Z",
+        "daily": {
+          "2026-11-23/-LXdt8tsw9k": [
+            1,
+            0.0
+          ],
+          "2026-11-23/2zQAc_ZSbMs": [
+            6,
+            0.0
+          ],
+          "2026-11-23/5ulaiFE0JuY": [
+            1,
+            0.0
+          ],
+          "2026-11-23/BPpmHWdQQ-w": [
+            1,
+            0.0
+          ],
+          "2026-11-23/EFimztjj_j8": [
+            2,
+            0.0
+          ],
+          "2026-11-23/GTvZFHQMMuQ": [
+            1,
+            0.0
+          ],
+          "2026-11-23/HWJ16RxXhH0": [
+            1,
+            0.0
+          ],
+          "2026-11-23/Kh2k6I4il3g": [
+            2,
+            0.0
+          ],
+          "2026-11-23/OSEN-Uv7A0I": [
+            2,
+            1.0
+          ],
+          "2026-11-23/T6XeND2qM4k": [
+            2,
+            0.0
+          ],
+          "2026-11-23/TEmyz8h_DIA": [
+            11,
+            0.0
+          ],
+          "2026-11-23/VGWcX3Yskyg": [
+            1,
+            0.0
+          ],
+          "2026-11-23/VUeFHBIXoRc": [
+            4,
+            0.0
+          ],
+          "2026-11-23/_rK7dhwqe8w": [
+            1,
+            0.0
+          ],
+          "2026-11-23/bjSlVIIDPsE": [
+            1,
+            0.0
+          ],
+          "2026-11-23/bzUn_JhKSzA": [
+            2,
+            0.0
+          ],
+          "2026-11-23/hBcqr4qpAv4": [
+            1,
+            0.0
+          ],
+          "2026-11-23/hxWh8S51SQw": [
+            1,
+            0.0
+          ],
+          "2026-11-23/k4OOYUrar30": [
+            1,
+            0.0
+          ],
+          "2026-11-23/nvggtLK6EZQ": [
+            1,
+            0.0
+          ],
+          "2026-11-23/pT1BETTFbsY": [
+            2,
+            0.0
+          ],
+          "2026-11-23/rY7t_VDz9sk": [
+            7,
+            2.0
+          ],
+          "2026-11-23/vrb83gWWaYw": [
+            5,
+            0.0
+          ],
+          "2026-11-23/xQHrZplcmI8": [
+            1,
+            0.0
+          ],
+          "2026-11-23/xbmIX6n2OI8": [
+            1,
+            0.0
+          ]
+        }
       }
     },
     "job_id": "afc2ca97-15e3-4d96-ba59-4654e73ecb56",
-    "as_of": "2026-11-25",
-    "window_start": "2026-10-29",
+    "as_of": "2026-11-26",
+    "window_start": "2026-10-30",
     "merged": 45
   }
 }
