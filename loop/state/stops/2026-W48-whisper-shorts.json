@@ -1,7 +1,7 @@
 {
   "stage": "whisper-shorts",
   "week": "2026-W48",
-  "at": "2026-11-25T06:41:19+00:00",
+  "at": "2026-11-26T05:00:06+00:00",
   "code": "WHISPER_SHORTS_QUEUE_EMPTY",
   "message": "no cut Whisper Almanac Short is waiting; Shorts are dated through Fri 27 Nov",
   "detail": {
@@ -10,7 +10,7 @@
   "unblock": "Nothing to do: each uploaded long video is cut into 3 Shorts the same night.",
   "disposition": "self_resolving",
   "disposition_why": "its own words say there is nothing to do, so it never pages (loop/common.py nothing_to_do)",
-  "consecutive": 5,
+  "consecutive": 6,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
