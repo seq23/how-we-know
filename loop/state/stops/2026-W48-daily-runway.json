@@ -1,7 +1,7 @@
 {
   "stage": "daily-runway",
   "week": "2026-W48",
-  "at": "2026-11-26T09:19:53+00:00",
+  "at": "2026-11-27T09:34:38+00:00",
   "code": "RUNWAY_TOPUP_PAUSED_BY_MONEY_TEST",
   "message": "runway is ok (5.7 weeks of queue at 6/week (34 publishable of 46 on disk). By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (14 queued, 0 already dated); materials-and-manufacturing: 10.0 week(s) at 2/week (20 queued, 0 already dated); money-and-business: 6.0 week(s) at 2/week (12 queued, 0 already dated).) and below the 6-week target, but all 17 queued topic(s) are in domains the Money test pauses or authors elsewhere: materials-and-manufacturing, money-and-business",
   "detail": {
@@ -14,8 +14,8 @@
   },
   "unblock": "Nothing to do: the Money test is judged on its end date; a runway that falls to warn raises RUNWAY_AUTHORING_FALLBACK instead.",
   "disposition": "self_resolving",
-  "disposition_why": "loop/draft.py rebuild_runway_if_short: the runway is ok but under runway.target_weeks, and every queued topic belongs to a domain her Money-test call (9 Nov 2026, loop/config.json domains.money_test) pauses or leaves to loop/money_author.py. Topping up is opportunistic; nothing is going dark. Resolves when the test is judged (started + check_days). A runway at warn or critical never takes this path: it stays RUNWAY_AUTHORING_FALLBACK and pages. (run 11 of at most 35 before this escalates to a human.)",
-  "consecutive": 11,
+  "disposition_why": "loop/draft.py rebuild_runway_if_short: the runway is ok but under runway.target_weeks, and every queued topic belongs to a domain her Money-test call (9 Nov 2026, loop/config.json domains.money_test) pauses or leaves to loop/money_author.py. Topping up is opportunistic; nothing is going dark. Resolves when the test is judged (started + check_days). A runway at warn or critical never takes this path: it stays RUNWAY_AUTHORING_FALLBACK and pages. (run 12 of at most 35 before this escalates to a human.)",
+  "consecutive": 12,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
