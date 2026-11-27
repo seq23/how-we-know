@@ -18,7 +18,6 @@ subjects, methods, zones, creatures, the depth explorer — is navigation over t
 - 5 ocean zones, 11 creature records, an interactive Challenger Deep explorer
 - Every question page carries a `subject` and a `method` (see below)
 - Machine-readable surfaces: `sitemap.xml`, `robots.txt`, `llms.txt`
-- A no-login `/admin` operations page, excluded from discovery
 
 ## The two axes
 

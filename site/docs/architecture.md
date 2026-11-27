@@ -40,10 +40,6 @@ Analytics is disabled unless `VITE_GA_MEASUREMENT_ID` is configured. The browser
 
 A missing question route, source ID, related record, traffic rule, measurement contract, or published-video field fails structural validation. An unpublished record cannot carry a video ID. A published video must preserve the exact query title and direct-answer description line. A production asset cannot be approved if commercial use is false or required credit is absent.
 
-## Credentialless owner operations surface
+## No owner operations page
 
-`/admin` is a static owner guide, not a runtime command center. It is intentionally absent from public navigation, sitemap, and `llms.txt`, and carries `noindex, nofollow, noarchive` metadata.
-
-The page stores only a public `owner/repository` string in browser local storage. GitHub remains the authenticated action boundary. Links open exact workflows, editable files, folders, receipts, and runbooks. The site never receives a GitHub token, YouTube token, OAuth file, or provider secret.
-
-Readiness counters are generated into `content/admin-status.json` from committed repository artifacts. They report the deployed snapshot and never claim live workflow or provider state.
+The public build has no `/admin` page. The launch-era owner guide that lived there was removed on 2026-11-27 (security audit row 4): it printed upload commands and a local credential-file location on a public URL. Operator steps live in `RUNBOOK.md` at the repository root, never in the public build; `tests-built/public-build.test.mjs` fails the build if an `/admin` page or a credential path reappears in `.output/public`.

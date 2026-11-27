@@ -25,7 +25,6 @@ const staticPaths = [
   '/about',
   '/privacy',
   '/terms',
-  '/admin',
   '/404',
   ...questions.map((item) => `/questions/${item.slug}`),
   ...zones.map((item) => `/zones/${item.slug}`),

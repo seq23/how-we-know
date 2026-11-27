@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as EditorialPolicyRouteImport } from './routes/editorial-policy'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as MethodologyRouteImport } from './routes/methodology'
@@ -41,11 +40,6 @@ const R404Route = R404RouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EditorialPolicyRoute = EditorialPolicyRouteImport.update({
@@ -123,7 +117,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/explore': typeof ExploreRoute
   '/methodology': typeof MethodologyRoute
@@ -143,7 +136,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/explore': typeof ExploreRoute
   '/methodology': typeof MethodologyRoute
@@ -164,7 +156,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/editorial-policy': typeof EditorialPolicyRoute
   '/explore': typeof ExploreRoute
   '/methodology': typeof MethodologyRoute
@@ -186,7 +177,6 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
-    | '/admin'
     | '/editorial-policy'
     | '/explore'
     | '/methodology'
@@ -206,7 +196,6 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
-    | '/admin'
     | '/editorial-policy'
     | '/explore'
     | '/methodology'
@@ -226,7 +215,6 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
-    | '/admin'
     | '/editorial-policy'
     | '/explore'
     | '/methodology'
@@ -247,7 +235,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
   EditorialPolicyRoute: typeof EditorialPolicyRoute
   ExploreRoute: typeof ExploreRoute
   MethodologyRoute: typeof MethodologyRoute
@@ -285,13 +272,6 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/editorial-policy': {
@@ -399,7 +379,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
   EditorialPolicyRoute: EditorialPolicyRoute,
   ExploreRoute: ExploreRoute,
   MethodologyRoute: MethodologyRoute,
