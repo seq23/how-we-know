@@ -1,5 +1,7 @@
 # Twenty-Video Activation Runbook
 
+> Historical (August 2026 launch). The `/admin` page this runbook opens was removed from the public site on 2026-11-27, and the loop is now automatic: work from `RUNBOOK.md` at the repository root.
+
 ## 1. Open the credentialless operations guide
 
 1. Confirm the repository already exists on GitHub and GitHub Actions are enabled.
