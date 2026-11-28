@@ -357,6 +357,24 @@
       "escalation": "Two runs of 5xx in a row outlives any normal Google incident - check the request shape, and remember that estimatedRevenue beside ordinary metrics fails the WHOLE call.",
       "plain": "Google's analytics server had an error; the weekly numbers wait for the next run"
     },
+    "FREE_READER_UNAVAILABLE": {
+      "why": "Boss OS's shared free reader gave no answer (both free lanes down or unreachable). Nothing was recorded; the next sweep reads the batch again.",
+      "max_consecutive": 3,
+      "escalation": "Three runs in a row is an outage or a spent allowance every day, not a blip.",
+      "plain": "the free AI reader could not be reached; the comments are read again next run"
+    },
+    "FREE_ALLOWANCE_EXHAUSTED": {
+      "why": "Both free lanes of Boss OS's shared reader had spent their day. Nothing was recorded; the next sweep reads the batch again.",
+      "max_consecutive": 3,
+      "escalation": "Three runs in a row is an outage or a spent allowance every day, not a blip.",
+      "plain": "the free AI reader's daily allowance ran out; the comments are read again next run"
+    },
+    "FREE_READER_UNCERTAIN": {
+      "why": "A free lane answered but nothing usable came back. Nothing was recorded; the next sweep reads the batch again.",
+      "max_consecutive": 3,
+      "escalation": "Three runs in a row is an outage or a spent allowance every day, not a blip.",
+      "plain": "the free AI reader could not decide; the comments are read again next run"
+    },
     "OPENROUTER_UNREACHABLE": {
       "why": "A transient network failure reaching OpenRouter. Nothing was written; the lane retries on its next schedule.",
       "max_consecutive": 3,
@@ -746,6 +764,14 @@
       "or a validator that found what it was built to find. Red is the correct",
       "outcome for all three."
     ],
+    "FREE_READER_REFUSED": {
+      "why": "Boss OS's free reader refused the request as malformed (a worker name or flag the client does not accept). A code fix, not a retry.",
+      "plain": "the free AI reader refused the request; it needs a code fix"
+    },
+    "FREE_READER_MISSING": {
+      "why": "The sweep ran without $BOSS_OS_FREE_READ (not through Boss OS's comment watch), so nothing could classify the comments.",
+      "plain": "the sweep ran outside Boss OS, so no reader was available"
+    },
     "WHISPER_SCRIPT_REFUSED": {"why": "A whisper script marked ready for voice fails a script rule (plain words, facts, length or distinct) on the Mac, so it was not voiced. The author lane commits only passing scripts, so this is a defect: a rule or a script changed after it was written.", "plain": "a whisper script broke a rule after it was written"},
     "WHISPER_VOICE_FAILED": {"why": "voice/whisper_voice.py exited with an error and voiced no new beat. A real defect in the voice step or its environment.", "plain": "the whisper voice step failed on the Mac"},
     "WHISPER_RENDER_FAILED": {"why": "visuals/whisper_render.py failed on an episode whose audio is complete. The audio is kept; a real defect in the render step.", "plain": "a finished whisper episode failed to render"},

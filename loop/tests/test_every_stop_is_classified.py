@@ -101,6 +101,13 @@ GENERATED = {
     "OPENROUTER_PAID_COST_REFUSED":
                                    ("llm_router.py", '"OPENROUTER_PAID_COST_REFUSED"'),
     "OPENROUTER_UNREACHABLE":      ("author.py", '"OPENROUTER_UNREACHABLE"'),
+    # 27 Nov 2026: the comment classifier reads through Boss OS's shared free
+    # reader and passes its NAMED STOP code through by e.code (comments.py
+    # free_read, FREE_READER_STOPS).
+    "FREE_READER_UNAVAILABLE":     ("comments.py", '"FREE_READER_UNAVAILABLE"'),
+    "FREE_ALLOWANCE_EXHAUSTED":    ("comments.py", '"FREE_ALLOWANCE_EXHAUSTED"'),
+    "FREE_READER_UNCERTAIN":       ("comments.py", '"FREE_READER_UNCERTAIN"'),
+    "FREE_READER_REFUSED":         ("comments.py", '"FREE_READER_REFUSED"'),
     # The Monday lane picks AUTHOR_REQUIRED unless every slot failed for one
     # route-wide reason (loop/draft.py, 2026-10-11).
     "AUTHOR_REQUIRED":             ("draft.py", 'else "AUTHOR_REQUIRED"'),
