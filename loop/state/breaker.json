@@ -151,5 +151,10 @@
   ],
   "longform_owner_approval_required": false,
   "channel": "how-we-know",
-  "domain": "materials-and-manufacturing"
+  "domain": "materials-and-manufacturing",
+  "reported_by": {
+    "stage": "repackage-apply",
+    "at": "2026-11-28T08:21:45+00:00",
+    "tripped_at": "2026-11-28T03:42:09+00:00"
+  }
 }
