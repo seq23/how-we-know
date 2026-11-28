@@ -90,7 +90,7 @@
   "repackage-apply::BREAKER_TRIPPED": {
     "code": "BREAKER_TRIPPED",
     "first_reported_at": "2026-11-28T08:21:45+00:00",
-    "issue": null,
+    "issue": 433,
     "items": [
       "breaker:domain:2026-11-28T03:42:09+00:00"
     ],
