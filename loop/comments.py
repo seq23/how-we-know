@@ -33,10 +33,13 @@ business, and `test_comment_watch.py` greps this file to keep it that way.
 
 Cost. commentThreads.list and playlistItems.list are 1 quota unit each;
 setModerationStatus and comments.insert are 50. Spend is recorded through
-loop/quota.py under the lane name `comments`. The classifier is the cheapest
-model the repo's OpenRouter route offers; one call per batch of up to
-CLASSIFY_BATCH comments, ~256 input tokens per comment. `LOOP_DRY_RUN=1`
-refuses credentials and every write, exactly as upload.py does.
+loop/quota.py under the lane name `comments`. The classifier is Boss OS's shared
+free reader (27 Nov 2026, boss-os #584 Not built): one call per batch of up to
+CLASSIFY_BATCH comments to boss-os `scripts/ops/free-read.mjs`, whose path the
+Boss OS comment watch hands in as $BOSS_OS_FREE_READ. Free Gemini, then Workers
+AI; nothing here holds a model key. The reader down, its free allowance spent or
+no usable answer is a named stop with nothing recorded, never a classification.
+`LOOP_DRY_RUN=1` refuses credentials and every write, exactly as upload.py does.
 """
 from __future__ import annotations
 
@@ -45,6 +48,7 @@ import datetime as _dt
 import json
 import os
 import sys
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -53,7 +57,6 @@ from pathlib import Path
 LOOP = Path(__file__).resolve().parent
 sys.path.insert(0, str(LOOP))
 
-import author                                                 # noqa: E402
 import quota                                                  # noqa: E402
 import upload as up                                           # noqa: E402
 from common import (STATE, Stage, config, now, read_json,     # noqa: E402
@@ -73,12 +76,12 @@ CLASSES = ("negative", "question", "praise", "spam", "other")
 ACTIONS = ("hide", "reply", "ignore")
 REPORTED = ("negative", "question")
 CLASSIFY_BATCH = 40
-# A $0 model since 2026-10-11 (was anthropic/claude-haiku-4.5). Overridable,
-# never empty (see author.configured_model for why an empty variable is
-# "unset"), and an override outside config/llm_routing.json is refused by
-# loop/llm_router.py before the network: OPENROUTER_PAID_MODEL_REFUSED.
-CLASSIFY_MODEL = (os.environ.get("OPENROUTER_COMMENTS_MODEL", "").strip()
-                  or author.DEFAULT_MODEL)
+# Boss OS's shared free reader (boss-os scripts/ops/free-read.mjs). The comment
+# watch (boss-os scripts/ops/youtube-comment-watch.mjs) passes its path; the
+# worker name picks the lane order (the watch's owner in Boss OS is Monique).
+FREE_READ_ENV = "BOSS_OS_FREE_READ"
+FREE_READ_WORKER = "monique"
+CLASSIFY_MODEL = "boss-os free reader"
 UNIT_LIST, UNIT_WRITE = 1, 50
 
 DRY_RUN = os.environ.get("LOOP_DRY_RUN") == "1"
@@ -218,7 +221,8 @@ SYSTEM = (
     "abuse, slurs, harassment, or spam-like content - never for mere "
     "disagreement), reply, or ignore. Draft `proposed_reply` only when the "
     "action is reply: at most two short sentences, polite, factual, never "
-    "defensive, never argumentative, no emoji, no hashtags, signed as nobody "
+    "defensive, never argumentative, no emoji, no hashtags, with no name or "
+    "sign-off "
     "(the channel replies as itself). If a comment complains about how a "
     "word or name was pronounced, or about the narration voice or pacing, "
     "set `product_note` to 'pronunciation: <term>' (or 'narration: <issue>'). "
@@ -226,16 +230,59 @@ SYSTEM = (
 )
 
 
-def _prompt(batch: list[dict]) -> list[dict]:
+def _prompt(batch: list[dict]) -> tuple[str, str]:
+    """(instruction, source): the instruction is the system role, the comments
+    are the source the reader treats as evidence only."""
     rows = [{"id": c["comment_id"], "video": c.get("video_title", ""),
              "text": c["text"][:1200]} for c in batch]
-    return [{"role": "system", "content": SYSTEM},
-            {"role": "user", "content":
-                "Schema per item: {\"id\": str, \"class\": one of "
-                f"{list(CLASSES)}, \"proposed_action\": one of "
-                f"{list(ACTIONS)} or null, \"proposed_reply\": str or null, "
-                "\"product_note\": str or null}\n\nComments:\n"
-                + json.dumps(rows, ensure_ascii=False)}]
+    instruction = (SYSTEM + " Schema per item: {\"id\": str, \"class\": one of "
+                   f"{list(CLASSES)}, \"proposed_action\": one of "
+                   f"{list(ACTIONS)} or null, \"proposed_reply\": str or null, "
+                   "\"product_note\": str or null}")
+    return instruction, "Comments:\n" + json.dumps(rows, ensure_ascii=False)
+
+
+class FreeReaderStop(Exception):
+    """The shared free reader gave no usable answer: down, out of its free
+    allowance, unsure, or not handed in. Nothing is recorded for the batch."""
+
+    def __init__(self, code: str, message: str):
+        super().__init__(message)
+        self.code, self.message = code, message
+
+
+def free_read(instruction: str, source: str, max_output: int) -> str:
+    """One read through boss-os free-read.mjs. Exit 0 is the answer; any other
+    exit is a FreeReaderStop carrying the reader's own NAMED STOP code."""
+    import re
+    import subprocess
+    reader = os.environ.get(FREE_READ_ENV, "").strip()
+    if not reader or not Path(reader).is_file():
+        raise FreeReaderStop("FREE_READER_MISSING",
+                             f"${FREE_READ_ENV} does not name boss-os free-read.mjs")
+    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
+        f.write(instruction)
+        ifile = f.name
+    try:
+        r = subprocess.run(["node", reader, "--worker", FREE_READ_WORKER,
+                            "--instruction-file", ifile,
+                            "--max-output", str(max_output)],
+                           input=source, capture_output=True, text=True,
+                           timeout=600)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        raise FreeReaderStop("FREE_READER_UNAVAILABLE", f"free-read.mjs did not run: {e}")
+    finally:
+        os.unlink(ifile)
+    if r.returncode != 0 or not r.stdout.strip():
+        m = re.search(r"NAMED STOP \[([A-Z_]+)\]", r.stderr or "")
+        code = m.group(1) if m and m.group(1) in FREE_READER_STOPS else "FREE_READER_UNAVAILABLE"
+        raise FreeReaderStop(code, (r.stderr or "").strip()[-300:] or f"exit {r.returncode}")
+    return r.stdout
+
+
+FREE_READER_STOPS = ("FREE_READER_UNAVAILABLE", "FREE_ALLOWANCE_EXHAUSTED",
+                     "FREE_READER_UNCERTAIN", "FREE_READER_REFUSED",
+                     "FREE_READER_MISSING")
 
 
 def parse_classification(raw: str, ids: list[str]) -> dict[str, dict]:
@@ -270,12 +317,10 @@ def parse_classification(raw: str, ids: list[str]) -> dict[str, dict]:
     return out
 
 
-def classify(batch: list[dict], key: str, model: str) -> tuple[dict, float]:
-    out = author.call_openrouter(_prompt(batch), model, key, timeout=120,
-                                 temperature=0.0)
-    raw = out["choices"][0]["message"]["content"]
-    cost = (out.get("usage") or {}).get("cost") or 0.0
-    return parse_classification(raw, [c["comment_id"] for c in batch]), cost
+def classify(batch: list[dict], read=None) -> dict:
+    instruction, source = _prompt(batch)
+    raw = (read or free_read)(instruction, source, max(1024, 200 * len(batch)))
+    return parse_classification(raw, [c["comment_id"] for c in batch])
 
 
 # ------------------------------------------------------------------- sweep
@@ -309,12 +354,15 @@ def sweep(out_path: Path, limit_videos: int | None) -> int:
             code, msg, unblock = up.credential_stop(creds, cfg)
             st.named_stop(code, msg, unblock=unblock)
         token = up.access_token(creds)
-        key = author.api_key()
-        if not key:
-            st.named_stop("OPENROUTER_KEY_MISSING",
-                          "no OpenRouter key; comments cannot be classified",
-                          unblock="Put the key in .secrets/openrouter_key.txt "
-                                  "or set $OPENROUTER_API_KEY.")
+        reader = os.environ.get(FREE_READ_ENV, "").strip()
+        if not reader or not Path(reader).is_file():
+            st.named_stop("FREE_READER_MISSING",
+                          "the shared free reader was not handed in; comments "
+                          "cannot be classified",
+                          unblock="Run the sweep through Boss OS's comment watch "
+                                  "(scripts/ops/youtube-comment-watch.mjs), which "
+                                  f"sets ${FREE_READ_ENV}.")
+        st.note("classifier: boss-os free reader handed in")
 
         led = load_ledger()
         try:
@@ -365,19 +413,17 @@ def sweep(out_path: Path, limit_videos: int | None) -> int:
         for i in range(0, len(fresh), CLASSIFY_BATCH):
             batch = fresh[i:i + CLASSIFY_BATCH]
             try:
-                labels, c = classify(batch, key, CLASSIFY_MODEL)
+                labels = classify(batch)
             except (ValueError, KeyError, json.JSONDecodeError) as e:
                 st.named_stop("COMMENT_CLASSIFIER_UNUSABLE",
                               f"the classifier's answer could not be used: {e}",
                               unblock="Nothing was recorded for this batch; "
                                       "re-run. If it repeats, the model or "
                                       "prompt changed shape.")
-            except author.llm_router.LLMStop as e:
-                st.named_stop(e.code, e.message, detail=e.detail,
-                              unblock=e.unblock)
-            except urllib.error.URLError as e:
-                st.named_stop("OPENROUTER_UNREACHABLE", str(e))
-            cost += c
+            except FreeReaderStop as e:
+                st.named_stop(e.code, e.message,
+                              unblock="Nothing was recorded for this batch; "
+                                      "the next sweep reads it again.")
             for cmt in batch:
                 rec = dict(cmt)
                 rec.update(labels[cmt["comment_id"]])
