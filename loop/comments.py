@@ -362,6 +362,7 @@ def sweep(out_path: Path, limit_videos: int | None) -> int:
                           unblock="Run the sweep through Boss OS's comment watch "
                                   "(scripts/ops/youtube-comment-watch.mjs), which "
                                   f"sets ${FREE_READ_ENV}.")
+        st.note("classifier: boss-os free reader handed in")
 
         led = load_ledger()
         try:
